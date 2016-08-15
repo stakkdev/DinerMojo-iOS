@@ -1,0 +1,2014 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		7A8C4BB21B1CB2AA00F1A798 /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7A8C4BB31B1CB2AA00F1A798 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				7A8C4BB91B1CB2D000F1A798 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0AB2A2B5E6E2AA1554ED0826 /* libPods-DinerMojoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 346438B7A3641658C07ECC31 /* libPods-DinerMojoTests.a */; };
+		5A5EE0F61AF3AB9B00F3C796 /* DMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EE0F51AF3AB9B00F3C796 /* DMViewController.m */; };
+		5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF0841B284DEE00E0FC90 /* DMWebViewController.m */; };
+		5A5FF0881B286BEF00E0FC90 /* DMShadowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF0871B286BEF00E0FC90 /* DMShadowImageView.m */; };
+		5A68207C1B39A3A500C7F4A4 /* DMTransactionsModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A68207B1B39A3A500C7F4A4 /* DMTransactionsModelController.m */; };
+		5A7565141B414AFC00434B3D /* DMLocationServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7565131B414AFC00434B3D /* DMLocationServices.m */; };
+		5A7565171B416E0800434B3D /* DMSortNewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7565161B416E0800434B3D /* DMSortNewsfeedViewController.m */; };
+		5A7BFBB71B1DB16700255A25 /* DMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BFBB61B1DB16700255A25 /* DMButton.m */; };
+		5A7BFBBB1B1DC11700255A25 /* DMRestaurantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BFBB91B1DC11700255A25 /* DMRestaurantCell.m */; };
+		5A7BFBBC1B1DC11700255A25 /* DMRestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A7BFBBA1B1DC11700255A25 /* DMRestaurantCell.xib */; };
+		5AA165721AFA3AA900447304 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AA165711AFA3AA900447304 /* Main.storyboard */; };
+		5AE837521B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE837511B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m */; };
+		671AA98B19DC420E569CD230 /* libPods-DinerMojo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE6CE3C630E7257103FD6D3 /* libPods-DinerMojo.a */; };
+		7A01294B1B2741C800D46B39 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A01294A1B2741C800D46B39 /* UIImage+ImageEffects.m */; };
+		7A1AF3051B21BB250072F013 /* DMNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF3041B21BB250072F013 /* DMNewsRequest.m */; };
+		7A1AF3081B21F2310072F013 /* DMNewsItemModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF3071B21F2310072F013 /* DMNewsItemModelController.m */; };
+		7A46D0391B29C25C00FA2AA9 /* DMUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A46D0381B29C25C00FA2AA9 /* DMUserRequest.m */; };
+		7A46D03C1B29C58F00FA2AA9 /* DMFacebookService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A46D03B1B29C58F00FA2AA9 /* DMFacebookService.m */; };
+		7A520F6F1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A520F6E1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.m */; };
+		7A5432351B1FA98C00B99AF1 /* DMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5432341B1FA98C00B99AF1 /* DMTextField.m */; };
+		7A5EC8151B4C033F00B27CBF /* DMBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7D71B4C033F00B27CBF /* DMBase.m */; };
+		7A5EC8161B4C033F00B27CBF /* DMEarnTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7D91B4C033F00B27CBF /* DMEarnTransaction.m */; };
+		7A5EC8171B4C033F00B27CBF /* DMNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7DB1B4C033F00B27CBF /* DMNewsItem.m */; };
+		7A5EC8181B4C033F00B27CBF /* DMOfferItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7DD1B4C033F00B27CBF /* DMOfferItem.m */; };
+		7A5EC8191B4C033F00B27CBF /* DMRedeemTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7DF1B4C033F00B27CBF /* DMRedeemTransaction.m */; };
+		7A5EC81A1B4C033F00B27CBF /* DMTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7E11B4C033F00B27CBF /* DMTransaction.m */; };
+		7A5EC81B1B4C033F00B27CBF /* DMUpdateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7E31B4C033F00B27CBF /* DMUpdateItem.m */; };
+		7A5EC81C1B4C033F00B27CBF /* DMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7E51B4C033F00B27CBF /* DMUser.m */; };
+		7A5EC81D1B4C033F00B27CBF /* DMVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7E71B4C033F00B27CBF /* DMVenue.m */; };
+		7A5EC81E1B4C033F00B27CBF /* DMVenueCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7E91B4C033F00B27CBF /* DMVenueCategory.m */; };
+		7A5EC81F1B4C033F00B27CBF /* DMVenueImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7EB1B4C033F00B27CBF /* DMVenueImage.m */; };
+		7A5EC8201B4C033F00B27CBF /* DMVenueOpeningTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7ED1B4C033F00B27CBF /* DMVenueOpeningTimes.m */; };
+		7A5EC8211B4C033F00B27CBF /* _DMBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7F01B4C033F00B27CBF /* _DMBase.m */; };
+		7A5EC8221B4C033F00B27CBF /* _DMEarnTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7F21B4C033F00B27CBF /* _DMEarnTransaction.m */; };
+		7A5EC8231B4C033F00B27CBF /* _DMNewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7F41B4C033F00B27CBF /* _DMNewsItem.m */; };
+		7A5EC8241B4C033F00B27CBF /* _DMOfferItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7F61B4C033F00B27CBF /* _DMOfferItem.m */; };
+		7A5EC8251B4C033F00B27CBF /* _DMRedeemTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7F81B4C033F00B27CBF /* _DMRedeemTransaction.m */; };
+		7A5EC8261B4C033F00B27CBF /* _DMTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7FA1B4C033F00B27CBF /* _DMTransaction.m */; };
+		7A5EC8271B4C033F00B27CBF /* _DMUpdateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7FC1B4C033F00B27CBF /* _DMUpdateItem.m */; };
+		7A5EC8281B4C033F00B27CBF /* _DMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC7FE1B4C033F00B27CBF /* _DMUser.m */; };
+		7A5EC8291B4C033F00B27CBF /* _DMVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC8001B4C033F00B27CBF /* _DMVenue.m */; };
+		7A5EC82A1B4C033F00B27CBF /* _DMVenueCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC8021B4C033F00B27CBF /* _DMVenueCategory.m */; };
+		7A5EC82B1B4C033F00B27CBF /* _DMVenueImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC8041B4C033F00B27CBF /* _DMVenueImage.m */; };
+		7A5EC82C1B4C033F00B27CBF /* _DMVenueOpeningTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5EC8061B4C033F00B27CBF /* _DMVenueOpeningTimes.m */; };
+		7A7CB4501AFF4AEE00C13FF1 /* DMTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7CB44F1AFF4AEE00C13FF1 /* DMTabBarViewController.m */; };
+		7A80F6271B3F6605009C8A6F /* UIImage+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A80F6261B3F6605009C8A6F /* UIImage+Extensions.m */; };
+		7A88F32C1B46A1FC001B443A /* DMDineNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A88F32B1B46A1FC001B443A /* DMDineNavigationController.m */; };
+		7A8C4B491B1C9A2D00F1A798 /* DMRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B481B1C9A2D00F1A798 /* DMRequest.m */; };
+		7A8C4B7F1B1C9AD500F1A798 /* DMDineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B4D1B1C9AD500F1A798 /* DMDineViewController.m */; };
+		7A8C4B831B1C9AD500F1A798 /* DMFavouritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B551B1C9AD500F1A798 /* DMFavouritesViewController.m */; };
+		7A8C4B841B1C9AD500F1A798 /* DMNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B581B1C9AD500F1A798 /* DMNewsFeedViewController.m */; };
+		7A8C4B851B1C9AD500F1A798 /* DMNewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B5A1B1C9AD500F1A798 /* DMNewsItemViewController.m */; };
+		7A8C4B871B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B5F1B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m */; };
+		7A8C4B881B1C9AD500F1A798 /* DMNotificationSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B611B1C9AD500F1A798 /* DMNotificationSettingsViewController.m */; };
+		7A8C4B891B1C9AD500F1A798 /* DMPasswordSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B631B1C9AD500F1A798 /* DMPasswordSettingsViewController.m */; };
+		7A8C4B8A1B1C9AD500F1A798 /* DMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B651B1C9AD500F1A798 /* DMProfileViewController.m */; };
+		7A8C4B8C1B1C9AD500F1A798 /* DMReferAFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B691B1C9AD500F1A798 /* DMReferAFriendViewController.m */; };
+		7A8C4B8D1B1C9AD500F1A798 /* DMSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B6B1B1C9AD500F1A798 /* DMSettingsViewController.m */; };
+		7A8C4B8E1B1C9AD500F1A798 /* DMTransactionTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B6D1B1C9AD500F1A798 /* DMTransactionTimelineViewController.m */; };
+		7A8C4B8F1B1C9AD500F1A798 /* DMLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B701B1C9AD500F1A798 /* DMLandingViewController.m */; };
+		7A8C4B911B1C9AD500F1A798 /* DMStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B741B1C9AD500F1A798 /* DMStartViewController.m */; };
+		7A8C4B921B1C9AD500F1A798 /* DMWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B761B1C9AD500F1A798 /* DMWelcomeViewController.m */; };
+		7A8C4B931B1C9AD500F1A798 /* DMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B791B1C9AD500F1A798 /* DMMapViewController.m */; };
+		7A8C4B951B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B7C1B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.m */; };
+		7A8C4B961B1C9AD500F1A798 /* DMRestaurantInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B7E1B1C9AD500F1A798 /* DMRestaurantInfoViewController.m */; };
+		7A8C4B991B1C9BA600F1A798 /* DMVenueRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B981B1C9BA600F1A798 /* DMVenueRequest.m */; };
+		7A8C4B9B1B1C9D5800F1A798 /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A8C4B9A1B1C9D5800F1A798 /* Environments.plist */; };
+		7A8C4BAE1B1CAF7800F1A798 /* DMVenueModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4BAD1B1CAF7800F1A798 /* DMVenueModelController.m */; };
+		7A8C4BB11B1CB02C00F1A798 /* DinerMojo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4BAF1B1CB02C00F1A798 /* DinerMojo.xcdatamodeld */; };
+		7AC3FE681AEE3E7600AD12E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FE671AEE3E7600AD12E0 /* main.m */; };
+		7AC3FE6B1AEE3E7600AD12E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */; };
+		7AC3FE761AEE3E7600AD12E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3FE751AEE3E7600AD12E0 /* Images.xcassets */; };
+		7AC3FE791AEE3E7600AD12E0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3FE771AEE3E7600AD12E0 /* LaunchScreen.xib */; };
+		7AC3FE851AEE3E7600AD12E0 /* DinerMojoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FE841AEE3E7600AD12E0 /* DinerMojoTests.m */; };
+		7AC78DED1B01022E00AEA451 /* DMBlurredView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC78DEC1B01022E00AEA451 /* DMBlurredView.m */; };
+		7ACE9F731B1D0FAA0001F20C /* DMManagedObjectDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACE9F701B1D0FAA0001F20C /* DMManagedObjectDeserializer.m */; };
+		7ACE9F741B1D0FAA0001F20C /* DMMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACE9F721B1D0FAA0001F20C /* DMMappingProvider.m */; };
+		7AEF14A31B1F09FC0053D32B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF14991B1F09FC0053D32B /* OpenSans-Bold.ttf */; };
+		7AEF14A41B1F09FC0053D32B /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF149A1B1F09FC0053D32B /* OpenSans-BoldItalic.ttf */; };
+		7AEF14A51B1F09FC0053D32B /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF149B1B1F09FC0053D32B /* OpenSans-ExtraBold.ttf */; };
+		7AEF14A61B1F09FC0053D32B /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF149C1B1F09FC0053D32B /* OpenSans-ExtraBoldItalic.ttf */; };
+		7AEF14A71B1F09FC0053D32B /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF149D1B1F09FC0053D32B /* OpenSans-Italic.ttf */; };
+		7AEF14A81B1F09FC0053D32B /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF149E1B1F09FC0053D32B /* OpenSans-Light.ttf */; };
+		7AEF14A91B1F09FC0053D32B /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF149F1B1F09FC0053D32B /* OpenSans-LightItalic.ttf */; };
+		7AEF14AA1B1F09FC0053D32B /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF14A01B1F09FC0053D32B /* OpenSans-Regular.ttf */; };
+		7AEF14AB1B1F09FC0053D32B /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF14A11B1F09FC0053D32B /* OpenSans-Semibold.ttf */; };
+		7AEF14AC1B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF14A21B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf */; };
+		7AF517EF1B440E3100FA5221 /* DMMappingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF517EE1B440E3100FA5221 /* DMMappingHelper.m */; };
+		7AFF9EF41B2B441900F6C9B6 /* DMReferralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */; };
+		D44F86C71B21B68E00EFEC3B /* DMFontService.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F86C61B21B68E00EFEC3B /* DMFontService.m */; };
+		D48CEB8A1B2EDAD7001A01EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48CEB891B2EDAD7001A01EB /* MapKit.framework */; };
+		D48CEB8D1B300F89001A01EB /* DMEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48CEB8C1B300F89001A01EB /* DMEditProfileViewController.m */; };
+		D4952F571B2087590077FC5F /* DMNewsFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4952F551B2087590077FC5F /* DMNewsFeedTableViewCell.m */; };
+		D4952F581B2087590077FC5F /* DMNewsFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4952F561B2087590077FC5F /* DMNewsFeedTableViewCell.xib */; };
+		D4952F5B1B208C500077FC5F /* DMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4952F5A1B208C500077FC5F /* DMImageView.m */; };
+		D4952F6F1B20926C0077FC5F /* DMColorService.m in Sources */ = {isa = PBXBuildFile; fileRef = D4952F6E1B20926C0077FC5F /* DMColorService.m */; };
+		D49738C81B32D45D00D8B6A8 /* DMRedeemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D49738C61B32D45D00D8B6A8 /* DMRedeemTableViewCell.m */; };
+		D49738C91B32D45E00D8B6A8 /* DMRedeemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D49738C71B32D45D00D8B6A8 /* DMRedeemTableViewCell.xib */; };
+		D49738CC1B32FD8600D8B6A8 /* DMView.m in Sources */ = {isa = PBXBuildFile; fileRef = D49738CB1B32FD8600D8B6A8 /* DMView.m */; };
+		D4A813681B2B052E00FA2BB3 /* DMTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A813661B2B052E00FA2BB3 /* DMTransactionTableViewCell.m */; };
+		D4A813691B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A813671B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib */; };
+		D4B07FBD1B3AB3960055AA45 /* DMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B07FBC1B3AB3960055AA45 /* DMFeedbackViewController.m */; };
+		D4B209091B25D18C001410D0 /* DMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B209081B25D18C001410D0 /* DMPageControl.m */; };
+		D4CCE4D11B3052F500D315AE /* DMTransactionTableViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4CCE4CF1B3052F500D315AE /* DMTransactionTableViewFooter.xib */; };
+		D4CCE4D81B31911900D315AE /* DMRedeemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE4D71B31911900D315AE /* DMRedeemViewController.m */; };
+		D4CCE4DB1B31914A00D315AE /* DMRedeemCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE4DA1B31914A00D315AE /* DMRedeemCouponViewController.m */; };
+		D4CCE4DD1B319B5B00D315AE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CCE4DC1B319B5B00D315AE /* QuartzCore.framework */; };
+		D4CCE4DF1B319DB200D315AE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CCE4DE1B319DB200D315AE /* AVFoundation.framework */; };
+		D4CEE6731B29AD1500CB5647 /* DMProfileInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CEE6721B29AD1500CB5647 /* DMProfileInfoViewController.m */; };
+		D4E436C61B3854FE006435F8 /* DMTransactionReceiptImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E436C51B3854FE006435F8 /* DMTransactionReceiptImageViewController.m */; };
+		D4E436C91B39751F006435F8 /* DMTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E436C81B39751F006435F8 /* DMTabBarController.m */; };
+		D4E436D01B3986B8006435F8 /* DMDineVenueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E436CE1B3986B8006435F8 /* DMDineVenueTableViewCell.m */; };
+		D4E436D11B3986B8006435F8 /* DMDineVenueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E436CF1B3986B8006435F8 /* DMDineVenueTableViewCell.xib */; };
+		D4E4370A1B3A98CD006435F8 /* DMEarnReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */; };
+		D4FF601D1B415B64000CE244 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7AC3FE7F1AEE3E7600AD12E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AC3FE5A1AEE3E7600AD12E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AC3FE611AEE3E7600AD12E0;
+			remoteInfo = DinerMojo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00DEAEA53FEBB87FBBD56394 /* Pods-DinerMojo.client release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.client release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.client release.xcconfig"; sourceTree = "<group>"; };
+		0BEE97B41BD7424806A0D585 /* Pods-DinerMojoTests.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.app store.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.app store.xcconfig"; sourceTree = "<group>"; };
+		2FE6CE3C630E7257103FD6D3 /* libPods-DinerMojo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DinerMojo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		346438B7A3641658C07ECC31 /* libPods-DinerMojoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DinerMojoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AD098C8E520142F273A8680 /* Pods-DinerMojoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A5EE0F41AF3AB9B00F3C796 /* DMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMViewController.h; sourceTree = "<group>"; };
+		5A5EE0F51AF3AB9B00F3C796 /* DMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMViewController.m; sourceTree = "<group>"; };
+		5A5FF0831B284DEE00E0FC90 /* DMWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMWebViewController.h; sourceTree = "<group>"; };
+		5A5FF0841B284DEE00E0FC90 /* DMWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMWebViewController.m; sourceTree = "<group>"; };
+		5A5FF0861B286BEF00E0FC90 /* DMShadowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMShadowImageView.h; sourceTree = "<group>"; };
+		5A5FF0871B286BEF00E0FC90 /* DMShadowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMShadowImageView.m; sourceTree = "<group>"; };
+		5A68207A1B39A3A500C7F4A4 /* DMTransactionsModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTransactionsModelController.h; sourceTree = "<group>"; };
+		5A68207B1B39A3A500C7F4A4 /* DMTransactionsModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTransactionsModelController.m; sourceTree = "<group>"; };
+		5A7565121B414AFC00434B3D /* DMLocationServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLocationServices.h; sourceTree = "<group>"; };
+		5A7565131B414AFC00434B3D /* DMLocationServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLocationServices.m; sourceTree = "<group>"; };
+		5A7565151B416E0800434B3D /* DMSortNewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSortNewsfeedViewController.h; sourceTree = "<group>"; };
+		5A7565161B416E0800434B3D /* DMSortNewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSortNewsfeedViewController.m; sourceTree = "<group>"; };
+		5A7BFBB51B1DB16700255A25 /* DMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMButton.h; sourceTree = "<group>"; };
+		5A7BFBB61B1DB16700255A25 /* DMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMButton.m; sourceTree = "<group>"; };
+		5A7BFBB81B1DC11700255A25 /* DMRestaurantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRestaurantCell.h; sourceTree = "<group>"; };
+		5A7BFBB91B1DC11700255A25 /* DMRestaurantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRestaurantCell.m; sourceTree = "<group>"; };
+		5A7BFBBA1B1DC11700255A25 /* DMRestaurantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRestaurantCell.xib; sourceTree = "<group>"; };
+		5AA165711AFA3AA900447304 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5AE837501B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRestaurantInfoImageCarouselViewController.h; sourceTree = "<group>"; };
+		5AE837511B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRestaurantInfoImageCarouselViewController.m; sourceTree = "<group>"; };
+		6D2D840740D036C90012FFAA /* Pods-DinerMojoTests.debug - vagrant.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.debug - vagrant.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.debug - vagrant.xcconfig"; sourceTree = "<group>"; };
+		7A0129491B2741C800D46B39 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		7A01294A1B2741C800D46B39 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		7A1AF3031B21BB250072F013 /* DMNewsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewsRequest.h; sourceTree = "<group>"; };
+		7A1AF3041B21BB250072F013 /* DMNewsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewsRequest.m; sourceTree = "<group>"; };
+		7A1AF3061B21F2310072F013 /* DMNewsItemModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewsItemModelController.h; sourceTree = "<group>"; };
+		7A1AF3071B21F2310072F013 /* DMNewsItemModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewsItemModelController.m; sourceTree = "<group>"; };
+		7A46D0371B29C25C00FA2AA9 /* DMUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMUserRequest.h; sourceTree = "<group>"; };
+		7A46D0381B29C25C00FA2AA9 /* DMUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMUserRequest.m; sourceTree = "<group>"; };
+		7A46D03A1B29C58F00FA2AA9 /* DMFacebookService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFacebookService.h; sourceTree = "<group>"; };
+		7A46D03B1B29C58F00FA2AA9 /* DMFacebookService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFacebookService.m; sourceTree = "<group>"; };
+		7A520F6D1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOperationCompletePopUpViewController.h; sourceTree = "<group>"; };
+		7A520F6E1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMOperationCompletePopUpViewController.m; sourceTree = "<group>"; };
+		7A5432331B1FA98C00B99AF1 /* DMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTextField.h; sourceTree = "<group>"; };
+		7A5432341B1FA98C00B99AF1 /* DMTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTextField.m; sourceTree = "<group>"; };
+		7A5EC7D61B4C033F00B27CBF /* DMBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBase.h; sourceTree = "<group>"; };
+		7A5EC7D71B4C033F00B27CBF /* DMBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBase.m; sourceTree = "<group>"; };
+		7A5EC7D81B4C033F00B27CBF /* DMEarnTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEarnTransaction.h; sourceTree = "<group>"; };
+		7A5EC7D91B4C033F00B27CBF /* DMEarnTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMEarnTransaction.m; sourceTree = "<group>"; };
+		7A5EC7DA1B4C033F00B27CBF /* DMNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewsItem.h; sourceTree = "<group>"; };
+		7A5EC7DB1B4C033F00B27CBF /* DMNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewsItem.m; sourceTree = "<group>"; };
+		7A5EC7DC1B4C033F00B27CBF /* DMOfferItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferItem.h; sourceTree = "<group>"; };
+		7A5EC7DD1B4C033F00B27CBF /* DMOfferItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMOfferItem.m; sourceTree = "<group>"; };
+		7A5EC7DE1B4C033F00B27CBF /* DMRedeemTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRedeemTransaction.h; sourceTree = "<group>"; };
+		7A5EC7DF1B4C033F00B27CBF /* DMRedeemTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRedeemTransaction.m; sourceTree = "<group>"; };
+		7A5EC7E01B4C033F00B27CBF /* DMTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTransaction.h; sourceTree = "<group>"; };
+		7A5EC7E11B4C033F00B27CBF /* DMTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTransaction.m; sourceTree = "<group>"; };
+		7A5EC7E21B4C033F00B27CBF /* DMUpdateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMUpdateItem.h; sourceTree = "<group>"; };
+		7A5EC7E31B4C033F00B27CBF /* DMUpdateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMUpdateItem.m; sourceTree = "<group>"; };
+		7A5EC7E41B4C033F00B27CBF /* DMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMUser.h; sourceTree = "<group>"; };
+		7A5EC7E51B4C033F00B27CBF /* DMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMUser.m; sourceTree = "<group>"; };
+		7A5EC7E61B4C033F00B27CBF /* DMVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenue.h; sourceTree = "<group>"; };
+		7A5EC7E71B4C033F00B27CBF /* DMVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMVenue.m; sourceTree = "<group>"; };
+		7A5EC7E81B4C033F00B27CBF /* DMVenueCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueCategory.h; sourceTree = "<group>"; };
+		7A5EC7E91B4C033F00B27CBF /* DMVenueCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMVenueCategory.m; sourceTree = "<group>"; };
+		7A5EC7EA1B4C033F00B27CBF /* DMVenueImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueImage.h; sourceTree = "<group>"; };
+		7A5EC7EB1B4C033F00B27CBF /* DMVenueImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMVenueImage.m; sourceTree = "<group>"; };
+		7A5EC7EC1B4C033F00B27CBF /* DMVenueOpeningTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueOpeningTimes.h; sourceTree = "<group>"; };
+		7A5EC7ED1B4C033F00B27CBF /* DMVenueOpeningTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMVenueOpeningTimes.m; sourceTree = "<group>"; };
+		7A5EC7EF1B4C033F00B27CBF /* _DMBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMBase.h; sourceTree = "<group>"; };
+		7A5EC7F01B4C033F00B27CBF /* _DMBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMBase.m; sourceTree = "<group>"; };
+		7A5EC7F11B4C033F00B27CBF /* _DMEarnTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMEarnTransaction.h; sourceTree = "<group>"; };
+		7A5EC7F21B4C033F00B27CBF /* _DMEarnTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMEarnTransaction.m; sourceTree = "<group>"; };
+		7A5EC7F31B4C033F00B27CBF /* _DMNewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMNewsItem.h; sourceTree = "<group>"; };
+		7A5EC7F41B4C033F00B27CBF /* _DMNewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMNewsItem.m; sourceTree = "<group>"; };
+		7A5EC7F51B4C033F00B27CBF /* _DMOfferItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMOfferItem.h; sourceTree = "<group>"; };
+		7A5EC7F61B4C033F00B27CBF /* _DMOfferItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMOfferItem.m; sourceTree = "<group>"; };
+		7A5EC7F71B4C033F00B27CBF /* _DMRedeemTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMRedeemTransaction.h; sourceTree = "<group>"; };
+		7A5EC7F81B4C033F00B27CBF /* _DMRedeemTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMRedeemTransaction.m; sourceTree = "<group>"; };
+		7A5EC7F91B4C033F00B27CBF /* _DMTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMTransaction.h; sourceTree = "<group>"; };
+		7A5EC7FA1B4C033F00B27CBF /* _DMTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMTransaction.m; sourceTree = "<group>"; };
+		7A5EC7FB1B4C033F00B27CBF /* _DMUpdateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMUpdateItem.h; sourceTree = "<group>"; };
+		7A5EC7FC1B4C033F00B27CBF /* _DMUpdateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMUpdateItem.m; sourceTree = "<group>"; };
+		7A5EC7FD1B4C033F00B27CBF /* _DMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMUser.h; sourceTree = "<group>"; };
+		7A5EC7FE1B4C033F00B27CBF /* _DMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMUser.m; sourceTree = "<group>"; };
+		7A5EC7FF1B4C033F00B27CBF /* _DMVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMVenue.h; sourceTree = "<group>"; };
+		7A5EC8001B4C033F00B27CBF /* _DMVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMVenue.m; sourceTree = "<group>"; };
+		7A5EC8011B4C033F00B27CBF /* _DMVenueCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMVenueCategory.h; sourceTree = "<group>"; };
+		7A5EC8021B4C033F00B27CBF /* _DMVenueCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMVenueCategory.m; sourceTree = "<group>"; };
+		7A5EC8031B4C033F00B27CBF /* _DMVenueImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMVenueImage.h; sourceTree = "<group>"; };
+		7A5EC8041B4C033F00B27CBF /* _DMVenueImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMVenueImage.m; sourceTree = "<group>"; };
+		7A5EC8051B4C033F00B27CBF /* _DMVenueOpeningTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DMVenueOpeningTimes.h; sourceTree = "<group>"; };
+		7A5EC8061B4C033F00B27CBF /* _DMVenueOpeningTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DMVenueOpeningTimes.m; sourceTree = "<group>"; };
+		7A5EC8081B4C033F00B27CBF /* DMBaseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBaseProtocol.h; sourceTree = "<group>"; };
+		7A5EC8091B4C033F00B27CBF /* DMEarnTransactionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEarnTransactionProtocol.h; sourceTree = "<group>"; };
+		7A5EC80A1B4C033F00B27CBF /* DMNewsItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewsItemProtocol.h; sourceTree = "<group>"; };
+		7A5EC80B1B4C033F00B27CBF /* DMOfferItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMOfferItemProtocol.h; sourceTree = "<group>"; };
+		7A5EC80C1B4C033F00B27CBF /* DMRedeemTransactionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRedeemTransactionProtocol.h; sourceTree = "<group>"; };
+		7A5EC80D1B4C033F00B27CBF /* DMTransactionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTransactionProtocol.h; sourceTree = "<group>"; };
+		7A5EC80E1B4C033F00B27CBF /* DMUpdateItemProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMUpdateItemProtocol.h; sourceTree = "<group>"; };
+		7A5EC80F1B4C033F00B27CBF /* DMUserProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMUserProtocol.h; sourceTree = "<group>"; };
+		7A5EC8101B4C033F00B27CBF /* DMVenueCategoryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueCategoryProtocol.h; sourceTree = "<group>"; };
+		7A5EC8111B4C033F00B27CBF /* DMVenueImageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueImageProtocol.h; sourceTree = "<group>"; };
+		7A5EC8121B4C033F00B27CBF /* DMVenueOpeningTimesProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueOpeningTimesProtocol.h; sourceTree = "<group>"; };
+		7A5EC8131B4C033F00B27CBF /* DMVenueProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueProtocol.h; sourceTree = "<group>"; };
+		7A5EC8141B4C033F00B27CBF /* SharedModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedModelProtocol.h; sourceTree = "<group>"; };
+		7A799B9F1BF3C6CC007F32C1 /* DinerMojo v1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DinerMojo v1.1.xcdatamodel"; sourceTree = "<group>"; };
+		7A7CB44E1AFF4AEE00C13FF1 /* DMTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTabBarViewController.h; sourceTree = "<group>"; };
+		7A7CB44F1AFF4AEE00C13FF1 /* DMTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTabBarViewController.m; sourceTree = "<group>"; };
+		7A80F6251B3F6605009C8A6F /* UIImage+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extensions.h"; sourceTree = "<group>"; };
+		7A80F6261B3F6605009C8A6F /* UIImage+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extensions.m"; sourceTree = "<group>"; };
+		7A88F32A1B46A1FC001B443A /* DMDineNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMDineNavigationController.h; sourceTree = "<group>"; };
+		7A88F32B1B46A1FC001B443A /* DMDineNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMDineNavigationController.m; sourceTree = "<group>"; };
+		7A8C4B471B1C9A2D00F1A798 /* DMRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRequest.h; sourceTree = "<group>"; };
+		7A8C4B481B1C9A2D00F1A798 /* DMRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRequest.m; sourceTree = "<group>"; };
+		7A8C4B4C1B1C9AD500F1A798 /* DMDineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMDineViewController.h; sourceTree = "<group>"; };
+		7A8C4B4D1B1C9AD500F1A798 /* DMDineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMDineViewController.m; sourceTree = "<group>"; };
+		7A8C4B541B1C9AD500F1A798 /* DMFavouritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFavouritesViewController.h; sourceTree = "<group>"; };
+		7A8C4B551B1C9AD500F1A798 /* DMFavouritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFavouritesViewController.m; sourceTree = "<group>"; };
+		7A8C4B571B1C9AD500F1A798 /* DMNewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewsFeedViewController.h; sourceTree = "<group>"; };
+		7A8C4B581B1C9AD500F1A798 /* DMNewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewsFeedViewController.m; sourceTree = "<group>"; };
+		7A8C4B591B1C9AD500F1A798 /* DMNewsItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewsItemViewController.h; sourceTree = "<group>"; };
+		7A8C4B5A1B1C9AD500F1A798 /* DMNewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewsItemViewController.m; sourceTree = "<group>"; };
+		7A8C4B5E1B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEarnTransactionDetailViewController.h; sourceTree = "<group>"; };
+		7A8C4B5F1B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMEarnTransactionDetailViewController.m; sourceTree = "<group>"; };
+		7A8C4B601B1C9AD500F1A798 /* DMNotificationSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNotificationSettingsViewController.h; sourceTree = "<group>"; };
+		7A8C4B611B1C9AD500F1A798 /* DMNotificationSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNotificationSettingsViewController.m; sourceTree = "<group>"; };
+		7A8C4B621B1C9AD500F1A798 /* DMPasswordSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPasswordSettingsViewController.h; sourceTree = "<group>"; };
+		7A8C4B631B1C9AD500F1A798 /* DMPasswordSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPasswordSettingsViewController.m; sourceTree = "<group>"; };
+		7A8C4B641B1C9AD500F1A798 /* DMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProfileViewController.h; sourceTree = "<group>"; };
+		7A8C4B651B1C9AD500F1A798 /* DMProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProfileViewController.m; sourceTree = "<group>"; };
+		7A8C4B681B1C9AD500F1A798 /* DMReferAFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMReferAFriendViewController.h; sourceTree = "<group>"; };
+		7A8C4B691B1C9AD500F1A798 /* DMReferAFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReferAFriendViewController.m; sourceTree = "<group>"; };
+		7A8C4B6A1B1C9AD500F1A798 /* DMSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSettingsViewController.h; sourceTree = "<group>"; };
+		7A8C4B6B1B1C9AD500F1A798 /* DMSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSettingsViewController.m; sourceTree = "<group>"; };
+		7A8C4B6C1B1C9AD500F1A798 /* DMTransactionTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTransactionTimelineViewController.h; sourceTree = "<group>"; };
+		7A8C4B6D1B1C9AD500F1A798 /* DMTransactionTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTransactionTimelineViewController.m; sourceTree = "<group>"; };
+		7A8C4B6F1B1C9AD500F1A798 /* DMLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLandingViewController.h; sourceTree = "<group>"; };
+		7A8C4B701B1C9AD500F1A798 /* DMLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLandingViewController.m; sourceTree = "<group>"; };
+		7A8C4B731B1C9AD500F1A798 /* DMStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMStartViewController.h; sourceTree = "<group>"; };
+		7A8C4B741B1C9AD500F1A798 /* DMStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMStartViewController.m; sourceTree = "<group>"; };
+		7A8C4B751B1C9AD500F1A798 /* DMWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMWelcomeViewController.h; sourceTree = "<group>"; };
+		7A8C4B761B1C9AD500F1A798 /* DMWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMWelcomeViewController.m; sourceTree = "<group>"; };
+		7A8C4B781B1C9AD500F1A798 /* DMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapViewController.h; sourceTree = "<group>"; };
+		7A8C4B791B1C9AD500F1A798 /* DMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapViewController.m; sourceTree = "<group>"; };
+		7A8C4B7B1B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRestaurantInfoRelatedCell.h; sourceTree = "<group>"; };
+		7A8C4B7C1B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRestaurantInfoRelatedCell.m; sourceTree = "<group>"; };
+		7A8C4B7D1B1C9AD500F1A798 /* DMRestaurantInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRestaurantInfoViewController.h; sourceTree = "<group>"; };
+		7A8C4B7E1B1C9AD500F1A798 /* DMRestaurantInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRestaurantInfoViewController.m; sourceTree = "<group>"; };
+		7A8C4B971B1C9BA600F1A798 /* DMVenueRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueRequest.h; sourceTree = "<group>"; };
+		7A8C4B981B1C9BA600F1A798 /* DMVenueRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMVenueRequest.m; sourceTree = "<group>"; };
+		7A8C4B9A1B1C9D5800F1A798 /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
+		7A8C4BAC1B1CAF7800F1A798 /* DMVenueModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVenueModelController.h; sourceTree = "<group>"; };
+		7A8C4BAD1B1CAF7800F1A798 /* DMVenueModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMVenueModelController.m; sourceTree = "<group>"; };
+		7A8C4BB01B1CB02C00F1A798 /* DinerMojo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DinerMojo.xcdatamodel; sourceTree = "<group>"; };
+		7A9C9C5F1B1F01B1002B930A /* DinerMojo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DinerMojo-Prefix.pch"; sourceTree = "<group>"; };
+		7AC3FE621AEE3E7600AD12E0 /* DinerMojo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinerMojo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AC3FE661AEE3E7600AD12E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AC3FE671AEE3E7600AD12E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7AC3FE691AEE3E7600AD12E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7AC3FE751AEE3E7600AD12E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7AC3FE781AEE3E7600AD12E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7AC3FE7E1AEE3E7600AD12E0 /* DinerMojoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DinerMojoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AC3FE831AEE3E7600AD12E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AC3FE841AEE3E7600AD12E0 /* DinerMojoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DinerMojoTests.m; sourceTree = "<group>"; };
+		7AC78DEB1B01022E00AEA451 /* DMBlurredView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBlurredView.h; sourceTree = "<group>"; };
+		7AC78DEC1B01022E00AEA451 /* DMBlurredView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBlurredView.m; sourceTree = "<group>"; };
+		7ACE9F6F1B1D0FAA0001F20C /* DMManagedObjectDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMManagedObjectDeserializer.h; sourceTree = "<group>"; };
+		7ACE9F701B1D0FAA0001F20C /* DMManagedObjectDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMManagedObjectDeserializer.m; sourceTree = "<group>"; };
+		7ACE9F711B1D0FAA0001F20C /* DMMappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMappingProvider.h; sourceTree = "<group>"; };
+		7ACE9F721B1D0FAA0001F20C /* DMMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMappingProvider.m; sourceTree = "<group>"; };
+		7AEF14991B1F09FC0053D32B /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		7AEF149A1B1F09FC0053D32B /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		7AEF149B1B1F09FC0053D32B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		7AEF149C1B1F09FC0053D32B /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		7AEF149D1B1F09FC0053D32B /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		7AEF149E1B1F09FC0053D32B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		7AEF149F1B1F09FC0053D32B /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		7AEF14A01B1F09FC0053D32B /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		7AEF14A11B1F09FC0053D32B /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		7AEF14A21B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		7AF517ED1B440E3100FA5221 /* DMMappingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMappingHelper.h; sourceTree = "<group>"; };
+		7AF517EE1B440E3100FA5221 /* DMMappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMappingHelper.m; sourceTree = "<group>"; };
+		7AFF9EF21B2B441900F6C9B6 /* DMReferralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMReferralViewController.h; sourceTree = "<group>"; };
+		7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReferralViewController.m; sourceTree = "<group>"; };
+		90847C9EBD97389CF4AA30EF /* Pods-DinerMojo.debug - vagrant.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug - vagrant.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug - vagrant.xcconfig"; sourceTree = "<group>"; };
+		95F3EB9AA65A1C485EFBE082 /* Pods-DinerMojoTests.client release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.client release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.client release.xcconfig"; sourceTree = "<group>"; };
+		BB4ADF246F481241F5F852F2 /* Pods-DinerMojoTests.internal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.internal release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.internal release.xcconfig"; sourceTree = "<group>"; };
+		BDCCB2C02A9D171BA182C4A3 /* Pods-DinerMojo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.release.xcconfig"; sourceTree = "<group>"; };
+		C8E670D7286671AE24F5B6C7 /* Pods-DinerMojo.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store.xcconfig"; sourceTree = "<group>"; };
+		CD50C9AD1989E2F9158813A0 /* Pods-DinerMojoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.release.xcconfig"; sourceTree = "<group>"; };
+		D0D448663F0B162E9C13D1F5 /* Pods-DinerMojo.internal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal release.xcconfig"; sourceTree = "<group>"; };
+		D44F86C51B21B68E00EFEC3B /* DMFontService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFontService.h; sourceTree = "<group>"; };
+		D44F86C61B21B68E00EFEC3B /* DMFontService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFontService.m; sourceTree = "<group>"; };
+		D48CEB891B2EDAD7001A01EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D48CEB8B1B300F89001A01EB /* DMEditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEditProfileViewController.h; sourceTree = "<group>"; };
+		D48CEB8C1B300F89001A01EB /* DMEditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMEditProfileViewController.m; sourceTree = "<group>"; };
+		D4952F541B2087590077FC5F /* DMNewsFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewsFeedTableViewCell.h; sourceTree = "<group>"; };
+		D4952F551B2087590077FC5F /* DMNewsFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewsFeedTableViewCell.m; sourceTree = "<group>"; };
+		D4952F561B2087590077FC5F /* DMNewsFeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMNewsFeedTableViewCell.xib; sourceTree = "<group>"; };
+		D4952F591B208C500077FC5F /* DMImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMImageView.h; sourceTree = "<group>"; };
+		D4952F5A1B208C500077FC5F /* DMImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageView.m; sourceTree = "<group>"; };
+		D4952F6D1B20926C0077FC5F /* DMColorService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMColorService.h; sourceTree = "<group>"; };
+		D4952F6E1B20926C0077FC5F /* DMColorService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMColorService.m; sourceTree = "<group>"; };
+		D49738C51B32D45D00D8B6A8 /* DMRedeemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRedeemTableViewCell.h; sourceTree = "<group>"; };
+		D49738C61B32D45D00D8B6A8 /* DMRedeemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRedeemTableViewCell.m; sourceTree = "<group>"; };
+		D49738C71B32D45D00D8B6A8 /* DMRedeemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRedeemTableViewCell.xib; sourceTree = "<group>"; };
+		D49738CA1B32FD8600D8B6A8 /* DMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMView.h; sourceTree = "<group>"; };
+		D49738CB1B32FD8600D8B6A8 /* DMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMView.m; sourceTree = "<group>"; };
+		D4A813651B2B052E00FA2BB3 /* DMTransactionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTransactionTableViewCell.h; sourceTree = "<group>"; };
+		D4A813661B2B052E00FA2BB3 /* DMTransactionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTransactionTableViewCell.m; sourceTree = "<group>"; };
+		D4A813671B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMTransactionTableViewCell.xib; sourceTree = "<group>"; };
+		D4B07FBB1B3AB3960055AA45 /* DMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFeedbackViewController.h; sourceTree = "<group>"; };
+		D4B07FBC1B3AB3960055AA45 /* DMFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFeedbackViewController.m; sourceTree = "<group>"; };
+		D4B209071B25D18C001410D0 /* DMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPageControl.h; sourceTree = "<group>"; };
+		D4B209081B25D18C001410D0 /* DMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPageControl.m; sourceTree = "<group>"; };
+		D4CCE4CF1B3052F500D315AE /* DMTransactionTableViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMTransactionTableViewFooter.xib; sourceTree = "<group>"; };
+		D4CCE4D61B31911900D315AE /* DMRedeemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRedeemViewController.h; sourceTree = "<group>"; };
+		D4CCE4D71B31911900D315AE /* DMRedeemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRedeemViewController.m; sourceTree = "<group>"; };
+		D4CCE4D91B31914A00D315AE /* DMRedeemCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRedeemCouponViewController.h; sourceTree = "<group>"; };
+		D4CCE4DA1B31914A00D315AE /* DMRedeemCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRedeemCouponViewController.m; sourceTree = "<group>"; };
+		D4CCE4DC1B319B5B00D315AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D4CCE4DE1B319DB200D315AE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D4CEE6711B29AD1500CB5647 /* DMProfileInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProfileInfoViewController.h; sourceTree = "<group>"; };
+		D4CEE6721B29AD1500CB5647 /* DMProfileInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProfileInfoViewController.m; sourceTree = "<group>"; };
+		D4E436C41B3854FE006435F8 /* DMTransactionReceiptImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTransactionReceiptImageViewController.h; sourceTree = "<group>"; };
+		D4E436C51B3854FE006435F8 /* DMTransactionReceiptImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTransactionReceiptImageViewController.m; sourceTree = "<group>"; };
+		D4E436C71B39751F006435F8 /* DMTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTabBarController.h; sourceTree = "<group>"; };
+		D4E436C81B39751F006435F8 /* DMTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTabBarController.m; sourceTree = "<group>"; };
+		D4E436CD1B3986B8006435F8 /* DMDineVenueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMDineVenueTableViewCell.h; sourceTree = "<group>"; };
+		D4E436CE1B3986B8006435F8 /* DMDineVenueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMDineVenueTableViewCell.m; sourceTree = "<group>"; };
+		D4E436CF1B3986B8006435F8 /* DMDineVenueTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMDineVenueTableViewCell.xib; sourceTree = "<group>"; };
+		D4E437081B3A98CD006435F8 /* DMEarnReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEarnReviewViewController.h; sourceTree = "<group>"; };
+		D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMEarnReviewViewController.m; sourceTree = "<group>"; };
+		D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F56008EED73E3C043947F1C9 /* Pods-DinerMojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7AC3FE5F1AEE3E7600AD12E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4FF601D1B415B64000CE244 /* MobileCoreServices.framework in Frameworks */,
+				D4CCE4DF1B319DB200D315AE /* AVFoundation.framework in Frameworks */,
+				D4CCE4DD1B319B5B00D315AE /* QuartzCore.framework in Frameworks */,
+				D48CEB8A1B2EDAD7001A01EB /* MapKit.framework in Frameworks */,
+				671AA98B19DC420E569CD230 /* libPods-DinerMojo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AC3FE7B1AEE3E7600AD12E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AB2A2B5E6E2AA1554ED0826 /* libPods-DinerMojoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		142DDACD174BE5D155374834 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F56008EED73E3C043947F1C9 /* Pods-DinerMojo.debug.xcconfig */,
+				90847C9EBD97389CF4AA30EF /* Pods-DinerMojo.debug - vagrant.xcconfig */,
+				BDCCB2C02A9D171BA182C4A3 /* Pods-DinerMojo.release.xcconfig */,
+				D0D448663F0B162E9C13D1F5 /* Pods-DinerMojo.internal release.xcconfig */,
+				00DEAEA53FEBB87FBBD56394 /* Pods-DinerMojo.client release.xcconfig */,
+				C8E670D7286671AE24F5B6C7 /* Pods-DinerMojo.app store.xcconfig */,
+				4AD098C8E520142F273A8680 /* Pods-DinerMojoTests.debug.xcconfig */,
+				6D2D840740D036C90012FFAA /* Pods-DinerMojoTests.debug - vagrant.xcconfig */,
+				CD50C9AD1989E2F9158813A0 /* Pods-DinerMojoTests.release.xcconfig */,
+				BB4ADF246F481241F5F852F2 /* Pods-DinerMojoTests.internal release.xcconfig */,
+				95F3EB9AA65A1C485EFBE082 /* Pods-DinerMojoTests.client release.xcconfig */,
+				0BEE97B41BD7424806A0D585 /* Pods-DinerMojoTests.app store.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		57F65DF4B9C1393ACD1F9B53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */,
+				D4CCE4DE1B319DB200D315AE /* AVFoundation.framework */,
+				D4CCE4DC1B319B5B00D315AE /* QuartzCore.framework */,
+				D48CEB891B2EDAD7001A01EB /* MapKit.framework */,
+				2FE6CE3C630E7257103FD6D3 /* libPods-DinerMojo.a */,
+				346438B7A3641658C07ECC31 /* libPods-DinerMojoTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A5EE0F31AF3AB4900F3C796 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D4EF480E1B45403A00E46539 /* Images */,
+				D4EF48111B4540A600E46539 /* Blurs and Views */,
+				D4EF48121B4540AF00E46539 /* Other Controls */,
+				D4EF48101B45409700E46539 /* Controllers */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		7A5EC7D41B4C033F00B27CBF /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				7A5EC7D51B4C033F00B27CBF /* Human */,
+				7A5EC7EE1B4C033F00B27CBF /* Machine */,
+				7A5EC8071B4C033F00B27CBF /* Protocol */,
+			);
+			path = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		7A5EC7D51B4C033F00B27CBF /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				7A5EC7D61B4C033F00B27CBF /* DMBase.h */,
+				7A5EC7D71B4C033F00B27CBF /* DMBase.m */,
+				7A5EC7D81B4C033F00B27CBF /* DMEarnTransaction.h */,
+				7A5EC7D91B4C033F00B27CBF /* DMEarnTransaction.m */,
+				7A5EC7DA1B4C033F00B27CBF /* DMNewsItem.h */,
+				7A5EC7DB1B4C033F00B27CBF /* DMNewsItem.m */,
+				7A5EC7DC1B4C033F00B27CBF /* DMOfferItem.h */,
+				7A5EC7DD1B4C033F00B27CBF /* DMOfferItem.m */,
+				7A5EC7DE1B4C033F00B27CBF /* DMRedeemTransaction.h */,
+				7A5EC7DF1B4C033F00B27CBF /* DMRedeemTransaction.m */,
+				7A5EC7E01B4C033F00B27CBF /* DMTransaction.h */,
+				7A5EC7E11B4C033F00B27CBF /* DMTransaction.m */,
+				7A5EC7E21B4C033F00B27CBF /* DMUpdateItem.h */,
+				7A5EC7E31B4C033F00B27CBF /* DMUpdateItem.m */,
+				7A5EC7E41B4C033F00B27CBF /* DMUser.h */,
+				7A5EC7E51B4C033F00B27CBF /* DMUser.m */,
+				7A5EC7E61B4C033F00B27CBF /* DMVenue.h */,
+				7A5EC7E71B4C033F00B27CBF /* DMVenue.m */,
+				7A5EC7E81B4C033F00B27CBF /* DMVenueCategory.h */,
+				7A5EC7E91B4C033F00B27CBF /* DMVenueCategory.m */,
+				7A5EC7EA1B4C033F00B27CBF /* DMVenueImage.h */,
+				7A5EC7EB1B4C033F00B27CBF /* DMVenueImage.m */,
+				7A5EC7EC1B4C033F00B27CBF /* DMVenueOpeningTimes.h */,
+				7A5EC7ED1B4C033F00B27CBF /* DMVenueOpeningTimes.m */,
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		7A5EC7EE1B4C033F00B27CBF /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				7A5EC7EF1B4C033F00B27CBF /* _DMBase.h */,
+				7A5EC7F01B4C033F00B27CBF /* _DMBase.m */,
+				7A5EC7F11B4C033F00B27CBF /* _DMEarnTransaction.h */,
+				7A5EC7F21B4C033F00B27CBF /* _DMEarnTransaction.m */,
+				7A5EC7F31B4C033F00B27CBF /* _DMNewsItem.h */,
+				7A5EC7F41B4C033F00B27CBF /* _DMNewsItem.m */,
+				7A5EC7F51B4C033F00B27CBF /* _DMOfferItem.h */,
+				7A5EC7F61B4C033F00B27CBF /* _DMOfferItem.m */,
+				7A5EC7F71B4C033F00B27CBF /* _DMRedeemTransaction.h */,
+				7A5EC7F81B4C033F00B27CBF /* _DMRedeemTransaction.m */,
+				7A5EC7F91B4C033F00B27CBF /* _DMTransaction.h */,
+				7A5EC7FA1B4C033F00B27CBF /* _DMTransaction.m */,
+				7A5EC7FB1B4C033F00B27CBF /* _DMUpdateItem.h */,
+				7A5EC7FC1B4C033F00B27CBF /* _DMUpdateItem.m */,
+				7A5EC7FD1B4C033F00B27CBF /* _DMUser.h */,
+				7A5EC7FE1B4C033F00B27CBF /* _DMUser.m */,
+				7A5EC7FF1B4C033F00B27CBF /* _DMVenue.h */,
+				7A5EC8001B4C033F00B27CBF /* _DMVenue.m */,
+				7A5EC8011B4C033F00B27CBF /* _DMVenueCategory.h */,
+				7A5EC8021B4C033F00B27CBF /* _DMVenueCategory.m */,
+				7A5EC8031B4C033F00B27CBF /* _DMVenueImage.h */,
+				7A5EC8041B4C033F00B27CBF /* _DMVenueImage.m */,
+				7A5EC8051B4C033F00B27CBF /* _DMVenueOpeningTimes.h */,
+				7A5EC8061B4C033F00B27CBF /* _DMVenueOpeningTimes.m */,
+			);
+			path = Machine;
+			sourceTree = "<group>";
+		};
+		7A5EC8071B4C033F00B27CBF /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7A5EC8081B4C033F00B27CBF /* DMBaseProtocol.h */,
+				7A5EC8091B4C033F00B27CBF /* DMEarnTransactionProtocol.h */,
+				7A5EC80A1B4C033F00B27CBF /* DMNewsItemProtocol.h */,
+				7A5EC80B1B4C033F00B27CBF /* DMOfferItemProtocol.h */,
+				7A5EC80C1B4C033F00B27CBF /* DMRedeemTransactionProtocol.h */,
+				7A5EC80D1B4C033F00B27CBF /* DMTransactionProtocol.h */,
+				7A5EC80E1B4C033F00B27CBF /* DMUpdateItemProtocol.h */,
+				7A5EC80F1B4C033F00B27CBF /* DMUserProtocol.h */,
+				7A5EC8101B4C033F00B27CBF /* DMVenueCategoryProtocol.h */,
+				7A5EC8111B4C033F00B27CBF /* DMVenueImageProtocol.h */,
+				7A5EC8121B4C033F00B27CBF /* DMVenueOpeningTimesProtocol.h */,
+				7A5EC8131B4C033F00B27CBF /* DMVenueProtocol.h */,
+				7A5EC8141B4C033F00B27CBF /* SharedModelProtocol.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7A8C4B461B1C9A2D00F1A798 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B471B1C9A2D00F1A798 /* DMRequest.h */,
+				7A8C4B481B1C9A2D00F1A798 /* DMRequest.m */,
+				7A8C4B971B1C9BA600F1A798 /* DMVenueRequest.h */,
+				7A8C4B981B1C9BA600F1A798 /* DMVenueRequest.m */,
+				7A1AF3031B21BB250072F013 /* DMNewsRequest.h */,
+				7A1AF3041B21BB250072F013 /* DMNewsRequest.m */,
+				7A46D0371B29C25C00FA2AA9 /* DMUserRequest.h */,
+				7A46D0381B29C25C00FA2AA9 /* DMUserRequest.m */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		7A8C4B4A1B1C9AD500F1A798 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D4EF48041B453D7300E46539 /* Earn */,
+				D4CCE4D21B3185AE00D315AE /* Redeem */,
+				7A8C4B4B1B1C9AD500F1A798 /* Dine */,
+				7A8C4B4E1B1C9AD500F1A798 /* Favourites */,
+				7A8C4B561B1C9AD500F1A798 /* Newsfeed */,
+				7A8C4B5D1B1C9AD500F1A798 /* Profile */,
+				7A8C4B6E1B1C9AD500F1A798 /* UserOnboard */,
+				7A8C4B771B1C9AD500F1A798 /* Venues */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		7A8C4B4B1B1C9AD500F1A798 /* Dine */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B4C1B1C9AD500F1A798 /* DMDineViewController.h */,
+				7A8C4B4D1B1C9AD500F1A798 /* DMDineViewController.m */,
+				D4E436D21B3992B6006435F8 /* Cell */,
+			);
+			path = Dine;
+			sourceTree = "<group>";
+		};
+		7A8C4B4E1B1C9AD500F1A798 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B541B1C9AD500F1A798 /* DMFavouritesViewController.h */,
+				7A8C4B551B1C9AD500F1A798 /* DMFavouritesViewController.m */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		7A8C4B561B1C9AD500F1A798 /* Newsfeed */ = {
+			isa = PBXGroup;
+			children = (
+				D4952F531B2087110077FC5F /* Cell */,
+				7A8C4B571B1C9AD500F1A798 /* DMNewsFeedViewController.h */,
+				7A8C4B581B1C9AD500F1A798 /* DMNewsFeedViewController.m */,
+				7A8C4B591B1C9AD500F1A798 /* DMNewsItemViewController.h */,
+				7A8C4B5A1B1C9AD500F1A798 /* DMNewsItemViewController.m */,
+				5A7565151B416E0800434B3D /* DMSortNewsfeedViewController.h */,
+				5A7565161B416E0800434B3D /* DMSortNewsfeedViewController.m */,
+			);
+			path = Newsfeed;
+			sourceTree = "<group>";
+		};
+		7A8C4B5D1B1C9AD500F1A798 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D4EF48051B453E5000E46539 /* Transaction */,
+				D4EF48061B453E6800E46539 /* Settings */,
+				D4EF48071B453E7100E46539 /* Main Profile */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		7A8C4B6E1B1C9AD500F1A798 /* UserOnboard */ = {
+			isa = PBXGroup;
+			children = (
+				7AFF9EF21B2B441900F6C9B6 /* DMReferralViewController.h */,
+				7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */,
+				7A8C4B6F1B1C9AD500F1A798 /* DMLandingViewController.h */,
+				7A8C4B701B1C9AD500F1A798 /* DMLandingViewController.m */,
+				D4EF48091B453E9600E46539 /* Login and Register */,
+				D4EF48081B453E8E00E46539 /* Tutorial */,
+			);
+			path = UserOnboard;
+			sourceTree = "<group>";
+		};
+		7A8C4B771B1C9AD500F1A798 /* Venues */ = {
+			isa = PBXGroup;
+			children = (
+				D4EF480C1B453ED000E46539 /* Venue */,
+				D4EF480A1B453EB600E46539 /* Info */,
+			);
+			path = Venues;
+			sourceTree = "<group>";
+		};
+		7A8C4BA81B1CAF7800F1A798 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4BA91B1CAF7800F1A798 /* CoreData */,
+				7A8C4BAA1B1CAF7800F1A798 /* Mappers */,
+				7A8C4BAB1B1CAF7800F1A798 /* ModelControllers */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7A8C4BA91B1CAF7800F1A798 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4BAF1B1CB02C00F1A798 /* DinerMojo.xcdatamodeld */,
+				7A5EC7D41B4C033F00B27CBF /* ManagedObjects */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7A8C4BAA1B1CAF7800F1A798 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				7ACE9F6F1B1D0FAA0001F20C /* DMManagedObjectDeserializer.h */,
+				7ACE9F701B1D0FAA0001F20C /* DMManagedObjectDeserializer.m */,
+				7ACE9F711B1D0FAA0001F20C /* DMMappingProvider.h */,
+				7ACE9F721B1D0FAA0001F20C /* DMMappingProvider.m */,
+				7AF517ED1B440E3100FA5221 /* DMMappingHelper.h */,
+				7AF517EE1B440E3100FA5221 /* DMMappingHelper.m */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		7A8C4BAB1B1CAF7800F1A798 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A1AF3061B21F2310072F013 /* DMNewsItemModelController.h */,
+				7A1AF3071B21F2310072F013 /* DMNewsItemModelController.m */,
+				7A8C4BAC1B1CAF7800F1A798 /* DMVenueModelController.h */,
+				7A8C4BAD1B1CAF7800F1A798 /* DMVenueModelController.m */,
+				5A68207A1B39A3A500C7F4A4 /* DMTransactionsModelController.h */,
+				5A68207B1B39A3A500C7F4A4 /* DMTransactionsModelController.m */,
+			);
+			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		7AC3FE591AEE3E7600AD12E0 = {
+			isa = PBXGroup;
+			children = (
+				7AC3FE641AEE3E7600AD12E0 /* DinerMojo */,
+				7AC3FE811AEE3E7600AD12E0 /* DinerMojoTests */,
+				7AC3FE631AEE3E7600AD12E0 /* Products */,
+				57F65DF4B9C1393ACD1F9B53 /* Frameworks */,
+				142DDACD174BE5D155374834 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		7AC3FE631AEE3E7600AD12E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7AC3FE621AEE3E7600AD12E0 /* DinerMojo.app */,
+				7AC3FE7E1AEE3E7600AD12E0 /* DinerMojoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7AC3FE641AEE3E7600AD12E0 /* DinerMojo */ = {
+			isa = PBXGroup;
+			children = (
+				7AC3FE691AEE3E7600AD12E0 /* AppDelegate.h */,
+				7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */,
+				D4EF48141B45428F00E46539 /* User Interface */,
+				7A8C4B4A1B1C9AD500F1A798 /* Screens */,
+				5A5EE0F31AF3AB4900F3C796 /* Shared */,
+				7A8C4BA81B1CAF7800F1A798 /* Models */,
+				7A8C4B461B1C9A2D00F1A798 /* Requests */,
+				D4952F6C1B20926C0077FC5F /* Services */,
+				7AC3FE651AEE3E7600AD12E0 /* Supporting Files */,
+			);
+			path = DinerMojo;
+			sourceTree = "<group>";
+		};
+		7AC3FE651AEE3E7600AD12E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AEF14971B1F09FC0053D32B /* Fonts */,
+				7A8C4B9A1B1C9D5800F1A798 /* Environments.plist */,
+				7AC3FE661AEE3E7600AD12E0 /* Info.plist */,
+				7AC3FE671AEE3E7600AD12E0 /* main.m */,
+				7A9C9C5F1B1F01B1002B930A /* DinerMojo-Prefix.pch */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AC3FE811AEE3E7600AD12E0 /* DinerMojoTests */ = {
+			isa = PBXGroup;
+			children = (
+				7AC3FE841AEE3E7600AD12E0 /* DinerMojoTests.m */,
+				7AC3FE821AEE3E7600AD12E0 /* Supporting Files */,
+			);
+			path = DinerMojoTests;
+			sourceTree = "<group>";
+		};
+		7AC3FE821AEE3E7600AD12E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AC3FE831AEE3E7600AD12E0 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7AEF14971B1F09FC0053D32B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7AEF14981B1F09FC0053D32B /* open-sans */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7AEF14981B1F09FC0053D32B /* open-sans */ = {
+			isa = PBXGroup;
+			children = (
+				7AEF14991B1F09FC0053D32B /* OpenSans-Bold.ttf */,
+				7AEF149A1B1F09FC0053D32B /* OpenSans-BoldItalic.ttf */,
+				7AEF149B1B1F09FC0053D32B /* OpenSans-ExtraBold.ttf */,
+				7AEF149C1B1F09FC0053D32B /* OpenSans-ExtraBoldItalic.ttf */,
+				7AEF149D1B1F09FC0053D32B /* OpenSans-Italic.ttf */,
+				7AEF149E1B1F09FC0053D32B /* OpenSans-Light.ttf */,
+				7AEF149F1B1F09FC0053D32B /* OpenSans-LightItalic.ttf */,
+				7AEF14A01B1F09FC0053D32B /* OpenSans-Regular.ttf */,
+				7AEF14A11B1F09FC0053D32B /* OpenSans-Semibold.ttf */,
+				7AEF14A21B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf */,
+			);
+			path = "open-sans";
+			sourceTree = "<group>";
+		};
+		D4952F531B2087110077FC5F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D4952F541B2087590077FC5F /* DMNewsFeedTableViewCell.h */,
+				D4952F551B2087590077FC5F /* DMNewsFeedTableViewCell.m */,
+				D4952F561B2087590077FC5F /* DMNewsFeedTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D4952F6C1B20926C0077FC5F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4EF48131B4540C200E46539 /* Theme */,
+				7A46D03A1B29C58F00FA2AA9 /* DMFacebookService.h */,
+				7A46D03B1B29C58F00FA2AA9 /* DMFacebookService.m */,
+				5A7565121B414AFC00434B3D /* DMLocationServices.h */,
+				5A7565131B414AFC00434B3D /* DMLocationServices.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D49738C41B32D44300D8B6A8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D49738C51B32D45D00D8B6A8 /* DMRedeemTableViewCell.h */,
+				D49738C61B32D45D00D8B6A8 /* DMRedeemTableViewCell.m */,
+				D49738C71B32D45D00D8B6A8 /* DMRedeemTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D4A8136A1B2B053300FA2BB3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D4A813651B2B052E00FA2BB3 /* DMTransactionTableViewCell.h */,
+				D4A813661B2B052E00FA2BB3 /* DMTransactionTableViewCell.m */,
+				D4A813671B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib */,
+				D4CCE4CF1B3052F500D315AE /* DMTransactionTableViewFooter.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D4CCE4D21B3185AE00D315AE /* Redeem */ = {
+			isa = PBXGroup;
+			children = (
+				D49738C41B32D44300D8B6A8 /* Cell */,
+				D4CCE4D91B31914A00D315AE /* DMRedeemCouponViewController.h */,
+				D4CCE4DA1B31914A00D315AE /* DMRedeemCouponViewController.m */,
+				D4CCE4D61B31911900D315AE /* DMRedeemViewController.h */,
+				D4CCE4D71B31911900D315AE /* DMRedeemViewController.m */,
+			);
+			path = Redeem;
+			sourceTree = "<group>";
+		};
+		D4E436D21B3992B6006435F8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D4E436CD1B3986B8006435F8 /* DMDineVenueTableViewCell.h */,
+				D4E436CE1B3986B8006435F8 /* DMDineVenueTableViewCell.m */,
+				D4E436CF1B3986B8006435F8 /* DMDineVenueTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D4EF48041B453D7300E46539 /* Earn */ = {
+			isa = PBXGroup;
+			children = (
+				D4E437081B3A98CD006435F8 /* DMEarnReviewViewController.h */,
+				D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */,
+				D4B07FBB1B3AB3960055AA45 /* DMFeedbackViewController.h */,
+				D4B07FBC1B3AB3960055AA45 /* DMFeedbackViewController.m */,
+			);
+			path = Earn;
+			sourceTree = "<group>";
+		};
+		D4EF48051B453E5000E46539 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				D4A8136A1B2B053300FA2BB3 /* Cell */,
+				7A8C4B5E1B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.h */,
+				7A8C4B5F1B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m */,
+				7A8C4B6C1B1C9AD500F1A798 /* DMTransactionTimelineViewController.h */,
+				7A8C4B6D1B1C9AD500F1A798 /* DMTransactionTimelineViewController.m */,
+				D4E436C41B3854FE006435F8 /* DMTransactionReceiptImageViewController.h */,
+				D4E436C51B3854FE006435F8 /* DMTransactionReceiptImageViewController.m */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		D4EF48061B453E6800E46539 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B601B1C9AD500F1A798 /* DMNotificationSettingsViewController.h */,
+				7A8C4B611B1C9AD500F1A798 /* DMNotificationSettingsViewController.m */,
+				7A8C4B621B1C9AD500F1A798 /* DMPasswordSettingsViewController.h */,
+				7A8C4B631B1C9AD500F1A798 /* DMPasswordSettingsViewController.m */,
+				D48CEB8B1B300F89001A01EB /* DMEditProfileViewController.h */,
+				D48CEB8C1B300F89001A01EB /* DMEditProfileViewController.m */,
+				7A8C4B6A1B1C9AD500F1A798 /* DMSettingsViewController.h */,
+				7A8C4B6B1B1C9AD500F1A798 /* DMSettingsViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D4EF48071B453E7100E46539 /* Main Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B641B1C9AD500F1A798 /* DMProfileViewController.h */,
+				7A8C4B651B1C9AD500F1A798 /* DMProfileViewController.m */,
+				D4CEE6711B29AD1500CB5647 /* DMProfileInfoViewController.h */,
+				D4CEE6721B29AD1500CB5647 /* DMProfileInfoViewController.m */,
+				7A8C4B681B1C9AD500F1A798 /* DMReferAFriendViewController.h */,
+				7A8C4B691B1C9AD500F1A798 /* DMReferAFriendViewController.m */,
+			);
+			path = "Main Profile";
+			sourceTree = "<group>";
+		};
+		D4EF48081B453E8E00E46539 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B751B1C9AD500F1A798 /* DMWelcomeViewController.h */,
+				7A8C4B761B1C9AD500F1A798 /* DMWelcomeViewController.m */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		D4EF48091B453E9600E46539 /* Login and Register */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B731B1C9AD500F1A798 /* DMStartViewController.h */,
+				7A8C4B741B1C9AD500F1A798 /* DMStartViewController.m */,
+			);
+			path = "Login and Register";
+			sourceTree = "<group>";
+		};
+		D4EF480A1B453EB600E46539 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				D4EF480B1B453EC500E46539 /* Cell */,
+				7A8C4B7D1B1C9AD500F1A798 /* DMRestaurantInfoViewController.h */,
+				7A8C4B7E1B1C9AD500F1A798 /* DMRestaurantInfoViewController.m */,
+				5AE837501B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.h */,
+				5AE837511B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m */,
+				5A5FF0831B284DEE00E0FC90 /* DMWebViewController.h */,
+				5A5FF0841B284DEE00E0FC90 /* DMWebViewController.m */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		D4EF480B1B453EC500E46539 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B7B1B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.h */,
+				7A8C4B7C1B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D4EF480C1B453ED000E46539 /* Venue */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C4B781B1C9AD500F1A798 /* DMMapViewController.h */,
+				7A8C4B791B1C9AD500F1A798 /* DMMapViewController.m */,
+				D4EF480D1B453ED700E46539 /* Cell */,
+			);
+			path = Venue;
+			sourceTree = "<group>";
+		};
+		D4EF480D1B453ED700E46539 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5A7BFBB81B1DC11700255A25 /* DMRestaurantCell.h */,
+				5A7BFBB91B1DC11700255A25 /* DMRestaurantCell.m */,
+				5A7BFBBA1B1DC11700255A25 /* DMRestaurantCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D4EF480E1B45403A00E46539 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5A5FF0861B286BEF00E0FC90 /* DMShadowImageView.h */,
+				5A5FF0871B286BEF00E0FC90 /* DMShadowImageView.m */,
+				D4952F591B208C500077FC5F /* DMImageView.h */,
+				D4952F5A1B208C500077FC5F /* DMImageView.m */,
+				D4EF480F1B45405200E46539 /* UIImage Extensions */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D4EF480F1B45405200E46539 /* UIImage Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7A0129491B2741C800D46B39 /* UIImage+ImageEffects.h */,
+				7A01294A1B2741C800D46B39 /* UIImage+ImageEffects.m */,
+				7A80F6251B3F6605009C8A6F /* UIImage+Extensions.h */,
+				7A80F6261B3F6605009C8A6F /* UIImage+Extensions.m */,
+			);
+			path = "UIImage Extensions";
+			sourceTree = "<group>";
+		};
+		D4EF48101B45409700E46539 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4E436C71B39751F006435F8 /* DMTabBarController.h */,
+				D4E436C81B39751F006435F8 /* DMTabBarController.m */,
+				7A7CB44E1AFF4AEE00C13FF1 /* DMTabBarViewController.h */,
+				7A7CB44F1AFF4AEE00C13FF1 /* DMTabBarViewController.m */,
+				5A5EE0F41AF3AB9B00F3C796 /* DMViewController.h */,
+				5A5EE0F51AF3AB9B00F3C796 /* DMViewController.m */,
+				7A88F32A1B46A1FC001B443A /* DMDineNavigationController.h */,
+				7A88F32B1B46A1FC001B443A /* DMDineNavigationController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D4EF48111B4540A600E46539 /* Blurs and Views */ = {
+			isa = PBXGroup;
+			children = (
+				7AC78DEB1B01022E00AEA451 /* DMBlurredView.h */,
+				7AC78DEC1B01022E00AEA451 /* DMBlurredView.m */,
+				7A520F6D1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.h */,
+				7A520F6E1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.m */,
+				D49738CA1B32FD8600D8B6A8 /* DMView.h */,
+				D49738CB1B32FD8600D8B6A8 /* DMView.m */,
+			);
+			path = "Blurs and Views";
+			sourceTree = "<group>";
+		};
+		D4EF48121B4540AF00E46539 /* Other Controls */ = {
+			isa = PBXGroup;
+			children = (
+				5A7BFBB51B1DB16700255A25 /* DMButton.h */,
+				5A7BFBB61B1DB16700255A25 /* DMButton.m */,
+				D4B209071B25D18C001410D0 /* DMPageControl.h */,
+				D4B209081B25D18C001410D0 /* DMPageControl.m */,
+				7A5432331B1FA98C00B99AF1 /* DMTextField.h */,
+				7A5432341B1FA98C00B99AF1 /* DMTextField.m */,
+			);
+			path = "Other Controls";
+			sourceTree = "<group>";
+		};
+		D4EF48131B4540C200E46539 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				D4952F6D1B20926C0077FC5F /* DMColorService.h */,
+				D4952F6E1B20926C0077FC5F /* DMColorService.m */,
+				D44F86C51B21B68E00EFEC3B /* DMFontService.h */,
+				D44F86C61B21B68E00EFEC3B /* DMFontService.m */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		D4EF48141B45428F00E46539 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				7AC3FE751AEE3E7600AD12E0 /* Images.xcassets */,
+				7AC3FE771AEE3E7600AD12E0 /* LaunchScreen.xib */,
+				5AA165711AFA3AA900447304 /* Main.storyboard */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7AC3FE611AEE3E7600AD12E0 /* DinerMojo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AC3FE881AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojo" */;
+			buildPhases = (
+				32AD2AD8D1B3100C5505C32D /* [CP] Check Pods Manifest.lock */,
+				7AC3FE5E1AEE3E7600AD12E0 /* Sources */,
+				7AC3FE5F1AEE3E7600AD12E0 /* Frameworks */,
+				7AC3FE601AEE3E7600AD12E0 /* Resources */,
+				D4CEE6701B298A0800CB5647 /* ShellScript */,
+				9E032DF1F3CA2B7D4D8BF3E8 /* [CP] Embed Pods Frameworks */,
+				0F8849B7705AE39AB4DE3812 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DinerMojo;
+			productName = DinerMojo;
+			productReference = 7AC3FE621AEE3E7600AD12E0 /* DinerMojo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7AC3FE7D1AEE3E7600AD12E0 /* DinerMojoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7AC3FE8B1AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojoTests" */;
+			buildPhases = (
+				6C20932E944B9D6AA2196966 /* [CP] Check Pods Manifest.lock */,
+				7AC3FE7A1AEE3E7600AD12E0 /* Sources */,
+				7AC3FE7B1AEE3E7600AD12E0 /* Frameworks */,
+				7AC3FE7C1AEE3E7600AD12E0 /* Resources */,
+				4DD0284C30C217A5BCDDFBFC /* [CP] Embed Pods Frameworks */,
+				533CA9545E216290CAE4E293 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7AC3FE801AEE3E7600AD12E0 /* PBXTargetDependency */,
+			);
+			name = DinerMojoTests;
+			productName = DinerMojoTests;
+			productReference = 7AC3FE7E1AEE3E7600AD12E0 /* DinerMojoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7AC3FE5A1AEE3E7600AD12E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "hedgehog lab";
+				TargetAttributes = {
+					7A8C4BB21B1CB2AA00F1A798 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					7AC3FE611AEE3E7600AD12E0 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 42B8BC6R86;
+					};
+					7AC3FE7D1AEE3E7600AD12E0 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 7AC3FE611AEE3E7600AD12E0;
+					};
+				};
+			};
+			buildConfigurationList = 7AC3FE5D1AEE3E7600AD12E0 /* Build configuration list for PBXProject "DinerMojo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7AC3FE591AEE3E7600AD12E0;
+			productRefGroup = 7AC3FE631AEE3E7600AD12E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7AC3FE611AEE3E7600AD12E0 /* DinerMojo */,
+				7AC3FE7D1AEE3E7600AD12E0 /* DinerMojoTests */,
+				7A8C4BB21B1CB2AA00F1A798 /* Mogenerator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7AC3FE601AEE3E7600AD12E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AC3FE791AEE3E7600AD12E0 /* LaunchScreen.xib in Resources */,
+				D4952F581B2087590077FC5F /* DMNewsFeedTableViewCell.xib in Resources */,
+				D4CCE4D11B3052F500D315AE /* DMTransactionTableViewFooter.xib in Resources */,
+				7AEF14A31B1F09FC0053D32B /* OpenSans-Bold.ttf in Resources */,
+				D4E436D11B3986B8006435F8 /* DMDineVenueTableViewCell.xib in Resources */,
+				D49738C91B32D45E00D8B6A8 /* DMRedeemTableViewCell.xib in Resources */,
+				7AEF14AB1B1F09FC0053D32B /* OpenSans-Semibold.ttf in Resources */,
+				7AEF14A81B1F09FC0053D32B /* OpenSans-Light.ttf in Resources */,
+				D4A813691B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib in Resources */,
+				7A8C4B9B1B1C9D5800F1A798 /* Environments.plist in Resources */,
+				7AEF14A91B1F09FC0053D32B /* OpenSans-LightItalic.ttf in Resources */,
+				7AEF14AC1B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf in Resources */,
+				7AEF14A61B1F09FC0053D32B /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				7AEF14AA1B1F09FC0053D32B /* OpenSans-Regular.ttf in Resources */,
+				7AEF14A71B1F09FC0053D32B /* OpenSans-Italic.ttf in Resources */,
+				7AEF14A41B1F09FC0053D32B /* OpenSans-BoldItalic.ttf in Resources */,
+				7AEF14A51B1F09FC0053D32B /* OpenSans-ExtraBold.ttf in Resources */,
+				5A7BFBBC1B1DC11700255A25 /* DMRestaurantCell.xib in Resources */,
+				7AC3FE761AEE3E7600AD12E0 /* Images.xcassets in Resources */,
+				5AA165721AFA3AA900447304 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AC3FE7C1AEE3E7600AD12E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F8849B7705AE39AB4DE3812 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32AD2AD8D1B3100C5505C32D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4DD0284C30C217A5BCDDFBFC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		533CA9545E216290CAE4E293 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C20932E944B9D6AA2196966 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7A8C4BB91B1CB2D000F1A798 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"DinerMojo/Models/CoreData/\"\n/usr/local/bin/mogenerator --template-var arc=true -m DinerMojo.xcdatamodeld -M ManagedObjects/Machine/ -H ManagedObjects/Human/ -P ManagedObjects/Protocol/";
+		};
+		9E032DF1F3CA2B7D4D8BF3E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4CEE6701B298A0800CB5647 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7AC3FE5E1AEE3E7600AD12E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AC3FE6B1AEE3E7600AD12E0 /* AppDelegate.m in Sources */,
+				D49738C81B32D45D00D8B6A8 /* DMRedeemTableViewCell.m in Sources */,
+				7A8C4B831B1C9AD500F1A798 /* DMFavouritesViewController.m in Sources */,
+				5A5FF0881B286BEF00E0FC90 /* DMShadowImageView.m in Sources */,
+				7A5EC8151B4C033F00B27CBF /* DMBase.m in Sources */,
+				D4B07FBD1B3AB3960055AA45 /* DMFeedbackViewController.m in Sources */,
+				7A5EC82C1B4C033F00B27CBF /* _DMVenueOpeningTimes.m in Sources */,
+				7A5EC81E1B4C033F00B27CBF /* DMVenueCategory.m in Sources */,
+				5AE837521B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m in Sources */,
+				7A8C4B991B1C9BA600F1A798 /* DMVenueRequest.m in Sources */,
+				7A8C4B871B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m in Sources */,
+				D4CEE6731B29AD1500CB5647 /* DMProfileInfoViewController.m in Sources */,
+				7A5EC8271B4C033F00B27CBF /* _DMUpdateItem.m in Sources */,
+				7A5EC8221B4C033F00B27CBF /* _DMEarnTransaction.m in Sources */,
+				5A7BFBB71B1DB16700255A25 /* DMButton.m in Sources */,
+				7A8C4B7F1B1C9AD500F1A798 /* DMDineViewController.m in Sources */,
+				7A5EC81F1B4C033F00B27CBF /* DMVenueImage.m in Sources */,
+				7A5EC81B1B4C033F00B27CBF /* DMUpdateItem.m in Sources */,
+				7A46D0391B29C25C00FA2AA9 /* DMUserRequest.m in Sources */,
+				7A5EC8171B4C033F00B27CBF /* DMNewsItem.m in Sources */,
+				7A8C4B851B1C9AD500F1A798 /* DMNewsItemViewController.m in Sources */,
+				7A8C4B8F1B1C9AD500F1A798 /* DMLandingViewController.m in Sources */,
+				7A8C4B891B1C9AD500F1A798 /* DMPasswordSettingsViewController.m in Sources */,
+				5A5EE0F61AF3AB9B00F3C796 /* DMViewController.m in Sources */,
+				5A7BFBBB1B1DC11700255A25 /* DMRestaurantCell.m in Sources */,
+				7A46D03C1B29C58F00FA2AA9 /* DMFacebookService.m in Sources */,
+				D4E436D01B3986B8006435F8 /* DMDineVenueTableViewCell.m in Sources */,
+				7A8C4BAE1B1CAF7800F1A798 /* DMVenueModelController.m in Sources */,
+				7A7CB4501AFF4AEE00C13FF1 /* DMTabBarViewController.m in Sources */,
+				7A8C4B491B1C9A2D00F1A798 /* DMRequest.m in Sources */,
+				7A8C4B8D1B1C9AD500F1A798 /* DMSettingsViewController.m in Sources */,
+				D4E4370A1B3A98CD006435F8 /* DMEarnReviewViewController.m in Sources */,
+				7A8C4B951B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.m in Sources */,
+				7A5EC8191B4C033F00B27CBF /* DMRedeemTransaction.m in Sources */,
+				D4CCE4DB1B31914A00D315AE /* DMRedeemCouponViewController.m in Sources */,
+				7A5EC82A1B4C033F00B27CBF /* _DMVenueCategory.m in Sources */,
+				7A8C4B841B1C9AD500F1A798 /* DMNewsFeedViewController.m in Sources */,
+				7A8C4B8E1B1C9AD500F1A798 /* DMTransactionTimelineViewController.m in Sources */,
+				D4E436C91B39751F006435F8 /* DMTabBarController.m in Sources */,
+				5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */,
+				7A5EC8161B4C033F00B27CBF /* DMEarnTransaction.m in Sources */,
+				5A68207C1B39A3A500C7F4A4 /* DMTransactionsModelController.m in Sources */,
+				7AFF9EF41B2B441900F6C9B6 /* DMReferralViewController.m in Sources */,
+				7A8C4B8C1B1C9AD500F1A798 /* DMReferAFriendViewController.m in Sources */,
+				7A80F6271B3F6605009C8A6F /* UIImage+Extensions.m in Sources */,
+				7A8C4B881B1C9AD500F1A798 /* DMNotificationSettingsViewController.m in Sources */,
+				7A5EC8261B4C033F00B27CBF /* _DMTransaction.m in Sources */,
+				7AC3FE681AEE3E7600AD12E0 /* main.m in Sources */,
+				7A5EC8291B4C033F00B27CBF /* _DMVenue.m in Sources */,
+				D4B209091B25D18C001410D0 /* DMPageControl.m in Sources */,
+				7A5EC81A1B4C033F00B27CBF /* DMTransaction.m in Sources */,
+				7A5EC82B1B4C033F00B27CBF /* _DMVenueImage.m in Sources */,
+				7A5EC81C1B4C033F00B27CBF /* DMUser.m in Sources */,
+				7A5EC8201B4C033F00B27CBF /* DMVenueOpeningTimes.m in Sources */,
+				7AF517EF1B440E3100FA5221 /* DMMappingHelper.m in Sources */,
+				D49738CC1B32FD8600D8B6A8 /* DMView.m in Sources */,
+				7A5EC8181B4C033F00B27CBF /* DMOfferItem.m in Sources */,
+				D4E436C61B3854FE006435F8 /* DMTransactionReceiptImageViewController.m in Sources */,
+				7A8C4B911B1C9AD500F1A798 /* DMStartViewController.m in Sources */,
+				D4952F5B1B208C500077FC5F /* DMImageView.m in Sources */,
+				7A01294B1B2741C800D46B39 /* UIImage+ImageEffects.m in Sources */,
+				7A5EC8231B4C033F00B27CBF /* _DMNewsItem.m in Sources */,
+				D4952F6F1B20926C0077FC5F /* DMColorService.m in Sources */,
+				7A1AF3081B21F2310072F013 /* DMNewsItemModelController.m in Sources */,
+				7A8C4BB11B1CB02C00F1A798 /* DinerMojo.xcdatamodeld in Sources */,
+				7ACE9F741B1D0FAA0001F20C /* DMMappingProvider.m in Sources */,
+				7A8C4B961B1C9AD500F1A798 /* DMRestaurantInfoViewController.m in Sources */,
+				7A8C4B931B1C9AD500F1A798 /* DMMapViewController.m in Sources */,
+				7A520F6F1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.m in Sources */,
+				7A8C4B8A1B1C9AD500F1A798 /* DMProfileViewController.m in Sources */,
+				D44F86C71B21B68E00EFEC3B /* DMFontService.m in Sources */,
+				5A7565171B416E0800434B3D /* DMSortNewsfeedViewController.m in Sources */,
+				7A5432351B1FA98C00B99AF1 /* DMTextField.m in Sources */,
+				7A5EC81D1B4C033F00B27CBF /* DMVenue.m in Sources */,
+				7A5EC8211B4C033F00B27CBF /* _DMBase.m in Sources */,
+				7A5EC8251B4C033F00B27CBF /* _DMRedeemTransaction.m in Sources */,
+				5A7565141B414AFC00434B3D /* DMLocationServices.m in Sources */,
+				D48CEB8D1B300F89001A01EB /* DMEditProfileViewController.m in Sources */,
+				7A8C4B921B1C9AD500F1A798 /* DMWelcomeViewController.m in Sources */,
+				7AC78DED1B01022E00AEA451 /* DMBlurredView.m in Sources */,
+				7A1AF3051B21BB250072F013 /* DMNewsRequest.m in Sources */,
+				7A5EC8241B4C033F00B27CBF /* _DMOfferItem.m in Sources */,
+				D4A813681B2B052E00FA2BB3 /* DMTransactionTableViewCell.m in Sources */,
+				7A5EC8281B4C033F00B27CBF /* _DMUser.m in Sources */,
+				7A88F32C1B46A1FC001B443A /* DMDineNavigationController.m in Sources */,
+				D4CCE4D81B31911900D315AE /* DMRedeemViewController.m in Sources */,
+				D4952F571B2087590077FC5F /* DMNewsFeedTableViewCell.m in Sources */,
+				7ACE9F731B1D0FAA0001F20C /* DMManagedObjectDeserializer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7AC3FE7A1AEE3E7600AD12E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AC3FE851AEE3E7600AD12E0 /* DinerMojoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7AC3FE801AEE3E7600AD12E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7AC3FE611AEE3E7600AD12E0 /* DinerMojo */;
+			targetProxy = 7AC3FE7F1AEE3E7600AD12E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7AC3FE771AEE3E7600AD12E0 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7AC3FE781AEE3E7600AD12E0 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			path = .;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A7AC9E01B26341600A49118 /* Debug - Vagrant */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "7b2f1b03-4962-426b-957e-a096d434dba5";
+				SDKROOT = iphoneos;
+			};
+			name = "Debug - Vagrant";
+		};
+		7A7AC9E11B26341600A49118 /* Debug - Vagrant */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90847C9EBD97389CF4AA30EF /* Pods-DinerMojo.debug - vagrant.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7b2f1b03-4962-426b-957e-a096d434dba5";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Debug - Vagrant";
+		};
+		7A7AC9E21B26341600A49118 /* Debug - Vagrant */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D2D840740D036C90012FFAA /* Pods-DinerMojoTests.debug - vagrant.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7b2f1b03-4962-426b-957e-a096d434dba5";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
+			};
+			name = "Debug - Vagrant";
+		};
+		7A7AC9E31B26341600A49118 /* Debug - Vagrant */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "Debug - Vagrant";
+		};
+		7A8C4B9C1B1CA20900F1A798 /* Internal Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sam Miller (UD45HDRE9K)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Internal Release";
+		};
+		7A8C4B9D1B1CA20900F1A798 /* Internal Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0D448663F0B162E9C13D1F5 /* Pods-DinerMojo.internal release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Internal Release";
+		};
+		7A8C4B9E1B1CA20900F1A798 /* Internal Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB4ADF246F481241F5F852F2 /* Pods-DinerMojoTests.internal release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Carl Sanders (E2TBMQ9469)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carl Sanders (E2TBMQ9469)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1846874e-1160-4569-a619-3c21ae6062d7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
+			};
+			name = "Internal Release";
+		};
+		7A8C4B9F1B1CA21B00F1A798 /* Client Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Client Release";
+		};
+		7A8C4BA01B1CA21B00F1A798 /* Client Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00DEAEA53FEBB87FBBD56394 /* Pods-DinerMojo.client release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Client Release";
+		};
+		7A8C4BA11B1CA21B00F1A798 /* Client Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95F3EB9AA65A1C485EFBE082 /* Pods-DinerMojoTests.client release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rob Sammons (YHG2S9647J)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1846874e-1160-4569-a619-3c21ae6062d7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
+			};
+			name = "Client Release";
+		};
+		7A8C4BA21B1CA22400F1A798 /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "App Store";
+		};
+		7A8C4BA31B1CA22400F1A798 /* App Store */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8E670D7286671AE24F5B6C7 /* Pods-DinerMojo.app store.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "App Store";
+		};
+		7A8C4BA41B1CA22400F1A798 /* App Store */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BEE97B41BD7424806A0D585 /* Pods-DinerMojoTests.app store.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rob Sammons (YHG2S9647J)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1846874e-1160-4569-a619-3c21ae6062d7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
+			};
+			name = "App Store";
+		};
+		7A8C4BB41B1CB2AA00F1A798 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4c1a40f1-e3e5-43f6-a8d8-e8bdada8c64a";
+			};
+			name = Debug;
+		};
+		7A8C4BB51B1CB2AA00F1A798 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7A8C4BB61B1CB2AA00F1A798 /* Internal Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "Internal Release";
+		};
+		7A8C4BB71B1CB2AA00F1A798 /* Client Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "Client Release";
+		};
+		7A8C4BB81B1CB2AA00F1A798 /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "App Store";
+		};
+		7AC3FE861AEE3E7600AD12E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "37ea8a00-fce4-414f-8cc8-ddd09c6d9a0d";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7AC3FE871AEE3E7600AD12E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sam Miller (UD45HDRE9K)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7AC3FE891AEE3E7600AD12E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F56008EED73E3C043947F1C9 /* Pods-DinerMojo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "37ea8a00-fce4-414f-8cc8-ddd09c6d9a0d";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7AC3FE8A1AEE3E7600AD12E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDCCB2C02A9D171BA182C4A3 /* Pods-DinerMojo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		7AC3FE8C1AEE3E7600AD12E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AD098C8E520142F273A8680 /* Pods-DinerMojoTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1e4215ba-674c-4517-96c2-62e6d09d4ab1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
+			};
+			name = Debug;
+		};
+		7AC3FE8D1AEE3E7600AD12E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD50C9AD1989E2F9158813A0 /* Pods-DinerMojoTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Carl Sanders (E2TBMQ9469)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carl Sanders (E2TBMQ9469)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1846874e-1160-4569-a619-3c21ae6062d7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A8C4BB31B1CB2AA00F1A798 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A8C4BB41B1CB2AA00F1A798 /* Debug */,
+				7A7AC9E31B26341600A49118 /* Debug - Vagrant */,
+				7A8C4BB51B1CB2AA00F1A798 /* Release */,
+				7A8C4BB61B1CB2AA00F1A798 /* Internal Release */,
+				7A8C4BB71B1CB2AA00F1A798 /* Client Release */,
+				7A8C4BB81B1CB2AA00F1A798 /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AC3FE5D1AEE3E7600AD12E0 /* Build configuration list for PBXProject "DinerMojo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AC3FE861AEE3E7600AD12E0 /* Debug */,
+				7A7AC9E01B26341600A49118 /* Debug - Vagrant */,
+				7AC3FE871AEE3E7600AD12E0 /* Release */,
+				7A8C4B9C1B1CA20900F1A798 /* Internal Release */,
+				7A8C4B9F1B1CA21B00F1A798 /* Client Release */,
+				7A8C4BA21B1CA22400F1A798 /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AC3FE881AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AC3FE891AEE3E7600AD12E0 /* Debug */,
+				7A7AC9E11B26341600A49118 /* Debug - Vagrant */,
+				7AC3FE8A1AEE3E7600AD12E0 /* Release */,
+				7A8C4B9D1B1CA20900F1A798 /* Internal Release */,
+				7A8C4BA01B1CA21B00F1A798 /* Client Release */,
+				7A8C4BA31B1CA22400F1A798 /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7AC3FE8B1AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7AC3FE8C1AEE3E7600AD12E0 /* Debug */,
+				7A7AC9E21B26341600A49118 /* Debug - Vagrant */,
+				7AC3FE8D1AEE3E7600AD12E0 /* Release */,
+				7A8C4B9E1B1CA20900F1A798 /* Internal Release */,
+				7A8C4BA11B1CA21B00F1A798 /* Client Release */,
+				7A8C4BA41B1CA22400F1A798 /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7A8C4BAF1B1CB02C00F1A798 /* DinerMojo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7A799B9F1BF3C6CC007F32C1 /* DinerMojo v1.1.xcdatamodel */,
+				7A8C4BB01B1CB02C00F1A798 /* DinerMojo.xcdatamodel */,
+			);
+			currentVersion = 7A799B9F1BF3C6CC007F32C1 /* DinerMojo v1.1.xcdatamodel */;
+			path = DinerMojo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 7AC3FE5A1AEE3E7600AD12E0 /* Project object */;
+}

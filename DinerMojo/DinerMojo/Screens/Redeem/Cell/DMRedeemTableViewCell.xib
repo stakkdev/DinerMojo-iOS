@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OfferCell" rowHeight="58" id="KGk-i7-Jjw" customClass="DMRedeemTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yze-1L-deE" customClass="DMView">
+                        <rect key="frame" x="0.0" y="5" width="320" height="48"/>
+                        <color key="backgroundColor" red="0.36862745099999999" green="0.74509803919999995" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="IZX-b7-lOq"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="laz-yp-HiS"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="24"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100pts = 10% off your bill" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="onC-rP-OHt">
+                        <rect key="frame" x="50" y="17" width="221" height="22"/>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offer" translatesAutoresizingMaskIntoConstraints="NO" id="XpH-HT-VpP">
+                        <rect key="frame" x="16" y="14" width="29" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="DMe-RE-YUV"/>
+                            <constraint firstAttribute="width" constant="29" id="jIK-LU-Fc8"/>
+                            <constraint firstAttribute="width" secondItem="XpH-HT-VpP" secondAttribute="height" multiplier="1:1" id="w03-Lg-meZ"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="XpH-HT-VpP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2a5-9a-vcp"/>
+                    <constraint firstAttribute="bottom" secondItem="Yze-1L-deE" secondAttribute="bottom" constant="5" id="9kK-22-8Mx"/>
+                    <constraint firstAttribute="centerY" secondItem="onC-rP-OHt" secondAttribute="centerY" id="AYy-0B-caq"/>
+                    <constraint firstAttribute="trailing" secondItem="Yze-1L-deE" secondAttribute="trailing" id="KRR-i1-gQp"/>
+                    <constraint firstItem="onC-rP-OHt" firstAttribute="leading" secondItem="XpH-HT-VpP" secondAttribute="trailing" constant="5" id="PEW-v1-WXn"/>
+                    <constraint firstAttribute="centerY" secondItem="Yze-1L-deE" secondAttribute="centerY" id="Vbw-r1-lPh"/>
+                    <constraint firstAttribute="centerY" secondItem="XpH-HT-VpP" secondAttribute="centerY" id="dAd-AM-4x9"/>
+                    <constraint firstItem="Yze-1L-deE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eT0-i0-U2N"/>
+                    <constraint firstAttribute="trailing" secondItem="onC-rP-OHt" secondAttribute="trailing" constant="49" id="s1A-rW-lyr"/>
+                    <constraint firstItem="Yze-1L-deE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="veQ-7S-mrL"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="9kK-22-8Mx"/>
+                        <exclude reference="veQ-7S-mrL"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="offerBackgroundView" destination="Yze-1L-deE" id="cKa-JN-ieh"/>
+                <outlet property="offerImageView" destination="XpH-HT-VpP" id="MPs-nd-V3B"/>
+                <outlet property="offerLabel" destination="onC-rP-OHt" id="bgi-0h-lAx"/>
+            </connections>
+            <point key="canvasLocation" x="437" y="518"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="offer" width="30" height="30"/>
+    </resources>
+</document>

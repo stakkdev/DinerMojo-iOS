@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="center" selectionStyle="default" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantCell" rowHeight="166" id="KGk-i7-Jjw" customClass="DMRestaurantCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PXQ-1H-BQM" customClass="DMShadowImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcg-ri-7be" userLabel="Line View">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="2"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="mCM-2S-Sen"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4P3-4m-yc5">
+                        <rect key="frame" x="285" y="140" width="79" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="79" id="MWq-3s-2S1"/>
+                            <constraint firstAttribute="height" constant="20" id="h3G-Ks-ZEC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UL-zH-eP3">
+                        <rect key="frame" x="12" y="117" width="48" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="ECm-RG-hts"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xN-Ow-0QB">
+                        <rect key="frame" x="331" y="121" width="31.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="eBQ-N8-AoF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category | Place" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewn-Eh-Iw3">
+                        <rect key="frame" x="12" y="140" width="272" height="19.5"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="PXQ-1H-BQM" firstAttribute="leading" secondItem="Ewn-Eh-Iw3" secondAttribute="leading" constant="-12" id="261-Sf-xuH"/>
+                    <constraint firstAttribute="trailing" secondItem="PXQ-1H-BQM" secondAttribute="trailing" id="4mm-vO-KxJ"/>
+                    <constraint firstItem="Ewn-Eh-Iw3" firstAttribute="top" secondItem="0UL-zH-eP3" secondAttribute="bottom" constant="-1" id="5IX-dG-1Pl"/>
+                    <constraint firstItem="PXQ-1H-BQM" firstAttribute="leading" secondItem="0UL-zH-eP3" secondAttribute="leading" constant="-12" id="81o-bZ-GAW"/>
+                    <constraint firstItem="4P3-4m-yc5" firstAttribute="bottom" secondItem="Ewn-Eh-Iw3" secondAttribute="bottom" id="A3D-Xk-1tm"/>
+                    <constraint firstItem="PXQ-1H-BQM" firstAttribute="bottom" secondItem="Ewn-Eh-Iw3" secondAttribute="bottom" constant="6" id="Cnf-W8-0Ws"/>
+                    <constraint firstItem="PXQ-1H-BQM" firstAttribute="top" secondItem="dcg-ri-7be" secondAttribute="top" id="SOY-1T-YML"/>
+                    <constraint firstItem="2xN-Ow-0QB" firstAttribute="bottom" secondItem="0UL-zH-eP3" secondAttribute="bottom" id="Wd3-ET-Rc4"/>
+                    <constraint firstItem="PXQ-1H-BQM" firstAttribute="width" secondItem="dcg-ri-7be" secondAttribute="width" id="chc-1Q-iPd"/>
+                    <constraint firstAttribute="bottom" secondItem="PXQ-1H-BQM" secondAttribute="bottom" id="fLN-He-W05"/>
+                    <constraint firstAttribute="trailing" secondItem="2xN-Ow-0QB" secondAttribute="trailing" constant="12" id="hza-Tt-uPF"/>
+                    <constraint firstItem="PXQ-1H-BQM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kYQ-XP-MwS"/>
+                    <constraint firstItem="4P3-4m-yc5" firstAttribute="trailing" secondItem="PXQ-1H-BQM" secondAttribute="trailing" constant="-11" id="m5u-Rd-2pa"/>
+                    <constraint firstItem="PXQ-1H-BQM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nPZ-uZ-nHQ"/>
+                    <constraint firstItem="4P3-4m-yc5" firstAttribute="leading" secondItem="Ewn-Eh-Iw3" secondAttribute="trailing" constant="1" id="pnh-gq-cmS"/>
+                    <constraint firstItem="PXQ-1H-BQM" firstAttribute="centerX" secondItem="dcg-ri-7be" secondAttribute="centerX" id="tg5-CZ-H5z"/>
+                    <constraint firstItem="2xN-Ow-0QB" firstAttribute="trailing" secondItem="PXQ-1H-BQM" secondAttribute="trailing" constant="-12" id="zYu-UE-W91"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="tintColor" red="0.42745098040000001" green="0.7843137255" blue="0.69411764710000001" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="restaurantCategory" destination="Ewn-Eh-Iw3" id="Go4-vq-XAs"/>
+                <outlet property="restaurantDistance" destination="4P3-4m-yc5" id="igl-kk-AoQ"/>
+                <outlet property="restaurantImageView" destination="PXQ-1H-BQM" id="mFF-0Z-2yV"/>
+                <outlet property="restaurantName" destination="0UL-zH-eP3" id="Lev-Ra-Kws"/>
+                <outlet property="restaurantPrice" destination="2xN-Ow-0QB" id="S2S-MX-f6P"/>
+                <outlet property="whiteLineView" destination="dcg-ri-7be" id="JJm-WQ-dId"/>
+            </connections>
+            <point key="canvasLocation" x="505.5" y="185"/>
+        </tableViewCell>
+    </objects>
+</document>

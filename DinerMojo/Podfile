@@ -1,0 +1,24 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+target 'DinerMojo' do
+
+	pod 'AFNetworking', '~> 2.5'
+    pod 'SVBlurView', '~> 0.0'
+    pod 'RDHCollectionViewGridLayout', '~> 1.2'
+    pod 'FastEasyMapping', '~> 0.5'
+    pod 'MagicalRecord', '~> 2.2'
+    pod 'IQKeyboardManager'
+    pod 'FBSDKCoreKit', '~> 4.2'
+    pod 'FBSDKLoginKit', '~> 4.2'
+    pod 'PMEDatePicker'
+    pod 'Shimmer'
+    
+end
+
+target 'DinerMojoTests' do
+
+	pod 'Kiwi', '~> 2.3'
+
+end
+

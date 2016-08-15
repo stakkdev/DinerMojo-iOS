@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Debug</key>
+	<dict>
+		<key>HockeyAppID</key>
+		<string></string>
+		<key>apiURL</key>
+		<string>http://52.19.156.73/api/v2/</string>
+		<key>mediaURL</key>
+		<string>http://52.19.156.73</string>
+	</dict>
+	<key>Debug - Vagrant</key>
+	<dict>
+		<key>HockeyAppID</key>
+		<string></string>
+		<key>apiURL</key>
+		<string>http://192.168.1.79:8888/api/v2/</string>
+		<key>mediaURL</key>
+		<string>http://192.168.1.79:8888</string>
+	</dict>
+	<key>Release</key>
+	<dict>
+		<key>HockeyAppID</key>
+		<string></string>
+		<key>apiURL</key>
+		<string>http://52.19.156.73/api/v2/</string>
+		<key>mediaURL</key>
+		<string>http://52.19.156.73</string>
+	</dict>
+	<key>Internal Release</key>
+	<dict>
+		<key>HockeyAppID</key>
+		<string></string>
+		<key>apiURL</key>
+		<string>http://52.19.156.73/api/v2/</string>
+		<key>mediaURL</key>
+		<string>http://52.19.156.73</string>
+	</dict>
+	<key>Client Release</key>
+	<dict>
+		<key>HockeyAppID</key>
+		<string></string>
+		<key>apiURL</key>
+		<string>http://52.19.156.73/api/v2/</string>
+		<key>mediaURL</key>
+		<string>http://52.19.156.73</string>
+	</dict>
+	<key>App Store</key>
+	<dict>
+		<key>HockeyAppID</key>
+		<string></string>
+		<key>apiURL</key>
+		<string>https://api.dinermojo.com/api/v2/</string>
+		<key>mediaURL</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

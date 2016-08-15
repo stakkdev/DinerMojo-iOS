@@ -1,0 +1,53 @@
+//
+//  DinerMojo-Prefix.pch
+//  DinerMojo
+//
+//  Created by hedgehog lab on 03/06/2015.
+//  Copyright (c) 2015 hedgehog lab. All rights reserved.
+//
+
+#ifndef DinerMojo_DinerMojo_Prefix_pch
+#define DinerMojo_DinerMojo_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#endif
+
+#ifdef __OBJC__
+    #define MR_SHORTHAND
+    #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    #define IS_IPHONE_4 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 480.0)
+    #define IS_IPHONE_5 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 568.0)
+    #define IS_IPHONE_6 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0)
+    #define IS_IPHONE_6PLUS (IS_IPHONE && [[UIScreen mainScreen] nativeScale] == 3.0f)
+    #define IS_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
+    #define IS_RETINA ([[UIScreen mainScreen] scale] == 2.0)
+    #import <Foundation/Foundation.h>
+    #import <MagicalRecord/MagicalRecord.h>
+    #import <UIKit/UIKit.h>
+//Services
+    #import "DMColorService.h"
+    #import "DMFontService.h"
+//UI
+    #import "DMTabBarViewController.h"
+    #import "DMButton.h"
+    #import "DMView.h"
+    #import "DMImageView.h"
+    #import "UIImage+ImageEffects.h"
+
+//Requests
+    #import "DMUserRequest.h"
+    #import "DMVenueRequest.h"
+
+//Models
+
+    #import "DMVenue.h"
+    #import "DMTransaction.h"
+
+//AFNetworking
+    #import "UIImageView+AFNetworking.h"
+    #import "IQKeyboardManager.h"
+#endif

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 4.3">
+    <entity name="DMBase" representedClassName="DMBase" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="modelID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="DMEarnTransaction" representedClassName="DMEarnTransaction" parentEntity="DMTransaction" syncable="YES">
+        <attribute name="amount_saved" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="bill_amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="bill_image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="earn_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="loyalty_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="points_earned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rejection_reason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="transaction_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="DMNewsItem" representedClassName="DMNewsItem" parentEntity="DMUpdateItem" syncable="YES">
+        <attribute name="update_type" optional="YES" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
+    </entity>
+    <entity name="DMOfferItem" representedClassName="DMOfferItem" parentEntity="DMUpdateItem" syncable="YES">
+        <attribute name="discount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="is_birthday_offer" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="is_special_offer" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="points_required" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="start_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="terms_conditions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="update_type" optional="YES" attributeType="Integer 16" defaultValueString="2" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DMRedeemTransaction" inverseName="offer" inverseEntity="DMRedeemTransaction" syncable="YES"/>
+    </entity>
+    <entity name="DMRedeemTransaction" representedClassName="DMRedeemTransaction" parentEntity="DMTransaction" syncable="YES">
+        <attribute name="discount_as_percentage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="points_redeemed" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="transaction_type" optional="YES" attributeType="Integer 16" defaultValueString="1" syncable="YES"/>
+        <relationship name="offer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMOfferItem" inverseName="transactions" inverseEntity="DMOfferItem" syncable="YES"/>
+    </entity>
+    <entity name="DMTransaction" representedClassName="DMTransaction" parentEntity="DMBase" syncable="YES">
+        <attribute name="closing_balance" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="start_balance" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMUser" inverseName="transactions" inverseEntity="DMUser" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMVenue" inverseName="transactions" inverseEntity="DMVenue" syncable="YES"/>
+    </entity>
+    <entity name="DMUpdateItem" representedClassName="DMUpdateItem" parentEntity="DMBase" syncable="YES">
+        <attribute name="expiry_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="news_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMVenue" inverseName="updates" inverseEntity="DMVenue" syncable="YES"/>
+    </entity>
+    <entity name="DMUser" representedClassName="DMUser" parentEntity="DMBase" syncable="YES">
+        <attribute name="annual_points_balance" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="annual_points_earned" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="date_of_birth" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email_address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facebook_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="is_email_verified" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="local_account" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="notification_filter" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="notification_frequency" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="post_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile_picture" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="referred_points" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="favourite_venues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DMVenue" inverseName="favourite" inverseEntity="DMVenue" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DMTransaction" inverseName="user" inverseEntity="DMTransaction" syncable="YES"/>
+    </entity>
+    <entity name="DMVenue" representedClassName="DMVenue" parentEntity="DMBase" syncable="YES">
+        <attribute name="area" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email_address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="house_number_street_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="in_wishlist" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="menu_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="open_now" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="phone_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price_bracket" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="town" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trip_advisor_link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_last_viewed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="venue_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="web_address" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DMVenueCategory" inverseName="venue" inverseEntity="DMVenueCategory" syncable="YES"/>
+        <relationship name="favourite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMUser" inverseName="favourite_venues" inverseEntity="DMUser" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DMVenueImage" inverseName="venue" inverseEntity="DMVenueImage" syncable="YES"/>
+        <relationship name="opening_times" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMVenueOpeningTimes" inverseName="venue" inverseEntity="DMVenueOpeningTimes" syncable="YES"/>
+        <relationship name="primary_image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMVenueImage" inverseName="venue_primary" inverseEntity="DMVenueImage" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DMTransaction" inverseName="venue" inverseEntity="DMTransaction" syncable="YES"/>
+        <relationship name="updates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DMUpdateItem" inverseName="venue" inverseEntity="DMUpdateItem" syncable="YES"/>
+        <userInfo>
+            <entry key="relatedByAttribute" value="modelID"/>
+        </userInfo>
+    </entity>
+    <entity name="DMVenueCategory" representedClassName="DMVenueCategory" parentEntity="DMBase" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="venue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DMVenue" inverseName="categories" inverseEntity="DMVenue" syncable="YES"/>
+    </entity>
+    <entity name="DMVenueImage" representedClassName="DMVenueImage" parentEntity="DMBase" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumb" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMVenue" inverseName="images" inverseEntity="DMVenue" syncable="YES"/>
+        <relationship name="venue_primary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMVenue" inverseName="primary_image" inverseEntity="DMVenue" syncable="YES"/>
+    </entity>
+    <entity name="DMVenueOpeningTimes" representedClassName="DMVenueOpeningTimes" parentEntity="DMBase" syncable="YES">
+        <attribute name="friday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="monday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="saturday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sunday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thursday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tuesday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wednesday" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMVenue" inverseName="opening_times" inverseEntity="DMVenue" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DMBase" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="DMEarnTransaction" positionX="-18" positionY="162" width="128" height="180"/>
+        <element name="DMNewsItem" positionX="-45" positionY="108" width="128" height="60"/>
+        <element name="DMOfferItem" positionX="-36" positionY="144" width="128" height="165"/>
+        <element name="DMRedeemTransaction" positionX="-9" positionY="171" width="128" height="105"/>
+        <element name="DMTransaction" positionX="-27" positionY="153" width="128" height="105"/>
+        <element name="DMUpdateItem" positionX="-45" positionY="135" width="128" height="135"/>
+        <element name="DMUser" positionX="-45" positionY="117" width="128" height="300"/>
+        <element name="DMVenue" positionX="-54" positionY="18" width="128" height="420"/>
+        <element name="DMVenueCategory" positionX="-45" positionY="117" width="128" height="75"/>
+        <element name="DMVenueImage" positionX="-54" positionY="90" width="128" height="135"/>
+        <element name="DMVenueOpeningTimes" positionX="-45" positionY="135" width="128" height="165"/>
+    </elements>
+</model>

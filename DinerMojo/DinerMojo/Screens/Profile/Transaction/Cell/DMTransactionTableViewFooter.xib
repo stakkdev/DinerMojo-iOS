@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionFooter" rowHeight="44" id="KGk-i7-Jjw">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-cN-2Oo">
+                        <rect key="frame" x="29" y="0.0" width="2" height="30"/>
+                        <color key="backgroundColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="8AM-Uu-2b1"/>
+                            <constraint firstAttribute="height" constant="30" id="dk9-Mt-vkT"/>
+                            <constraint firstAttribute="width" constant="2" id="gyT-0W-4ug"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J54-SC-h8X" customClass="DMButton">
+                        <rect key="frame" x="25" y="26" width="10" height="10"/>
+                        <color key="backgroundColor" red="0.36862745098039218" green="0.74509803921568629" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="DVG-dl-qH2"/>
+                            <constraint firstAttribute="width" constant="10" id="pZF-pc-fLM"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="J54-SC-h8X" firstAttribute="centerX" secondItem="bGr-cN-2Oo" secondAttribute="centerX" id="Dew-3Y-4dq"/>
+                    <constraint firstItem="J54-SC-h8X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="VEI-e2-fMn"/>
+                    <constraint firstItem="bGr-cN-2Oo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Yn8-E4-WbL"/>
+                    <constraint firstItem="bGr-cN-2Oo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="29" id="lh1-Ei-eYq"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+</document>

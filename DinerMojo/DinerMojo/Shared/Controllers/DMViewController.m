@@ -1,0 +1,167 @@
+//
+//  DMViewController.m
+//  DinerMojo
+//
+//  Created by Carl Sanders on 01/05/2015.
+//  Copyright (c) 2015 hedgehog lab. All rights reserved.
+//
+
+#import "DMViewController.h"
+
+@interface DMViewController ()
+
+@end
+
+@implementation DMViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    _userRequest = [DMUserRequest new];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)setRootViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (animated == YES)
+    {
+        [UIView transitionFromView:appDelegate.window.rootViewController.view
+                            toView:viewController.view
+                          duration:0.35f
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        completion:^(BOOL finished){
+                            [[appDelegate window] setRootViewController:viewController];
+                        }];
+    }
+    else
+    {
+        [[appDelegate window] setRootViewController:viewController];
+    }
+}
+
+- (void)presentOperationCompleteViewControllerWithStatus:(DMOperationCompletePopUpViewControllerStatus)status title:(NSString *)title description:(NSString *)description style:(UIBlurEffectStyle)style actionButtonTitle:(NSString *)actionButtonTitle
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    DMOperationCompletePopUpViewController *operationCompletePopUpViewController = [storyboard instantiateViewControllerWithIdentifier:@"operationComplete"];
+    [operationCompletePopUpViewController setDelegate:self];
+    [operationCompletePopUpViewController setStatus:status];
+    [operationCompletePopUpViewController setPopUpTitle:title];
+    [operationCompletePopUpViewController setPopUpDescription:description];
+    [operationCompletePopUpViewController setActionButtonTitle:actionButtonTitle];
+    [operationCompletePopUpViewController setEffectStyle:style];
+    [operationCompletePopUpViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    
+    [self presentViewController:operationCompletePopUpViewController animated:YES completion:nil];
+}
+
+- (void)presentEmailVerificationCheckViewControllerWithCompletionBlock:(RequestCompletion)completionBlock;
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    DMOperationCompletePopUpViewController *operationCompletePopUpViewController = [storyboard instantiateViewControllerWithIdentifier:@"operationComplete"];
+    [operationCompletePopUpViewController setEffectStyle:UIBlurEffectStyleDark];
+    [operationCompletePopUpViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [operationCompletePopUpViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [[operationCompletePopUpViewController actionButton] setBackgroundColor:[UIColor clearColor]];
+    
+    [self presentViewController:operationCompletePopUpViewController animated:YES completion:^{
+        DMUserRequest *userRequest = [DMUserRequest new];
+        [userRequest downloadUserProfileWithCompletionBlock:^(NSError *error, id results) {
+            completionBlock(error, results);
+        }];
+    }];
+    
+    [[operationCompletePopUpViewController tapToDismissLabel] setHidden:YES];
+    [[operationCompletePopUpViewController statusImageView] setHidden:YES];
+    [operationCompletePopUpViewController setActionButtonLoadingState:YES];
+}
+
+- (void)presentUnverifiedEmailViewControllerWithStyle:(UIBlurEffectStyle)style
+{
+    [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Please verify your email address" description:[NSString stringWithFormat:@"We sent an email with the subject “Account verification” to your %@ email address. Please click on the link within that email to verify the email address above", [[[self userRequest] currentUser] email_address]] style:style actionButtonTitle:@"Send email again"];
+}
+
+#pragma mark DMOperationCompletePopUpViewControllerDelegate
+
+- (void)readyToDissmisOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)actionButtonPressedFromOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController
+{
+    if ([[operationCompletePopupViewController actionButtonTitle] isEqualToString:@"Send email again"])
+    {
+        [operationCompletePopupViewController setActionButtonLoadingState:YES];
+        [self requestEmailVerificationFromOperationCompletePopupViewController:operationCompletePopupViewController];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)requestEmailVerificationFromOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController
+{
+    [[self userRequest] requestEmailVerificationEmailWithCompletionBlock:^(NSError *error, id results) {
+        
+        [operationCompletePopupViewController setActionButtonLoadingState:NO];
+        
+        if (error)
+        {
+            NSString *errorMessage;
+            
+            if ([error code] == DMErrorCode400) {
+                errorMessage = @"It looks like you have already verified your email address";
+                [[[self userRequest] currentUser] setIs_email_verified:@YES];
+                [[self userRequest] saveInContext:[[self userRequest] objectContext]];
+            } else
+            {
+                errorMessage = @"There was a problem requesting your email, please try again later";
+            }
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Oops" description:errorMessage  style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
+            }];
+        }
+        else
+        {
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Email sent" description:@"A verification email has been sent to you. Please check your Inbox and Junk box in a few minutes"  style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
+            }];
+        }
+    }];
+}
+
+#pragma mark - Navigation
+
+- (void)goToLandingPage
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UINavigationController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"landingNavigationController"];
+    
+    [self setRootViewController:destinationViewController animated:NO];
+}
+
+- (void)goToVenues
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    DMViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+    
+    [self setRootViewController:destinationViewController animated:YES];
+}
+
+@end
