@@ -152,7 +152,7 @@
             {
                 self.selectedNewsItem = [DMUpdateItem MR_findFirstByAttribute:@"modelID" withValue:self.pushNewsID];
                 self.pushNewsID = nil;
-                AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
                 appDelegate.notificationPayload = nil;
                 
                 [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
@@ -169,7 +169,7 @@
             if (self.pushNewsID)
             {
                 self.pushNewsID = nil;
-                AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
                 appDelegate.notificationPayload = nil;
             }
 

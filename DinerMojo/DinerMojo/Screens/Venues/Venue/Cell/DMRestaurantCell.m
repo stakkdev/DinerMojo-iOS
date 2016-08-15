@@ -12,8 +12,11 @@
 
 
 - (void)awakeFromNib {
-
+    
     // Initialization code
+    [super awakeFromNib];
+    
+    
     [self setSelectionStyle:UITableViewCellSelectionStyleGray];
     [[self selectedBackgroundView] setBackgroundColor:[UIColor redColor]];
 }
