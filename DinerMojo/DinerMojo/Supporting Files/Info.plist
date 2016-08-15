@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>7551</string>
+	<string>7553</string>
 	<key>Configuration</key>
 	<string>${CONFIGURATION}</string>
 	<key>FacebookAppID</key>
