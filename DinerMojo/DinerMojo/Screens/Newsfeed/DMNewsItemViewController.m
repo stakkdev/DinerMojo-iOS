@@ -114,7 +114,7 @@
     [self.newsImageView setImage:placeHolderImage];
     [self.newsImageView setBackgroundColor:imageBGColour];
     
-    if (!self.selectedItem.image.length == 0)
+    if (self.selectedItem.image.length != 0)
     {
         DMNewsRequest *request = [DMNewsRequest new];
         

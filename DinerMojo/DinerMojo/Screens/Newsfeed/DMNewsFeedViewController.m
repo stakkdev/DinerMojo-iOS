@@ -221,7 +221,7 @@
     if ([segue.identifier isEqualToString:@"newsDetailSegue"])
     {
         DMNewsItemViewController *vc = segue.destinationViewController;
-        vc.selectedItem = self.selectedNewsItem;
+        vc.selectedItem = (DMNewsItem *) self.selectedNewsItem;
     }
 }
 
@@ -282,7 +282,7 @@
         
     }
     
-    if (!newsItem.thumb.length == 0)
+    if (newsItem.thumb.length != 0)
     {
         NSURL *url = [NSURL URLWithString:[[self newsRequest] buildMediaURL:newsItem.thumb]];
         [[cell cellImageView] setImageWithURL:url placeholderImage:placeHolderImage];

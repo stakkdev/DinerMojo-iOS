@@ -35,7 +35,6 @@
 - (IBAction)deleteAccount:(id)sender;
 - (IBAction)saveAccount:(id)sender;
 
-- (IBAction)editingChanged:(UITextField *)sender;
 - (IBAction)dismissDatePicker:(id)sender;
 
 @end

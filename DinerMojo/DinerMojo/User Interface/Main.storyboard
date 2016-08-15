@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHi-cW-Izu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LHi-cW-Izu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -874,10 +874,10 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="nKZ-mJ-NrE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TQQ-C8-Fno">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1351"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRY-c0-1YW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRY-c0-1YW">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="1351"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkH-sY-vm9" userLabel="View in ScollView">
@@ -1437,8 +1437,8 @@ How about we take you for a quick tour before you get started?</string>
                                                     <outlet property="delegate" destination="DfA-xe-x2l" id="4xK-Y7-Xbb"/>
                                                 </connections>
                                             </collectionView>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to be logged in to use this feature." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB5-KY-SOQ">
-                                                <rect key="frame" x="175" y="1021" width="250" height="50"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You need to be logged in to use this feature." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB5-KY-SOQ">
+                                                <rect key="frame" x="175" y="1023" width="250" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="UgS-SC-4hB"/>
                                                     <constraint firstAttribute="width" constant="250" id="sVC-AT-iCZ"/>
@@ -1447,8 +1447,8 @@ How about we take you for a quick tour before you get started?</string>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DinerMojo members also loved these venues..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSD-bT-Ql1">
-                                                <rect key="frame" x="19" y="986" width="325" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="DinerMojo members also loved these venues..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSD-bT-Ql1">
+                                                <rect key="frame" x="19" y="986" width="325" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="325" id="VJk-wS-uqN"/>
                                                 </constraints>
@@ -1762,16 +1762,16 @@ How about we take you for a quick tour before you get started?</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgF-jx-XjM">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgF-jx-XjM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="cgF-jx-XjM" secondAttribute="trailing" constant="-16" id="0l4-OK-Dlu"/>
+                            <constraint firstAttribute="trailing" secondItem="cgF-jx-XjM" secondAttribute="trailing" id="0l4-OK-Dlu"/>
                             <constraint firstItem="Ump-mi-Nda" firstAttribute="top" secondItem="cgF-jx-XjM" secondAttribute="bottom" id="2nX-AU-spA"/>
-                            <constraint firstItem="cgF-jx-XjM" firstAttribute="leading" secondItem="8u9-6v-k79" secondAttribute="leadingMargin" constant="-16" id="9c7-DY-KMx"/>
+                            <constraint firstItem="cgF-jx-XjM" firstAttribute="leading" secondItem="8u9-6v-k79" secondAttribute="leading" id="9c7-DY-KMx"/>
                             <constraint firstItem="cgF-jx-XjM" firstAttribute="top" secondItem="8u9-6v-k79" secondAttribute="topMargin" id="uQ2-mR-3Ub"/>
                         </constraints>
                     </view>
@@ -1782,6 +1782,7 @@ How about we take you for a quick tour before you get started?</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="restaurantWebView" destination="cgF-jx-XjM" id="8QG-va-zfs"/>
                     </connections>
@@ -1803,7 +1804,7 @@ How about we take you for a quick tour before you get started?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjm-Mz-rbC">
-                                <rect key="frame" x="160.5" y="414" width="280" height="82"/>
+                                <rect key="frame" x="160" y="414" width="280" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="82" id="bJd-90-Y59"/>
                                     <constraint firstAttribute="width" constant="280" id="mWU-fi-qfz"/>
@@ -2143,22 +2144,6 @@ How about we take you for a quick tour before you get started?</string>
             </objects>
             <point key="canvasLocation" x="2649" y="2263"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ZTz-V9-Uov">
-            <objects>
-                <navigationController id="exA-oP-202" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3V-kb-J1n">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="xzK-ti-do2" kind="relationship" relationship="rootViewController" id="haA-pO-Oh8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3zG-2q-QIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="382" y="3627"/>
-        </scene>
         <!--News Feed View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -2171,7 +2156,7 @@ How about we take you for a quick tour before you get started?</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXc-9E-g3F" customClass="DMButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXc-9E-g3F" customClass="DMButton">
                                 <rect key="frame" x="200" y="64" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2194,7 +2179,7 @@ How about we take you for a quick tour before you get started?</string>
                                     <action selector="newsButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="unY-V6-NLY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ4-xK-lV1" customClass="DMButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ4-xK-lV1" customClass="DMButton">
                                 <rect key="frame" x="400" y="64" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2217,7 +2202,7 @@ How about we take you for a quick tour before you get started?</string>
                                     <action selector="offersButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="RzR-PV-Kas"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjk-0O-nBb" customClass="DMButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjk-0O-nBb" customClass="DMButton">
                                 <rect key="frame" x="0.0" y="64" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2286,7 +2271,7 @@ How about we take you for a quick tour before you get started?</string>
                                     <constraint firstItem="Q0c-iA-79b" firstAttribute="centerX" secondItem="I4s-2Z-LN5" secondAttribute="centerX" id="ZU4-Ex-cbV"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="124" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-uu-KfR">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="124" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-uu-KfR">
                                 <rect key="frame" x="0.0" y="103" width="600" height="453"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2295,7 +2280,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <rect key="frame" x="0.0" y="22" width="600" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3F-ss-7Bi" id="wFI-aO-mke">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="121.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2375,14 +2360,14 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="sXR-Zb-0HC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fR1-W5-rf7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1351"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uJ-uS-Vbj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1351"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kiy-NT-bAh">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1351"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xAL-Oh-TP2">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="256"/>
@@ -2590,26 +2575,13 @@ How about we take you for a quick tour before you get started?</string>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ffO-G0-s3J">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="20" indentationWidth="10" id="5De-02-h81" customClass="DMRestaurantCell">
-                                        <rect key="frame" x="0.0" y="22" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5De-02-h81" id="UwA-uf-Vju">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="DfA-xe-x2l" kind="show" identifier="favouritesSegue" id="FQy-1W-bR7"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="lpO-tf-9Om" id="D2J-KQ-LZZ"/>
                                     <outlet property="delegate" destination="lpO-tf-9Om" id="qPg-4A-du7"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEA-mg-cfT">
-                                <rect key="frame" x="277" y="263" width="45.5" height="25"/>
+                                <rect key="frame" x="277" y="263" width="46" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="7j4-YS-zxY"/>
                                     <constraint firstAttribute="height" constant="20" id="Rig-YW-5pg"/>
@@ -2989,7 +2961,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <rect key="frame" x="290" y="370" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Oops. We couldn't fetch your profile at this time. Pull to refresh." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNg-Vb-9TF">
-                                        <rect key="frame" x="180" y="361" width="240" height="38.5"/>
+                                        <rect key="frame" x="180" y="361" width="240" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="qFT-KR-Nb4"/>
                                         </constraints>
@@ -3054,7 +3026,7 @@ How about we take you for a quick tour before you get started?</string>
                                                             <action selector="openRefer:" destination="zyM-fv-7vY" eventType="touchUpInside" id="hxa-st-DLS"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-IF-dag">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-IF-dag">
                                                         <rect key="frame" x="492" y="81" width="90" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="Nu6-ts-PwD"/>
@@ -3062,7 +3034,7 @@ How about we take you for a quick tour before you get started?</string>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="RPq-iQ-3FY"/>
                                                             <constraint firstAttribute="width" constant="90" id="Rgz-Kd-qZY"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="9"/>
+                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                         <variation key="default">
@@ -3289,7 +3261,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="eb3-7J-VCh">
-                                                <rect key="frame" x="37" y="278" width="501" height="2.5"/>
+                                                <rect key="frame" x="37" y="278" width="501" height="3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="506" id="aBj-Ij-FPt"/>
                                                 </constraints>
@@ -3556,7 +3528,7 @@ How about we take you for a quick tour before you get started?</string>
                     </view>
                     <navigationItem key="navigationItem" id="d8h-vM-wnt">
                         <barButtonItem key="backBarButtonItem" title=" " id="ZHK-0z-87B"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="V9x-wQ-GBm">
+                        <barButtonItem key="rightBarButtonItem" id="V9x-wQ-GBm">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="axA-hB-G3Q">
                                 <rect key="frame" x="547" y="5" width="33" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3626,7 +3598,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <rect key="frame" x="255" y="178" width="90" height="90"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Oops!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-ky-mCS">
-                                <rect key="frame" x="179" y="288" width="240" height="27.5"/>
+                                <rect key="frame" x="179" y="288" width="240" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Frb-RE-EzD"/>
                                 </constraints>
@@ -4459,7 +4431,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rejected:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN9-5D-dj6">
-                                                <rect key="frame" x="17" y="436" width="566" height="23.5"/>
+                                                <rect key="frame" x="17" y="436" width="566" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="XJC-yc-2Jg"/>
                                                 </constraints>
@@ -4524,7 +4496,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                         </variation>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsL-oX-jAx" customClass="DMButton">
-                                        <rect key="frame" x="17" y="471" width="566" height="48"/>
+                                        <rect key="frame" x="17" y="472" width="566" height="48"/>
                                         <color key="backgroundColor" red="0.3411764706" green="0.73725490199999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="M7B-0Q-6z0"/>
@@ -4726,16 +4698,6 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zKx-7G-d3u">
-                                        <rect key="frame" x="0.0" y="22" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zKx-7G-d3u" id="qvb-1M-BSD">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="jbp-N4-SNI" id="lLh-sn-MmG"/>
                                     <outlet property="delegate" destination="jbp-N4-SNI" id="Qw5-wn-6us"/>
@@ -5201,7 +5163,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zWE-jQ-bs2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWE-jQ-bs2">
                                 <rect key="frame" x="0.0" y="64" width="600" height="39"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify me about my favourite restaurant's..." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km4-Jf-0NQ">
@@ -5229,7 +5191,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <constraint firstAttribute="bottom" secondItem="Km4-Jf-0NQ" secondAttribute="bottom" constant="5" id="eDK-Tm-ii8"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGB-dw-qPZ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGB-dw-qPZ">
                                 <rect key="frame" x="0.0" y="239" width="600" height="39"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify me ..." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFu-uB-qry">
@@ -5258,7 +5220,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <constraint firstItem="rFu-uB-qry" firstAttribute="top" secondItem="rGB-dw-qPZ" secondAttribute="top" constant="6" id="fzx-lz-Yaf"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smh-Uv-2nC" userLabel="Button1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smh-Uv-2nC" userLabel="Button1">
                                 <rect key="frame" x="17" y="114" width="142" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="142" id="9Gx-oI-8UZ"/>
@@ -5271,7 +5233,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <action selector="buttonPressed:" destination="ChD-4E-nYd" eventType="touchUpInside" id="vrM-ee-HhA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUa-f3-4eg" userLabel="Button2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUa-f3-4eg" userLabel="Button2">
                                 <rect key="frame" x="17" y="154" width="142" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Erc-hD-Zji"/>
@@ -5286,7 +5248,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <action selector="buttonPressed:" destination="ChD-4E-nYd" eventType="touchUpInside" id="hQ4-UE-LMk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihq-Rm-JUX" userLabel="Button3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ihq-Rm-JUX" userLabel="Button3">
                                 <rect key="frame" x="17" y="196" width="142" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="142" id="1Nv-Da-Dc8"/>
@@ -5303,7 +5265,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <action selector="buttonPressed:" destination="ChD-4E-nYd" eventType="touchUpInside" id="P7F-wu-yEk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9F-1Y-u06" userLabel="Button4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9F-1Y-u06" userLabel="Button4">
                                 <rect key="frame" x="17" y="402" width="142" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="99M-gn-3zS"/>
@@ -5322,7 +5284,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <action selector="buttonPressed:" destination="ChD-4E-nYd" eventType="touchUpInside" id="QFM-uz-70S"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="News &amp; Offers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6F-Ee-MRE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News &amp; Offers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6F-Ee-MRE">
                                 <rect key="frame" x="60" y="114" width="108" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="108" id="8mQ-Rw-IFu"/>
@@ -5331,7 +5293,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="News" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8c-O2-gZJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8c-O2-gZJ">
                                 <rect key="frame" x="60" y="156" width="89" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="NU4-Ig-2Yd"/>
@@ -5341,17 +5303,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Offers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E00-oc-30B">
-                                <rect key="frame" x="60" y="196" width="89" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="AgZ-qq-HLv"/>
-                                    <constraint firstAttribute="width" constant="89" id="bbP-Mk-fQy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
-                                <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Never" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkN-bl-3tM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkN-bl-3tM">
                                 <rect key="frame" x="61" y="402" width="89" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="8C6-Y4-SeR"/>
@@ -5361,7 +5313,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJu-Tj-UqP" userLabel="Button5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJu-Tj-UqP" userLabel="Button5">
                                 <rect key="frame" x="17" y="327" width="142" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="142" id="1Fh-6d-FvN"/>
@@ -5382,8 +5334,8 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <action selector="buttonPressed:" destination="ChD-4E-nYd" eventType="touchUpInside" id="0i5-YO-ZM9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Daily" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8a-Uz-YVa">
-                                <rect key="frame" x="61" y="327" width="89" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8a-Uz-YVa">
+                                <rect key="frame" x="65" y="327" width="89" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="D7o-4e-f6x"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="89" id="HxP-fM-j7L"/>
@@ -5394,7 +5346,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck1-oj-Kmq" userLabel="Button5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck1-oj-Kmq" userLabel="Button5">
                                 <rect key="frame" x="17" y="291" width="142" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="2xM-oo-lu5"/>
@@ -5417,7 +5369,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <action selector="buttonPressed:" destination="ChD-4E-nYd" eventType="touchUpInside" id="jPE-dy-d4w"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Weekly" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEN-dM-lky">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEN-dM-lky">
                                 <rect key="frame" x="61" y="366" width="89" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="89" id="2No-fu-Vxc"/>
@@ -5429,8 +5381,8 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Immediately" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4u-bw-GCl">
-                                <rect key="frame" x="61" y="291" width="93" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Immediately" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4u-bw-GCl">
+                                <rect key="frame" x="65" y="291" width="93" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="22" id="75Z-0u-aMq"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="8Em-ij-hN0"/>
@@ -5443,7 +5395,7 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaD-R4-aed" userLabel="Button5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaD-R4-aed" userLabel="Button5">
                                 <rect key="frame" x="17" y="366" width="142" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="DGs-qO-yFT"/>
@@ -5462,16 +5414,40 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                 <state key="normal" image="UnselectedCheckMark22">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DGs-qO-yFT"/>
+                                        <exclude reference="J0F-yw-D5O"/>
+                                        <exclude reference="J7P-VQ-z7N"/>
+                                        <exclude reference="Zxh-Sc-ytw"/>
+                                        <exclude reference="aSU-lM-L3C"/>
+                                        <exclude reference="kbq-v9-NhJ"/>
+                                        <exclude reference="nH2-CB-yK3"/>
+                                        <exclude reference="rKk-HI-uXQ"/>
+                                        <exclude reference="sA7-fu-Xxp"/>
+                                        <exclude reference="yf2-2K-2SH"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="buttonPressed:" destination="ChD-4E-nYd" eventType="touchUpInside" id="DHs-t1-ZcH"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E00-oc-30B">
+                                <rect key="frame" x="60" y="196" width="89" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="AgZ-qq-HLv"/>
+                                    <constraint firstAttribute="width" constant="89" id="bbP-Mk-fQy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ihq-Rm-JUX" firstAttribute="leading" secondItem="y3N-0d-bbG" secondAttribute="leading" constant="17" id="1XR-lu-4XU"/>
                             <constraint firstAttribute="trailing" secondItem="rGB-dw-qPZ" secondAttribute="trailing" id="1yi-VV-7dO"/>
-                            <constraint firstItem="Ck1-oj-Kmq" firstAttribute="leading" secondItem="y3N-0d-bbG" secondAttribute="leadingMargin" constant="1" id="2JL-VB-59u"/>
+                            <constraint firstItem="Ck1-oj-Kmq" firstAttribute="leading" secondItem="y3N-0d-bbG" secondAttribute="leading" constant="17" id="2JL-VB-59u"/>
                             <constraint firstItem="vaD-R4-aed" firstAttribute="leading" secondItem="y3N-0d-bbG" secondAttribute="leading" constant="17" id="92P-J1-wf0"/>
                             <constraint firstItem="I4u-bw-GCl" firstAttribute="top" secondItem="rGB-dw-qPZ" secondAttribute="bottom" constant="13" id="CCp-AX-XRM"/>
                             <constraint firstItem="zWE-jQ-bs2" firstAttribute="leading" secondItem="y3N-0d-bbG" secondAttribute="leading" id="CIs-6P-T0r"/>
@@ -5514,11 +5490,14 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="d6G-P8-st2"/>
                                 <exclude reference="xpV-9d-785"/>
                                 <exclude reference="CCp-AX-XRM"/>
+                                <exclude reference="PTk-ee-ZdR"/>
                                 <exclude reference="FUr-Ps-9nb"/>
                                 <exclude reference="kc8-71-4VF"/>
                                 <exclude reference="q6k-l1-A9a"/>
+                                <exclude reference="VJL-4A-Ml3"/>
                             </mask>
                         </variation>
                     </view>
@@ -6483,7 +6462,6 @@ That's fine. Just click the button below to finish registering.</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nbg-ZR-AfC">
-                                            <rect key="frame" x="0.0" y="-25" width="0.0" height="0.0"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="Fkf-cb-ivj">
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
@@ -6523,7 +6501,7 @@ That's fine. Just click the button below to finish registering.</string>
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discounts cannot be combined with any other discount offers" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mue-yS-tMO">
-                                        <rect key="frame" x="30.5" y="1" width="540" height="44"/>
+                                        <rect key="frame" x="30" y="1" width="540" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Ghz-jM-fUe"/>
                                         </constraints>
@@ -7193,8 +7171,8 @@ That's fine. Just click the button below to finish registering.</string>
                                 <rect key="frame" x="282" y="105" width="37" height="37"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFe-ec-ee8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="247"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFe-ec-ee8">
+                                <rect key="frame" x="0.0" y="-20" width="600" height="267"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LeW-uC-EIR" customClass="DMPageControl">
@@ -7630,7 +7608,7 @@ That's fine. Just click the button below to finish registering.</string>
                                         <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jLj-0h-LZP" id="Zx2-lQ-YDl">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -7917,14 +7895,14 @@ That's fine. Just click the button below to finish registering.</string>
         <image name="website" width="21" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WYO-TQ-jGX"/>
-        <segue reference="Ea4-BB-L2e"/>
+        <segue reference="ia8-4N-9rp"/>
+        <segue reference="BUf-M4-p72"/>
+        <segue reference="rgP-m8-3sb"/>
+        <segue reference="s4L-uq-5ch"/>
+        <segue reference="qmf-ce-keD"/>
+        <segue reference="h0d-87-Ktu"/>
         <segue reference="nq1-px-lSw"/>
         <segue reference="cZC-Sm-xQp"/>
-        <segue reference="dcH-Ar-zyd"/>
-        <segue reference="s4L-uq-5ch"/>
-        <segue reference="BUf-M4-p72"/>
-        <segue reference="h0d-87-Ktu"/>
         <segue reference="LOx-J2-VUw"/>
         <segue reference="7rn-ew-alx"/>
     </inferredMetricsTieBreakers>
