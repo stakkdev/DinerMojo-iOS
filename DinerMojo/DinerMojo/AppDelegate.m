@@ -11,6 +11,8 @@
 #import "DMLocationServices.h"
 #import "DMNewsFeedViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -23,6 +25,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [Fabric with:@[[Crashlytics class]]];                                                                    
     
     [self loadDatabase];
     [self decorateGlobalAppInterface];
@@ -91,7 +95,7 @@
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    
+    NSLog(@"Failed to register for PUSH: %@", error.description);
 }
 
 

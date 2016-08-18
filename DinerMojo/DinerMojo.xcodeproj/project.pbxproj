@@ -1047,9 +1047,10 @@
 				7AC3FE5E1AEE3E7600AD12E0 /* Sources */,
 				7AC3FE5F1AEE3E7600AD12E0 /* Frameworks */,
 				7AC3FE601AEE3E7600AD12E0 /* Resources */,
-				D4CEE6701B298A0800CB5647 /* ShellScript */,
+				D4CEE6701B298A0800CB5647 /* Run Script */,
 				9E032DF1F3CA2B7D4D8BF3E8 /* [CP] Embed Pods Frameworks */,
 				0F8849B7705AE39AB4DE3812 /* [CP] Copy Pods Resources */,
+				BF2CFBF01D65E5F100200974 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1096,6 +1097,11 @@
 					7AC3FE611AEE3E7600AD12E0 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 42B8BC6R86;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					7AC3FE7D1AEE3E7600AD12E0 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1188,7 +1194,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4DD0284C30C217A5BCDDFBFC /* [CP] Embed Pods Frameworks */ = {
@@ -1233,7 +1239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7A8C4BB91B1CB2D000F1A798 /* ShellScript */ = {
@@ -1264,13 +1270,27 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D4CEE6701B298A0800CB5647 /* ShellScript */ = {
+		BF2CFBF01D65E5F100200974 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 015a3121c76ea8baec90c4a97c7bd1976400adad dc9c94e3c240c0f762b3ba151b9bb3c0ddf4271bf6be439432c002315672794f";
+		};
+		D4CEE6701B298A0800CB5647 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1458,7 +1478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
@@ -1467,7 +1487,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7b2f1b03-4962-426b-957e-a096d434dba5";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Debug - Vagrant";
@@ -1547,7 +1567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
@@ -1556,7 +1576,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Internal Release";
@@ -1625,8 +1645,8 @@
 			baseConfigurationReference = 00DEAEA53FEBB87FBBD56394 /* Pods-DinerMojo.client release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
@@ -1635,7 +1655,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Client Release";
@@ -1702,8 +1722,8 @@
 			baseConfigurationReference = C8E670D7286671AE24F5B6C7 /* Pods-DinerMojo.app store.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
@@ -1712,7 +1732,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "App Store";
@@ -1863,7 +1883,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
@@ -1872,7 +1892,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "37ea8a00-fce4-414f-8cc8-ddd09c6d9a0d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1882,8 +1902,8 @@
 			baseConfigurationReference = BDCCB2C02A9D171BA182C4A3 /* Pods-DinerMojo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
@@ -1892,7 +1912,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				PROVISIONING_PROFILE = "ac601b2e-e92d-45a5-bb57-7127c1e54b0e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
