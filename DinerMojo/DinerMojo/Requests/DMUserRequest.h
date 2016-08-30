@@ -16,7 +16,8 @@
 - (void)loginFaceboookWithSuccess:(DMFacebookServiceRequestTokenHandlerSuccess)success
                             error:(DMFacebookServiceRequestTokenHandlerFailure)failure
                missingPermissions:(DMFacebookServiceRequestTokenHandlerMissingPermissions)permissionsAreMissing
-                           cancel:(DMFacebookServiceRequestTokenHandlerCancel)cancel;
+                           cancel:(DMFacebookServiceRequestTokenHandlerCancel)cancel
+               fromViewController:(UIViewController *)viewController;
 - (void)signUpWithFacebook:(NSDictionary *)data WithCompletionBlock:(RequestCompletion)completionBlock;
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password WithCompletionBlock:(RequestCompletion)completionBlock;
 - (void)signUpWithEmailData:(NSDictionary *)data WithCompletionBlock:(RequestCompletion)completionBlock;

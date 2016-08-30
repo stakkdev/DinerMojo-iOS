@@ -52,13 +52,17 @@
 
 #pragma mark - public methods
 
-- (void)loginWithSuccess:(DMFacebookServiceRequestTokenHandlerSuccess)success error:(DMFacebookServiceRequestTokenHandlerFailure)failure missingPermissions:(DMFacebookServiceRequestTokenHandlerMissingPermissions)permissionsAreMissing cancel:(DMFacebookServiceRequestTokenHandlerCancel)cancel
+- (void)loginWithSuccess:(DMFacebookServiceRequestTokenHandlerSuccess)success
+                   error:(DMFacebookServiceRequestTokenHandlerFailure)failure
+      missingPermissions:(DMFacebookServiceRequestTokenHandlerMissingPermissions)permissionsAreMissing
+                  cancel:(DMFacebookServiceRequestTokenHandlerCancel)cancel
+      fromViewController:(UIViewController *)viewController
 {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     
     __weak typeof(self) weakSelf = self;
     
-    [login logInWithReadPermissions:[self permissions] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    [login logInWithReadPermissions:[self permissions] fromViewController:viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error)
         {
             failure(error, nil);
@@ -94,7 +98,10 @@
                 }];
             }
         }
+
     }];
+    
+   
 }
 
 - (BOOL)isFacebookSessionOpen

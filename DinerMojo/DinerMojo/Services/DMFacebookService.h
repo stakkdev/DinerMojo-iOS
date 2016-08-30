@@ -24,7 +24,8 @@ typedef void (^DMFacebookServiceRequestTokenHandlerCancel)();
 - (void)loginWithSuccess:(DMFacebookServiceRequestTokenHandlerSuccess)success
                    error:(DMFacebookServiceRequestTokenHandlerFailure)failure
       missingPermissions:(DMFacebookServiceRequestTokenHandlerMissingPermissions)permissionsAreMissing
-                  cancel:(DMFacebookServiceRequestTokenHandlerCancel)cancel;
+                  cancel:(DMFacebookServiceRequestTokenHandlerCancel)cancel
+      fromViewController:(UIViewController *)viewController;
 
 - (BOOL)isFacebookSessionOpen;
 - (void)logOut;

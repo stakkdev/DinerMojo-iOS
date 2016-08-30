@@ -377,6 +377,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 - (void)loginToFacebook
 {
     __weak typeof(self) weakSelf = self;
+    
     [[self userRequest] loginFaceboookWithSuccess:^(id result) {
         [self goToVenues];
     } error:^(NSError *error, id additionalInfo) {
@@ -398,7 +399,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         NSLog(@"missingPermissions = %@", missingPermissions);
     } cancel:^{
         // TODO: Cancel any loading indicators
-    }];
+    } fromViewController:self];
 }
 
 - (NSDictionary *)facebookDataParsedForServer

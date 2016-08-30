@@ -105,7 +105,8 @@
 - (void)loginFaceboookWithSuccess:(DMFacebookServiceRequestTokenHandlerSuccess)success
                             error:(DMFacebookServiceRequestTokenHandlerFailure)failure
                missingPermissions:(DMFacebookServiceRequestTokenHandlerMissingPermissions)permissionsAreMissing
-                           cancel:(DMFacebookServiceRequestTokenHandlerCancel)cancel;
+                           cancel:(DMFacebookServiceRequestTokenHandlerCancel)cancel
+               fromViewController:(UIViewController *)viewController;
 {
     __weak typeof(self) weakSelf = self;
     [[DMFacebookService sharedInstance] loginWithSuccess:^(id result) {
@@ -128,7 +129,7 @@
         permissionsAreMissing(missingPermissions);
     } cancel:^{
         cancel();
-    }];
+    } fromViewController:viewController];
 }
 
 - (void)signUpWithFacebook:(NSDictionary *)data WithCompletionBlock:(RequestCompletion)completionBlock;
