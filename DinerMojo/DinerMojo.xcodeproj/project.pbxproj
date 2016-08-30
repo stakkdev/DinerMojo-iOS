@@ -136,6 +136,15 @@
 		D4E436D11B3986B8006435F8 /* DMDineVenueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E436CF1B3986B8006435F8 /* DMDineVenueTableViewCell.xib */; };
 		D4E4370A1B3A98CD006435F8 /* DMEarnReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */; };
 		D4FF601D1B415B64000CE244 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */; };
+		E772B8DE1D75E9AF00EE8042 /* AnalyticEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8D91D75E9AF00EE8042 /* AnalyticEntities.swift */; };
+		E772B8DF1D75E9AF00EE8042 /* AppAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8DA1D75E9AF00EE8042 /* AppAnalytics.swift */; };
+		E772B8E01D75E9AF00EE8042 /* FabricCrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8DB1D75E9AF00EE8042 /* FabricCrashReporter.swift */; };
+		E772B8E11D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8DC1D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift */; };
+		E772B8E21D75E9AF00EE8042 /* TestAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8DD1D75E9AF00EE8042 /* TestAnalyticsViewController.swift */; };
+		E772B8E41D75EAA700EE8042 /* TheDistanceCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8E31D75EAA700EE8042 /* TheDistanceCore.framework */; };
+		E772B8F11D75EE8800EE8042 /* TDCAppDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */; };
+		E772B8F61D75F03700EE8042 /* ApplicationDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */; };
+		E772B8F71D75F03700EE8042 /* ApplicationStoryboardLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -381,6 +390,16 @@
 		D4E437081B3A98CD006435F8 /* DMEarnReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEarnReviewViewController.h; sourceTree = "<group>"; };
 		D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMEarnReviewViewController.m; sourceTree = "<group>"; };
 		D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E772B8D91D75E9AF00EE8042 /* AnalyticEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticEntities.swift; sourceTree = "<group>"; };
+		E772B8DA1D75E9AF00EE8042 /* AppAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAnalytics.swift; sourceTree = "<group>"; };
+		E772B8DB1D75E9AF00EE8042 /* FabricCrashReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabricCrashReporter.swift; sourceTree = "<group>"; };
+		E772B8DC1D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalyticsReporter.swift; sourceTree = "<group>"; };
+		E772B8DD1D75E9AF00EE8042 /* TestAnalyticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAnalyticsViewController.swift; sourceTree = "<group>"; };
+		E772B8E31D75EAA700EE8042 /* TheDistanceCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TheDistanceCore.framework; path = Carthage/Build/iOS/TheDistanceCore.framework; sourceTree = "<group>"; };
+		E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDCAppDependencies.framework; path = Carthage/Build/iOS/TDCAppDependencies.framework; sourceTree = "<group>"; };
+		E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDependencies.swift; sourceTree = "<group>"; };
+		E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationStoryboardLoader.swift; sourceTree = "<group>"; };
+		E772B8FB1D75F18E00EE8042 /* DinerMojo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DinerMojo-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +409,8 @@
 			files = (
 				D4FF601D1B415B64000CE244 /* MobileCoreServices.framework in Frameworks */,
 				D4CCE4DF1B319DB200D315AE /* AVFoundation.framework in Frameworks */,
+				E772B8E41D75EAA700EE8042 /* TheDistanceCore.framework in Frameworks */,
+				E772B8F11D75EE8800EE8042 /* TDCAppDependencies.framework in Frameworks */,
 				D4CCE4DD1B319B5B00D315AE /* QuartzCore.framework in Frameworks */,
 				D48CEB8A1B2EDAD7001A01EB /* MapKit.framework in Frameworks */,
 				760EDAE3ED64DE505C89B933 /* libPods-DinerMojo.a in Frameworks */,
@@ -410,6 +431,8 @@
 		57F65DF4B9C1393ACD1F9B53 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */,
+				E772B8E31D75EAA700EE8042 /* TheDistanceCore.framework */,
 				D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */,
 				D4CCE4DE1B319DB200D315AE /* AVFoundation.framework */,
 				D4CCE4DC1B319B5B00D315AE /* QuartzCore.framework */,
@@ -694,7 +717,9 @@
 				7A8C4BA81B1CAF7800F1A798 /* Models */,
 				7A8C4B461B1C9A2D00F1A798 /* Requests */,
 				D4952F6C1B20926C0077FC5F /* Services */,
+				E772B8D81D75E9AF00EE8042 /* Analytics */,
 				7AC3FE651AEE3E7600AD12E0 /* Supporting Files */,
+				E772B8FB1D75F18E00EE8042 /* DinerMojo-Bridging-Header.h */,
 			);
 			path = DinerMojo;
 			sourceTree = "<group>";
@@ -1036,6 +1061,28 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E772B8D81D75E9AF00EE8042 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				E772B8D91D75E9AF00EE8042 /* AnalyticEntities.swift */,
+				E772B8DA1D75E9AF00EE8042 /* AppAnalytics.swift */,
+				E772B8DB1D75E9AF00EE8042 /* FabricCrashReporter.swift */,
+				E772B8DC1D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift */,
+				E772B8DD1D75E9AF00EE8042 /* TestAnalyticsViewController.swift */,
+				E772B8F21D75F03700EE8042 /* Core */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		E772B8F21D75F03700EE8042 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */,
+				E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1317,9 +1364,11 @@
 				7A8C4B871B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m in Sources */,
 				D4CEE6731B29AD1500CB5647 /* DMProfileInfoViewController.m in Sources */,
 				7A5EC8271B4C033F00B27CBF /* _DMUpdateItem.m in Sources */,
+				E772B8F61D75F03700EE8042 /* ApplicationDependencies.swift in Sources */,
 				7A5EC8221B4C033F00B27CBF /* _DMEarnTransaction.m in Sources */,
 				5A7BFBB71B1DB16700255A25 /* DMButton.m in Sources */,
 				7A8C4B7F1B1C9AD500F1A798 /* DMDineViewController.m in Sources */,
+				E772B8DF1D75E9AF00EE8042 /* AppAnalytics.swift in Sources */,
 				7A5EC81F1B4C033F00B27CBF /* DMVenueImage.m in Sources */,
 				7A5EC81B1B4C033F00B27CBF /* DMUpdateItem.m in Sources */,
 				7A46D0391B29C25C00FA2AA9 /* DMUserRequest.m in Sources */,
@@ -1329,12 +1378,14 @@
 				7A8C4B891B1C9AD500F1A798 /* DMPasswordSettingsViewController.m in Sources */,
 				5A5EE0F61AF3AB9B00F3C796 /* DMViewController.m in Sources */,
 				5A7BFBBB1B1DC11700255A25 /* DMRestaurantCell.m in Sources */,
+				E772B8E01D75E9AF00EE8042 /* FabricCrashReporter.swift in Sources */,
 				7A46D03C1B29C58F00FA2AA9 /* DMFacebookService.m in Sources */,
 				D4E436D01B3986B8006435F8 /* DMDineVenueTableViewCell.m in Sources */,
 				7A8C4BAE1B1CAF7800F1A798 /* DMVenueModelController.m in Sources */,
 				7A7CB4501AFF4AEE00C13FF1 /* DMTabBarViewController.m in Sources */,
 				7A8C4B491B1C9A2D00F1A798 /* DMRequest.m in Sources */,
 				7A8C4B8D1B1C9AD500F1A798 /* DMSettingsViewController.m in Sources */,
+				E772B8E21D75E9AF00EE8042 /* TestAnalyticsViewController.swift in Sources */,
 				D4E4370A1B3A98CD006435F8 /* DMEarnReviewViewController.m in Sources */,
 				7A8C4B951B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.m in Sources */,
 				7A5EC8191B4C033F00B27CBF /* DMRedeemTransaction.m in Sources */,
@@ -1342,11 +1393,13 @@
 				7A5EC82A1B4C033F00B27CBF /* _DMVenueCategory.m in Sources */,
 				7A8C4B841B1C9AD500F1A798 /* DMNewsFeedViewController.m in Sources */,
 				7A8C4B8E1B1C9AD500F1A798 /* DMTransactionTimelineViewController.m in Sources */,
+				E772B8E11D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift in Sources */,
 				D4E436C91B39751F006435F8 /* DMTabBarController.m in Sources */,
 				5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */,
 				7A5EC8161B4C033F00B27CBF /* DMEarnTransaction.m in Sources */,
 				5A68207C1B39A3A500C7F4A4 /* DMTransactionsModelController.m in Sources */,
 				7AFF9EF41B2B441900F6C9B6 /* DMReferralViewController.m in Sources */,
+				E772B8F71D75F03700EE8042 /* ApplicationStoryboardLoader.swift in Sources */,
 				7A8C4B8C1B1C9AD500F1A798 /* DMReferAFriendViewController.m in Sources */,
 				7A80F6271B3F6605009C8A6F /* UIImage+Extensions.m in Sources */,
 				7A8C4B881B1C9AD500F1A798 /* DMNotificationSettingsViewController.m in Sources */,
@@ -1367,6 +1420,7 @@
 				7A01294B1B2741C800D46B39 /* UIImage+ImageEffects.m in Sources */,
 				7A5EC8231B4C033F00B27CBF /* _DMNewsItem.m in Sources */,
 				D4952F6F1B20926C0077FC5F /* DMColorService.m in Sources */,
+				E772B8DE1D75E9AF00EE8042 /* AnalyticEntities.swift in Sources */,
 				7A1AF3081B21F2310072F013 /* DMNewsItemModelController.m in Sources */,
 				7A8C4BB11B1CB02C00F1A798 /* DinerMojo.xcdatamodeld in Sources */,
 				7ACE9F741B1D0FAA0001F20C /* DMMappingProvider.m in Sources */,
@@ -1480,6 +1534,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
@@ -1488,6 +1546,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Debug - Vagrant";
@@ -1569,6 +1628,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
@@ -1577,6 +1640,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Internal Release";
@@ -1647,6 +1711,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
@@ -1655,6 +1723,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ac601b2e-e92d-45a5-bb57-7127c1e54b0e";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Client Release";
@@ -1724,6 +1793,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
@@ -1732,6 +1805,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "App Store";
@@ -1884,6 +1958,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Development Team (LPMG637WYE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
@@ -1892,6 +1970,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e7ce255d-a34c-4ae7-80b5-46ae169a89b8";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1904,6 +1983,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
@@ -1912,6 +1995,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ac601b2e-e92d-45a5-bb57-7127c1e54b0e";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

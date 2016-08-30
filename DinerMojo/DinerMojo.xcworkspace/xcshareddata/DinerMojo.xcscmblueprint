@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "083371792EDE37E445F8B5152508705511A16ED5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "083371792EDE37E445F8B5152508705511A16ED5" : 0,
+    "FD5C324F75CB7E11107DD5E7CB26C0FDCA83D686" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0E6D37C2-0B1B-49BF-A8B6-6E3DD4D4E058",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "083371792EDE37E445F8B5152508705511A16ED5" : "dinermojo-ios\/",
+    "FD5C324F75CB7E11107DD5E7CB26C0FDCA83D686" : "crew-calls\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DinerMojo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DinerMojo\/DinerMojo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:thedistance\/dinermojo-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "083371792EDE37E445F8B5152508705511A16ED5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:thedistance\/crew-calls.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FD5C324F75CB7E11107DD5E7CB26C0FDCA83D686"
+    }
+  ]
+}
