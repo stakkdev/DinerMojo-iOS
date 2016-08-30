@@ -74,7 +74,6 @@
             <string>OpenSansLight-Italic</string>
             <string>OpenSansLight-Italic</string>
             <string>OpenSansLight-Italic</string>
-            <string>OpenSansLight-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -515,15 +514,6 @@ How about we take you for a quick tour before you get started?</string>
                                     <action selector="getStarted:" destination="FEM-SK-8fX" eventType="touchUpInside" id="qbZ-pK-Fkf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1G-fn-XCW">
-                                <rect key="frame" x="262" y="505" width="77" height="30"/>
-                                <state key="normal" title="Get started">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getStarted:" destination="FEM-SK-8fX" eventType="touchUpInside" id="Ud8-tB-vSj"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GE7-eS-tHr" customClass="DMButton">
                                 <rect key="frame" x="536" y="25" width="46" height="37"/>
                                 <constraints>
@@ -554,20 +544,13 @@ How about we take you for a quick tour before you get started?</string>
                             <constraint firstAttribute="trailing" secondItem="gFj-jL-RQB" secondAttribute="trailing" id="R38-r6-Vwf"/>
                             <constraint firstAttribute="trailing" secondItem="72V-VY-g6C" secondAttribute="trailing" id="R9f-6Z-z2Q"/>
                             <constraint firstItem="GE7-eS-tHr" firstAttribute="top" secondItem="51t-Md-yml" secondAttribute="bottom" constant="5" id="THb-f7-w4L"/>
-                            <constraint firstAttribute="centerY" secondItem="H1G-fn-XCW" secondAttribute="centerY" constant="-220" id="WQP-mF-c4Q"/>
                             <constraint firstAttribute="trailing" secondItem="VuZ-EG-fiE" secondAttribute="trailing" id="b5H-uu-2eE"/>
                             <constraint firstItem="HLo-yW-kN0" firstAttribute="leading" secondItem="bTN-3N-PZZ" secondAttribute="leading" constant="16" id="e3L-5t-5dQ"/>
                             <constraint firstItem="5dm-18-KMO" firstAttribute="top" secondItem="VuZ-EG-fiE" secondAttribute="bottom" id="he3-ma-1H9"/>
-                            <constraint firstAttribute="centerX" secondItem="H1G-fn-XCW" secondAttribute="centerX" id="kpk-Vf-7ZW"/>
                             <constraint firstItem="5dm-18-KMO" firstAttribute="top" secondItem="gFj-jL-RQB" secondAttribute="bottom" id="qNf-Nu-oFR"/>
                             <constraint firstAttribute="trailing" secondItem="GE7-eS-tHr" secondAttribute="trailing" constant="18" id="rzH-u2-VR3"/>
                             <constraint firstItem="5dm-18-KMO" firstAttribute="top" secondItem="HLo-yW-kN0" secondAttribute="bottom" constant="12" id="t1H-a5-CE4"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="H1G-fn-XCW"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="getStartedButton" destination="HLo-yW-kN0" id="TJL-F7-ohd"/>
@@ -4681,21 +4664,21 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                         <viewControllerLayoutGuide type="bottom" id="Uo6-PV-eBc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PLE-l2-sgv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McZ-gx-zcC">
-                                <rect key="frame" x="282" y="266" width="36" height="20"/>
+                                <rect key="frame" x="282" y="291" width="36" height="20"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" red="0.42745098040000001" green="0.7843137255" blue="0.69411764710000001" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zgS-EI-tML">
-                                <rect key="frame" x="281" y="256" width="37" height="37"/>
+                                <rect key="frame" x="281" y="281" width="37" height="37"/>
                                 <color key="color" red="0.3411764706" green="0.73725490199999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0BR-E2-S8D">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -4703,21 +4686,6 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                                     <outlet property="delegate" destination="jbp-N4-SNI" id="Qw5-wn-6us"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVv-LR-GCW">
-                                <rect key="frame" x="271" y="356" width="58" height="30"/>
-                                <state key="normal" title="Redeem">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="4vx-FJ-2fB" kind="show" identifier="ShowTransactionDetail" id="Tlr-5H-LId"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENs-qk-nte">
-                                <rect key="frame" x="284" y="394" width="32" height="30"/>
-                                <state key="normal" title="Earn">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -4725,22 +4693,14 @@ DinerMojo and receive 10% of the points they earn for the first 12 months!</stri
                             <constraint firstItem="0BR-E2-S8D" firstAttribute="leading" secondItem="PLE-l2-sgv" secondAttribute="leading" id="1g3-Cl-jsG"/>
                             <constraint firstItem="0BR-E2-S8D" firstAttribute="top" secondItem="PLE-l2-sgv" secondAttribute="top" constant="64" id="8vE-zq-95p"/>
                             <constraint firstAttribute="centerY" secondItem="zgS-EI-tML" secondAttribute="centerY" constant="1" id="994-Zt-ci4"/>
-                            <constraint firstAttribute="centerX" secondItem="ENs-qk-nte" secondAttribute="centerX" id="B7H-E2-bvk"/>
-                            <constraint firstAttribute="centerX" secondItem="xVv-LR-GCW" secondAttribute="centerX" id="CYk-PL-wFe"/>
                             <constraint firstAttribute="centerX" secondItem="zgS-EI-tML" secondAttribute="centerX" id="EfN-AQ-toc"/>
                             <constraint firstItem="Uo6-PV-eBc" firstAttribute="top" secondItem="0BR-E2-S8D" secondAttribute="bottom" id="WOf-H4-5Oh"/>
                             <constraint firstAttribute="bottom" secondItem="0BR-E2-S8D" secondAttribute="bottom" constant="49" id="ZUm-6O-SuU"/>
-                            <constraint firstAttribute="centerY" secondItem="ENs-qk-nte" secondAttribute="centerY" constant="-110" id="bda-GX-1tD"/>
-                            <constraint firstAttribute="centerY" secondItem="xVv-LR-GCW" secondAttribute="centerY" constant="-72" id="cMk-DV-nje"/>
                             <constraint firstAttribute="centerY" secondItem="McZ-gx-zcC" secondAttribute="centerY" constant="-0.5" id="etd-KT-HNa"/>
                             <constraint firstItem="0BR-E2-S8D" firstAttribute="top" secondItem="2Qd-0C-FR5" secondAttribute="bottom" id="krL-Yw-M12"/>
                             <constraint firstAttribute="centerX" secondItem="McZ-gx-zcC" secondAttribute="centerX" id="lY1-Vl-4zd"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="xVv-LR-GCW"/>
-                                <exclude reference="ENs-qk-nte"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="8vE-zq-95p"/>
                                 <exclude reference="ZUm-6O-SuU"/>
@@ -7518,16 +7478,6 @@ That's fine. Just click the button below to finish registering.</string>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earn and redeem points at any participating DinerMojo restaurant. Enjoy!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXD-oe-4qF">
-                                        <rect key="frame" x="176" y="383" width="248" height="74"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="74" id="DzM-Nb-PZy"/>
-                                            <constraint firstAttribute="width" constant="248" id="Kll-c1-IBY"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -7535,7 +7485,6 @@ That's fine. Just click the button below to finish registering.</string>
                                     <constraint firstItem="6mW-er-qQp" firstAttribute="top" secondItem="16A-3q-Rhz" secondAttribute="bottom" constant="12" id="2YS-g0-CGB"/>
                                     <constraint firstItem="ZN0-H2-rU0" firstAttribute="top" secondItem="6mW-er-qQp" secondAttribute="bottom" constant="8" id="5iJ-mX-Uoj"/>
                                     <constraint firstAttribute="trailing" secondItem="6mW-er-qQp" secondAttribute="trailing" constant="22" id="Dx0-Aw-2OG"/>
-                                    <constraint firstAttribute="centerX" secondItem="oXD-oe-4qF" secondAttribute="centerX" id="NcR-ZM-YId"/>
                                     <constraint firstItem="6mW-er-qQp" firstAttribute="leading" secondItem="gl3-LJ-l2s" secondAttribute="leading" constant="22" id="PoW-aB-S1i"/>
                                     <constraint firstAttribute="centerX" secondItem="vLR-TX-txx" secondAttribute="centerX" id="YQs-31-otR"/>
                                     <constraint firstItem="16A-3q-Rhz" firstAttribute="top" secondItem="gl3-LJ-l2s" secondAttribute="top" constant="61" id="dwo-10-H1h"/>
@@ -7548,9 +7497,6 @@ That's fine. Just click the button below to finish registering.</string>
                                     <constraint firstItem="AC2-Ju-3MN" firstAttribute="leading" secondItem="gl3-LJ-l2s" secondAttribute="leading" constant="22" id="zhg-MN-vB0"/>
                                 </constraints>
                                 <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="oXD-oe-4qF"/>
-                                    </mask>
                                     <mask key="constraints">
                                         <exclude reference="2YS-g0-CGB"/>
                                         <exclude reference="dwo-10-H1h"/>
