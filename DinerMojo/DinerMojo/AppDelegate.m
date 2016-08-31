@@ -13,6 +13,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "DinerMojo-Swift.h"
 
 @interface AppDelegate ()
 
@@ -26,8 +27,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [Fabric with:@[[Crashlytics class]]];                                                                    
-    
     [self loadDatabase];
     [self decorateGlobalAppInterface];
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:195.0];
@@ -40,6 +39,8 @@
     }
     
     [[DMUserRequest new] updateProfileEmailVerifificationDisplayed:NO];
+    
+    [self swiftApplication:application didFinishLaunchingWithOptions:launchOptions];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];

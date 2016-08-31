@@ -42,5 +42,4 @@ class ApplicationDependencies : AppDependencies {
    
         window.rootViewController = viewLoader?.configuredRootViewController()
     }
-
 }

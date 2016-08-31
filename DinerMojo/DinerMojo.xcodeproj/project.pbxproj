@@ -145,6 +145,10 @@
 		E772B8F11D75EE8800EE8042 /* TDCAppDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */; };
 		E772B8F61D75F03700EE8042 /* ApplicationDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */; };
 		E772B8F71D75F03700EE8042 /* ApplicationStoryboardLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */; };
+		E7D8D1E61D76DD0800944021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8D1E51D76DD0800944021 /* AppDelegate.swift */; };
+		E7D8D1E71D76DFF500944021 /* TheDistanceCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8E31D75EAA700EE8042 /* TheDistanceCore.framework */; };
+		E7D8D1EA1D76E00900944021 /* TDCAppDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */; };
+		E7D8D1ED1D76E4E300944021 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7D8D1EC1D76E4E300944021 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +160,28 @@
 			remoteInfo = DinerMojo;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E7D8D1E91D76DFF600944021 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7D8D1EF1D76E59000944021 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		03CEF98974663460352811DB /* libPods-DinerMojoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DinerMojoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -400,6 +426,8 @@
 		E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDependencies.swift; sourceTree = "<group>"; };
 		E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationStoryboardLoader.swift; sourceTree = "<group>"; };
 		E772B8FB1D75F18E00EE8042 /* DinerMojo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DinerMojo-Bridging-Header.h"; sourceTree = "<group>"; };
+		E7D8D1E51D76DD0800944021 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E7D8D1EC1D76E4E300944021 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,7 +437,9 @@
 			files = (
 				D4FF601D1B415B64000CE244 /* MobileCoreServices.framework in Frameworks */,
 				D4CCE4DF1B319DB200D315AE /* AVFoundation.framework in Frameworks */,
+				E7D8D1E71D76DFF500944021 /* TheDistanceCore.framework in Frameworks */,
 				E772B8E41D75EAA700EE8042 /* TheDistanceCore.framework in Frameworks */,
+				E7D8D1EA1D76E00900944021 /* TDCAppDependencies.framework in Frameworks */,
 				E772B8F11D75EE8800EE8042 /* TDCAppDependencies.framework in Frameworks */,
 				D4CCE4DD1B319B5B00D315AE /* QuartzCore.framework in Frameworks */,
 				D48CEB8A1B2EDAD7001A01EB /* MapKit.framework in Frameworks */,
@@ -711,12 +741,15 @@
 			children = (
 				7AC3FE691AEE3E7600AD12E0 /* AppDelegate.h */,
 				7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */,
+				E7D8D1E51D76DD0800944021 /* AppDelegate.swift */,
+				E7D8D1EC1D76E4E300944021 /* Settings.bundle */,
 				D4EF48141B45428F00E46539 /* User Interface */,
 				7A8C4B4A1B1C9AD500F1A798 /* Screens */,
 				5A5EE0F31AF3AB4900F3C796 /* Shared */,
 				7A8C4BA81B1CAF7800F1A798 /* Models */,
 				7A8C4B461B1C9A2D00F1A798 /* Requests */,
 				D4952F6C1B20926C0077FC5F /* Services */,
+				E772B8F21D75F03700EE8042 /* Core */,
 				E772B8D81D75E9AF00EE8042 /* Analytics */,
 				7AC3FE651AEE3E7600AD12E0 /* Supporting Files */,
 				E772B8FB1D75F18E00EE8042 /* DinerMojo-Bridging-Header.h */,
@@ -1069,7 +1102,6 @@
 				E772B8DB1D75E9AF00EE8042 /* FabricCrashReporter.swift */,
 				E772B8DC1D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift */,
 				E772B8DD1D75E9AF00EE8042 /* TestAnalyticsViewController.swift */,
-				E772B8F21D75F03700EE8042 /* Core */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -1080,7 +1112,8 @@
 				E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */,
 				E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */,
 			);
-			path = Core;
+			name = Core;
+			path = Analytics/Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1091,13 +1124,17 @@
 			buildConfigurationList = 7AC3FE881AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojo" */;
 			buildPhases = (
 				32AD2AD8D1B3100C5505C32D /* [CP] Check Pods Manifest.lock */,
+				E7D8D1EE1D76E51600944021 /* Info plist Version */,
 				7AC3FE5E1AEE3E7600AD12E0 /* Sources */,
 				7AC3FE5F1AEE3E7600AD12E0 /* Frameworks */,
 				7AC3FE601AEE3E7600AD12E0 /* Resources */,
+				E7D8D1F01D76E5A200944021 /* Carthage Frameworks */,
 				D4CEE6701B298A0800CB5647 /* Run Script */,
 				9E032DF1F3CA2B7D4D8BF3E8 /* [CP] Embed Pods Frameworks */,
 				0F8849B7705AE39AB4DE3812 /* [CP] Copy Pods Resources */,
-				BF2CFBF01D65E5F100200974 /* ShellScript */,
+				E7D8D1E91D76DFF600944021 /* Embed Frameworks */,
+				E7D8D1EF1D76E59000944021 /* CopyFiles */,
+				BF2CFBF01D65E5F100200974 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -1194,6 +1231,7 @@
 				7AEF14A91B1F09FC0053D32B /* OpenSans-LightItalic.ttf in Resources */,
 				7AEF14AC1B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf in Resources */,
 				7AEF14A61B1F09FC0053D32B /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				E7D8D1ED1D76E4E300944021 /* Settings.bundle in Resources */,
 				7AEF14AA1B1F09FC0053D32B /* OpenSans-Regular.ttf in Resources */,
 				7AEF14A71B1F09FC0053D32B /* OpenSans-Italic.ttf in Resources */,
 				7AEF14A41B1F09FC0053D32B /* OpenSans-BoldItalic.ttf in Resources */,
@@ -1317,13 +1355,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BF2CFBF01D65E5F100200974 /* ShellScript */ = {
+		BF2CFBF01D65E5F100200974 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Fabric;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1343,6 +1382,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n";
+		};
+		E7D8D1EE1D76E51600944021 /* Info plist Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Info plist Version";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "version=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n/usr/libexec/PlistBuddy -c \"set PreferenceSpecifiers:1:DefaultValue $version\" \"${SRCROOT}/${PRODUCT_NAME}/Settings.bundle/Root.plist\"";
+		};
+		E7D8D1F01D76E5A200944021 /* Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TheDistanceCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TDCAppDependencies.framework",
+			);
+			name = "Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1423,6 +1492,7 @@
 				E772B8DE1D75E9AF00EE8042 /* AnalyticEntities.swift in Sources */,
 				7A1AF3081B21F2310072F013 /* DMNewsItemModelController.m in Sources */,
 				7A8C4BB11B1CB02C00F1A798 /* DinerMojo.xcdatamodeld in Sources */,
+				E7D8D1E61D76DD0800944021 /* AppDelegate.swift in Sources */,
 				7ACE9F741B1D0FAA0001F20C /* DMMappingProvider.m in Sources */,
 				7A8C4B961B1C9AD500F1A798 /* DMRestaurantInfoViewController.m in Sources */,
 				7A8C4B931B1C9AD500F1A798 /* DMMapViewController.m in Sources */,
@@ -1543,10 +1613,12 @@
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Debug - Vagrant";
@@ -1967,10 +2039,12 @@
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e7ce255d-a34c-4ae7-80b5-46ae169a89b8";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
