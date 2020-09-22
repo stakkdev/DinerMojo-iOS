@@ -3,17 +3,9 @@
 
 #import "_DMNewsItem.h"
 
-
 const struct DMNewsItemAttributes DMNewsItemAttributes = {
 	.update_type = @"update_type",
 };
-
-
-
-
-
-
-
 
 @implementation DMNewsItemID
 @end
@@ -40,7 +32,7 @@ const struct DMNewsItemAttributes DMNewsItemAttributes = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"update_typeValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"update_type"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -50,23 +42,16 @@ const struct DMNewsItemAttributes DMNewsItemAttributes = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic update_type;
-
-
 
 - (int16_t)update_typeValue {
 	NSNumber *result = [self update_type];
 	return [result shortValue];
 }
 
-
 - (void)setUpdate_typeValue:(int16_t)value_ {
-	[self setUpdate_type:@(value_)];
+	[self setUpdate_type:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitiveUpdate_typeValue {
 	NSNumber *result = [self primitiveUpdate_type];
@@ -74,20 +59,8 @@ const struct DMNewsItemAttributes DMNewsItemAttributes = {
 }
 
 - (void)setPrimitiveUpdate_typeValue:(int16_t)value_ {
-	[self setPrimitiveUpdate_type:@(value_)];
+	[self setPrimitiveUpdate_type:[NSNumber numberWithShort:value_]];
 }
 
-
-
-
-
-
-
-
-
-
 @end
-
-
-
 

@@ -8,18 +8,15 @@
 
 import UIKit
 import Fabric
+import Crashlytics
+import Siren
 
 extension AppDelegate {
     
-    func swiftApplication(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        _ = ApplicationDependencies.sharedDependencies()
-        
-        if FabricInitialiser.kits.count > 0 {
-            // starting Fabric has to be the last method
-            Fabric.with(FabricInitialiser.kits)
-        }
-        
-        return true
+    @objc func swiftApplication(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) {
+        let siren = Siren.shared
+        let rules = Rules(promptFrequency: .daily, forAlertType: .option)
+        siren.rulesManager = .init(globalRules: rules, showAlertAfterCurrentVersionHasBeenReleasedForDays: 0)
     }
+    
 }

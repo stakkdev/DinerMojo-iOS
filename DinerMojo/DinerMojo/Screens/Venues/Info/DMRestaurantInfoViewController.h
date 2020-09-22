@@ -32,10 +32,15 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSArray *restaurantImages;
 @property (strong, nonatomic) NSArray *recommendedVenuesArray;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
+@property (weak, nonatomic) IBOutlet UIView *gradientView;
 
 
 #pragma mark - venueInfo Restaurant Details
 
+@property (weak, nonatomic) IBOutlet UIView *infoShadowView;
+@property (weak, nonatomic) IBOutlet DMButton *earnButton;
+@property (weak, nonatomic) IBOutlet DMButton *redeemButton;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantLocationLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *restautrantTitleName;
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantImageView;
@@ -44,14 +49,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *restaurantDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantBudgetLabel;
 @property (weak, nonatomic) IBOutlet UIButton *directionsButton;
-@property (weak, nonatomic) IBOutlet UILabel *mondayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tuesdayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *wednesdayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *thursdayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *fridayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *saturdayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *sundayLabel;
-@property (weak, nonatomic) IBOutlet UIButton *tripAdvisorButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet DMButton *pointsValueButton;
 @property (weak, nonatomic) IBOutlet UILabel *featureLabel;
@@ -63,6 +60,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *restaurantSpecialOfferHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *restaurantSpecialOfferHeightPaddingConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantSpecialOfficeImage;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewTop;
 
 
 - (IBAction)openTripadvisor:(id)sender;

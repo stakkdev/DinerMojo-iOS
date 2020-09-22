@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BirthdayViewController" customModule="DinerMojo" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="bday" translatesAutoresizingMaskIntoConstraints="NO" id="Haa-OP-XLW">
+                    <rect key="frame" x="97.5" y="52.5" width="125" height="125"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Nn1-v9-Llb"/>
+                        <constraint firstAttribute="width" secondItem="Haa-OP-XLW" secondAttribute="height" multiplier="1:1" id="ugs-Dg-aAd"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hey... Happy Birthday???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrN-DT-aIv">
+                    <rect key="frame" x="20" y="197" width="280" height="31.5"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="23"/>
+                    <color key="textColor" red="0.99215686274509807" green="0.60784313725490191" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-fZ-hyz">
+                    <rect key="frame" x="30" y="258.5" width="260" height="163.5"/>
+                    <string key="text">We think birthdays are a big deal and would love to help you celebrate yours. 
+
+DinerMojo venues have some great rewards made specially available for birthdays. So, tell us when yours is and let the celebrating begin!</string>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                    <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHc-91-XYi">
+                    <rect key="frame" x="50" y="442" width="220" height="33"/>
+                    <color key="backgroundColor" red="0.12549019610000001" green="0.78039215689999997" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="Cqv-pU-PWd"/>
+                        <constraint firstAttribute="height" constant="33" id="UB0-7D-6C4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                    <state key="normal" title="Do it now">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="setBirthdayDate:" destination="-1" eventType="touchUpInside" id="JXD-Y5-qa2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ow-eS-D1a">
+                    <rect key="frame" x="50" y="485" width="220" height="33"/>
+                    <color key="backgroundColor" red="0.99215686270000003" green="0.60784313729999995" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="VwY-DX-JLg"/>
+                        <constraint firstAttribute="width" constant="220" id="rRj-iK-hyA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                    <state key="normal" title="Skip for now">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="skipForNow:" destination="-1" eventType="touchUpInside" id="HyZ-ZB-Dt7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lc-Vb-LAo">
+                    <rect key="frame" x="75.5" y="543" width="169" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="k7G-vo-nPz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                    <state key="normal" title="Skip and don't ask again">
+                        <color key="titleColor" red="0.99215686270000003" green="0.60784313729999995" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="skipForever:" destination="-1" eventType="touchUpInside" id="gp7-sJ-vmN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.79915164877300615" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Haa-OP-XLW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" id="59q-FN-5iI"/>
+                <constraint firstItem="8lc-Vb-LAo" firstAttribute="top" secondItem="2Ow-eS-D1a" secondAttribute="bottom" constant="25" id="9HS-gn-cB9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8lc-Vb-LAo" secondAttribute="bottom" constant="12" id="9lH-TH-mwi"/>
+                <constraint firstItem="KvG-fZ-hyz" firstAttribute="top" secondItem="NrN-DT-aIv" secondAttribute="bottom" constant="30" id="JWl-ND-Dkv"/>
+                <constraint firstItem="NrN-DT-aIv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="M3B-4b-z58"/>
+                <constraint firstItem="ZHc-91-XYi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SyF-Ci-4ET"/>
+                <constraint firstItem="2Ow-eS-D1a" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Tnq-7Z-18X"/>
+                <constraint firstItem="Haa-OP-XLW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" priority="750" constant="50" id="bX9-P7-E5l"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NrN-DT-aIv" secondAttribute="trailing" constant="20" id="bsS-zn-kYk"/>
+                <constraint firstItem="NrN-DT-aIv" firstAttribute="top" secondItem="Haa-OP-XLW" secondAttribute="bottom" constant="20" id="mlD-vT-6Tz"/>
+                <constraint firstItem="KvG-fZ-hyz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="oDy-u7-7wk"/>
+                <constraint firstItem="ZHc-91-XYi" firstAttribute="top" secondItem="KvG-fZ-hyz" secondAttribute="bottom" constant="20" id="pii-Dn-7Uv"/>
+                <constraint firstItem="Haa-OP-XLW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qD3-qX-lrv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KvG-fZ-hyz" secondAttribute="trailing" constant="30" id="qx0-Qg-13Y"/>
+                <constraint firstItem="2Ow-eS-D1a" firstAttribute="top" secondItem="ZHc-91-XYi" secondAttribute="bottom" constant="10" id="u96-Ky-upk"/>
+                <constraint firstItem="8lc-Vb-LAo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x6V-av-8ve"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="35" y="53"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bday" width="125" height="125"/>
+    </resources>
+</document>

@@ -8,7 +8,7 @@
 
 #import "DMRedeemCouponViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import "FBShimmeringView.h"
+#import <Shimmer/FBShimmeringView.h>
 #import "DMVenueImage.h"
 #import "DMDineNavigationController.h"
 #import "DMEarnReviewViewController.h"
@@ -26,8 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
     self.todaysDate = [NSDate date];
     
     self.dateFormatTodaysDate = [[NSDateFormatter alloc] init];
@@ -45,6 +43,7 @@
     self.viewForShimmer.alpha = 0.6;
     [self.viewToShimmer setBackgroundColor:[UIColor brandColor]];
     self.viewForShimmer.contentView = self.viewToShimmer;
+    self.randomCodeLabel.text = [self getRandomCode];
 
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(animate) userInfo:nil repeats:YES];
     [self decorateInterface];
@@ -52,11 +51,17 @@
     
 }
 
+- (NSString *)getRandomCode {
+    return [NSString stringWithFormat:@"%d%d%d%d", arc4random_uniform(9),arc4random_uniform(9),arc4random_uniform(9),arc4random_uniform(9)];
+}
+
 - (void)decorateInterface
 {
     [self.venueNameLabel setText:self.selectedVenue.name];
     [self.venueCuisineAreaLabel setText:[NSString stringWithFormat:@"%@ | %@", [[[self.selectedVenue categories] anyObject] name], self.selectedVenue.town]];
     self.currentUser = [[self userRequest] currentUser];
+    [self.userPointsLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.userPointsLabel setMinimumScaleFactor:0];
     [self.userPointsLabel setText:[NSString stringWithFormat:@"%@", self.currentUser.annual_points_balance]];
     DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
     
@@ -100,17 +105,14 @@
         
         NSError *error = nil;
         AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-        if (!input) {
+        if (input) {
+            [session addInput:input];
+            
+            [session startRunning];
         }
-        [session addInput:input];
-        
-        [session startRunning];
-        
     }
 
 }
-
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -137,9 +139,9 @@
 
 - (void)animate
 {
-    [self.dateLabel setText:[NSString stringWithFormat:@"Valid: %@ at %@", [self.dateFormatTodaysDate stringFromDate:self.todaysDate], [self.dateFormatTimeDate stringFromDate:[NSDate date]]]];
-    
-    
+    [self.dateLabel setText:[NSString stringWithFormat:@"Valid: %@ at %@",
+                             [self.dateFormatTodaysDate stringFromDate:self.todaysDate],
+                             [self.dateFormatTimeDate stringFromDate:[NSDate date]]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -149,8 +151,9 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ShowEarnRedeem"]) {
-        
-        DMEarnReviewViewController *earnViewController = segue.destinationViewController;
+        DMDineNavigationController *nav = segue.destinationViewController;
+        [nav setDineNavigationDelegate:self];
+        DMEarnReviewViewController *earnViewController = nav.viewControllers.firstObject;
         earnViewController.selectedVenueID = self.selectedVenue.modelID;
         earnViewController.selectedRedeemID = self.selectedRedeemID;
         earnViewController.hasRedeemed = YES;
@@ -158,41 +161,85 @@
 }
 
 - (IBAction)done:(id)sender {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"You can earn points immediately or at a later point." preferredStyle:UIAlertControllerStyleActionSheet];
-    
-//    alertController.view.tintColor = [UIColor brandColor];
-
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Close Voucher" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-        //reset brightness
-        [[UIScreen mainScreen] setBrightness: brightness];
-        
-        [(DMDineNavigationController *)[self navigationController] dineComplete];
-        
-        
-        
-    }];
-    
-    UIAlertAction *earn = [UIAlertAction actionWithTitle:@"Earn Points" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-        //reset brightness
-        [[UIScreen mainScreen] setBrightness: brightness];
-        
-        [self performSegueWithIdentifier:@"ShowEarnRedeem" sender:nil];
-        
-    }];
-    
-
-    
-    
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    
-    
-    [alertController addAction:ok];
-    [alertController addAction:earn];
-    [alertController addAction:cancel];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
+    [[self selectedVenue] setLast_redeem:[[NSDate alloc] init]];
+    [[self selectedVenue] setLast_redeem_name:self.selectedOfferItem.title];
+    //self.selectedOfferItem.title
+    //reset brightness
+    [[UIScreen mainScreen] setBrightness: brightness];
+    [self presentAfterTransactionPopUp];
 }
+
+- (IBAction)share:(id)sender {
+    [[self selectedVenue] setLast_redeem:[[NSDate alloc] init]];
+    [[self selectedVenue] setLast_redeem_name:self.selectedOfferItem.title];
+    //reset brightness
+    [[UIScreen mainScreen] setBrightness: brightness];
+    
+    FacebookShareManager *fbManager = [[FacebookShareManager alloc] init];
+    [fbManager shareWithPresentingVC:self url:@"http://google.pl"];
+}
+
+- (void)presentAfterTransactionPopUp {
+    [AfterTransactionPopUpManager downloadPopUpModelForVenue:self.selectedVenue.modelIDValue completion:^(PopUpModel *model) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!model) {
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                return;
+            }
+            DMOperationCompletePopUpViewController* popUpVc = [AfterTransactionPopUpManager createPopUpWithModel:model forDelegate:self];
+            [popUpVc setModalPresentationStyle:UIModalPresentationOverFullScreen];
+            [self presentViewController:popUpVc animated:YES completion:nil];
+        });
+    }];
+}
+
+- (void)actionButtonPressedFromOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController {
+    [operationCompletePopupViewController dismissViewControllerAnimated:YES completion:nil];
+    [(DMDineNavigationController *)[self navigationController] dineComplete];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)actionButtonPressedFromOperationCompletePopupViewController:(DMAfterTransactionPopUpViewController *)operationCompletePopupViewController ofType:(NSString *)type {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    if ([type isEqualToString:@"Booking"] || [type isEqualToString:@"Redeeming points"] || [type isEqualToString:@"Earn"]) {
+        DMRestaurantInfoViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"DMRestaurantInfo"];
+        DMVenue *venue = [DMVenue MR_findFirstByAttribute:@"modelID" withValue:operationCompletePopupViewController.venueId];
+        [vc setSelectedVenue:venue];
+        [(DMDineNavigationController *)[self navigationController] dineCompleteWithVc:vc];
+    } else if ([type isEqualToString:@"Referral"]) {
+        DMReferAFriendViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"DMReferAFriendViewController"];
+        DMUser *user = [self.userRequest currentUser];
+        int16_t points = user.referred_pointsValue;
+        vc.referredPoints = [NSString stringWithFormat:@"%hd", points];
+        [(DMDineNavigationController *)[self navigationController] dineCompleteWithVc:vc];
+    }
+}
+
+- (void)readyToDismissCompletedDineNavigationController:(DMDineNavigationController *)dineNavigationController
+{
+   [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)readyToDismissCancelledDineNavigationController:(DMDineNavigationController *)dineNavigationController
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion: nil];
+}
+
+- (void)readyToDissmisOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+    
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer { }
+
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
+    [self presentAfterTransactionPopUp];
+    DMVenueRequest *request = [[DMVenueRequest alloc] init];
+    [request shareReceivePoints:^(NSError *error, id results) { }];
+}
+    
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error { }
+  
 @end
+   

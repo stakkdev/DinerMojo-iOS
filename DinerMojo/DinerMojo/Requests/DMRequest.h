@@ -24,23 +24,24 @@ typedef void(^RequestCompletion)(NSError *error, id results);
 @property (nonatomic, strong) NSManagedObjectContext *objectContext;
 @property (nonatomic, strong) DMMappingProvider *mappingProvider;
 
-@property (nonatomic, strong) AFHTTPRequestOperationManager *httpManager;
-@property (nonatomic, strong) AFHTTPRequestOperationManager *s3Manager;
+@property (nonatomic, strong) AFHTTPSessionManager *httpManager;
+@property (nonatomic, strong) AFHTTPSessionManager *s3Manager;
 
 
 +(NSString *)currentUserToken;
 +(void)updateCurrentUserToken:(NSString *)token;
--(AFHTTPRequestOperationManager *)jsonManager;
+-(AFHTTPSessionManager *)jsonManager;
 
 -(void)setUsesTokenAuthorization;
 
 -(NSString *)buildURL:(NSString *)path;
 -(NSString *)buildMediaURL:(NSString *)path;
--(NSError *)errorWithStatusCode:(AFHTTPRequestOperation *)operation withBaseError:(NSError *)error;
+-(NSError *)errorWithStatusCode:(NSURLSessionTask *)operation withBaseError:(NSError *)error;
 
 -(void)GET:(NSString *)url withParams:(NSDictionary *)params  withCompletionBlock:(RequestCompletion)completionBlock;
 -(void)POST:(NSString *)url withParams:(NSDictionary *)params  withCompletionBlock:(RequestCompletion)completionBlock;
 -(void)POST:(NSString *)url withParams:(NSDictionary *)params withBody:(void (^)(id <AFMultipartFormData> formData))body withCompletionBlock:(RequestCompletion)completionBlock;
+-(void)POST:(NSString *)url withParams:(NSDictionary *)params withBodyDict:(NSDictionary *)body withCompletionBlock:(RequestCompletion)completionBlock;
 -(void)PUT:(NSString *)url withParams:(NSDictionary *)params  withCompletionBlock:(RequestCompletion)completionBlock;
 -(void)PATCH:(NSString *)url withParams:(NSDictionary *)params  withCompletionBlock:(RequestCompletion)completionBlock;
 -(void)DELETE:(NSString *)url withParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;

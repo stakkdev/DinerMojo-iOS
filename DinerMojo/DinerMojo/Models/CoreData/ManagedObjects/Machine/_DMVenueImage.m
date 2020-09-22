@@ -3,7 +3,6 @@
 
 #import "_DMVenueImage.h"
 
-
 const struct DMVenueImageAttributes DMVenueImageAttributes = {
 	.image = @"image",
 	.image_description = @"image_description",
@@ -11,17 +10,10 @@ const struct DMVenueImageAttributes DMVenueImageAttributes = {
 	.thumb = @"thumb",
 };
 
-
-
 const struct DMVenueImageRelationships DMVenueImageRelationships = {
 	.venue = @"venue",
 	.venue_primary = @"venue_primary",
 };
-
-
-
-
-
 
 @implementation DMVenueImageID
 @end
@@ -48,57 +40,21 @@ const struct DMVenueImageRelationships DMVenueImageRelationships = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic image;
-
-
-
-
-
 
 @dynamic image_description;
 
-
-
-
-
-
 @dynamic name;
-
-
-
-
-
 
 @dynamic thumb;
 
-
-
-
-
-
 @dynamic venue;
-
-	
 
 @dynamic venue_primary;
 
-	
-
-
-
-
-
-
 @end
-
-
-
 

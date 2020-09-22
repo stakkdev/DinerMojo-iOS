@@ -11,8 +11,14 @@
 #import "DMNewsRequest.h"
 #import "DMOfferItem.h"
 #import "DMDineViewController.h"
+#import "DMRedeemViewController.h"
+#import <Crashlytics/Answers.h>
+#import <PureLayout/PureLayout.h>
+#import "DinerMojo-Swift.h"
 
 @interface DMNewsItemViewController ()
+@property (weak, nonatomic) IBOutlet DMButton *viewRestaurantButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewRestaurantHeight;
 
 @end
 
@@ -21,14 +27,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self decorateInterface];
+    [self setupNewsLabel];
     self.automaticallyAdjustsScrollViewInsets = NO;
-
-    
 }
 
 -(void)viewDidLayoutSubviews
 {
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.newsTermsLabel.frame.origin.y + self.newsTermsLabel.frame.size.height + 10);
+    CGRect contentRect = CGRectZero;
+    for (UIView *view in self.scrollView.subviews) {
+        contentRect = CGRectUnion(contentRect, view.frame);
+    }
+    self.scrollView.contentSize = contentRect.size;
+    /*CGSizeMake(self.view.frame.size.width, self.newsTermsLabel.frame.origin.y + self.newsTermsLabel.frame.size.height + 10);*/
+//    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.newsTermsLabel.frame.origin.y + self.newsTermsLabel.frame.size.height + self.newsLabel.frame.size.height + 10);
 
 }
 
@@ -50,6 +61,35 @@
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 
+- (void)setupNewsLabel {
+    NSString *text = self.newsTextView.text;
+    NSDataDetector *detector = [[NSDataDetector alloc]
+                                initWithTypes: NSTextCheckingTypeLink
+                                error: nil];
+    NSArray<NSTextCheckingResult *> *matches = [detector matchesInString: text
+                                         options: NSMatchingReportCompletion
+                                           range: NSMakeRange(0, text.length)];
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+    for (int i = 0; i < matches.count; ++i) {
+        NSURL *url = [[NSURL alloc] initWithString: [text substringWithRange:matches[i].range]];
+        [attributedText addAttributes:@{
+                                        NSLinkAttributeName: url,
+                                        }
+                                range:matches[i].range];
+        [attributedText addAttributes:@{
+                                        NSFontAttributeName: [UIFont fontWithName:@"OpenSans" size:14.0]
+                                        }
+                                range: NSMakeRange(0, text.length)];
+    }
+    self.newsTextView.attributedText = attributedText;
+    self.newsTextView.userInteractionEnabled = YES;
+    self.newsTextView.tintColor = [UIColor brandColor];
+    self.newsTextView.dataDetectorTypes = NSTextCheckingTypeLink;
+    self.newsTextView.editable = NO;
+    [self.newsTextView sizeToFit];
+    self.newsTextView.scrollEnabled = false;
+}
+
 - (void)buildRedeemOfferButton
 {
     if ([[self userRequest] isUserLoggedIn] == YES)
@@ -57,7 +97,13 @@
         NSInteger pointsRequired = [[(DMOfferItem *)[self selectedItem] points_required] integerValue];
         if ([[[[self userRequest] currentUser] annual_points_balance] integerValue] >= pointsRequired)
         {
-            NSString *buttonTitle = (pointsRequired == 1) ? [NSString stringWithFormat:@"Redeem with %li point", (long)pointsRequired] : [NSString stringWithFormat:@"Redeem with %li points", (long)pointsRequired];
+            NSString *buttonTitle;
+            if (pointsRequired == 0) {
+                buttonTitle = @"It's free for DinerMojo members!";
+            } else {
+                buttonTitle = (pointsRequired == 1) ? [NSString stringWithFormat:@"Redeem with %li point", (long)pointsRequired] : [NSString stringWithFormat:@"Redeem with %li points", (long)pointsRequired];
+            }
+            
             [self.redeemButton setBackgroundColor:[UIColor offersColor]];
             [self.redeemButton setTitle:buttonTitle forState:UIControlStateNormal];
         }
@@ -79,17 +125,26 @@
     [dateFormat setDateFormat:@"d MMM ''yy"];
     UIImage *placeHolderImage;
     UIColor *imageBGColour;
-    if ([self.selectedItem.update_type isEqualToNumber:[NSNumber numberWithInt:1]])
+    UIViewContentMode imgContentMode = UIViewContentModeCenter;
+    
+    BOOL isProdigal = [self.selectedItem.update_type isEqualToNumber:[NSNumber numberWithInt:5]];
+    
+    if ([self.selectedItem.update_type isEqualToNumber:[NSNumber numberWithInt:1]] || isProdigal)
     {
+        if(isProdigal) {
+            [self.restaurantButton setTitle:@"Check rewards!" forState:UIControlStateNormal];
+        }
+        
         [self.newsTitleLabel setTextColor:[UIColor brandColor]];
         [self.restaurantButton setBackgroundColor:[UIColor brandColor]];
         [self.newsDateLabel setText:[dateFormat stringFromDate:self.selectedItem.created_at]];
         [self.newsTermsLabel setText:@""];
         [self.redeemButtonHeightConstraint setConstant:0.0];
-        placeHolderImage = [UIImage imageNamed:@"large_news_default"];
+        placeHolderImage = [UIImage imageNamed:@"news_empty_image_state"];
         imageBGColour = [UIColor newsColor];
+        imgContentMode = UIViewContentModeScaleAspectFill;
     }
-    if ([self.selectedItem.update_type isEqualToNumber:[NSNumber numberWithInt:2]])
+    if ([self.selectedItem.update_type isEqualToNumber:[NSNumber numberWithInt:2]] || [self.selectedItem.update_type isEqualToNumber:[NSNumber numberWithInt:3]])
     {
         [self.newsTitleLabel setTextColor:[UIColor offersColor]];
         [self.restaurantButton setBackgroundColor:[UIColor offersColor]];
@@ -110,7 +165,7 @@
         imageBGColour = [UIColor offersColor];
     }
     
-    self.newsImageView.contentMode = UIViewContentModeCenter;
+    self.newsImageView.contentMode = imgContentMode;
     [self.newsImageView setImage:placeHolderImage];
     [self.newsImageView setBackgroundColor:imageBGColour];
     
@@ -127,7 +182,7 @@
     }
     
     [self.newsTitleLabel setText:self.selectedItem.title];
-    [self.newsLabel setText:self.selectedItem.news_description];
+    [self.newsTextView setText:self.selectedItem.news_description];
     
     
     [self.navigationItem setTitle:[self.selectedItem.venue name]];
@@ -144,10 +199,17 @@
     [self.view.layer insertSublayer:layer above:self.view.layer];
     self.view.layer.masksToBounds = NO;
 
+
+    if(self.selectedItem.venue == nil) {
+        [self.restaurantButton setHidden:YES];
+        self.viewRestaurantHeight.constant = 0;
+    }
+    
+    self.navigationController.navigationBar.backItem.title = @" ";
+    self.navigationController.navigationBar.topItem.title = @" ";
 }
 
 #pragma mark - UIScrollView
-
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -176,11 +238,15 @@
         [self.newsImageView setImage:newImage];
     }
     
-    else if (self.scrollView.contentOffset.y == 0)
+    else if (self.scrollView.contentOffset.y <= 0)
     {
         DMNewsRequest *request = [DMNewsRequest new];
-        NSURL *url = [NSURL URLWithString:[request buildMediaURL:self.selectedItem.image]];
-        [self.newsImageView setImageWithURL:url];
+        if(self.selectedItem.image.length != 0) {
+            NSURL *url = [NSURL URLWithString:[request buildMediaURL:self.selectedItem.image]];
+            [self.newsImageView setImageWithURL:url];
+        } else {
+            [self.newsImageView setImage:[UIImage imageNamed:@"news_empty_image_state"]];
+        }
        
         
     }
@@ -206,28 +272,58 @@
 }
 
 - (IBAction)share:(id)sender {
+    NSString *name = @"";
+    if(self.selectedItem.venue == NULL) {
+        name = @"system";
+    } else {
+        name = self.selectedItem.title;
+    }
     
+    [Answers logShareWithMethod:[NSString stringWithFormat:@"Share newsfeed"] contentName:[NSString stringWithFormat:@"Share newsfeed - %@", name] contentType:@"" contentId:@"" customAttributes:@{}];
     UIImage *image = self.newsImageView.image;
-    NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/app/id1017632373"];
-    NSString *text = @"DinerMojo lets me know about fantastic offers and gives me loyalty rewards from places like this ";
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[text, image, url] applicationActivities:nil];
+    NSString *text = @"With the DinerMojo app, you can enjoy fantastic members-only rewards and experiences at some of the very best independent restaurants and lifestyle venues.\nhttp://bit.ly/DownloadFromTheAppStore\nhttp://bit.ly/DownloadFromGooglePlay";
     
+    DMActivityViewController *activityViewController = [[DMActivityViewController alloc] initWithActivityItems:@[text, image] applicationActivities:nil];
+    
+    [activityViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self.navigationController presentViewController:activityViewController animated:YES completion:^{}];
 
 }
 
 - (IBAction)viewRestaurant:(id)sender
 {
-    DMVenue *item = (DMVenue *) self.selectedItem.venue;
-    [self performSegueWithIdentifier:@"showRestaurantInfoNewsSegue" sender:item];
+    BOOL isProdigal = [self.selectedItem.update_type isEqualToNumber:[NSNumber numberWithInt:5]];
+    
+    if(isProdigal) {
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:NULL];
+        DMRedeemViewController *vc = [sb instantiateViewControllerWithIdentifier:@"RedeemViewController"];
+        vc.selectedVenue = self.selectedItem.venue;
+        vc.shouldCloseOnButtonTap = YES;
+        DMDineNavigationController *nav = [[DMDineNavigationController alloc] initWithRootViewController:vc];
+        [nav setNavigationBarHidden:YES];
+        [nav setDineNavigationDelegate:self];
+        [nav setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [self.navigationController presentViewController:nav animated:YES completion:NULL];
+    } else if(self.selectedItem.venue != nil) {
+        DMVenue *item = (DMVenue *) self.selectedItem.venue;
+        [self performSegueWithIdentifier:@"showRestaurantInfoNewsSegue" sender:item];
+    }
 }
 
 - (void)gotoRedeemOffer
 {
-    [[self tabBarController] setSelectedIndex:2];
-    UINavigationController *navigationController = [[[self tabBarController] viewControllers] objectAtIndex:2];
-    DMDineViewController *viewController = (DMDineViewController *)[[navigationController viewControllers] objectAtIndex:0];
-    [viewController setInitialOffer:(DMOfferItem *)[self selectedItem]];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:NULL];
+    DMRedeemViewController *vc = [sb instantiateViewControllerWithIdentifier:@"RedeemViewController"];
+    vc.selectedVenue = self.selectedItem.primitiveVenue;
+    vc.shouldCloseOnButtonTap = YES;
+    [vc setStandardRedeem:NO];
+    vc.selectedOfferItem = (DMOfferItem *)[self selectedItem];
+    DMDineNavigationController *nav = [[DMDineNavigationController alloc] initWithRootViewController:vc];
+    [nav setNavigationBarHidden:YES];
+    [nav setDineNavigationDelegate:self];
+    [nav setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self.navigationController presentViewController:nav animated:YES completion:NULL];
+
 }
 
 - (IBAction)redeemOffer:(id)sender
@@ -251,6 +347,18 @@
             }];
         }];
     }
+}
+
+- (void)readyToDismissCompletedDineNavigationController:(DMDineNavigationController *)dineNavigationController {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)readyToDismissCompletedDineNavigationController:(DMDineNavigationController *)dineNavigationController with:(UIViewController *)vc {
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)readyToDismissCancelledDineNavigationController:(DMDineNavigationController *)dineNavigationController {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

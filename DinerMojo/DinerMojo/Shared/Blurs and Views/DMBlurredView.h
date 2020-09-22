@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 hedgehog lab. All rights reserved.
 //
 
-#import "SVBlurView.h"
+#import <SVBlurView/SVBlurView.h>
 
 @class DMBlurredView;
 

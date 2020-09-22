@@ -12,6 +12,7 @@
 #import "DMTransactionsModelController.h"
 #import "DMRedeemTransaction.h"
 #import "DMEarnTransaction.h"
+#import <Crashlytics/Answers.h>
 
 @interface DMTransactionTimelineViewController ()
 
@@ -39,6 +40,8 @@
     self.tableView.tableFooterView = nibView;
     [self.tableView setHidden:YES];
     [[self emptyTableLabel] setHidden:YES];
+    
+    [Answers logContentViewWithName:@"View timeline" contentType:@"View timeline" contentId:@"" customAttributes:@{}];
     
 }
 
@@ -225,7 +228,6 @@
 {
     DMTransactionTableViewCell *cell = (DMTransactionTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
     cell.selected = NO;
-
     DMTransaction *transaction = [[[self transactionModelController] transactions] objectAtIndex:indexPath.row];
     
     self.selectedTransaction = transaction;
@@ -299,7 +301,7 @@
     [headerLabel setNumberOfLines:2];
     [headerLabel setTextAlignment:NSTextAlignmentCenter];
     [headerLabel setFont:[UIFont fontWithName:@"Open Sans" size:17.0]];
-    [headerLabel setText:@"Click on any of the transactions below to see more details for it"];
+    [headerLabel setText:@"Click a transaction for more details"];
     [headerLabel setTextColor:[UIColor blackColor]];
     [headerLabel setBackgroundColor:[UIColor colorWithRed:232.0 / 255.0 green:232.0 / 255.0 blue:232.0 / 255.0 alpha:1.0]];
     return headerLabel;

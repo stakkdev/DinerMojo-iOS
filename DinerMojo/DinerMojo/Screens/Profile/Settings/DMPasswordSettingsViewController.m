@@ -34,6 +34,7 @@
     
     [alertController addAction:ok];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

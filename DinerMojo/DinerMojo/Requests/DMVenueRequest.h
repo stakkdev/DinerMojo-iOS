@@ -10,7 +10,12 @@
 
 @interface DMVenueRequest : DMRequest
 
--(void)downloadVenuesWithCompletionBlock:(RequestCompletion)completionBlock;
+- (void)downloadVenuesWithCompletionBlock:(RequestCompletion)completionBlock;
 - (void)downloadLiveVenuesWithCompletionBlock:(RequestCompletion)completionBlock;
+- (void)downloadVenueCategoriesWithCompletionBlock:(RequestCompletion)completionBlock;
+- (void)postBooking:(NSNumber *)venueId date:(NSString *)date number:(NSNumber *)number clientDesc:(NSString *)clientDesc phone:(NSString *)phone completion:(RequestCompletion)completionBlock;
+- (void)updateBookingTracker:(NSNumber *)venueId completion:(RequestCompletion)completionBlock;
+- (void)getBookingByID:(NSNumber *)bookingId completionBlock:(RequestCompletion)completionBlock;
+- (void)shareReceivePoints:(RequestCompletion)completionBlock;
 
 @end

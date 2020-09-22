@@ -36,5 +36,14 @@ typedef NS_ENUM(NSInteger, DMUserMojoLevel) {
 - (NSString *)initials;
 - (NSString *)profilePictureFullURL;
 - (DMUserMojoLevel)mojoLevel;
+- (NSInteger)pointsToNextLevel;
+- (UIColor *)getMojoLevelColor:(NSArray *)levels;
+- (UIColor *)getMojoHighestLevelColor:(NSArray *)levels;
+- (UIColor *)colorForMojoLevel:(int)level;
+- (DMUserMojoLevel)nextMojoLevel;
+- (BOOL)availableMojoLevels:(NSArray *)level;
+- (NSString *)nextMojoLevelName;
+- (NSString *)myMojoLevelName;
+
 
 @end

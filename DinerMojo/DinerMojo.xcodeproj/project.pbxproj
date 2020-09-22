@@ -6,33 +6,94 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		7A8C4BB21B1CB2AA00F1A798 /* Mogenerator */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 7A8C4BB31B1CB2AA00F1A798 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
-			buildPhases = (
-				7A8C4BB91B1CB2D000F1A798 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = Mogenerator;
-			productName = Mogenerator;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
+		2702171C20638EF20041CD6F /* DMActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702171B20638EF20041CD6F /* DMActivityViewController.swift */; };
+		27037C4720B5B06A00B47313 /* AcceptGdprViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27037C4520B5B06A00B47313 /* AcceptGdprViewController.swift */; };
+		27037C4820B5B06A00B47313 /* AcceptGdprViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27037C4620B5B06A00B47313 /* AcceptGdprViewController.xib */; };
+		27131C701DEF11720095FC53 /* TabsFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27131C6F1DEF11720095FC53 /* TabsFilterView.xib */; };
+		27131C731DEF25620095FC53 /* TabsFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27131C721DEF25620095FC53 /* TabsFilterView.m */; };
+		2721163C1EB7739C00E01B6A /* SubscriptionsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2721163B1EB7739C00E01B6A /* SubscriptionsObject.m */; };
+		2724BD841F7D177600427F11 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724BD831F7D177600427F11 /* PickerTextField.swift */; };
+		27268707206A0D880031B3CE /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27268705206A0D880031B3CE /* BirthdayViewController.swift */; };
+		27268708206A0D880031B3CE /* BirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27268706206A0D880031B3CE /* BirthdayViewController.xib */; };
+		272F24C81EFD092E00B379ED /* SelectedNotificationsDining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F24C71EFD092E00B379ED /* SelectedNotificationsDining.swift */; };
+		272F24CA1EFD09AA00B379ED /* SelectedNotificationsLifestyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F24C91EFD09AA00B379ED /* SelectedNotificationsLifestyle.swift */; };
+		272F24CE1EFD0A7D00B379ED /* SelectedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F24CD1EFD0A7D00B379ED /* SelectedNotification.swift */; };
+		272F24D01EFD0E8900B379ED /* SelectedNotificationsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272F24CF1EFD0E8800B379ED /* SelectedNotificationsParser.swift */; };
+		2738C09C1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738C09A1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.swift */; };
+		2738C09D1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2738C09B1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.xib */; };
+		2738C09F1EBC94F800C7B265 /* DMNotificationVenueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738C09E1EBC94F800C7B265 /* DMNotificationVenueDelegate.swift */; };
+		273ADE851E97BE0300997F5D /* TableViewSelectForGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273ADE841E97BE0300997F5D /* TableViewSelectForGroup.swift */; };
+		274953BB20E652420016945F /* FacebookShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274953BA20E652420016945F /* FacebookShareManager.swift */; };
+		275F2AAD1EA79B0400EE91D4 /* DMSortNewsOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F2AAC1EA79B0400EE91D4 /* DMSortNewsOptionsProvider.swift */; };
+		2769EB811F34C33800C4E0D5 /* ResizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2769EB801F34C33800C4E0D5 /* ResizableButton.swift */; };
+		276AED111F2A01A700042D31 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276AED0F1F2A01A700042D31 /* BookingViewController.swift */; };
+		276AED121F2A01A700042D31 /* BookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276AED101F2A01A700042D31 /* BookingViewController.xib */; };
+		276AED161F2A4CC300042D31 /* StartupNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276AED141F2A4CC300042D31 /* StartupNotificationsViewController.swift */; };
+		276AED171F2A4CC300042D31 /* StartupNotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276AED151F2A4CC300042D31 /* StartupNotificationsViewController.xib */; };
+		276E02161EA55D0F006A79EA /* DMSortNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E02151EA55D0F006A79EA /* DMSortNewsFeedViewController.m */; };
+		278159171E9CDA41009B3B3C /* DMLocationInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278159161E9CDA41009B3B3C /* DMLocationInfoItem.swift */; };
+		278159191E9CDAC8009B3B3C /* DMLocationInfoItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 278159181E9CDAC8009B3B3C /* DMLocationInfoItemCell.xib */; };
+		2781591B1E9CDAF4009B3B3C /* DMLocationInfoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2781591A1E9CDAF4009B3B3C /* DMLocationInfoItemCell.swift */; };
+		278750341EC31AFC00BCFD4E /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278750321EC31AFC00BCFD4E /* StartupViewController.swift */; };
+		278750351EC31AFC00BCFD4E /* StartupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 278750331EC31AFC00BCFD4E /* StartupViewController.xib */; };
+		278E862B1EB8B40200A6E8B7 /* DMNotificationVenueListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278E862A1EB8B40200A6E8B7 /* DMNotificationVenueListViewController.m */; };
+		278E862D1EB8D2D700A6E8B7 /* DMVenuesNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E862C1EB8D2D700A6E8B7 /* DMVenuesNotificationCell.swift */; };
+		278E862F1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E862E1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift */; };
+		278E86311EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 278E86301EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib */; };
+		278E86331EB92B5D00A6E8B7 /* DMNotificationsVenueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278E86321EB92B5D00A6E8B7 /* DMNotificationsVenueProvider.swift */; };
+		278F7ECA1E9F87B7000D1E87 /* TabBarButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278F7EC71E9F87B7000D1E87 /* TabBarButtonsView.swift */; };
+		278F7ECB1E9F87B7000D1E87 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278F7EC81E9F87B7000D1E87 /* TabBarItemView.swift */; };
+		278F7ECC1E9F87B7000D1E87 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278F7EC91E9F87B7000D1E87 /* TabBarView.swift */; };
+		279C840B1EF82EAA00629C2A /* UIView+InnerShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 279C840A1EF82EAA00629C2A /* UIView+InnerShadow.m */; };
+		27A992A6206CC23000C480EC /* CannotRedeemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A992A4206CC23000C480EC /* CannotRedeemViewController.xib */; };
+		27A992A7206CC23000C480EC /* CannotRedeemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A992A5206CC23000C480EC /* CannotRedeemViewController.swift */; };
+		27B4B4FC1E9A7DC100674929 /* DMSortByDistanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4B4FB1E9A7DC100674929 /* DMSortByDistanceItem.swift */; };
+		27B4B4FE1E9BCCC200674929 /* fdt.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 27B4B4FD1E9BCCC200674929 /* fdt.gpx */; };
+		27B883241EACD9910082DA88 /* DMVenuesOptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B883231EACD9910082DA88 /* DMVenuesOptionItem.swift */; };
+		27B883261EACD9980082DA88 /* DMVenuesOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B883251EACD9980082DA88 /* DMVenuesOptionCell.swift */; };
+		27B883281EACD9AC0082DA88 /* DMVenuesOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B883271EACD9AC0082DA88 /* DMVenuesOptionCell.xib */; };
+		27B8832A1EACE6320082DA88 /* DMRadioViewOption.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B883291EACE6320082DA88 /* DMRadioViewOption.xib */; };
+		27B8832C1EACE7DF0082DA88 /* DMRadioViewOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B8832B1EACE7DF0082DA88 /* DMRadioViewOption.swift */; };
+		27C745F71EB0E5EC00614D50 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C745F61EB0E5EC00614D50 /* CustomTabBar.swift */; };
+		27CA5C2A1E9F898000D0AFF6 /* TabBarItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA5C291E9F898000D0AFF6 /* TabBarItemDelegate.swift */; };
+		27CA5C2E1E9F89F800D0AFF6 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA5C2D1E9F89F800D0AFF6 /* TabBarItem.swift */; };
+		27CA5C301E9F89FE00D0AFF6 /* TabBarItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA5C2F1E9F89FE00D0AFF6 /* TabBarItemBuilder.swift */; };
+		27F95826206B667C00A4537F /* LeaveRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F95824206B667C00A4537F /* LeaveRatingViewController.swift */; };
+		27F95827206B667C00A4537F /* LeaveRatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27F95825206B667C00A4537F /* LeaveRatingViewController.xib */; };
+		2C6C543B1FD9392D006C147D /* TurnOnNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C54391FD9392D006C147D /* TurnOnNotificationsViewController.swift */; };
+		2C6C543C1FD9392D006C147D /* TurnOnNotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C543A1FD9392D006C147D /* TurnOnNotificationsViewController.xib */; };
+		2C6C543E1FD93FF3006C147D /* SGNotificationsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C543D1FD93FF3006C147D /* SGNotificationsSettings.swift */; };
+		2C9ADB482036D45C004CC839 /* FakeOfferObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ADB472036D45C004CC839 /* FakeOfferObject.m */; };
+		2C9ADB4C2036D501004CC839 /* RedeemPointsToNextLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ADB4A2036D501004CC839 /* RedeemPointsToNextLevelCell.m */; };
+		2C9ADB4D2036D501004CC839 /* RedeemPointsToNextLevelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C9ADB4B2036D501004CC839 /* RedeemPointsToNextLevelCell.xib */; };
+		2CA9619620FF176200BCE54F /* DMAttributedStringDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA9619520FF176200BCE54F /* DMAttributedStringDecorator.swift */; };
+		30CFF193F6E28FAB5AFFB44B /* DMDistanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFF0F30753CC1A624F1164 /* DMDistanceItem.swift */; };
+		30CFF222856F4343BDE03221 /* DMNotificationSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CFFF2CEB4847BD98C5FF8E /* DMNotificationSettingsViewController.m */; };
+		30CFF26A31D8D5EBACC7CFA2 /* DMNotificationItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFFD0974CFC65F33B1C46A /* DMNotificationItemsFactory.swift */; };
+		30CFF9BDACF938334F981DA3 /* DMNotificationsSettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFF02BBED0B36A040B9437 /* DMNotificationsSettingsProvider.swift */; };
+		30CFFA71FE8513CEFE79601A /* DMSortItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFF1DDB82240746721AB9E /* DMSortItemsFactory.swift */; };
+		30CFFBEB3DB4E850D0488741 /* DMNotificationSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFF4ED470E8D94871EE7AD /* DMNotificationSelectionManager.swift */; };
+		30CFFEE6B01E7FBCD3BB9BD3 /* DMSortSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFF6E8F7620FE5FC9F3D1C /* DMSortSelectionManager.swift */; };
+		3323F5F2F0E28D3ED1945F82 /* FilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323F53AADBEADE1E44C5962 /* FilterItem.swift */; };
+		38D0806C05E10159D1F9258B /* Pods_DinerMojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFBD548645FCBFC997274CD /* Pods_DinerMojo.framework */; };
 		5A5EE0F61AF3AB9B00F3C796 /* DMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EE0F51AF3AB9B00F3C796 /* DMViewController.m */; };
 		5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF0841B284DEE00E0FC90 /* DMWebViewController.m */; };
 		5A5FF0881B286BEF00E0FC90 /* DMShadowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF0871B286BEF00E0FC90 /* DMShadowImageView.m */; };
 		5A68207C1B39A3A500C7F4A4 /* DMTransactionsModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A68207B1B39A3A500C7F4A4 /* DMTransactionsModelController.m */; };
 		5A7565141B414AFC00434B3D /* DMLocationServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7565131B414AFC00434B3D /* DMLocationServices.m */; };
-		5A7565171B416E0800434B3D /* DMSortNewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7565161B416E0800434B3D /* DMSortNewsfeedViewController.m */; };
+		5A7565171B416E0800434B3D /* DMSortVenueFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7565161B416E0800434B3D /* DMSortVenueFeedViewController.m */; };
 		5A7BFBB71B1DB16700255A25 /* DMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BFBB61B1DB16700255A25 /* DMButton.m */; };
 		5A7BFBBB1B1DC11700255A25 /* DMRestaurantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7BFBB91B1DC11700255A25 /* DMRestaurantCell.m */; };
 		5A7BFBBC1B1DC11700255A25 /* DMRestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A7BFBBA1B1DC11700255A25 /* DMRestaurantCell.xib */; };
 		5AA165721AFA3AA900447304 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AA165711AFA3AA900447304 /* Main.storyboard */; };
 		5AE837521B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE837511B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m */; };
-		760EDAE3ED64DE505C89B933 /* libPods-DinerMojo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C2AAA2E2C18200D50E5E79 /* libPods-DinerMojo.a */; };
+		5E37F01A21F5EB6B00D85C82 /* StateSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E37F01921F5EB6B00D85C82 /* StateSerializer.swift */; };
+		5E67527A222FDF8A0016B402 /* DMPopUpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E675279222FDF8A0016B402 /* DMPopUpRequest.m */; };
+		5E67527D223005B10016B402 /* PopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E67527C223005B10016B402 /* PopUpModel.swift */; };
+		5E67527F223141400016B402 /* AfterTransactionPopUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E67527E223141400016B402 /* AfterTransactionPopUpManager.swift */; };
+		5E675282223142D40016B402 /* DMAfterTransactionPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E675281223142D40016B402 /* DMAfterTransactionPopUpViewController.m */; };
+		5E93522F221B051E00BF2B5A /* RestaurantInfoButtonEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E93522E221B051E00BF2B5A /* RestaurantInfoButtonEnum.m */; };
 		7A01294B1B2741C800D46B39 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A01294A1B2741C800D46B39 /* UIImage+ImageEffects.m */; };
 		7A1AF3051B21BB250072F013 /* DMNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF3041B21BB250072F013 /* DMNewsRequest.m */; };
 		7A1AF3081B21F2310072F013 /* DMNewsItemModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AF3071B21F2310072F013 /* DMNewsItemModelController.m */; };
@@ -73,7 +134,6 @@
 		7A8C4B841B1C9AD500F1A798 /* DMNewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B581B1C9AD500F1A798 /* DMNewsFeedViewController.m */; };
 		7A8C4B851B1C9AD500F1A798 /* DMNewsItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B5A1B1C9AD500F1A798 /* DMNewsItemViewController.m */; };
 		7A8C4B871B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B5F1B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m */; };
-		7A8C4B881B1C9AD500F1A798 /* DMNotificationSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B611B1C9AD500F1A798 /* DMNotificationSettingsViewController.m */; };
 		7A8C4B891B1C9AD500F1A798 /* DMPasswordSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B631B1C9AD500F1A798 /* DMPasswordSettingsViewController.m */; };
 		7A8C4B8A1B1C9AD500F1A798 /* DMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B651B1C9AD500F1A798 /* DMProfileViewController.m */; };
 		7A8C4B8C1B1C9AD500F1A798 /* DMReferAFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C4B691B1C9AD500F1A798 /* DMReferAFriendViewController.m */; };
@@ -93,7 +153,6 @@
 		7AC3FE6B1AEE3E7600AD12E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */; };
 		7AC3FE761AEE3E7600AD12E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3FE751AEE3E7600AD12E0 /* Images.xcassets */; };
 		7AC3FE791AEE3E7600AD12E0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3FE771AEE3E7600AD12E0 /* LaunchScreen.xib */; };
-		7AC3FE851AEE3E7600AD12E0 /* DinerMojoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3FE841AEE3E7600AD12E0 /* DinerMojoTests.m */; };
 		7AC78DED1B01022E00AEA451 /* DMBlurredView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AC78DEC1B01022E00AEA451 /* DMBlurredView.m */; };
 		7ACE9F731B1D0FAA0001F20C /* DMManagedObjectDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACE9F701B1D0FAA0001F20C /* DMManagedObjectDeserializer.m */; };
 		7ACE9F741B1D0FAA0001F20C /* DMMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACE9F721B1D0FAA0001F20C /* DMMappingProvider.m */; };
@@ -109,7 +168,25 @@
 		7AEF14AC1B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF14A21B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf */; };
 		7AF517EF1B440E3100FA5221 /* DMMappingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF517EE1B440E3100FA5221 /* DMMappingHelper.m */; };
 		7AFF9EF41B2B441900F6C9B6 /* DMReferralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */; };
-		A2CF14C327DB20599D45221F /* libPods-DinerMojoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CEF98974663460352811DB /* libPods-DinerMojoTests.a */; };
+		9433A7AE24B32D2000449F8B /* PKHUDSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */; };
+		9433A7B224B3360C00449F8B /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9433A7B124B3360C00449F8B /* CoreServices.framework */; };
+		CB2B5EA81E04337600960091 /* DMViewControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */; };
+		CB580D371E03EE400018ED8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB580D391E03EE400018ED8A /* Localizable.strings */; };
+		CB580D3C1E0404E10018ED8A /* DMSortByDistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB580D3A1E0404E10018ED8A /* DMSortByDistanceCell.swift */; };
+		CB580D3D1E0404E10018ED8A /* DMSortByDistanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB580D3B1E0404E10018ED8A /* DMSortByDistanceCell.xib */; };
+		CB8F7B321E02F23C00EC24C3 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B2C1E02F23C00EC24C3 /* Providers.swift */; };
+		CB8F7B331E02F23C00EC24C3 /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B2D1E02F23C00EC24C3 /* SwiftHEXColors.swift */; };
+		CB8F7B341E02F23C00EC24C3 /* TUGroupedTableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B2E1E02F23C00EC24C3 /* TUGroupedTableManager.swift */; };
+		CB8F7B351E02F23C00EC24C3 /* TUTableViewCellLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B2F1E02F23C00EC24C3 /* TUTableViewCellLoadable.swift */; };
+		CB8F7B361E02F23C00EC24C3 /* TUTableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B301E02F23C00EC24C3 /* TUTableViewData.swift */; };
+		CB8F7B371E02F23C00EC24C3 /* TUTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B311E02F23C00EC24C3 /* TUTableViewManager.swift */; };
+		CB8F7B3C1E02F87600EC24C3 /* DMSortOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B3B1E02F87600EC24C3 /* DMSortOptionsProvider.swift */; };
+		CB8F7B3F1E0300BF00EC24C3 /* DMOptionGroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B3E1E0300BF00EC24C3 /* DMOptionGroupItem.swift */; };
+		CB8F7B411E03019C00EC24C3 /* TUHeaderOptionGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B401E03019C00EC24C3 /* TUHeaderOptionGroupView.swift */; };
+		CB8F7B431E0301CE00EC24C3 /* TUHeaderOptionGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8F7B421E0301CE00EC24C3 /* TUHeaderOptionGroupView.xib */; };
+		CB8F7B451E0303FB00EC24C3 /* DMRadioSortOptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B441E0303FB00EC24C3 /* DMRadioSortOptionItem.swift */; };
+		CB8F7B481E03044400EC24C3 /* DMRadioSortOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F7B461E03044400EC24C3 /* DMRadioSortOptionCell.swift */; };
+		CB8F7B491E03044400EC24C3 /* DMRadioSortOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8F7B471E03044400EC24C3 /* DMRadioSortOptionCell.xib */; };
 		D44F86C71B21B68E00EFEC3B /* DMFontService.m in Sources */ = {isa = PBXBuildFile; fileRef = D44F86C61B21B68E00EFEC3B /* DMFontService.m */; };
 		D48CEB8A1B2EDAD7001A01EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48CEB891B2EDAD7001A01EB /* MapKit.framework */; };
 		D48CEB8D1B300F89001A01EB /* DMEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48CEB8C1B300F89001A01EB /* DMEditProfileViewController.m */; };
@@ -135,59 +212,96 @@
 		D4E436D01B3986B8006435F8 /* DMDineVenueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E436CE1B3986B8006435F8 /* DMDineVenueTableViewCell.m */; };
 		D4E436D11B3986B8006435F8 /* DMDineVenueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E436CF1B3986B8006435F8 /* DMDineVenueTableViewCell.xib */; };
 		D4E4370A1B3A98CD006435F8 /* DMEarnReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */; };
-		D4FF601D1B415B64000CE244 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */; };
-		E772B8DE1D75E9AF00EE8042 /* AnalyticEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8D91D75E9AF00EE8042 /* AnalyticEntities.swift */; };
-		E772B8DF1D75E9AF00EE8042 /* AppAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8DA1D75E9AF00EE8042 /* AppAnalytics.swift */; };
-		E772B8E01D75E9AF00EE8042 /* FabricCrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8DB1D75E9AF00EE8042 /* FabricCrashReporter.swift */; };
-		E772B8E11D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8DC1D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift */; };
-		E772B8E21D75E9AF00EE8042 /* TestAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8DD1D75E9AF00EE8042 /* TestAnalyticsViewController.swift */; };
-		E772B8E41D75EAA700EE8042 /* TheDistanceCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8E31D75EAA700EE8042 /* TheDistanceCore.framework */; };
-		E772B8F11D75EE8800EE8042 /* TDCAppDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */; };
-		E772B8F61D75F03700EE8042 /* ApplicationDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */; };
-		E772B8F71D75F03700EE8042 /* ApplicationStoryboardLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */; };
 		E7D8D1E61D76DD0800944021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8D1E51D76DD0800944021 /* AppDelegate.swift */; };
-		E7D8D1E71D76DFF500944021 /* TheDistanceCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8E31D75EAA700EE8042 /* TheDistanceCore.framework */; };
-		E7D8D1EA1D76E00900944021 /* TDCAppDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */; };
 		E7D8D1ED1D76E4E300944021 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7D8D1EC1D76E4E300944021 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7AC3FE7F1AEE3E7600AD12E0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7AC3FE5A1AEE3E7600AD12E0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7AC3FE611AEE3E7600AD12E0;
-			remoteInfo = DinerMojo;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E7D8D1E91D76DFF600944021 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E7D8D1EF1D76E59000944021 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		03CEF98974663460352811DB /* libPods-DinerMojoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DinerMojoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A38111406B77FF91CAD6B3D /* Pods-DinerMojoTests.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.app store.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.app store.xcconfig"; sourceTree = "<group>"; };
-		438C861B045EC989A3DB9AA7 /* Pods-DinerMojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug.xcconfig"; sourceTree = "<group>"; };
-		55B147E765EC547426DBD5F8 /* Pods-DinerMojoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		12563F873AC00B2266CBF487 /* Pods-DinerMojoTests.internal fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.internal fdt release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.internal fdt release.xcconfig"; sourceTree = "<group>"; };
+		2702171B20638EF20041CD6F /* DMActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMActivityViewController.swift; sourceTree = "<group>"; };
+		2702C1341E71DA95008AB1F9 /* DinerMojo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DinerMojo copy-Info.plist"; path = "/Users/mike/Documents/projects/DinerMojo-iOS/DinerMojo/DinerMojo copy-Info.plist"; sourceTree = "<absolute>"; };
+		27037C4520B5B06A00B47313 /* AcceptGdprViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptGdprViewController.swift; sourceTree = "<group>"; };
+		27037C4620B5B06A00B47313 /* AcceptGdprViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcceptGdprViewController.xib; sourceTree = "<group>"; };
+		2706C9871E9E6AE100A6A376 /* DinerMojoConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DinerMojoConstants.h; sourceTree = "<group>"; };
+		27131C6F1DEF11720095FC53 /* TabsFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabsFilterView.xib; sourceTree = "<group>"; };
+		27131C711DEF25620095FC53 /* TabsFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabsFilterView.h; sourceTree = "<group>"; };
+		27131C721DEF25620095FC53 /* TabsFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabsFilterView.m; sourceTree = "<group>"; };
+		2721163A1EB7739C00E01B6A /* SubscriptionsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionsObject.h; sourceTree = "<group>"; };
+		2721163B1EB7739C00E01B6A /* SubscriptionsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionsObject.m; sourceTree = "<group>"; };
+		2724BD831F7D177600427F11 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
+		27268705206A0D880031B3CE /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
+		27268706206A0D880031B3CE /* BirthdayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayViewController.xib; sourceTree = "<group>"; };
+		272F24C71EFD092E00B379ED /* SelectedNotificationsDining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedNotificationsDining.swift; sourceTree = "<group>"; };
+		272F24C91EFD09AA00B379ED /* SelectedNotificationsLifestyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedNotificationsLifestyle.swift; sourceTree = "<group>"; };
+		272F24CD1EFD0A7D00B379ED /* SelectedNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedNotification.swift; sourceTree = "<group>"; };
+		272F24CF1EFD0E8800B379ED /* SelectedNotificationsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedNotificationsParser.swift; sourceTree = "<group>"; };
+		2738C09A1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationVenueHeaderView.swift; sourceTree = "<group>"; };
+		2738C09B1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMNotificationVenueHeaderView.xib; sourceTree = "<group>"; };
+		2738C09E1EBC94F800C7B265 /* DMNotificationVenueDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationVenueDelegate.swift; sourceTree = "<group>"; };
+		273ADE841E97BE0300997F5D /* TableViewSelectForGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSelectForGroup.swift; sourceTree = "<group>"; };
+		274953BA20E652420016945F /* FacebookShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookShareManager.swift; sourceTree = "<group>"; };
+		275F2AAC1EA79B0400EE91D4 /* DMSortNewsOptionsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSortNewsOptionsProvider.swift; sourceTree = "<group>"; };
+		2769EB801F34C33800C4E0D5 /* ResizableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizableButton.swift; sourceTree = "<group>"; };
+		276AED0F1F2A01A700042D31 /* BookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
+		276AED101F2A01A700042D31 /* BookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingViewController.xib; sourceTree = "<group>"; };
+		276AED141F2A4CC300042D31 /* StartupNotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupNotificationsViewController.swift; sourceTree = "<group>"; };
+		276AED151F2A4CC300042D31 /* StartupNotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupNotificationsViewController.xib; sourceTree = "<group>"; };
+		276E02141EA55D0F006A79EA /* DMSortNewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSortNewsFeedViewController.h; sourceTree = "<group>"; };
+		276E02151EA55D0F006A79EA /* DMSortNewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSortNewsFeedViewController.m; sourceTree = "<group>"; };
+		278159161E9CDA41009B3B3C /* DMLocationInfoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLocationInfoItem.swift; sourceTree = "<group>"; };
+		278159181E9CDAC8009B3B3C /* DMLocationInfoItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMLocationInfoItemCell.xib; sourceTree = "<group>"; };
+		2781591A1E9CDAF4009B3B3C /* DMLocationInfoItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMLocationInfoItemCell.swift; sourceTree = "<group>"; };
+		278750321EC31AFC00BCFD4E /* StartupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
+		278750331EC31AFC00BCFD4E /* StartupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupViewController.xib; sourceTree = "<group>"; };
+		278E86291EB8B40200A6E8B7 /* DMNotificationVenueListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNotificationVenueListViewController.h; sourceTree = "<group>"; };
+		278E862A1EB8B40200A6E8B7 /* DMNotificationVenueListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNotificationVenueListViewController.m; sourceTree = "<group>"; };
+		278E862C1EB8D2D700A6E8B7 /* DMVenuesNotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMVenuesNotificationCell.swift; sourceTree = "<group>"; };
+		278E862E1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMVenuesNotificationItem.swift; sourceTree = "<group>"; };
+		278E86301EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMVenuesNotificationCell.xib; sourceTree = "<group>"; };
+		278E86321EB92B5D00A6E8B7 /* DMNotificationsVenueProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationsVenueProvider.swift; sourceTree = "<group>"; };
+		278F7EC71E9F87B7000D1E87 /* TabBarButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarButtonsView.swift; sourceTree = "<group>"; };
+		278F7EC81E9F87B7000D1E87 /* TabBarItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
+		278F7EC91E9F87B7000D1E87 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		279C84091EF82EAA00629C2A /* UIView+InnerShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+InnerShadow.h"; sourceTree = "<group>"; };
+		279C840A1EF82EAA00629C2A /* UIView+InnerShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+InnerShadow.m"; sourceTree = "<group>"; };
+		27A992A4206CC23000C480EC /* CannotRedeemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CannotRedeemViewController.xib; sourceTree = "<group>"; };
+		27A992A5206CC23000C480EC /* CannotRedeemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannotRedeemViewController.swift; sourceTree = "<group>"; };
+		27B4B4FB1E9A7DC100674929 /* DMSortByDistanceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSortByDistanceItem.swift; sourceTree = "<group>"; };
+		27B4B4FD1E9BCCC200674929 /* fdt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fdt.gpx; sourceTree = "<group>"; };
+		27B883231EACD9910082DA88 /* DMVenuesOptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMVenuesOptionItem.swift; sourceTree = "<group>"; };
+		27B883251EACD9980082DA88 /* DMVenuesOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMVenuesOptionCell.swift; sourceTree = "<group>"; };
+		27B883271EACD9AC0082DA88 /* DMVenuesOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMVenuesOptionCell.xib; sourceTree = "<group>"; };
+		27B883291EACE6320082DA88 /* DMRadioViewOption.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRadioViewOption.xib; sourceTree = "<group>"; };
+		27B8832B1EACE7DF0082DA88 /* DMRadioViewOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRadioViewOption.swift; sourceTree = "<group>"; };
+		27C745F61EB0E5EC00614D50 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		27CA5C291E9F898000D0AFF6 /* TabBarItemDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemDelegate.swift; sourceTree = "<group>"; };
+		27CA5C2D1E9F89F800D0AFF6 /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		27CA5C2F1E9F89FE00D0AFF6 /* TabBarItemBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemBuilder.swift; sourceTree = "<group>"; };
+		27E56B881EA128A200373599 /* DinerMojo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinerMojo.entitlements; sourceTree = "<group>"; };
+		27F75E281E72E284005DAC92 /* DinerMojo v1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DinerMojo v1.2.xcdatamodel"; sourceTree = "<group>"; };
+		27F95824206B667C00A4537F /* LeaveRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveRatingViewController.swift; sourceTree = "<group>"; };
+		27F95825206B667C00A4537F /* LeaveRatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeaveRatingViewController.xib; sourceTree = "<group>"; };
+		2C6C54391FD9392D006C147D /* TurnOnNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnOnNotificationsViewController.swift; sourceTree = "<group>"; };
+		2C6C543A1FD9392D006C147D /* TurnOnNotificationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TurnOnNotificationsViewController.xib; sourceTree = "<group>"; };
+		2C6C543D1FD93FF3006C147D /* SGNotificationsSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGNotificationsSettings.swift; sourceTree = "<group>"; };
+		2C9ADB462036D45C004CC839 /* FakeOfferObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FakeOfferObject.h; sourceTree = "<group>"; };
+		2C9ADB472036D45C004CC839 /* FakeOfferObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FakeOfferObject.m; sourceTree = "<group>"; };
+		2C9ADB492036D501004CC839 /* RedeemPointsToNextLevelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedeemPointsToNextLevelCell.h; sourceTree = "<group>"; };
+		2C9ADB4A2036D501004CC839 /* RedeemPointsToNextLevelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedeemPointsToNextLevelCell.m; sourceTree = "<group>"; };
+		2C9ADB4B2036D501004CC839 /* RedeemPointsToNextLevelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedeemPointsToNextLevelCell.xib; sourceTree = "<group>"; };
+		2CA9619520FF176200BCE54F /* DMAttributedStringDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMAttributedStringDecorator.swift; sourceTree = "<group>"; };
+		2CB3C1031F87B09D00658D49 /* DinerMojo v1. 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DinerMojo v1. 3.xcdatamodel"; sourceTree = "<group>"; };
+		30CFF02BBED0B36A040B9437 /* DMNotificationsSettingsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationsSettingsProvider.swift; sourceTree = "<group>"; };
+		30CFF0F30753CC1A624F1164 /* DMDistanceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMDistanceItem.swift; sourceTree = "<group>"; };
+		30CFF1DDB82240746721AB9E /* DMSortItemsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSortItemsFactory.swift; sourceTree = "<group>"; };
+		30CFF4ED470E8D94871EE7AD /* DMNotificationSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationSelectionManager.swift; sourceTree = "<group>"; };
+		30CFF6E8F7620FE5FC9F3D1C /* DMSortSelectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSortSelectionManager.swift; sourceTree = "<group>"; };
+		30CFFD0974CFC65F33B1C46A /* DMNotificationItemsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMNotificationItemsFactory.swift; sourceTree = "<group>"; };
+		30CFFDEAE97CE2C48D0C3687 /* DMNotificationSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNotificationSettingsViewController.h; sourceTree = "<group>"; };
+		30CFFF2CEB4847BD98C5FF8E /* DMNotificationSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNotificationSettingsViewController.m; sourceTree = "<group>"; };
+		3323F53AADBEADE1E44C5962 /* FilterItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterItem.swift; sourceTree = "<group>"; };
+		3BFBD548645FCBFC997274CD /* Pods_DinerMojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EF083EA360442C9F8F465C7 /* Pods_DinerMojoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5EE0F41AF3AB9B00F3C796 /* DMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMViewController.h; sourceTree = "<group>"; };
 		5A5EE0F51AF3AB9B00F3C796 /* DMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMViewController.m; sourceTree = "<group>"; };
 		5A5FF0831B284DEE00E0FC90 /* DMWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMWebViewController.h; sourceTree = "<group>"; };
@@ -198,8 +312,8 @@
 		5A68207B1B39A3A500C7F4A4 /* DMTransactionsModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTransactionsModelController.m; sourceTree = "<group>"; };
 		5A7565121B414AFC00434B3D /* DMLocationServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLocationServices.h; sourceTree = "<group>"; };
 		5A7565131B414AFC00434B3D /* DMLocationServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLocationServices.m; sourceTree = "<group>"; };
-		5A7565151B416E0800434B3D /* DMSortNewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSortNewsfeedViewController.h; sourceTree = "<group>"; };
-		5A7565161B416E0800434B3D /* DMSortNewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMSortNewsfeedViewController.m; sourceTree = "<group>"; };
+		5A7565151B416E0800434B3D /* DMSortVenueFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMSortVenueFeedViewController.h; path = ../DMSortVenueFeedViewController.h; sourceTree = "<group>"; };
+		5A7565161B416E0800434B3D /* DMSortVenueFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMSortVenueFeedViewController.m; path = ../DMSortVenueFeedViewController.m; sourceTree = "<group>"; };
 		5A7BFBB51B1DB16700255A25 /* DMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMButton.h; sourceTree = "<group>"; };
 		5A7BFBB61B1DB16700255A25 /* DMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMButton.m; sourceTree = "<group>"; };
 		5A7BFBB81B1DC11700255A25 /* DMRestaurantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRestaurantCell.h; sourceTree = "<group>"; };
@@ -208,11 +322,15 @@
 		5AA165711AFA3AA900447304 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5AE837501B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRestaurantInfoImageCarouselViewController.h; sourceTree = "<group>"; };
 		5AE837511B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRestaurantInfoImageCarouselViewController.m; sourceTree = "<group>"; };
-		6227750F38A02B12259FA935 /* Pods-DinerMojo.debug - vagrant.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug - vagrant.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug - vagrant.xcconfig"; sourceTree = "<group>"; };
-		627956F8F5FCBE798E0D8820 /* Pods-DinerMojoTests.debug - vagrant.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.debug - vagrant.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.debug - vagrant.xcconfig"; sourceTree = "<group>"; };
-		751B1FCAC7EB87495D5D64D3 /* Pods-DinerMojo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.release.xcconfig"; sourceTree = "<group>"; };
-		780BC59CC08CC5DF1832EEDB /* Pods-DinerMojo.internal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal release.xcconfig"; sourceTree = "<group>"; };
-		78A19E582456F99E8E17DAA0 /* Pods-DinerMojoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E37F01921F5EB6B00D85C82 /* StateSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSerializer.swift; sourceTree = "<group>"; };
+		5E675278222FDE530016B402 /* DMPopUpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMPopUpRequest.h; sourceTree = "<group>"; };
+		5E675279222FDF8A0016B402 /* DMPopUpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMPopUpRequest.m; sourceTree = "<group>"; };
+		5E67527C223005B10016B402 /* PopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpModel.swift; sourceTree = "<group>"; };
+		5E67527E223141400016B402 /* AfterTransactionPopUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterTransactionPopUpManager.swift; sourceTree = "<group>"; };
+		5E675280223141EC0016B402 /* DMAfterTransactionPopUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMAfterTransactionPopUpViewController.h; sourceTree = "<group>"; };
+		5E675281223142D40016B402 /* DMAfterTransactionPopUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMAfterTransactionPopUpViewController.m; sourceTree = "<group>"; };
+		5E93522D221B020200BF2B5A /* RestaurantInfoButtonEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestaurantInfoButtonEnum.h; sourceTree = "<group>"; };
+		5E93522E221B051E00BF2B5A /* RestaurantInfoButtonEnum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestaurantInfoButtonEnum.m; sourceTree = "<group>"; };
 		7A0129491B2741C800D46B39 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		7A01294A1B2741C800D46B39 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		7A1AF3031B21BB250072F013 /* DMNewsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNewsRequest.h; sourceTree = "<group>"; };
@@ -307,8 +425,6 @@
 		7A8C4B5A1B1C9AD500F1A798 /* DMNewsItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNewsItemViewController.m; sourceTree = "<group>"; };
 		7A8C4B5E1B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEarnTransactionDetailViewController.h; sourceTree = "<group>"; };
 		7A8C4B5F1B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMEarnTransactionDetailViewController.m; sourceTree = "<group>"; };
-		7A8C4B601B1C9AD500F1A798 /* DMNotificationSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNotificationSettingsViewController.h; sourceTree = "<group>"; };
-		7A8C4B611B1C9AD500F1A798 /* DMNotificationSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNotificationSettingsViewController.m; sourceTree = "<group>"; };
 		7A8C4B621B1C9AD500F1A798 /* DMPasswordSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPasswordSettingsViewController.h; sourceTree = "<group>"; };
 		7A8C4B631B1C9AD500F1A798 /* DMPasswordSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPasswordSettingsViewController.m; sourceTree = "<group>"; };
 		7A8C4B641B1C9AD500F1A798 /* DMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProfileViewController.h; sourceTree = "<group>"; };
@@ -324,7 +440,7 @@
 		7A8C4B731B1C9AD500F1A798 /* DMStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMStartViewController.h; sourceTree = "<group>"; };
 		7A8C4B741B1C9AD500F1A798 /* DMStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMStartViewController.m; sourceTree = "<group>"; };
 		7A8C4B751B1C9AD500F1A798 /* DMWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMWelcomeViewController.h; sourceTree = "<group>"; };
-		7A8C4B761B1C9AD500F1A798 /* DMWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMWelcomeViewController.m; sourceTree = "<group>"; };
+		7A8C4B761B1C9AD500F1A798 /* DMWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMWelcomeViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		7A8C4B781B1C9AD500F1A798 /* DMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapViewController.h; sourceTree = "<group>"; };
 		7A8C4B791B1C9AD500F1A798 /* DMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapViewController.m; sourceTree = "<group>"; };
 		7A8C4B7B1B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRestaurantInfoRelatedCell.h; sourceTree = "<group>"; };
@@ -345,7 +461,6 @@
 		7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7AC3FE751AEE3E7600AD12E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7AC3FE781AEE3E7600AD12E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		7AC3FE7E1AEE3E7600AD12E0 /* DinerMojoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DinerMojoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC3FE831AEE3E7600AD12E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AC3FE841AEE3E7600AD12E0 /* DinerMojoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DinerMojoTests.m; sourceTree = "<group>"; };
 		7AC78DEB1B01022E00AEA451 /* DMBlurredView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBlurredView.h; sourceTree = "<group>"; };
@@ -368,11 +483,33 @@
 		7AF517EE1B440E3100FA5221 /* DMMappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMappingHelper.m; sourceTree = "<group>"; };
 		7AFF9EF21B2B441900F6C9B6 /* DMReferralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMReferralViewController.h; sourceTree = "<group>"; };
 		7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReferralViewController.m; sourceTree = "<group>"; };
-		7F96B4EC15C77880B195AA3C /* Pods-DinerMojo.client release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.client release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.client release.xcconfig"; sourceTree = "<group>"; };
-		8584C48B522F53A8733FDE5D /* Pods-DinerMojoTests.client release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.client release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.client release.xcconfig"; sourceTree = "<group>"; };
-		9FC2713EA6372F8DE89EAAC4 /* Pods-DinerMojo.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store.xcconfig"; sourceTree = "<group>"; };
-		B1C2AAA2E2C18200D50E5E79 /* libPods-DinerMojo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DinerMojo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4EE1963494E58E662A28A42 /* Pods-DinerMojoTests.internal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.internal release.xcconfig"; path = "Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.internal release.xcconfig"; sourceTree = "<group>"; };
+		7CE4F701B9999E3D54D653B2 /* Pods-DinerMojo.debug - vagrant.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug - vagrant.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug - vagrant.xcconfig"; sourceTree = "<group>"; };
+		7D060AA8CBEA03332FA90A01 /* Pods-DinerMojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug.xcconfig"; sourceTree = "<group>"; };
+		80FEA7AD68921C5B2F247AF2 /* Pods-DinerMojoTests.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.app store.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.app store.xcconfig"; sourceTree = "<group>"; };
+		89D3832FA1795989E0615606 /* Pods-DinerMojoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKHUDSwift.swift; sourceTree = "<group>"; };
+		9433A7B124B3360C00449F8B /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		BF869002BB6C6C9977F45984 /* Pods-DinerMojo.app store ad-hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store ad-hoc.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store ad-hoc.xcconfig"; sourceTree = "<group>"; };
+		CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMViewControllersProvider.swift; sourceTree = "<group>"; };
+		CB580D381E03EE400018ED8A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CB580D3A1E0404E10018ED8A /* DMSortByDistanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSortByDistanceCell.swift; sourceTree = "<group>"; };
+		CB580D3B1E0404E10018ED8A /* DMSortByDistanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMSortByDistanceCell.xib; sourceTree = "<group>"; };
+		CB8F7B2C1E02F23C00EC24C3 /* Providers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
+		CB8F7B2D1E02F23C00EC24C3 /* SwiftHEXColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHEXColors.swift; sourceTree = "<group>"; };
+		CB8F7B2E1E02F23C00EC24C3 /* TUGroupedTableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUGroupedTableManager.swift; sourceTree = "<group>"; };
+		CB8F7B2F1E02F23C00EC24C3 /* TUTableViewCellLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUTableViewCellLoadable.swift; sourceTree = "<group>"; };
+		CB8F7B301E02F23C00EC24C3 /* TUTableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUTableViewData.swift; sourceTree = "<group>"; };
+		CB8F7B311E02F23C00EC24C3 /* TUTableViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUTableViewManager.swift; sourceTree = "<group>"; };
+		CB8F7B3B1E02F87600EC24C3 /* DMSortOptionsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSortOptionsProvider.swift; sourceTree = "<group>"; };
+		CB8F7B3E1E0300BF00EC24C3 /* DMOptionGroupItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMOptionGroupItem.swift; sourceTree = "<group>"; };
+		CB8F7B401E03019C00EC24C3 /* TUHeaderOptionGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUHeaderOptionGroupView.swift; sourceTree = "<group>"; };
+		CB8F7B421E0301CE00EC24C3 /* TUHeaderOptionGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TUHeaderOptionGroupView.xib; sourceTree = "<group>"; };
+		CB8F7B441E0303FB00EC24C3 /* DMRadioSortOptionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRadioSortOptionItem.swift; sourceTree = "<group>"; };
+		CB8F7B461E03044400EC24C3 /* DMRadioSortOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRadioSortOptionCell.swift; sourceTree = "<group>"; };
+		CB8F7B471E03044400EC24C3 /* DMRadioSortOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRadioSortOptionCell.xib; sourceTree = "<group>"; };
+		CBD30C351E07E8EE005D6587 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CF274B4B4525C3727A60DBAF /* Pods-DinerMojo.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store.xcconfig"; sourceTree = "<group>"; };
+		CF69869A657E05633BEDA79E /* Pods-DinerMojo.internal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal release.xcconfig"; sourceTree = "<group>"; };
 		D44F86C51B21B68E00EFEC3B /* DMFontService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFontService.h; sourceTree = "<group>"; };
 		D44F86C61B21B68E00EFEC3B /* DMFontService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFontService.m; sourceTree = "<group>"; };
 		D48CEB891B2EDAD7001A01EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -416,19 +553,19 @@
 		D4E437081B3A98CD006435F8 /* DMEarnReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEarnReviewViewController.h; sourceTree = "<group>"; };
 		D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMEarnReviewViewController.m; sourceTree = "<group>"; };
 		D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		E772B8D91D75E9AF00EE8042 /* AnalyticEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticEntities.swift; sourceTree = "<group>"; };
-		E772B8DA1D75E9AF00EE8042 /* AppAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAnalytics.swift; sourceTree = "<group>"; };
-		E772B8DB1D75E9AF00EE8042 /* FabricCrashReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabricCrashReporter.swift; sourceTree = "<group>"; };
-		E772B8DC1D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalyticsReporter.swift; sourceTree = "<group>"; };
-		E772B8DD1D75E9AF00EE8042 /* TestAnalyticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAnalyticsViewController.swift; sourceTree = "<group>"; };
-		E772B8E31D75EAA700EE8042 /* TheDistanceCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TheDistanceCore.framework; path = Carthage/Build/iOS/TheDistanceCore.framework; sourceTree = "<group>"; };
-		E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TDCAppDependencies.framework; path = Carthage/Build/iOS/TDCAppDependencies.framework; sourceTree = "<group>"; };
-		E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDependencies.swift; sourceTree = "<group>"; };
-		E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationStoryboardLoader.swift; sourceTree = "<group>"; };
+		E3F88B76A0CDD8A79A78BAAB /* Pods-DinerMojo.external fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.external fdt release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.external fdt release.xcconfig"; sourceTree = "<group>"; };
+		E4458E8BFDE288E86EB3A2C4 /* Pods-DinerMojoTests.internal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.internal release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.internal release.xcconfig"; sourceTree = "<group>"; };
 		E772B8FB1D75F18E00EE8042 /* DinerMojo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DinerMojo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E7D8D1E51D76DD0800944021 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7D8D1EC1D76E4E300944021 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		E7D8D1F11D76EA1B00944021 /* AppInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppInfo.h; sourceTree = "<group>"; };
+		E7D8D1F11D76EA1B00944021 /* App-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App-Info.h"; sourceTree = "<group>"; };
+		EF7C7EC248C7D988D042049F /* Pods-DinerMojo.internal fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal fdt release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal fdt release.xcconfig"; sourceTree = "<group>"; };
+		F09F8BAB0029F85BB61799D4 /* Pods-DinerMojoTests.client release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.client release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.client release.xcconfig"; sourceTree = "<group>"; };
+		F2178AEA8AB5B6D3396AC06B /* Pods-DinerMojo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.release.xcconfig"; sourceTree = "<group>"; };
+		F56DCE195D64A477F4812E62 /* Pods-DinerMojo.client release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.client release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.client release.xcconfig"; sourceTree = "<group>"; };
+		FA003BD8DAC75D4101D05964 /* Pods-DinerMojoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE376898AF0A7017918D522A /* Pods-DinerMojoTests.debug - vagrant.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.debug - vagrant.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.debug - vagrant.xcconfig"; sourceTree = "<group>"; };
+		FF8F1A18FDF03E2EF3BAD93D /* Pods-DinerMojo.dinermojotest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.dinermojotest.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.dinermojotest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,40 +573,206 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4FF601D1B415B64000CE244 /* MobileCoreServices.framework in Frameworks */,
 				D4CCE4DF1B319DB200D315AE /* AVFoundation.framework in Frameworks */,
-				E7D8D1E71D76DFF500944021 /* TheDistanceCore.framework in Frameworks */,
-				E772B8E41D75EAA700EE8042 /* TheDistanceCore.framework in Frameworks */,
-				E7D8D1EA1D76E00900944021 /* TDCAppDependencies.framework in Frameworks */,
-				E772B8F11D75EE8800EE8042 /* TDCAppDependencies.framework in Frameworks */,
 				D4CCE4DD1B319B5B00D315AE /* QuartzCore.framework in Frameworks */,
 				D48CEB8A1B2EDAD7001A01EB /* MapKit.framework in Frameworks */,
-				760EDAE3ED64DE505C89B933 /* libPods-DinerMojo.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7AC3FE7B1AEE3E7600AD12E0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A2CF14C327DB20599D45221F /* libPods-DinerMojoTests.a in Frameworks */,
+				9433A7B224B3360C00449F8B /* CoreServices.framework in Frameworks */,
+				38D0806C05E10159D1F9258B /* Pods_DinerMojo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F000F7755F31E5A490AF2AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D060AA8CBEA03332FA90A01 /* Pods-DinerMojo.debug.xcconfig */,
+				7CE4F701B9999E3D54D653B2 /* Pods-DinerMojo.debug - vagrant.xcconfig */,
+				F2178AEA8AB5B6D3396AC06B /* Pods-DinerMojo.release.xcconfig */,
+				CF69869A657E05633BEDA79E /* Pods-DinerMojo.internal release.xcconfig */,
+				F56DCE195D64A477F4812E62 /* Pods-DinerMojo.client release.xcconfig */,
+				CF274B4B4525C3727A60DBAF /* Pods-DinerMojo.app store.xcconfig */,
+				89D3832FA1795989E0615606 /* Pods-DinerMojoTests.debug.xcconfig */,
+				FE376898AF0A7017918D522A /* Pods-DinerMojoTests.debug - vagrant.xcconfig */,
+				FA003BD8DAC75D4101D05964 /* Pods-DinerMojoTests.release.xcconfig */,
+				E4458E8BFDE288E86EB3A2C4 /* Pods-DinerMojoTests.internal release.xcconfig */,
+				F09F8BAB0029F85BB61799D4 /* Pods-DinerMojoTests.client release.xcconfig */,
+				80FEA7AD68921C5B2F247AF2 /* Pods-DinerMojoTests.app store.xcconfig */,
+				EF7C7EC248C7D988D042049F /* Pods-DinerMojo.internal fdt release.xcconfig */,
+				12563F873AC00B2266CBF487 /* Pods-DinerMojoTests.internal fdt release.xcconfig */,
+				FF8F1A18FDF03E2EF3BAD93D /* Pods-DinerMojo.dinermojotest.xcconfig */,
+				E3F88B76A0CDD8A79A78BAAB /* Pods-DinerMojo.external fdt release.xcconfig */,
+				BF869002BB6C6C9977F45984 /* Pods-DinerMojo.app store ad-hoc.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		27037C4420B5B05700B47313 /* AcceptGdprViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27037C4520B5B06A00B47313 /* AcceptGdprViewController.swift */,
+				27037C4620B5B06A00B47313 /* AcceptGdprViewController.xib */,
+			);
+			path = AcceptGdprViewController;
+			sourceTree = "<group>";
+		};
+		27131C6C1DEF106A0095FC53 /* TabsFilter */ = {
+			isa = PBXGroup;
+			children = (
+				27131C6F1DEF11720095FC53 /* TabsFilterView.xib */,
+				27131C711DEF25620095FC53 /* TabsFilterView.h */,
+				27131C721DEF25620095FC53 /* TabsFilterView.m */,
+			);
+			path = TabsFilter;
+			sourceTree = "<group>";
+		};
+		27268704206A0D720031B3CE /* BirthdayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27268705206A0D880031B3CE /* BirthdayViewController.swift */,
+				27268706206A0D880031B3CE /* BirthdayViewController.xib */,
+			);
+			path = BirthdayViewController;
+			sourceTree = "<group>";
+		};
+		272F24C61EFD08F600B379ED /* SelectedNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				272F24C71EFD092E00B379ED /* SelectedNotificationsDining.swift */,
+				272F24CD1EFD0A7D00B379ED /* SelectedNotification.swift */,
+				272F24C91EFD09AA00B379ED /* SelectedNotificationsLifestyle.swift */,
+				272F24CF1EFD0E8800B379ED /* SelectedNotificationsParser.swift */,
+			);
+			path = SelectedNotifications;
+			sourceTree = "<group>";
+		};
+		2738C0991EBC7A9E00C7B265 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				2738C09A1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.swift */,
+				2738C09B1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.xib */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		274953B920E652340016945F /* FacebookShare */ = {
+			isa = PBXGroup;
+			children = (
+				274953BA20E652420016945F /* FacebookShareManager.swift */,
+			);
+			path = FacebookShare;
+			sourceTree = "<group>";
+		};
+		276AED0E1F2A019700042D31 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				276AED0F1F2A01A700042D31 /* BookingViewController.swift */,
+				276AED101F2A01A700042D31 /* BookingViewController.xib */,
+				2724BD831F7D177600427F11 /* PickerTextField.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		276AED131F2A4CA700042D31 /* StartupNotificationsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				276AED141F2A4CC300042D31 /* StartupNotificationsViewController.swift */,
+				276AED151F2A4CC300042D31 /* StartupNotificationsViewController.xib */,
+			);
+			path = StartupNotificationsViewController;
+			sourceTree = "<group>";
+		};
+		276E02131EA5541C006A79EA /* SortingForm */ = {
+			isa = PBXGroup;
+			children = (
+				276E02141EA55D0F006A79EA /* DMSortNewsFeedViewController.h */,
+				276E02151EA55D0F006A79EA /* DMSortNewsFeedViewController.m */,
+				275F2AAC1EA79B0400EE91D4 /* DMSortNewsOptionsProvider.swift */,
+			);
+			path = SortingForm;
+			sourceTree = "<group>";
+		};
+		278750311EC31AE000BCFD4E /* Start-up */ = {
+			isa = PBXGroup;
+			children = (
+				278750321EC31AFC00BCFD4E /* StartupViewController.swift */,
+				278750331EC31AFC00BCFD4E /* StartupViewController.xib */,
+				2C6C54391FD9392D006C147D /* TurnOnNotificationsViewController.swift */,
+				2C6C543A1FD9392D006C147D /* TurnOnNotificationsViewController.xib */,
+			);
+			path = "Start-up";
+			sourceTree = "<group>";
+		};
+		278F7EC61E9F87B7000D1E87 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				27C745F61EB0E5EC00614D50 /* CustomTabBar.swift */,
+				27CA5C2F1E9F89FE00D0AFF6 /* TabBarItemBuilder.swift */,
+				27CA5C2D1E9F89F800D0AFF6 /* TabBarItem.swift */,
+				27CA5C291E9F898000D0AFF6 /* TabBarItemDelegate.swift */,
+				278F7EC71E9F87B7000D1E87 /* TabBarButtonsView.swift */,
+				278F7EC81E9F87B7000D1E87 /* TabBarItemView.swift */,
+				278F7EC91E9F87B7000D1E87 /* TabBarView.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		27A99299206C118600C480EC /* CannotRedeemViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27A992A5206CC23000C480EC /* CannotRedeemViewController.swift */,
+				27A992A4206CC23000C480EC /* CannotRedeemViewController.xib */,
+			);
+			path = CannotRedeemViewController;
+			sourceTree = "<group>";
+		};
+		27F95823206B665A00A4537F /* LeaveRatingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				27F95824206B667C00A4537F /* LeaveRatingViewController.swift */,
+				27F95825206B667C00A4537F /* LeaveRatingViewController.xib */,
+			);
+			path = LeaveRatingViewController;
+			sourceTree = "<group>";
+		};
+		30CFF35B011140BC29598FDE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				272F24C61EFD08F600B379ED /* SelectedNotifications */,
+				2738C0991EBC7A9E00C7B265 /* HeaderView */,
+				30CFFDEAE97CE2C48D0C3687 /* DMNotificationSettingsViewController.h */,
+				30CFFF2CEB4847BD98C5FF8E /* DMNotificationSettingsViewController.m */,
+				30CFF36CBA3373B67E4761A9 /* Provider */,
+				278E86291EB8B40200A6E8B7 /* DMNotificationVenueListViewController.h */,
+				278E862A1EB8B40200A6E8B7 /* DMNotificationVenueListViewController.m */,
+				2738C09E1EBC94F800C7B265 /* DMNotificationVenueDelegate.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		30CFF36CBA3373B67E4761A9 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				30CFF02BBED0B36A040B9437 /* DMNotificationsSettingsProvider.swift */,
+				30CFFD0974CFC65F33B1C46A /* DMNotificationItemsFactory.swift */,
+				30CFF4ED470E8D94871EE7AD /* DMNotificationSelectionManager.swift */,
+				278E86321EB92B5D00A6E8B7 /* DMNotificationsVenueProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		57F65DF4B9C1393ACD1F9B53 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E772B8F01D75EE8800EE8042 /* TDCAppDependencies.framework */,
-				E772B8E31D75EAA700EE8042 /* TheDistanceCore.framework */,
+				9433A7B124B3360C00449F8B /* CoreServices.framework */,
+				CBD30C351E07E8EE005D6587 /* XCTest.framework */,
 				D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */,
 				D4CCE4DE1B319DB200D315AE /* AVFoundation.framework */,
 				D4CCE4DC1B319B5B00D315AE /* QuartzCore.framework */,
 				D48CEB891B2EDAD7001A01EB /* MapKit.framework */,
-				B1C2AAA2E2C18200D50E5E79 /* libPods-DinerMojo.a */,
-				03CEF98974663460352811DB /* libPods-DinerMojoTests.a */,
+				3BFBD548645FCBFC997274CD /* Pods_DinerMojo.framework */,
+				4EF083EA360442C9F8F465C7 /* Pods_DinerMojoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -477,12 +780,23 @@
 		5A5EE0F31AF3AB4900F3C796 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5E37F01821F5EB5200D85C82 /* Util */,
 				D4EF480E1B45403A00E46539 /* Images */,
 				D4EF48111B4540A600E46539 /* Blurs and Views */,
 				D4EF48121B4540AF00E46539 /* Other Controls */,
 				D4EF48101B45409700E46539 /* Controllers */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		5E37F01821F5EB5200D85C82 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				5E37F01921F5EB6B00D85C82 /* StateSerializer.swift */,
+				5E67527E223141400016B402 /* AfterTransactionPopUpManager.swift */,
+				9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		7A5EC7D41B4C033F00B27CBF /* ManagedObjects */ = {
@@ -522,6 +836,8 @@
 				7A5EC7EB1B4C033F00B27CBF /* DMVenueImage.m */,
 				7A5EC7EC1B4C033F00B27CBF /* DMVenueOpeningTimes.h */,
 				7A5EC7ED1B4C033F00B27CBF /* DMVenueOpeningTimes.m */,
+				2C9ADB462036D45C004CC839 /* FakeOfferObject.h */,
+				2C9ADB472036D45C004CC839 /* FakeOfferObject.m */,
 			);
 			path = Human;
 			sourceTree = "<group>";
@@ -588,6 +904,10 @@
 				7A1AF3041B21BB250072F013 /* DMNewsRequest.m */,
 				7A46D0371B29C25C00FA2AA9 /* DMUserRequest.h */,
 				7A46D0381B29C25C00FA2AA9 /* DMUserRequest.m */,
+				2721163A1EB7739C00E01B6A /* SubscriptionsObject.h */,
+				2721163B1EB7739C00E01B6A /* SubscriptionsObject.m */,
+				5E675278222FDE530016B402 /* DMPopUpRequest.h */,
+				5E675279222FDF8A0016B402 /* DMPopUpRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -595,6 +915,11 @@
 		7A8C4B4A1B1C9AD500F1A798 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				27037C4420B5B05700B47313 /* AcceptGdprViewController */,
+				27268704206A0D720031B3CE /* BirthdayViewController */,
+				276AED131F2A4CA700042D31 /* StartupNotificationsViewController */,
+				278750311EC31AE000BCFD4E /* Start-up */,
+				27131C6C1DEF106A0095FC53 /* TabsFilter */,
 				D4EF48041B453D7300E46539 /* Earn */,
 				D4CCE4D21B3185AE00D315AE /* Redeem */,
 				7A8C4B4B1B1C9AD500F1A798 /* Dine */,
@@ -629,13 +954,12 @@
 		7A8C4B561B1C9AD500F1A798 /* Newsfeed */ = {
 			isa = PBXGroup;
 			children = (
+				276E02131EA5541C006A79EA /* SortingForm */,
 				D4952F531B2087110077FC5F /* Cell */,
 				7A8C4B571B1C9AD500F1A798 /* DMNewsFeedViewController.h */,
 				7A8C4B581B1C9AD500F1A798 /* DMNewsFeedViewController.m */,
 				7A8C4B591B1C9AD500F1A798 /* DMNewsItemViewController.h */,
 				7A8C4B5A1B1C9AD500F1A798 /* DMNewsItemViewController.m */,
-				5A7565151B416E0800434B3D /* DMSortNewsfeedViewController.h */,
-				5A7565161B416E0800434B3D /* DMSortNewsfeedViewController.m */,
 			);
 			path = Newsfeed;
 			sourceTree = "<group>";
@@ -666,6 +990,7 @@
 		7A8C4B771B1C9AD500F1A798 /* Venues */ = {
 			isa = PBXGroup;
 			children = (
+				CB8F7B3A1E02F4AB00EC24C3 /* Sorting */,
 				D4EF480C1B453ED000E46539 /* Venue */,
 				D4EF480A1B453EB600E46539 /* Info */,
 			);
@@ -724,7 +1049,8 @@
 				7AC3FE811AEE3E7600AD12E0 /* DinerMojoTests */,
 				7AC3FE631AEE3E7600AD12E0 /* Products */,
 				57F65DF4B9C1393ACD1F9B53 /* Frameworks */,
-				D8B0201D616DE5C8D86E81FD /* Pods */,
+				2702C1341E71DA95008AB1F9 /* DinerMojo copy-Info.plist */,
+				0F000F7755F31E5A490AF2AD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -732,7 +1058,6 @@
 			isa = PBXGroup;
 			children = (
 				7AC3FE621AEE3E7600AD12E0 /* DinerMojo.app */,
-				7AC3FE7E1AEE3E7600AD12E0 /* DinerMojoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -740,19 +1065,20 @@
 		7AC3FE641AEE3E7600AD12E0 /* DinerMojo */ = {
 			isa = PBXGroup;
 			children = (
+				27E56B881EA128A200373599 /* DinerMojo.entitlements */,
 				7AC3FE691AEE3E7600AD12E0 /* AppDelegate.h */,
 				7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */,
+				2706C9871E9E6AE100A6A376 /* DinerMojoConstants.h */,
 				E7D8D1E51D76DD0800944021 /* AppDelegate.swift */,
-				E7D8D1F11D76EA1B00944021 /* AppInfo.h */,
+				E7D8D1F11D76EA1B00944021 /* App-Info.h */,
 				E7D8D1EC1D76E4E300944021 /* Settings.bundle */,
 				D4EF48141B45428F00E46539 /* User Interface */,
 				7A8C4B4A1B1C9AD500F1A798 /* Screens */,
 				5A5EE0F31AF3AB4900F3C796 /* Shared */,
 				7A8C4BA81B1CAF7800F1A798 /* Models */,
+				5E67527C223005B10016B402 /* PopUpModel.swift */,
 				7A8C4B461B1C9A2D00F1A798 /* Requests */,
 				D4952F6C1B20926C0077FC5F /* Services */,
-				E772B8F21D75F03700EE8042 /* Core */,
-				E772B8D81D75E9AF00EE8042 /* Analytics */,
 				7AC3FE651AEE3E7600AD12E0 /* Supporting Files */,
 				E772B8FB1D75F18E00EE8042 /* DinerMojo-Bridging-Header.h */,
 			);
@@ -762,11 +1088,14 @@
 		7AC3FE651AEE3E7600AD12E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB8F7B2A1E02EE1600EC24C3 /* ViewHelpers */,
 				7AEF14971B1F09FC0053D32B /* Fonts */,
 				7A8C4B9A1B1C9D5800F1A798 /* Environments.plist */,
 				7AC3FE661AEE3E7600AD12E0 /* Info.plist */,
 				7AC3FE671AEE3E7600AD12E0 /* main.m */,
 				7A9C9C5F1B1F01B1002B930A /* DinerMojo-Prefix.pch */,
+				CB580D391E03EE400018ED8A /* Localizable.strings */,
+				27B4B4FD1E9BCCC200674929 /* fdt.gpx */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -813,6 +1142,73 @@
 			path = "open-sans";
 			sourceTree = "<group>";
 		};
+		CB8F7B2A1E02EE1600EC24C3 /* ViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				2C6C543D1FD93FF3006C147D /* SGNotificationsSettings.swift */,
+				CB8F7B2B1E02F23C00EC24C3 /* TablevieManager */,
+				CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */,
+			);
+			path = ViewHelpers;
+			sourceTree = "<group>";
+		};
+		CB8F7B2B1E02F23C00EC24C3 /* TablevieManager */ = {
+			isa = PBXGroup;
+			children = (
+				CB8F7B2C1E02F23C00EC24C3 /* Providers.swift */,
+				CB8F7B2D1E02F23C00EC24C3 /* SwiftHEXColors.swift */,
+				CB8F7B2E1E02F23C00EC24C3 /* TUGroupedTableManager.swift */,
+				CB8F7B2F1E02F23C00EC24C3 /* TUTableViewCellLoadable.swift */,
+				CB8F7B301E02F23C00EC24C3 /* TUTableViewData.swift */,
+				CB8F7B311E02F23C00EC24C3 /* TUTableViewManager.swift */,
+				273ADE841E97BE0300997F5D /* TableViewSelectForGroup.swift */,
+			);
+			path = TablevieManager;
+			sourceTree = "<group>";
+		};
+		CB8F7B3A1E02F4AB00EC24C3 /* Sorting */ = {
+			isa = PBXGroup;
+			children = (
+				CB8F7B3D1E02FFC600EC24C3 /* Provider */,
+				5A7565151B416E0800434B3D /* DMSortVenueFeedViewController.h */,
+				5A7565161B416E0800434B3D /* DMSortVenueFeedViewController.m */,
+				CB8F7B3B1E02F87600EC24C3 /* DMSortOptionsProvider.swift */,
+			);
+			name = Sorting;
+			path = ../Newsfeed/Sorting;
+			sourceTree = "<group>";
+		};
+		CB8F7B3D1E02FFC600EC24C3 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				CB8F7B3E1E0300BF00EC24C3 /* DMOptionGroupItem.swift */,
+				CB8F7B401E03019C00EC24C3 /* TUHeaderOptionGroupView.swift */,
+				CB8F7B421E0301CE00EC24C3 /* TUHeaderOptionGroupView.xib */,
+				CB8F7B441E0303FB00EC24C3 /* DMRadioSortOptionItem.swift */,
+				CB8F7B461E03044400EC24C3 /* DMRadioSortOptionCell.swift */,
+				CB8F7B471E03044400EC24C3 /* DMRadioSortOptionCell.xib */,
+				30CFF6E8F7620FE5FC9F3D1C /* DMSortSelectionManager.swift */,
+				30CFF1DDB82240746721AB9E /* DMSortItemsFactory.swift */,
+				CB580D3A1E0404E10018ED8A /* DMSortByDistanceCell.swift */,
+				27B4B4FB1E9A7DC100674929 /* DMSortByDistanceItem.swift */,
+				CB580D3B1E0404E10018ED8A /* DMSortByDistanceCell.xib */,
+				30CFF0F30753CC1A624F1164 /* DMDistanceItem.swift */,
+				278159161E9CDA41009B3B3C /* DMLocationInfoItem.swift */,
+				278159181E9CDAC8009B3B3C /* DMLocationInfoItemCell.xib */,
+				2781591A1E9CDAF4009B3B3C /* DMLocationInfoItemCell.swift */,
+				27B883231EACD9910082DA88 /* DMVenuesOptionItem.swift */,
+				27B883251EACD9980082DA88 /* DMVenuesOptionCell.swift */,
+				27B883271EACD9AC0082DA88 /* DMVenuesOptionCell.xib */,
+				27B883291EACE6320082DA88 /* DMRadioViewOption.xib */,
+				27B8832B1EACE7DF0082DA88 /* DMRadioViewOption.swift */,
+				3323F53AADBEADE1E44C5962 /* FilterItem.swift */,
+				278E862C1EB8D2D700A6E8B7 /* DMVenuesNotificationCell.swift */,
+				278E862E1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift */,
+				278E86301EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		D4952F531B2087110077FC5F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,6 +1222,7 @@
 		D4952F6C1B20926C0077FC5F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				274953B920E652340016945F /* FacebookShare */,
 				D4EF48131B4540C200E46539 /* Theme */,
 				7A46D03A1B29C58F00FA2AA9 /* DMFacebookService.h */,
 				7A46D03B1B29C58F00FA2AA9 /* DMFacebookService.m */,
@@ -841,6 +1238,9 @@
 				D49738C51B32D45D00D8B6A8 /* DMRedeemTableViewCell.h */,
 				D49738C61B32D45D00D8B6A8 /* DMRedeemTableViewCell.m */,
 				D49738C71B32D45D00D8B6A8 /* DMRedeemTableViewCell.xib */,
+				2C9ADB492036D501004CC839 /* RedeemPointsToNextLevelCell.h */,
+				2C9ADB4A2036D501004CC839 /* RedeemPointsToNextLevelCell.m */,
+				2C9ADB4B2036D501004CC839 /* RedeemPointsToNextLevelCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -859,6 +1259,7 @@
 		D4CCE4D21B3185AE00D315AE /* Redeem */ = {
 			isa = PBXGroup;
 			children = (
+				27A99299206C118600C480EC /* CannotRedeemViewController */,
 				D49738C41B32D44300D8B6A8 /* Cell */,
 				D4CCE4D91B31914A00D315AE /* DMRedeemCouponViewController.h */,
 				D4CCE4DA1B31914A00D315AE /* DMRedeemCouponViewController.m */,
@@ -906,14 +1307,13 @@
 		D4EF48061B453E6800E46539 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				7A8C4B601B1C9AD500F1A798 /* DMNotificationSettingsViewController.h */,
-				7A8C4B611B1C9AD500F1A798 /* DMNotificationSettingsViewController.m */,
 				7A8C4B621B1C9AD500F1A798 /* DMPasswordSettingsViewController.h */,
 				7A8C4B631B1C9AD500F1A798 /* DMPasswordSettingsViewController.m */,
 				D48CEB8B1B300F89001A01EB /* DMEditProfileViewController.h */,
 				D48CEB8C1B300F89001A01EB /* DMEditProfileViewController.m */,
 				7A8C4B6A1B1C9AD500F1A798 /* DMSettingsViewController.h */,
 				7A8C4B6B1B1C9AD500F1A798 /* DMSettingsViewController.m */,
+				30CFF35B011140BC29598FDE /* Notifications */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -952,6 +1352,7 @@
 		D4EF480A1B453EB600E46539 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				276AED0E1F2A019700042D31 /* Booking */,
 				D4EF480B1B453EC500E46539 /* Cell */,
 				7A8C4B7D1B1C9AD500F1A798 /* DMRestaurantInfoViewController.h */,
 				7A8C4B7E1B1C9AD500F1A798 /* DMRestaurantInfoViewController.m */,
@@ -959,6 +1360,9 @@
 				5AE837511B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m */,
 				5A5FF0831B284DEE00E0FC90 /* DMWebViewController.h */,
 				5A5FF0841B284DEE00E0FC90 /* DMWebViewController.m */,
+				2769EB801F34C33800C4E0D5 /* ResizableButton.swift */,
+				5E93522D221B020200BF2B5A /* RestaurantInfoButtonEnum.h */,
+				5E93522E221B051E00BF2B5A /* RestaurantInfoButtonEnum.m */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -975,6 +1379,8 @@
 		D4EF480C1B453ED000E46539 /* Venue */ = {
 			isa = PBXGroup;
 			children = (
+				27F95823206B665A00A4537F /* LeaveRatingViewController */,
+				278F7EC61E9F87B7000D1E87 /* Buttons */,
 				7A8C4B781B1C9AD500F1A798 /* DMMapViewController.h */,
 				7A8C4B791B1C9AD500F1A798 /* DMMapViewController.m */,
 				D4EF480D1B453ED700E46539 /* Cell */,
@@ -1026,6 +1432,7 @@
 				5A5EE0F51AF3AB9B00F3C796 /* DMViewController.m */,
 				7A88F32A1B46A1FC001B443A /* DMDineNavigationController.h */,
 				7A88F32B1B46A1FC001B443A /* DMDineNavigationController.m */,
+				2702171B20638EF20041CD6F /* DMActivityViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1035,10 +1442,14 @@
 			children = (
 				7AC78DEB1B01022E00AEA451 /* DMBlurredView.h */,
 				7AC78DEC1B01022E00AEA451 /* DMBlurredView.m */,
+				279C84091EF82EAA00629C2A /* UIView+InnerShadow.h */,
+				279C840A1EF82EAA00629C2A /* UIView+InnerShadow.m */,
 				7A520F6D1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.h */,
 				7A520F6E1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.m */,
 				D49738CA1B32FD8600D8B6A8 /* DMView.h */,
 				D49738CB1B32FD8600D8B6A8 /* DMView.m */,
+				5E675280223141EC0016B402 /* DMAfterTransactionPopUpViewController.h */,
+				5E675281223142D40016B402 /* DMAfterTransactionPopUpViewController.m */,
 			);
 			path = "Blurs and Views";
 			sourceTree = "<group>";
@@ -1052,6 +1463,7 @@
 				D4B209081B25D18C001410D0 /* DMPageControl.m */,
 				7A5432331B1FA98C00B99AF1 /* DMTextField.h */,
 				7A5432341B1FA98C00B99AF1 /* DMTextField.m */,
+				2CA9619520FF176200BCE54F /* DMAttributedStringDecorator.swift */,
 			);
 			path = "Other Controls";
 			sourceTree = "<group>";
@@ -1077,47 +1489,6 @@
 			path = "User Interface";
 			sourceTree = "<group>";
 		};
-		D8B0201D616DE5C8D86E81FD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				438C861B045EC989A3DB9AA7 /* Pods-DinerMojo.debug.xcconfig */,
-				6227750F38A02B12259FA935 /* Pods-DinerMojo.debug - vagrant.xcconfig */,
-				751B1FCAC7EB87495D5D64D3 /* Pods-DinerMojo.release.xcconfig */,
-				780BC59CC08CC5DF1832EEDB /* Pods-DinerMojo.internal release.xcconfig */,
-				7F96B4EC15C77880B195AA3C /* Pods-DinerMojo.client release.xcconfig */,
-				9FC2713EA6372F8DE89EAAC4 /* Pods-DinerMojo.app store.xcconfig */,
-				55B147E765EC547426DBD5F8 /* Pods-DinerMojoTests.debug.xcconfig */,
-				627956F8F5FCBE798E0D8820 /* Pods-DinerMojoTests.debug - vagrant.xcconfig */,
-				78A19E582456F99E8E17DAA0 /* Pods-DinerMojoTests.release.xcconfig */,
-				C4EE1963494E58E662A28A42 /* Pods-DinerMojoTests.internal release.xcconfig */,
-				8584C48B522F53A8733FDE5D /* Pods-DinerMojoTests.client release.xcconfig */,
-				0A38111406B77FF91CAD6B3D /* Pods-DinerMojoTests.app store.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		E772B8D81D75E9AF00EE8042 /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				E772B8D91D75E9AF00EE8042 /* AnalyticEntities.swift */,
-				E772B8DA1D75E9AF00EE8042 /* AppAnalytics.swift */,
-				E772B8DB1D75E9AF00EE8042 /* FabricCrashReporter.swift */,
-				E772B8DC1D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift */,
-				E772B8DD1D75E9AF00EE8042 /* TestAnalyticsViewController.swift */,
-			);
-			path = Analytics;
-			sourceTree = "<group>";
-		};
-		E772B8F21D75F03700EE8042 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				E772B8F31D75F03700EE8042 /* ApplicationDependencies.swift */,
-				E772B8F41D75F03700EE8042 /* ApplicationStoryboardLoader.swift */,
-			);
-			name = Core;
-			path = Analytics/Core;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1125,17 +1496,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7AC3FE881AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojo" */;
 			buildPhases = (
-				32AD2AD8D1B3100C5505C32D /* [CP] Check Pods Manifest.lock */,
+				E67161EECD0A1DDA4E53C40D /* [CP] Check Pods Manifest.lock */,
 				E7D8D1EE1D76E51600944021 /* Info plist Version */,
 				7AC3FE5E1AEE3E7600AD12E0 /* Sources */,
 				7AC3FE5F1AEE3E7600AD12E0 /* Frameworks */,
 				7AC3FE601AEE3E7600AD12E0 /* Resources */,
-				E7D8D1F01D76E5A200944021 /* Carthage Frameworks */,
-				9E032DF1F3CA2B7D4D8BF3E8 /* [CP] Embed Pods Frameworks */,
-				0F8849B7705AE39AB4DE3812 /* [CP] Copy Pods Resources */,
-				E7D8D1E91D76DFF600944021 /* Embed Frameworks */,
-				E7D8D1EF1D76E59000944021 /* CopyFiles */,
 				BF2CFBF01D65E5F100200974 /* Fabric */,
+				E41601621273C22C09C907FD /* [CP] Embed Pods Frameworks */,
+				AFA0AFFFC152392AA1866610 /* 📦 Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1146,51 +1514,31 @@
 			productReference = 7AC3FE621AEE3E7600AD12E0 /* DinerMojo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7AC3FE7D1AEE3E7600AD12E0 /* DinerMojoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7AC3FE8B1AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojoTests" */;
-			buildPhases = (
-				6C20932E944B9D6AA2196966 /* [CP] Check Pods Manifest.lock */,
-				7AC3FE7A1AEE3E7600AD12E0 /* Sources */,
-				7AC3FE7B1AEE3E7600AD12E0 /* Frameworks */,
-				7AC3FE7C1AEE3E7600AD12E0 /* Resources */,
-				4DD0284C30C217A5BCDDFBFC /* [CP] Embed Pods Frameworks */,
-				533CA9545E216290CAE4E293 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7AC3FE801AEE3E7600AD12E0 /* PBXTargetDependency */,
-			);
-			name = DinerMojoTests;
-			productName = DinerMojoTests;
-			productReference = 7AC3FE7E1AEE3E7600AD12E0 /* DinerMojoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		7AC3FE5A1AEE3E7600AD12E0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "hedgehog lab";
 				TargetAttributes = {
-					7A8C4BB21B1CB2AA00F1A798 = {
-						CreatedOnToolsVersion = 6.3.2;
-					};
 					7AC3FE611AEE3E7600AD12E0 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 42B8BC6R86;
+						LastSwiftMigration = 1150;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
 						};
-					};
-					7AC3FE7D1AEE3E7600AD12E0 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 7AC3FE611AEE3E7600AD12E0;
 					};
 				};
 			};
@@ -1199,6 +1547,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1208,8 +1557,6 @@
 			projectRoot = "";
 			targets = (
 				7AC3FE611AEE3E7600AD12E0 /* DinerMojo */,
-				7AC3FE7D1AEE3E7600AD12E0 /* DinerMojoTests */,
-				7A8C4BB21B1CB2AA00F1A798 /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -1219,20 +1566,40 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				276AED121F2A01A700042D31 /* BookingViewController.xib in Resources */,
 				7AC3FE791AEE3E7600AD12E0 /* LaunchScreen.xib in Resources */,
+				2C9ADB4D2036D501004CC839 /* RedeemPointsToNextLevelCell.xib in Resources */,
+				27A992A6206CC23000C480EC /* CannotRedeemViewController.xib in Resources */,
 				D4952F581B2087590077FC5F /* DMNewsFeedTableViewCell.xib in Resources */,
 				D4CCE4D11B3052F500D315AE /* DMTransactionTableViewFooter.xib in Resources */,
 				7AEF14A31B1F09FC0053D32B /* OpenSans-Bold.ttf in Resources */,
+				27131C701DEF11720095FC53 /* TabsFilterView.xib in Resources */,
 				D4E436D11B3986B8006435F8 /* DMDineVenueTableViewCell.xib in Resources */,
+				CB580D3D1E0404E10018ED8A /* DMSortByDistanceCell.xib in Resources */,
+				27F95827206B667C00A4537F /* LeaveRatingViewController.xib in Resources */,
 				D49738C91B32D45E00D8B6A8 /* DMRedeemTableViewCell.xib in Resources */,
+				2C6C543C1FD9392D006C147D /* TurnOnNotificationsViewController.xib in Resources */,
+				278159191E9CDAC8009B3B3C /* DMLocationInfoItemCell.xib in Resources */,
 				7AEF14AB1B1F09FC0053D32B /* OpenSans-Semibold.ttf in Resources */,
+				27268708206A0D880031B3CE /* BirthdayViewController.xib in Resources */,
+				CB580D371E03EE400018ED8A /* Localizable.strings in Resources */,
 				7AEF14A81B1F09FC0053D32B /* OpenSans-Light.ttf in Resources */,
 				D4A813691B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib in Resources */,
+				27037C4820B5B06A00B47313 /* AcceptGdprViewController.xib in Resources */,
+				CB8F7B491E03044400EC24C3 /* DMRadioSortOptionCell.xib in Resources */,
+				276AED171F2A4CC300042D31 /* StartupNotificationsViewController.xib in Resources */,
+				27B8832A1EACE6320082DA88 /* DMRadioViewOption.xib in Resources */,
 				7A8C4B9B1B1C9D5800F1A798 /* Environments.plist in Resources */,
+				27B883281EACD9AC0082DA88 /* DMVenuesOptionCell.xib in Resources */,
+				CB8F7B431E0301CE00EC24C3 /* TUHeaderOptionGroupView.xib in Resources */,
 				7AEF14A91B1F09FC0053D32B /* OpenSans-LightItalic.ttf in Resources */,
+				2738C09D1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.xib in Resources */,
 				7AEF14AC1B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf in Resources */,
 				7AEF14A61B1F09FC0053D32B /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				27B4B4FE1E9BCCC200674929 /* fdt.gpx in Resources */,
 				E7D8D1ED1D76E4E300944021 /* Settings.bundle in Resources */,
+				278E86311EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib in Resources */,
+				278750351EC31AFC00BCFD4E /* StartupViewController.xib in Resources */,
 				7AEF14AA1B1F09FC0053D32B /* OpenSans-Regular.ttf in Resources */,
 				7AEF14A71B1F09FC0053D32B /* OpenSans-Italic.ttf in Resources */,
 				7AEF14A41B1F09FC0053D32B /* OpenSans-BoldItalic.ttf in Resources */,
@@ -1243,117 +1610,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7AC3FE7C1AEE3E7600AD12E0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F8849B7705AE39AB4DE3812 /* [CP] Copy Pods Resources */ = {
+		AFA0AFFFC152392AA1866610 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		32AD2AD8D1B3100C5505C32D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		4DD0284C30C217A5BCDDFBFC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		533CA9545E216290CAE4E293 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6C20932E944B9D6AA2196966 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		7A8C4BB91B1CB2D000F1A798 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd \"DinerMojo/Models/CoreData/\"\n/usr/local/bin/mogenerator --template-var arc=true -m DinerMojo.xcdatamodeld -M ManagedObjects/Machine/ -H ManagedObjects/Human/ -P ManagedObjects/Protocol/";
-		};
-		9E032DF1F3CA2B7D4D8BF3E8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BF2CFBF01D65E5F100200974 /* Fabric */ = {
@@ -1368,7 +1640,77 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 015a3121c76ea8baec90c4a97c7bd1976400adad dc9c94e3c240c0f762b3ba151b9bb3c0ddf4271bf6be439432c002315672794f";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e1c9d86bff08f7dbfce4a6bb171c2c4d5cc90e4f d3f21afe2c4b118982043346633ce30603fc71b135d7bbe047f2b44cc2189a7a\n";
+		};
+		E41601621273C22C09C907FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FastEasyMapping/FastEasyMapping.framework",
+				"${BUILT_PRODUCTS_DIR}/GBVersionTracking/GBVersionTracking.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PMEDatePicker/PMEDatePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/RDHCollectionViewGridLayout/RDHCollectionViewGridLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SVBlurView/SVBlurView.framework",
+				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
+				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FastEasyMapping.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GBVersionTracking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMEDatePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RDHCollectionViewGridLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVBlurView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E67161EECD0A1DDA4E53C40D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DinerMojo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		E7D8D1EE1D76E51600944021 /* Info plist Version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1382,23 +1724,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "version=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n/usr/libexec/PlistBuddy -c \"set PreferenceSpecifiers:1:DefaultValue $version\" \"${SRCROOT}/${PRODUCT_NAME}/Settings.bundle/Root.plist\"";
-		};
-		E7D8D1F01D76E5A200944021 /* Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/TheDistanceCore.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/TDCAppDependencies.framework",
-			);
-			name = "Carthage Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "version=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n/usr/libexec/PlistBuddy -c \"set PreferenceSpecifiers:1:DefaultValue $version\" \"${SRCROOT}/DinerMojo/Settings.bundle/Root.plist\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1408,121 +1734,170 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC3FE6B1AEE3E7600AD12E0 /* AppDelegate.m in Sources */,
+				279C840B1EF82EAA00629C2A /* UIView+InnerShadow.m in Sources */,
 				D49738C81B32D45D00D8B6A8 /* DMRedeemTableViewCell.m in Sources */,
+				27C745F71EB0E5EC00614D50 /* CustomTabBar.swift in Sources */,
 				7A8C4B831B1C9AD500F1A798 /* DMFavouritesViewController.m in Sources */,
 				5A5FF0881B286BEF00E0FC90 /* DMShadowImageView.m in Sources */,
 				7A5EC8151B4C033F00B27CBF /* DMBase.m in Sources */,
 				D4B07FBD1B3AB3960055AA45 /* DMFeedbackViewController.m in Sources */,
+				5E675282223142D40016B402 /* DMAfterTransactionPopUpViewController.m in Sources */,
+				278E862D1EB8D2D700A6E8B7 /* DMVenuesNotificationCell.swift in Sources */,
+				2CA9619620FF176200BCE54F /* DMAttributedStringDecorator.swift in Sources */,
 				7A5EC82C1B4C033F00B27CBF /* _DMVenueOpeningTimes.m in Sources */,
 				7A5EC81E1B4C033F00B27CBF /* DMVenueCategory.m in Sources */,
+				2724BD841F7D177600427F11 /* PickerTextField.swift in Sources */,
+				5E93522F221B051E00BF2B5A /* RestaurantInfoButtonEnum.m in Sources */,
+				276AED161F2A4CC300042D31 /* StartupNotificationsViewController.swift in Sources */,
+				2C6C543E1FD93FF3006C147D /* SGNotificationsSettings.swift in Sources */,
 				5AE837521B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m in Sources */,
+				CB8F7B3C1E02F87600EC24C3 /* DMSortOptionsProvider.swift in Sources */,
 				7A8C4B991B1C9BA600F1A798 /* DMVenueRequest.m in Sources */,
 				7A8C4B871B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m in Sources */,
 				D4CEE6731B29AD1500CB5647 /* DMProfileInfoViewController.m in Sources */,
+				5E67527A222FDF8A0016B402 /* DMPopUpRequest.m in Sources */,
+				CB8F7B351E02F23C00EC24C3 /* TUTableViewCellLoadable.swift in Sources */,
 				7A5EC8271B4C033F00B27CBF /* _DMUpdateItem.m in Sources */,
-				E772B8F61D75F03700EE8042 /* ApplicationDependencies.swift in Sources */,
+				CB8F7B341E02F23C00EC24C3 /* TUGroupedTableManager.swift in Sources */,
 				7A5EC8221B4C033F00B27CBF /* _DMEarnTransaction.m in Sources */,
 				5A7BFBB71B1DB16700255A25 /* DMButton.m in Sources */,
 				7A8C4B7F1B1C9AD500F1A798 /* DMDineViewController.m in Sources */,
-				E772B8DF1D75E9AF00EE8042 /* AppAnalytics.swift in Sources */,
 				7A5EC81F1B4C033F00B27CBF /* DMVenueImage.m in Sources */,
+				275F2AAD1EA79B0400EE91D4 /* DMSortNewsOptionsProvider.swift in Sources */,
+				CB8F7B451E0303FB00EC24C3 /* DMRadioSortOptionItem.swift in Sources */,
+				CB2B5EA81E04337600960091 /* DMViewControllersProvider.swift in Sources */,
 				7A5EC81B1B4C033F00B27CBF /* DMUpdateItem.m in Sources */,
+				9433A7AE24B32D2000449F8B /* PKHUDSwift.swift in Sources */,
 				7A46D0391B29C25C00FA2AA9 /* DMUserRequest.m in Sources */,
+				CB8F7B361E02F23C00EC24C3 /* TUTableViewData.swift in Sources */,
 				7A5EC8171B4C033F00B27CBF /* DMNewsItem.m in Sources */,
 				7A8C4B851B1C9AD500F1A798 /* DMNewsItemViewController.m in Sources */,
 				7A8C4B8F1B1C9AD500F1A798 /* DMLandingViewController.m in Sources */,
 				7A8C4B891B1C9AD500F1A798 /* DMPasswordSettingsViewController.m in Sources */,
 				5A5EE0F61AF3AB9B00F3C796 /* DMViewController.m in Sources */,
 				5A7BFBBB1B1DC11700255A25 /* DMRestaurantCell.m in Sources */,
-				E772B8E01D75E9AF00EE8042 /* FabricCrashReporter.swift in Sources */,
+				278E862F1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift in Sources */,
 				7A46D03C1B29C58F00FA2AA9 /* DMFacebookService.m in Sources */,
 				D4E436D01B3986B8006435F8 /* DMDineVenueTableViewCell.m in Sources */,
 				7A8C4BAE1B1CAF7800F1A798 /* DMVenueModelController.m in Sources */,
+				CB8F7B331E02F23C00EC24C3 /* SwiftHEXColors.swift in Sources */,
 				7A7CB4501AFF4AEE00C13FF1 /* DMTabBarViewController.m in Sources */,
 				7A8C4B491B1C9A2D00F1A798 /* DMRequest.m in Sources */,
+				CB8F7B3F1E0300BF00EC24C3 /* DMOptionGroupItem.swift in Sources */,
 				7A8C4B8D1B1C9AD500F1A798 /* DMSettingsViewController.m in Sources */,
-				E772B8E21D75E9AF00EE8042 /* TestAnalyticsViewController.swift in Sources */,
+				27F95826206B667C00A4537F /* LeaveRatingViewController.swift in Sources */,
+				CB8F7B481E03044400EC24C3 /* DMRadioSortOptionCell.swift in Sources */,
+				2C6C543B1FD9392D006C147D /* TurnOnNotificationsViewController.swift in Sources */,
 				D4E4370A1B3A98CD006435F8 /* DMEarnReviewViewController.m in Sources */,
+				278F7ECA1E9F87B7000D1E87 /* TabBarButtonsView.swift in Sources */,
 				7A8C4B951B1C9AD500F1A798 /* DMRestaurantInfoRelatedCell.m in Sources */,
+				278E862B1EB8B40200A6E8B7 /* DMNotificationVenueListViewController.m in Sources */,
 				7A5EC8191B4C033F00B27CBF /* DMRedeemTransaction.m in Sources */,
+				27B4B4FC1E9A7DC100674929 /* DMSortByDistanceItem.swift in Sources */,
 				D4CCE4DB1B31914A00D315AE /* DMRedeemCouponViewController.m in Sources */,
 				7A5EC82A1B4C033F00B27CBF /* _DMVenueCategory.m in Sources */,
 				7A8C4B841B1C9AD500F1A798 /* DMNewsFeedViewController.m in Sources */,
 				7A8C4B8E1B1C9AD500F1A798 /* DMTransactionTimelineViewController.m in Sources */,
-				E772B8E11D75E9AF00EE8042 /* GoogleAnalyticsReporter.swift in Sources */,
+				5E67527D223005B10016B402 /* PopUpModel.swift in Sources */,
+				2781591B1E9CDAF4009B3B3C /* DMLocationInfoItemCell.swift in Sources */,
 				D4E436C91B39751F006435F8 /* DMTabBarController.m in Sources */,
+				CB8F7B321E02F23C00EC24C3 /* Providers.swift in Sources */,
 				5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */,
 				7A5EC8161B4C033F00B27CBF /* DMEarnTransaction.m in Sources */,
 				5A68207C1B39A3A500C7F4A4 /* DMTransactionsModelController.m in Sources */,
+				27B8832C1EACE7DF0082DA88 /* DMRadioViewOption.swift in Sources */,
 				7AFF9EF41B2B441900F6C9B6 /* DMReferralViewController.m in Sources */,
-				E772B8F71D75F03700EE8042 /* ApplicationStoryboardLoader.swift in Sources */,
 				7A8C4B8C1B1C9AD500F1A798 /* DMReferAFriendViewController.m in Sources */,
 				7A80F6271B3F6605009C8A6F /* UIImage+Extensions.m in Sources */,
-				7A8C4B881B1C9AD500F1A798 /* DMNotificationSettingsViewController.m in Sources */,
+				278159171E9CDA41009B3B3C /* DMLocationInfoItem.swift in Sources */,
+				276E02161EA55D0F006A79EA /* DMSortNewsFeedViewController.m in Sources */,
 				7A5EC8261B4C033F00B27CBF /* _DMTransaction.m in Sources */,
+				CB8F7B371E02F23C00EC24C3 /* TUTableViewManager.swift in Sources */,
 				7AC3FE681AEE3E7600AD12E0 /* main.m in Sources */,
 				7A5EC8291B4C033F00B27CBF /* _DMVenue.m in Sources */,
+				2721163C1EB7739C00E01B6A /* SubscriptionsObject.m in Sources */,
 				D4B209091B25D18C001410D0 /* DMPageControl.m in Sources */,
+				2769EB811F34C33800C4E0D5 /* ResizableButton.swift in Sources */,
 				7A5EC81A1B4C033F00B27CBF /* DMTransaction.m in Sources */,
 				7A5EC82B1B4C033F00B27CBF /* _DMVenueImage.m in Sources */,
 				7A5EC81C1B4C033F00B27CBF /* DMUser.m in Sources */,
+				278F7ECC1E9F87B7000D1E87 /* TabBarView.swift in Sources */,
+				272F24CA1EFD09AA00B379ED /* SelectedNotificationsLifestyle.swift in Sources */,
+				273ADE851E97BE0300997F5D /* TableViewSelectForGroup.swift in Sources */,
 				7A5EC8201B4C033F00B27CBF /* DMVenueOpeningTimes.m in Sources */,
 				7AF517EF1B440E3100FA5221 /* DMMappingHelper.m in Sources */,
+				274953BB20E652420016945F /* FacebookShareManager.swift in Sources */,
 				D49738CC1B32FD8600D8B6A8 /* DMView.m in Sources */,
+				272F24D01EFD0E8900B379ED /* SelectedNotificationsParser.swift in Sources */,
 				7A5EC8181B4C033F00B27CBF /* DMOfferItem.m in Sources */,
+				27268707206A0D880031B3CE /* BirthdayViewController.swift in Sources */,
 				D4E436C61B3854FE006435F8 /* DMTransactionReceiptImageViewController.m in Sources */,
 				7A8C4B911B1C9AD500F1A798 /* DMStartViewController.m in Sources */,
 				D4952F5B1B208C500077FC5F /* DMImageView.m in Sources */,
 				7A01294B1B2741C800D46B39 /* UIImage+ImageEffects.m in Sources */,
 				7A5EC8231B4C033F00B27CBF /* _DMNewsItem.m in Sources */,
 				D4952F6F1B20926C0077FC5F /* DMColorService.m in Sources */,
-				E772B8DE1D75E9AF00EE8042 /* AnalyticEntities.swift in Sources */,
 				7A1AF3081B21F2310072F013 /* DMNewsItemModelController.m in Sources */,
 				7A8C4BB11B1CB02C00F1A798 /* DinerMojo.xcdatamodeld in Sources */,
+				CB8F7B411E03019C00EC24C3 /* TUHeaderOptionGroupView.swift in Sources */,
 				E7D8D1E61D76DD0800944021 /* AppDelegate.swift in Sources */,
+				27CA5C301E9F89FE00D0AFF6 /* TabBarItemBuilder.swift in Sources */,
 				7ACE9F741B1D0FAA0001F20C /* DMMappingProvider.m in Sources */,
+				276AED111F2A01A700042D31 /* BookingViewController.swift in Sources */,
 				7A8C4B961B1C9AD500F1A798 /* DMRestaurantInfoViewController.m in Sources */,
 				7A8C4B931B1C9AD500F1A798 /* DMMapViewController.m in Sources */,
+				27131C731DEF25620095FC53 /* TabsFilterView.m in Sources */,
 				7A520F6F1B2E2FA200CF4C0F /* DMOperationCompletePopUpViewController.m in Sources */,
+				272F24CE1EFD0A7D00B379ED /* SelectedNotification.swift in Sources */,
 				7A8C4B8A1B1C9AD500F1A798 /* DMProfileViewController.m in Sources */,
 				D44F86C71B21B68E00EFEC3B /* DMFontService.m in Sources */,
-				5A7565171B416E0800434B3D /* DMSortNewsfeedViewController.m in Sources */,
+				278750341EC31AFC00BCFD4E /* StartupViewController.swift in Sources */,
+				5A7565171B416E0800434B3D /* DMSortVenueFeedViewController.m in Sources */,
+				2702171C20638EF20041CD6F /* DMActivityViewController.swift in Sources */,
+				27B883261EACD9980082DA88 /* DMVenuesOptionCell.swift in Sources */,
+				272F24C81EFD092E00B379ED /* SelectedNotificationsDining.swift in Sources */,
 				7A5432351B1FA98C00B99AF1 /* DMTextField.m in Sources */,
 				7A5EC81D1B4C033F00B27CBF /* DMVenue.m in Sources */,
+				27037C4720B5B06A00B47313 /* AcceptGdprViewController.swift in Sources */,
 				7A5EC8211B4C033F00B27CBF /* _DMBase.m in Sources */,
+				27CA5C2E1E9F89F800D0AFF6 /* TabBarItem.swift in Sources */,
 				7A5EC8251B4C033F00B27CBF /* _DMRedeemTransaction.m in Sources */,
+				27A992A7206CC23000C480EC /* CannotRedeemViewController.swift in Sources */,
 				5A7565141B414AFC00434B3D /* DMLocationServices.m in Sources */,
 				D48CEB8D1B300F89001A01EB /* DMEditProfileViewController.m in Sources */,
 				7A8C4B921B1C9AD500F1A798 /* DMWelcomeViewController.m in Sources */,
+				5E37F01A21F5EB6B00D85C82 /* StateSerializer.swift in Sources */,
 				7AC78DED1B01022E00AEA451 /* DMBlurredView.m in Sources */,
 				7A1AF3051B21BB250072F013 /* DMNewsRequest.m in Sources */,
+				27B883241EACD9910082DA88 /* DMVenuesOptionItem.swift in Sources */,
 				7A5EC8241B4C033F00B27CBF /* _DMOfferItem.m in Sources */,
 				D4A813681B2B052E00FA2BB3 /* DMTransactionTableViewCell.m in Sources */,
 				7A5EC8281B4C033F00B27CBF /* _DMUser.m in Sources */,
+				2738C09C1EBC7C3B00C7B265 /* DMNotificationVenueHeaderView.swift in Sources */,
 				7A88F32C1B46A1FC001B443A /* DMDineNavigationController.m in Sources */,
 				D4CCE4D81B31911900D315AE /* DMRedeemViewController.m in Sources */,
 				D4952F571B2087590077FC5F /* DMNewsFeedTableViewCell.m in Sources */,
+				2C9ADB482036D45C004CC839 /* FakeOfferObject.m in Sources */,
+				27CA5C2A1E9F898000D0AFF6 /* TabBarItemDelegate.swift in Sources */,
 				7ACE9F731B1D0FAA0001F20C /* DMManagedObjectDeserializer.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7AC3FE7A1AEE3E7600AD12E0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7AC3FE851AEE3E7600AD12E0 /* DinerMojoTests.m in Sources */,
+				30CFFEE6B01E7FBCD3BB9BD3 /* DMSortSelectionManager.swift in Sources */,
+				CB580D3C1E0404E10018ED8A /* DMSortByDistanceCell.swift in Sources */,
+				5E67527F223141400016B402 /* AfterTransactionPopUpManager.swift in Sources */,
+				2C9ADB4C2036D501004CC839 /* RedeemPointsToNextLevelCell.m in Sources */,
+				30CFFA71FE8513CEFE79601A /* DMSortItemsFactory.swift in Sources */,
+				30CFF193F6E28FAB5AFFB44B /* DMDistanceItem.swift in Sources */,
+				30CFF222856F4343BDE03221 /* DMNotificationSettingsViewController.m in Sources */,
+				30CFF9BDACF938334F981DA3 /* DMNotificationsSettingsProvider.swift in Sources */,
+				30CFF26A31D8D5EBACC7CFA2 /* DMNotificationItemsFactory.swift in Sources */,
+				278E86331EB92B5D00A6E8B7 /* DMNotificationsVenueProvider.swift in Sources */,
+				30CFFBEB3DB4E850D0488741 /* DMNotificationSelectionManager.swift in Sources */,
+				278F7ECB1E9F87B7000D1E87 /* TabBarItemView.swift in Sources */,
+				2738C09F1EBC94F800C7B265 /* DMNotificationVenueDelegate.swift in Sources */,
+				3323F5F2F0E28D3ED1945F82 /* FilterItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7AC3FE801AEE3E7600AD12E0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7AC3FE611AEE3E7600AD12E0 /* DinerMojo */;
-			targetProxy = 7AC3FE7F1AEE3E7600AD12E0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7AC3FE771AEE3E7600AD12E0 /* LaunchScreen.xib */ = {
@@ -1534,126 +1909,43 @@
 			path = .;
 			sourceTree = "<group>";
 		};
+		CB580D391E03EE400018ED8A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB580D381E03EE400018ED8A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7A7AC9E01B26341600A49118 /* Debug - Vagrant */ = {
+		274297221ECEDB6D0091C6E6 /* Internal FDT Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "7b2f1b03-4962-426b-957e-a096d434dba5";
-				SDKROOT = iphoneos;
-			};
-			name = "Debug - Vagrant";
-		};
-		7A7AC9E11B26341600A49118 /* Debug - Vagrant */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6227750F38A02B12259FA935 /* Pods-DinerMojo.debug - vagrant.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
-				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = "Debug - Vagrant";
-		};
-		7A7AC9E21B26341600A49118 /* Debug - Vagrant */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 627956F8F5FCBE798E0D8820 /* Pods-DinerMojoTests.debug - vagrant.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7b2f1b03-4962-426b-957e-a096d434dba5";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
-			};
-			name = "Debug - Vagrant";
-		};
-		7A7AC9E31B26341600A49118 /* Debug - Vagrant */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = "Debug - Vagrant";
-		};
-		7A8C4B9C1B1CA20900F1A798 /* Internal Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sam Miller (UD45HDRE9K)";
@@ -1671,153 +1963,147 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Internal Release";
+			name = "Internal FDT Release";
 		};
-		7A8C4B9D1B1CA20900F1A798 /* Internal Release */ = {
+		274297231ECEDB6D0091C6E6 /* Internal FDT Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 780BC59CC08CC5DF1832EEDB /* Pods-DinerMojo.internal release.xcconfig */;
+			baseConfigurationReference = EF7C7EC248C7D988D042049F /* Pods-DinerMojo.internal fdt release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				APP_NAME_SUFFIX = Staging;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconStaging;
+				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
-				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = "Internal Release";
-		};
-		7A8C4B9E1B1CA20900F1A798 /* Internal Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4EE1963494E58E662A28A42 /* Pods-DinerMojoTests.internal release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Carl Sanders (E2TBMQ9469)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carl Sanders (E2TBMQ9469)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1846874e-1160-4569-a619-3c21ae6062d7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
-			};
-			name = "Internal Release";
-		};
-		7A8C4B9F1B1CA21B00F1A798 /* Client Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
-				COPY_PHASE_STRIP = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 103;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = "Client Release";
-		};
-		7A8C4BA01B1CA21B00F1A798 /* Client Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F96B4EC15C77880B195AA3C /* Pods-DinerMojo.client release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
+				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FastEasyMapping\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManager\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MagicalRecord\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PMEDatePicker\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PureLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RDHCollectionViewGridLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVBlurView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Shimmer\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
 				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
-				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b0ce44d8-05e3-4537-82d7-f47029c9bf11";
-				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = "Client Release";
-		};
-		7A8C4BA11B1CA21B00F1A798 /* Client Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8584C48B522F53A8733FDE5D /* Pods-DinerMojoTests.client release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rob Sammons (YHG2S9647J)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
+				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"/**",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Shimmer\"",
 				);
-				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
+				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"GoogleAnalytics\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FastEasyMapping\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MagicalRecord\"",
+					"-framework",
+					"\"PMEDatePicker\"",
+					"-framework",
+					"\"PureLayout\"",
+					"-framework",
+					"\"RDHCollectionViewGridLayout\"",
+					"-framework",
+					"\"SVBlurView\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Shimmer\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo.staging;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1846874e-1160-4569-a619-3c21ae6062d7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
+				PROVISIONING_PROFILE = "c893c635-bab3-4535-acea-3560d6958a40";
+				PROVISIONING_PROFILE_SPECIFIER = "DinerMojo Staging AppStore";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm7 arm64";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Client Release";
+			name = "Internal FDT Release";
 		};
-		7A8C4BA21B1CA22400F1A798 /* App Store */ = {
+		2CE385BC1FA1E30C009355EE /* App Store Ad-Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1835,88 +2121,422 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "App Store Ad-Hoc";
+		};
+		2CE385BD1FA1E30C009355EE /* App Store Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF869002BB6C6C9977F45984 /* Pods-DinerMojo.app store ad-hoc.xcconfig */;
+			buildSettings = {
+				APP_NAME_SUFFIX = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 103;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 42B8BC6R86;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FastEasyMapping\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManager\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MagicalRecord\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PMEDatePicker\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PureLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RDHCollectionViewGridLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVBlurView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Shimmer\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"/**",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Shimmer\"",
+				);
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
+				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"GoogleAnalytics\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FastEasyMapping\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MagicalRecord\"",
+					"-framework",
+					"\"PMEDatePicker\"",
+					"-framework",
+					"\"PureLayout\"",
+					"-framework",
+					"\"RDHCollectionViewGridLayout\"",
+					"-framework",
+					"\"SVBlurView\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Shimmer\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo.staging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b4399ffa-76fd-4150-98b7-24130e19b03c";
+				PROVISIONING_PROFILE_SPECIFIER = "Dinermojo stage App Store";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "App Store Ad-Hoc";
+		};
+		7A8C4B9F1B1CA21B00F1A798 /* External FDT Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phil Herbert (7WNM4R4XN7)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "External FDT Release";
+		};
+		7A8C4BA01B1CA21B00F1A798 /* External FDT Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3F88B76A0CDD8A79A78BAAB /* Pods-DinerMojo.external fdt release.xcconfig */;
+			buildSettings = {
+				APP_NAME_SUFFIX = Staging;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconStaging;
+				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 103;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 42B8BC6R86;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FastEasyMapping\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManager\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MagicalRecord\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PMEDatePicker\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PureLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RDHCollectionViewGridLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVBlurView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Shimmer\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"/**",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Shimmer\"",
+				);
+				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
+				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"GoogleAnalytics\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FastEasyMapping\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MagicalRecord\"",
+					"-framework",
+					"\"PMEDatePicker\"",
+					"-framework",
+					"\"PureLayout\"",
+					"-framework",
+					"\"RDHCollectionViewGridLayout\"",
+					"-framework",
+					"\"SVBlurView\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Shimmer\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo.staging;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "b4399ffa-76fd-4150-98b7-24130e19b03c";
+				PROVISIONING_PROFILE_SPECIFIER = "DinerMojo Staging AppStore";
+				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "External FDT Release";
+		};
+		7A8C4BA21B1CA22400F1A798 /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "App Store";
 		};
 		7A8C4BA31B1CA22400F1A798 /* App Store */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FC2713EA6372F8DE89EAAC4 /* Pods-DinerMojo.app store.xcconfig */;
+			baseConfigurationReference = CF274B4B4525C3727A60DBAF /* Pods-DinerMojo.app store.xcconfig */;
 			buildSettings = {
+				APP_NAME_SUFFIX = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 103;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FastEasyMapping\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManager\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MagicalRecord\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PMEDatePicker\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PureLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RDHCollectionViewGridLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVBlurView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Shimmer\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"/**",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Shimmer\"",
+				);
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
+				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"GoogleAnalytics\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FastEasyMapping\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MagicalRecord\"",
+					"-framework",
+					"\"PMEDatePicker\"",
+					"-framework",
+					"\"PureLayout\"",
+					"-framework",
+					"\"RDHCollectionViewGridLayout\"",
+					"-framework",
+					"\"SVBlurView\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Shimmer\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2dcf87bf-6fe3-4fbe-b087-c4c52418c034";
+				PROVISIONING_PROFILE_SPECIFIER = "Diner Mojo Appstore";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = "App Store";
-		};
-		7A8C4BA41B1CA22400F1A798 /* App Store */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A38111406B77FF91CAD6B3D /* Pods-DinerMojoTests.app store.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rob Sammons (YHG2S9647J)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1846874e-1160-4569-a619-3c21ae6062d7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
-			};
-			name = "App Store";
-		};
-		7A8C4BB41B1CB2AA00F1A798 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4c1a40f1-e3e5-43f6-a8d8-e8bdada8c64a";
-			};
-			name = Debug;
-		};
-		7A8C4BB51B1CB2AA00F1A798 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		7A8C4BB61B1CB2AA00F1A798 /* Internal Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = "Internal Release";
-		};
-		7A8C4BB71B1CB2AA00F1A798 /* Client Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = "Client Release";
-		};
-		7A8C4BB81B1CB2AA00F1A798 /* App Store */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm7 arm64";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = "App Store";
 		};
@@ -1924,17 +2544,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1960,198 +2591,145 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "37ea8a00-fce4-414f-8cc8-ddd09c6d9a0d";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
-		};
-		7AC3FE871AEE3E7600AD12E0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sam Miller (UD45HDRE9K)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
 		};
 		7AC3FE891AEE3E7600AD12E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 438C861B045EC989A3DB9AA7 /* Pods-DinerMojo.debug.xcconfig */;
+			baseConfigurationReference = 7D060AA8CBEA03332FA90A01 /* Pods-DinerMojo.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Development Team (LPMG637WYE)";
+				APP_NAME_SUFFIX = Staging;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconStaging;
+				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 103;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FastEasyMapping\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManager\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MagicalRecord\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PMEDatePicker\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PureLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RDHCollectionViewGridLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SVBlurView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Shimmer\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"$(PLATFORM_DIR)/Developer/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"/**",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Shimmer\"",
+				);
 				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
+				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
+				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"GoogleAnalytics\"",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FastEasyMapping\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MagicalRecord\"",
+					"-framework",
+					"\"PMEDatePicker\"",
+					"-framework",
+					"\"PureLayout\"",
+					"-framework",
+					"\"RDHCollectionViewGridLayout\"",
+					"-framework",
+					"\"SVBlurView\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Shimmer\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e7ce255d-a34c-4ae7-80b5-46ae169a89b8";
+				PROVISIONING_PROFILE = "b4399ffa-76fd-4150-98b7-24130e19b03c";
+				PROVISIONING_PROFILE_SPECIFIER = "Dinner Mojo Dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
-		};
-		7AC3FE8A1AEE3E7600AD12E0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 751B1FCAC7EB87495D5D64D3 /* Pods-DinerMojo.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Dinermojo Limited (42B8BC6R86)";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DinerMojo/Supporting Files/DinerMojo-Prefix.pch";
-				INFOPLIST_FILE = "DinerMojo/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ac601b2e-e92d-45a5-bb57-7127c1e54b0e";
-				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		7AC3FE8C1AEE3E7600AD12E0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55B147E765EC547426DBD5F8 /* Pods-DinerMojoTests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1e4215ba-674c-4517-96c2-62e6d09d4ab1";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
-			};
-			name = Debug;
-		};
-		7AC3FE8D1AEE3E7600AD12E0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 78A19E582456F99E8E17DAA0 /* Pods-DinerMojoTests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Carl Sanders (E2TBMQ9469)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carl Sanders (E2TBMQ9469)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DinerMojoTests/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dinermojo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1846874e-1160-4569-a619-3c21ae6062d7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinerMojo.app/DinerMojo";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7A8C4BB31B1CB2AA00F1A798 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7A8C4BB41B1CB2AA00F1A798 /* Debug */,
-				7A7AC9E31B26341600A49118 /* Debug - Vagrant */,
-				7A8C4BB51B1CB2AA00F1A798 /* Release */,
-				7A8C4BB61B1CB2AA00F1A798 /* Internal Release */,
-				7A8C4BB71B1CB2AA00F1A798 /* Client Release */,
-				7A8C4BB81B1CB2AA00F1A798 /* App Store */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7AC3FE5D1AEE3E7600AD12E0 /* Build configuration list for PBXProject "DinerMojo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7AC3FE861AEE3E7600AD12E0 /* Debug */,
-				7A7AC9E01B26341600A49118 /* Debug - Vagrant */,
-				7AC3FE871AEE3E7600AD12E0 /* Release */,
-				7A8C4B9C1B1CA20900F1A798 /* Internal Release */,
-				7A8C4B9F1B1CA21B00F1A798 /* Client Release */,
+				274297221ECEDB6D0091C6E6 /* Internal FDT Release */,
+				7A8C4B9F1B1CA21B00F1A798 /* External FDT Release */,
 				7A8C4BA21B1CA22400F1A798 /* App Store */,
+				2CE385BC1FA1E30C009355EE /* App Store Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		7AC3FE881AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7AC3FE891AEE3E7600AD12E0 /* Debug */,
-				7A7AC9E11B26341600A49118 /* Debug - Vagrant */,
-				7AC3FE8A1AEE3E7600AD12E0 /* Release */,
-				7A8C4B9D1B1CA20900F1A798 /* Internal Release */,
-				7A8C4BA01B1CA21B00F1A798 /* Client Release */,
+				274297231ECEDB6D0091C6E6 /* Internal FDT Release */,
+				7A8C4BA01B1CA21B00F1A798 /* External FDT Release */,
 				7A8C4BA31B1CA22400F1A798 /* App Store */,
+				2CE385BD1FA1E30C009355EE /* App Store Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7AC3FE8B1AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7AC3FE8C1AEE3E7600AD12E0 /* Debug */,
-				7A7AC9E21B26341600A49118 /* Debug - Vagrant */,
-				7AC3FE8D1AEE3E7600AD12E0 /* Release */,
-				7A8C4B9E1B1CA20900F1A798 /* Internal Release */,
-				7A8C4BA11B1CA21B00F1A798 /* Client Release */,
-				7A8C4BA41B1CA22400F1A798 /* App Store */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
@@ -2159,10 +2737,12 @@
 		7A8C4BAF1B1CB02C00F1A798 /* DinerMojo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2CB3C1031F87B09D00658D49 /* DinerMojo v1. 3.xcdatamodel */,
+				27F75E281E72E284005DAC92 /* DinerMojo v1.2.xcdatamodel */,
 				7A799B9F1BF3C6CC007F32C1 /* DinerMojo v1.1.xcdatamodel */,
 				7A8C4BB01B1CB02C00F1A798 /* DinerMojo.xcdatamodel */,
 			);
-			currentVersion = 7A799B9F1BF3C6CC007F32C1 /* DinerMojo v1.1.xcdatamodel */;
+			currentVersion = 2CB3C1031F87B09D00658D49 /* DinerMojo v1. 3.xcdatamodel */;
 			path = DinerMojo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

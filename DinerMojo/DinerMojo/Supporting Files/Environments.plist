@@ -2,17 +2,54 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>External FDT Release</key>
+	<dict>
+		<key>shareUrl</key>
+		<string>http://dev.dinermojo.com/DinerMojo_is_rewarding</string>
+		<key>apiURL</key>
+		<string>http://dev-api.dinermojo.com/api/v2/</string>
+		<key>mediaURL</key>
+		<string>http://dev-api.dinermojo.com</string>
+		<key>HockeyAppID</key>
+		<string></string>
+	</dict>
+	<key>DinerMojoTest</key>
+	<dict>
+		<key>shareUrl</key>
+		<string>http://dinermojo.com/DinerMojo_is_rewarding</string>
+		<key>apiURL</key>
+		<string>http://api.dinermojo.com/api/v2/</string>
+		<key>mediaURL</key>
+		<string></string>
+		<key>HockeyAppID</key>
+		<string></string>
+	</dict>
+	<key>Internal FDT Release</key>
+	<dict>
+		<key>shareUrl</key>
+		<string>http://dev.dinermojo.com/DinerMojo_is_rewarding</string>
+		<key>apiURL</key>
+		<string>http://dev-api.dinermojo.com/api/v2/</string>
+		<key>mediaURL</key>
+		<string>http://dev-api.dinermojo.com</string>
+		<key>HockeyAppID</key>
+		<string></string>
+	</dict>
 	<key>Debug</key>
 	<dict>
+		<key>shareUrl</key>
+		<string>http://dev.dinermojo.com/DinerMojo_is_rewarding</string>
 		<key>HockeyAppID</key>
 		<string></string>
 		<key>apiURL</key>
-		<string>http://52.19.156.73/api/v2/</string>
+		<string>http://dev-api.dinermojo.com/api/v2/</string>
 		<key>mediaURL</key>
-		<string>http://52.19.156.73</string>
+		<string>http://dev-api.dinermojo.com</string>
 	</dict>
 	<key>Debug - Vagrant</key>
 	<dict>
+		<key>shareUrl</key>
+		<string>http://dinermojo.com/DinerMojo_is_rewarding</string>
 		<key>HockeyAppID</key>
 		<string></string>
 		<key>apiURL</key>
@@ -22,6 +59,8 @@
 	</dict>
 	<key>Release</key>
 	<dict>
+		<key>shareUrl</key>
+		<string>http://dinermojo.com/DinerMojo_is_rewarding</string>
 		<key>HockeyAppID</key>
 		<string></string>
 		<key>apiURL</key>
@@ -31,15 +70,19 @@
 	</dict>
 	<key>Internal Release</key>
 	<dict>
+		<key>shareUrl</key>
+		<string>http://dev.dinermojo.com/DinerMojo_is_rewarding</string>
 		<key>HockeyAppID</key>
 		<string></string>
 		<key>apiURL</key>
-		<string>http://52.19.156.73/api/v2/</string>
+		<string>http://dev-api.dinermojo.com/api/v2/</string>
 		<key>mediaURL</key>
-		<string>http://52.19.156.73</string>
+		<string>http://dev-api.dinermojo.com</string>
 	</dict>
 	<key>Client Release</key>
 	<dict>
+		<key>shareUrl</key>
+		<string>http://dinermojo.com/DinerMojo_is_rewarding</string>
 		<key>HockeyAppID</key>
 		<string></string>
 		<key>apiURL</key>
@@ -49,6 +92,8 @@
 	</dict>
 	<key>App Store</key>
 	<dict>
+		<key>shareUrl</key>
+		<string>http://dinermojo.com/DinerMojo_is_rewarding</string>
 		<key>HockeyAppID</key>
 		<string></string>
 		<key>apiURL</key>

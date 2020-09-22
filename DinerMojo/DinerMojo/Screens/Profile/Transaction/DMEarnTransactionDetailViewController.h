@@ -14,6 +14,7 @@
 
 @interface DMEarnTransactionDetailViewController : DMTabBarViewController <UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *greenBackgroundView;
 @property (weak, nonatomic) IBOutlet UIView *receiptView;

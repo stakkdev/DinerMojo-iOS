@@ -53,6 +53,12 @@
         {
             [returnArray addObject:[DMMappingHelper mapOfferItem:dictionary withMapping:[[self mappingProvider] offerMapping] inContext:[self objectContext]]];
         }
+        else if (type == DMUpdateItemTypeReward) {
+            [returnArray addObject:[DMMappingHelper mapOfferItem:dictionary withMapping:[[self mappingProvider] offerMapping] inContext:[self objectContext]]];
+        }
+        else if (type == DMUpdateItemTypeProdigalReward) {
+             [returnArray addObject:[DMMappingHelper mapNewsItem:dictionary withMapping:[[self mappingProvider] prodigalRewardMapping] inContext:[self objectContext]]];
+        }
         else
         {
             [returnArray addObject:[DMMappingHelper mapNewsItem:dictionary withMapping:[[self mappingProvider] newsMapping] inContext:[self objectContext]]];

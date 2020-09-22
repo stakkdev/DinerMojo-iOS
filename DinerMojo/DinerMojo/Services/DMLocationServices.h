@@ -20,5 +20,8 @@
 - (void)startUpdatingCoordinates;
 - (void)stopUpdating;
 - (double)userLocationDistanceFromLocation:(CLLocation *)location;
+- (double)getDistanceWithLatitude:(NSNumber *)latitude andLongitude:(NSNumber *)longitude;
+- (BOOL)isLocationEnabled;
+
 
 @end

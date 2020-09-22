@@ -83,6 +83,8 @@
 - (NSString*)menu_url;
 - (void)setMenu_url:(NSString*)menu_url;
 
+- (NSString*)booking_url;
+- (void)setBooking_url:(NSString*)booking_url;
 
 
 - (NSString*)name;
@@ -129,6 +131,11 @@
 - (void)setUser_last_viewed:(NSDate*)user_last_viewed;
 
 
+- (NSDate*)last_redeem;
+- (void)setLast_redeem:(NSDate*)last_redeem;
+
+- (NSString*)last_redeem_name;
+- (void)setLast_redeem_name:(NSString*)last_redeem_name;
 
 - (NSString*)venue_description;
 - (void)setVenue_description:(NSString*)venue_description;

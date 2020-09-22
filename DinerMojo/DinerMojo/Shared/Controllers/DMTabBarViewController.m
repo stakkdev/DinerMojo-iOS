@@ -12,6 +12,9 @@
 #import "DMNewsFeedViewController.h"
 #import "DMTabBarController.h"
 #import "UIImage+Extensions.h"
+#import "DinerMojo-Swift.h"
+#import <GBVersionTracking/GBVersionTracking.h>
+
 @interface DMTabBarViewController()
 {
     
@@ -24,10 +27,80 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     
     [[[self tabBarController] tabBar] setTintColor:[UIColor brandColor]];
-//    [self updateTabBarColor];
+    [self updateNewsfeedBadge];
+    [self checkIfShowNotificationsPopUp];
+    [[self tabBarController] setDelegate:self];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate checkBookingNotification];
+}
+
+- (void)checkIfShowNotificationsPopUp {
+    if(![GBVersionTracking isFirstLaunchForVersion]) {
+        [SGNotificationsSettings isPushNotificationsEnabledWithCompletion:^(BOOL enabled) {
+            if (!enabled) {
+                NSInteger numberOfTimesFired = [NSUserDefaults.standardUserDefaults integerForKey:@"turnOnNotificationPopUpFired"];
+                if (numberOfTimesFired < 2) {
+                    [self checkLastFiredDate];
+                }
+            }
+        }];
+    }
+}
+
+- (void)checkLastFiredDate {
+    NSDate *lastDate = [NSUserDefaults.standardUserDefaults valueForKey:@"turnOnNotification"];
+    if (lastDate != NULL) {
+        NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+        NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                            fromDate:lastDate
+                                                              toDate:[NSDate date]
+                                                             options:0];
+        if ([components day] > 14) {
+            [self presentTurnOnNotificationsVC];
+        }
+        
+    } else {
+        [self presentTurnOnNotificationsVC];
+    }
+}
+
+- (void)presentTurnOnNotificationsVC {
+    TurnOnNotificationsViewController *vc = [[TurnOnNotificationsViewController alloc] initWithNibName:@"TurnOnNotificationsViewController" bundle:NULL];
+    [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self presentViewController:vc animated:YES completion:NULL];
+}
+
+- (void)updateNewsfeedBadge {
+    DMNewsRequest *newsRequest = [DMNewsRequest new];
+    
+    [newsRequest downloadNewsWithCompletionBlock:^(NSError *error, id results) {
+        if (error == nil) {
+            int unreadCount = 0;
+            
+            for (DMNewsItem *newsItem in results) {
+                if (![newsItem isRead]) {
+                    unreadCount += 1;
+                }
+            }
+            
+            UITabBarItem *item =  [[[self.tabBarController tabBar] items] objectAtIndex:1];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (unreadCount > 0) {
+                    item.badgeValue = [NSString stringWithFormat:@"%d", unreadCount];
+                    if ([[[UIDevice currentDevice] systemVersion] compare:@"10.0" options:NSNumericSearch] != NSOrderedAscending) {
+                        item.badgeColor = [UIColor redColor];
+                    }
+                } else {
+                    item.badgeValue = nil;
+                }
+            });
+        }
+    } withNewsType:@(DMNewsFeedAll)];
 }
 
 - (void)updateTabBarColor
@@ -67,22 +140,22 @@
     {
         [backgroundView setBackgroundColor:[UIColor clearColor]];
         tintItemColor = [UIColor darkGrayColor];
-
+        
     }
     
     backgroundView.tag =  3;
     UIView *existingBackgroundView = [self.tabBarController.tabBar viewWithTag:3];
     [existingBackgroundView removeFromSuperview];
-
+    
     
     
     UIImage *image = [[item.image imageWithTintedWithColor:tintItemColor] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.image = image;
     [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:tintItemColor, NSForegroundColorAttributeName, nil]  forState:UIControlStateNormal];
-
-  
+    
+    
     [tabController.tabBar insertSubview:backgroundView atIndex:1];
-
+    
     
     
 }
@@ -114,8 +187,8 @@
             [animation setTimingFunction:[CAMediaTimingFunction functionWithName:
                                           kCAMediaTimingFunctionEaseIn]];
             [self.view.window.layer addAnimation:animation forKey:@"fadeTransition"];
-//            [self updateTabBarColor];
-
+            //            [self updateTabBarColor];
+            
             
             [(DMDineViewController *)destinationViewController setInitialOffer:nil];
             
@@ -125,7 +198,7 @@
         {
             [self presentAlertForLoginInstructions:@"You need to log in or sign up to access this feature."];
             return NO;
-
+            
         }
     }
     else
@@ -191,6 +264,7 @@
     [alertController addAction:cancel];
     [alertController addAction:login];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -215,8 +289,9 @@
                                     CGRectGetHeight(tabBar.frame))];
     }];
     [self.navigationController setToolbarHidden:YES animated:YES];
-
+    
 }
 
 
 @end
+

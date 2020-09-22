@@ -10,4 +10,33 @@
 
 @implementation DMNewsFeedTableViewCell
 
+- (void)setupActions {
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(clickToShowNews:)];
+    [self addGestureRecognizer:singleFingerTap];
+
+    [self.feedVenueNameLabel setEnabled:YES];
+    [self.feedVenueNameLabel setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *venueTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(clickVenue:)];
+    [self.feedVenueNameLabel addGestureRecognizer:venueTap];
+}
+
+- (void)clickToShowNews:(UITapGestureRecognizer *)recognizer
+{
+    if(self.tapOnNewsCell) {
+        self.tapOnNewsCell();
+    }
+}
+
+- (void)clickVenue:(UITapGestureRecognizer *)recognizer
+{
+    if(self.tapOnVenueIcon) {
+        self.tapOnVenueIcon();
+    }
+}
+
+
 @end

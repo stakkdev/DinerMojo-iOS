@@ -11,6 +11,7 @@
 #import "DMRedeemTransaction.h"
 #import "DMEarnTransaction.h"
 #import "DMReferAFriendViewController.h"
+#import <Crashlytics/Answers.h>
 
 @interface DMProfileViewController ()
 
@@ -34,21 +35,25 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(downloadUser) forControlEvents:UIControlEventValueChanged];
     [self.scrollView addSubview:self.refreshControl];
-    
-    [[self contentView] setHidden:YES];
-    [[self noProfileLabel] setHidden:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    [Answers logContentViewWithName:@"View profile" contentType:@"View profile" contentId:@"" customAttributes:@{}];
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    [[self inviteLabel] setHidden:YES];
+    [[self inviteButton] setHidden:YES];
     [self downloadUser];
+    
+    [[self contentView] setHidden:YES];
+    [[self referralPointsLabel] setHidden:YES];
+    [[self noProfileLabel] setHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -145,10 +150,12 @@
                     {
                         totalSavings = [earnTransaction.amount_saved doubleValue] + totalSavings;
                         
-                        NSDate *monthDate = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
-                                                                                     value:-30
-                                                                                    toDate:[NSDate date]
-                                                                                   options:0];
+                        NSDate *today = [NSDate date];
+                        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+                        
+                        NSDateComponents *components = [gregorian components:(NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth) fromDate:today];
+                        components.day = 1;
+                        NSDate *monthDate = [gregorian dateFromComponents:components];
                         
                         NSDate *yearDate = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
                                                                                     value:-365
@@ -175,12 +182,16 @@
             
             NSString *pointsString = [NSString stringWithFormat:([[[self currentUser] referred_points] integerValue] == 1) ? @"%li point so far" : @"%li points so far", (long)[[[self currentUser] referred_points] integerValue]];
             
+            
             [self.referralPointsLabel setText:pointsString];
             
             if ([[self currentUser] referred_pointsValue] == 0)
             {
                 [self.inviteLabel setText:@"Invite them"];
             }
+            [[self inviteLabel] setHidden:NO];
+            [[self inviteButton] setHidden:NO];
+            [[self referralPointsLabel] setHidden:NO];
             
             [self.savingMonthButton setTitle:[numberFormatter stringFromNumber:[NSNumber numberWithDouble:monthSavings]] forState:UIControlStateNormal];
             
@@ -198,7 +209,7 @@
 {
     UIColor *mainColor;
     UIColor *subColor;
-    UIColor *nextColor;
+    UIColor *nextColor; 
     
     //Reset to white
     [self.profileNameLabel setTextColor:[UIColor whiteColor]];
@@ -206,7 +217,6 @@
     [self.earnMonthsLabel setTextColor:[UIColor whiteColor]];
     [self.pointsButton setTintColor:[UIColor whiteColor]];
     [self.settingsButton setTintColor:[UIColor whiteColor]];
-    [self.infoButton setTintColor:[UIColor whiteColor]];
     self.pointValue = self.currentUser.annual_points_earned.floatValue;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 
@@ -262,9 +272,8 @@
             [self.memberStatusLabel setTextColor:[UIColor silverTintColor]];
             [self.earnMonthsLabel setTextColor:[UIColor silverTintColor]];
 
-            [self.pointsButton setTintColor:[UIColor silverTintColor]];
+            [self.pointsButton setTintColor:[UIColor whiteColor]];
             [self.settingsButton setTintColor:[UIColor silverTintColor]];
-            [self.infoButton setTintColor:[UIColor silverTintColor]];
             [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
             
             [self.memberStatusLabel setText:[NSString stringWithFormat:@"Silver Member - Joined %@", [dateFormatter stringFromDate:self.currentUser.created_at]]];
@@ -305,7 +314,7 @@
             
             break;
             
-        default:
+        default :
             break;
     }
     

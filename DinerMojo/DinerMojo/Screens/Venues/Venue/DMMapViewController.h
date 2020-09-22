@@ -15,7 +15,7 @@
 IBOutlet UITableView *restaurantsTableView;
     
 }
-
+@property BOOL showOverlay;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
 

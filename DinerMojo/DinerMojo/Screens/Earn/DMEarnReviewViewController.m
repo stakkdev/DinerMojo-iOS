@@ -12,6 +12,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "DMDineNavigationController.h"
 #import "DMFeedbackViewController.h"
+#import <Crashlytics/Answers.h>
+#import "DinerMojo-Swift.h"
 
 @interface DMEarnReviewViewController ()
 
@@ -150,19 +152,26 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
         UILabel *photoLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x - 140, self.view.frame.size.height - 147, 280, 50)];
         
-        NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithString:@"Take a photo of the whole receipt…"];
+        NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithString:@"Take a photo of the"];
         [attributed addAttribute:NSFontAttributeName
                       value:[UIFont fontWithName:@"OpenSans" size:16]
-                      range:NSMakeRange(0, 29)];
+                      range:NSMakeRange(0, [attributed length])];
+        [attributed addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [attributed length])];
+        NSMutableAttributedString *attributed3 = [[NSMutableAttributedString alloc] initWithString:@" whole receipt…"];
+        NSDictionary *attrDict = @{
+                                   NSFontAttributeName : [UIFont fontWithName:@"OpenSans" size:16.0],
+                                   NSForegroundColorAttributeName : [UIColor yellowColor]
+                                   };
+        [attributed3 setAttributes:attrDict range:NSMakeRange(0, [attributed3 length])];
         
         NSMutableAttributedString *attributed2 = [[NSMutableAttributedString alloc] initWithString:@"Make sure it's clear!"];
         [attributed2 addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"OpenSans-Light" size:14] range:NSMakeRange(0, 21)];
-
+        [attributed2 addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, [attributed2 length])];
         
+        [attributed appendAttributedString:attributed3];
         [attributed appendAttributedString:attributed2];
 
         [photoLabel setAttributedText:attributed];
-        [photoLabel setTextColor:[UIColor whiteColor]];
         [photoLabel setTextAlignment:NSTextAlignmentCenter];
         [photoLabel setNumberOfLines:0];
         
@@ -230,7 +239,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         [self setCustomControlsForCamera:self.imagePickerController];
 
-        
+        [self.imagePickerController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:self.imagePickerController animated:YES completion:nil];
 
 
@@ -289,18 +298,20 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             
         case AVAuthorizationStatusNotDetermined:
             [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-                if(granted)
-                {
-                    if ([self didLaunchImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera] == NO)
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if(granted)
                     {
-                        [self dismissViewControllerAnimated:YES completion:nil];
+                        if ([self didLaunchImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera] == NO)
+                        {
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                        }
                     }
-                }
-                
-                else
-                {
-                    [self showAlertCameraPrivacy];
-                }
+                    
+                    else
+                    {
+                        [self showAlertCameraPrivacy];
+                    } 
+                });
             }];
             break;
     }
@@ -326,6 +337,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [alertController addAction:privacy];
     [alertController addAction:cancel];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
     
     
@@ -339,6 +351,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:ok];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -351,6 +364,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (IBAction)saveReceipt:(id)sender
 {
     //activity indicator and disable
+    
+    if(self.redeemTransaction.venue != NULL) {
+        [Answers logContentViewWithName:@"Earn transaction" contentType:[NSString stringWithFormat:@"Earn transaction - %@", self.redeemTransaction.venue.name] contentId:@"" customAttributes:@{}];
+    }
     
     [[self activityIndicatorView] startAnimating];
     [[self continueButton] setHidden:YES];
@@ -372,11 +389,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         else
         {
             [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Done" description:@"We'll verify your receipt and add the points to your account. You will see your submission and points appear on your Timeline."  style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
-            
+        
         }
         
         [[self activityIndicatorView] stopAnimating];
-        [[self continueButton] setHidden:NO];
+        [[self continueButton] setHidden:NO]; 
         [[self retakeButton] setHidden:NO];
     }];
 }
@@ -385,9 +402,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     if (operationCompletePopupViewController.status == DMOperationCompletePopUpViewControllerStatusSuccess)
     {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [self performSegueWithIdentifier:@"ShowFeedback" sender:nil];
-
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self performSegueWithIdentifier:@"ShowFeedback" sender:nil];
+            }];
     }
     else
     {

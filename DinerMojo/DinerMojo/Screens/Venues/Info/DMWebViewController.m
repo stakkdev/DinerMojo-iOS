@@ -21,7 +21,7 @@
     self.navigationItem.title = self.webURL;
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[self webURL]]];
     [[self restaurantWebView] loadRequest:urlRequest];
-    [self.restaurantWebView setDelegate:self];
+    [self.restaurantWebView setNavigationDelegate:self];
 }
 
 
@@ -30,14 +30,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    self.navigationItem.title = [self.restaurantWebView stringByEvaluatingJavaScriptFromString: @"document.title"];
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    __weak DMWebViewController *weakSelf = self;
+    [self.restaurantWebView evaluateJavaScript:@"document.title" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+        if ([result isKindOfClass: [NSString class]]) {
+            weakSelf.navigationItem.title = (NSString *)result;
+        }
+    }];
 }
 
-
 - (IBAction)closeDMWebView:(id)sender {
-    
+    [self.delegate didDismissViewController];
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];

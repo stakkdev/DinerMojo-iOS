@@ -6,9 +6,10 @@
 //  Copyright (c) 2015 hedgehog lab. All rights reserved.
 //
 
-#import "PMEDatePicker.h"
+#import <PMEDatePicker/PMEDatePicker.h>
+#import "DMView.h"
 
-@interface DMEditProfileViewController : DMTabBarViewController <PMEDatePickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface DMEditProfileViewController : DMTabBarViewController <PMEDatePickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet PMEDatePicker *datePicker;
 

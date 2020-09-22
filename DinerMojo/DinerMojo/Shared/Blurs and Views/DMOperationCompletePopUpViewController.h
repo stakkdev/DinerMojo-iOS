@@ -9,6 +9,7 @@
 #import "DMButton.h"
 
 @class DMOperationCompletePopUpViewController;
+@class DMAfterTransactionPopUpViewController;
 
 @protocol DMOperationCompletePopUpViewControllerDelegate <NSObject>
 
@@ -16,6 +17,7 @@
 
 - (void)readyToDissmisOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController;
 - (void)actionButtonPressedFromOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController;
+- (void)actionButtonPressedFromOperationCompletePopupViewController:(DMAfterTransactionPopUpViewController *)operationCompletePopupViewController ofType:(NSString *)type;
 
 @end
 
@@ -29,7 +31,9 @@ typedef NS_ENUM(NSInteger, DMOperationCompletePopUpViewControllerStatus) {
 @property (nonatomic) DMOperationCompletePopUpViewControllerStatus status;
 @property (nonatomic, strong) NSString *popUpTitle;
 @property (nonatomic, strong) NSString *popUpDescription;
+@property (nonatomic, strong) NSAttributedString *popUpDescriptionAttributed;
 @property UIBlurEffectStyle effectStyle;
+@property (nonatomic, strong) UIColor *titleColor;
 @property (nonatomic, weak) IBOutlet UIImageView *statusImageView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
@@ -37,10 +41,16 @@ typedef NS_ENUM(NSInteger, DMOperationCompletePopUpViewControllerStatus) {
 @property (nonatomic, weak) IBOutlet NSString *actionButtonTitle;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, weak) IBOutlet UILabel *tapToDismissLabel;
+@property (weak, nonatomic) IBOutlet UIButton *dontShowAgainButton;
+@property BOOL shoulHideDontShowAgainButton;
 @property (nonatomic, weak) id <DMOperationCompletePopUpViewControllerDelegate> delegate;
+@property (strong, nonatomic) NSString *type;
+@property (nonatomic, strong) NSNumber *venueId;
 
 - (IBAction)actionButtonPressed:(DMButton *)sender;
+- (IBAction)dontShowAgainButtonPressed:(id)sender;
 
 - (void)setActionButtonLoadingState:(BOOL)loadingState;
+- (void)setColor:(UIColor *)color;
 
 @end

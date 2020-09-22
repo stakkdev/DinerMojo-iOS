@@ -10,6 +10,8 @@
 #import "DMRestaurantInfoViewController.h"
 #import "DMTransactionReceiptImageViewController.h"
 #import "DMOfferItem.h"
+#import <Crashlytics/Answers.h>
+#import "DinerMojo-Swift.h"
 
 @interface DMEarnTransactionDetailViewController ()
 
@@ -48,17 +50,6 @@
     if (!self.isEarnTransaction)
     {
         DMRedeemTransaction *redeemTransaction = (DMRedeemTransaction *)self.selectedTransaction;
-//        if (![redeemTransaction.savings isEqualToNumber:[NSNumber numberWithInt:0]])
-//        {
-//            [self.amountSavedTitleLabel setText:@"Amount saved:"];
-//
-//            NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-//            [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-//            [numberFormatter setCurrencyCode:@"GBP"];
-//            
-//            [self.currencySavedLabel setText:[numberFormatter stringFromNumber:redeemTransaction.savings]];
-        
-//        }
         [self.amountSpendLabel setHidden:YES];
         
         NSString *pointsString = [NSString stringWithFormat:([redeemTransaction.points_redeemed integerValue] == 1) ? @"-%ld point" : @"-%ld points", (long)[redeemTransaction.points_redeemed integerValue]];
@@ -76,6 +67,10 @@
         DMEarnTransaction *earnTransaction = (DMEarnTransaction *)self.selectedTransaction;
         
         NSString *pointsString = [NSString stringWithFormat:([earnTransaction.points_earned integerValue] == 1) ? @"+%ld point" : @"+%ld points", (long)[earnTransaction.points_earned integerValue]];
+        if((long)[earnTransaction.points_earned integerValue] == 0) {
+            pointsString = @"Pending";
+        }
+        
         
         [self.pointsLabel setText:pointsString];
         [self.discountLabel setText:pointsString];
@@ -200,8 +195,12 @@
 
 - (IBAction)share:(id)sender {
     UIImage *image = self.receiptImageView.image;
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
+    if(image == NULL) {
+        image = [[UIImage alloc] init];
+    }
+    DMActivityViewController *activityViewController = [[DMActivityViewController alloc] initWithActivityItems:@[image] applicationActivities:nil];
     
+    [activityViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self.navigationController presentViewController:activityViewController animated:YES completion:^{}];
     
 }

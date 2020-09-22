@@ -6,12 +6,17 @@
 //  Copyright (c) 2015 hedgehog lab. All rights reserved.
 //
 
-#import "FBShimmeringView.h"
+#import <Shimmer/FBShimmeringView.h>
 #import "DMOfferItem.h"
+#import "DMDineNavigationController.h"
+#import "DinerMojo-Swift.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
-@interface DMRedeemCouponViewController : DMTabBarViewController
+@interface DMRedeemCouponViewController : DMTabBarViewController <DMOperationCompletePopUpViewControllerDelegate, DMDineNavigationControllerControllerDelegate, FBSDKSharingDelegate>
 
+@property (weak, nonatomic) IBOutlet DMButton *shownButton;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *randomCodeLabel;
 @property (weak, nonatomic) IBOutlet DMImageView *venueImageView;
 @property (weak, nonatomic) IBOutlet DMImageView *pictureImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *restaurantImageViewWidthConstraint;
@@ -34,5 +39,6 @@
 
 
 - (IBAction)done:(id)sender;
+- (IBAction)share:(id)sender;
 
 @end

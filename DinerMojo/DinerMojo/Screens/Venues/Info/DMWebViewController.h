@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DMWebViewController : UIViewController <UIWebViewDelegate>
+@protocol DMWebViewControllerDelegate
+- (void)didDismissViewController;
+@end
+
+@interface DMWebViewController : UIViewController <WKNavigationDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UIWebView *restaurantWebView;
+@property (weak, nonatomic) IBOutlet WKWebView *restaurantWebView;
 @property (nonatomic, strong) NSString *webURL;
-
+@property (nonatomic, weak) id <DMWebViewControllerDelegate> delegate;
+    
 - (IBAction)closeDMWebView:(id)sender;
 
 @end

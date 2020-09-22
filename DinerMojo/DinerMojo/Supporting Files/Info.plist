@@ -4,6 +4,21 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(PRODUCT_NAME)$(APP_NAME_SUFFIX)</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>MKDirectionsRequest</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.maps.directionsrequest</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +30,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>1.6.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -28,13 +43,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>BUILD_VERSION</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>Configuration</key>
 	<string>${CONFIGURATION}</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>015a3121c76ea8baec90c4a97c7bd1976400adad</string>
+		<string>e1c9d86bff08f7dbfce4a6bb171c2c4d5cc90e4f</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -67,6 +82,12 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array>
+		<string>MKDirectionsModeOther</string>
+	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -101,6 +122,8 @@
 				<key>NSIncludeSubdomains</key>
 				<true/>
 			</dict>
+			<key>http://mojo.coding.buzz</key>
+			<string></string>
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
@@ -109,6 +132,8 @@
 	<string>We use your location to calculate miles away from you and to sort news items. We do not store this information.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to calculate miles away from you and to sort news items. We do not store this information.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We use your photo library to let you set images</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
@@ -121,6 +146,10 @@
 		<string>OpenSans-Regular.ttf</string>
 		<string>OpenSans-Semibold.ttf</string>
 		<string>OpenSans-SemiboldItalic.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -36,6 +36,37 @@
 
 }
 
+- (IBAction)earnAction:(id)sender {
+    
+    if(self.delegate != nil) {
+        [self.delegate didSelectEarn:self.index];
+    }
+}
+
+- (IBAction)redeemAction:(id)sender {
+    if(self.delegate != nil) {
+        [self.delegate didSelectRedeem:self.index];
+    }
+}
+
+- (void)setRedeemVisibility:(BOOL)visibility {
+    if(visibility) {
+        [self.earnButton setImage:[UIImage imageNamed:@"redeem_icon_enabled"] forState:UIControlStateNormal];
+    }
+    else {
+        [self.earnButton setImage:[UIImage imageNamed:@"redeem_icon_disabled"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)setEarnVisibility:(BOOL)visibility {
+    if(visibility) {
+        [self.redeemButton setImage:[UIImage imageNamed:@"earn_icon_enabled"] forState:UIControlStateNormal];
+    }
+    else {
+        [self.redeemButton setImage:[UIImage imageNamed:@"earn_icon_disabled"] forState:UIControlStateNormal];
+    }
+}
+
 //- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 //{
 //    [super setHighlighted:highlighted animated:animated];

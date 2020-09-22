@@ -8,6 +8,8 @@
 
 #import "DMUserRequest.h"
 #import "DMMappingHelper.h"
+#import "SubscriptionsObject.h"
+#import "DinerMojo-Swift.h"
 
 @implementation DMUserRequest
 
@@ -20,7 +22,25 @@
             completionBlock(error, nil);
         } else {
             DMUser *mappedUser = [DMMappingHelper mapUser:results mapping:[[self mappingProvider] userFavouriteVenuesMapping] inContext:[self objectContext]];
-            completionBlock(nil, [[mappedUser favourite_venues] allObjects]);
+            DMVenueRequest *venueRequest = [DMVenueRequest new];
+            [venueRequest GET:@"venues" withParams:nil withCompletionBlock:^(NSError *error, id results) {
+                if (error) {
+                    completionBlock(error, nil);
+                } else {
+                    NSMutableArray *all_ids = [[NSMutableArray alloc] init];
+                    for(NSDictionary* dict in results) {
+                        [all_ids addObject:dict[@"id"]];
+                    }
+                    NSMutableArray *favs = [[NSMutableArray alloc] init];
+                    for(DMVenue *venue in [[mappedUser favourite_venues] allObjects]) {
+                        if([all_ids containsObject:venue.primitiveModelID]) {
+                            [favs addObject:venue];
+                        }
+                    }
+                    
+                    completionBlock(nil, favs);
+                }
+            }];
         }
     }];
 }
@@ -233,6 +253,17 @@
     [DMTransaction MR_truncateAll];
 }
 
+- (void)sendGDPR:(BOOL)accepted completion:(RequestCompletion)completionBlock {
+    NSDictionary *params = @{ @"accept" : [[NSNumber numberWithBool:accepted] stringValue] };
+    [self POST:@"user/gdpr_tracking" withParams:params withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, nil);
+        }
+    }];
+}
+
 - (void)downloadUserProfileWithCompletionBlock:(RequestCompletion)completionBlock;
 {
     [self GET:@"user/me/user_check" withParams:nil withCompletionBlock:^(NSError *error, id results) {
@@ -240,6 +271,31 @@
             completionBlock(error, nil);
         } else {
             completionBlock(nil, [DMMappingHelper mapUser:results mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]]);
+        }
+    }];
+}
+
+- (void)downloadSubscriptionsWithCompletionBlock:(RequestCompletion)completionBlock;
+{
+    NSDictionary *params = @{ @"token": [DMRequest currentUserToken] };
+    
+    [self GET:@"subscriptions" withParams:params withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, [SubscriptionsObject createObjectFromDictionary:results]);
+        }
+    }];
+}
+
+- (void)uploadSubscriptions:(NSArray *)ids {
+    NSDictionary *params = @{ @"token" : [DMRequest currentUserToken],
+                              @"venues" : ids,
+                              @"dinermojo_sub" : @YES };
+    
+    [self POST:@"subscriptions" withParams:params withCompletionBlock:^(NSError *error, id results) {
+        if(error == NULL) {
+            NSLog(@"it's ok");
         }
     }];
 }
@@ -296,7 +352,7 @@
 
 #pragma mark - Other user related methods
 
--(void)registerForNotifications;
+-(void)registerForNotifications
 {
     UIApplication *application = [UIApplication sharedApplication];
     
@@ -304,9 +360,9 @@
         
         [application registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
-    }
+}
 
--(void)setDeviceToken:(NSData *)deviceToken
+-(void)setDeviceToken:(NSString *)deviceToken
 {
     [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:@"deviceToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -536,5 +592,17 @@ withCompletionBlock:^(NSError *error, id results) {
     }];
 }
 
+
+- (void)postSubscriptionsData:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock
+{
+    [self POST:@"subscriptions" withParams:params
+            withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(results, nil);
+        }
+    }];
+}
 
 @end

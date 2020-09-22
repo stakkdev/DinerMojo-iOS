@@ -17,6 +17,7 @@
 - (FEMManagedObjectMapping *)venueImageMapping;
 
 - (FEMManagedObjectMapping *)newsMapping;
+- (FEMManagedObjectMapping *)prodigalRewardMapping;
 - (FEMManagedObjectMapping *)offerMapping;
 
 - (FEMManagedObjectMapping *)completeUserMapping;

@@ -3,19 +3,11 @@
 
 #import "_DMBase.h"
 
-
 const struct DMBaseAttributes DMBaseAttributes = {
 	.created_at = @"created_at",
 	.modelID = @"modelID",
 	.updated_at = @"updated_at",
 };
-
-
-
-
-
-
-
 
 @implementation DMBaseID
 @end
@@ -42,7 +34,7 @@ const struct DMBaseAttributes DMBaseAttributes = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"modelIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"modelID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -52,30 +44,18 @@ const struct DMBaseAttributes DMBaseAttributes = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic created_at;
 
-
-
-
-
-
 @dynamic modelID;
-
-
 
 - (int32_t)modelIDValue {
 	NSNumber *result = [self modelID];
 	return [result intValue];
 }
 
-
 - (void)setModelIDValue:(int32_t)value_ {
-	[self setModelID:@(value_)];
+	[self setModelID:[NSNumber numberWithInt:value_]];
 }
-
 
 - (int32_t)primitiveModelIDValue {
 	NSNumber *result = [self primitiveModelID];
@@ -83,27 +63,10 @@ const struct DMBaseAttributes DMBaseAttributes = {
 }
 
 - (void)setPrimitiveModelIDValue:(int32_t)value_ {
-	[self setPrimitiveModelID:@(value_)];
+	[self setPrimitiveModelID:[NSNumber numberWithInt:value_]];
 }
-
-
-
-
 
 @dynamic updated_at;
 
-
-
-
-
-
-
-
-
-
-
 @end
-
-
-
 

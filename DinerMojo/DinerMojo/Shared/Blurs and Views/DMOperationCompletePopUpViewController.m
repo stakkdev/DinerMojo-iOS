@@ -7,6 +7,7 @@
 //
 
 #import "DMOperationCompletePopUpViewController.h"
+#import "DMPopUpRequest.h"
 
 @implementation DMOperationCompletePopUpViewController
 
@@ -18,16 +19,18 @@
     
     [self updateTitle];
     
-    [self updateDescription];
+    if(self.popUpDescriptionAttributed == NULL) {
+        [self updateDescription];
+    } else {
+        [self updateDescriptionAttributed];
+    }
     
     [self updateActionButtonTitle];
     
     [self buildBlurEffect];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.titleLabel.textColor = self.titleColor;
+    
+    [self.dontShowAgainButton setHidden:self.shoulHideDontShowAgainButton];
 }
 
 #pragma mark - internal methods
@@ -91,6 +94,17 @@
     [[self descriptionLabel] setTextColor:[self fontColour]];
 }
 
+- (void)updateDescriptionAttributed
+{
+    if ([self descriptionLabel] == nil)
+    {
+        return;
+    }
+    
+    [[self descriptionLabel] setAttributedText:_popUpDescriptionAttributed];
+    [[self descriptionLabel] setTextColor:[self fontColour]];
+}
+
 - (void)updateActionButtonTitle
 {
     if ([self actionButtonTitle] == nil)
@@ -98,7 +112,6 @@
         [[self actionButton] setHidden:YES];
         return;
     }
-    
     
     [[self actionButton] setTitle:_actionButtonTitle forState:UIControlStateNormal];
     [[self actionButton] setHidden:NO];
@@ -113,6 +126,10 @@
     [self updateStatusImage];
 }
 
+-(void)setColor:(UIColor *)color {
+    self.titleColor = color;
+}
+
 - (void)setPopUpTitle:(NSString *)popUpTitle
 {
     _popUpTitle = popUpTitle;
@@ -125,6 +142,12 @@
     _popUpDescription = popUpDescription;
     
     [self updateDescription];
+}
+- (void)setPopUpDescriptionAttributed:(NSMutableAttributedString *)popUpDescription
+{
+    _popUpDescriptionAttributed = popUpDescription;
+    
+    [self updateDescriptionAttributed];
 }
 
 - (void)setActionButtonTitle:(NSString *)actionButtonTitle
@@ -145,15 +168,54 @@
                 [[self delegate] readyToDissmisOperationCompletePopupViewController:self];
             }
         }
+    } else {
+        [self dismissViewControllerAnimated:true completion:nil];
     }
 }
 
 - (IBAction)actionButtonPressed:(DMButton *)sender
 {
-    if ([[self delegate] respondsToSelector:@selector(actionButtonPressedFromOperationCompletePopupViewController:)])
+    if ([self.delegate respondsToSelector:@selector(actionButtonPressedFromOperationCompletePopupViewController:ofType:)]) {
+        [self.delegate actionButtonPressedFromOperationCompletePopupViewController:(DMAfterTransactionPopUpViewController *)self ofType:self.type];
+    }
+    else if ([[self delegate] respondsToSelector:@selector(actionButtonPressedFromOperationCompletePopupViewController:)])
     {
         [[self delegate] actionButtonPressedFromOperationCompletePopupViewController:self];
+    } else {
+        [self dismissViewControllerAnimated:true completion:nil];
     }
+}
+
+- (IBAction)dontShowAgainButtonPressed:(id)sender {
+    NSLog(@"%@", [NSString stringWithFormat:@"tap tap %@", self.type]);
+    int type;
+    if ([self.type isEqualToString:@"Booking"]) {
+        type = DMAfterTransactionPopUpBookingType;
+    } else if ([self.type isEqualToString:@"Referral"]) {
+        type = DMAfterTransactionPopUpReferralType;
+    } else if ([self.type isEqualToString:@"Redeeming points"]) {
+        type = DMAfterTransactionPopUpRedeemingType;
+    } else if ([self.type isEqualToString:@"Earn"]) {
+        type = DMAfterTransactionPopUpEarnType;
+    } else {
+        return;
+    }
+    DMPopUpRequest *request = [[DMPopUpRequest alloc] init];
+    [request sendDontShowAgainWithType:type andCompletionBlock:^(NSError *error, id results) {
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        if ([self delegate] != nil)
+        {
+            if ([[self delegate] respondsToSelector:@selector(readyToDissmisOperationCompletePopupViewController:)])
+            {
+                if ([[self activityIndicatorView] isAnimating] == NO)
+                {
+                    [[self delegate] readyToDissmisOperationCompletePopupViewController:self];
+                }
+            }
+        } else {
+            [self dismissViewControllerAnimated:true completion:nil];
+        }
+    }];
 }
 
 - (void)setActionButtonLoadingState:(BOOL)loadingState

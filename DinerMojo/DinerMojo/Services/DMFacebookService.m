@@ -31,7 +31,6 @@
 - (void)retrieveUserDetailsWithCompletionHandler:(FBSDKGraphRequestHandler)handler
 {
     NSDictionary *requiredFields = @{@"fields" : @"picture.width(320).height(320),birthday,email,first_name,gender,id,last_name"};
-    
     [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:requiredFields]
      startWithCompletionHandler:handler];
 }
@@ -61,8 +60,8 @@
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     
     __weak typeof(self) weakSelf = self;
-    
-    [login logInWithReadPermissions:[self permissions] fromViewController:viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+
+    [login logInWithPermissions:[self permissions] fromViewController:viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error)
         {
             failure(error, nil);
@@ -76,8 +75,7 @@
             {
                 permissionsAreMissing([result declinedPermissions]);
             }
-            else
-            {
+            else {
                 [weakSelf retrieveUserDetailsWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                     if (error)
                     {

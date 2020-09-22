@@ -7,12 +7,15 @@
 //
 
 #import "DMNewsRequest.h"
-#import "DMSortNewsfeedViewController.h"
+#import "DMSortVenueFeedViewController.h"
 
 typedef NS_ENUM(NSInteger, DMNewsFeedState) {
     DMNewsFeedAll = 0,
     DMNewsFeedNews = 1,
     DMNewsFeedOffers = 2,
+    DMNewsFeedRewards = 3,
+    DMNewsFeedNone = 4,
+    DMNewsFeedProdigal = 5
 };
 
 @interface DMNewsItemModelController : NSObject
@@ -28,6 +31,7 @@ typedef NS_ENUM(NSInteger, DMNewsFeedState) {
 @property (strong, nonatomic) NSMutableArray* currentDataSource;
 
 @property (nonatomic) BOOL showFavourites;
+@property (nonatomic, strong) NSArray *filters;
 
 - (void)sortNewsFeedWithSortType:(DMSortNewsfeedViewControllerSortItemType)itemType;
 - (void)refreshCurrentSource;

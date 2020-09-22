@@ -4,8 +4,6 @@
 #import <CoreData/CoreData.h>
 #import "DMBase.h"
 
-
-
 extern const struct DMVenueOpeningTimesAttributes {
 	__unsafe_unretained NSString *friday;
 	__unsafe_unretained NSString *monday;
@@ -16,33 +14,11 @@ extern const struct DMVenueOpeningTimesAttributes {
 	__unsafe_unretained NSString *wednesday;
 } DMVenueOpeningTimesAttributes;
 
-
-
 extern const struct DMVenueOpeningTimesRelationships {
 	__unsafe_unretained NSString *venue;
 } DMVenueOpeningTimesRelationships;
 
-
-
-
-
-
 @class DMVenue;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @interface DMVenueOpeningTimesID : DMBaseID {}
 @end
@@ -51,142 +27,66 @@ extern const struct DMVenueOpeningTimesRelationships {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (DMVenueOpeningTimesID*)objectID;
-
-
-
-
+@property (nonatomic, readonly, strong) DMVenueOpeningTimesID* objectID;
 
 @property (nonatomic, strong) NSString* friday;
 
-
-
 //- (BOOL)validateFriday:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @property (nonatomic, strong) NSString* monday;
 
-
-
 //- (BOOL)validateMonday:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @property (nonatomic, strong) NSString* saturday;
 
-
-
 //- (BOOL)validateSaturday:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @property (nonatomic, strong) NSString* sunday;
 
-
-
 //- (BOOL)validateSunday:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @property (nonatomic, strong) NSString* thursday;
 
-
-
 //- (BOOL)validateThursday:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @property (nonatomic, strong) NSString* tuesday;
 
-
-
 //- (BOOL)validateTuesday:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @property (nonatomic, strong) NSString* wednesday;
 
-
-
 //- (BOOL)validateWednesday:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @property (nonatomic, strong) DMVenue *venue;
 
 //- (BOOL)validateVenue:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
 @end
 
-
-
 @interface _DMVenueOpeningTimes (CoreDataGeneratedPrimitiveAccessors)
-
 
 - (NSString*)primitiveFriday;
 - (void)setPrimitiveFriday:(NSString*)value;
 
-
-
-
 - (NSString*)primitiveMonday;
 - (void)setPrimitiveMonday:(NSString*)value;
-
-
-
 
 - (NSString*)primitiveSaturday;
 - (void)setPrimitiveSaturday:(NSString*)value;
 
-
-
-
 - (NSString*)primitiveSunday;
 - (void)setPrimitiveSunday:(NSString*)value;
-
-
-
 
 - (NSString*)primitiveThursday;
 - (void)setPrimitiveThursday:(NSString*)value;
 
-
-
-
 - (NSString*)primitiveTuesday;
 - (void)setPrimitiveTuesday:(NSString*)value;
-
-
-
 
 - (NSString*)primitiveWednesday;
 - (void)setPrimitiveWednesday:(NSString*)value;
 
-
-
-
-
 - (DMVenue*)primitiveVenue;
 - (void)setPrimitiveVenue:(DMVenue*)value;
-
 
 @end

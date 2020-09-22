@@ -9,10 +9,10 @@
 #import "DMEditProfileViewController.h"
 #import "UIImage+Extensions.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface DMEditProfileViewController ()
-
+@property BOOL didChangePhoto;
 @end
 
 @implementation DMEditProfileViewController
@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.didChangePhoto = NO;
     self.datePicker.dateDelegate = self;
     self.datePicker.dateFormatTemplate = @"dMM";
     
@@ -71,6 +72,29 @@
     }
     
     [self.profilePictureView setBorderColor:mojoColor];
+    
+    UIImage *backArrow = [UIImage imageNamed:@"back_arrow_grey"];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backArrow style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+    self.navigationItem.leftBarButtonItem = backButton;
+}
+
+- (void)goBack {
+    DMUser *currentUser = [[self userRequest] currentUser];
+    
+    if([self.firstNameTextField.text isEqualToString:[currentUser first_name]] && [self.profileInitialsLabel.text isEqualToString:[currentUser initials]] && [self.surnameTextField.text isEqualToString:[currentUser last_name]] && [self.emailTextField.text isEqualToString:[currentUser email_address]] && self.selectedDate == [currentUser date_of_birth] && ([self.postcodeTextField.text isEqualToString:[currentUser post_code]] || ([self.postcodeTextField.text isEqualToString:@""] && currentUser.post_code == nil)) && !self.didChangePhoto) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save your changes?" message:@"Would you like to save your changes?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        [alert show];
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if(buttonIndex == 1) {
+        [self saveAccount:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,12 +103,16 @@
 
 -(void)datePicker:(PMEDatePicker *)datePicker didSelectDate:(NSDate *)date
 {
+    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"d MMM"];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    [self.dateButton setTitle:[NSString stringWithFormat:@"  %@", [dateFormat stringFromDate:date]] forState:UIControlStateNormal];
-    self.selectedDate = date;
-    //[self validateForm];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+
+    NSString *dateString = [dateFormat stringFromDate:date];
+    if (dateString != nil) {
+        [self.dateButton setTitle:[NSString stringWithFormat:@"  %@", dateString] forState:UIControlStateNormal];
+        self.selectedDate = date;
+    }
 }
 
 - (IBAction)revealDatePicker:(id)sender {
@@ -135,7 +163,6 @@
    
 }
 
-
 - (IBAction)deleteAccount:(id)sender {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete my account" message:@"You will lose all points, your user profile and will need to create a new account to use DinerMojo." preferredStyle:UIAlertControllerStyleAlert];
@@ -154,6 +181,7 @@
         [alertController addAction:ok];
         [alertController addAction:cancel];
         
+        [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:alertController animated:YES completion:nil];
         
     }];
@@ -164,6 +192,7 @@
     [alertController addAction:ok];
     [alertController addAction:cancel];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -327,6 +356,7 @@
     
     [alertController addAction:ok];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -372,6 +402,7 @@
         
         [imagePickerController setMediaTypes:@[(NSString *)kUTTypeImage]];
         
+        [imagePickerController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:imagePickerController animated:YES
                          completion:nil];
         
@@ -441,6 +472,7 @@
         [alertController addAction:privacy];
         [alertController addAction:cancel];
         
+        [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:alertController animated:YES completion:nil];
         
     }
@@ -472,6 +504,7 @@
     [alertController addAction:camera];
     [alertController addAction:cancel];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -564,6 +597,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    self.didChangePhoto = YES;
     [self dismissViewControllerAnimated:YES completion:^{
         [self processSelectedImage:[info objectForKey:@"UIImagePickerControllerEditedImage"]];
     }];

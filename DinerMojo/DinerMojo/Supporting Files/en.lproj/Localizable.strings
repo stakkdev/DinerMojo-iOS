@@ -1,0 +1,87 @@
+/* 
+  Localizable.strings
+  DinerMojo
+
+  Created by Karol Wawrzyniak on 16/12/2016.
+  Copyright © 2016 hedgehog lab. All rights reserved.
+*/
+
+"sort.page.title" = "Filter";
+"sort.by" = "Sort by:";
+"sort.nearest" = "Nearest to Me";
+"sort.most.recent" = "Newest";
+"sort.az" = "A-Z";
+"show.venues" = "Show venues...";
+"sort.venues.redeem" = "Where I can redeem points";
+"sort.venues.earn.points" = "Where I can earn points";
+"sort.venues.news" = "With news";
+"sort.venues.offers" = "With rewards";
+"sort.distance.km" = "1 mile";
+"sort.distance.anywhere" = "Anywhere";
+"sort.distance.title" = "Which are within (of my location)";
+"sort.restaurants" = "Restaurants";
+"sort.other.venues" = "Other Venues";
+"sort.button.title" = "Filter";
+"notifications.notification.for" = "Send me notifications for:";
+"notifications.all.venues" = "All Venues";
+"notifications.near.me.venues" = "Near me";
+"notifications.near.favourites.venues" = "My Favourites";
+"notifications.notification.distance.venue" = "Venue distance";
+"notifications.notify.me" = "Tell me...";
+"notifications.notify.news" = "News";
+"notifications.notify.offers" = "Offers";
+"notifications.notify.me.frequency" = "Notify me...";
+"notifications.notify.me.immediately" = "Immediately";
+"notifications.notify.me.hourly" = "Hourly";
+"notifications.notify.me.daily" = "Daily";
+"notifications.notify.me.weekly" = "Weekly";
+"notifications.notify.me.never" = "Never";
+"notifications.things.section.title" = "About things from here...";
+"notifications.things.all.venues" = "All DinerMojo venues";
+"notifications.things.selected.venues" = "Selected venues >";
+"notifications.things.fav.venues" = "My favourites";
+"notifications.dmclub.news" = "DinerMojo news";
+
+"reedem.message.notAvailable" = "There are new rewards getting added all the time. Please check back later to see what %@ has for you.";
+"redeem.message.available" = "You can redeem the points you've earned at any DinerMojo venue here. Enjoy!";
+"redeem.message.not.available" = "You can't redeem points at this venue... but you can earn them to redeem somewhere else!!!";
+"earn.message.available" = "Points earned here can be redeemed at any DinerMojo venue that offers rewards.";
+"earn.message.not.available" = "This venue is not available to earn points at";
+
+"newsfeed.title" = "Newsfeed";
+
+"news.show" = "Show:";
+"news.show.news" = "News";
+"news.show.offers" = "Rewards";
+"news.show.all" = "All";
+
+"news.for" = "For:";
+"news.for.dining" = "Dining";
+"news.for.lifestyle" = "Lifestyle";
+"news.for.dmclub" = "DinerMojo Club";
+"news.for.all" = "All";
+
+"news.favourites" = "Favourites";
+"news.favourites.show" = "Show only favourites";
+
+"notifications.all" = "All";
+"notifications.section.dining" = "Dining";
+"notifications.section.lifestyle" = "Lifestyle";
+
+"reedem.notAvailable.description" = "%@ hopes you enjoyed your reward that you claimed earlier. DinerMojo members can enjoy one reward per day per venue* so please... feel free to head back here tomorrow for even more great experiences.";
+
+"reedem.notAvailable.extended.description" = "%@ hopes you enjoyed your reward:\n\n %@, \n claimed %@.\n\n DinerMojo members can enjoy one reward per day per venue* so please... feel free to head back here tomorrow for even more great experiences.";
+
+"startup.desc1" = "We’re very excited to announce a whole new range of rewards are now being offered at DinerMojo venues.\n\nCheck out the Newsfeed ";
+"startup.desc2" = " or just click on the Rewards ";
+"startup.desc3" = " symbol whenever you’re looking at a place to see the great ways you can be rewarded.";
+
+"gdpr.title" = "Your privacy matters";
+"gdpr.desc1" = "You'll have heard a lot recently about privacy issues with some big companies out there and how changes are being put in place to protect people's privacy.\n\nWe've never sold private personal information onto any other third parties and only store what we need to host and facilitate your account on DinerMojo.\n\nNevertheless, we have made some updates to our ";
+"gdpr.desc2" = "Privacy Policy";
+"gdpr.desc3" = " and urge you to read the new policy which is available on our website at ";
+"gdpr.desc4" = "dinermojo.com/privacy";
+"gdpr.gotIt" = "Got it";
+"gdpr.skip" = "Skip for now";
+
+"rating.desc" = "We hope you enjoyed your experience at %@, the owners rely on Tripadvisor reviews to spread the word about their restaurant. Please take a minute to write a review.";

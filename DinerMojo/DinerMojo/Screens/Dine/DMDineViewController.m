@@ -443,6 +443,7 @@ typedef NS_ENUM(NSInteger, DMFilter) {
         DMDineNavigationController *vc = segue.destinationViewController;
         [vc setDineNavigationDelegate:self];
         DMRedeemViewController *redeemViewController = (DMRedeemViewController *)[[vc viewControllers] objectAtIndex:0];
+        [redeemViewController setStandardRedeem:NO];
         redeemViewController.selectedVenue = self.selectedVenue;
         redeemViewController.initialOffer = self.initialOffer;
     }

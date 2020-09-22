@@ -42,7 +42,7 @@
 {
     [super viewDidAppear:animated];
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 5, self.scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 4, self.scrollView.frame.size.height);
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.scrollView setBackgroundColor:[UIColor clearColor]];
     [self updateImagesInScrollView];
@@ -51,17 +51,19 @@
 
 -(void)updateImagesInScrollView
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 4; i++)
     {
         CGFloat xOrigin = i * self.scrollView.frame.size.width;
         
-        UILabel *tutorialTitle = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 43, 200, 20)];
+        UILabel *tutorialTitle = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 43, 200, 50)];
         [tutorialTitle setFont:[UIFont tutorialTitleFont]];
         [tutorialTitle setTextColor:[UIColor whiteColor]];
         [tutorialTitle setTextAlignment:NSTextAlignmentCenter];
+        [tutorialTitle setNumberOfLines:0];
+        [tutorialTitle setLineBreakMode:NSLineBreakByWordWrapping];
         [tutorialTitle setCenter:CGPointMake(xOrigin + self.view.center.x, 43)];
         
-        UILabel *tutorialDescription = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 31, 290, 100)];
+        UILabel *tutorialDescription = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 20, 290, 140)];
         [tutorialDescription setFont:[UIFont tutorialDescriptionFont]];
         [tutorialDescription setNumberOfLines:0];
         [tutorialDescription setTextColor:[UIColor darkGrayColor]];
@@ -71,68 +73,61 @@
         
         UIImageView *imageView;
         
-        
-        if (IS_IPHONE_6 || IS_IPHONE_6_PLUS)
-        {
-            imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, tutorialTitle.frame.origin.y + 25, 216, 360)];
-            imageView.contentMode = UIViewContentModeScaleAspectFit;
-            [imageView setCenter:CGPointMake(xOrigin + self.view.center.x, self.greenView.frame.origin.y - 210)];
-        }
-        
-        else if (IS_IPHONE_4)
-        {
-            imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, tutorialTitle.frame.origin.y + 10, 140, 200)];
-            [imageView setCenter:CGPointMake(xOrigin + self.view.center.x, self.greenView.frame.origin.y - 120)];
+        CGFloat screenWidth = UIScreen.mainScreen.bounds.size.width;
 
-
-        }
-        
-        else
-        {
-            imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, tutorialTitle.frame.origin.y + 25, 155, 280)];
-            [imageView setCenter:CGPointMake(xOrigin + self.view.center.x, self.greenView.frame.origin.y - 160)];
-
-        }
-        
+        imageView = [[UIImageView alloc] init];
         [imageView setContentMode:UIViewContentModeScaleAspectFit];
         [imageView setClipsToBounds:YES];
+        [imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
         
         UIView *greenView2 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, self.greenView.frame.origin.y, self.greenView.frame.size.width, self.greenView.frame.size.height)];
         greenView2.backgroundColor = [UIColor groupTableViewBackgroundColor];
   
         switch (i) {
-            case 0:
-                [tutorialTitle setText:@"Find Restaurants"];
-                [tutorialDescription setText:@"Use the “venues” tab to discover DinerMojo participating restaurants near you."];
+            case 0: {
+                [tutorialTitle setText:@"Choose Dining or Lifestyle"];
+                [tutorialDescription setText:@"Use the “Venues” tab to discover great places to dine or get rewards near you."];
                 [imageView setImage:[UIImage imageNamed:@"TutorialPhone1"]];
-
-
                 break;
-            case 1:
+            }
+            case 1: {
                 [tutorialTitle setText:@"Earn Points"];
-                [tutorialDescription setText:@"Eat at restaurants to earn points (£1 = 1 point). Simply take a picture of your receipt and we'll take care of the rest."];
+                
+                NSString *earnPoints = [[NSString alloc] initWithFormat:@"Earn points everywhere that has this symbol "];
+                NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+                textAttachment.image = [UIImage imageNamed:@"earn_icon_enabled"];
+                textAttachment.bounds = CGRectMake(0, 0, 20, 20);
+                
+                NSMutableAttributedString *earnPoints3 = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
+                NSMutableAttributedString *earnPoints4 = [[NSMutableAttributedString alloc] initWithString:@" (£1 = 1 point). Simply use the Earn button, take a picture of your receipt and we'll take care of the rest."];
+                NSMutableAttributedString *all = [[NSMutableAttributedString alloc] initWithString:earnPoints];
+                [all appendAttributedString:earnPoints3];
+                [all appendAttributedString:earnPoints4];
+                [tutorialDescription setAttributedText:all];
                 [imageView setImage:[UIImage imageNamed:@"TutorialPhone2"]];
-
-
+                
                 break;
-            case 2:
+            }
+            case 2: {
                 [tutorialTitle setText:@"Redeem Points"];
-                [tutorialDescription setText:@"Once you’ve earned enough points, you can get money off your bill next time you eat at a DinerMojo venue by redeeming points."];
+                NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+                textAttachment.image = [UIImage imageNamed:@"redeem_icon_enabled"];
+                textAttachment.bounds = CGRectMake(0, 0, 20, 20);
+                
+                NSMutableAttributedString *reedemPoints = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
+                NSMutableAttributedString *reedem = [[NSMutableAttributedString alloc] initWithString:@"Use your points to get great rewards from any participating venues that have this symbol "];
+                [reedem appendAttributedString:reedemPoints];
+                [tutorialDescription setAttributedText:reedem];
                 [imageView setImage:[UIImage imageNamed:@"TutorialPhone3"]];
 
-
                 break;
-            case 3:
-                [tutorialTitle setText:@"Favourite Restaurants"];
-                [tutorialDescription setText:@"Mark restaurants as favourites and automatically get notified about news and great offers from them."];
-                [imageView setImage:[UIImage imageNamed:@"TutorialPhone4"]];
-
-                break;
-            case 4:
+            }
+            case 3: {
                 [tutorialTitle setText:@"Invite Friends & Family"];
-                [tutorialDescription setText:@"From your profile, invite friends to join DinerMojo and get 10% of the points from the first 12 months."];
+                [tutorialDescription setText:@"Invite friends to join and you'll earn 100 points when they join plus 10% of any points they earn for a whole year."];
                 [imageView setImage:[UIImage imageNamed:@"TutorialPhone5"]];
                 break;
+            }
             default:
                 break;
         }
@@ -141,8 +136,14 @@
         [[self scrollView] addSubview:tutorialTitle];
         [[self scrollView] addSubview:greenView2];
         [[self scrollView] addSubview:tutorialDescription];
-   
-   
+        
+        [NSLayoutConstraint activateConstraints: @[
+                 [imageView.widthAnchor constraintEqualToConstant:screenWidth * 0.8],
+                 [imageView.centerXAnchor constraintEqualToAnchor:self.scrollView.centerXAnchor constant:i * screenWidth],
+                 [imageView.bottomAnchor constraintEqualToAnchor:tutorialDescription.topAnchor constant:-16.0],
+                 [imageView.topAnchor constraintEqualToAnchor:tutorialTitle.bottomAnchor constant:16.0],
+             ]
+        ];
     }
     
 }
@@ -157,7 +158,7 @@
 {
     [self.pageControl setCurrentPage:[self getCurrentPageIndex]];
     
-    if ([self getCurrentPageIndex] == 4)
+    if ([self getCurrentPageIndex] == 3)
     {
         [self.getStartedButton setAlpha:1];
         [self.getStartedButton setEnabled:YES];

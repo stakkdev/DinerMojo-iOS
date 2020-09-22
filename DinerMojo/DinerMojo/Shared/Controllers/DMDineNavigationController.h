@@ -14,6 +14,7 @@
 
 - (void)readyToDismissCompletedDineNavigationController:(DMDineNavigationController *)dineNavigationController;
 - (void)readyToDismissCancelledDineNavigationController:(DMDineNavigationController *)dineNavigationController;
+- (void)readyToDismissCompletedDineNavigationController:(DMDineNavigationController *)dineNavigationController with:(UIViewController *)vc;
 
 @end
 
@@ -22,6 +23,7 @@
 @property (nonatomic, weak) id <DMDineNavigationControllerControllerDelegate> dineNavigationDelegate;
 
 - (void)dineComplete;
+- (void)dineCompleteWithVc:(UIViewController *)vc;
 - (void)cancelPressed;
 
 @end

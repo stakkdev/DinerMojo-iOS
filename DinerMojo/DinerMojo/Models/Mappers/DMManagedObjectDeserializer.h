@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 hedgehog lab. All rights reserved.
 //
 
-#import "FEMManagedObjectDeserializer.h"
+#import <FastEasyMapping/FEMManagedObjectDeserializer.h>
 
 @interface DMManagedObjectDeserializer : FEMManagedObjectDeserializer
 

@@ -52,4 +52,21 @@
     return [[self currentLocation] distanceFromLocation:location];
 }
 
+- (double)getDistanceWithLatitude:(NSNumber *)latitude andLongitude:(NSNumber *)longitude {
+    CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    double distance = [self userLocationDistanceFromLocation:venueCoordinates];
+    return distance;
+}
+
+- (BOOL)isLocationEnabled {
+    if([CLLocationManager locationServicesEnabled] &&
+       [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
+    {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
 @end

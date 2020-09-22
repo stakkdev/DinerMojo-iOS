@@ -9,10 +9,15 @@
 #import "DMNewsFeedViewController.h"
 #import "DMNewsFeedTableViewCell.h"
 #import "DMNewsItemViewController.h"
-#import "DMSortNewsfeedViewController.h"
-#import "AppDelegate.h"
+#import <PureLayout/PureLayout.h>
+#import "DinerMojo-Swift.h"
+#import "DMRestaurantInfoViewController.h"
+#import <Crashlytics/Answers.h>
 
 @interface DMNewsFeedViewController ()
+
+@property (strong, nonatomic) NSArray *filterItems;
+@property (strong, nonatomic) StateSerializer* serializer;
 
 @end
 
@@ -21,153 +26,124 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self decorateInterface];
-    _newsRequest = [DMNewsRequest new];
+    _newsRequest = [DMNewsRequest new]; 
     _newsModelController = [DMNewsItemModelController new];
+    _serializer = [[StateSerializer alloc] init];
     
-    if (self.isVenue)
-    {
-        [self newsButtonPressed:nil];
-    }
-    else
-    {
-        [self allButtonPressed:nil];
-    }
-    
-    [self updateFavouriteFilterIconState];
     self.currentSortType = DMSortNewsfeedViewControllerSortItemTypeMostRecent;
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    NSArray *filterItems = [self.serializer restoreFilterState];
+    if (filterItems == nil || filterItems.count == 0) {
+        FilterItem *filterItem = [[FilterItem alloc]initWithGroupName:GroupsNameNewsShow itemId:ShowNewsGroupShowNewsItem value: YES];
+        filterItems = @[filterItem];
+    }
+    
+    [self selectedFilterItems:filterItems];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [Answers logContentViewWithName:@"View newsfeed" contentType:@"" contentId:@"" customAttributes:@{}];
     
     [self.activityIndicator startAnimating];
-
-    self.pushNewsID = [[(AppDelegate *)[[UIApplication sharedApplication] delegate] notificationPayload] objectForKey:@"news_id"];
     
-    if (self.isVenue)
-    {
+    NSString *newsId = [(AppDelegate *) [[UIApplication sharedApplication] delegate] notificationPayload][@"news_id"];
+    NSString *bookingId = [(AppDelegate *) [[UIApplication sharedApplication] delegate] notificationPayload][@"bookingID"];
+    
+    if (bookingId == NULL && newsId != NULL) {
+        self.pushNewsID = newsId;
+    }
+    
+    if (self.isVenue) {
         [self.navigationItem setRightBarButtonItem:nil];
         [self.navigationItem setLeftBarButtonItem:nil];
         [self.navigationItem setTitle:self.selectedVenue.name];
         [self downloadVenueNews];
-    }
-    
-    else
-    {
+    } else {
         [self downloadNews];
     }
+    
+    self.navigationController.navigationBar.topItem.title = NSLocalizedString(@"newsfeed.title", nil);
 }
 
-- (void)downloadVenueNews
-{
+- (void)downloadVenueNews {
     [self showZeroMessageStatus:NO];
     [self.emptyTableLabel setHidden:NO];
     [self.emptyTableLabel setText:@"Fetching news..."];
-    
+
     [[self newsRequest] downloadVenueNewsWithCompletionBlock:^(NSError *error, id results) {
-        if (error == nil)
-        {
+        if (error == nil) {
             [[self newsModelController] setAllItems:results];
-        }
-        
-        else
-        {
+            [[self newsModelController] refreshCurrentSource];
+            
+            [UIView transitionWithView:self.tableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
+                [self.tableView reloadData];
+            }               completion:nil];
+                        
+            [self updateZeroMessageStatus];
+            
+        } else {
             [self.emptyTableLabel setHidden:NO];
             [self.emptyTableDescriptionView setHidden:NO];
-            [self.emptyTableLabel setText:@"Can't fetch news. Check your connection"];
         }
-        
+
         [self.activityIndicator stopAnimating];
-        
+
         [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
-        
-    } withNewsType:[NSNumber numberWithInt:DMNewsFeedAll] withVenue:self.selectedVenue.modelID];
-    
-    
-    [[self newsRequest] downloadVenueNewsWithCompletionBlock:^(NSError *error, id results) {
-        if (error == nil)
-        {
-            [[self newsModelController] setNewsItems:results];
-            [[self newsModelController] refreshCurrentSource];
-            [UIView transitionWithView:self.tableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void)
-             {
-                 [self.tableView reloadData];
-             }completion: nil];
-            
-            if (self.newsModelController.newsItems.count == 0)
-            {
-                [self.tableView setHidden:YES];
-            }
-            [self updateZeroMessageStatus];
-        }
-        
-    
-    } withNewsType:[NSNumber numberWithInt:DMNewsFeedNews] withVenue:self.selectedVenue.modelID];
-    
-    
-    [[self newsRequest] downloadVenueNewsWithCompletionBlock:^(NSError *error, id results) {
-        if (error == nil)
-        {
-            [[self newsModelController] setOffersItems:results];
-        }
-        
-    
-    } withNewsType:[NSNumber numberWithInt:DMNewsFeedOffers] withVenue:self.selectedVenue.modelID];
+
+    }                                           withNewsType:@(DMNewsFeedNews) withVenue:self.selectedVenue.modelID];
 }
 
 
-- (void)downloadNews
-{
+- (void)downloadNews {
     [self showZeroMessageStatus:NO];
     [self.emptyTableLabel setHidden:NO];
     [self.emptyTableLabel setText:@"Fetching news..."];
-    
-    
+
+
     [[self newsRequest] downloadNewsWithCompletionBlock:^(NSError *error, id results) {
-        if (error == nil)
-        {
+        if (error == nil) {
             [[self newsModelController] setAllItems:results];
             [[self newsModelController] refreshCurrentSource];
-            [[self newsModelController] sortNewsFeedWithSortType:self.currentSortType];
-            [UIView transitionWithView:self.tableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void)
-             {
-                 [self.tableView reloadData];
-             } completion: nil];
-            
-            if (self.newsModelController.allItems.count == 0)
-            {
+            [[self newsModelController] sortNewsFeedWithSortType:(DMSortNewsfeedViewControllerSortItemType) self.currentSortType];
+            [UIView transitionWithView:self.tableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
+                [self.tableView reloadData];
+            }               completion:nil];
+
+            if (self.newsModelController.allItems.count == 0) {
                 [self.tableView setHidden:YES];
-                [self.emptyTableLabel setHidden:NO];
-                [self.emptyTableDescriptionView setHidden:NO];
-                [self.emptyTableLabel setText:@"There is no news at this time."];
+                [self.emptyTableLabel setHidden:YES];
+                [self.emptyTableDescriptionView setHidden:NO]; //0 venues
+                self.connectionProblem = NO;
             }
-            
+
             [self updateZeroMessageStatus];
-            
-            if (self.pushNewsID)
-            {
+
+            if (self.pushNewsID) {
                 self.selectedNewsItem = [DMUpdateItem MR_findFirstByAttribute:@"modelID" withValue:self.pushNewsID];
-                self.pushNewsID = nil;
-                AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-                appDelegate.notificationPayload = nil;
+                if (self.selectedNewsItem != NULL) {
+                    [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+                }
                 
-                [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+                self.pushNewsID = nil;
+                AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+                appDelegate.notificationPayload = nil;
             }
-            
-
-        }
-        else
-        {
-            [self.emptyTableLabel setHidden:NO];
+        } else {
+            [self.tableView setHidden:YES];
+            [self.emptyTableLabel setHidden:NO]; //check internet
             [self.emptyTableDescriptionView setHidden:NO];
-            [self.emptyTableLabel setText:@"Can't fetch news. Check your connection"];
-            
-            if (self.pushNewsID)
-            {
+            self.connectionProblem = YES;
+            [self.emptyTableLabel setText:@"Can't fetch news. Check your connection."];
+            [self.emptyTableDescriptionLabel setText:@"Nothing to report now but we can notify you when there is"];
+            if (self.pushNewsID) {
                 self.pushNewsID = nil;
                 AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
                 appDelegate.notificationPayload = nil;
@@ -175,40 +151,17 @@
 
 
         }
-        
+
         [self.activityIndicator stopAnimating];
-        
+
         [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
 
-        
-    } withNewsType:[NSNumber numberWithInt:DMNewsFeedAll]];
-    
-    [[self newsRequest] downloadNewsWithCompletionBlock:^(NSError *error, id results) {
-        if (error == nil)
-        {
-            [[self newsModelController] setNewsItems:results];
-            [[self newsModelController] sortNewsFeedWithSortType:self.currentSortType];
 
-        }
-        
-
-    } withNewsType:[NSNumber numberWithInt:DMNewsFeedNews]];
-    
-    [[self newsRequest] downloadNewsWithCompletionBlock:^(NSError *error, id results) {
-        if (error == nil)
-        {
-            [[self newsModelController] setOffersItems:results];
-            [[self newsModelController] sortNewsFeedWithSortType:self.currentSortType];
-
-        }
-        
-        
-    } withNewsType:[NSNumber numberWithInt:DMNewsFeedOffers]];
+    }                                      withNewsType:@(DMNewsFeedAll)];
 }
 
-- (void)decorateInterface
-{
-    
+- (void)decorateInterface {
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -216,185 +169,182 @@
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"newsDetailSegue"])
-    {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"newsDetailSegue"]) {
         DMNewsItemViewController *vc = segue.destinationViewController;
-        vc.selectedItem = (DMNewsItem *) self.selectedNewsItem;
+        [vc setSelectedItem:(DMNewsItem *) self.selectedNewsItem];
+    }
+    else if([segue.identifier isEqualToString:@"restaurantNewsInfoSegue"]) {
+        [(DMRestaurantInfoViewController *)[segue destinationViewController] setSelectedVenue:sender];
     }
 }
 
 #pragma mark - UITableView Delegates
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    self.selectedNewsItem = [[[self newsModelController] currentDataSource] objectAtIndex:indexPath.row];
-    
-    [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+
+//    self.selectedNewsItem = [[self newsModelController] currentDataSource][indexPath.row];
+
+//    [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
     cell.selected = NO;
-    
+
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    DMNewsFeedTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
-    if (!cell)
-    {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DMNewsFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
+    if (!cell) {
         [tableView registerNib:[UINib nibWithNibName:@"DMNewsFeedTableViewCell" bundle:nil] forCellReuseIdentifier:@"CustomCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
     }
     
-    DMNewsItem *newsItem = [[[self newsModelController] currentDataSource] objectAtIndex:indexPath.row];
+    [cell setupActions];
     
+    DMNewsItem *newsItem = [[self newsModelController] currentDataSource][indexPath.row];
+    __weak typeof(self) weakSelf = self;
+    cell.tapOnNewsCell = ^{
+        newsItem.isRead = YES;
+        weakSelf.selectedNewsItem = newsItem;
+        [weakSelf performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+    };
+
+    cell.tapOnVenueIcon = ^{
+        DMVenue *item = (DMVenue *) [newsItem venue];
+        
+        if (item != nil && [item.state integerValue] == DMVenueStateVerified)
+        {
+            [weakSelf performSegueWithIdentifier:@"restaurantNewsInfoSegue" sender:item];
+        }
+        else {
+            weakSelf.selectedNewsItem = newsItem;
+            [weakSelf performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+        }
+    };
+    [[cell isReadView] setHidden:newsItem.isRead];
     [[cell feedTitleLabel] setText:newsItem.title];
     [[cell feedStoryLabel] setText:newsItem.news_description];
-    
+
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"d MMM ''yy"];
     [[cell feedDateLabel] setText:[dateFormat stringFromDate:newsItem.created_at]];
     DMVenue *venue = (DMVenue *) [newsItem venue];
-    if (!self.isVenue)
-    {
+    if (!self.isVenue) {
         [[cell feedVenueNameLabel] setText:venue.name];
-
     }
-    
+
     [[cell cellImageView] setImage:nil];
     [[cell cellImageView] setBackgroundColor:[UIColor newsGrayColor]];
+    [cell.feedTitleLabel setTextColor:[UIColor newsColor]];
     
-    UIImage *placeHolderImage;
-    
-    if ([newsItem.update_type isEqualToNumber:[NSNumber numberWithInt:DMNewsFeedNews]])
-    {
-        [cell.feedTitleLabel setTextColor:[UIColor newsColor]];
-        placeHolderImage = [UIImage imageNamed:@"news_default"];
-    }
-    
-    if ([newsItem.update_type isEqualToNumber:[NSNumber numberWithInt:DMNewsFeedOffers]])
+    if(newsItem.venue == nil) {
+        UIImage *systemNews = [UIImage imageNamed:@"ic_launcher"];
+        [[cell cellImageView] setImage:systemNews];
+        [cell.offerIcon setHidden:YES];
+    } else {
+        UIImage *placeHolderImage = [UIImage imageNamed:@""];
         
-    {
-        [cell.feedTitleLabel setTextColor:[UIColor offersColor]];
-        placeHolderImage = [UIImage imageNamed:@"offer_default"];
+        if ([newsItem.update_type isEqualToNumber:@(DMNewsFeedNews)]) {
+            placeHolderImage = [UIImage imageNamed:@"news_default"];
+            [cell.offerIcon setHidden:YES];
+        } else if ([newsItem.update_type isEqualToNumber:@(DMNewsFeedOffers)] || [newsItem.update_type isEqualToNumber:@(DMNewsFeedRewards)]) {
+            [cell.feedTitleLabel setTextColor:[UIColor offersColor]];
+            placeHolderImage = [UIImage imageNamed:@"offer_default"];
+            [cell.offerIcon setHidden:NO];
+        } else if ([newsItem.update_type isEqualToNumber:@(DMNewsFeedProdigal)]) {
+             placeHolderImage = [UIImage imageNamed:@"ic_launcher"];
+            [cell.offerIcon setHidden:YES];
+        }
+        [[cell cellImageView] setImage:placeHolderImage];
         
+        if (newsItem.thumb.length != 0) {
+            NSURL *url = [NSURL URLWithString:[[self newsRequest] buildMediaURL:newsItem.thumb]];
+            [[cell cellImageView] setImageWithURL:url placeholderImage:placeHolderImage];
+        }
+
     }
-    
-    if (newsItem.thumb.length != 0)
-    {
-        NSURL *url = [NSURL URLWithString:[[self newsRequest] buildMediaURL:newsItem.thumb]];
-        [[cell cellImageView] setImageWithURL:url placeholderImage:placeHolderImage];
-    }
-    
     return cell;
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 150;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[[self newsModelController] currentDataSource] count];
 }
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 #pragma mark - Button presses
 
-- (IBAction)allButtonPressed:(id)sender {
-    
-    [self.newsButton setBackgroundColor:[UIColor newsGrayColor]];
-    [self.offersButton setBackgroundColor:[UIColor newsGrayColor]];
-    [self.allButton setBackgroundColor:[UIColor newsColor]];
-    [self setCurrentNewsType:DMNewsFeedAll];
-    [self.tableView reloadData];
-    [self updateZeroMessageStatus];
-}
-
-- (IBAction)newsButtonPressed:(id)sender
-{
-    [self.newsButton setBackgroundColor:[UIColor newsColor]];
-    [self.offersButton setBackgroundColor:[UIColor newsGrayColor]];
-    [self.allButton setBackgroundColor:[UIColor newsGrayColor]];
-    [self setCurrentNewsType:DMNewsFeedNews];
-    [self.tableView reloadData];
-    [self updateZeroMessageStatus];
-}
-
-- (IBAction)offersButtonPressed:(id)sender
-{
-    [self.newsButton setBackgroundColor:[UIColor newsGrayColor]];
-    [self.offersButton setBackgroundColor:[UIColor offersColor]];
-    [self.allButton setBackgroundColor:[UIColor newsGrayColor]];
-    [self setCurrentNewsType:DMNewsFeedOffers];
+- (void)didSelectTabItem:(DMNewsFeedState)item {
+    [self setCurrentNewsType:item];
     [self.tableView reloadData];
     [self updateZeroMessageStatus];
 }
 
 - (IBAction)sortButtonPressed:(id)sender {
+    UINavigationController *vc = (UINavigationController*)DMViewControllersProvider.instance.sortNewsVC;
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if (vc.viewControllers.count > 0) {
+        DMSortVenueFeedViewController *filterVC = vc.viewControllers[0];
+        filterVC.delegate = self;
+        filterVC.filterItems = self.filterItems;
+    }
     
-    DMSortNewsfeedViewController *sortNewsFeedView = (DMSortNewsfeedViewController *) [storyboard instantiateViewControllerWithIdentifier:@"sortNewsFeedView"];
-    [sortNewsFeedView setDelegate:self];
-    [sortNewsFeedView setSelectedType:self.currentSortType];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:sortNewsFeedView];
-    [navController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    [navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-                                                      
-    [self presentViewController:navController animated:YES completion:nil];
+    [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)setCurrentNewsType:(NSInteger)currentNewsType
-{
+- (void)setCurrentNewsType:(NSInteger)currentNewsType {
     _currentNewsType = currentNewsType;
-    [[self newsModelController] setNewsFeedState:_currentNewsType];
+    [[self newsModelController] setNewsFeedState:(DMNewsFeedState) _currentNewsType];
 }
 
-- (void)updateFavouriteFilterIconState
-{
-    [[[self navigationItem] rightBarButtonItem] setImage:([_newsModelController showFavourites] == YES) ? [UIImage imageNamed:@"favourite_active"] : [UIImage imageNamed:@"favourite_inactive"]];
+- (void)updateFavouriteFilterIconState {
+    [[[self navigationItem] rightBarButtonItem] setImage:[_newsModelController showFavourites] ? [UIImage imageNamed:@"favourite_active"] : [UIImage imageNamed:@"favourite_inactive"]];
 }
 
-- (IBAction)favouriteButtonPressed:(id)sender
-{
+- (IBAction)favouriteButtonPressed:(id)sender {
     [_newsModelController setShowFavourites:![_newsModelController showFavourites]];
-    
+
     [self updateFavouriteFilterIconState];
-    
+
     [[self tableView] reloadData];
-    
+
     [self updateZeroMessageStatus];
+}
+
+- (IBAction)notifyMe:(id)sender {
+    if(![[self userRequest] isUserLoggedIn]) {
+        [self performSegueWithIdentifier:@"startSegue" sender:nil];
+    } else {
+        [self performSegueWithIdentifier:@"newsNotifySegue" sender:nil];
+    }
 }
 
 #pragma mark - DMSortNewsfeedViewControllerDelegte
 
-- (void)sortNewsfeedViewController:(DMSortNewsfeedViewController *)sortNewsfeedViewController didSelectSortItem:(DMSortNewsfeedViewControllerSortItemType)itemType
-{
-    
+- (void)sortVenueFeedViewController:(DMSortVenueFeedViewController *)sortNewsfeedViewController didSelectSortItem:(DMSortNewsfeedViewControllerSortItemType)itemType {
+
     [[self newsModelController] sortNewsFeedWithSortType:itemType];
     self.currentSortType = itemType;
-    
+
     [self dismissViewControllerAnimated:YES completion:nil];
-    
+
     [self.tableView reloadData];
 
 }
 
-- (void)closeButtonPressedOnSortViewController:(DMSortNewsfeedViewController *)sortNewsfeedViewController
-{
+- (void)closeButtonPressedOnSortViewController:(DMSortVenueFeedViewController *)sortNewsfeedViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (NSString *)titleForZeroStateMessage
-{
+- (NSString *)titleForZeroStateMessage {
     switch (self.currentNewsType) {
         case DMNewsFeedNews:
             return @"There are no news items right now";
@@ -408,8 +358,7 @@
     }
 }
 
-- (NSString *)descriptionForZeroStateMessage
-{
+- (NSString *)descriptionForZeroStateMessage {
     switch (self.currentNewsType) {
         case DMNewsFeedNews:
             return @"No news at the moment but there's bound to be some soon. We can let you know when there is.";
@@ -423,30 +372,33 @@
     }
 }
 
-- (void)showZeroMessageStatus:(BOOL)show
-{
+- (void)showZeroMessageStatus:(BOOL)show {
     [[self emptyTableLabel] setHidden:!show];
     [[self emptyTableDescriptionView] setHidden:!show];
     [[self emptyTableLabel] setText:[self titleForZeroStateMessage]];
     [[self emptyTableDescriptionLabel] setText:[self descriptionForZeroStateMessage]];
-    
+
     [[self tableView] setHidden:show];
 }
 
-- (void)updateZeroMessageStatus
-{
+- (void)updateZeroMessageStatus {
     [self showZeroMessageStatus:[[[self newsModelController] currentDataSource] count] == 0];
 }
 
-- (IBAction)notifyMeButtonPressed:(id)sender;
-{
-    if ([[self userRequest] isUserLoggedIn] == YES)
-    {
-        [self performSegueWithIdentifier:@"newsNotifySegue" sender:nil];
-    }
-    else
-    {
-        [self presentAlertForLoginInstructions:@"You need to log in or sign up to access this feature."];
+
+- (void)selectedFilterItems:(NSArray *)filterItems {
+    [self.serializer saveFilterStateWithItems:filterItems];
+    self.filterItems = filterItems;
+    _newsModelController.filters = filterItems;
+    [[self newsModelController] refreshCurrentSource];
+    [self.tableView reloadData];
+    if([[self newsModelController] currentDataSource].count == 0) {
+        
+        [[self emptyTableLabel] setHidden:YES];
+        [[self emptyTableDescriptionView] setHidden:NO];
+        [[self emptyTableDescriptionLabel] setText:@"Nothing to report now but we can notify you when there is"];
+        
+        [[self tableView] setHidden:YES];
     }
 }
 

@@ -29,7 +29,7 @@
     
     if (self.referralUser)
     {
-        [self.welcomeDescriptionLabel setText:[NSString stringWithFormat:@"Thanks for using the referral code to sign up. When you dine at your first restaurant you’ll earn points for both yourself and %@. Isn’t that great? You've also just earned 20 points for joining the club!\n\nHow about we take you for a quick tour before you get started?", self.referralUser.first_name]];
+        [self.welcomeDescriptionLabel setText:[NSString stringWithFormat:@"Thanks for using the referral code to sign up. When you dine at your first restaurant you’ll earn points for both yourself and %@. Isn’t that great? You've also just earned 100 points for joining the club!\n\nHow about we take you for a quick tour before you get started?", self.referralUser.first_name]];
     }
     
     else

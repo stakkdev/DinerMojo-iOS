@@ -38,6 +38,17 @@
     }
 }
 
+- (void)dineCompleteWithVc:(UIViewController *)vc
+{
+    if ([self dineNavigationDelegate] != nil)
+    {
+        if ([[self dineNavigationDelegate] respondsToSelector:@selector(readyToDismissCompletedDineNavigationController:with:)])
+        {
+            [[self dineNavigationDelegate] readyToDismissCompletedDineNavigationController:self with:vc];
+        }
+    }
+}
+
 - (void)cancelPressed
 {
     if ([self dineNavigationDelegate] != nil)

@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,35 +18,32 @@
                 <viewControllerLayoutGuide type="bottom" id="azN-Ts-OnK"/>
             </layoutGuides>
             <view key="view" contentMode="scaleToFill" id="GT2-0S-71m">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBJ-yg-KQI" userLabel="Image Container">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="KOr-W7-6xL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DinerMojoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="9wa-8g-m8t">
-                                <rect key="frame" x="180" y="58" width="240" height="216"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="LCZ-6I-2dF"/>
-                                    <constraint firstAttribute="height" constant="216" id="TsC-bv-jbe"/>
-                                </constraints>
+                                <rect key="frame" x="37.5" y="100" width="300" height="85"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9wa-8g-m8t" firstAttribute="top" secondItem="gBJ-yg-KQI" secondAttribute="top" constant="58" id="1ZE-WK-rMH"/>
+                            <constraint firstItem="9wa-8g-m8t" firstAttribute="top" secondItem="gBJ-yg-KQI" secondAttribute="top" constant="100" id="1ZE-WK-rMH"/>
                             <constraint firstAttribute="centerY" secondItem="KOr-W7-6xL" secondAttribute="centerY" id="51Q-oV-2yX"/>
                             <constraint firstAttribute="centerX" secondItem="9wa-8g-m8t" secondAttribute="centerX" id="AYZ-BY-EsW"/>
                             <constraint firstAttribute="height" secondItem="KOr-W7-6xL" secondAttribute="height" id="FSi-gy-OKf"/>
                             <constraint firstAttribute="centerX" secondItem="KOr-W7-6xL" secondAttribute="centerX" id="GxM-O0-Xlm"/>
                             <constraint firstAttribute="width" secondItem="KOr-W7-6xL" secondAttribute="width" id="QWv-QJ-ShI"/>
+                            <constraint firstItem="9wa-8g-m8t" firstAttribute="width" secondItem="gBJ-yg-KQI" secondAttribute="width" multiplier="0.8" id="Vwl-jc-Zba"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="1" green="0.27408668269999997" blue="0.37539779439999998" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" red="1" green="0.27408668269999997" blue="0.37539779439999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="height" secondItem="gBJ-yg-KQI" secondAttribute="height" id="4Go-80-cks"/>
                     <constraint firstAttribute="width" secondItem="gBJ-yg-KQI" secondAttribute="width" id="BcL-gO-U0H"/>
@@ -53,7 +55,7 @@
         </viewController>
     </objects>
     <resources>
-        <image name="DinerMojoLogo" width="211" height="224"/>
+        <image name="DinerMojoLogo" width="400" height="85"/>
         <image name="home_restaurant" width="448" height="640"/>
     </resources>
 </document>

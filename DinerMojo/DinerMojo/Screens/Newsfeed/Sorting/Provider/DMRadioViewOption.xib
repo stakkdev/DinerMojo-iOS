@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="INf-ue-fFE" customClass="DMRadioViewOption" customModule="DinerMojo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODG-gv-Aad">
+                    <rect key="frame" x="16" y="8" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="gzo-P6-0jV"/>
+                        <constraint firstAttribute="height" constant="24" id="y0S-FX-601"/>
+                    </constraints>
+                    <state key="normal" image="UnselectedCheckMark22"/>
+                    <state key="selected" image="SelectedCheckMark22"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtp-Pm-4lc">
+                    <rect key="frame" x="55" y="6" width="250" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="zTW-bM-LJq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <color key="highlightedColor" red="0.43137254899999999" green="0.78823529410000004" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Gtp-Pm-4lc" secondAttribute="trailing" constant="15" id="JTP-ck-LFu"/>
+                <constraint firstItem="ODG-gv-Aad" firstAttribute="top" secondItem="INf-ue-fFE" secondAttribute="top" constant="8" id="VzB-f6-X3C"/>
+                <constraint firstItem="Gtp-Pm-4lc" firstAttribute="top" secondItem="INf-ue-fFE" secondAttribute="top" constant="6" id="eWA-ua-kKZ"/>
+                <constraint firstItem="Gtp-Pm-4lc" firstAttribute="leading" secondItem="ODG-gv-Aad" secondAttribute="trailing" constant="15" id="lfg-vi-U22"/>
+                <constraint firstItem="ODG-gv-Aad" firstAttribute="leading" secondItem="INf-ue-fFE" secondAttribute="leading" constant="16" id="vPu-rC-ehW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="button" destination="ODG-gv-Aad" id="Nvd-Vc-j8T"/>
+                <outlet property="titleLabel" destination="Gtp-Pm-4lc" id="nHJ-O0-Tis"/>
+            </connections>
+            <point key="canvasLocation" x="-488" y="40"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="SelectedCheckMark22" width="24" height="24"/>
+        <image name="UnselectedCheckMark22" width="24" height="24"/>
+    </resources>
+</document>

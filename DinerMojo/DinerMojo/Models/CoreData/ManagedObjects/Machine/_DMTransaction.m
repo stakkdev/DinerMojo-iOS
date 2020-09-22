@@ -3,23 +3,15 @@
 
 #import "_DMTransaction.h"
 
-
 const struct DMTransactionAttributes DMTransactionAttributes = {
 	.closing_balance = @"closing_balance",
 	.start_balance = @"start_balance",
 };
 
-
-
 const struct DMTransactionRelationships DMTransactionRelationships = {
 	.user = @"user",
 	.venue = @"venue",
 };
-
-
-
-
-
 
 @implementation DMTransactionID
 @end
@@ -46,7 +38,7 @@ const struct DMTransactionRelationships DMTransactionRelationships = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"closing_balanceValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"closing_balance"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -61,23 +53,16 @@ const struct DMTransactionRelationships DMTransactionRelationships = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic closing_balance;
-
-
 
 - (int16_t)closing_balanceValue {
 	NSNumber *result = [self closing_balance];
 	return [result shortValue];
 }
 
-
 - (void)setClosing_balanceValue:(int16_t)value_ {
-	[self setClosing_balance:@(value_)];
+	[self setClosing_balance:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitiveClosing_balanceValue {
 	NSNumber *result = [self primitiveClosing_balance];
@@ -85,27 +70,19 @@ const struct DMTransactionRelationships DMTransactionRelationships = {
 }
 
 - (void)setPrimitiveClosing_balanceValue:(int16_t)value_ {
-	[self setPrimitiveClosing_balance:@(value_)];
+	[self setPrimitiveClosing_balance:[NSNumber numberWithShort:value_]];
 }
 
-
-
-
-
 @dynamic start_balance;
-
-
 
 - (int16_t)start_balanceValue {
 	NSNumber *result = [self start_balance];
 	return [result shortValue];
 }
 
-
 - (void)setStart_balanceValue:(int16_t)value_ {
-	[self setStart_balance:@(value_)];
+	[self setStart_balance:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitiveStart_balanceValue {
 	NSNumber *result = [self primitiveStart_balance];
@@ -113,28 +90,12 @@ const struct DMTransactionRelationships DMTransactionRelationships = {
 }
 
 - (void)setPrimitiveStart_balanceValue:(int16_t)value_ {
-	[self setPrimitiveStart_balance:@(value_)];
+	[self setPrimitiveStart_balance:[NSNumber numberWithShort:value_]];
 }
-
-
-
-
 
 @dynamic user;
 
-	
-
 @dynamic venue;
 
-	
-
-
-
-
-
-
 @end
-
-
-
 

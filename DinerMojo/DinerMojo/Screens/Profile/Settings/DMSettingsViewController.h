@@ -12,6 +12,7 @@
 
 @interface DMSettingsViewController : DMTabBarViewController <UITableViewDelegate, DMWelcomeViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

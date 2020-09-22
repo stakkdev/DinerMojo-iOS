@@ -7,14 +7,22 @@
 //
 
 #import "DMButton.h"
+#import "UIView+InnerShadow.h"
 
 @interface DMButton ()
 
 @property (strong, nonatomic) UIColor *originalBackgroundColor;
-
 @end
 
 @implementation DMButton
+
+- (void)toggleInnerShadow:(BOOL)on {
+    if(on) {
+        [self addInnerShadowWithRadius:6.0f andAlpha:0.1f];
+    } else {
+        [self removeInnerShadow];
+    }
+}
 
 - (CGFloat)cornerRadius
 {

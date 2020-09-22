@@ -11,8 +11,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) NSDictionary *notificationPayload;
+- (void)checkBookingNotification;
+- (void)showBookingNotificationWithUserInfo:(NSDictionary *)userInfo;
 
 @end
 

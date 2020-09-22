@@ -7,7 +7,9 @@
 //
 
 #import "DMViewController.h"
-
+#import "DinerMojo-Swift.h"
+#import <GBVersionTracking/GBVersionTracking.h>
+#import "DMMapViewController.h"
 @interface DMViewController ()
 
 @end
@@ -50,19 +52,50 @@
 
 - (void)presentOperationCompleteViewControllerWithStatus:(DMOperationCompletePopUpViewControllerStatus)status title:(NSString *)title description:(NSString *)description style:(UIBlurEffectStyle)style actionButtonTitle:(NSString *)actionButtonTitle
 {
+    [self presentOperationCompleteViewControllerWithStatus:status title:title description:description style:style actionButtonTitle:actionButtonTitle color:[UIColor colorWithRed:(85/255.f) green:(85/255.f) blue:(85/255.f) alpha:1]];
+}
+
+- (void)presentOperationCompleteViewControllerWithStatus:(DMOperationCompletePopUpViewControllerStatus)status title:(NSString *)title description:(NSString *)description style:(UIBlurEffectStyle)style actionButtonTitle:(NSString *)actionButtonTitle color:(UIColor *)color {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     DMOperationCompletePopUpViewController *operationCompletePopUpViewController = [storyboard instantiateViewControllerWithIdentifier:@"operationComplete"];
     [operationCompletePopUpViewController setDelegate:self];
+    [operationCompletePopUpViewController setColor:color];
     [operationCompletePopUpViewController setStatus:status];
     [operationCompletePopUpViewController setPopUpTitle:title];
     [operationCompletePopUpViewController setPopUpDescription:description];
     [operationCompletePopUpViewController setActionButtonTitle:actionButtonTitle];
     [operationCompletePopUpViewController setEffectStyle:style];
+    [operationCompletePopUpViewController setShoulHideDontShowAgainButton:YES];
     [operationCompletePopUpViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     
     [self presentViewController:operationCompletePopUpViewController animated:YES completion:nil];
 }
+
+
+- (void)presentOperationCompleteViewControllerWithStatusAttributed:(DMOperationCompletePopUpViewControllerStatus)status title:(NSString *)title description:(NSMutableAttributedString *)description style:(UIBlurEffectStyle)style actionButtonTitle:(NSString *)actionButtonTitle
+{
+    [self presentOperationCompleteViewControllerWithStatusAttributed:status title:title description:description style:style actionButtonTitle:actionButtonTitle color:[UIColor colorWithRed:(85/255.f) green:(85/255.f) blue:(85/255.f) alpha:1]];
+}
+
+- (void)presentOperationCompleteViewControllerWithStatusAttributed:(DMOperationCompletePopUpViewControllerStatus)status title:(NSString *)title description:(NSMutableAttributedString *)description style:(UIBlurEffectStyle)style actionButtonTitle:(NSString *)actionButtonTitle color:(UIColor *)color
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    DMOperationCompletePopUpViewController *operationCompletePopUpViewController = [storyboard instantiateViewControllerWithIdentifier:@"operationComplete"];
+    [operationCompletePopUpViewController setDelegate:self];
+    [operationCompletePopUpViewController setColor:color];
+    [operationCompletePopUpViewController setStatus:status];
+    [operationCompletePopUpViewController setPopUpTitle:title];
+    [operationCompletePopUpViewController setPopUpDescriptionAttributed:description];
+    [operationCompletePopUpViewController setActionButtonTitle:actionButtonTitle];
+    [operationCompletePopUpViewController setEffectStyle:style];
+    [operationCompletePopUpViewController setShoulHideDontShowAgainButton:YES];
+    [operationCompletePopUpViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    
+    [self presentViewController:operationCompletePopUpViewController animated:YES completion:nil];
+}
+
 
 - (void)presentEmailVerificationCheckViewControllerWithCompletionBlock:(RequestCompletion)completionBlock;
 {
@@ -73,6 +106,7 @@
     [operationCompletePopUpViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [operationCompletePopUpViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [[operationCompletePopUpViewController actionButton] setBackgroundColor:[UIColor clearColor]];
+    [operationCompletePopUpViewController setShoulHideDontShowAgainButton:YES];
     
     [self presentViewController:operationCompletePopUpViewController animated:YES completion:^{
         DMUserRequest *userRequest = [DMUserRequest new];
@@ -160,7 +194,15 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     DMViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
-    
+    if(![NSUserDefaults.standardUserDefaults boolForKey:@"showedOverlay"]) {
+        if([GBVersionTracking isFirstLaunchForVersion]) {
+            [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"showedOverlay"];
+            DMMapViewController *vc = destinationViewController.childViewControllers.firstObject.childViewControllers.firstObject;
+            if(vc != NULL) {
+                vc.showOverlay = YES;
+            }
+        }
+    }
     [self setRootViewController:destinationViewController animated:YES];
 }
 

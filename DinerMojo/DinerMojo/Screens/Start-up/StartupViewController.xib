@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartupViewController" customModule="DinerMojo" customModuleProvider="target">
+            <connections>
+                <outlet property="descLabel" destination="0bv-qM-JvL" id="7BF-b8-22Y"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DinerMojo just got even more rewarding…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVs-lV-Wcj">
+                    <rect key="frame" x="30" y="170" width="260" height="62.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <color key="textColor" red="0.9882352941176471" green="0.54117647058823526" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bv-qM-JvL">
+                    <rect key="frame" x="20" y="262.5" width="280" height="134"/>
+                    <string key="text">We’re very excited to announce a whole new range of rewards are now being offered at DinerMojo venues.
+
+Check out the Newsfeed        or just click on the Rewards        symbol whenever you’re looking at a place to see the great ways you can be rewarded.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redeemIcon" translatesAutoresizingMaskIntoConstraints="NO" id="o5M-9u-LDU">
+                    <rect key="frame" x="120" y="60" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="Jsm-Lc-bMb"/>
+                        <constraint firstAttribute="width" constant="80" id="SJD-gj-oex"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="0bv-qM-JvL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6PU-BA-gbJ"/>
+                <constraint firstItem="o5M-9u-LDU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="6rC-IL-adt"/>
+                <constraint firstItem="eVs-lV-Wcj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="Ekg-bE-gKR"/>
+                <constraint firstAttribute="trailing" secondItem="eVs-lV-Wcj" secondAttribute="trailing" constant="30" id="JuD-vR-tNO"/>
+                <constraint firstItem="eVs-lV-Wcj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Lu5-eo-BZl"/>
+                <constraint firstAttribute="trailing" secondItem="0bv-qM-JvL" secondAttribute="trailing" constant="20" id="Mwh-uM-Q7d"/>
+                <constraint firstItem="eVs-lV-Wcj" firstAttribute="top" secondItem="o5M-9u-LDU" secondAttribute="bottom" constant="30" id="R3y-W1-lzJ"/>
+                <constraint firstItem="0bv-qM-JvL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="fqD-eT-kgu"/>
+                <constraint firstItem="o5M-9u-LDU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hQc-6U-gEj"/>
+                <constraint firstItem="0bv-qM-JvL" firstAttribute="top" secondItem="eVs-lV-Wcj" secondAttribute="bottom" constant="30" id="kAv-hh-OC8"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="redeemIcon" width="65" height="76"/>
+    </resources>
+</document>

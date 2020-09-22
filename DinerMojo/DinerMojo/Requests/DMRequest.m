@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSURL *apiBaseURL;
 @property (nonatomic, strong) NSURL *mediaBaseURL;
-@property (nonatomic, strong) AFHTTPRequestOperationManager *jsonManager;
+@property (nonatomic, strong) AFHTTPSessionManager *jsonManager;
 
 @end
 
@@ -97,19 +97,23 @@
     }
 }
 
--(NSError *)errorWithStatusCode:(AFHTTPRequestOperation *)operation withBaseError:(NSError *)error;
+-(NSError *)errorWithStatusCode:(NSURLSessionTask *)operation withBaseError:(NSError *)error;
 {
-    return [NSError errorWithDomain:error.domain code:operation.response.statusCode userInfo:error.userInfo];
+    if ([operation.response isKindOfClass:[NSHTTPURLResponse class]]) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)operation.response;
+        return [NSError errorWithDomain:error.domain code:httpResponse.statusCode userInfo:error.userInfo];
+    }
+    return error;
 }
 
 #pragma mark - GET
 
 -(void)GET:(NSString *)url withParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    [[self jsonManager] GET:[self buildURL:url] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self jsonManager] GET:[self buildURL:url] parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil, responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        completionBlock([self errorWithStatusCode:operation withBaseError:error], nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock([self errorWithStatusCode:task withBaseError:error], nil);
     }];
 }
 
@@ -117,30 +121,34 @@
 
 -(void)POST:(NSString *)url withParams:(NSDictionary *)params  withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    [[self jsonManager] POST:[self buildURL:url] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self jsonManager] POST:[self buildURL:url] parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil,responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        completionBlock([self errorWithStatusCode:operation withBaseError:error],nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock([self errorWithStatusCode:task withBaseError:error],nil);
     }];
 }
 
 -(void)POST:(NSString *)url withParams:(NSDictionary *)params withBody:(void (^)(id <AFMultipartFormData> formData))body withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    [[self jsonManager] POST:[self buildURL:url] parameters:params constructingBodyWithBlock:body success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self jsonManager] POST:[self buildURL:url] parameters:params headers:nil constructingBodyWithBlock:body progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil,responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        completionBlock([self errorWithStatusCode:operation withBaseError:error],nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock([self errorWithStatusCode:task withBaseError:error],nil);
     }];
+}
+
+- (void)POST:(NSString *)url withParams:(NSDictionary *)params withBodyDict:(NSDictionary *)body withCompletionBlock:(RequestCompletion)completionBlock {
+    
 }
 
 #pragma mark - PUT
 
 -(void)PUT:(NSString *)url withParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    [[self jsonManager] PUT:[self buildURL:url] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self jsonManager] PUT:[self buildURL:url] parameters:params headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil,responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        completionBlock([self errorWithStatusCode:operation withBaseError:error],nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock([self errorWithStatusCode:task withBaseError:error],nil);
     }];
 }
 
@@ -148,10 +156,10 @@
 
 -(void)PATCH:(NSString *)url withParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    [[self jsonManager] PATCH:[self buildURL:url] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self jsonManager] PATCH:[self buildURL:url] parameters:params headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil,responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        completionBlock([self errorWithStatusCode:operation withBaseError:error],nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock([self errorWithStatusCode:task withBaseError:error],nil);
     }];
 }
 
@@ -159,35 +167,35 @@
 
 -(void)DELETE:(NSString *)url withParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    [[self jsonManager] DELETE:[self buildURL:url] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self jsonManager] DELETE:[self buildURL:url] parameters:params headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil,responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        completionBlock([self errorWithStatusCode:operation withBaseError:error],nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock([self errorWithStatusCode:task withBaseError:error],nil);
     }];
 }
 
 #pragma mark - Lazy Loading
 
--(AFHTTPRequestOperationManager *)jsonManager;
+-(AFHTTPSessionManager *)jsonManager;
 {
     if (_jsonManager) {
         return _jsonManager;
     }
     
-    _jsonManager = [AFHTTPRequestOperationManager manager];
+    _jsonManager = [AFHTTPSessionManager manager];
     [_jsonManager setRequestSerializer:[AFJSONRequestSerializer serializer]];
     [_jsonManager setResponseSerializer:[AFJSONResponseSerializer serializer]];
     
     return _jsonManager;
 }
 
--(AFHTTPRequestOperationManager *)httpManager;
+-(AFHTTPSessionManager *)httpManager;
 {
     if (_httpManager) {
         return _httpManager;
     }
     
-    _httpManager = [AFHTTPRequestOperationManager manager];
+    _httpManager = [AFHTTPSessionManager manager];
     
     AFImageResponseSerializer *serializer = [AFImageResponseSerializer serializer];
     serializer.acceptableContentTypes = [serializer.acceptableContentTypes setByAddingObject:@"binary/octet-stream"];

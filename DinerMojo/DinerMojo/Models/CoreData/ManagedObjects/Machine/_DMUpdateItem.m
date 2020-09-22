@@ -3,7 +3,6 @@
 
 #import "_DMUpdateItem.h"
 
-
 const struct DMUpdateItemAttributes DMUpdateItemAttributes = {
 	.expiry_date = @"expiry_date",
 	.image = @"image",
@@ -12,16 +11,9 @@ const struct DMUpdateItemAttributes DMUpdateItemAttributes = {
 	.title = @"title",
 };
 
-
-
 const struct DMUpdateItemRelationships DMUpdateItemRelationships = {
 	.venue = @"venue",
 };
-
-
-
-
-
 
 @implementation DMUpdateItemID
 @end
@@ -48,60 +40,21 @@ const struct DMUpdateItemRelationships DMUpdateItemRelationships = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic expiry_date;
-
-
-
-
-
 
 @dynamic image;
 
-
-
-
-
-
 @dynamic news_description;
-
-
-
-
-
 
 @dynamic thumb;
 
-
-
-
-
-
 @dynamic title;
-
-
-
-
-
 
 @dynamic venue;
 
-	
-
-
-
-
-
-
 @end
-
-
-
 

@@ -38,4 +38,61 @@
     }];
 }
 
+-(void)postBooking:(NSNumber *)venueId date:(NSString *)date number:(NSNumber *)number clientDesc:(NSString *)clientDesc phone:(NSString *)phone completion:(RequestCompletion)completionBlock {
+    NSDictionary *params = @{ @"time" : date, @"people" : number, @"client_desc" : clientDesc, @"phone_number": phone};
+    NSString *url = [NSString stringWithFormat:@"venues/%@/booking", venueId];
+    [self POST:url withParams:params withCompletionBlock:^(NSError *error, id results) {
+        if(error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, nil);
+        }
+    }];
+}
+
+-(void)updateBookingTracker:(NSNumber *)venueId completion:(RequestCompletion)completionBlock {
+    NSString *url = [NSString stringWithFormat:@"venues/%@/booking", venueId];
+    
+    [self GET:url withParams:nil withCompletionBlock:^(NSError *error, id results) {
+        if(error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, nil);
+        }
+    }];
+}
+
+- (void)getBookingByID:(NSNumber *)bookingId completionBlock:(RequestCompletion)completionBlock {
+    NSString *url = [NSString stringWithFormat:@"user/me/booking/%@", bookingId];
+    
+    [self GET:url withParams:nil withCompletionBlock:^(NSError *error, id results) {
+        if(error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, results);
+        }
+    }];
+}
+    
+- (void)shareReceivePoints:(RequestCompletion)completionBlock {
+    [self POST:@"user/share" withParams:NULL withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, nil);
+        }
+    }];
+}
+
+- (void)downloadVenueCategoriesWithCompletionBlock:(RequestCompletion)completionBlock {
+    [self GET:@"venue_categories" withParams:nil withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            completionBlock(error, nil);
+        } else {
+            NSArray *mappedCategories = [DMMappingHelper mapVenues:results withMapping:[[self mappingProvider]  categoryMapping] inContext:[self objectContext]];
+            completionBlock(error, mappedCategories);
+        }
+    }];
+}
+
 @end

@@ -3,7 +3,6 @@
 
 #import "_DMEarnTransaction.h"
 
-
 const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 	.amount_saved = @"amount_saved",
 	.bill_amount = @"bill_amount",
@@ -15,13 +14,6 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 	.state = @"state",
 	.transaction_type = @"transaction_type",
 };
-
-
-
-
-
-
-
 
 @implementation DMEarnTransactionID
 @end
@@ -48,7 +40,7 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"amount_savedValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"amount_saved"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -83,23 +75,16 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic amount_saved;
-
-
 
 - (float)amount_savedValue {
 	NSNumber *result = [self amount_saved];
 	return [result floatValue];
 }
 
-
 - (void)setAmount_savedValue:(float)value_ {
-	[self setAmount_saved:@(value_)];
+	[self setAmount_saved:[NSNumber numberWithFloat:value_]];
 }
-
 
 - (float)primitiveAmount_savedValue {
 	NSNumber *result = [self primitiveAmount_saved];
@@ -107,27 +92,19 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 }
 
 - (void)setPrimitiveAmount_savedValue:(float)value_ {
-	[self setPrimitiveAmount_saved:@(value_)];
+	[self setPrimitiveAmount_saved:[NSNumber numberWithFloat:value_]];
 }
 
-
-
-
-
 @dynamic bill_amount;
-
-
 
 - (float)bill_amountValue {
 	NSNumber *result = [self bill_amount];
 	return [result floatValue];
 }
 
-
 - (void)setBill_amountValue:(float)value_ {
-	[self setBill_amount:@(value_)];
+	[self setBill_amount:[NSNumber numberWithFloat:value_]];
 }
-
 
 - (float)primitiveBill_amountValue {
 	NSNumber *result = [self primitiveBill_amount];
@@ -135,34 +112,21 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 }
 
 - (void)setPrimitiveBill_amountValue:(float)value_ {
-	[self setPrimitiveBill_amount:@(value_)];
+	[self setPrimitiveBill_amount:[NSNumber numberWithFloat:value_]];
 }
-
-
-
-
 
 @dynamic bill_image;
 
-
-
-
-
-
 @dynamic earn_type;
-
-
 
 - (int16_t)earn_typeValue {
 	NSNumber *result = [self earn_type];
 	return [result shortValue];
 }
 
-
 - (void)setEarn_typeValue:(int16_t)value_ {
-	[self setEarn_type:@(value_)];
+	[self setEarn_type:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitiveEarn_typeValue {
 	NSNumber *result = [self primitiveEarn_type];
@@ -170,34 +134,21 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 }
 
 - (void)setPrimitiveEarn_typeValue:(int16_t)value_ {
-	[self setPrimitiveEarn_type:@(value_)];
+	[self setPrimitiveEarn_type:[NSNumber numberWithShort:value_]];
 }
-
-
-
-
 
 @dynamic loyalty_description;
 
-
-
-
-
-
 @dynamic points_earned;
-
-
 
 - (int16_t)points_earnedValue {
 	NSNumber *result = [self points_earned];
 	return [result shortValue];
 }
 
-
 - (void)setPoints_earnedValue:(int16_t)value_ {
-	[self setPoints_earned:@(value_)];
+	[self setPoints_earned:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitivePoints_earnedValue {
 	NSNumber *result = [self primitivePoints_earned];
@@ -205,34 +156,21 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 }
 
 - (void)setPrimitivePoints_earnedValue:(int16_t)value_ {
-	[self setPrimitivePoints_earned:@(value_)];
+	[self setPrimitivePoints_earned:[NSNumber numberWithShort:value_]];
 }
-
-
-
-
 
 @dynamic rejection_reason;
 
-
-
-
-
-
 @dynamic state;
-
-
 
 - (int16_t)stateValue {
 	NSNumber *result = [self state];
 	return [result shortValue];
 }
 
-
 - (void)setStateValue:(int16_t)value_ {
-	[self setState:@(value_)];
+	[self setState:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitiveStateValue {
 	NSNumber *result = [self primitiveState];
@@ -240,27 +178,19 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 }
 
 - (void)setPrimitiveStateValue:(int16_t)value_ {
-	[self setPrimitiveState:@(value_)];
+	[self setPrimitiveState:[NSNumber numberWithShort:value_]];
 }
 
-
-
-
-
 @dynamic transaction_type;
-
-
 
 - (int16_t)transaction_typeValue {
 	NSNumber *result = [self transaction_type];
 	return [result shortValue];
 }
 
-
 - (void)setTransaction_typeValue:(int16_t)value_ {
-	[self setTransaction_type:@(value_)];
+	[self setTransaction_type:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitiveTransaction_typeValue {
 	NSNumber *result = [self primitiveTransaction_type];
@@ -268,20 +198,8 @@ const struct DMEarnTransactionAttributes DMEarnTransactionAttributes = {
 }
 
 - (void)setPrimitiveTransaction_typeValue:(int16_t)value_ {
-	[self setPrimitiveTransaction_type:@(value_)];
+	[self setPrimitiveTransaction_type:[NSNumber numberWithShort:value_]];
 }
 
-
-
-
-
-
-
-
-
-
 @end
-
-
-
 

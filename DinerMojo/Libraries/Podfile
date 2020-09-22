@@ -1,0 +1,41 @@
+
+workspace '../DinerMojo'
+project '../DinerMojo'
+
+# pod configuration
+platform :ios, '11.0'
+inhibit_all_warnings!
+use_frameworks!
+
+target 'DinerMojo' do
+    pod 'Siren'
+    pod 'MagicalRecord', '~> 2.3'
+    pod 'RDHCollectionViewGridLayout', '~> 1.2'
+    pod 'AFNetworking', '~> 4.0'
+    pod 'SVBlurView', '~> 0.0'
+    pod 'PKHUD'
+    pod 'GBVersionTracking'
+    pod 'KMPlaceholderTextView', '~> 1.4.0'
+    pod 'FastEasyMapping', '~> 0.5'
+    pod 'IQKeyboardManager'
+    pod 'FBSDKCoreKit', '~> 5.5.0'
+    pod 'FBSDKLoginKit', '~> 5.5.0'
+    pod 'FBSDKShareKit', '~> 5.5.0'
+    pod 'PMEDatePicker', '0.0.2'
+    pod 'Shimmer', '1.0.2'
+    pod 'Fabric', '1.6.11'
+    pod 'Crashlytics', '3.8.4'
+    pod 'GoogleAnalytics', '3.17.0'
+    pod 'PureLayout', '3.0.2'
+    pod 'DZNEmptyDataSet'
+    pod 'SnapKit', '~>4.2.0'
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '5.0'
+            config.build_settings['DEBUG_INFORMATION_FORMAT'] = 'dwarf'
+        end
+    end
+end

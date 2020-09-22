@@ -1,1 +1,0 @@
-#define BUILD_VERSION 2016.08.31

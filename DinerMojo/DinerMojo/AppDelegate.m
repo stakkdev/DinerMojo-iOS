@@ -9,16 +9,16 @@
 #import "AppDelegate.h"
 #import "DMFacebookService.h"
 #import "DMLocationServices.h"
-#import "DMNewsFeedViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "DinerMojo-Swift.h"
+#import "DMVenueCategory.h"
+#import <GBVersionTracking/GBVersionTracking.h>
 
 @interface AppDelegate ()
 
 @end
-
 
 
 @implementation AppDelegate
@@ -26,12 +26,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     [self loadDatabase];
     [self decorateGlobalAppInterface];
+    [GBVersionTracking track];
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:195.0];
-    [[DMFacebookService sharedInstance] setPermissions:@[@"email", @"user_birthday"]];
-    
+    [[DMFacebookService sharedInstance] setPermissions:@[@"email"]];
     
     if (launchOptions != nil)
     {
@@ -39,8 +38,10 @@
     }
     
     [[DMUserRequest new] updateProfileEmailVerifificationDisplayed:NO];
+    [self checkIfUserLoggedIn];
     
     [self swiftApplication:application didFinishLaunchingWithOptions:launchOptions];
+    [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"didShowGDPR"];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
@@ -48,16 +49,127 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    [NSUserDefaults.standardUserDefaults setObject:userInfo forKey:@"notification"];
+    NSInteger count = [NSUserDefaults.standardUserDefaults integerForKey:@"numberOfNotifications"] + 1;
+    [NSUserDefaults.standardUserDefaults setInteger:(count) forKey:@"numberOfNotifications"];
     if ( application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground  )
     {
         self.notificationPayload = userInfo;
         NSLog(@"%@", self.notificationPayload);
+        if(count == 3) {
+            [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"showNotificationsOverlay"];
+        }
     }
     else
     {
         NSDictionary *alert = [userInfo objectForKey:@"aps"];
         NSLog(@"%@", [alert objectForKey:@"alert"]);
+        if(count == 3) {
+            [self showNotificationOverlay];
+        }
+    }
+    
+    [self showBookingNotificationWithUserInfo:userInfo];
+    [self showNewsNotificationIfNeeded];
+}
 
+-(void)registerForNotifications
+{
+    UIApplication *application = [UIApplication sharedApplication];
+    
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+}
+
+- (NSString *)getFormattedStringFromDate:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy.MM.dd";
+    return [formatter stringFromDate:date];
+}
+
+- (NSDate *)getFormatedDateFromString:(NSString *)string {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+    [formatter setCalendar:[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian]];
+    return [formatter dateFromString:string];
+}
+
+-(void)checkBookingNotification {
+    [self showBookingNotificationWithUserInfo:self.notificationPayload];
+    [self showNewsNotificationIfNeeded];
+}
+
+- (void)showBookingNotificationWithUserInfo:(NSDictionary *)userInfo {
+    if([self.window.rootViewController isKindOfClass:UITabBarController.class]) {
+        DMVenueRequest *venueRequest = [DMVenueRequest new];
+        if (userInfo != nil) {
+            if (userInfo[@"bookingID"] != nil) {
+                NSNumber *bookingId = userInfo[@"bookingID"];
+                [venueRequest getBookingByID:[[NSNumber alloc] initWithInt:[bookingId intValue]] completionBlock:^(NSError *error, id results) {
+                    self.notificationPayload = nil;
+                    
+                    if ([results isKindOfClass:[NSArray class]]) {
+                        NSArray *result = (NSArray *)results;
+                        
+                        if ([result count] > 0) {
+                            NSNumber *people = (NSNumber *)[result valueForKey:@"people"][0];
+                            NSString *booking_timestamp = (NSString *)[result valueForKey:@"booking_timestamp"][0];
+                            
+                            NSDate *bookingDate = [self getFormatedDateFromString:booking_timestamp];
+                            NSCalendar *calendar = [NSCalendar currentCalendar];
+                            NSDateComponents *dateComponents = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:bookingDate];
+                            NSString *time = [NSString stringWithFormat:@"%ld:%02ld",(long)[dateComponents hour], (long)[dateComponents minute]];
+                            NSString *shortDate = [self getFormattedStringFromDate:bookingDate];
+                            NSArray *venue = [result valueForKey:@"venue"];
+                            NSString *venue_name = (NSString *)[venue valueForKey:@"name"][0];
+                            NSString *peopleString;
+                            
+                            if ([people integerValue] == 1) {
+                                peopleString = @"person";
+                            } else {
+                                peopleString = @"people";
+                            }
+                            
+                            NSString *fullDesc = [NSString stringWithFormat:@"Your booking at %@ at %@ on %@ for %ld %@ was confirmed by venue", venue_name, time, shortDate, (long)[people integerValue], peopleString];
+                            
+                            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                            DMOperationCompletePopUpViewController *testVC = [storyboard instantiateViewControllerWithIdentifier:@"operationComplete"];
+                            
+                            [testVC setColor:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
+                            [testVC setStatus:DMOperationCompletePopUpViewControllerStatusSuccess];
+                            [[testVC actionButton] setHidden:YES];
+                            [testVC setPopUpDescriptionAttributed:[[NSMutableAttributedString alloc] initWithString:fullDesc]];
+                             [testVC setPopUpTitle:@"Booking Update"];
+                            [testVC setEffectStyle:UIBlurEffectStyleExtraLight];
+                            [testVC setModalPresentationStyle:UIModalPresentationOverFullScreen];
+                            [testVC setShoulHideDontShowAgainButton:YES];
+                            
+                            
+                            [testVC setModalPresentationStyle:UIModalPresentationOverFullScreen];
+                            [[(UITabBarController *)self.window.rootViewController selectedViewController] presentViewController:testVC animated:YES completion:NULL];
+                        }
+                    }
+                }];
+            }
+        }
+    } else {
+        if (userInfo != nil) {
+            self.notificationPayload = userInfo;
+        }
+    }
+}
+
+-(void)showNotificationOverlay {
+    if([self.window.rootViewController isKindOfClass:UITabBarController.class]) {
+        StartupNotificationsViewController *vc = [[StartupNotificationsViewController alloc] initWithNibName:@"StartupNotificationsViewController" bundle:NULL];
+        [vc setModalPresentationStyle:UIModalPresentationFullScreen];
+        [[(UITabBarController *)self.window.rootViewController selectedViewController] presentViewController:vc animated:YES completion:NULL];
+    } else {
+        [NSUserDefaults.standardUserDefaults setInteger: 2 forKey:@"numberOfNotifications"];
     }
 }
 
@@ -87,11 +199,15 @@
 
 }
 
--(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     DMUserRequest *userRequest = [DMUserRequest new];
-    
-    [userRequest setDeviceToken:deviceToken];
+    const unsigned *tokenBytes = [deviceToken bytes];
+    NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+                          ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+                          ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+                          ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+    [userRequest setDeviceToken:hexToken];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -141,13 +257,30 @@
     [FBSDKAppEvents activateApp];
     
     [[DMLocationServices sharedInstance] startUpdatingCoordinates];
-    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
-    if ([self notificationPayload] != nil)
+    [self showNewsNotificationIfNeeded];
+    
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"showNotificationsOverlay"]) {
+        [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"showNotificationsOverlay"];
+        [self showNotificationOverlay];
+    }
+}
+
+- (void)checkIfUserLoggedIn {
+    DMUserRequest *userRequest = [DMUserRequest new];
+    if ([userRequest isUserLoggedIn] == YES ) {
+        [self registerForNotifications];
+    }
+}
+
+- (void)showNewsNotificationIfNeeded {
+    if ([self notificationPayload] != nil && [self.window.rootViewController isKindOfClass:[UITabBarController class]])
     {
         UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
-        tabController.selectedIndex = 1;
+        if(self.notificationPayload[@"news_id"] != NULL && self.notificationPayload[@"bookingID"] == NULL) {
+            tabController.selectedIndex = 1;
+        }
     }
 }
 
@@ -160,6 +293,12 @@
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
+}
+    
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    return [[FBSDKApplicationDelegate sharedInstance] application: app
+                                                          openURL: url
+                                                          options: options];
 }
 
 @end

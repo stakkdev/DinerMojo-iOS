@@ -12,7 +12,8 @@
 typedef void (^DMFacebookServiceRequestTokenHandlerSuccess)(id result);
 typedef void (^DMFacebookServiceRequestTokenHandlerFailure)(NSError *error, id additionalInfo);
 typedef void (^DMFacebookServiceRequestTokenHandlerMissingPermissions)(NSSet *missingPermissions);
-typedef void (^DMFacebookServiceRequestTokenHandlerCancel)();
+typedef void (^DMFacebookServiceRequestTokenHandlerCancel)(void);
+typedef void (^FBSDKGraphRequestHandler)(FBSDKGraphRequestConnection * _Nullable connection, id  _Nullable result, NSError * _Nullable error);
 
 @interface DMFacebookService : NSObject
 

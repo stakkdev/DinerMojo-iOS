@@ -31,7 +31,9 @@
 - (void)validateCode:(NSString *)code withCompletionBlock:(RequestCompletion)completionBlock;
 
 
--(void)setDeviceToken:(NSData *)deviceToken;
+-(void)setDeviceToken:(NSString *)deviceToken;
+-(NSString *)currentUserDeviceToken;
+-(void)registerUserDeviceForPushNotifications;
 
 - (DMUser *)currentUser;
 
@@ -46,7 +48,9 @@
 - (void)postFeedbackWithText:(NSString *)comments rating:(NSNumber *)rating venueID:(NSNumber *)venueID withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)postNotificationWithFrequency:(NSNumber *)frequency withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)postUpdateUserWithDictionaryParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
+- (void)postSubscriptionsData:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)requestEmailVerificationEmailWithCompletionBlock:(RequestCompletion)completionBlock;
+- (void)sendGDPR:(BOOL)accepted completion:(RequestCompletion)completionBlock;
 
 - (void)updateProfileEmailVerifificationDisplayed:(BOOL)displayed;
 - (BOOL)hasUpdateProfileEmailVerifificationDisplayed;
@@ -54,5 +58,7 @@
 - (void)skipUser;
 - (BOOL)hasUserSkipped;
 
+- (void)downloadSubscriptionsWithCompletionBlock:(RequestCompletion)completionBlock;
+- (void)uploadSubscriptions:(NSArray *)ids;
 @end
 

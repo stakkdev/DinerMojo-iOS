@@ -1,0 +1,183 @@
+# Customise this file, documentation can be found here:
+# https://docs.fastlane.tools/actions/
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.61.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+      ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+     cocoapods
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Submit a new Beta Build to Crashlytics"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    gym(workspace:"../DinerMojo.xcworkspace", export_method: "ad-hoc", scheme: "DinerMojo", configuration:"Internal FDT Release")   
+    # These lines are commented out as they need to log in to iTunes which is problematic with Apple's current 2FA 
+    #cert 
+    #sigh(
+    # adhoc: true,
+    # force: true,
+    #)    
+
+    incremented_build_number = increment_build_number(xcodeproj: "../DinerMojo.xcodeproj")
+    build   = get_build_number(xcodeproj: "../DinerMojo.xcodeproj")
+    version = get_version_number(xcodeproj: "../DinerMojo.xcodeproj")
+    full_version_number = "internal release #{version}:#{incremented_build_number}"
+    gym(workspace:"../DinerMojo.xcworkspace", export_method: "ad-hoc", scheme: "DinerMojo", configuration:"Internal FDT Release")   
+    crashlytics(api_token: "e1c9d86bff08f7dbfce4a6bb171c2c4d5cc90e4f",
+              build_secret: "d3f21afe2c4b118982043346633ce30603fc71b135d7bbe047f2b44cc2189a7a",
+        groups: "Dinermojo-internal-ios",
+        notifications: "true")
+
+    commit_version_bump(force:true, message: full_version_number)
+    push_to_git_remote(
+     remote: "origin",         # optional, default: "origin"
+     local_branch: "HEAD",  # optional, aliased by "branch", default: "master"
+     remote_branch: "develop", # optional, default is set to local_branch
+     force: true,    # optional, default: false
+     tags: false     # optional, default: true
+    )    
+    slack(
+     message: "DinerMojo Internal: Successfully deployed #{version}:#{incremented_build_number} to Crashlitics."
+    )
+    # sh "your_script.sh"
+    # You can also use other beta testing services here (run `fastlane actions`)
+  end
+
+  desc "Submit a new External Beta Build to Crashlytics"
+  desc "This will also make sure the profile is up to date"
+  lane :beta_external do
+    gym(workspace:"../DinerMojo.xcworkspace", export_method: "ad-hoc", scheme: "DinerMojo", configuration:"External FDT Release")    
+    #cert
+    #sigh(
+    # adhoc: true,
+    # force: true,
+    #)    
+    incremented_build_number = increment_build_number
+    build   = get_build_number
+    version = get_version_number
+    full_version_number = "external release #{version}:#{incremented_build_number}" 
+    gym(workspace:"../DinerMojo.xcworkspace", export_method: "ad-hoc", scheme: "DinerMojo", configuration:"External FDT Release")  
+    crashlytics(api_token: "e1c9d86bff08f7dbfce4a6bb171c2c4d5cc90e4f",
+              build_secret: "d3f21afe2c4b118982043346633ce30603fc71b135d7bbe047f2b44cc2189a7a",
+        groups: "Dinermojo-external-ios",
+        notifications: "true")
+
+    commit_version_bump(force:true, message: full_version_number)
+    push_to_git_remote(
+     remote: "origin",         # optional, default: "origin"
+     local_branch: "HEAD",  # optional, aliased by "branch", default: "master"
+     remote_branch: "develop", # optional, default is set to local_branch
+     force: true,    # optional, default: false
+     tags: false     # optional, default: true
+    )    
+
+  
+    # sh "your_script.sh"
+    # You can also use other beta testing services here (run `fastlane actions`)
+  end
+
+  lane :appstore_adhoc do
+    gym(workspace:"../DinerMojo.xcworkspace", export_method: "ad-hoc", scheme: "DinerMojo", configuration:"App Store Ad-Hoc")
+    #cert
+    #sigh(
+    # adhoc: true,
+    # force: true,
+    # app_identifier: "com.dinermojo.dinermojo",
+    # provisioning_name: "Diner Mojo Distribution App Store AdHoc",
+    #)
+    incremented_build_number = increment_build_number(xcodeproj: "../DinerMojo.xcodeproj")
+    build   = get_build_number(xcodeproj: "../DinerMojo.xcodeproj")
+    version = get_version_number(xcodeproj: "../DinerMojo.xcodeproj")
+    full_version_number = "Appstored Adhoc release #{version}:#{incremented_build_number}"
+    gym(workspace:"../DinerMojo.xcworkspace", export_method: "ad-hoc", scheme: "DinerMojo", configuration:"App Store Ad-Hoc")
+    crashlytics(api_token: "e1c9d86bff08f7dbfce4a6bb171c2c4d5cc90e4f",
+              build_secret: "d3f21afe2c4b118982043346633ce30603fc71b135d7bbe047f2b44cc2189a7a",
+        groups: "Dinermojo-internal-appstore-ios",
+        notifications: "true")
+
+    commit_version_bump(force:true, message: full_version_number)
+    push_to_git_remote(
+     remote: "origin",         # optional, default: "origin"
+     local_branch: "HEAD",  # optional, aliased by "branch", default: "master"
+     remote_branch: "develop", # optional, default is set to local_branch
+     force: true,    # optional, default: false
+     tags: false     # optional, default: true
+    )
+
+
+    # sh "your_script.sh"
+    # You can also use other beta testing services here (run `fastlane actions`)
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+
+    incremented_build_number = increment_build_number
+    build   = get_build_number
+    version = get_version_number
+
+    full_version_number = "DinerMojo release #{version}:#{incremented_build_number}"
+
+    gym(scheme: "DinerMojo", configuration: "App Store") # Build your app - more options available
+
+    pilot(team_id: "117882057",skip_waiting_for_build_processing: true)
+
+    commit_version_bump(force:true, message: full_version_number)
+
+    push_to_git_remote(
+    remote: "origin",         # optional, default: "origin"
+    local_branch: "HEAD",  # optional, aliased by "branch", default: "master"
+    remote_branch: "master", # optional, default is set to local_branch
+    force: true,    # optional, default: false
+    tags: false     # optional, default: true
+    )
+
+    slack(
+     message: "DinerMojo Live: Successfully deployed #{version}:#{incremented_build_number} to Testfligh."
+     )
+
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded. 
+# Learn more at https://github.com/fastlane/fastlane#metrics

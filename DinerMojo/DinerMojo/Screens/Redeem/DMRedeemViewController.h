@@ -16,14 +16,33 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *right;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) NSArray *eligibleOffersArray;
+@property (weak, nonatomic) IBOutlet UILabel *myTierLabel;
+@property (weak, nonatomic) IBOutlet UIView *secondViewShadowView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rewardTextViewHeightConstraint;
 
+@property (weak, nonatomic) IBOutlet UILabel *bDayLabel;
 @property (weak, nonatomic) IBOutlet DMImageView *venueImageView;
 @property (weak, nonatomic) IBOutlet UILabel *venueNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *venueCuisineAreaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userPointsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noOffersLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *offerDetailsBdayHolderHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *offerDetailsTimeHolderHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *offerDetailsTimeHolderTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *offerDetailsRewardTitleTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *offerDetailsBdayHolderTopConstraint;
 
-@property (weak, nonatomic) IBOutlet UILabel *confirmRedeemLabel;
+@property (weak, nonatomic) IBOutlet UILabel *offerDetailsSmallPrintTitleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *offerDetailsImageView;
+@property (weak, nonatomic) IBOutlet UILabel *offerDetailsTitle;
+@property (weak, nonatomic) IBOutlet UIView *bDayInfoHolder;
+@property (weak, nonatomic) IBOutlet UIView *offerDetailsTimeLeftHolder;
+@property (weak, nonatomic) IBOutlet UIImageView *offerDetailsBdayInfoImgView;
+@property (weak, nonatomic) IBOutlet UIImageView *offerDetailsTimeImgView;
+@property (weak, nonatomic) IBOutlet UILabel *offerDetailsTimeLeftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *offerDetailsRewardLabel;
+@property (weak, nonatomic) IBOutlet UILabel *offerDetailsSmallPrintLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *detailsScrollview;
+
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 @property (weak, nonatomic) IBOutlet UILabel *userNewPointsLabel;
 
@@ -34,14 +53,20 @@
 
 @property (weak, nonatomic) DMOfferItem *initialOffer;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *redeemButtonBottom;
+@property (nonatomic) IBOutlet NSLayoutConstraint *redeemButtonBottom;
+@property (nonatomic) UIImage *offerImage;
+@property (nonatomic) UIImage *cakeImage;
+@property (nonatomic) UIImage *trophyImage;
+@property (nonatomic) UIImage *placeholder;
+@property (nonatomic) NSMutableDictionary *birthdayOffers;
 
 @property DMVenue *selectedVenue;
 @property DMOfferItem *selectedOfferItem;
 @property DMUser *currentUser;
 @property BOOL isRedeeming;
+@property BOOL standardRedeem;
 @property NSNumber *selectedRedeemID;
-
+@property BOOL *shouldCloseOnButtonTap;
 - (IBAction)dismissView:(id)sender;
 - (IBAction)processCoupon:(id)sender;
 

@@ -20,4 +20,5 @@ IB_DESIGNABLE
 
 @property (nonatomic, assign) IBInspectable UIColor *backgroundColorForHighlightState;
 
+- (void)toggleInnerShadow:(BOOL)on;
 @end

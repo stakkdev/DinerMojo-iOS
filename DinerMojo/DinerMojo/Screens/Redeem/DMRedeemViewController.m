@@ -14,9 +14,11 @@
 #import "DMRedeemCouponViewController.h"
 #import "DMOperationCompletePopUpViewController.h"
 #import "DMDineNavigationController.h"
+#import <Crashlytics/Answers.h>
+#import "FakeOfferObject.h"
+#import "RedeemPointsToNextLevelCell.h"
 
-
-@interface DMRedeemViewController ()
+@interface DMRedeemViewController ()<DMRedeemTableViewCellDelegate>
 
 @end
 
@@ -27,8 +29,42 @@
     [self configureControls];
     [self decorateInterface];
     
+    self.birthdayOffers = [[NSMutableDictionary alloc] init];
     
     
+    if(self.shouldCloseOnButtonTap) {
+        [self.closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    if(self.selectedOfferItem != NULL) {
+        [self didSelectOfferItem:self.selectedOfferItem withAnimation:NO];
+    }
+    
+    [self.userNewPointsLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.userNewPointsLabel setMinimumScaleFactor:0];
+    [self.noOffersLabel setText:[NSString stringWithFormat:NSLocalizedString(@"reedem.message.notAvailable", @""), self.selectedVenue.name]];
+    [self.noOffersLabel setNumberOfLines:0];
+    [self checkIfRedeemed:NO];
+}
+
+-(void)close {
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (NSDate *)getBdayExpiryDate {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *bDayComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth fromDate:_currentUser.date_of_birth];
+    NSDateComponents *currentDateCompones = [calendar components:NSCalendarUnitYear fromDate:[NSDate date]];
+    
+    NSDateComponents *realDateComponents = [[NSDateComponents alloc] init];
+    [realDateComponents setYear:currentDateCompones.year];
+    [realDateComponents setMonth:bDayComponents.month];
+    [realDateComponents setDay:bDayComponents.day];
+    NSDate *bdayDate = [calendar dateFromComponents:realDateComponents];
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    dayComponent.day = 6;
+    NSDate *expireDate = [calendar dateByAddingComponents:dayComponent toDate:bdayDate options:0];
+    return expireDate;
 }
 
 - (void)configureControls
@@ -40,7 +76,44 @@
     [[self userRequest] downloadAllAvailableOffersWithVenueID:self.selectedVenue.modelID withCompletionBlock:^(NSError *error, id results) {
         if (error == nil)
         {
-            self.eligibleOffersArray = [results allObjects];
+            NSMutableArray *sortedArray = [[NSMutableArray alloc] init];
+            NSMutableArray *availableForAllLevelsOffers = [[NSMutableArray alloc] init];
+            NSMutableArray *availableForCertainTier = [[NSMutableArray alloc] init];
+            NSMutableArray *notAvailableOffers = [[NSMutableArray alloc] init];
+            
+            
+            for (DMOfferItem *offer in [results allObjects]) {
+                
+                
+                if([self.currentUser availableMojoLevels:offer.allowed_mojo_levels]) {
+                    if (offer.is_birthday_offerValue == YES) {
+                        [sortedArray insertObject:offer atIndex:0];
+                    } else {
+                        if ([offer.allowed_mojo_levels containsObject:@"4"]) {
+                            [availableForAllLevelsOffers addObject:offer];
+                        } else {
+                            [availableForCertainTier addObject:offer];
+                        }
+                    }
+                } else {
+                    if (offer.is_birthday_offerValue == YES) {
+                        [notAvailableOffers insertObject:offer atIndex:0];
+                    } else {
+                        [notAvailableOffers addObject:offer];
+                    }
+                }
+            }
+            
+            [sortedArray addObjectsFromArray:availableForAllLevelsOffers];
+            [sortedArray addObjectsFromArray:availableForCertainTier];
+            
+            if (notAvailableOffers.count != 0) {
+                [sortedArray addObject:[[FakeOfferObject alloc] init]];
+                [sortedArray addObjectsFromArray:notAvailableOffers];
+            }
+            
+            self.eligibleOffersArray = sortedArray;
+            
             if (self.eligibleOffersArray.count == 0)
             {
                 [self.noOffersLabel setHidden:NO];
@@ -94,15 +167,36 @@
     {
         self.redeemButtonBottom.constant = 6;
     }
+    self.offerImage = [UIImage imageNamed:@"offer"];
+    self.trophyImage = [UIImage imageNamed:@"icon_trophy"];
+    self.placeholder = [UIImage imageNamed:@"example_img"];
+    self.cakeImage = [UIImage imageNamed:@"icon_cake"];
+    _confirmButton.titleLabel.numberOfLines = 2;
     
-    [self.venueNameLabel setText:self.selectedVenue.name];
-    [self.venueCuisineAreaLabel setText:[NSString stringWithFormat:@"%@ | %@", [[[self.selectedVenue categories] anyObject] name], self.selectedVenue.town]];
+    self.offerDetailsBdayInfoImgView.clipsToBounds = YES;
+    self.offerDetailsBdayInfoImgView.layer.cornerRadius = 20;
+    
+    self.offerDetailsTimeImgView.clipsToBounds = YES;
+    self.offerDetailsTimeImgView.layer.cornerRadius = 11.5;
+    
+    NSString *myTier = [_currentUser myMojoLevelName];
+    [self.myTierLabel setText:[NSString stringWithFormat:@"%@ tier", [myTier capitalizedString]]];
+    
+   // [self.venueNameLabel setText:self.selectedVenue.name];
+   // [self.venueCuisineAreaLabel setText:[NSString stringWithFormat:@"%@ | %@", [[[self.selectedVenue categories] anyObject] name], self.selectedVenue.town]];
     [self.userPointsLabel setText:[NSString stringWithFormat:@"%@", self.currentUser.annual_points_balance]];
     DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
     
     NSURL *url = [NSURL URLWithString:[venueImage fullURL]];
     [self.venueImageView setImageWithURL:url];
     
+    _secondViewShadowView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:_secondViewShadowView.bounds cornerRadius:0].CGPath;
+    [_secondViewShadowView.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [_secondViewShadowView.layer setShadowRadius:2.0f];
+    [_secondViewShadowView.layer setShadowOffset:CGSizeMake(0, 0)];
+    [_secondViewShadowView.layer setShadowOpacity:0.2f];
+    
+    [_bDayLabel setText:[NSString stringWithFormat:@"Happy birthday %@!", _currentUser.first_name]];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -125,54 +219,207 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (bool)checkIfRedeemed:(bool)coupon {
+    if (self.selectedVenue.last_redeem == NULL) {
+        return false;
+    }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:self.selectedVenue.last_redeem];
+    
+    NSInteger hour = [components hour];
+    [components setHour:5];
+    [components setMinute:0];
+    [components setSecond:0];
+
+    NSDate *resetDate = [calendar dateFromComponents:components];
+    if(hour > 4) {
+        resetDate = [[NSDate alloc] initWithTimeInterval:60*60*24 sinceDate:resetDate];
+    }
+    
+    if([[[NSDate alloc] init] compare:resetDate] == NSOrderedAscending) {
+        CannotRedeemViewController *viewController = [[CannotRedeemViewController alloc] init];
+        viewController.venue = self.selectedVenue;
+        if (coupon) {
+            viewController.imageUrl = self.selectedOfferItem.primitiveImage;
+        }
+        [viewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [self presentViewController:viewController animated:YES completion:NULL];
+        return true;
+    }
+    return false;
+}
+    
+- (void)didSelectOfferItem:(DMOfferItem *)item withAnimation:(BOOL)withAnimation {
+    self.selectedOfferItem = item;
+    self.isRedeeming = YES;
+    [self.userNewPointsLabel setText:[NSString stringWithFormat:@"%d", self.currentUser.annual_points_balanceValue]];
+    
+    if (item.expiry_date != NULL && item.is_birthday_offer.boolValue != YES) {
+        NSDateComponents *components = [self getExpireDateComponents:item.is_birthday_offer.boolValue == YES ? [self getBdayExpiryDate] : item.expiry_date addDays:1];
+        NSInteger hour = [components hour];
+        NSInteger day = [components day];
+        NSInteger month = [components month];
+        
+        if (month == 0) {
+            if (day == 0) {
+                [_offerDetailsTimeLeftLabel setText:[NSString stringWithFormat: hour == 1 ? @"only %ld hour left" : @"only %ld hours left", (long)hour]];
+            } else {
+                if (hour != 0) {
+                    day += 1;
+                }
+                
+                [_offerDetailsTimeLeftLabel setText:[NSString stringWithFormat: day == 1 ? @"only %ld day left" : @"only %ld days left", (long)day]];
+            }
+            
+            [_offerDetailsTimeLeftHolder setHidden:NO];
+            _offerDetailsTimeHolderHeightConstraint.constant = 23;
+            _offerDetailsBdayHolderTopConstraint.constant = 6;
+        } else {
+            [_offerDetailsTimeLeftHolder setHidden:YES];
+            _offerDetailsTimeHolderHeightConstraint.constant = 0;
+            _offerDetailsBdayHolderTopConstraint.constant = 0;
+        }
+    } else if(item.is_birthday_offer.boolValue == YES){
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"d MMM"];
+        [_offerDetailsTimeLeftLabel setText:[NSString stringWithFormat: @"valid until %@ ", [dateFormatter stringFromDate:[self getBdayExpiryDate]]]];
+        [_offerDetailsTimeLeftLabel setHidden:NO];
+    } else {
+        [_offerDetailsTimeLeftHolder setHidden:YES];
+        _offerDetailsTimeHolderHeightConstraint.constant = 0;
+        _offerDetailsBdayHolderTopConstraint.constant = 0;
+    }
+    
+    [_offerDetailsRewardLabel setText:item.news_description];
+    
+    if (item.terms_conditions != NULL && item.terms_conditions.length > 0) {
+        [_offerDetailsSmallPrintLabel setText:item.terms_conditions];
+        [_offerDetailsSmallPrintTitleLabel setHidden:NO];
+        [_offerDetailsSmallPrintLabel setHidden:NO];
+    } else {
+        [_offerDetailsSmallPrintTitleLabel setHidden:YES];
+        [_offerDetailsSmallPrintLabel setHidden:YES];
+    }
+    
+    NSString *rewardNow = @"Reward me now\n";
+    NSString *pointsString = @"It's free for DinerMojo members!";
+    
+    if(item.points_required.integerValue > 0) {
+        pointsString = [NSString stringWithFormat:@"%ld Points", item.points_required.integerValue];
+    }
+    
+    CGSize rewardTextSize = [self findHeightForText:item.news_description havingWidth:[_detailsScrollview contentSize].width andFont:_offerDetailsRewardLabel.font];
+    CGSize smallPrintTextSize = [self findHeightForText:item.terms_conditions havingWidth:[_detailsScrollview contentSize].width andFont:_offerDetailsRewardLabel.font];
+
+    _detailsScrollview.contentSize = CGSizeMake([_detailsScrollview contentSize].width, rewardTextSize.height + smallPrintTextSize.height + 66);
+    
+    NSString *confirmText = [NSString stringWithFormat:@"%@%@", rewardNow, pointsString];
+    NSMutableAttributedString *confirmAttributedTitle = [[NSMutableAttributedString alloc] initWithString:confirmText];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setAlignment:NSTextAlignmentCenter];
+    
+    [confirmAttributedTitle addAttribute:NSFontAttributeName
+                  value:[UIFont systemFontOfSize:12.0]
+                  range:NSMakeRange(rewardNow.length, pointsString.length)];
+    [confirmAttributedTitle addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [confirmText length])];
+    
+    [_confirmButton setAttributedTitle:confirmAttributedTitle forState:UIControlStateNormal];
+    _confirmButton.enabled = [_currentUser availableMojoLevels:item.allowed_mojo_levels];
+    
+    if ([_currentUser availableMojoLevels:item.allowed_mojo_levels] == YES) {
+        _confirmButton.enabled = item.points_required.intValue <= _currentUser.annual_points_balance.intValue;
+    }
+    
+    [_confirmButton setBackgroundColor:_confirmButton.enabled == YES ? [UIColor offersGreenColor] : [UIColor grayColor]];
+    
+    [_bDayInfoHolder setHidden:item.is_birthday_offer.boolValue == NO];
+    _offerDetailsBdayHolderHeightConstraint.constant = item.is_birthday_offer.boolValue == YES ? 40 : 0;
+    _offerDetailsRewardTitleTopConstraint.constant = item.is_birthday_offer.boolValue == YES ? 12 : 0;
+    
+    [self loadImageForImgView:_offerDetailsImageView imageUrl:item.image];
+    [_offerDetailsTitle setText:item.title];
+    
+    
+    if (withAnimation) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.horizontal.constant = -self.view.frame.size.width;
+            self.right.constant = self.view.frame.size.width;
+            [self.view layoutIfNeeded];
+            _detailsScrollview.contentSize = CGSizeMake([_detailsScrollview contentSize].width, rewardTextSize.height + smallPrintTextSize.height + 66);
+        }];
+    } else {
+        self.horizontal.constant = -self.view.frame.size.width;
+        self.right.constant = self.view.frame.size.width;
+        [self.view layoutIfNeeded];
+        _detailsScrollview.contentSize = CGSizeMake([_detailsScrollview contentSize].width, rewardTextSize.height + smallPrintTextSize.height + 66);
+    }
+    
+    [self.closeButton setImage:[UIImage imageNamed:@"BackNavIcon"] forState:UIControlStateNormal];
+}
+
+
+- (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font {
+    CGSize size = CGSizeZero;
+    if (text) {
+        CGRect frame = [text boundingRectWithSize:CGSizeMake(widthValue, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName:font } context:nil];
+        size = CGSizeMake(frame.size.width, frame.size.height + 1);
+    }
+    return size;
+}
 #pragma mark - UITableView Delegates
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.highlighted = NO;
-    cell.selected = NO;
-    
-    DMOfferItem *item = [self.eligibleOffersArray objectAtIndex:indexPath.row];
-    
-    self.selectedOfferItem = item;
-    
-    self.isRedeeming = YES;
-    
-    
-    [self.userNewPointsLabel setText:[NSString stringWithFormat:@"%d", self.currentUser.annual_points_balanceValue - self.selectedOfferItem.points_requiredValue]];
-    
-    NSString *pointsString = [NSString stringWithFormat:([self.selectedOfferItem.points_required integerValue] == 1) ? @"Are you sure you want to redeem %ld point for ""%@""?" : @"Are you sure you want to redeem %ld points for ""%@""?", (long)[self.selectedOfferItem.points_required integerValue] , self.selectedOfferItem.title];
-    
-    [self.confirmRedeemLabel setText:pointsString];
-    
-    
-    
-    if (self.selectedOfferItem.is_special_offerValue == 1)
-    {
-        [self.confirmButton setBackgroundColor:[UIColor offersColor]];
+    if(![[self.eligibleOffersArray objectAtIndex:indexPath.row] isKindOfClass:[FakeOfferObject class]]) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.highlighted = NO;
+        cell.selected = NO;
+        
+        DMOfferItem *item = [self.eligibleOffersArray objectAtIndex:indexPath.row];
+        [self didSelectOfferItem:item withAnimation:YES];
     }
-    
-    else
-    {
-        [self.confirmButton setBackgroundColor:[UIColor brandColor]];
-    }
-    [self.confirmButton setTitle:[NSString stringWithFormat:@"Yes, get ""%@"" now!", self.selectedOfferItem.title] forState:UIControlStateNormal];
-    
-    [UIView animateWithDuration:0.35 delay:0.0f usingSpringWithDamping:0.75 initialSpringVelocity:0.0f options:UIViewAnimationOptionTransitionNone animations:^{
-        self.horizontal.constant = -self.view.frame.size.width;
-        self.right.constant = self.view.frame.size.width;
-        [self.view layoutIfNeeded];
-    } completion:nil];
-    
-    [self.closeButton setImage:[UIImage imageNamed:@"back_arrow_grey"] forState:UIControlStateNormal];
     
 }
 
+- (void)infoClicked:(NSString *)info {
+    if (info != nil && info.length != 0) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"DinerMojo" message:info preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancel];
+        
+        [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
+- (UITableViewCell *)getRedeemInfoCell:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
+    RedeemPointsToNextLevelCell * cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+    if (!cell)
+    {
+        [tableView registerNib:[UINib nibWithNibName:@"RedeemPointsToNextLevelCell" bundle:nil] forCellReuseIdentifier:@"InfoCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+    }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell.pointsHolderView setBackgroundColor:[_currentUser colorForMojoLevel:[_currentUser nextMojoLevel]]];
+    [cell.pointsLabel setText:[NSString stringWithFormat:@"%ld points to %@", [_currentUser pointsToNextLevel], [_currentUser nextMojoLevelName].uppercaseString]];
+    [cell.infoLabel setText:[NSString stringWithFormat: [[_currentUser nextMojoLevelName]  isEqual: @"platinum"] ? @"These rewards are available to %@ members" : @"These rewards are available to %@ members and above", [_currentUser nextMojoLevelName]]];
+    
+    return cell;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if([[self.eligibleOffersArray objectAtIndex:indexPath.row] isKindOfClass:[FakeOfferObject class]]) {
+        return [self getRedeemInfoCell:indexPath tableView:tableView];
+    }
+    
+    DMOfferItem *item = [self.eligibleOffersArray objectAtIndex:indexPath.row];
     DMRedeemTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"OfferCell"];
     if (!cell)
     {
@@ -181,27 +428,91 @@
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    
-    DMOfferItem *item = [self.eligibleOffersArray objectAtIndex:indexPath.row];
-    
-    NSString *pointsString = [NSString stringWithFormat:([item.points_required integerValue] == 1) ? @"%ldpt = %@" : @"%ldpts = %@", (long)[item.points_required integerValue], item.title];
-    
-    [cell.offerLabel setText:pointsString];
-    
-    
-    
-    if (item.is_special_offerValue == 1)
-    {
-        
-        [cell.offerBackgroundView setBackgroundColor:[UIColor offersColor]];
-        [cell.offerImageView setHidden:NO];
-        
-        
+    [cell.titleLabel setText:item.title];
+    if (item.is_birthday_offerValue == YES) {
+        cell.infoHolder.backgroundColor = [UIColor bDayColor];
+    } else {
+        cell.infoHolder.backgroundColor = [_currentUser getMojoLevelColor:item.allowed_mojo_levels];
     }
     
     
+    if (item.expiry_date != NULL && item.is_birthday_offer.boolValue != YES) {
+        NSDateComponents *components = [self getExpireDateComponents:item.is_birthday_offer.boolValue == YES ? [self getBdayExpiryDate] : item.expiry_date addDays:1];
+        NSInteger hour = [components hour];
+        NSInteger day = [components day];
+        NSInteger month = [components month];
+        
+        if (month == 0) {
+            if (day == 0) {
+                [cell.expiryDateLabel setText:[NSString stringWithFormat: hour == 1 ? @"only %ld hour left" : @"only %ld hours left", (long)hour]];
+            } else {
+                if (hour != 0) {
+                    day += 1;
+                }
+                
+                [cell.expiryDateLabel setText:[NSString stringWithFormat: day == 1 ? @"only %ld day left" : @"only %ld days left", (long)day]];
+            }
+            
+            [cell.timeHolderView setHidden:NO];
+        } else {
+            [cell.timeHolderView setHidden:YES];
+        }
+    } else if(item.is_birthday_offer.boolValue == YES){
+        
+         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+         [dateFormatter setDateFormat:@"d MMM"];
+         [cell.expiryDateLabel setText:[NSString stringWithFormat: @"valid until %@ ", [dateFormatter stringFromDate:[self getBdayExpiryDate]]]];
+         [cell.timeHolderView setHidden:NO];
+    } else {
+        [cell.timeHolderView setHidden:YES];
+    }
+    
+    
+    
+    [self loadImageForImgView:cell.mainImageView imageUrl:item.image];
+    
+    NSString *pointsString = [NSString stringWithFormat:([item.points_required integerValue] == 0) ? @"Its free for DinerMojo members!" : @"%ld Points", (long)[item.points_required integerValue]];
+    [cell.pointsLabel setText:pointsString];
+    [cell.cakeHolderView setHidden:item.is_birthday_offer.boolValue == NO];
+    
     return cell;
     
+}
+
+- (NSDateComponents *)getExpireDateComponents:(NSDate *)date addDays:(int)addDays {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    dayComponent.day = addDays; //adding one day because expiry date doesnt countain hours that means if its valid until today we show how many hours left until tomorrow
+    NSDate *expireDate = [calendar dateByAddingComponents:dayComponent toDate:date options:0];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth)
+                                               fromDate:[NSDate date]
+                                                 toDate:expireDate
+                                                options:0];
+    
+    
+    return components;
+}
+
+- (void)loadImageForImgView:(UIImageView *)imgView imageUrl:(NSString *)imageUrl {
+    __weak UIImageView *weakImgView = imgView;
+    
+    DMRequest *request = [DMRequest new];
+    NSURL *url = [NSURL URLWithString:[request buildMediaURL:imageUrl]];
+    
+    if (imageUrl.length == 0 || imageUrl == NULL) {
+        DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
+        url = [NSURL URLWithString:[venueImage fullURL]];
+    }
+    
+    [imgView setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:NULL success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+        [weakImgView setImage:image];
+    } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+        DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
+        NSURL *newUrl = [NSURL URLWithString:[venueImage fullURL]];
+        if (newUrl != url) {
+            [weakImgView setImageWithURL:newUrl];
+        }
+    }];
 }
 
 
@@ -238,11 +549,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 58;
+    if([[self.eligibleOffersArray objectAtIndex:indexPath.row] isKindOfClass:[FakeOfferObject class]]) {
+        return 180;
+    }
+    
+    return 130;
 }
 
 
 - (IBAction)dismissView:(id)sender {
+    if (_shouldCloseOnButtonTap) {
+        return;
+    }
     
     if (self.isRedeeming)
     {
@@ -250,37 +568,21 @@
         self.right.constant = 0;
         
         [self.userNewPointsLabel setText:[NSString stringWithFormat:@"%d", self.currentUser.annual_points_balanceValue - self.selectedOfferItem.points_requiredValue]];
-        
-        NSString *pointsString = [NSString stringWithFormat:([self.selectedOfferItem.points_required integerValue] == 1) ? @"Are you sure you want to redeem %ld point for ""%@""?" : @"Are you sure you want to redeem %ld points for ""%@""?", (long)[self.selectedOfferItem.points_required integerValue], self.selectedOfferItem.title];
-        
-        [self.confirmRedeemLabel setText:pointsString];
-        
-        if (self.selectedOfferItem.is_special_offerValue == 1)
-        {
-            [self.confirmButton setBackgroundColor:[UIColor offersColor]];
-        }
-        
-        else
-        {
-            [self.confirmButton setBackgroundColor:[UIColor brandColor]];
-        }
+
         [self.confirmButton setTitle:[NSString stringWithFormat:@"Yes, get ""%@"" now!", self.selectedOfferItem.title] forState:UIControlStateNormal];
+        self.confirmButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        self.confirmButton.titleLabel.minimumScaleFactor = 0;
         
-        [UIView animateWithDuration:0.35 delay:0.0f usingSpringWithDamping:0.75 initialSpringVelocity:0.0f options:UIViewAnimationOptionTransitionNone animations:^{
-            [self.view layoutIfNeeded];
-        } completion:nil];
+        [UIView animateWithDuration:0.3 animations:^{
+           [self.view layoutIfNeeded];
+        }];
+        
         [self.closeButton setImage:[UIImage imageNamed:@"cross"] forState:UIControlStateNormal];
         self.isRedeeming = NO;
-        
-    }
-    
-    else
-    {
+    } else {
         [(DMDineNavigationController *)[self navigationController] cancelPressed];
     }
 }
-
-
 
 - (void)showAlertCameraPrivacy
 {
@@ -298,6 +600,7 @@
     [alertController addAction:privacy];
     [alertController addAction:cancel];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
     
     
@@ -308,11 +611,15 @@
 {
     if ([segue.identifier isEqualToString:@"ShowRedeemCoupon"])
     {
+        NSString *type = @"standard";
+        if(!self.standardRedeem) {
+           type = @"offer";
+        }
+         [Answers logContentViewWithName:[NSString stringWithFormat:@"Redeem %@", type] contentType:[NSString stringWithFormat:@"Redeem %@ - %@ - %@", type, self.selectedOfferItem.venue.name ,self.selectedOfferItem.title] contentId:@"" customAttributes:@{}];
         DMRedeemCouponViewController *vc = segue.destinationViewController;
         vc.selectedOfferItem = self.selectedOfferItem;
         vc.selectedVenue = self.selectedVenue;
         vc.selectedRedeemID = self.selectedRedeemID;
-        
     }
 }
 
@@ -337,16 +644,18 @@
             
         case AVAuthorizationStatusNotDetermined:
             [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-                if(granted)
-                {
-                    [self postCoupon];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if(granted)
+                    {
+                        [self postCoupon];
+                        
+                    }
                     
-                }
-                
-                else
-                {
-                    [self showAlertCameraPrivacy];
-                }
+                    else
+                    {
+                        [self showAlertCameraPrivacy];
+                    }
+                });
             }];
             break;
     }
@@ -378,6 +687,8 @@
 }
 
 - (IBAction)processCoupon:(id)sender {
-    [self checkCamera];
+    if (![self checkIfRedeemed:YES]) {
+        [self checkCamera];
+    }
 }
 @end

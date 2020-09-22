@@ -7,6 +7,7 @@
 //
 
 #import "DMReferAFriendViewController.h"
+#import <Crashlytics/Answers.h>
 
 @interface DMReferAFriendViewController ()
 
@@ -100,6 +101,7 @@
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -107,6 +109,7 @@
     
     if ([DMUser validateEmailWithString:self.emailTextField.text])
     {
+        [Answers logContentViewWithName:@"Sent invite to friend" contentType:@"Sent invite to friend" contentId:@"" customAttributes:@{}];
         [[self activityIndicator] startAnimating];
         [[self sendInviteButton] setHidden:YES];
         

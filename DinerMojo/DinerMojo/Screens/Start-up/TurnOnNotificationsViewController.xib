@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TurnOnNotificationsViewController" customModule="DinerMojo" customModuleProvider="target">
+            <connections>
+                <outlet property="goToSettingsButton" destination="uoa-jb-KAX" id="kSf-dQ-fIc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't miss out!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcG-sc-bem">
+                    <rect key="frame" x="10" y="30" width="355" height="43"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                    <color key="textColor" red="0.98823529409999999" green="0.54117647059999996" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find out about great new rewards, offers and venues as they become available by clicking the button below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0o-3G-2c6">
+                    <rect key="frame" x="10" y="133" width="355" height="72"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to dismiss" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZN-N1-gET">
+                    <rect key="frame" x="132" y="621" width="110" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="i0t-m1-Rtj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoa-jb-KAX">
+                    <rect key="frame" x="47" y="275" width="280" height="45"/>
+                    <color key="backgroundColor" red="0.48627450980392156" green="0.85490196078431369" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="280" id="Pq0-Xs-Uds"/>
+                        <constraint firstAttribute="height" constant="45" id="ly0-3X-GLz"/>
+                    </constraints>
+                    <state key="normal" title="Turn on DinerMojo notifications"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="UZN-N1-gET" secondAttribute="bottom" constant="25" id="Mvw-i6-yET"/>
+                <constraint firstAttribute="trailing" secondItem="zcG-sc-bem" secondAttribute="trailing" constant="10" id="R1O-Yg-hS6"/>
+                <constraint firstItem="UZN-N1-gET" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UQf-Om-zUO"/>
+                <constraint firstAttribute="trailing" secondItem="T0o-3G-2c6" secondAttribute="trailing" constant="10" id="VVy-J3-Wwx"/>
+                <constraint firstItem="uoa-jb-KAX" firstAttribute="top" secondItem="T0o-3G-2c6" secondAttribute="bottom" priority="750" constant="70" id="WTY-gf-4u1"/>
+                <constraint firstItem="uoa-jb-KAX" firstAttribute="top" relation="lessThanOrEqual" secondItem="T0o-3G-2c6" secondAttribute="bottom" constant="90" id="ZF7-fj-HXz"/>
+                <constraint firstItem="zcG-sc-bem" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="ZnF-fz-QfS"/>
+                <constraint firstItem="uoa-jb-KAX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aqW-k7-EgP"/>
+                <constraint firstItem="uoa-jb-KAX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="T0o-3G-2c6" secondAttribute="bottom" constant="55" id="cFA-SH-GhR"/>
+                <constraint firstItem="T0o-3G-2c6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="eso-yI-uTH"/>
+                <constraint firstItem="zcG-sc-bem" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="pz8-WM-NFi"/>
+                <constraint firstItem="T0o-3G-2c6" firstAttribute="top" secondItem="zcG-sc-bem" secondAttribute="bottom" constant="60" id="rAN-wj-5rB"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

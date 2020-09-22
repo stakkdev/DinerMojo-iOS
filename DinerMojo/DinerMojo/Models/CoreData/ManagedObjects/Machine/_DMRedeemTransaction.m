@@ -3,23 +3,15 @@
 
 #import "_DMRedeemTransaction.h"
 
-
 const struct DMRedeemTransactionAttributes DMRedeemTransactionAttributes = {
 	.discount_as_percentage = @"discount_as_percentage",
 	.points_redeemed = @"points_redeemed",
 	.transaction_type = @"transaction_type",
 };
 
-
-
 const struct DMRedeemTransactionRelationships DMRedeemTransactionRelationships = {
 	.offer = @"offer",
 };
-
-
-
-
-
 
 @implementation DMRedeemTransactionID
 @end
@@ -46,7 +38,7 @@ const struct DMRedeemTransactionRelationships DMRedeemTransactionRelationships =
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"discount_as_percentageValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"discount_as_percentage"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -66,23 +58,16 @@ const struct DMRedeemTransactionRelationships DMRedeemTransactionRelationships =
 	return keyPaths;
 }
 
-
-
-
 @dynamic discount_as_percentage;
-
-
 
 - (int16_t)discount_as_percentageValue {
 	NSNumber *result = [self discount_as_percentage];
 	return [result shortValue];
 }
 
-
 - (void)setDiscount_as_percentageValue:(int16_t)value_ {
-	[self setDiscount_as_percentage:@(value_)];
+	[self setDiscount_as_percentage:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitiveDiscount_as_percentageValue {
 	NSNumber *result = [self primitiveDiscount_as_percentage];
@@ -90,27 +75,19 @@ const struct DMRedeemTransactionRelationships DMRedeemTransactionRelationships =
 }
 
 - (void)setPrimitiveDiscount_as_percentageValue:(int16_t)value_ {
-	[self setPrimitiveDiscount_as_percentage:@(value_)];
+	[self setPrimitiveDiscount_as_percentage:[NSNumber numberWithShort:value_]];
 }
 
-
-
-
-
 @dynamic points_redeemed;
-
-
 
 - (int16_t)points_redeemedValue {
 	NSNumber *result = [self points_redeemed];
 	return [result shortValue];
 }
 
-
 - (void)setPoints_redeemedValue:(int16_t)value_ {
-	[self setPoints_redeemed:@(value_)];
+	[self setPoints_redeemed:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitivePoints_redeemedValue {
 	NSNumber *result = [self primitivePoints_redeemed];
@@ -118,27 +95,19 @@ const struct DMRedeemTransactionRelationships DMRedeemTransactionRelationships =
 }
 
 - (void)setPrimitivePoints_redeemedValue:(int16_t)value_ {
-	[self setPrimitivePoints_redeemed:@(value_)];
+	[self setPrimitivePoints_redeemed:[NSNumber numberWithShort:value_]];
 }
 
-
-
-
-
 @dynamic transaction_type;
-
-
 
 - (int16_t)transaction_typeValue {
 	NSNumber *result = [self transaction_type];
 	return [result shortValue];
 }
 
-
 - (void)setTransaction_typeValue:(int16_t)value_ {
-	[self setTransaction_type:@(value_)];
+	[self setTransaction_type:[NSNumber numberWithShort:value_]];
 }
-
 
 - (int16_t)primitiveTransaction_typeValue {
 	NSNumber *result = [self primitiveTransaction_type];
@@ -146,24 +115,10 @@ const struct DMRedeemTransactionRelationships DMRedeemTransactionRelationships =
 }
 
 - (void)setPrimitiveTransaction_typeValue:(int16_t)value_ {
-	[self setPrimitiveTransaction_type:@(value_)];
+	[self setPrimitiveTransaction_type:[NSNumber numberWithShort:value_]];
 }
-
-
-
-
 
 @dynamic offer;
 
-	
-
-
-
-
-
-
 @end
-
-
-
 

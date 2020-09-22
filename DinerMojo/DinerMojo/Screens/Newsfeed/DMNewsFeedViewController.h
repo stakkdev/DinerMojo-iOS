@@ -7,18 +7,13 @@
 //
 
 #import "DMTabBarViewController.h"
-#import "DMSortNewsfeedViewController.h"
 #import "DMNewsItemModelController.h"
 #import "DMNewsRequest.h"
 #import "DMNewsItem.h"
+#import "TabsFilterView.h"
 
+@interface DMNewsFeedViewController : DMTabBarViewController <DMSortVenueFeedViewControllerDelegate>
 
-@interface DMNewsFeedViewController : DMTabBarViewController <DMSortNewsfeedViewControllerDelegate>
-
-
-@property (weak, nonatomic) IBOutlet UIButton *allButton;
-@property (weak, nonatomic) IBOutlet UIButton *newsButton;
-@property (weak, nonatomic) IBOutlet UIButton *offersButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
 @property (weak, nonatomic) IBOutlet UIView *emptyTableDescriptionView;
@@ -33,16 +28,15 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property NSString* pushNewsID;
+@property BOOL connectionProblem;
 
 @property BOOL isVenue;
 @property DMVenue *selectedVenue;
 
-- (IBAction)allButtonPressed:(id)sender;
-- (IBAction)newsButtonPressed:(id)sender;
-- (IBAction)offersButtonPressed:(id)sender;
-
 - (IBAction)sortButtonPressed:(id)sender;
 - (IBAction)favouriteButtonPressed:(id)sender;
+- (IBAction)notifyMe:(id)sender;
+
 
 - (IBAction)notifyMeButtonPressed:(id)sender;
 

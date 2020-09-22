@@ -29,7 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 @property (weak, nonatomic) IBOutlet UILabel *earnMonthsLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UILabel *myMojoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsToEarnLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pointsProgressLabel;

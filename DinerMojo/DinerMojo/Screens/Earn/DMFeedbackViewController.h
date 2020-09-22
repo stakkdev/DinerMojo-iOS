@@ -21,7 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *feedbackDescriptionLabel;
 
-
+@property BOOL didSend;
 @property NSNumber *selectedVenueID;
 @property NSNumber *selectedRating;
 - (IBAction)ratingOnePressed:(id)sender;

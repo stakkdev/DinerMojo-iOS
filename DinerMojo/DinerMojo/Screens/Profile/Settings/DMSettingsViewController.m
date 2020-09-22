@@ -14,10 +14,45 @@
 @end
 
 @implementation DMSettingsViewController
+- (IBAction)deleteAccount:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete my account" message:@"You will lose all points, your user profile and will need to create a new account to use DinerMojo." preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure?" message:@"This will permanently delete your account and points." preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            [self deleteUserAccount];
+        }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        
+        
+        [alertController addAction:ok];
+        [alertController addAction:cancel];
+        
+        [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    
+    [self.buildLabel setText:[NSString stringWithFormat:@"Build %@ (%@)", version, build]];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -65,6 +100,7 @@
         
         [welcomeViewController setWelcomeViewControllerPresentationStyle:DMWelcomeViewControllerPresentationStyleFromPopup];
         
+        [welcomeViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:welcomeViewController animated:YES completion:nil];
     }
     
@@ -95,39 +131,8 @@
         [alertController addAction:cancel];
         [alertController addAction:logout];
         
+        [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:alertController animated:YES completion:nil];
-    }
-
-    else if (indexPath.section == 7)
-    {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Delete my account" message:@"You will lose all points, your user profile and will need to create a new account to use DinerMojo." preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-            
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure?" message:@"This will permanently delete your account and points." preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-                [self deleteUserAccount];
-            }];
-            
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-            
-            
-            [alertController addAction:ok];
-            [alertController addAction:cancel];
-            
-            [self presentViewController:alertController animated:YES completion:nil];
-            
-        }];
-        
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-        
-        
-        [alertController addAction:ok];
-        [alertController addAction:cancel];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-
     }
 }
 
@@ -220,17 +225,6 @@
     }
     
     
-    if (indexPath.section == 7)
-    {
-        [cell.textLabel setText:@"Delete my account"];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.backgroundColor = [UIColor whiteColor];
-        cell.textLabel.textColor = [UIColor redColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    
-    
     return cell;
     
 }
@@ -277,7 +271,7 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 8;
+    return 7;
 }
 
 # pragma mark - DMWelcomeViewControllerDelegate

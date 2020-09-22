@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+            <string>Helvetica-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RedeemPointsToNextLevelCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mn5-7N-EKH">
+                        <rect key="frame" x="10" y="22" width="300" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 points to GOLD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0d-qx-hVs">
+                                <rect key="frame" x="0.0" y="14" width="300" height="17.5"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.64705882349999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="RUh-xq-EXM"/>
+                            <constraint firstItem="r0d-qx-hVs" firstAttribute="centerY" secondItem="Mn5-7N-EKH" secondAttribute="centerY" id="UBP-PO-3rB"/>
+                            <constraint firstItem="r0d-qx-hVs" firstAttribute="leading" secondItem="Mn5-7N-EKH" secondAttribute="leading" id="dNl-vk-l5p"/>
+                            <constraint firstAttribute="trailing" secondItem="r0d-qx-hVs" secondAttribute="trailing" id="pIh-4x-MuF"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These rewards are available to gold  members and above" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-gx-mKj">
+                        <rect key="frame" x="0.0" y="73" width="320" height="39.5"/>
+                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="gEE-gx-mKj" secondAttribute="trailing" id="8pa-9t-bnI"/>
+                    <constraint firstItem="Mn5-7N-EKH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="DgD-jR-S1s"/>
+                    <constraint firstAttribute="trailing" secondItem="Mn5-7N-EKH" secondAttribute="trailing" constant="10" id="ScU-gM-jM0"/>
+                    <constraint firstItem="Mn5-7N-EKH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-20" id="YiA-2I-jIP"/>
+                    <constraint firstItem="gEE-gx-mKj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bAC-T6-cmY"/>
+                    <constraint firstItem="gEE-gx-mKj" firstAttribute="top" secondItem="Mn5-7N-EKH" secondAttribute="bottom" constant="5" id="cxz-2N-47z"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gEE-gx-mKj" secondAttribute="bottom" id="zxV-hA-wpr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="infoLabel" destination="gEE-gx-mKj" id="Xpx-uo-T79"/>
+                <outlet property="pointsHolderView" destination="Mn5-7N-EKH" id="vSq-Rq-9DE"/>
+                <outlet property="pointsLabel" destination="r0d-qx-hVs" id="1as-Rq-PqO"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

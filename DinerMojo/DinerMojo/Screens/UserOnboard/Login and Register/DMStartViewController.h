@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerState) {
 };
 
 @interface DMStartViewController : DMViewController <DMBlurredViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *imageContainerView;
 @property (weak, nonatomic) IBOutlet DMButton *skipButton;

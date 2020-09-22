@@ -10,6 +10,10 @@
 #import "DMReferralViewController.h"
 #import "UIImage+Extensions.h"
 #import "DMMappingHelper.h"
+#import <GBVersionTracking/GBVersionTracking.h>
+#import "DinerMojo-Swift.h"
+#import <Crashlytics/Answers.h>
+#import <CoreServices/CoreServices.h>
 
 static const NSInteger kReferrelCodeMaxLength = 8;
 
@@ -47,7 +51,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     // Do any additional setup after loading the view.
     
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
@@ -66,6 +70,14 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     
     [[self loginPasswordTextField] setDelegate:self];
     
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    
+    if (![bundleIdentifier  isEqual: @"com.dinermojo.dinermojo"]) {
+        [self.buildLabel setText:[NSString stringWithFormat:@"Build %@ (%@)", version, build]];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -193,16 +205,6 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         return @"Please ensure both passwords match.";
     }
     
-    else if (self.passwordTextField.isEnabled == YES)
-    {
-        if ([self isPasswordPolicy] == YES)
-            
-        {
-            return @"Your password needs to be at least 6 characters long.";
-        }
-
-    }
-    
     else if ([[[self firstNameTextField] text] isEqualToString:@""])
     {
         return @"Please enter your first name.";
@@ -210,6 +212,16 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     else if ([[[self lastNameTextField] text] isEqualToString:@""])
     {
         return @"Please enter your last name.";
+    }
+    
+    else if (self.passwordTextField.isEnabled == YES)
+    {
+        if ([self isPasswordPolicy] == YES)
+            
+        {
+            return @"Your password needs to be at least 6 characters long.";
+        }
+        
     }
     
     return @"";
@@ -241,7 +253,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (void)toggleLoginSubviews
 {
-
+    
     CGFloat targetConstant;
     
     if (_startViewControllerState == DMStartViewControllerStateLogin)
@@ -266,8 +278,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     
     NSMutableAttributedString *attributedNoReferral = [[NSMutableAttributedString alloc] initWithString:self.referralCodeNoCodeLabel.text];
     [attributedNoReferral addAttribute:NSFontAttributeName
-                       value:[UIFont fontWithName:@"OpenSans" size:16]
-                       range:NSMakeRange(0, 27)];
+                                 value:[UIFont fontWithName:@"OpenSans" size:16]
+                                 range:NSMakeRange(0, 27)];
     [[self referralCodeNoCodeLabel] setAttributedText:attributedNoReferral];
     
     switch (_referralCodeUIState) {
@@ -278,7 +290,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             [[self referralCodePromptLabel] setTextColor:[UIColor darkGrayColor]];
             [[self referralCodePromptLabel] setText:@"Checking to see if you have been invited to DinerMojo..."];
             [[self referralCodeNoCodeLabel] setHidden:NO];
-
+            
             break;
         case DMStartViewControllerReferralCodeUIStateCodeAvailable:
             [[self referralCodeCheck] setHidden:NO];
@@ -295,8 +307,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             [[self referralCodePromptLabel] setTextColor:[UIColor redColor]];
             [self.referralCodePromptLabel setText:@"This code has been used"];
             [[self referralCodeNoCodeLabel] setHidden:NO];
-
-
+            
+            
             break;
         default:
             [[self referralCodeCheck] setHidden:YES];
@@ -305,7 +317,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             [[self referralCodePromptLabel] setTextColor:[UIColor darkGrayColor]];
             [[self referralCodePromptLabel] setText:@"Got a referral code? \n Great! Enter it below and get bonus points for you and your friend."];
             [[self referralCodeNoCodeLabel] setHidden:NO];
-
+            
             NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithString:self.referralCodePromptLabel.text];
             [attributed addAttribute:NSFontAttributeName
                                value:[UIFont fontWithName:@"OpenSans" size:16]
@@ -313,7 +325,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             [[self referralCodePromptLabel] setAttributedText:attributed];
             
             
-           
+            
             break;
     }
 }
@@ -350,7 +362,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         {
             [self setReferralCodeUIState:DMStartViewControllerReferralCodeUIStateCodeAvailable];
             [self.referralCodePromptLabel setTextColor:[UIColor darkGrayColor]];
-
+            
         }
         else
         {
@@ -363,11 +375,11 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             else
             {
                 [self setReferralCodeUIState:DMStartViewControllerReferralCodeUIStateCodeNotAvailable];
-
+                
             }
             [[self referralCodeCheck] setImage:[UIImage imageNamed:@"small_cross"]];
             [[self referralCodeCheck] setHidden:NO];
-
+            
             
         }
         _shouldCheckForReferralCode = NO;
@@ -375,7 +387,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 }
 
 - (void)loginToFacebook
-{
+    {
+    [Answers logLoginWithMethod:@"Facebook" success:@YES customAttributes:@{}];
     __weak typeof(self) weakSelf = self;
     
     [[self userRequest] loginFaceboookWithSuccess:^(id result) {
@@ -408,7 +421,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     
     NSDictionary *data = [self currentFacebookData];
     
-    NSString *formattedDate = [DMFacebookService dinerMojoFormattedDate:[data objectForKey:@"birthday"]];
+//    NSString *formattedDate = [DMFacebookService dinerMojoFormattedDate:[data objectForKey:@"birthday"]];
     
     [dictionary setObject:[data objectForKey:@"id"] forKey:@"facebook_id"];
     [dictionary setObject:[[FBSDKAccessToken currentAccessToken] tokenString] forKey:@"facebook_token"];
@@ -416,7 +429,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [dictionary setObject:[data objectForKey:@"last_name"] forKey:@"last_name"];
     [dictionary setObject:[data objectForKey:@"email"] forKey:@"email_address"];
     [dictionary setObject:@([[data objectForKey:@"gender"] integerValue]) forKey:@"gender"];
-    [dictionary setObject:formattedDate forKey:@"date_of_birth"];
+//    [dictionary setObject:formattedDate forKey:@"date_of_birth"];
     
     [dictionary setObject:[[self referralCodeTextField] text] forKey:@"referral_code"];
     
@@ -430,6 +443,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (void)signUpWithFacebook
 {
+    [Answers logSignUpWithMethod:@"Facebook" success:@YES customAttributes:@{}];
     [[self userRequest] signUpWithFacebook:[self facebookDataParsedForServer] WithCompletionBlock:^(NSError *error, id results) {
         if (error)
         {
@@ -440,15 +454,14 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         {
             self.referralUser = results;
             [self performSegueWithIdentifier:@"referralSegue" sender:nil];
-
+            
         }
     }];
 }
 
 - (void)loginWithEmail
 {
-   
-
+    [Answers logLoginWithMethod:@"Email" success:@YES customAttributes:@{}];
     if (self.loginEmailTextField.text.length != 0 && self.loginPasswordTextField.text.length != 0)
     {
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -479,23 +492,25 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             [indicator stopAnimating];
             [indicator removeFromSuperview];
         }];
-
+        
     }
-   
+    
     else
     {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Please enter both fields" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    
+        
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    
+        
         [alertController addAction:ok];
-    
+        
+        [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 
 - (void)signupWithEmail
 {
+    [Answers logSignUpWithMethod:@"Email" success:@YES customAttributes:@{}];
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     CGFloat halfButtonHeight = self.closeRegisterButton.bounds.size.height / 2;
     CGFloat buttonWidth = self.closeRegisterButton.bounds.size.width;
@@ -505,7 +520,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [self.closeRegisterButton setImage:nil forState:UIControlStateNormal];
     [self.closeRegisterButton setEnabled:NO];
     [self.registerButton setEnabled:NO];
-
+    
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{ @"email_address" : [[self emailTextField] text], @"password" : [[self passwordTextField] text], @"first_name" : [[self firstNameTextField] text], @"last_name" : [[self lastNameTextField] text]}];
     
@@ -526,7 +541,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             [self.closeRegisterButton setEnabled:YES];
             [self.closeRegisterButton setImage:[UIImage imageNamed:@"back_arrow_grey"] forState:UIControlStateNormal];
             [self.registerButton setEnabled:YES];
-           
+            
         }
         else
         {
@@ -600,7 +615,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [self.confirmPasswordButton setEnabled:NO];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-
+    
     [[self userRequest] resetPasswordWithEmailAddress:self.forgotPasswordEmailTextField.text withCompletionBlock:^(NSError *error, id results) {
         if (error)
         {
@@ -609,7 +624,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             if (error.code == DMErrorCode409)
             {
                 errorMessage = @"You have already requested a password reset, please check your email";
-
+                
             }
             
             else
@@ -764,6 +779,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     
     [alertController addAction:ok];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -785,7 +801,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     if ([imagePickerController sourceType] == UIImagePickerControllerSourceTypeCamera)
     {
         // Custom controls here
-//        imagePickerController.showsCameraControls = NO;
+        //        imagePickerController.showsCameraControls = NO;
     }
 }
 
@@ -808,6 +824,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         
         [imagePickerController setMediaTypes:@[(NSString *)kUTTypeImage]];
         
+        [imagePickerController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:imagePickerController animated:YES
                          completion:nil];
         
@@ -853,6 +870,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [alertController addAction:camera];
     [alertController addAction:cancel];
     
+    [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -874,6 +892,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         
         [alertController addAction:ok];
         
+        [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:alertController animated:YES completion:nil];
     }
 }
@@ -920,8 +939,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         [[self currentFacebookData] setObject:[[self lastNameTextField] text] forKey:@"last_name"];
         [[self currentFacebookData] setObject:[[self profilePicture] image] forKey:@"profile_picture"];
         
-
-
+        
+        
         if (![[[self referralCodeTextField] text] isEqual:@""])
         {
             [[self currentFacebookData] setObject:[[self referralCodeTextField] text] forKey:@"referral_code"];
@@ -970,8 +989,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         DMReferralViewController *vc = [segue destinationViewController];
         vc.referralUser = self.referralUser;
     }
-   
-
+    
+    
 }
 
 #pragma mark UIImagePickerControllerDelegate, UINavigationControllerDelegate

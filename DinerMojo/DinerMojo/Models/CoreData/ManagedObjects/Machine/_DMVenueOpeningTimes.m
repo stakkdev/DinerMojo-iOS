@@ -3,7 +3,6 @@
 
 #import "_DMVenueOpeningTimes.h"
 
-
 const struct DMVenueOpeningTimesAttributes DMVenueOpeningTimesAttributes = {
 	.friday = @"friday",
 	.monday = @"monday",
@@ -14,16 +13,9 @@ const struct DMVenueOpeningTimesAttributes DMVenueOpeningTimesAttributes = {
 	.wednesday = @"wednesday",
 };
 
-
-
 const struct DMVenueOpeningTimesRelationships DMVenueOpeningTimesRelationships = {
 	.venue = @"venue",
 };
-
-
-
-
-
 
 @implementation DMVenueOpeningTimesID
 @end
@@ -50,74 +42,25 @@ const struct DMVenueOpeningTimesRelationships DMVenueOpeningTimesRelationships =
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic friday;
-
-
-
-
-
 
 @dynamic monday;
 
-
-
-
-
-
 @dynamic saturday;
-
-
-
-
-
 
 @dynamic sunday;
 
-
-
-
-
-
 @dynamic thursday;
-
-
-
-
-
 
 @dynamic tuesday;
 
-
-
-
-
-
 @dynamic wednesday;
-
-
-
-
-
 
 @dynamic venue;
 
-	
-
-
-
-
-
-
 @end
-
-
-
 

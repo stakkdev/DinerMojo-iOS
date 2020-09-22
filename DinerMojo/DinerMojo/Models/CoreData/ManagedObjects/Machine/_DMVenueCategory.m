@@ -3,21 +3,13 @@
 
 #import "_DMVenueCategory.h"
 
-
 const struct DMVenueCategoryAttributes DMVenueCategoryAttributes = {
 	.name = @"name",
 };
 
-
-
 const struct DMVenueCategoryRelationships DMVenueCategoryRelationships = {
 	.venue = @"venue",
 };
-
-
-
-
-
 
 @implementation DMVenueCategoryID
 @end
@@ -44,41 +36,22 @@ const struct DMVenueCategoryRelationships DMVenueCategoryRelationships = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic name;
-
-
-
-
-
 
 @dynamic venue;
 
-	
 - (NSMutableSet*)venueSet {
 	[self willAccessValueForKey:@"venue"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"venue"];
-  
+
 	[self didAccessValueForKey:@"venue"];
 	return result;
 }
-	
-
-
-
-
-
 
 @end
-
-
-
 
