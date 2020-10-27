@@ -179,5 +179,7 @@
 	<false/>
 	<key>UIViewEdgeAntialiasing</key>
 	<true/>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
