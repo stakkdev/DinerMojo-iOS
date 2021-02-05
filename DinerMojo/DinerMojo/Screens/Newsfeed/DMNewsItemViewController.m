@@ -28,7 +28,9 @@
     [super viewDidLoad];
     [self decorateInterface];
     [self setupNewsLabel];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 13.0, *)) {
+        self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+    }
 }
 
 -(void)viewDidLayoutSubviews

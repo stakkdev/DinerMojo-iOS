@@ -463,7 +463,9 @@
         UIAlertAction *privacy = [UIAlertAction actionWithTitle:@"Privacy Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             
             NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-            [[UIApplication sharedApplication] openURL:url];
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+                NSLog(@"Opened Url: %i", success);
+            }];
         }];
         
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Not Now" style:UIAlertActionStyleDestructive handler:nil];

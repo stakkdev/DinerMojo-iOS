@@ -43,7 +43,9 @@
     [super viewDidAppear:animated];
     
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 4, self.scrollView.frame.size.height);
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 13.0, *)) {
+        self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+    }
     [self.scrollView setBackgroundColor:[UIColor clearColor]];
     [self updateImagesInScrollView];
 }

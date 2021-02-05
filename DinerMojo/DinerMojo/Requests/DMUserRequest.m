@@ -352,8 +352,7 @@
 
 #pragma mark - Other user related methods
 
--(void)registerForNotifications
-{
+-(void)registerForNotifications {
     UIApplication *application = [UIApplication sharedApplication];
     
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];

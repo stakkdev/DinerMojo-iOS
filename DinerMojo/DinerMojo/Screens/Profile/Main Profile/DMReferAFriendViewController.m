@@ -83,15 +83,15 @@
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 13.0, *)) {
+        self.scollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+    }
     [[self activityIndicator] stopAnimating];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 

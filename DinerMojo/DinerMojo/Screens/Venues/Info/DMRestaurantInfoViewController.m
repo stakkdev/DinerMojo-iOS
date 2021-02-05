@@ -179,7 +179,9 @@
     layout.lineSpacing = 0;
     layout.lineSize = 120;
     layout.lineItemCount = 1;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 13.0, *)) {
+        self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+    }
     [self venueApiDetails];
     [self.scrollView setDelegate:self];
  
@@ -881,7 +883,10 @@
     
     if ([[UIApplication sharedApplication] canOpenURL:phoneUrl])
     {
-        [[UIApplication sharedApplication] openURL:phoneUrl];
+        [[UIApplication sharedApplication] openURL:phoneUrl options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"Opened Url: %i", success);
+        }];
+
     }
     else
     {

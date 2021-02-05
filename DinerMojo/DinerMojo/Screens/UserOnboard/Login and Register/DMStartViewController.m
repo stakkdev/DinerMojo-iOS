@@ -956,12 +956,17 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (IBAction)termsPressed:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/terms"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/terms"] options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"Opened Url: %i", success);
+    }];
+
 }
 
 - (IBAction)privacyPressed:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/privacy"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/privacy"] options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"Opened Url: %i", success);
+    }];
 }
 
 #pragma mark - Blurred View Delegate

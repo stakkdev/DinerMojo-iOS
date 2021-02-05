@@ -29,7 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 13.0, *)) {
+        self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+    }
     [self.scrollView setDelegate:self];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -46,7 +48,9 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = NO;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 13.0, *)) {
+        self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+    }
     [[self inviteLabel] setHidden:YES];
     [[self inviteButton] setHidden:YES];
     [self downloadUser];
@@ -65,7 +69,6 @@
 {
     [super viewWillDisappear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
 
@@ -218,7 +221,6 @@
     [self.pointsButton setTintColor:[UIColor whiteColor]];
     [self.settingsButton setTintColor:[UIColor whiteColor]];
     self.pointValue = self.currentUser.annual_points_earned.floatValue;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MMMM YYYY"];
@@ -274,7 +276,6 @@
 
             [self.pointsButton setTintColor:[UIColor whiteColor]];
             [self.settingsButton setTintColor:[UIColor silverTintColor]];
-            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
             
             [self.memberStatusLabel setText:[NSString stringWithFormat:@"Silver Member - Joined %@", [dateFormatter stringFromDate:self.currentUser.created_at]]];
 

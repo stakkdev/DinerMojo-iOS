@@ -55,11 +55,8 @@
     [self.buildLabel setText:[NSString stringWithFormat:@"Build %@ (%@)", version, build]];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
+-(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-
 }
 
 #pragma mark - UITableView Delegates
@@ -107,13 +104,17 @@
     //Terms
     if (indexPath.section == 4)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/terms"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/terms"] options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"Opened Url: %i", success);
+        }];
     }
     
     //Privacy Policy
     if (indexPath.section == 5)
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/privacy"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/privacy"] options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"Opened Url: %i", success);
+        }];
     }
     
     //Logout

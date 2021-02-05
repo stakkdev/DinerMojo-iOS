@@ -175,9 +175,6 @@
 
 -(void) decorateGlobalAppInterface
 {
-    //UIStatusBar
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
     [self applyAppWideNavigationBackButton];
     
     //UINavigationBar
@@ -190,7 +187,8 @@
     
                                                             }];
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+    NSArray *array = [NSArray arrayWithObject:[UINavigationBar class]];
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:array]
      setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor whiteColor],
        NSFontAttributeName:[UIFont navigationBarButtonItemFont]

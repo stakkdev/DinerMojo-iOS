@@ -21,7 +21,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.scrollView.delegate = self;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 13.0, *)) {
+        self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+    }
 
     
     CAGradientLayer *layer = [CAGradientLayer layer];
