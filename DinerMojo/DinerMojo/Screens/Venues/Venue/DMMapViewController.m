@@ -21,13 +21,11 @@
 
 @interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
-
 @property (strong, nonatomic) DMVenueRequest* venueRequest;
 @property (strong, nonatomic) DMVenueModelController* mapModelController;
 @property (weak, nonatomic) IBOutlet UIView *tabsFilterViewContainer;
 @property (strong, nonatomic) TabsFilterView *tabsFilterView;
 @property (strong, nonatomic) NSArray *filterItems;
-
 
 @end
 
@@ -74,14 +72,6 @@
             [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
             [self.navigationController presentViewController:vc animated:YES completion:nil];        }
     }
-    
-    /*if(self.showOverlay) {
-        self.showOverlay = NO;
-        StartupViewController *vc = [[StartupViewController alloc] initWithNibName:@"StartupViewController" bundle:NULL];
-        vc.view.backgroundColor = [[UIColor alloc] initWithRed:1 green:1 blue:1 alpha:0.95];
-        vc.view.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-        [self.navigationController presentViewController:vc animated:YES completion:nil];
-    }*/
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -103,7 +93,6 @@
             [weakSelf presentViewController:acceptViewController animated:YES completion:NULL];
         }
     }];
-    
 }
 
 - (void)setupView {
@@ -152,8 +141,7 @@
     }
 }
 
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView
-{
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
     NSInteger obj = [NSUserDefaults.standardUserDefaults integerForKey:@"didSort"];
     if(obj == 1) {
         return YES;
@@ -161,8 +149,7 @@
     return NO;
 }
 
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
-{
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = @"Sorry no Venues fit your requirements";
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
@@ -171,31 +158,23 @@
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
-- (void)downloadVenues
-{
+- (void)downloadVenues {
     [self.downloadLabel setHidden:NO];
     
     [[self venueRequest] downloadVenuesWithCompletionBlock:^(NSError *error, id results) {
-         if (error == nil)
-         {
+         if (error == nil) {
              [[self mapModelController] setVenues:results];
              
              [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void)
               { [restaurantsTableView reloadData]; }completion: nil];
              
              [self.downloadLabel setHidden:YES];
-
-             
-         }
-         else
-         {
+         } else {
              [self.downloadLabel setText:@"Can't fetch restaurants, check your connection."];
-
          }
+        
         [self.activityIndicator stopAnimating];
-
-
-     }];
+    }];
 }
 
 - (IBAction)sortButtonPressed:(id)sender {
@@ -310,6 +289,8 @@
     _mapModelController.state = item;
     _mapModelController.filterLifestyle = (item == DMVenueList);
     [restaurantsTableView reloadData];
+    [restaurantsTableView setHidden:(item == DMVenueMap)];
+    [mapView setHidden:(item == DMVenueList)];
 }
 
 - (void)didSelectRedeem:(NSIndexPath *)index {

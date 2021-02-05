@@ -8,13 +8,13 @@
 
 #import "DMTabBarViewController.h"
 #import "DMLocationServices.h"
+#import "MapKit/MapKit.h"
 
-@interface DMMapViewController : DMTabBarViewController <UITableViewDataSource, UITableViewDelegate>{
-    
-
-IBOutlet UITableView *restaurantsTableView;
-    
+@interface DMMapViewController : DMTabBarViewController <UITableViewDataSource, UITableViewDelegate> {
+    IBOutlet UITableView *restaurantsTableView;
+    IBOutlet MKMapView *mapView;
 }
+
 @property BOOL showOverlay;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
