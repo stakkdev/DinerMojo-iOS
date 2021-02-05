@@ -9,10 +9,15 @@
 #import "DMTabBarViewController.h"
 #import "DMLocationServices.h"
 #import "MapKit/MapKit.h"
+#import "CustomAnnotationView.h"
+#import "VenueCollectionViewCell.h"
 
-@interface DMMapViewController : DMTabBarViewController <UITableViewDataSource, UITableViewDelegate> {
+@import MapKit;
+
+@interface DMMapViewController : DMTabBarViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     IBOutlet UITableView *restaurantsTableView;
     IBOutlet MKMapView *mapView;
+    IBOutlet UICollectionView *collectionView;
 }
 
 @property BOOL showOverlay;

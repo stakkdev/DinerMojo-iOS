@@ -19,7 +19,9 @@
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <Crashlytics/Answers.h>
 
-@interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@import MapKit;
+
+@interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) DMVenueRequest* venueRequest;
 @property (strong, nonatomic) DMVenueModelController* mapModelController;
@@ -100,6 +102,9 @@
     restaurantsTableView.emptyDataSetDelegate = self;
     restaurantsTableView.tableFooterView = [UIView new];
     
+    [self setupMap];
+    [self setupCollectionView];
+    
     TabsFilterView *tabView = [[NSBundle mainBundle] loadNibNamed:@"TabsFilterView" owner:self options:nil][0];
     tabView.delegate = self;
     [tabView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -108,6 +113,112 @@
     self.tabsFilterView = tabView;
     [self.tabsFilterView selectTabForType:DMVenueMap];
 }
+
+
+
+/// MapView
+
+-(void)setupMap {
+    [mapView setShowsUserLocation:YES];
+    [mapView registerClass:[CustomAnnotationView class] forAnnotationViewWithReuseIdentifier:MKMapViewDefaultAnnotationViewReuseIdentifier];
+    [mapView setDelegate:self];
+    CLLocation *newLocation = [DMLocationServices sharedInstance].currentLocation;
+    [self zoomMapTo:newLocation];
+    [self reloadMapAnnotations];
+}
+
+-(void)reloadMapAnnotations {
+    CLLocation *newLocation = [DMLocationServices sharedInstance].currentLocation;
+    [self zoomMapTo:newLocation];
+    
+    NSArray *annotations = [[self mapModelController] mapAnnotations];
+    [mapView removeAnnotations:[mapView annotations]];
+    [mapView addAnnotations:annotations];
+    [collectionView reloadData];
+}
+
+-(void)zoomMapTo:(CLLocation *)newLocation {
+    double miles = 1.0;
+    double scalingFactor = ABS( (cos(2 * M_PI * newLocation.coordinate.latitude / 360.0) ));
+    MKCoordinateSpan span;
+    span.latitudeDelta = miles/69.0;
+    span.longitudeDelta = miles/(scalingFactor * 69.0);
+    MKCoordinateRegion region;
+    region.span = span;
+    region.center = newLocation.coordinate;
+    [mapView setRegion:region animated:YES];
+}
+
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", view.annotation.title];
+    NSArray *filteredArray = [[[self mapModelController] venues] filteredArrayUsingPredicate:predicate];
+    
+    if (filteredArray.count > 0) {
+        DMVenue *venue = [filteredArray objectAtIndex:0];
+        NSInteger index = [[[self mapModelController] venues] indexOfObject:venue];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self->collectionView setHidden:NO];
+            [self->collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        });
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    [collectionView setHidden:YES];
+}
+
+
+
+/// Collection View
+
+-(void)setupCollectionView {
+    [collectionView setDelegate:self];
+    [collectionView setDataSource:self];
+    [collectionView setBackgroundColor:[UIColor clearColor]];
+    [collectionView registerClass:[VenueCollectionViewCell class] forCellWithReuseIdentifier:@"VenueCollectionViewCell"];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [[[self mapModelController] mapAnnotations] count];;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"VenueCollectionViewCell";
+    VenueCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    DMVenue *venue = [[[self mapModelController] venues] objectAtIndex:indexPath.row];
+    cell.customLabel.text = venue.name;
+    cell.backgroundColor = [UIColor whiteColor];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *selectedAnnotations = mapView.selectedAnnotations;
+    for(id annotation in selectedAnnotations) {
+        [mapView deselectAnnotation:annotation animated:NO];
+    }
+    
+    MKPointAnnotation *annotation = [[[self mapModelController] mapAnnotations] objectAtIndex:indexPath.row];
+    [mapView selectAnnotation:annotation animated:YES];
+    
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+    [self zoomMapTo:location];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat width = UIScreen.mainScreen.bounds.size.width * 0.75;
+    return CGSizeMake(width, 110.0);
+}
+
+
 
 - (void)checkLastBirthdayViewControllerFiredDate {
     if (![NSUserDefaults.standardUserDefaults boolForKey:@"disabledBirthdayPopup"]) {
@@ -165,8 +276,9 @@
          if (error == nil) {
              [[self mapModelController] setVenues:results];
              
-             [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void)
-              { [restaurantsTableView reloadData]; }completion: nil];
+             [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) { [restaurantsTableView reloadData];
+                 [self reloadMapAnnotations];
+             } completion: nil];
              
              [self.downloadLabel setHidden:YES];
          } else {
@@ -196,6 +308,7 @@
     self.filterItems = filterItems;
     _mapModelController.filters = filterItems;
     [restaurantsTableView reloadData];
+    [self reloadMapAnnotations];
 }
 
 - (void)didReceiveMemoryWarning
@@ -291,6 +404,8 @@
     [restaurantsTableView reloadData];
     [restaurantsTableView setHidden:(item == DMVenueMap)];
     [mapView setHidden:(item == DMVenueList)];
+    [collectionView setHidden:YES];
+    [self reloadMapAnnotations];
 }
 
 - (void)didSelectRedeem:(NSIndexPath *)index {
