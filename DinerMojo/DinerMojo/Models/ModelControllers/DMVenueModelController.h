@@ -8,8 +8,8 @@
 
 typedef NS_ENUM(NSInteger, DMVenueListState) {
     DMVenueListAll = 0,
-    DMVenueListDining = 1,
-    DMVenueListLifestyle = 2,
+    DMVenueMap = 1,
+    DMVenueList = 2,
     DMVenueListNone = 3,
     DMVenueListFavourite = 4
 };

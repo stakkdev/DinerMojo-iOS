@@ -41,7 +41,7 @@
     _venueRequest = [DMVenueRequest new];
     _mapModelController = [DMVenueModelController new];
     _mapModelController.filterLifestyle = NO;
-    _mapModelController.state = DMVenueListDining;
+    _mapModelController.state = DMVenueMap;
     
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
@@ -117,7 +117,7 @@
     [self.tabsFilterViewContainer addSubview:tabView];
     [tabView autoPinEdgesToSuperviewEdges];
     self.tabsFilterView = tabView;
-    [self.tabsFilterView selectTabForType:DMVenueListDining];
+    [self.tabsFilterView selectTabForType:DMVenueMap];
 }
 
 - (void)checkLastBirthdayViewControllerFiredDate {
@@ -236,8 +236,8 @@
     DMVenueImage *venueImage = (DMVenueImage *) [item primaryImage];
     NSString *category = [[[item categories] anyObject] name];
     
-    [cell.restaurantPrice setHidden:(_mapModelController.state == DMVenueListLifestyle)];
-    [cell.restaurantType setHidden:(_mapModelController.state == DMVenueListLifestyle)];
+    [cell.restaurantPrice setHidden:(_mapModelController.state == DMVenueList)];
+    [cell.restaurantType setHidden:(_mapModelController.state == DMVenueList)];
     [[cell restaurantName] setText:item.name];
     [[cell restaurantType] setText:[NSString stringWithFormat:@"%@", category]];
     [[cell restaurantCategory] setText:[NSString stringWithFormat:@"%@", [[item friendlyPlaceName] uppercaseString]]];
@@ -308,7 +308,7 @@
 
 - (void)didSelectTabItem:(DMVenueListState)item {
     _mapModelController.state = item;
-    _mapModelController.filterLifestyle = (item == DMVenueListLifestyle);
+    _mapModelController.filterLifestyle = (item == DMVenueList);
     [restaurantsTableView reloadData];
 }
 

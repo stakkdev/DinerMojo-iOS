@@ -120,17 +120,12 @@
     }
 
     switch (self.state) {
-        case DMVenueListAll: {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"(venue_type = \"restaurant\" OR venue_type = \"non_restaurant\")"]];
-        }
-        break;
-        
-        case DMVenueListDining: {
+        case DMVenueMap: {
             [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"restaurant\""]];
         }
         break;
         
-        case DMVenueListLifestyle: {
+        case DMVenueList: {
             [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"non_restaurant\""]];
         }
         break;
