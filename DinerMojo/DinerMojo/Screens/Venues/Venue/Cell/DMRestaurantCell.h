@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIView *whiteLineView;
 @property (weak, nonatomic) IBOutlet UIButton *earnButton;
 @property (weak, nonatomic) IBOutlet UIButton *redeemButton;
-    @property (weak, nonatomic) IBOutlet UILabel *restaurantType;
+@property (weak, nonatomic) IBOutlet UILabel *restaurantType;
 @property (nonatomic, weak) id <DMRestaurantCellDelegate> delegate;
 @property (strong, nonatomic) NSIndexPath* index;
 @property (nonatomic) int state;

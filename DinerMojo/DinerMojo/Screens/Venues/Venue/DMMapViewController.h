@@ -21,6 +21,7 @@
 }
 
 @property BOOL showOverlay;
+@property BOOL collectionViewCellSelected;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
 

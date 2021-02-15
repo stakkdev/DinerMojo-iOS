@@ -167,9 +167,11 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-    [collectionView setHidden:YES];
+    if (_collectionViewCellSelected == NO) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+        [collectionView setHidden:YES];
+    }
 }
 
 
@@ -180,7 +182,7 @@
     [collectionView setDelegate:self];
     [collectionView setDataSource:self];
     [collectionView setBackgroundColor:[UIColor clearColor]];
-    [collectionView registerClass:[VenueCollectionViewCell class] forCellWithReuseIdentifier:@"VenueCollectionViewCell"];
+    _collectionViewCellSelected = NO;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -194,13 +196,64 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"VenueCollectionViewCell";
     VenueCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    DMVenue *venue = [[[self mapModelController] venues] objectAtIndex:indexPath.row];
-    cell.customLabel.text = venue.name;
+    DMVenue *item = [[[self mapModelController] venues] objectAtIndex:indexPath.row];
+    
+    DMVenueImage *venueImage = (DMVenueImage *) [item primaryImage];
+    NSString *category = [[[item categories] anyObject] name];
+    
+    cell.cellWidth.constant = UIScreen.mainScreen.bounds.size.width * 0.75;
+    [cell.restaurantPrice setHidden:(_mapModelController.state == DMVenueList)];
+    [cell.restaurantType setHidden:(_mapModelController.state == DMVenueList)];
+    [[cell restaurantName] setText:item.name];
+    [[cell restaurantType] setText:[NSString stringWithFormat:@"%@", category]];
+    [[cell restaurantCategory] setText:[NSString stringWithFormat:@"%@", [[item friendlyPlaceName] uppercaseString]]];
+    [[cell restaurantPrice] setText:[item priceBracketString]];
+    [[cell restaurantImageView] setAlpha:1.0];
+
+    if ([item.state integerValue] == DMVenueStateVerfiedDemo)
+    {
+        [[cell restaurantCategory] setText:@"Coming Soon to DinerMojo"];
+        [[cell restaurantImageView] setAlpha:0.6];
+
+    }
+    
+    cell.index = indexPath;
+    cell.delegate = self;
+
+    [cell setEarnVisibility:item.allows_earnsValue];
+    [cell setRedeemVisibility:item.allows_redemptionsValue];
+
+    NSNumber *latitude = item.latitude;
+    NSNumber *longitude = item.longitude;
+    CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    
+    double distance = [[DMLocationServices sharedInstance] userLocationDistanceFromLocation:venueCoordinates];
+    if(distance != 0) {
+        MKDistanceFormatter *df = [MKDistanceFormatter new];
+        [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
+        
+        NSString *friendlyDistance = [df stringFromDistance:distance];
+        
+        // TODO: Once we have user location, calculate distance based on the longitude and latitude
+        [[cell restaurantDistance] setText:[NSString stringWithFormat:@"(%@)",friendlyDistance]];
+    } else {
+        [[cell restaurantDistance] setText:@"- feet"];
+    }
+    NSURL *url = [NSURL URLWithString:[venueImage fullThumbURL]];
+    if(url == NULL) {
+        url = [NSURL URLWithString:[venueImage fullURL]];
+    }
+    cell.restaurantImageView.image = nil;
+    [[cell restaurantImageView] setImageWithURL:url];
+    
     cell.backgroundColor = [UIColor whiteColor];
+    cell.clipsToBounds = YES;
+    cell.layer.masksToBounds = YES;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    _collectionViewCellSelected = YES;
     NSArray *selectedAnnotations = mapView.selectedAnnotations;
     for(id annotation in selectedAnnotations) {
         [mapView deselectAnnotation:annotation animated:NO];
@@ -211,6 +264,7 @@
     
     CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
     [self zoomMapTo:location];
+    _collectionViewCellSelected = NO;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
