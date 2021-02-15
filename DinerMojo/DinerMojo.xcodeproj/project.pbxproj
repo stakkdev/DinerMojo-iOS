@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A3839C325CD8953006407F9 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3839C225CD8953006407F9 /* CustomAnnotationView.m */; };
+		1A3839CD25CD99AB006407F9 /* VenueCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3839CC25CD99AB006407F9 /* VenueCollectionViewCell.m */; };
 		2702171C20638EF20041CD6F /* DMActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702171B20638EF20041CD6F /* DMActivityViewController.swift */; };
 		27037C4720B5B06A00B47313 /* AcceptGdprViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27037C4520B5B06A00B47313 /* AcceptGdprViewController.swift */; };
 		27037C4820B5B06A00B47313 /* AcceptGdprViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27037C4620B5B06A00B47313 /* AcceptGdprViewController.xib */; };
@@ -217,6 +219,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A3839C125CD8941006407F9 /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
+		1A3839C225CD8953006407F9 /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
+		1A3839C625CD9757006407F9 /* VenueCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueCollectionViewCell.h; sourceTree = "<group>"; };
+		1A3839CC25CD99AB006407F9 /* VenueCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenueCollectionViewCell.m; sourceTree = "<group>"; };
 		2702171B20638EF20041CD6F /* DMActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMActivityViewController.swift; sourceTree = "<group>"; };
 		27037C4520B5B06A00B47313 /* AcceptGdprViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptGdprViewController.swift; sourceTree = "<group>"; };
 		27037C4620B5B06A00B47313 /* AcceptGdprViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcceptGdprViewController.xib; sourceTree = "<group>"; };
@@ -1344,6 +1350,10 @@
 				7A8C4B781B1C9AD500F1A798 /* DMMapViewController.h */,
 				7A8C4B791B1C9AD500F1A798 /* DMMapViewController.m */,
 				D4EF480D1B453ED700E46539 /* Cell */,
+				1A3839C125CD8941006407F9 /* CustomAnnotationView.h */,
+				1A3839C225CD8953006407F9 /* CustomAnnotationView.m */,
+				1A3839C625CD9757006407F9 /* VenueCollectionViewCell.h */,
+				1A3839CC25CD99AB006407F9 /* VenueCollectionViewCell.m */,
 			);
 			path = Venue;
 			sourceTree = "<group>";
@@ -1711,6 +1721,7 @@
 				276AED161F2A4CC300042D31 /* StartupNotificationsViewController.swift in Sources */,
 				2C6C543E1FD93FF3006C147D /* SGNotificationsSettings.swift in Sources */,
 				5AE837521B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m in Sources */,
+				1A3839C325CD8953006407F9 /* CustomAnnotationView.m in Sources */,
 				CB8F7B3C1E02F87600EC24C3 /* DMSortOptionsProvider.swift in Sources */,
 				7A8C4B991B1C9BA600F1A798 /* DMVenueRequest.m in Sources */,
 				7A8C4B871B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m in Sources */,
@@ -1782,6 +1793,7 @@
 				7A5EC82B1B4C033F00B27CBF /* _DMVenueImage.m in Sources */,
 				7A5EC81C1B4C033F00B27CBF /* DMUser.m in Sources */,
 				278F7ECC1E9F87B7000D1E87 /* TabBarView.swift in Sources */,
+				1A3839CD25CD99AB006407F9 /* VenueCollectionViewCell.m in Sources */,
 				272F24CA1EFD09AA00B379ED /* SelectedNotificationsLifestyle.swift in Sources */,
 				273ADE851E97BE0300997F5D /* TableViewSelectForGroup.swift in Sources */,
 				7A5EC8201B4C033F00B27CBF /* DMVenueOpeningTimes.m in Sources */,
