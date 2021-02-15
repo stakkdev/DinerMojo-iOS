@@ -160,8 +160,21 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self->collectionView setHidden:NO];
             [self->collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        });
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", view.annotation.title];
+    NSArray *filteredArray = [[[self mapModelController] venues] filteredArrayUsingPredicate:predicate];
+    
+    if (filteredArray.count > 0) {
+        DMVenue *venue = [filteredArray objectAtIndex:0];        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([venue.state integerValue] == DMVenueStateVerified) {
+                [self performSegueWithIdentifier:@"restaurantInfoSegue" sender:venue];
+            }
         });
     }
 }
@@ -170,7 +183,6 @@
     if (_collectionViewCellSelected == NO) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-        [collectionView setHidden:YES];
     }
 }
 
@@ -458,7 +470,7 @@
     [restaurantsTableView reloadData];
     [restaurantsTableView setHidden:(item == DMVenueMap)];
     [mapView setHidden:(item == DMVenueList)];
-    [collectionView setHidden:YES];
+    [collectionView setHidden:(item == DMVenueList)];
     [self reloadMapAnnotations];
 }
 

@@ -16,6 +16,8 @@ static NSString *identifier = @"com.domain.clusteringIdentifier";
     if ((self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier])) {
         self.clusteringIdentifier = identifier;
         self.collisionMode = MKAnnotationViewCollisionModeCircle;
+        self.canShowCallout = YES;
+        self.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
 
     return self;
@@ -25,6 +27,7 @@ static NSString *identifier = @"com.domain.clusteringIdentifier";
     [super setAnnotation:annotation];
 
     self.clusteringIdentifier = identifier;
+    self.canShowCallout = YES;
 }
 
 @end
