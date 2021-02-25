@@ -22,6 +22,7 @@
 - (double)userLocationDistanceFromLocation:(CLLocation *)location;
 - (double)getDistanceWithLatitude:(NSNumber *)latitude andLongitude:(NSNumber *)longitude;
 - (BOOL)isLocationEnabled;
+- (double)getDistanceFor:(DMVenue *)venue;
 
 
 @end

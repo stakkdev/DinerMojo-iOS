@@ -42,6 +42,9 @@
     _mapModelController = [DMVenueModelController new];
     _mapModelController.filterLifestyle = NO;
     _mapModelController.state = DMVenueMap;
+    FilterItem *nearestFilter = [[FilterItem alloc] initWithGroupName:GroupsNameSortBy itemId:SortByItemsNearestItem value:SortByItemsNearestItem];
+    NSArray *initialFilters = [[NSArray alloc]initWithObjects: nearestFilter , nil];
+    _mapModelController.filters = initialFilters;
     
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
@@ -152,11 +155,11 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", view.annotation.title];
-    NSArray *filteredArray = [[[self mapModelController] venues] filteredArrayUsingPredicate:predicate];
+    NSArray *filteredArray = [[[self mapModelController] filteredVenues] filteredArrayUsingPredicate:predicate];
     
     if (filteredArray.count > 0) {
         DMVenue *venue = [filteredArray objectAtIndex:0];
-        NSInteger index = [[[self mapModelController] venues] indexOfObject:venue];
+        NSInteger index = [[[self mapModelController] filteredVenues] indexOfObject:venue];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -167,7 +170,7 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", view.annotation.title];
-    NSArray *filteredArray = [[[self mapModelController] venues] filteredArrayUsingPredicate:predicate];
+    NSArray *filteredArray = [[[self mapModelController] filteredVenues] filteredArrayUsingPredicate:predicate];
     
     if (filteredArray.count > 0) {
         DMVenue *venue = [filteredArray objectAtIndex:0];        
@@ -188,7 +191,7 @@
 
 
 
-/// Collection View
+// MARK: - Collection View Delegate
 
 -(void)setupCollectionView {
     [collectionView setDelegate:self];
@@ -208,7 +211,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"VenueCollectionViewCell";
     VenueCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    DMVenue *item = [[[self mapModelController] venues] objectAtIndex:indexPath.row];
+    DMVenue *item = [[[self mapModelController] filteredVenues] objectAtIndex:indexPath.row];
     
     DMVenueImage *venueImage = (DMVenueImage *) [item primaryImage];
     NSString *category = [[[item categories] anyObject] name];
@@ -283,6 +286,8 @@
     CGFloat width = UIScreen.mainScreen.bounds.size.width * 0.75;
     return CGSizeMake(width, 110.0);
 }
+
+// MARK: - Others
 
 
 
@@ -373,6 +378,7 @@
 - (void)selectedFilterItems:(NSArray *)filterItems {
     self.filterItems = filterItems;
     _mapModelController.filters = filterItems;
+    [self.mapModelController apply:filterItems];
     [restaurantsTableView reloadData];
     [self reloadMapAnnotations];
 }
@@ -382,15 +388,17 @@
     [super didReceiveMemoryWarning];
 }
 
+// MARK: - Table View Delegate
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[self mapModelController] venues] count];
+    return [[[self mapModelController] filteredVenues] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DMRestaurantCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RestaurantCell"];
-    DMVenue *item = [[self mapModelController] venues][(unsigned long)indexPath.row];
+    DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)indexPath.row];
     DMVenueImage *venueImage = (DMVenueImage *) [item primaryImage];
     NSString *category = [[[item categories] anyObject] name];
     
@@ -448,7 +456,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DMVenue *item = [[self mapModelController] venues][(unsigned long)indexPath.row];
+    DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)indexPath.row];
     if ([item.state integerValue] == DMVenueStateVerified)
     {
         [self performSegueWithIdentifier:@"restaurantInfoSegue" sender:item];
@@ -475,7 +483,7 @@
 }
 
 - (void)didSelectRedeem:(NSIndexPath *)index {
-    DMVenue *item = [[self mapModelController] venues][(unsigned long)index.row];
+    DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)index.row];
     if([item.allows_earns isEqualToNumber:@YES]) {
         [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Earn points here!" description:NSLocalizedString(@"earn.message.available", nil) style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
     }
@@ -494,7 +502,7 @@
 }
 
 - (void)didSelectEarn:(NSIndexPath *)index {
-    DMVenue *item = [[self mapModelController] venues][(unsigned long)index.row];
+    DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)index.row];
     if([item.allows_redemptions isEqualToNumber:@YES]) {
         [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Reedem points here!" description:NSLocalizedString(@"redeem.message.available", nil) style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
     }

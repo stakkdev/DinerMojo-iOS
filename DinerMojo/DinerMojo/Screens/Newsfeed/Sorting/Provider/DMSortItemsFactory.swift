@@ -7,16 +7,16 @@ import UIKit
 
 @objc enum GroupsName: Int {
     case SortBy = 1000
-    case ShowVenues
-    case DistanceFilter
-    case RestaurantsFilter
-    case NewsShow
-    case NewsFor
-    case FavouritesOnly
-    case TellMe
-    case Things
-    case DiningNotifications
-    case LifestyleNotifications
+    case ShowVenues = 1001
+    case DistanceFilter = 1002
+    case RestaurantsFilter = 1003
+    case NewsShow = 1004
+    case NewsFor = 1005
+    case FavouritesOnly = 1006
+    case TellMe = 1007
+    case Things = 1008
+    case DiningNotifications = 1009
+    case LifestyleNotifications = 1010
 }
 
 @objc enum SortByItems: Int {

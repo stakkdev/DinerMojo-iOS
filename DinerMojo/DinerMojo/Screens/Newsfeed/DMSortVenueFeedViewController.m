@@ -42,7 +42,7 @@ int locationInfoSectionOpenHeight = 151;
     
 
     
-    self.sortOptionProvider.restaurantItems = [self fetchCategories];;
+    self.sortOptionProvider.restaurantItems = [self fetchCategories];
 
     self.tableViewManager = [[TUGroupedTableManager alloc] initWithTableView:self.tableview reuseIDs:self.sortOptionProvider.reuseIDs];
     self.tableViewManager.headersReuseIDs = @[@"TUHeaderOptionGroupView"];

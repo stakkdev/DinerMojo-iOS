@@ -58,6 +58,14 @@
     return distance;
 }
 
+- (double)getDistanceFor:(DMVenue *)venue {
+    NSNumber *latitude = venue.latitude;
+    NSNumber *longitude = venue.longitude;
+    CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    double distance = [self userLocationDistanceFromLocation:venueCoordinates];
+    return distance;
+}
+
 - (BOOL)isLocationEnabled {
     if([CLLocationManager locationServicesEnabled] &&
        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)

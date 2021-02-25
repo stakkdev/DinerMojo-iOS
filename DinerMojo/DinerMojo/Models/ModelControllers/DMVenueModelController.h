@@ -19,10 +19,12 @@ typedef NS_ENUM(NSInteger, DMVenueListState) {
 @interface DMVenueModelController : NSObject
 
 @property (strong, nonatomic) NSArray* venues;
+@property (strong, nonatomic) NSArray* filteredVenues;
 @property (strong, nonatomic) NSArray *mapAnnotations;
 @property (nonatomic) DMVenueListState state;
 @property (nonatomic, strong) NSArray *filters;
 @property BOOL filterLifestyle;
 
+- (void)apply:(NSArray *)filters;
 - (NSArray *)venuesForFilter;
 @end
