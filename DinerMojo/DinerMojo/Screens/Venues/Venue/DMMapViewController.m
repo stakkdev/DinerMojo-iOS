@@ -18,16 +18,19 @@
 #import "DinerMojo-Swift.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <Crashlytics/Answers.h>
+#import <SDWebImage/SDWebImage.h>
 
 @import MapKit;
 
 @interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) DMVenueRequest* venueRequest;
+@property (strong, nonatomic) DMUserRequest* userRequest;
 @property (strong, nonatomic) DMVenueModelController* mapModelController;
 @property (weak, nonatomic) IBOutlet UIView *tabsFilterViewContainer;
 @property (strong, nonatomic) TabsFilterView *tabsFilterView;
 @property (strong, nonatomic) NSArray *filterItems;
+@property (strong, nonatomic) NSArray *favouriteIds;
 
 @end
 
@@ -43,8 +46,16 @@
     _mapModelController.filterLifestyle = NO;
     _mapModelController.state = DMVenueMap;
     FilterItem *nearestFilter = [[FilterItem alloc] initWithGroupName:GroupsNameSortBy itemId:SortByItemsNearestItem value:SortByItemsNearestItem];
-    NSArray *initialFilters = [[NSArray alloc]initWithObjects: nearestFilter , nil];
+    FilterItem *alphabeticalSort = [[FilterItem alloc] initWithGroupName:GroupsNameSortBy itemId:SortByItemsAZ value:SortByItemsAZ];
+    NSMutableArray *initialFilters = [[NSMutableArray alloc] init];
+    if (DMLocationServices.sharedInstance.currentLocation) {
+        [initialFilters addObject:nearestFilter];
+    } else {
+        [initialFilters addObject:alphabeticalSort];
+    }
     _mapModelController.filters = initialFilters;
+    [_mapModelController apply:initialFilters];
+ 
     
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
@@ -248,18 +259,17 @@
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
         
         NSString *friendlyDistance = [df stringFromDistance:distance];
-        
-        // TODO: Once we have user location, calculate distance based on the longitude and latitude
         [[cell restaurantDistance] setText:[NSString stringWithFormat:@"(%@)",friendlyDistance]];
     } else {
-        [[cell restaurantDistance] setText:@"- feet"];
+        [[cell restaurantDistance] setText:@""];
     }
-    NSURL *url = [NSURL URLWithString:[venueImage fullThumbURL]];
-    if(url == NULL) {
-        url = [NSURL URLWithString:[venueImage fullURL]];
+    NSString *urlString = [venueImage fullThumbURL];
+    if(urlString == NULL) {
+        urlString = [venueImage fullURL];
     }
     cell.restaurantImageView.image = nil;
-    [[cell restaurantImageView] setImageWithURL:url];
+    [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:urlString]
+                 placeholderImage:nil];
     
     cell.backgroundColor = [UIColor whiteColor];
     cell.clipsToBounds = YES;
@@ -343,21 +353,51 @@
 - (void)downloadVenues {
     [self.downloadLabel setHidden:NO];
     
-    [[self venueRequest] downloadVenuesWithCompletionBlock:^(NSError *error, id results) {
-         if (error == nil) {
-             [[self mapModelController] setVenues:results];
-             
-             [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) { [restaurantsTableView reloadData];
-                 [self reloadMapAnnotations];
-             } completion: nil];
-             
-             [self.downloadLabel setHidden:YES];
-         } else {
-             [self.downloadLabel setText:@"Can't fetch restaurants, check your connection."];
-         }
-        
-        [self.activityIndicator stopAnimating];
+    [[ self venueRequest] cachedVenues:^(NSError *error, id results) {
+        [self gotVenuesCompletionBlock:error id:results final:false];
     }];
+    
+    [[self venueRequest] downloadVenuesWithCompletionBlock:^(NSError *error, id results) {
+        [self gotVenuesCompletionBlock:error id:results final: true];
+    }];
+}
+
+- (void)updateFavouritesInitially:(BOOL *)initial {
+    if (initial) {
+        [[self userRequest] downloadFavouriteVenuesWithCompletionBlock:^(NSError *error, id results) {
+            NSMutableArray *favIds = [[NSMutableArray alloc] init];
+            for(DMVenue* venue in results) {
+                NSString *stringId = [NSString stringWithFormat:@"%@", [venue modelID]];
+                [favIds addObject: stringId];
+            }
+            _favouriteIds = favIds;
+            [restaurantsTableView reloadData];
+        }];
+    }
+    _favouriteIds = [[self venueRequest] cachedFavouriteVenuesIds];
+}
+
+- (void)gotVenuesCompletionBlock:(NSError *)error id:(NSArray *) results final:(BOOL) final {
+    if (error == nil) {
+        [[self mapModelController] setVenues:results];
+        
+        [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) { [restaurantsTableView reloadData];
+            [self reloadMapAnnotations];
+        } completion: nil];
+        
+        [self.downloadLabel setHidden:YES];
+        if (!final) {
+            [self.activityIndicator stopAnimating];
+        }
+    } else {
+        if (final) {
+            [self.downloadLabel setHidden:NO];
+            [self.downloadLabel setText:@"Can't fetch restaurants, check your connection."];
+        }
+    }
+    if (final) {
+        [self.activityIndicator stopAnimating];
+    }
 }
 
 - (IBAction)sortButtonPressed:(id)sender {
@@ -433,18 +473,17 @@
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
         
         NSString *friendlyDistance = [df stringFromDistance:distance];
-        
-        // TODO: Once we have user location, calculate distance based on the longitude and latitude
         [[cell restaurantDistance] setText:[NSString stringWithFormat:@"(%@)",friendlyDistance]];
     } else {
-        [[cell restaurantDistance] setText:@"- feet"];
+        [[cell restaurantDistance] setText:@""];
     }
-    NSURL *url = [NSURL URLWithString:[venueImage fullThumbURL]];
-    if(url == NULL) {
-        url = [NSURL URLWithString:[venueImage fullURL]];
+    NSString *urlString = [venueImage fullThumbURL];
+    if(urlString == NULL) {
+        urlString = [venueImage fullURL];
     }
     cell.restaurantImageView.image = nil;
-    [[cell restaurantImageView] setImageWithURL:url];
+    [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:urlString]
+                 placeholderImage:nil];
     
     return cell;
 }
@@ -481,6 +520,8 @@
     [collectionView setHidden:(item == DMVenueList)];
     [self reloadMapAnnotations];
 }
+
+// MARK: - Restaurant cell delegate
 
 - (void)didSelectRedeem:(NSIndexPath *)index {
     DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)index.row];

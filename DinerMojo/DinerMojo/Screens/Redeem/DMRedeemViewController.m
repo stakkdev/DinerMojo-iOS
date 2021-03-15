@@ -17,6 +17,7 @@
 #import <Crashlytics/Answers.h>
 #import "FakeOfferObject.h"
 #import "RedeemPointsToNextLevelCell.h"
+#import <SDWebImage/SDWebImage.h>
 
 @interface DMRedeemViewController ()<DMRedeemTableViewCellDelegate>
 
@@ -186,9 +187,9 @@
    // [self.venueCuisineAreaLabel setText:[NSString stringWithFormat:@"%@ | %@", [[[self.selectedVenue categories] anyObject] name], self.selectedVenue.town]];
     [self.userPointsLabel setText:[NSString stringWithFormat:@"%@", self.currentUser.annual_points_balance]];
     DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
-    
-    NSURL *url = [NSURL URLWithString:[venueImage fullURL]];
-    [self.venueImageView setImageWithURL:url];
+
+    [self.venueImageView sd_setImageWithURL:[NSURL URLWithString:[venueImage fullURL]]
+                 placeholderImage:nil];
     
     _secondViewShadowView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:_secondViewShadowView.bounds cornerRadius:0].CGPath;
     [_secondViewShadowView.layer setShadowColor:[[UIColor blackColor] CGColor]];
@@ -489,15 +490,9 @@
         url = [NSURL URLWithString:[venueImage fullURL]];
     }
     
-    [imgView setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:NULL success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
-        [weakImgView setImage:image];
-    } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
-        DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
-        NSURL *newUrl = [NSURL URLWithString:[venueImage fullURL]];
-        if (newUrl != url) {
-            [weakImgView setImageWithURL:newUrl];
-        }
-    }];
+    [imgView sd_setImageWithURL:[NSURL URLWithString:url]
+                 placeholderImage:nil];
+    
 }
 
 

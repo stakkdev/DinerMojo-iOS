@@ -49,6 +49,13 @@
     }
 }
 
+- (IBAction)favoriteButtonPressed:(id)sender {
+    if(self.delegate != nil) {
+        [self.delegate didSelectFavourite:![self isFavourite] atIndex:self.index];
+    }
+    [self setIsFavourite:![self isFavourite]];
+}
+
 - (void)setRedeemVisibility:(BOOL)visibility {
     if(visibility) {
         [self.earnButton setImage:[UIImage imageNamed:@"redeem_icon_enabled"] forState:UIControlStateNormal];
@@ -64,6 +71,16 @@
     }
     else {
         [self.redeemButton setImage:[UIImage imageNamed:@"earn_icon_disabled"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)setIsFavourite:(BOOL)favourite {
+    _isFavourite = favourite;
+    if(favourite) {
+        [self.favouriteHeartImage setImage:[UIImage imageNamed:@"favourite_active"]];
+    }
+    else {
+        [self.favouriteHeartImage setImage:[UIImage imageNamed:@"favourite_inactive"]];
     }
 }
 

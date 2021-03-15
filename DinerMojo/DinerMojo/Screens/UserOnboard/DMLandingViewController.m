@@ -45,7 +45,7 @@
 {
     if ([[self userRequest] isUserLoggedIn] == YES || [[self userRequest] hasUserSkipped] == YES)
     {
-        [self goToVenues];
+        [self goToVenues:YES];
     }
     
     else

@@ -29,6 +29,7 @@
 #import <Crashlytics/Answers.h>
 #import "RestaurantInfoButtonEnum.h"
 #import "DMPopUpRequest.h"
+#import <SDWebImage/SDWebImage.h>
 
 @interface DMRestaurantInfoViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIActivityItemSource, BookingViewControllerDelegate>
 

@@ -11,6 +11,9 @@
 @interface DMVenueRequest : DMRequest
 
 - (void)downloadVenuesWithCompletionBlock:(RequestCompletion)completionBlock;
+- (void)cachedVenues:(RequestCompletion)completionBlock;
+- (void)cachedFavoriteVenues:(RequestCompletion)completionBlock;
+- (NSArray *)cachedFavouriteVenuesIds;
 - (void)downloadLiveVenuesWithCompletionBlock:(RequestCompletion)completionBlock;
 - (void)downloadVenueCategoriesWithCompletionBlock:(RequestCompletion)completionBlock;
 - (void)postBooking:(NSNumber *)venueId date:(NSString *)date number:(NSNumber *)number clientDesc:(NSString *)clientDesc phone:(NSString *)phone completion:(RequestCompletion)completionBlock;

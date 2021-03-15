@@ -30,6 +30,6 @@
 
 
 - (void)goToLandingPage;
-- (void)goToVenues;
+- (void)goToVenues:(BOOL *)initial;
 
 @end

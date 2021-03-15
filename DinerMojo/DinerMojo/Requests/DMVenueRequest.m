@@ -12,6 +12,50 @@
 
 @implementation DMVenueRequest
 
+- (void)cachedVenues:(RequestCompletion)completionBlock;
+{
+    
+    NSFetchRequest *venuesFetch = [NSFetchRequest fetchRequestWithEntityName:@"DMVenue"];
+    NSError *error;
+    NSArray *fetchedVenues = [[self objectContext] executeFetchRequest:venuesFetch error:&error];
+    if (fetchedVenues == nil) {
+        NSLog(@"Error fetching: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
+    for (DMVenue *venue in fetchedVenues) {
+        
+    }
+    completionBlock(nil, fetchedVenues);
+}
+
+- (NSArray *)cachedFavouriteVenuesIds {
+    NSString *stringFavoriteIds = [[NSUserDefaults standardUserDefaults] objectForKey:@"favourite_ids"];
+    NSArray *all_ids = [stringFavoriteIds componentsSeparatedByString:@","];
+    return all_ids;
+}
+
+- (void)cachedFavoriteVenues:(RequestCompletion)completionBlock;
+{
+    NSFetchRequest *venuesFetch = [NSFetchRequest fetchRequestWithEntityName:@"DMVenue"];
+    NSError *error;
+    NSArray *fetchedVenues = [[self objectContext] executeFetchRequest:venuesFetch error:&error];
+    if (fetchedVenues == nil) {
+        NSLog(@"Error fetching: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
+    NSMutableArray *favs = [[NSMutableArray alloc] init];
+    NSArray *all_ids = [self cachedFavouriteVenuesIds];
+    for (DMVenue *venue in fetchedVenues) {
+        NSString* stringId = [NSString stringWithFormat:@"%d",venue.modelIDValue];
+        if([all_ids containsObject:stringId]) {
+            [favs addObject:venue];
+        }
+    }
+    completionBlock(nil, favs);
+}
+
+
+
 - (void)downloadVenuesWithCompletionBlock:(RequestCompletion)completionBlock;
 {
     [self GET:@"venues" withParams:nil withCompletionBlock:^(NSError *error, id results) {

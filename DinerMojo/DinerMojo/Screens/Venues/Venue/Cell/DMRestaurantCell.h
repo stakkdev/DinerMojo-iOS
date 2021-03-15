@@ -27,8 +27,12 @@
 @property (nonatomic, weak) id <DMRestaurantCellDelegate> delegate;
 @property (strong, nonatomic) NSIndexPath* index;
 @property (nonatomic) int state;
+@property (weak, nonatomic) IBOutlet UIImageView *favouriteHeartImage;
+@property (weak, nonatomic) IBOutlet UIButton *favouriteButton;
+@property BOOL isFavourite;
 
 - (void)setEarnVisibility:(BOOL)visibility;
 - (void)setRedeemVisibility:(BOOL)visibility;
+- (void)setIsFavourite:(BOOL)favourite;
 
 @end

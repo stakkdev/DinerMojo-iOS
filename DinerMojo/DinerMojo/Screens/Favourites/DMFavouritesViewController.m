@@ -14,11 +14,13 @@
 #import "TabsFilterView.h"
 #import <PureLayout/PureLayout.h>
 #import "DinerMojo-Swift.h"
+#import <SDWebImage/SDWebImage.h>
 
 
 @interface DMFavouritesViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate>
 
 @property(strong, nonatomic) DMVenueModelController *venueModelController;
+@property (strong, nonatomic) DMVenueRequest* venueRequest;
 
 @property(nonatomic, strong) UIBarButtonItem *editButton;
 @property(strong, nonatomic) UIToolbar *toolBar;
@@ -44,6 +46,7 @@
 
     [self addEditBtn];
 
+    _venueRequest = [DMVenueRequest new];
     _venueModelController = [DMVenueModelController new];
     _venueModelController.state = DMVenueListFavourite;
     [self favouritesTableView].allowsMultipleSelectionDuringEditing = YES;
@@ -54,7 +57,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self downloadVenues];
-    [[self favouritesTableView] setHidden:YES];
 }
 
 - (void)addEditBtn {
@@ -96,23 +98,23 @@
     NSNumber *longitude = item.longitude;
     CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
 
+    [[cell restaurantType] setText:[NSString stringWithFormat:@"%@", category]];
     double distance = [[DMLocationServices sharedInstance] userLocationDistanceFromLocation:venueCoordinates];
-
-    MKDistanceFormatter *df = [MKDistanceFormatter new];
-    [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
-
-    NSString *friendlyDistance = [df stringFromDistance:distance];
-
-    // TODO: Once we have user location, calculate distance based on the longitude and latitude
-    [[cell restaurantDistance] setText:[NSString stringWithFormat:@"%@", friendlyDistance]];
+    if (distance == 0 ) {
+        [[cell restaurantDistance] setText:@""];
+    } else {
+        MKDistanceFormatter *df = [MKDistanceFormatter new];
+        [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
+        NSString *friendlyDistance = [df stringFromDistance:distance];
+        [[cell restaurantDistance] setText:[NSString stringWithFormat:@"%@", friendlyDistance]];
+    }
     
     if([venueImage fullURL].length == 0) {
         [[cell restaurantImageView] setImage:[self imageWithColor:[UIColor grayColor]]];
-    } else {
-        NSURL *url = [NSURL URLWithString:[venueImage fullURL]];
-        [[cell restaurantImageView] setImageWithURL:url];
+    } else {        
+        [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:[venueImage fullURL]]
+                     placeholderImage:nil];
     }
-
 
     CGFloat alpha = (CGFloat) (([[self favouritesTableView] isEditing]) ? 0.0 : 1.0);
     cell.restaurantDistance.alpha = alpha;
@@ -242,29 +244,47 @@
     [self.emptyTableLabel setHidden:NO];
     [[self activityIndicator] startAnimating];
     [self.emptyTableLabel setText:@"Fetching favourites..."];
+    [[ self venueRequest] cachedFavoriteVenues:^(NSError *error, id results) {
+        [self gotFavouriteVenuesCompletionBlock:error id:results final:false];
+    }];
+
 
     [[self userRequest] downloadFavouriteVenuesWithCompletionBlock:^(NSError *error, id results) {
-        if (error == nil) {
-            _venues = results;
-            NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-            _venues = [_venues sortedArrayUsingDescriptors:@[sort]];
-            
-            [UIView transitionWithView:self.favouritesTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
-                [self.favouritesTableView reloadData];
-            }               completion:nil];
+        [self gotFavouriteVenuesCompletionBlock:error id:results final:true];
+    }];
+}
 
-            [[self favouritesTableView] setHidden:NO];
+- (void)gotFavouriteVenuesCompletionBlock:(NSError *)error id:(NSArray *)results final: (BOOL)final {
+    if (error == nil) {
+        [self updateVenues:results];
+        [UIView transitionWithView:self.favouritesTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
+            [self.favouritesTableView reloadData];
+        }               completion:nil];
 
-            [self toggleNoFavouritesLabel];
-            [self toggleEditButtonEnabled];
+        [[self favouritesTableView] setHidden:NO];
 
-        } else {
+        [self toggleNoFavouritesLabel];
+        [self toggleEditButtonEnabled];
+        if (!final) {
+            [[self activityIndicator] stopAnimating];
+        }
+    } else {
+        if (final && _venues.count == 0) {
             [self.emptyTableLabel setHidden:NO];
             [self.emptyTableLabel setText:@"Can't fetch favourites. Check your connection"];
+        } else {
+            // Do nothing, let network call finish
         }
-
+    }
+    if (final) {
         [[self activityIndicator] stopAnimating];
-    }];
+    }
+}
+
+- (void)updateVenues:(NSArray *)venues {
+    NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    _venues = [venues sortedArrayUsingDescriptors:@[sort]];
+    
 }
 
 
@@ -292,6 +312,7 @@
     } else {
         [[self emptyTableLabel] setHidden:YES];
         [[self emptyTableDescriptionView] setHidden:YES];
+        [[self favouritesTableView] setHidden:NO];
     }
 
 }
@@ -309,7 +330,7 @@
         for (DMVenue *venue in venuesToDelete) {
             [mutableResults removeObject:venue];
         }
-        _venues = mutableResults;
+        [self updateVenues:results];
         [[self venueModelController] setVenues:results];
 
         [[self favouritesTableView] reloadData];

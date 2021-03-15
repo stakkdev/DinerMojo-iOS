@@ -15,6 +15,7 @@
 #import "DMLocationServices.h"
 #import <MapKit/MapKit.h>
 #import "DMVenueRequest.h"
+#import <SDWebImage/SDWebImage.h>
 
 typedef NS_ENUM(NSInteger, DMFilter) {
     DMClosest = 0,
@@ -224,9 +225,8 @@ typedef NS_ENUM(NSInteger, DMFilter) {
     
     DMVenueImage *venueImage = (DMVenueImage *) [item primaryImage];
     
-    
-    NSURL *url = [NSURL URLWithString:[venueImage fullURL]];
-    [[cell venueImageView] setImageWithURL:url];
+    [[cell venueImageView]sd_setImageWithURL:[NSURL URLWithString:[venueImage fullURL]]
+                 placeholderImage:nil];
 
     NSNumber *latitude = item.latitude;
     NSNumber *longitude = item.longitude;

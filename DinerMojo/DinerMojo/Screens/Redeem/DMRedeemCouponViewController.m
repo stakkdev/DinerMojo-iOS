@@ -12,6 +12,7 @@
 #import "DMVenueImage.h"
 #import "DMDineNavigationController.h"
 #import "DMEarnReviewViewController.h"
+#import <SDWebImage/SDWebImage.h>
 
 
 @interface DMRedeemCouponViewController ()
@@ -65,8 +66,8 @@
     [self.userPointsLabel setText:[NSString stringWithFormat:@"%@", self.currentUser.annual_points_balance]];
     DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
     
-    NSURL *url = [NSURL URLWithString:[venueImage fullURL]];
-    [self.venueImageView setImageWithURL:url];
+    [self.venueImageView sd_setImageWithURL:[NSURL URLWithString:[venueImage fullURL]]
+                 placeholderImage:nil];
     
     [self.offerDescriptionLabel setText:self.selectedOfferItem.title];
     

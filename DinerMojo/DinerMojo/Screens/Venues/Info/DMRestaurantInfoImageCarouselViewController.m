@@ -8,6 +8,7 @@
 
 #import "DMRestaurantInfoImageCarouselViewController.h"
 #import "DMVenueImage.h"
+#import <SDWebImage/SDWebImage.h>
 
 
 
@@ -72,7 +73,8 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin,0,self.scrollView.frame.size.width,self.scrollView.frame.size.height)];
         [imageView setContentMode:UIViewContentModeScaleAspectFill];
         [imageView setClipsToBounds:YES];
-        [imageView setImageWithURL:[NSURL URLWithString:url]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:url]
+                     placeholderImage:[UIImage imageNamed:@"white"]];
         [[self scrollView] addSubview:imageView];
         count ++;
     }
