@@ -59,6 +59,7 @@
     
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
+    [self updateFavouritesInitially:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -75,6 +76,8 @@
     [self.navigationController.navigationBar.topItem setTitle:@"Venues"];
     [self.activityIndicator startAnimating];
     [self downloadVenues];
+    [self updateFavouritesInitially:NO];
+   
     
     if([NSUserDefaults.standardUserDefaults boolForKey:@"showNotificationsOverlay"] && ![NSUserDefaults.standardUserDefaults boolForKey:@"shownNotificationsOverlay"]) {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -462,6 +465,10 @@
 
     [cell setEarnVisibility:item.allows_earnsValue];
     [cell setRedeemVisibility:item.allows_redemptionsValue];
+    
+    NSString* stringId = [NSString stringWithFormat:@"%d",item.modelIDValue];
+    BOOL isFavourite = [_favouriteIds containsObject:stringId];
+    [cell setIsFavourite:isFavourite];
 
     NSNumber *latitude = item.latitude;
     NSNumber *longitude = item.longitude;
@@ -561,5 +568,27 @@
         [self presentOperationCompleteViewControllerWithStatusAttributed:DMOperationCompletePopUpViewControllerStatusError title:@"Reedem" description:cannotRedeem2 style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
     }
 }
+
+- (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath *)index {
+    DMVenue *venue =  [[[self mapModelController] filteredVenues] objectAtIndex:[index row]];
+    [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            [self displayError:@"Error" message:@"Unable to sync favourites. Please check your connection and try again."];
+            [restaurantsTableView reloadRowsAtIndexPaths: [[NSArray alloc]initWithObjects:index, nil] withRowAnimation:UITableViewRowAnimationFade];
+
+        }
+        [self updateFavouritesInitially:false];
+    }];
+}
+
+// MARK: - Util
+
+-(void)displayError:(NSString *)title message:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle: UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:true completion:nil];
+}
+
 
 @end

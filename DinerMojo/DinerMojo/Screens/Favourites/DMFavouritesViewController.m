@@ -125,8 +125,7 @@
 
     [cell setEarnVisibility:([item.allows_earns isEqualToNumber:[NSNumber numberWithBool:YES]]) ? YES : NO];
     [cell setRedeemVisibility:([item.allows_redemptions isEqualToNumber:[NSNumber numberWithBool:YES]]) ? YES : NO];
-
-
+    [cell setIsFavourite:YES];
     return cell;
 }
 
@@ -134,7 +133,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
     return 166;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[self favouritesTableView] isEditing]) {
@@ -187,34 +185,7 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void)didSelectRedeem:(NSIndexPath *)index {
-    DMVenue *item = [_venues objectAtIndex:index.row];
-    if([item.allows_earns isEqualToNumber:@YES]) {
-        [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Earn points here!" description:NSLocalizedString(@"earn.message.available", nil) style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
-    }
-    else {
-        [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Earn" description:[[NSString alloc] initWithFormat:@"%@ %@", NSLocalizedString(@"earn.message.not.available", nil), item.name] style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
-    }
-}
 
-- (void)didSelectEarn:(NSIndexPath *)index {
-    DMVenue *item = [_venues objectAtIndex:index.row];
-    if([item.allows_redemptions isEqualToNumber:@YES]) {
-        [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Reedem points here!" description:NSLocalizedString(@"redeem.message.available", nil) style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
-    }
-    else {
-        NSString *cannotReedem = [[NSString alloc] initWithFormat:@"You can't redeem points at %@ but you can earn them here and reedem them anywhere you see this symbol ", item.name];
-        NSMutableAttributedString *cannotRedeem2 = [[NSMutableAttributedString alloc] initWithString:cannotReedem];
-        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-        textAttachment.image = [UIImage imageNamed:@"redeem_icon_enabled"];
-        textAttachment.bounds = CGRectMake(0, 0, 20, 20);
-        
-        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
-        [cannotRedeem2 appendAttributedString:attrStringWithImage];
-        
-        [self presentOperationCompleteViewControllerWithStatusAttributed:DMOperationCompletePopUpViewControllerStatusError title:@"Reedem" description:cannotRedeem2 style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
-    }
-}
 
 - (void)toggleEditMode; {
     [[self favouritesTableView] setEditing:![[self favouritesTableView] isEditing] animated:YES];
@@ -486,6 +457,58 @@
     self.filterItems = filterItems;
     _venueModelController.filters = filterItems;
     [self.favouritesTableView reloadData];
+}
+
+// MARK: - Restaurant cell delegate
+
+- (void)didSelectRedeem:(NSIndexPath *)index {
+    DMVenue *item = [_venues objectAtIndex:index.row];
+    if([item.allows_earns isEqualToNumber:@YES]) {
+        [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Earn points here!" description:NSLocalizedString(@"earn.message.available", nil) style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
+    }
+    else {
+        [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Earn" description:[[NSString alloc] initWithFormat:@"%@ %@", NSLocalizedString(@"earn.message.not.available", nil), item.name] style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
+    }
+}
+
+- (void)didSelectEarn:(NSIndexPath *)index {
+    DMVenue *item = [_venues objectAtIndex:index.row];
+    if([item.allows_redemptions isEqualToNumber:@YES]) {
+        [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Reedem points here!" description:NSLocalizedString(@"redeem.message.available", nil) style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
+    }
+    else {
+        NSString *cannotReedem = [[NSString alloc] initWithFormat:@"You can't redeem points at %@ but you can earn them here and reedem them anywhere you see this symbol ", item.name];
+        NSMutableAttributedString *cannotRedeem2 = [[NSMutableAttributedString alloc] initWithString:cannotReedem];
+        NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+        textAttachment.image = [UIImage imageNamed:@"redeem_icon_enabled"];
+        textAttachment.bounds = CGRectMake(0, 0, 20, 20);
+        
+        NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+        [cannotRedeem2 appendAttributedString:attrStringWithImage];
+        
+        [self presentOperationCompleteViewControllerWithStatusAttributed:DMOperationCompletePopUpViewControllerStatusError title:@"Reedem" description:cannotRedeem2 style:UIBlurEffectStyleExtraLight actionButtonTitle:nil color:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
+    }
+}
+
+- (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath *)index {
+    DMVenue *venue =  [_venues objectAtIndex:[index row]];
+    [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            [self displayError:@"Error" message:@"Unable to sync favourites. Please check your connection and try again."];
+//            []
+            [[self favouritesTableView] reloadRowsAtIndexPaths: [[NSArray alloc]initWithObjects:index, nil] withRowAnimation:UITableViewRowAnimationFade];
+
+        }
+    }];
+}
+
+// MARK: - Util
+
+-(void)displayError:(NSString *)title message:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle: UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 

@@ -15,6 +15,47 @@
 
 #pragma mark - Public methods
 
+
+- (void)saveFavoriteIds:(NSArray*)ids {
+    NSMutableString *stringFavoriteIds = [[NSMutableString alloc] initWithString:@""];
+    NSInteger index = 0;
+    for(NSString* id in ids) {
+        NSString* stringId = [NSString stringWithFormat:@"%@",id];
+        if (index == 0) {
+            [stringFavoriteIds appendString:stringId];
+        } else {
+            [stringFavoriteIds appendString:@","];
+            [stringFavoriteIds appendString:stringId];
+        }
+        index += 1;
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:stringFavoriteIds forKey:@"favourite_ids"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)addFavouriteVenueId:(NSString *)addId {
+    NSString *stringFavoriteIds = [[NSUserDefaults standardUserDefaults] objectForKey:@"favourite_ids"];
+    NSArray *all_ids = [stringFavoriteIds componentsSeparatedByString:@","];
+    NSMutableArray *new_Ids = [NSMutableArray new];
+    for(NSString *eachId in all_ids) {
+        [new_Ids addObject:eachId];
+    }
+    [new_Ids addObject:addId];
+    [self saveFavoriteIds:new_Ids];
+}
+
+- (void)removeFavouriteVenueId:(NSString*)removeId {
+    NSString *stringFavoriteIds = [[NSUserDefaults standardUserDefaults] objectForKey:@"favourite_ids"];
+    NSArray *all_ids = [stringFavoriteIds componentsSeparatedByString:@","];
+    NSMutableArray *new_Ids = [NSMutableArray new];
+    for(NSString *eachId in all_ids) {
+        if (eachId != removeId) {
+            [new_Ids addObject:eachId];
+        }
+    }
+    [self saveFavoriteIds:new_Ids];
+}
+
 - (void)downloadFavouriteVenuesWithCompletionBlock:(RequestCompletion)completionBlock
 {
     [self GET:@"user/me/favourite_venues" withParams:nil withCompletionBlock:^(NSError *error, id results) {
@@ -32,11 +73,14 @@
                         [all_ids addObject:dict[@"id"]];
                     }
                     NSMutableArray *favs = [[NSMutableArray alloc] init];
+                    NSMutableArray *favsIds = [[NSMutableArray alloc] init];
                     for(DMVenue *venue in [[mappedUser favourite_venues] allObjects]) {
                         if([all_ids containsObject:venue.primitiveModelID]) {
                             [favs addObject:venue];
+                            [favsIds addObject:[venue modelID]];
                         }
                     }
+                    [self saveFavoriteIds:favsIds];
                     
                     completionBlock(nil, favs);
                 }
@@ -74,17 +118,37 @@
             DMVenue *addedVenue = [DMMappingHelper mapVenue:results withMapping:[[self mappingProvider] venueMappingWithoutNews] inContext:[self objectContext]];
             
             DMUser *currentUser = [self currentUser];
-            
+            NSString *strValue = [NSString stringWithFormat:@"%@",[addedVenue modelID]];
+            [self addFavouriteVenueId:strValue];
             completionBlock(nil, [[currentUser favourite_venues] allObjects]);
+       
             [currentUser addFavourite_venuesObject:addedVenue];
             
-            [self saveInContext:[self objectContext]];
-        }
+            [self saveInContext:[self objectContext]];        }
         else
         {
             completionBlock(error, nil);
         }
     }];
+}
+
+
+
+- (void)toggleVenue:(DMVenue *)venue to:(BOOL)favourite withCompletionBlock:(RequestCompletion)completionBlock {
+    if (favourite) {
+        [self addVenue:venue withCompletionBlock:completionBlock];
+    } else {
+        [self unfavouriteVenue:venue withCompletionBlock:completionBlock];
+    }
+}
+
+- (void)unfavouriteVenue:(DMVenue *)venue withCompletionBlock:(RequestCompletion)completionBlock
+{
+    NSMutableArray *venue_ids = [NSMutableArray new];
+    [venue_ids addObject:venue.modelID];
+                                 
+    [self deleteVenues:venue_ids withCompletionBlock:completionBlock];
+
 }
 
 
@@ -102,6 +166,12 @@
             for (DMVenue *venue in deletedVenues)
             {
                 [currentUser removeFavourite_venuesObject:venue];
+               
+            }
+            
+            for (id removedId in venues) {
+                NSString *strValue = [NSString stringWithFormat:@"%@",removedId];
+                [self removeFavouriteVenueId:strValue];
             }
             
             [self saveInContext:[self objectContext]];

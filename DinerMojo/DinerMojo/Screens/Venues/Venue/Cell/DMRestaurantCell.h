@@ -10,6 +10,8 @@
 @optional
 - (void)didSelectEarn:(NSIndexPath*)index;
 - (void)didSelectRedeem:(NSIndexPath*)index;
+- (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath*)index;
+
 @end
 
 
