@@ -20,8 +20,10 @@
 
 @property (weak, nonatomic) IBOutlet DMButton *buttonMap;
 @property (weak, nonatomic) IBOutlet DMButton *buttonList;
+
 @property (nonatomic, weak) id <TabsFilterViewDelegate> delegate;
 
 - (void)selectTabForType:(DMVenueListState)type;
+- (void)setup;
 
 @end

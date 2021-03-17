@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -449,11 +450,18 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="GUH-z8-B7Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JBk-5X-xrS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06f-Hb-EkC" customClass="SearchBar" customModule="DinerMojo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="56" width="375" height="67"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="006-dh-JiS"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZw-yT-YOP">
-                                <rect key="frame" x="0.0" y="56" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="123" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rxJ-qP-V4F"/>
                                 </constraints>
@@ -473,7 +481,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VpV-Om-eIW">
-                                <rect key="frame" x="0.0" y="96" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="163" width="375" height="435"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VenueCell" id="5ZF-ps-tQY">
@@ -491,7 +499,7 @@ How about we take you for a quick tour before you get started?</string>
                                 </connections>
                             </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lue-Ty-0IL">
-                                <rect key="frame" x="0.0" y="96" width="375" height="453"/>
+                                <rect key="frame" x="0.0" y="163" width="375" height="386"/>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ODz-8X-oh1">
                                 <rect key="frame" x="0.0" y="419" width="375" height="130"/>
@@ -522,7 +530,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxY-fs-qdw">
-                                                    <rect key="frame" x="9" y="61" width="48" height="24"/>
+                                                    <rect key="frame" x="9" y="63.5" width="45.5" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="OHs-w4-AXT"/>
                                                     </constraints>
@@ -531,13 +539,13 @@ How about we take you for a quick tour before you get started?</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAA-gu-yQI">
-                                                    <rect key="frame" x="9" y="86" width="19.5" height="18"/>
+                                                    <rect key="frame" x="9" y="88.5" width="20.5" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lp4-bm-61s" userLabel="EarnButton">
-                                                    <rect key="frame" x="217" y="82.5" width="25" height="25"/>
+                                                    <rect key="frame" x="217" y="84" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="C6h-DC-clg"/>
                                                         <constraint firstAttribute="height" constant="25" id="dov-D1-6wQ"/>
@@ -548,7 +556,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     </connections>
                                                 </button>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7m-dh-q4l">
-                                                    <rect key="frame" x="76.5" y="85" width="30" height="20"/>
+                                                    <rect key="frame" x="76.5" y="86.5" width="30" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="mMH-19-2jP"/>
                                                     </constraints>
@@ -557,7 +565,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHN-nu-QKe">
-                                                    <rect key="frame" x="45" y="85" width="26.5" height="20"/>
+                                                    <rect key="frame" x="46" y="86.5" width="25.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="lJO-R1-qFh"/>
                                                     </constraints>
@@ -566,7 +574,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oan-P6-kP5">
-                                                    <rect key="frame" x="33.5" y="85" width="6.5" height="20"/>
+                                                    <rect key="frame" x="34.5" y="86.5" width="6.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="x02-s4-k9a"/>
                                                     </constraints>
@@ -575,7 +583,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fc2-9C-KV7" userLabel="RedeemButton">
-                                                    <rect key="frame" x="182" y="82.5" width="25" height="25"/>
+                                                    <rect key="frame" x="182" y="84" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="lTt-vc-eqr"/>
                                                         <constraint firstAttribute="width" constant="25" id="oAA-mj-j3k"/>
@@ -623,27 +631,38 @@ How about we take you for a quick tour before you get started?</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qXX-8s-38M">
+                                <rect key="frame" x="0.0" y="163" width="375" height="386"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VpV-Om-eIW" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="04Q-1V-1p8"/>
                             <constraint firstItem="ODz-8X-oh1" firstAttribute="bottom" secondItem="lue-Ty-0IL" secondAttribute="bottom" id="05C-14-aLN"/>
+                            <constraint firstAttribute="trailing" secondItem="qXX-8s-38M" secondAttribute="trailing" id="6XL-1j-p2S"/>
                             <constraint firstItem="ODz-8X-oh1" firstAttribute="trailing" secondItem="lue-Ty-0IL" secondAttribute="trailing" id="7da-0v-Ye2"/>
                             <constraint firstItem="lue-Ty-0IL" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="8a2-fk-Vs0"/>
-                            <constraint firstItem="NZw-yT-YOP" firstAttribute="top" secondItem="0o8-H5-EET" secondAttribute="bottom" id="B0b-cK-Jcz"/>
                             <constraint firstAttribute="centerX" secondItem="GYP-QJ-cBn" secondAttribute="centerX" id="Cvm-g3-IMG"/>
                             <constraint firstAttribute="bottom" secondItem="VpV-Om-eIW" secondAttribute="bottom" id="FfF-4V-3Fb"/>
                             <constraint firstAttribute="trailing" secondItem="NZw-yT-YOP" secondAttribute="trailing" id="GtX-4c-JBH"/>
+                            <constraint firstItem="06f-Hb-EkC" firstAttribute="top" secondItem="0o8-H5-EET" secondAttribute="bottom" id="Lsl-AL-BbB"/>
+                            <constraint firstItem="GUH-z8-B7Q" firstAttribute="top" secondItem="qXX-8s-38M" secondAttribute="bottom" id="NjW-jY-jQw"/>
+                            <constraint firstAttribute="trailing" secondItem="06f-Hb-EkC" secondAttribute="trailing" id="Wqu-kA-gy3"/>
+                            <constraint firstItem="qXX-8s-38M" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="XGr-hX-hcU"/>
                             <constraint firstItem="EsP-gE-4So" firstAttribute="top" secondItem="GYP-QJ-cBn" secondAttribute="bottom" constant="-1" id="Xcu-5e-0Jy"/>
                             <constraint firstAttribute="centerX" secondItem="EsP-gE-4So" secondAttribute="centerX" id="ZTb-hc-5TK"/>
                             <constraint firstItem="GUH-z8-B7Q" firstAttribute="top" secondItem="lue-Ty-0IL" secondAttribute="bottom" id="ajc-me-IBO"/>
                             <constraint firstAttribute="trailing" secondItem="lue-Ty-0IL" secondAttribute="trailing" id="cKy-7S-iZB"/>
                             <constraint firstItem="NZw-yT-YOP" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="caE-zI-7eC"/>
+                            <constraint firstItem="06f-Hb-EkC" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="hdC-0e-Pt2"/>
                             <constraint firstAttribute="trailing" secondItem="VpV-Om-eIW" secondAttribute="trailing" id="iDP-c3-LPp"/>
+                            <constraint firstItem="06f-Hb-EkC" firstAttribute="bottom" secondItem="NZw-yT-YOP" secondAttribute="top" id="jG8-xo-TsD"/>
                             <constraint firstItem="lue-Ty-0IL" firstAttribute="top" secondItem="NZw-yT-YOP" secondAttribute="bottom" id="nkN-XJ-59H"/>
                             <constraint firstItem="ODz-8X-oh1" firstAttribute="leading" secondItem="lue-Ty-0IL" secondAttribute="leading" id="quc-Vu-ze4"/>
                             <constraint firstAttribute="centerY" secondItem="EsP-gE-4So" secondAttribute="centerY" id="s3w-eA-YtV"/>
                             <constraint firstItem="VpV-Om-eIW" firstAttribute="top" secondItem="NZw-yT-YOP" secondAttribute="bottom" id="vfk-vc-Szw"/>
+                            <constraint firstItem="qXX-8s-38M" firstAttribute="top" secondItem="NZw-yT-YOP" secondAttribute="bottom" id="yAg-dp-26s"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -662,6 +681,8 @@ How about we take you for a quick tour before you get started?</string>
                         <outlet property="downloadLabel" destination="EsP-gE-4So" id="bIt-7Z-LY0"/>
                         <outlet property="mapView" destination="lue-Ty-0IL" id="bDA-ib-Jun"/>
                         <outlet property="restaurantsTableView" destination="VpV-Om-eIW" id="ECJ-Sx-xQx"/>
+                        <outlet property="searchBar" destination="06f-Hb-EkC" id="UcT-cp-qQW"/>
+                        <outlet property="suggestionsTableView" destination="qXX-8s-38M" id="rfI-6f-1Uy"/>
                         <outlet property="tabsFilterViewContainer" destination="NZw-yT-YOP" id="5P8-hy-IpO"/>
                         <segue destination="DfA-xe-x2l" kind="show" identifier="restaurantInfoSegue" id="GeW-XH-8dT"/>
                     </connections>
@@ -683,7 +704,7 @@ How about we take you for a quick tour before you get started?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRY-c0-1YW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="1400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1351"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkH-sY-vm9" userLabel="View in ScollView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
@@ -1740,15 +1761,15 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="531"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1Ke-Cy-zSU">
-                                <rect key="frame" x="281.5" y="207.5" width="37" height="37"/>
+                                <rect key="frame" x="281.5" y="242" width="37" height="37"/>
                                 <color key="color" red="0.3411764706" green="0.73725490199999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can't fetch news. Check your connection." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjp-qo-5jM">
-                                <rect key="frame" x="147.5" y="240.5" width="305" height="50"/>
+                                <rect key="frame" x="147.5" y="275" width="305" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Iyl-Bm-DTh"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Wlj-dU-rLe"/>
@@ -1759,7 +1780,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4s-2Z-LN5">
-                                <rect key="frame" x="0.0" y="290.5" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="325" width="600" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing to report right now but we can notify you when there is" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0c-iA-79b">
                                         <rect key="frame" x="171" y="0.0" width="258" height="60"/>
@@ -1790,7 +1811,7 @@ How about we take you for a quick tour before you get started?</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="124" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-uu-KfR">
-                                <rect key="frame" x="0.0" y="56" width="600" height="426"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -4642,11 +4663,11 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="MGN-Wz-m6N"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="y3N-0d-bbG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-Fn-zW3">
-                                <rect key="frame" x="0.0" y="56" width="375" height="493"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -4928,7 +4949,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="490"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8l-ck-nNg" userLabel="Cross" customClass="DMButton">
-                                                <rect key="frame" x="14" y="14" width="18" height="22"/>
+                                                <rect key="frame" x="14" y="14" width="17" height="25"/>
                                                 <state key="normal" image="cross">
                                                     <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5284,7 +5305,7 @@ That's fine. Just click the button below to finish registering.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="290"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Mf-wk-LAO" userLabel="Cross" customClass="DMButton">
-                                                <rect key="frame" x="14" y="14" width="18" height="22"/>
+                                                <rect key="frame" x="14" y="14" width="17" height="25"/>
                                                 <state key="normal" image="cross">
                                                     <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -7234,18 +7255,18 @@ That's fine. Just click the button below to finish registering.</string>
                         <viewControllerLayoutGuide type="bottom" id="4GC-J6-syk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fBx-pZ-n0V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-S3-VOd">
-                                <rect key="frame" x="0.0" y="56" width="375" height="41"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="49G-bD-il4"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DUI-EM-J7E">
-                                <rect key="frame" x="0.0" y="97" width="375" height="509"/>
+                                <rect key="frame" x="0.0" y="41" width="375" height="634"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -7279,10 +7300,10 @@ That's fine. Just click the button below to finish registering.</string>
     </scenes>
     <designables>
         <designable name="0qR-Dd-4yg">
-            <size key="intrinsicContentSize" width="48" height="30"/>
+            <size key="intrinsicContentSize" width="48" height="33"/>
         </designable>
         <designable name="1Mf-wk-LAO">
-            <size key="intrinsicContentSize" width="18" height="22"/>
+            <size key="intrinsicContentSize" width="17" height="25"/>
         </designable>
         <designable name="1tJ-RQ-eYN">
             <size key="intrinsicContentSize" width="69.5" height="20.5"/>
@@ -7291,13 +7312,13 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="37" height="38"/>
         </designable>
         <designable name="3jS-c3-17P">
-            <size key="intrinsicContentSize" width="94" height="30"/>
+            <size key="intrinsicContentSize" width="95" height="33"/>
         </designable>
         <designable name="9ye-kv-GsS">
             <size key="intrinsicContentSize" width="133" height="20"/>
         </designable>
         <designable name="Adz-l0-0LF">
-            <size key="intrinsicContentSize" width="30" height="31"/>
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="B3u-fZ-6cl">
             <size key="intrinsicContentSize" width="70" height="19"/>
@@ -7345,7 +7366,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="127" height="31"/>
         </designable>
         <designable name="WZL-AL-F00">
-            <size key="intrinsicContentSize" width="69" height="31"/>
+            <size key="intrinsicContentSize" width="72" height="34"/>
         </designable>
         <designable name="Wfk-90-U9A">
             <size key="intrinsicContentSize" width="21" height="22"/>
@@ -7384,7 +7405,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="36" height="33"/>
         </designable>
         <designable name="fRL-oC-Dho">
-            <size key="intrinsicContentSize" width="73" height="31"/>
+            <size key="intrinsicContentSize" width="73" height="34"/>
         </designable>
         <designable name="gHi-df-B5C">
             <size key="intrinsicContentSize" width="39.5" height="20.5"/>
@@ -7417,7 +7438,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="81" height="31"/>
         </designable>
         <designable name="s8l-ck-nNg">
-            <size key="intrinsicContentSize" width="18" height="22"/>
+            <size key="intrinsicContentSize" width="17" height="25"/>
         </designable>
         <designable name="wAv-Il-LRF">
             <size key="intrinsicContentSize" width="30" height="30"/>
@@ -7436,14 +7457,14 @@ That's fine. Just click the button below to finish registering.</string>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="WYO-TQ-jGX"/>
-        <segue reference="Ea4-BB-L2e"/>
+        <segue reference="qmf-ce-keD"/>
+        <segue reference="ia8-4N-9rp"/>
         <segue reference="h0d-87-Ktu"/>
         <segue reference="7rn-ew-alx"/>
         <segue reference="KqA-M3-qRP"/>
         <segue reference="rgP-m8-3sb"/>
-        <segue reference="mXT-sL-hV9"/>
-        <segue reference="n98-ZV-0Mt"/>
+        <segue reference="s4L-uq-5ch"/>
+        <segue reference="GeW-XH-8dT"/>
         <segue reference="LOx-J2-VUw"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -7455,7 +7476,7 @@ That's fine. Just click the button below to finish registering.</string>
         <image name="back_arrow_grey" width="21" height="16"/>
         <image name="book" width="31" height="26.5"/>
         <image name="continue_tick" width="60" height="60"/>
-        <image name="cross" width="18" height="16"/>
+        <image name="cross" width="17" height="25"/>
         <image name="earn_icon_disabled" width="29.5" height="31"/>
         <image name="earn_icon_enabled" width="29.5" height="31"/>
         <image name="ellipse" width="82" height="82"/>
@@ -7482,5 +7503,8 @@ That's fine. Just click the button below to finish registering.</string>
         <image name="tab_venues" width="25" height="26"/>
         <image name="time" width="17" height="17"/>
         <image name="tiny_dropdown" width="8" height="5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

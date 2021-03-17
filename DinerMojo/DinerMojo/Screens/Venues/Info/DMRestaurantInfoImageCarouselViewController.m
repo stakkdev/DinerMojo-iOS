@@ -26,7 +26,8 @@
         self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
     }
 
-    
+    [self.navigationController setNavigationBarHidden:NO];
+
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = CGRectMake(0, self.scrollView.frame.size.height - 70, self.view.frame.size.width, 70);
     /*layer.colors = [NSArray arrayWithObjects:

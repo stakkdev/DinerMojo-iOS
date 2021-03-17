@@ -15,6 +15,7 @@
 #import "DinerMojo-Swift.h"
 #import "DMVenueCategory.h"
 #import <GBVersionTracking/GBVersionTracking.h>
+@import GooglePlaces;
 
 @interface AppDelegate ()
 
@@ -47,6 +48,8 @@
                                                        diskCapacity:200 * 1024 * 1024
                                                            diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
+    
+    [GMSPlacesClient provideAPIKey:@"AIzaSyBZyIn6Ms1qTovEyBWS4uNqwq1kBnyVepQ"];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];

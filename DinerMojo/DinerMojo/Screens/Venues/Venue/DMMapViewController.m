@@ -19,22 +19,28 @@
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import <Crashlytics/Answers.h>
 #import <SDWebImage/SDWebImage.h>
+#import "DinerMojo-Bridging-Header.h"
+@import GooglePlaces;
+
 
 @import MapKit;
 
-@interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MKMapViewDelegate>
+@interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MKMapViewDelegate, SearchBarDelegate, GMSAutocompleteTableDataSourceDelegate>
 
 @property (strong, nonatomic) DMVenueRequest* venueRequest;
 @property (strong, nonatomic) DMUserRequest* userRequest;
 @property (strong, nonatomic) DMVenueModelController* mapModelController;
 @property (weak, nonatomic) IBOutlet UIView *tabsFilterViewContainer;
+@property (weak, nonatomic) IBOutlet SearchBar *searchBar;
 @property (strong, nonatomic) TabsFilterView *tabsFilterView;
 @property (strong, nonatomic) NSArray *filterItems;
 @property (strong, nonatomic) NSArray *favouriteIds;
 
 @end
 
-@implementation DMMapViewController
+@implementation DMMapViewController {
+    GMSAutocompleteTableDataSource *suggestionsDataSource;
+}
 
 - (void)viewDidLoad
 {
@@ -60,6 +66,12 @@
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
     [self updateFavouritesInitially:YES];
+    
+    suggestionsDataSource = [[GMSAutocompleteTableDataSource alloc] init];
+    suggestionsDataSource.delegate = self;
+    suggestionsTableView.delegate = suggestionsDataSource;
+    suggestionsTableView.dataSource = suggestionsDataSource;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -67,17 +79,27 @@
     [super viewWillAppear:animated];
     [Answers logContentViewWithName:@"View venues" contentType:@"" contentId:@"" customAttributes:@{}];
     
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor brandColor]];
-    self.navigationController.view.backgroundColor = [UIColor brandColor];
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController setNavigationBarHidden:NO];
-    [self setTitle:@"Venues"];
-    [self.navigationItem setTitle:@"Venues"];
-    [self.navigationController.navigationBar.topItem setTitle:@"Venues"];
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    // Status bar
+    if (@available(iOS 13.0, *)) {
+        UIView *statusBar = [[UIView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.windowScene.statusBarManager.statusBarFrame] ;
+        statusBar.backgroundColor = [UIColor brandColor];
+        statusBar.tag = 1234567890;
+        [self.view addSubview:statusBar];
+    } else {
+        UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+
+        if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+            statusBar.backgroundColor = [UIColor restaurantsDeselected];
+        }
+    }
+    
+    
+
     [self.activityIndicator startAnimating];
     [self downloadVenues];
     [self updateFavouritesInitially:NO];
-   
     
     if([NSUserDefaults.standardUserDefaults boolForKey:@"showNotificationsOverlay"] && ![NSUserDefaults.standardUserDefaults boolForKey:@"shownNotificationsOverlay"]) {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -98,6 +120,10 @@
     
     [self checkIfShowBirthdayPopUp];
     [self checkIfAcceptedGDPR];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)checkIfAcceptedGDPR {
@@ -127,8 +153,10 @@
     [tabView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.tabsFilterViewContainer addSubview:tabView];
     [tabView autoPinEdgesToSuperviewEdges];
+    [tabView setup];
     self.tabsFilterView = tabView;
     [self.tabsFilterView selectTabForType:DMVenueMap];
+    self.searchBar.delegate = self;
 }
 
 
@@ -404,18 +432,7 @@
 }
 
 - (IBAction)sortButtonPressed:(id)sender {
-    [NSUserDefaults.standardUserDefaults setInteger:1 forKey:@"didSort"];
-    UINavigationController *vc = (UINavigationController*)DMViewControllersProvider.instance.sortVC;
-    
-    if (vc.viewControllers.count > 0) {
-        DMSortVenueFeedViewController *filterVC = vc.viewControllers[0];
-        filterVC.delegate = self;
-        filterVC.filterItems = self.filterItems;
-        filterVC.mapModelController = self.mapModelController;
-    }
-    
-    [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    [self presentViewController:vc animated:YES completion:nil];
+  
 }
 
 - (void)selectedFilterItems:(NSArray *)filterItems {
@@ -429,6 +446,23 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+// MARK: - Navigation
+
+- (void)presentSortViewController {
+    [NSUserDefaults.standardUserDefaults setInteger:1 forKey:@"didSort"];
+    UINavigationController *vc = (UINavigationController*)DMViewControllersProvider.instance.sortVC;
+    
+    if (vc.viewControllers.count > 0) {
+        DMSortVenueFeedViewController *filterVC = vc.viewControllers[0];
+        filterVC.delegate = self;
+        filterVC.filterItems = self.filterItems;
+        filterVC.mapModelController = self.mapModelController;
+    }
+    
+    [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 // MARK: - Table View Delegate
@@ -588,6 +622,64 @@
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:okAction];
     [self presentViewController:alert animated:true completion:nil];
+}
+
+
+#pragma mark - Search Bar Delegate
+
+- (void)inputValueChangedTo:(NSString * _Nullable)value { 
+    NSLog(@"inputValueChangedTo", value);
+    [suggestionsDataSource sourceTextHasChanged:value];
+}
+
+- (void)onFilterButtonPressed { 
+    [self presentSortViewController];
+}
+
+- (void)onLocationButtonPressed { 
+    NSLog(@"onLocationButtonPressed");
+}
+
+- (void)onSearchButtonPressed { 
+    NSLog(@"onSearchButtonPressed");
+}
+
+- (void)toggleSuggestionsTableViewTo:(BOOL)visible {
+    [suggestionsTableView setHidden:!visible];
+}
+
+#pragma mark - GMSAutocompleteTableDataSourceDelegate
+
+- (void)didUpdateAutocompletePredictionsForTableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource {
+  // Turn the network activity indicator off.
+  UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
+
+  // Reload table data.
+  [suggestionsTableView reloadData];
+}
+
+- (void)didRequestAutocompletePredictionsForTableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource {
+  // Turn the network activity indicator on.
+  UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
+
+  // Reload table data.
+  [suggestionsTableView reloadData];
+}
+
+- (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didAutocompleteWithPlace:(GMSPlace *)place {
+  // Do something with the selected place.
+  NSLog(@"Place name: %@", place.name);
+  NSLog(@"Place address: %@", place.formattedAddress);
+  NSLog(@"Place attributions: %@", place.attributions);
+}
+
+- (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didFailAutocompleteWithError:(NSError *)error {
+  // Handle the error
+  NSLog(@"Error %@", error.description);
+}
+
+- (BOOL)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didSelectPrediction:(GMSAutocompletePrediction *)prediction {
+  return YES;
 }
 
 

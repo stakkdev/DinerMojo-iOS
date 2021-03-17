@@ -18,6 +18,7 @@
     IBOutlet UITableView *restaurantsTableView;
     IBOutlet MKMapView *mapView;
     IBOutlet UICollectionView *collectionView;
+    IBOutlet UITableView *suggestionsTableView;
 }
 
 @property BOOL showOverlay;
