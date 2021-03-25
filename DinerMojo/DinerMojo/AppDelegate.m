@@ -49,7 +49,7 @@
                                                            diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
     
-    [GMSPlacesClient provideAPIKey:@"AIzaSyBZyIn6Ms1qTovEyBWS4uNqwq1kBnyVepQ"];
+    [GMSPlacesClient provideAPIKey:Secrets.googlePlacesApiKey];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];

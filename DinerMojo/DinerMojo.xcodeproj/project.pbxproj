@@ -173,6 +173,8 @@
 		9433A7B224B3360C00449F8B /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9433A7B124B3360C00449F8B /* CoreServices.framework */; };
 		9598EE222600F31D005C120A /* SearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9598EE212600F31D005C120A /* SearchBar.xib */; };
 		9598EE262600FE4C005C120A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EE252600FE4C005C120A /* SearchBar.swift */; };
+		9598EEE2260CAC05005C120A /* Secrets.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9598EEE1260CAC05005C120A /* Secrets.stencil */; };
+		9598EF02260CAD2B005C120A /* Secrets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EF01260CAD2B005C120A /* Secrets.generated.swift */; };
 		CB2B5EA81E04337600960091 /* DMViewControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */; };
 		CB580D371E03EE400018ED8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB580D391E03EE400018ED8A /* Localizable.strings */; };
 		CB580D3C1E0404E10018ED8A /* DMSortByDistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB580D3A1E0404E10018ED8A /* DMSortByDistanceCell.swift */; };
@@ -493,6 +495,8 @@
 		9433A7B124B3360C00449F8B /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		9598EE212600F31D005C120A /* SearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBar.xib; sourceTree = "<group>"; };
 		9598EE252600FE4C005C120A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		9598EEE1260CAC05005C120A /* Secrets.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.stencil; sourceTree = "<group>"; };
+		9598EF01260CAD2B005C120A /* Secrets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.generated.swift; sourceTree = "<group>"; };
 		A8F5717CB00046084502849C /* Pods-DinerMojo.internal fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal fdt release.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal fdt release.xcconfig"; sourceTree = "<group>"; };
 		B84D42046C6F52CF9FFF0117 /* Pods_DinerMojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5564E4FB324B6515660C9B0 /* Pods-DinerMojo.app store ad-hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store ad-hoc.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store ad-hoc.xcconfig"; sourceTree = "<group>"; };
@@ -1035,6 +1039,7 @@
 		7AC3FE641AEE3E7600AD12E0 /* DinerMojo */ = {
 			isa = PBXGroup;
 			children = (
+				9598EEE0260CAC05005C120A /* Secrets */,
 				27E56B881EA128A200373599 /* DinerMojo.entitlements */,
 				7AC3FE691AEE3E7600AD12E0 /* AppDelegate.h */,
 				7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */,
@@ -1119,6 +1124,15 @@
 				9598EE252600FE4C005C120A /* SearchBar.swift */,
 			);
 			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		9598EEE0260CAC05005C120A /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				9598EF01260CAD2B005C120A /* Secrets.generated.swift */,
+				9598EEE1260CAC05005C120A /* Secrets.stencil */,
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 		CB8F7B2A1E02EE1600EC24C3 /* ViewHelpers */ = {
@@ -1501,6 +1515,7 @@
 				BF2CFBF01D65E5F100200974 /* Fabric */,
 				A0E393F2187C99144E0CC1ED /* [CP] Embed Pods Frameworks */,
 				31CCA1171E121815D8F5DBB0 /* [CP] Copy Pods Resources */,
+				9598EEDF260CAB15005C120A /* Generate Secrets */,
 			);
 			buildRules = (
 			);
@@ -1580,6 +1595,7 @@
 				27268708206A0D880031B3CE /* BirthdayViewController.xib in Resources */,
 				CB580D371E03EE400018ED8A /* Localizable.strings in Resources */,
 				7AEF14A81B1F09FC0053D32B /* OpenSans-Light.ttf in Resources */,
+				9598EEE2260CAC05005C120A /* Secrets.stencil in Resources */,
 				D4A813691B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib in Resources */,
 				27037C4820B5B06A00B47313 /* AcceptGdprViewController.xib in Resources */,
 				CB8F7B491E03044400EC24C3 /* DMRadioSortOptionCell.xib in Resources */,
@@ -1649,6 +1665,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9598EEDF260CAB15005C120A /* Generate Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#check if env-vars.sh exists\nif [ -f ${SRCROOT}/env-vars.sh ]\nthen\nsource ${SRCROOT}/env-vars.sh\nfi\n#no `else` case needed if the CI works as expected\n${PODS_ROOT}/Sourcery/bin/sourcery --templates ./DinerMojo/Secrets --output ./DinerMojo/Secrets/ --sources ./DinerMojo/ --args google_places_api_key=$GOOGLE_PLACES_API_KEY\n";
 		};
 		A0E393F2187C99144E0CC1ED /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1808,6 +1842,7 @@
 				5E67527D223005B10016B402 /* PopUpModel.swift in Sources */,
 				2781591B1E9CDAF4009B3B3C /* DMLocationInfoItemCell.swift in Sources */,
 				D4E436C91B39751F006435F8 /* DMTabBarController.m in Sources */,
+				9598EF02260CAD2B005C120A /* Secrets.generated.swift in Sources */,
 				CB8F7B321E02F23C00EC24C3 /* Providers.swift in Sources */,
 				5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */,
 				7A5EC8161B4C033F00B27CBF /* DMEarnTransaction.m in Sources */,

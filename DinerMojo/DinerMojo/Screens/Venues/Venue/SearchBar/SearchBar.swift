@@ -9,7 +9,6 @@
 import Foundation
 
 @objc public protocol SearchBarDelegate {
-    @objc func onSearchButtonPressed()
     @objc func onLocationButtonPressed()
     @objc func onFilterButtonPressed()
     @objc func inputValueChanged(to value: String?)
@@ -36,9 +35,7 @@ import Foundation
     
     // MARK: Actions
     @IBAction func searchBarRightButtonPressed(_ sender: Any) {
-        if (isEditing) {
-            self.textField.resignFirstResponder()
-        }
+        self.toggleActive(to: !isEditing)
     }
     
     @IBAction func searchBarLeftButtonPressed(_ sender: Any) {
@@ -54,6 +51,23 @@ import Foundation
         initWithNib()
     }
     
+    // MARK: - Public functions
+    
+    @objc public func toggleActive(to active: Bool) {
+        if active {
+            if !self.textField.isFirstResponder {
+                self.textField.becomeFirstResponder()
+            }
+        } else {
+            self.textField.text = ""
+            if self.textField.isFirstResponder {
+                self.textField.resignFirstResponder()
+            }
+        }
+    }
+    
+    // MARK: - Private functions
+    
     private func initWithNib() {
          Bundle.main.loadNibNamed(SearchBar.NIB_NAME, owner: self, options: nil)
          view.translatesAutoresizingMaskIntoConstraints = false
@@ -61,11 +75,9 @@ import Foundation
          setup()
      }
     
-     func setup() {
+     private func setup() {
         setupLayout()
         self.textField.delegate = self
-        
-//        return [UIColor colorWithRed:0.43137254901961f green:0.7843137254902f blue:0.69803921568627f alpha:1.00f];
         self.view.backgroundColor = UIColor(red: 0.43137254901961, green:  0.7843137254902, blue: 0.69803921568627, alpha: 1.0)
         
      }
@@ -81,9 +93,7 @@ import Foundation
         )
      }
     
-    // MARK: - Private functions
-    
-    func updateRightBarButtonImage() {
+    private func updateRightBarButtonImage() {
         let searchImage = UIImage(named: "searchIcon")
         let crossImage = UIImage(named: "crossIcon")
         searchBarRightButton.setImage(isEditing ? crossImage : searchImage, for: .normal)

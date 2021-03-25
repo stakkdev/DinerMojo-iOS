@@ -640,6 +640,7 @@ How about we take you for a quick tour before you get started?</string>
                         <constraints>
                             <constraint firstItem="VpV-Om-eIW" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="04Q-1V-1p8"/>
                             <constraint firstItem="ODz-8X-oh1" firstAttribute="bottom" secondItem="lue-Ty-0IL" secondAttribute="bottom" id="05C-14-aLN"/>
+                            <constraint firstItem="GUH-z8-B7Q" firstAttribute="top" secondItem="qXX-8s-38M" secondAttribute="bottom" id="1XO-I2-Nke"/>
                             <constraint firstAttribute="trailing" secondItem="qXX-8s-38M" secondAttribute="trailing" id="6XL-1j-p2S"/>
                             <constraint firstItem="ODz-8X-oh1" firstAttribute="trailing" secondItem="lue-Ty-0IL" secondAttribute="trailing" id="7da-0v-Ye2"/>
                             <constraint firstItem="lue-Ty-0IL" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="8a2-fk-Vs0"/>
@@ -647,7 +648,6 @@ How about we take you for a quick tour before you get started?</string>
                             <constraint firstAttribute="bottom" secondItem="VpV-Om-eIW" secondAttribute="bottom" id="FfF-4V-3Fb"/>
                             <constraint firstAttribute="trailing" secondItem="NZw-yT-YOP" secondAttribute="trailing" id="GtX-4c-JBH"/>
                             <constraint firstItem="06f-Hb-EkC" firstAttribute="top" secondItem="0o8-H5-EET" secondAttribute="bottom" id="Lsl-AL-BbB"/>
-                            <constraint firstItem="GUH-z8-B7Q" firstAttribute="top" secondItem="qXX-8s-38M" secondAttribute="bottom" id="NjW-jY-jQw"/>
                             <constraint firstAttribute="trailing" secondItem="06f-Hb-EkC" secondAttribute="trailing" id="Wqu-kA-gy3"/>
                             <constraint firstItem="qXX-8s-38M" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="XGr-hX-hcU"/>
                             <constraint firstItem="EsP-gE-4So" firstAttribute="top" secondItem="GYP-QJ-cBn" secondAttribute="bottom" constant="-1" id="Xcu-5e-0Jy"/>
@@ -7300,7 +7300,7 @@ That's fine. Just click the button below to finish registering.</string>
     </scenes>
     <designables>
         <designable name="0qR-Dd-4yg">
-            <size key="intrinsicContentSize" width="48" height="33"/>
+            <size key="intrinsicContentSize" width="48" height="30"/>
         </designable>
         <designable name="1Mf-wk-LAO">
             <size key="intrinsicContentSize" width="17" height="25"/>
@@ -7312,13 +7312,13 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="37" height="38"/>
         </designable>
         <designable name="3jS-c3-17P">
-            <size key="intrinsicContentSize" width="95" height="33"/>
+            <size key="intrinsicContentSize" width="94" height="30"/>
         </designable>
         <designable name="9ye-kv-GsS">
             <size key="intrinsicContentSize" width="133" height="20"/>
         </designable>
         <designable name="Adz-l0-0LF">
-            <size key="intrinsicContentSize" width="30" height="34"/>
+            <size key="intrinsicContentSize" width="30" height="31"/>
         </designable>
         <designable name="B3u-fZ-6cl">
             <size key="intrinsicContentSize" width="70" height="19"/>
@@ -7366,7 +7366,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="127" height="31"/>
         </designable>
         <designable name="WZL-AL-F00">
-            <size key="intrinsicContentSize" width="72" height="34"/>
+            <size key="intrinsicContentSize" width="69" height="31"/>
         </designable>
         <designable name="Wfk-90-U9A">
             <size key="intrinsicContentSize" width="21" height="22"/>
@@ -7405,7 +7405,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="36" height="33"/>
         </designable>
         <designable name="fRL-oC-Dho">
-            <size key="intrinsicContentSize" width="73" height="34"/>
+            <size key="intrinsicContentSize" width="73" height="31"/>
         </designable>
         <designable name="gHi-df-B5C">
             <size key="intrinsicContentSize" width="39.5" height="20.5"/>

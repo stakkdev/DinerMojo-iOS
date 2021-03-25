@@ -636,12 +636,11 @@
     [self presentSortViewController];
 }
 
-- (void)onLocationButtonPressed { 
-    NSLog(@"onLocationButtonPressed");
-}
-
-- (void)onSearchButtonPressed { 
-    NSLog(@"onSearchButtonPressed");
+- (void)onLocationButtonPressed {
+    if (DMLocationServices.sharedInstance.currentLocation) {
+        CLLocation *currentLocation = [DMLocationServices sharedInstance].currentLocation;
+        [self zoomMapTo:currentLocation];
+    }
 }
 
 - (void)toggleSuggestionsTableViewTo:(BOOL)visible {
@@ -667,20 +666,19 @@
 }
 
 - (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didAutocompleteWithPlace:(GMSPlace *)place {
-  // Do something with the selected place.
-  NSLog(@"Place name: %@", place.name);
-  NSLog(@"Place address: %@", place.formattedAddress);
-  NSLog(@"Place attributions: %@", place.attributions);
+  CLLocation *selectedLocation = [[CLLocation alloc]initWithLatitude:place.coordinate.latitude longitude:place.coordinate.longitude];
+  [self zoomMapTo:selectedLocation];
+  [self toggleSuggestionsTableViewTo:NO];
+  [[self searchBar] toggleActiveTo:NO];
 }
 
 - (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didFailAutocompleteWithError:(NSError *)error {
-  // Handle the error
   NSLog(@"Error %@", error.description);
+    [self displayError:@"Error " message:error.description];
 }
 
 - (BOOL)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didSelectPrediction:(GMSAutocompletePrediction *)prediction {
   return YES;
 }
-
 
 @end
