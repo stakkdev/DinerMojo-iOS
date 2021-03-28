@@ -20,6 +20,7 @@
 - (void)setVenues:(NSArray *)venues {
     _venues = venues;
     [self apply:_filters];
+    [self updateCategories];
 }
 
 - (NSArray *)annotations:(NSArray *)venues {
@@ -40,8 +41,9 @@
 }
 
 - (void)apply:(NSArray *)filters {
+    _filters = filters;
     // Init
-    NSMutableArray *restaurantsTypePredicates = [[NSMutableArray alloc] init];
+    NSMutableArray *categoriesIds = [[NSMutableArray alloc] init];
     NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
     NSMutableArray *predicates = [[NSMutableArray alloc] init];
     
@@ -71,7 +73,8 @@
                 sortByDistance = YES;
             }
         } else if (filter.groupName == GroupsNameRestaurantsFilter) {
-            
+            NSNumber *modelID = [[NSNumber alloc]initWithInteger:filter.itemId];
+            [categoriesIds addObject: modelID];
         } else if (filter.groupName == GroupsNameShowVenues) {
             if (filter.itemId == ShowVenuesRedeemItem) {
                 filterRedeemPoints = YES;
@@ -111,6 +114,25 @@
     
     NSArray *sortedArray = [[_venues filteredArrayUsingPredicate:compoundPredicate] sortedArrayUsingDescriptors:sortDescriptors];
     
+    _selectedCategoriesIds = categoriesIds;
+    
+    if (categoriesIds.count > 0) {
+        NSMutableArray *categoriesFilteredArray = [[NSMutableArray alloc] init];
+        for (DMVenue *venue in sortedArray) {
+            BOOL venueSelected = NO;
+            for (DMVenueCategory *category in venue.categories) {
+               BOOL categorySelected = [categoriesIds containsObject:category.modelID];
+                if (categorySelected) {
+                    venueSelected = YES;
+                }
+            }
+            if (venueSelected) {
+                [categoriesFilteredArray addObject:venue];
+            }
+        }
+        sortedArray = categoriesFilteredArray;
+    }
+    
     if (sortByDistance) {
         NSArray *locationSortedArray;
         locationSortedArray = [sortedArray sortedArrayUsingComparator:^NSComparisonResult(DMVenue* a, DMVenue* b) {
@@ -118,9 +140,7 @@
             double distanceB = [[DMLocationServices sharedInstance] getDistanceFor:b];
             return distanceA > distanceB;
         }];
-        _filteredVenues = locationSortedArray;
-        _mapAnnotations = [self annotations:locationSortedArray];
-        return;
+        sortedArray = locationSortedArray;
     }
     _filteredVenues = sortedArray;
     _mapAnnotations = [self annotations:sortedArray];
@@ -145,26 +165,74 @@
     return finalPredicate;
 }
 
-- (NSArray *)venuesForFilter {
+- (NSArray *)venuesIncludingRestaurantType:(BOOL)includeRestaurantType includeLifestyleType:(BOOL)includeLifestyleType {
+    
     NSMutableArray *predicates = [[NSMutableArray alloc] init];
-    NSMutableArray *restaurantsTypePredicates = [[NSMutableArray alloc] init];
     NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
     
-    [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"restaurant\" AND (allows_earns == YES OR allows_redemptions == YES)"]];
+    if (!includeLifestyleType) {
+        [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"restaurant\" AND (allows_earns == YES OR allows_redemptions == YES)"]];
+    } else if (!includeRestaurantType) {
+        [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"non_restaurant\""]];
+    }
     
     if([sortDescriptors count] == 0) {
         [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"created_on" ascending:NO]];
     }
     
-    if(restaurantsTypePredicates.count > 0) {
-        NSPredicate *compoundRestaurantsTypePredicate = [NSCompoundPredicate orPredicateWithSubpredicates:restaurantsTypePredicates];
-        [predicates addObject:compoundRestaurantsTypePredicate];
-    }
-    
+    return [self venuesForPredicates:predicates sortDescriptors:sortDescriptors];
+
+}
+
+- (NSArray *)venuesForPredicates:(NSMutableArray *)predicates sortDescriptors:(NSMutableArray *)sortDescriptors {
     NSPredicate *compoundPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     NSArray *sortedArray = [[_venues filteredArrayUsingPredicate:compoundPredicate] sortedArrayUsingDescriptors:sortDescriptors];
     
     return sortedArray;
+
+}
+
+- (void)updateCategories {
+    NSArray *lifestyleVenues = [self venuesIncludingRestaurantType:NO includeLifestyleType:YES];
+    NSArray *restaurantVenues = [self venuesIncludingRestaurantType:YES includeLifestyleType:NO];
+    NSArray *lifestyleCategories = [self categoriesFor:lifestyleVenues];
+    NSArray *restaurantCategories = [self categoriesFor:restaurantVenues];
+    _lifestyleCategories = lifestyleCategories;
+    _restaurantCategories = restaurantCategories;
+}
+
+- (NSArray *)categoriesFor:(NSArray *)venues {
+    NSMutableArray *allCategories = [[NSMutableArray alloc] init];
+    
+    for (DMVenue *venue in venues) {
+        for (DMVenueCategory *cat in [venue.categories allObjects]) {
+            [allCategories addObject:cat];
+        }
+    }
+    NSArray *categories = [[NSSet setWithArray:allCategories] allObjects];
+    NSSortDescriptor *alphabeticalSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc]initWithObjects:alphabeticalSortDescriptor, nil];
+    NSArray *sortedArray = [categories sortedArrayUsingDescriptors:sortDescriptors];
+    return sortedArray;
+}
+
+- (NSMutableArray *)getSelectedCategoriesForRestaurants {
+    return [self selectedCategoriesForRestaurants:YES];
+}
+
+- (NSMutableArray *)getSelectedCategoriesForLifestyle {
+    return [self selectedCategoriesForRestaurants:NO];
+}
+
+- (NSMutableArray *)selectedCategoriesForRestaurants:(BOOL)isRestaurants {
+    NSMutableArray *selectedCategories = [[NSMutableArray alloc] init];
+    NSArray *allCategories = isRestaurants ? _restaurantCategories : _lifestyleCategories;
+    for (DMVenueCategory *category in allCategories) {
+        if ([_selectedCategoriesIds containsObject:category.modelID]) {
+            [selectedCategories addObject:category];
+        }
+    }
+    return selectedCategories;
 }
 
 @end

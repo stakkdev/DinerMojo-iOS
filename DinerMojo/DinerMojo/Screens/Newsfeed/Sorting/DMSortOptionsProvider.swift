@@ -28,21 +28,21 @@ import UIKit
 
         let sortByItem = self.itemsFactory.sortByGroupItem(selectedItems: self.filterItems)
         let sortByVenues = self.itemsFactory.showVenuesGroupItem(selectedItems: self.filterItems)
-        //let distanceItem = self.itemsFactory.distanceFilterGroupItem(selectedItems: self.filterItems)
+//        let distanceItem = self.itemsFactory.distanceFilterGroupItem(selectedItems: self.filterItems)
+//
+//        var items = [NSDictionary]()
+//
+//        if let categoryItems = self.restaurantItems as? [NSManagedObject] {
+//            if let keys = categoryItems.first?.entity.attributesByName.keys {
+//                for item in categoryItems {
+//                    items.append(item.dictionaryWithValues(forKeys: Array(keys)) as NSDictionary)
+//                }
+//            }
+//        }
         
-        var items = [NSDictionary]()
+//        let restaurantItem = self.itemsFactory.restaurantsFilterGroupItem(items, selectedItems: self.filterItems)
         
-        if let categoryItems = self.restaurantItems as? [NSManagedObject] {
-            if let keys = categoryItems.first?.entity.attributesByName.keys {
-                for item in categoryItems {
-                    items.append(item.dictionaryWithValues(forKeys: Array(keys)) as NSDictionary)
-                }
-            }
-        }
-        
-        let restaurantItem = self.itemsFactory.restaurantsFilterGroupItem(items, selectedItems: self.filterItems)
-        
-        return [sortByItem, sortByVenues/*, distanceItem*/, restaurantItem];
+        return [sortByItem, sortByVenues/*, distanceItem, restaurantItem */];
     }
 
     private func getRestaurantCategoryNames() -> [String] {

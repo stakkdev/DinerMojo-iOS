@@ -175,6 +175,8 @@
 		9598EE262600FE4C005C120A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EE252600FE4C005C120A /* SearchBar.swift */; };
 		9598EEE2260CAC05005C120A /* Secrets.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9598EEE1260CAC05005C120A /* Secrets.stencil */; };
 		9598EF02260CAD2B005C120A /* Secrets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EF01260CAD2B005C120A /* Secrets.generated.swift */; };
+		9598EF45260D060F005C120A /* SimpleRadioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */; };
+		9598EF46260D060F005C120A /* SimpleRadioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */; };
 		CB2B5EA81E04337600960091 /* DMViewControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */; };
 		CB580D371E03EE400018ED8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB580D391E03EE400018ED8A /* Localizable.strings */; };
 		CB580D3C1E0404E10018ED8A /* DMSortByDistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB580D3A1E0404E10018ED8A /* DMSortByDistanceCell.swift */; };
@@ -497,6 +499,8 @@
 		9598EE252600FE4C005C120A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		9598EEE1260CAC05005C120A /* Secrets.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.stencil; sourceTree = "<group>"; };
 		9598EF01260CAD2B005C120A /* Secrets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.generated.swift; sourceTree = "<group>"; };
+		9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRadioTableViewCell.swift; sourceTree = "<group>"; };
+		9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleRadioTableViewCell.xib; sourceTree = "<group>"; };
 		A8F5717CB00046084502849C /* Pods-DinerMojo.internal fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal fdt release.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal fdt release.xcconfig"; sourceTree = "<group>"; };
 		B84D42046C6F52CF9FFF0117 /* Pods_DinerMojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5564E4FB324B6515660C9B0 /* Pods-DinerMojo.app store ad-hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store ad-hoc.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store ad-hoc.xcconfig"; sourceTree = "<group>"; };
@@ -1198,6 +1202,8 @@
 				278E862C1EB8D2D700A6E8B7 /* DMVenuesNotificationCell.swift */,
 				278E862E1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift */,
 				278E86301EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib */,
+				9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */,
+				9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -1600,6 +1606,7 @@
 				27037C4820B5B06A00B47313 /* AcceptGdprViewController.xib in Resources */,
 				CB8F7B491E03044400EC24C3 /* DMRadioSortOptionCell.xib in Resources */,
 				276AED171F2A4CC300042D31 /* StartupNotificationsViewController.xib in Resources */,
+				9598EF46260D060F005C120A /* SimpleRadioTableViewCell.xib in Resources */,
 				27B8832A1EACE6320082DA88 /* DMRadioViewOption.xib in Resources */,
 				7A8C4B9B1B1C9D5800F1A798 /* Environments.plist in Resources */,
 				27B883281EACD9AC0082DA88 /* DMVenuesOptionCell.xib in Resources */,
@@ -1852,6 +1859,7 @@
 				7A8C4B8C1B1C9AD500F1A798 /* DMReferAFriendViewController.m in Sources */,
 				7A80F6271B3F6605009C8A6F /* UIImage+Extensions.m in Sources */,
 				278159171E9CDA41009B3B3C /* DMLocationInfoItem.swift in Sources */,
+				9598EF45260D060F005C120A /* SimpleRadioTableViewCell.swift in Sources */,
 				276E02161EA55D0F006A79EA /* DMSortNewsFeedViewController.m in Sources */,
 				7A5EC8261B4C033F00B27CBF /* _DMTransaction.m in Sources */,
 				CB8F7B371E02F23C00EC24C3 /* TUTableViewManager.swift in Sources */,

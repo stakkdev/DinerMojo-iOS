@@ -257,12 +257,13 @@
     
     DMVenueImage *venueImage = (DMVenueImage *) [item primaryImage];
     NSString *category = [[[item categories] anyObject] name];
+    NSString *formattedCategory = [[NSString stringWithFormat:@"%@", category] stringByReplacingOccurrencesOfString:@"L-" withString:@""];
     
     cell.cellWidth.constant = UIScreen.mainScreen.bounds.size.width * 0.75;
     [cell.restaurantPrice setHidden:(_mapModelController.state == DMVenueList)];
     [cell.restaurantType setHidden:(_mapModelController.state == DMVenueList)];
     [[cell restaurantName] setText:item.name];
-    [[cell restaurantType] setText:[NSString stringWithFormat:@"%@", category]];
+    [[cell restaurantType] setText:[NSString stringWithFormat:@"%@", formattedCategory]];
     [[cell restaurantCategory] setText:[NSString stringWithFormat:@"%@", [[item friendlyPlaceName] uppercaseString]]];
     [[cell restaurantPrice] setText:[item priceBracketString]];
     [[cell restaurantImageView] setAlpha:1.0];
@@ -481,9 +482,11 @@
     
     [cell.restaurantPrice setHidden:(_mapModelController.state == DMVenueList)];
     [cell.restaurantType setHidden:(_mapModelController.state == DMVenueList)];
+    
+    NSString *formattedCategory = [[NSString stringWithFormat:@"%@", category] stringByReplacingOccurrencesOfString:@"L-" withString:@""];
     [[cell restaurantName] setText:item.name];
-    [[cell restaurantType] setText:[NSString stringWithFormat:@"%@", category]];
-    [[cell restaurantCategory] setText:[NSString stringWithFormat:@"%@", [[item friendlyPlaceName] uppercaseString]]];
+    [[cell restaurantType] setText:formattedCategory];
+    [[cell restaurantCategory] setText: [NSString stringWithFormat:@"%@", [[item friendlyPlaceName] uppercaseString]]];
     [[cell restaurantPrice] setText:[item priceBracketString]];
     [[cell restaurantImageView] setAlpha:1.0];
 
@@ -660,7 +663,6 @@
 - (void)didRequestAutocompletePredictionsForTableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource {
   // Turn the network activity indicator on.
   UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
-
   // Reload table data.
   [suggestionsTableView reloadData];
 }
