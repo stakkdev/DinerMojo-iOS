@@ -19,6 +19,8 @@
     
     dispatch_once(&pred, ^{
         shared = [[[self class] alloc] init];
+        CLLocation *kingstone = [[CLLocation alloc] initWithLatitude:51.41259  longitude:-0.2974];
+        [shared setCurrentLocation:kingstone];
         
     });
     return shared;
