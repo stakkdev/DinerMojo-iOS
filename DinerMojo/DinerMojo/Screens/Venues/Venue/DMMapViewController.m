@@ -707,10 +707,22 @@
 }
 
 - (void)onLocationButtonPressed {
-    if (DMLocationServices.sharedInstance.currentLocation) {
+    
+    BOOL grantedPermission = NO;
+        if (
+            CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+            CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse
+            ) {
+            grantedPermission = YES;
+        }
+//    }
+    if (!grantedPermission) {
+        [self displayError:@"Location Permission" message:@"Please enable location permissions in settings."];
+    } else if (DMLocationServices.sharedInstance.currentLocation) {
         CLLocation *currentLocation = [DMLocationServices sharedInstance].currentLocation;
         [self zoomMapTo:currentLocation];
         [DMLocationServices.sharedInstance setSelectedLocation:currentLocation];
+
     }
 }
 
