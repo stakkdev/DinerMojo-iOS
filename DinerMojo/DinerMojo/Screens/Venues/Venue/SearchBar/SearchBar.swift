@@ -13,6 +13,7 @@ import Foundation
     @objc func onFilterButtonPressed()
     @objc func inputValueChanged(to value: String?)
     @objc func toggleSuggestionsTableView(to visible: Bool)
+    @objc func closeButtonPressed()
 }
 
 @objc public class SearchBar: UIView {
@@ -35,12 +36,17 @@ import Foundation
     
     // MARK: Actions
     @IBAction func searchBarRightButtonPressed(_ sender: Any) {
+        if (isEditing) {
+            self.textField.text = ""
+            self.delegate?.closeButtonPressed()
+        }
         self.toggleActive(to: !isEditing)
     }
     
     @IBAction func searchBarLeftButtonPressed(_ sender: Any) {
         self.delegate?.onLocationButtonPressed()
     }
+    
     @IBAction func filterButtonPressed(_ sender: Any) {
         self.delegate?.onFilterButtonPressed()
     }
@@ -59,7 +65,6 @@ import Foundation
                 self.textField.becomeFirstResponder()
             }
         } else {
-            self.textField.text = ""
             if self.textField.isFirstResponder {
                 self.textField.resignFirstResponder()
             }
