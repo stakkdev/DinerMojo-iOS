@@ -21,6 +21,7 @@
         shared = [[[self class] alloc] init];
         CLLocation *kingstone = [[CLLocation alloc] initWithLatitude:51.41259  longitude:-0.2974];
         [shared setCurrentLocation:kingstone];
+        [shared setSelectedLocation:kingstone];
         
     });
     return shared;
@@ -54,13 +55,26 @@
     return [[self currentLocation] distanceFromLocation:location];
 }
 
+- (double)distanceFromSelectedLocationFor:(CLLocation *)location
+{
+    return [[self selectedLocation] distanceFromLocation:location];
+}
+
 - (double)getDistanceWithLatitude:(NSNumber *)latitude andLongitude:(NSNumber *)longitude {
     CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
     double distance = [self userLocationDistanceFromLocation:venueCoordinates];
     return distance;
 }
 
-- (double)getDistanceFor:(DMVenue *)venue {
+- (double)getSelectedLocationDistanceFrom:(DMVenue *)venue {
+    NSNumber *latitude = venue.latitude;
+    NSNumber *longitude = venue.longitude;
+    CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    double distance = [self distanceFromSelectedLocationFor:venueCoordinates];
+    return distance;
+}
+
+- (double)getUserDistanceFrom:(DMVenue *)venue {
     NSNumber *latitude = venue.latitude;
     NSNumber *longitude = venue.longitude;
     CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];

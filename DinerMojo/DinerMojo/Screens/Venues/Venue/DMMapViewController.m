@@ -34,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet SearchBar *searchBar;
 @property (strong, nonatomic) TabsFilterView *tabsFilterView;
 @property (strong, nonatomic) NSArray *filterItems;
-@property (strong, nonatomic) NSArray *favouriteIds;
+@property (strong, nonatomic) NSMutableArray *favouriteIds;
 
 @end
 
@@ -60,12 +60,12 @@
         [initialFilters addObject:alphabeticalSort];
     }
     _mapModelController.filters = initialFilters;
-    [_mapModelController apply:initialFilters];
+    [_mapModelController applyFilters:initialFilters sortBySelectedLocation:NO];
  
     
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
-    [self updateFavouritesInitially:YES];
+    [self updateFavouritesWithInitialDownload];
     
     suggestionsDataSource = [[GMSAutocompleteTableDataSource alloc] init];
     suggestionsDataSource.delegate = self;
@@ -99,7 +99,7 @@
 
     [self.activityIndicator startAnimating];
     [self downloadVenues];
-    [self updateFavouritesInitially:NO];
+    [self updateFavourites];
     
     if([NSUserDefaults.standardUserDefaults boolForKey:@"showNotificationsOverlay"] && ![NSUserDefaults.standardUserDefaults boolForKey:@"shownNotificationsOverlay"]) {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -254,7 +254,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [[[self mapModelController] mapAnnotations] count];;
+    return [[[self mapModelController] mapAnnotations] count];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -288,11 +288,7 @@
     [cell setEarnVisibility:item.allows_earnsValue];
     [cell setRedeemVisibility:item.allows_redemptionsValue];
 
-    NSNumber *latitude = item.latitude;
-    NSNumber *longitude = item.longitude;
-    CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
-    
-    double distance = [[DMLocationServices sharedInstance] userLocationDistanceFromLocation:venueCoordinates];
+    double distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
     if(distance != 0) {
         MKDistanceFormatter *df = [MKDistanceFormatter new];
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
@@ -306,6 +302,11 @@
     if(urlString == NULL) {
         urlString = [venueImage fullURL];
     }
+    
+    NSString* stringId = [NSString stringWithFormat:@"%d",item.modelIDValue];
+    BOOL isFavourite = [_favouriteIds containsObject:stringId];
+    [cell setToFavourite:isFavourite];
+    
     cell.restaurantImageView.image = nil;
     [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:urlString]
                  placeholderImage:nil];
@@ -333,7 +334,8 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = UIScreen.mainScreen.bounds.size.width * 0.75;
-    return CGSizeMake(width, 110.0);
+//    CGFloat height = (width / 100) * 44;
+    return CGSizeMake(width, 110);
 }
 
 // MARK: - Others
@@ -401,18 +403,19 @@
     }];
 }
 
-- (void)updateFavouritesInitially:(BOOL *)initial {
-    if (initial) {
-        [[self userRequest] downloadFavouriteVenuesWithCompletionBlock:^(NSError *error, id results) {
-            NSMutableArray *favIds = [[NSMutableArray alloc] init];
-            for(DMVenue* venue in results) {
-                NSString *stringId = [NSString stringWithFormat:@"%@", [venue modelID]];
-                [favIds addObject: stringId];
-            }
-            _favouriteIds = favIds;
-            [restaurantsTableView reloadData];
-        }];
-    }
+- (void)updateFavouritesWithInitialDownload {
+    [[self userRequest] downloadFavouriteVenuesWithCompletionBlock:^(NSError *error, id results) {
+        NSMutableArray *favIds = [[NSMutableArray alloc] init];
+        for(DMVenue* venue in results) {
+            NSString *stringId = [NSString stringWithFormat:@"%@", [venue modelID]];
+            [favIds addObject: stringId];
+        }
+        self.favouriteIds = favIds;
+        [restaurantsTableView reloadData];
+    }];
+}
+
+- (void)updateFavourites {
     _favouriteIds = [[self venueRequest] cachedFavouriteVenuesIds];
 }
 
@@ -446,7 +449,28 @@
 - (void)selectedFilterItems:(NSArray *)filterItems {
     self.filterItems = filterItems;
     _mapModelController.filters = filterItems;
-    [self.mapModelController apply:filterItems];
+    
+    BOOL newFiltersContainSort = NO;
+    
+    for (FilterItem *filter in filterItems)
+    {
+        if (filter.groupName == GroupsNameSortBy) {
+            if (
+                filter.itemId == SortByItemsAZ ||
+                filter.itemId == SortByItemsRecentItem ||
+                filter.itemId == SortByItemsNearestItem
+                ) {
+                newFiltersContainSort = YES;
+                break;
+            }
+        }
+    }
+    
+    if (newFiltersContainSort) {
+        [self.mapModelController applyFilters:filterItems sortBySelectedLocation:NO];
+    }
+    [self.mapModelController applyFilters:filterItems sortBySelectedLocation:self.mapModelController.filteringBySelectedLocation];
+
     [restaurantsTableView reloadData];
     [self reloadMapAnnotations];
 }
@@ -512,13 +536,9 @@
     
     NSString* stringId = [NSString stringWithFormat:@"%d",item.modelIDValue];
     BOOL isFavourite = [_favouriteIds containsObject:stringId];
-    [cell setIsFavourite:isFavourite];
-
-    NSNumber *latitude = item.latitude;
-    NSNumber *longitude = item.longitude;
-    CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    [cell setToFavourite:isFavourite];
     
-    double distance = [[DMLocationServices sharedInstance] userLocationDistanceFromLocation:venueCoordinates];
+    double distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
     if(distance != 0) {
         MKDistanceFormatter *df = [MKDistanceFormatter new];
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
@@ -615,13 +635,27 @@
 
 - (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath *)index {
     DMVenue *venue =  [[[self mapModelController] filteredVenues] objectAtIndex:[index row]];
+
+    if (favourite) {
+        NSString* stringId = [NSString stringWithFormat:@"%d", venue.modelIDValue];
+        [_favouriteIds addObject:stringId];
+    } else {
+       NSString *strValue = [NSString stringWithFormat:@"%@",[venue modelID]];
+       NSInteger index = [_favouriteIds indexOfObjectIdenticalTo:strValue];
+        if (index < _favouriteIds.count) {
+            [_favouriteIds removeObjectAtIndex:index];
+        }
+    }
+    NSArray *indexPaths = [[NSArray alloc]initWithObjects:index, nil];
+    [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
+    [collectionView  reloadItemsAtIndexPaths:indexPaths];
     [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
+        [self updateFavourites];
         if (error) {
             [self displayError:@"Error" message:@"Unable to sync favourites. Please check your connection and try again."];
-            [restaurantsTableView reloadRowsAtIndexPaths: [[NSArray alloc]initWithObjects:index, nil] withRowAnimation:UITableViewRowAnimationFade];
-
+            [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            [collectionView  reloadItemsAtIndexPaths:indexPaths];
         }
-        [self updateFavouritesInitially:false];
     }];
 }
 
@@ -650,6 +684,14 @@
     if (DMLocationServices.sharedInstance.currentLocation) {
         CLLocation *currentLocation = [DMLocationServices sharedInstance].currentLocation;
         [self zoomMapTo:currentLocation];
+        [DMLocationServices.sharedInstance setSelectedLocation:currentLocation];
+    }
+}
+
+- (void)closeButtonPressed {
+    if (DMLocationServices.sharedInstance.currentLocation) {
+        CLLocation *currentLocation = [DMLocationServices sharedInstance].currentLocation;
+        [DMLocationServices.sharedInstance setSelectedLocation:currentLocation];
     }
 }
 
@@ -677,8 +719,13 @@
 - (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didAutocompleteWithPlace:(GMSPlace *)place {
   CLLocation *selectedLocation = [[CLLocation alloc]initWithLatitude:place.coordinate.latitude longitude:place.coordinate.longitude];
   [self zoomMapTo:selectedLocation];
+  [DMLocationServices.sharedInstance setSelectedLocation:selectedLocation];
   [self toggleSuggestionsTableViewTo:NO];
   [[self searchBar] toggleActiveTo:NO];
+  [[self searchBar] setTextTo:place.name];
+  [self.mapModelController applyFilters:self.mapModelController.filters sortBySelectedLocation:YES];
+  [restaurantsTableView reloadData];
+  [self reloadMapAnnotations];
 }
 
 - (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didFailAutocompleteWithError:(NSError *)error {

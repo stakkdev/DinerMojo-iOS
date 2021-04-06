@@ -71,6 +71,10 @@ import Foundation
         }
     }
     
+    @objc public func setText(to text: String) {
+        self.textField.text = text
+    }
+    
     // MARK: - Private functions
     
     private func initWithNib() {

@@ -32,6 +32,13 @@
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartWhite" translatesAutoresizingMaskIntoConstraints="NO" id="CjQ-4B-4Kg">
+                        <rect key="frame" x="343" y="15" width="17" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="kr1-XD-Ore"/>
+                            <constraint firstAttribute="width" constant="17" id="mCF-dk-vXX"/>
+                        </constraints>
+                    </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79R-lo-rqm">
                         <rect key="frame" x="325" y="10" width="40" height="40"/>
                         <constraints>
@@ -42,15 +49,6 @@
                             <action selector="favoriteButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dGT-Ma-fs5"/>
                         </connections>
                     </button>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CjQ-4B-4Kg">
-                        <rect key="frame" x="335" y="1.5" width="25" height="22.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="HJW-w8-9Oy"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="YPv-bP-xet"/>
-                            <constraint firstAttribute="height" constant="25" id="kr1-XD-Ore"/>
-                            <constraint firstAttribute="width" constant="25" id="mCF-dk-vXX"/>
-                        </constraints>
-                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcg-ri-7be" userLabel="Line View">
                         <rect key="frame" x="0.0" y="164" width="375" height="2"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -148,7 +146,7 @@
                     <constraint firstItem="PXQ-1H-BQM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kYQ-XP-MwS"/>
                     <constraint firstItem="t1c-rV-OUN" firstAttribute="leading" secondItem="4P3-4m-yc5" secondAttribute="trailing" constant="5" id="mIr-nP-JZa"/>
                     <constraint firstItem="PXQ-1H-BQM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nPZ-uZ-nHQ"/>
-                    <constraint firstItem="CjQ-4B-4Kg" firstAttribute="top" secondItem="PXQ-1H-BQM" secondAttribute="top" id="nhh-co-D88"/>
+                    <constraint firstItem="CjQ-4B-4Kg" firstAttribute="top" secondItem="PXQ-1H-BQM" secondAttribute="top" constant="15" id="nhh-co-D88"/>
                     <constraint firstItem="4P3-4m-yc5" firstAttribute="centerY" secondItem="Ewn-Eh-Iw3" secondAttribute="centerY" id="pjY-IV-jaP"/>
                     <constraint firstItem="4P3-4m-yc5" firstAttribute="leading" secondItem="Ewn-Eh-Iw3" secondAttribute="trailing" constant="5" id="pnh-gq-cmS"/>
                     <constraint firstItem="PXQ-1H-BQM" firstAttribute="centerX" secondItem="dcg-ri-7be" secondAttribute="centerX" id="tg5-CZ-H5z"/>
@@ -174,7 +172,7 @@
     </objects>
     <resources>
         <image name="earn_icon_disabled" width="29.5" height="31"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heartWhite" width="18.5" height="16.5"/>
         <image name="redeem_icon_disabled" width="27" height="31.5"/>
     </resources>
 </document>

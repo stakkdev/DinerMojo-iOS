@@ -125,7 +125,7 @@
 
     [cell setEarnVisibility:([item.allows_earns isEqualToNumber:[NSNumber numberWithBool:YES]]) ? YES : NO];
     [cell setRedeemVisibility:([item.allows_redemptions isEqualToNumber:[NSNumber numberWithBool:YES]]) ? YES : NO];
-    [cell setIsFavourite:YES];
+    [cell setToFavourite:YES];
     return cell;
 }
 

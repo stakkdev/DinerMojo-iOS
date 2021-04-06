@@ -11,6 +11,7 @@
 @interface DMLocationServices : NSObject <CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) CLLocation *selectedLocation;
 @property (strong, nonatomic) DMVenue *venueLocation;
 
 
@@ -22,7 +23,8 @@
 - (double)userLocationDistanceFromLocation:(CLLocation *)location;
 - (double)getDistanceWithLatitude:(NSNumber *)latitude andLongitude:(NSNumber *)longitude;
 - (BOOL)isLocationEnabled;
-- (double)getDistanceFor:(DMVenue *)venue;
+- (double)getSelectedLocationDistanceFrom:(DMVenue *)venue;
+- (double)getUserDistanceFrom:(DMVenue *)venue;
 
 
 @end

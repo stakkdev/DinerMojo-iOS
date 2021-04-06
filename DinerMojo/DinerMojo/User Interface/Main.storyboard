@@ -747,6 +747,23 @@ How about we take you for a quick tour before you get started?</string>
                                                         <action selector="redeemAction:" destination="AIg-8o-2ev" eventType="touchUpInside" id="VK1-fL-OV6"/>
                                                     </connections>
                                                 </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yn4-LL-2ii">
+                                                    <rect key="frame" x="225" y="9.5" width="17" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="rLk-Ck-oku"/>
+                                                        <constraint firstAttribute="width" constant="17" id="y9a-o9-yPX"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgG-XR-dsD">
+                                                    <rect key="frame" x="210" y="0.0" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="mbZ-fJ-0Ah"/>
+                                                        <constraint firstAttribute="height" constant="40" id="pRp-Ti-yxa"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="favouriteButtonAction:" destination="AIg-8o-2ev" eventType="touchUpInside" id="W6W-jj-Gli"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="WAA-gu-yQI" firstAttribute="leading" secondItem="oxY-fs-qdw" secondAttribute="leading" id="1hb-9q-gfq"/>
@@ -757,15 +774,19 @@ How about we take you for a quick tour before you get started?</string>
                                                 <constraint firstItem="lp4-bm-61s" firstAttribute="leading" secondItem="fc2-9C-KV7" secondAttribute="trailing" priority="750" constant="10" id="Bk3-Fl-WcI"/>
                                                 <constraint firstAttribute="trailing" secondItem="M3M-lO-Eka" secondAttribute="trailing" id="EAx-mT-Up8"/>
                                                 <constraint firstItem="lp4-bm-61s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fc2-9C-KV7" secondAttribute="trailing" constant="5" id="GJD-T1-0mm"/>
+                                                <constraint firstItem="NgG-XR-dsD" firstAttribute="top" secondItem="Mym-vV-jzL" secondAttribute="top" id="Jko-2F-B1k"/>
                                                 <constraint firstAttribute="bottom" secondItem="M3M-lO-Eka" secondAttribute="bottom" id="Ntt-sS-bjs"/>
                                                 <constraint firstItem="JHN-nu-QKe" firstAttribute="centerY" secondItem="oan-P6-kP5" secondAttribute="centerY" id="Qd6-rv-kc1"/>
                                                 <constraint firstItem="M3M-lO-Eka" firstAttribute="leading" secondItem="Mym-vV-jzL" secondAttribute="leading" id="RZm-WR-wOt"/>
                                                 <constraint firstItem="M3M-lO-Eka" firstAttribute="top" secondItem="Mym-vV-jzL" secondAttribute="top" id="TpJ-RR-pf1"/>
                                                 <constraint firstItem="fc2-9C-KV7" firstAttribute="centerY" secondItem="lp4-bm-61s" secondAttribute="centerY" id="TvZ-QF-DKN"/>
                                                 <constraint firstItem="m7m-dh-q4l" firstAttribute="leading" secondItem="JHN-nu-QKe" secondAttribute="trailing" constant="5" id="Xem-RN-hHE"/>
+                                                <constraint firstAttribute="trailing" secondItem="NgG-XR-dsD" secondAttribute="trailing" id="b9l-cp-uPj"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yn4-LL-2ii" secondAttribute="trailing" constant="8" id="dPW-46-niu"/>
                                                 <constraint firstItem="oan-P6-kP5" firstAttribute="centerY" secondItem="WAA-gu-yQI" secondAttribute="centerY" id="gtM-zM-uLG"/>
                                                 <constraint firstItem="WAA-gu-yQI" firstAttribute="top" secondItem="oxY-fs-qdw" secondAttribute="bottom" constant="1" id="r3I-lT-iBF"/>
                                                 <constraint firstAttribute="trailing" secondItem="lp4-bm-61s" secondAttribute="trailing" constant="8" id="ugn-Th-qOI"/>
+                                                <constraint firstItem="Yn4-LL-2ii" firstAttribute="top" secondItem="Mym-vV-jzL" secondAttribute="top" constant="8" id="uoN-or-rcK"/>
                                                 <constraint firstAttribute="bottom" secondItem="WAA-gu-yQI" secondAttribute="bottom" constant="6" id="vg8-eo-JZO"/>
                                                 <constraint firstItem="fc2-9C-KV7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m7m-dh-q4l" secondAttribute="trailing" constant="2" id="yhJ-2g-38J"/>
                                                 <constraint firstItem="JHN-nu-QKe" firstAttribute="leading" secondItem="oan-P6-kP5" secondAttribute="trailing" constant="5" id="zmt-RI-geB"/>
@@ -774,6 +795,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <connections>
                                             <outlet property="cellWidth" destination="PcF-So-drT" id="kc2-fe-3nv"/>
                                             <outlet property="earnButton" destination="lp4-bm-61s" id="VGD-Fj-hY3"/>
+                                            <outlet property="heartImage" destination="Yn4-LL-2ii" id="49n-ya-iVB"/>
                                             <outlet property="redeemButton" destination="fc2-9C-KV7" id="Vqa-SZ-bf5"/>
                                             <outlet property="restaurantCategory" destination="WAA-gu-yQI" id="uze-ZS-Gjg"/>
                                             <outlet property="restaurantDistance" destination="oan-P6-kP5" id="9cN-y5-3x5"/>
@@ -7460,7 +7482,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="17" height="25"/>
         </designable>
         <designable name="1tJ-RQ-eYN">
-            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="83.5" height="20.5"/>
         </designable>
         <designable name="3dT-AR-eyx">
             <size key="intrinsicContentSize" width="37" height="38"/>
@@ -7469,19 +7491,19 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="95" height="33"/>
         </designable>
         <designable name="9ye-kv-GsS">
-            <size key="intrinsicContentSize" width="133" height="20"/>
+            <size key="intrinsicContentSize" width="123" height="20"/>
         </designable>
         <designable name="Adz-l0-0LF">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="B3u-fZ-6cl">
-            <size key="intrinsicContentSize" width="70" height="19"/>
+            <size key="intrinsicContentSize" width="84" height="19"/>
         </designable>
         <designable name="CDt-SY-ihe">
-            <size key="intrinsicContentSize" width="100" height="20.5"/>
+            <size key="intrinsicContentSize" width="114" height="20.5"/>
         </designable>
         <designable name="GDz-41-0RG">
-            <size key="intrinsicContentSize" width="68.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="78.5" height="20.5"/>
         </designable>
         <designable name="GE7-eS-tHr">
             <size key="intrinsicContentSize" width="36" height="33"/>
@@ -7496,7 +7518,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="159" height="31"/>
         </designable>
         <designable name="MUI-fJ-Umd">
-            <size key="intrinsicContentSize" width="100" height="20.5"/>
+            <size key="intrinsicContentSize" width="114" height="20.5"/>
         </designable>
         <designable name="Nra-Y7-dnG">
             <size key="intrinsicContentSize" width="30" height="30"/>
@@ -7514,7 +7536,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="65" height="31"/>
         </designable>
         <designable name="TCd-a9-jMs">
-            <size key="intrinsicContentSize" width="120" height="19"/>
+            <size key="intrinsicContentSize" width="134" height="19"/>
         </designable>
         <designable name="TGb-n1-m93">
             <size key="intrinsicContentSize" width="127" height="31"/>
@@ -7535,7 +7557,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="177" height="33"/>
         </designable>
         <designable name="a2Q-vx-Ifh">
-            <size key="intrinsicContentSize" width="100" height="20.5"/>
+            <size key="intrinsicContentSize" width="114" height="20.5"/>
         </designable>
         <designable name="bFh-cK-s35">
             <size key="intrinsicContentSize" width="50" height="31"/>
@@ -7544,7 +7566,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="93" height="31"/>
         </designable>
         <designable name="bUx-XX-x8d">
-            <size key="intrinsicContentSize" width="70" height="19"/>
+            <size key="intrinsicContentSize" width="84" height="19"/>
         </designable>
         <designable name="cLL-Rq-au8">
             <size key="intrinsicContentSize" width="30" height="31"/>
@@ -7562,7 +7584,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="73" height="34"/>
         </designable>
         <designable name="gHi-df-B5C">
-            <size key="intrinsicContentSize" width="39.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="49.5" height="20.5"/>
         </designable>
         <designable name="hCN-Wq-XwI">
             <size key="intrinsicContentSize" width="37" height="38"/>
@@ -7580,13 +7602,13 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="21" height="22"/>
         </designable>
         <designable name="pZV-ja-7FI">
-            <size key="intrinsicContentSize" width="71" height="20.5"/>
+            <size key="intrinsicContentSize" width="85" height="20.5"/>
         </designable>
         <designable name="rdr-KY-Rn7">
             <size key="intrinsicContentSize" width="57" height="31"/>
         </designable>
         <designable name="rhR-aM-1rm">
-            <size key="intrinsicContentSize" width="36" height="20.5"/>
+            <size key="intrinsicContentSize" width="50" height="20.5"/>
         </designable>
         <designable name="roD-35-b4H">
             <size key="intrinsicContentSize" width="81" height="31"/>
@@ -7641,6 +7663,7 @@ That's fine. Just click the button below to finish registering.</string>
         <image name="favourite_active" width="42" height="38"/>
         <image name="favourite_inactive" width="42" height="38"/>
         <image name="fb" width="20" height="20"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="home_restaurant" width="448.5" height="640"/>
         <image name="icon_cake" width="22" height="20"/>
         <image name="icon_navigation" width="50" height="50"/>

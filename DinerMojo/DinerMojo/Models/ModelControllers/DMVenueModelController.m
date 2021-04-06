@@ -19,7 +19,7 @@
 
 - (void)setVenues:(NSArray *)venues {
     _venues = venues;
-    [self apply:_filters];
+    [self applyFilters];
     [self updateCategories];
 }
 
@@ -40,9 +40,9 @@
     return annotations;
 }
 
-- (void)apply:(NSArray *)filters {
-    _filters = filters;
-    // Init
+// MARK: - Applying filters
+
+- (void)applyFilters {
     NSMutableArray *categoriesIds = [[NSMutableArray alloc] init];
     NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
     NSMutableArray *predicates = [[NSMutableArray alloc] init];
@@ -53,6 +53,7 @@
     NSSortDescriptor *createdAtSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"created_on" ascending:YES];
     [sortDescriptors addObject:activeSortDescriptor];
     BOOL sortByDistance = NO;
+    BOOL sortByDistanceFromSelectedLocation = NO;
     
     // Filter: redemtion & offer venues
     BOOL filterRedeemPoints = NO;
@@ -62,7 +63,7 @@
 
     
     // Loop through filters
-    for (FilterItem *filter in filters)
+    for (FilterItem *filter in _filters)
     {
         if (filter.groupName == GroupsNameSortBy) {
             if (filter.itemId == SortByItemsAZ) {
@@ -71,6 +72,8 @@
                 [sortDescriptors addObject:createdAtSortDescriptor];
             } else if (filter.itemId == SortByItemsNearestItem) {
                 sortByDistance = YES;
+            } else if (filter.itemId == SortByItemsSelectedLocation) {
+                sortByDistanceFromSelectedLocation = YES;
             }
         } else if (filter.groupName == GroupsNameRestaurantsFilter) {
             NSNumber *modelID = [[NSNumber alloc]initWithInteger:filter.itemId];
@@ -136,8 +139,16 @@
     if (sortByDistance) {
         NSArray *locationSortedArray;
         locationSortedArray = [sortedArray sortedArrayUsingComparator:^NSComparisonResult(DMVenue* a, DMVenue* b) {
-            double distanceA = [[DMLocationServices sharedInstance] getDistanceFor:a];
-            double distanceB = [[DMLocationServices sharedInstance] getDistanceFor:b];
+            double distanceA = [[DMLocationServices sharedInstance] getUserDistanceFrom:a];
+            double distanceB = [[DMLocationServices sharedInstance] getUserDistanceFrom:b];
+            return distanceA > distanceB;
+        }];
+        sortedArray = locationSortedArray;
+    } else if (sortByDistanceFromSelectedLocation) {
+        NSArray *locationSortedArray;
+        locationSortedArray = [sortedArray sortedArrayUsingComparator:^NSComparisonResult(DMVenue* a, DMVenue* b) {
+            double distanceA = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:a];
+            double distanceB = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:b];
             return distanceA > distanceB;
         }];
         sortedArray = locationSortedArray;
@@ -164,6 +175,41 @@
     }
     return finalPredicate;
 }
+
+- (void)applyFilters:(NSArray *)filters sortBySelectedLocation:(BOOL)enabled {
+    NSMutableArray *newFilters = [[NSMutableArray alloc]init];
+    // filter current filters to:
+    // remove sorting except by selected location if enabled
+    // remove sorting by selected location if disabled
+    for (FilterItem *filter in filters)
+    {
+        if (filter.groupName == GroupsNameSortBy) {
+            if (
+                filter.itemId == SortByItemsAZ ||
+                filter.itemId == SortByItemsRecentItem ||
+                filter.itemId == SortByItemsNearestItem
+                ) {
+                if (!enabled) {
+                 [newFilters addObject:filter];
+                }
+            } else if (filter.itemId == SortByItemsSelectedLocation) {
+                return;
+            }
+        } else {
+            [newFilters addObject:filter];
+        }
+    }
+    FilterItem *sortBySelectedLocation = [[FilterItem alloc] initWithGroupName:GroupsNameSortBy itemId:SortByItemsSelectedLocation value:0];
+    // add sort by selected location if enabled
+    if (enabled == YES) {
+        [newFilters addObject:sortBySelectedLocation];
+    }
+    [self setFilteringBySelectedLocation:enabled];
+    self.filters = newFilters;
+    [self applyFilters];
+}
+
+// MARK: - Categories
 
 - (NSArray *)venuesIncludingRestaurantType:(BOOL)includeRestaurantType includeLifestyleType:(BOOL)includeLifestyleType {
     

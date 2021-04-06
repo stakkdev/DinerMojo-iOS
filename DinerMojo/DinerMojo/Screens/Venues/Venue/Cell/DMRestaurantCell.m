@@ -74,13 +74,13 @@
     }
 }
 
-- (void)setIsFavourite:(BOOL)favourite {
+- (void)setToFavourite:(BOOL)favourite {
     _isFavourite = favourite;
     if(favourite) {
-        [self.favouriteHeartImage setImage:[UIImage imageNamed:@"favourite_active"]];
+        [self.favouriteHeartImage setImage:[UIImage imageNamed:@"heartRed"]];
     }
     else {
-        [self.favouriteHeartImage setImage:[UIImage imageNamed:@"favourite_inactive"]];
+        [self.favouriteHeartImage setImage:[UIImage imageNamed:@"heartWhite"]];
     }
 }
 

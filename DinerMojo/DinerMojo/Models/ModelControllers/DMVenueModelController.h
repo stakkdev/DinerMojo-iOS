@@ -27,8 +27,9 @@ typedef NS_ENUM(NSInteger, DMVenueListState) {
 @property (nonatomic, strong) NSArray *lifestyleCategories;
 @property (nonatomic, strong) NSArray *restaurantCategories;
 @property BOOL filterLifestyle;
+@property BOOL filteringBySelectedLocation;
 
-- (void)apply:(NSArray *)filters;
+- (void)applyFilters:(NSArray *)filters sortBySelectedLocation:(BOOL)enabled;
 - (void)updateCategories;
 - (NSMutableArray *)getSelectedCategoriesForRestaurants;
 - (NSMutableArray *)getSelectedCategoriesForLifestyle;

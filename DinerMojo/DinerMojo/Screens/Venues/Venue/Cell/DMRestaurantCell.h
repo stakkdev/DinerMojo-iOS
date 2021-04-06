@@ -35,6 +35,6 @@
 
 - (void)setEarnVisibility:(BOOL)visibility;
 - (void)setRedeemVisibility:(BOOL)visibility;
-- (void)setIsFavourite:(BOOL)favourite;
+- (void)setToFavourite:(BOOL)favourite;
 
 @end

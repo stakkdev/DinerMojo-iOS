@@ -23,6 +23,7 @@ import UIKit
     case NearestItem = 2000
     case RecentItem
     case AZ
+    case SelectedLocation
 }
 
 @objc enum ShowVenues: Int {
