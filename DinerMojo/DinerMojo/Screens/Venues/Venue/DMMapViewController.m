@@ -173,8 +173,6 @@
 }
 
 -(void)reloadMapAnnotations {
-    CLLocation *newLocation = [DMLocationServices sharedInstance].currentLocation;
-    [self zoomMapTo:newLocation];
     
     NSArray *annotations = [[self mapModelController] mapAnnotations];
     [mapView removeAnnotations:[mapView annotations]];
