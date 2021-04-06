@@ -318,17 +318,40 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     _collectionViewCellSelected = YES;
+    
+    // deselect previous a determine if previously selected
+    MKPointAnnotation *selectedAnnotation = [[[self mapModelController] mapAnnotations] objectAtIndex:indexPath.row];
+    BOOL previouslySelected = NO;
     NSArray *selectedAnnotations = mapView.selectedAnnotations;
     for(id annotation in selectedAnnotations) {
-        [mapView deselectAnnotation:annotation animated:NO];
+        if (annotation == selectedAnnotation) {
+            previouslySelected = YES;
+        } else {
+            [mapView deselectAnnotation:annotation animated:NO];
+        }
     }
     
-    MKPointAnnotation *annotation = [[[self mapModelController] mapAnnotations] objectAtIndex:indexPath.row];
-    [mapView selectAnnotation:annotation animated:YES];
-    
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+    // zoom map to selection
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:selectedAnnotation.coordinate.latitude longitude:selectedAnnotation.coordinate.longitude];
     [self zoomMapTo:location];
+    
+    // Select annotation or navigate to detail based on previously selected
+    if (previouslySelected) {
+        DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)indexPath.row];
+        if ([item.state integerValue] == DMVenueStateVerified)
+        {
+            [self performSegueWithIdentifier:@"restaurantInfoSegue" sender:item];
+        }
+    } else {
+        double delayInSeconds = 0.5;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [mapView selectAnnotation:selectedAnnotation animated:YES];
+        });
+    }
+    
     _collectionViewCellSelected = NO;
 }
 
