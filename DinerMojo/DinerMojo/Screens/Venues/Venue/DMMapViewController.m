@@ -231,6 +231,15 @@
     }
 }
 
+- (void)mapViewDidChangeVisibleRegion:(MKMapView *)mapView {
+
+    NSSet *annotationSet = [mapView annotationsInMapRect:mapView.visibleMapRect];
+    if (annotationSet.count > 100) {
+        [self displayError:@"Error" message:@"Too many results displayed on the map, please adjust the filter or zoom in."];
+    }
+    
+}
+
 
 
 // MARK: - Collection View Delegate
