@@ -23,6 +23,7 @@
 
 @property BOOL showOverlay;
 @property BOOL collectionViewCellSelected;
+@property BOOL limitAnnotationsWarningDisplayed;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
 

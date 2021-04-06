@@ -72,6 +72,8 @@
     suggestionsTableView.delegate = suggestionsDataSource;
     suggestionsTableView.dataSource = suggestionsDataSource;
     
+    _limitAnnotationsWarningDisplayed = NO;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -232,7 +234,8 @@
 - (void)mapViewDidChangeVisibleRegion:(MKMapView *)mapView {
 
     NSSet *annotationSet = [mapView annotationsInMapRect:mapView.visibleMapRect];
-    if (annotationSet.count > 100) {
+    if (annotationSet.count > 100 && !_limitAnnotationsWarningDisplayed) {
+        _limitAnnotationsWarningDisplayed = YES;
         [self displayError:@"Error" message:@"Too many results displayed on the map, please adjust the filter or zoom in."];
     }
     
@@ -496,6 +499,7 @@
 
     [restaurantsTableView reloadData];
     [self reloadMapAnnotations];
+    _limitAnnotationsWarningDisplayed = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -748,6 +752,7 @@
   [self.mapModelController applyFilters:self.mapModelController.filters sortBySelectedLocation:YES];
   [restaurantsTableView reloadData];
   [self reloadMapAnnotations];
+    _limitAnnotationsWarningDisplayed = NO;
 }
 
 - (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didFailAutocompleteWithError:(NSError *)error {
