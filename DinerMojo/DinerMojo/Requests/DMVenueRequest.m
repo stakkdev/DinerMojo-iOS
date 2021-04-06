@@ -28,10 +28,11 @@
     completionBlock(nil, fetchedVenues);
 }
 
-- (NSArray *)cachedFavouriteVenuesIds {
+- (NSMutableArray *)cachedFavouriteVenuesIds {
     NSString *stringFavoriteIds = [[NSUserDefaults standardUserDefaults] objectForKey:@"favourite_ids"];
     NSArray *all_ids = [stringFavoriteIds componentsSeparatedByString:@","];
-    return all_ids;
+    NSMutableArray *cachedFavouriteIds = [[NSMutableArray alloc] initWithArray:all_ids];
+    return cachedFavouriteIds;
 }
 
 - (void)cachedFavoriteVenues:(RequestCompletion)completionBlock;

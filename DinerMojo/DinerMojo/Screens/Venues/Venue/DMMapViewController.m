@@ -635,7 +635,6 @@
 
 - (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath *)index {
     DMVenue *venue =  [[[self mapModelController] filteredVenues] objectAtIndex:[index row]];
-
     if (favourite) {
         NSString* stringId = [NSString stringWithFormat:@"%d", venue.modelIDValue];
         [_favouriteIds addObject:stringId];

@@ -33,7 +33,7 @@
 
 @property(weak, nonatomic) IBOutlet UIView *tabsFilterViewContainer;
 @property (strong, nonatomic) NSArray *filterItems;
-@property (strong, nonatomic) NSArray *venues;
+@property (strong, nonatomic) NSMutableArray *venues;
 
 @end
 
@@ -44,37 +44,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self addEditBtn];
-
     _venueRequest = [DMVenueRequest new];
     _venueModelController = [DMVenueModelController new];
     _venueModelController.state = DMVenueListFavourite;
     [self favouritesTableView].allowsMultipleSelectionDuringEditing = YES;
     [[self favouritesTableView] registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
-    [self toolBar];
+    [self setUpNavBarWithButtons];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self downloadVenues];
+    [self navigationItem].title = @"Favourites";
 }
 
-- (void)addEditBtn {
-    _editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(btnEditClicked)];
-    self.navigationItem.leftBarButtonItem = _editButton;
-    [_editButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont navigationBarButtonItemFont]}
-                               forState:UIControlStateNormal];
+#pragma mark - Setup
 
-    [self toggleEditButtonEnabled];
-
-    UIBarButtonItem *sortButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"sort.button.title", nil) style:UIBarButtonItemStylePlain target:self action:@selector(sortButtonPressed:)];
-    self.navigationItem.rightBarButtonItem = sortButton;
-    [_editButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont navigationBarButtonItemFont]}
-                               forState:UIControlStateNormal];
+- (void)setUpNavBarWithButtons {
+    UIBarButtonItem *deleteAllButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"remove.all.title", nil) style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllPressed:)];
+    self.navigationItem.rightBarButtonItem = deleteAllButton;
+//    [_editButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont navigationBarButtonItemFont]}
+//                               forState:UIControlStateNormal];
 
 
 }
-
 
 #pragma mark - TableView delegate
 
@@ -136,7 +130,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[self favouritesTableView] isEditing]) {
-        [self toggleDeleteButtonEnabled];
         return;
     }
     DMVenue *item = _venues[(NSUInteger) indexPath.row];
@@ -146,11 +139,17 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath; {
     if ([[self favouritesTableView] isEditing]) {
-        [self toggleDeleteButtonEnabled];
         return;
     }
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"favouritesSegue"]) {
@@ -160,55 +159,19 @@
 }
 
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return YES if you want the specified item to be editable.
-    return YES;
-}
 
 
 #pragma mark - Actions
 
-- (void)btnEditClicked {
-    [self toggleEditMode];
+- (void)deleteAllPressed:(id)sender {
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Remove all" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self deleteAllFavouriteVenues];
+    }];
+    [self displayWarning:@"Warning" message:@"Are you sure you would like to continue?" action:action dismissActionTitle:@"Cancel"];
+
 }
 
-- (void)sortButtonPressed:(id)sender {
-    UINavigationController *vc = (UINavigationController*)DMViewControllersProvider.instance.sortVC;
-
-    if (vc.viewControllers.count > 0) {
-        DMSortVenueFeedViewController *filterVC = vc.viewControllers[0];
-        filterVC.delegate = self;
-        filterVC.filterItems = self.filterItems;
-    }
-
-    [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    [self presentViewController:vc animated:YES completion:nil];
-}
-
-
-
-- (void)toggleEditMode; {
-    [[self favouritesTableView] setEditing:![[self favouritesTableView] isEditing] animated:YES];
-    if ([[self favouritesTableView] isEditing]) {
-        [_editButton setTitle:@"Cancel"];
-        [self.navigationItem setTitle:@"Edit Favourites"];
-        // [self hideTabBar:self.tabBarController];
-        [self showToolBar];
-        [self updateOnScreenCellsForEditMode:YES];
-    } else {
-        [_editButton setTitle:@"Edit"];
-        [self.navigationItem setTitle:@"Favourites"];
-        //  [self showTabBar:self.tabBarController];
-        [self hideToolBar];
-        [self updateOnScreenCellsForEditMode:NO];
-    }
-}
-
-
-- (void)toggleEditButtonEnabled; {
-    [_editButton setEnabled:([_venues count] != 0)];
-}
-
+#pragma mark - Data
 
 - (void)downloadVenues {
     [self.emptyTableDescriptionView setHidden:YES];
@@ -233,9 +196,7 @@
         }               completion:nil];
 
         [[self favouritesTableView] setHidden:NO];
-
         [self toggleNoFavouritesLabel];
-        [self toggleEditButtonEnabled];
         if (!final) {
             [[self activityIndicator] stopAnimating];
         }
@@ -252,26 +213,35 @@
     }
 }
 
-- (void)updateVenues:(NSArray *)venues {
+- (void)updateVenues:(NSMutableArray *)venues {
     NSSortDescriptor * sort = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    _venues = [venues sortedArrayUsingDescriptors:@[sort]];
-    
+    NSArray *sortedVenues = [venues sortedArrayUsingDescriptors:@[sort]];
+    NSMutableArray *newVenues = [[NSMutableArray alloc]initWithArray:sortedVenues];
+    _venues = newVenues;
+//    [_favouritesTableView reloadData];
 }
 
-
-- (void)updateOnScreenCellsForEditMode:(BOOL)editMode {
-    NSArray *visibleCells = [[self favouritesTableView] visibleCells];
-
-    CGFloat alpha = (CGFloat) (editMode ? 0.0 : 1.0);
-
-    for (DMRestaurantCell *cell in visibleCells) {
-        [UIView animateWithDuration:0.35f animations:^{
-            cell.restaurantDistance.alpha = alpha;
-            cell.restaurantPrice.alpha = alpha;
-        }];
+- (void)deleteAllFavouriteVenues {
+    NSMutableArray *venue_ids = [NSMutableArray new];
+    for (DMVenue *venue in _venues) {
+        [venue_ids addObject:venue.modelID];
     }
+    [self deleteFavouriteVenues:venue_ids];
 }
 
+- (void)deleteFavouriteVenues:(NSArray *)venues {
+    [[self userRequest] deleteVenues:venues withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            [self displayError:@"Error" message: error.localizedDescription];
+        }
+        [[ self venueRequest] cachedFavoriteVenues:^(NSError *error, id results) {
+            [self gotFavouriteVenuesCompletionBlock:error id:results final:false];
+        }];
+    }];
+}
+
+
+#pragma mark - UI
 
 - (void)toggleNoFavouritesLabel; {
     if ([_venues count] == 0) {
@@ -289,154 +259,7 @@
 }
 
 
-- (void)deleteFavouriteVenues:(NSArray *)venues {
-    [[self userRequest] deleteVenues:venues withCompletionBlock:^(NSError *error, id results) {
-        NSMutableArray *mutableResults = [[NSMutableArray alloc] initWithArray:results];
-        NSMutableArray *venuesToDelete = [[NSMutableArray alloc] init];
-        for(DMVenue *venue in mutableResults) {
-            if(venue.name == NULL) {
-                [venuesToDelete addObject: venue];
-            }
-        }
-        for (DMVenue *venue in venuesToDelete) {
-            [mutableResults removeObject:venue];
-        }
-        [self updateVenues:results];
-        [[self venueModelController] setVenues:results];
-
-        [[self favouritesTableView] reloadData];
-
-        [self toggleEditMode];
-
-        [self toggleEditButtonEnabled];
-        [self toggleNoFavouritesLabel];
-    }];
-}
-
-
-- (void)toggleDeleteButtonEnabled; {
-    NSArray *selectedItemsIndexPaths = [[self favouritesTableView] indexPathsForSelectedRows];
-
-    if ([selectedItemsIndexPaths count] == 0) {
-        [[self deleteToolBarButton] setEnabled:NO];
-        [[self deleteToolBarButton] setAlpha:0.5];
-    } else {
-        [[self deleteToolBarButton] setEnabled:YES];
-        [[self deleteToolBarButton] setAlpha:1];
-
-    }
-
-}
-
-
-- (void)deleteRow; {
-    NSArray *selectedItemsIndexPaths = [[self favouritesTableView] indexPathsForSelectedRows];
-    NSMutableArray *venue_ids = [NSMutableArray new];
-
-    for (NSIndexPath *indexPath in selectedItemsIndexPaths) {
-        DMVenue *venue = _venues[indexPath.row];
-        [venue_ids addObject:venue.modelID];
-    }
-
-    [self deleteFavouriteVenues:venue_ids];
-    [self toggleNoFavouritesLabel];
-}
-
-
-- (void)showToolBar {
-    [UIToolbar animateWithDuration:0.3 animations:^{
-
-        [[self toolBar] setFrame:CGRectMake(CGRectGetMinX([self toolBar].frame),
-                CGRectGetMinY([self toolBar].frame) - CGRectGetHeight([self toolBar].frame),
-                CGRectGetWidth([self toolBar].frame),
-                CGRectGetHeight([self toolBar].frame))];
-    }];
-}
-
-
-- (void)hideToolBar {
-    [UIToolbar animateWithDuration:0.3 animations:^{
-
-        [[self toolBar] setFrame:CGRectMake(CGRectGetMinX([self toolBar].frame),
-                CGRectGetMinY([self toolBar].frame) + CGRectGetHeight([self toolBar].frame),
-                CGRectGetWidth([self toolBar].frame),
-                CGRectGetHeight([self toolBar].frame))];
-    }];
-}
-
-
-- (void)selectAllRows; {
-    for (NSInteger s = 0; s < [self favouritesTableView].numberOfSections; s++) {
-        for (NSInteger r = 0; r < [[self favouritesTableView] numberOfRowsInSection:s]; r++) {
-            [[self favouritesTableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:r inSection:s]
-                                                    animated:NO
-                                              scrollPosition:UITableViewScrollPositionNone];
-        }
-    }
-    [self toggleDeleteButtonEnabled];
-}
-
-
 #pragma mark - lazy loading
-
-
-- (UIToolbar *)toolBar {
-    if (_toolBar) {
-        return _toolBar;
-    }
-    _toolBar = [[UIToolbar alloc] init];
-
-    _toolBar.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, self.tabBarController.tabBar.frame.size.height);
-    [self.tabBarController.view addSubview:_toolBar];
-    [_toolBar setBackgroundImage:[self imageWithColor:[[UIColor navColor] colorWithAlphaComponent:1]] forToolbarPosition:UIBarPositionBottom barMetrics:UIBarMetricsDefault];
-    [self selectToolBarButton];
-    [self deleteToolBarButton];
-
-    return _toolBar;
-}
-
-
-- (UIButton *)selectToolBarButton {
-    if (_selectToolBarButton) {
-        return _selectToolBarButton;
-    }
-    _selectToolBarButton = [[UIButton alloc] init];
-
-    [_selectToolBarButton setTitle:@"Select All" forState:UIControlStateNormal];
-    [_selectToolBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_selectToolBarButton setBackgroundColor:[UIColor clearColor]];
-    [[_selectToolBarButton titleLabel] setFont:[UIFont fontWithName:@"OpenSans-Light" size:14]];
-    _selectToolBarButton.frame = CGRectMake(0, 0, 100, 50);
-
-    [_selectToolBarButton addTarget:self action:@selector(selectAllRows) forControlEvents:UIControlEventTouchUpInside];
-
-    [self.toolBar addSubview:_selectToolBarButton];
-    return _selectToolBarButton;
-}
-
-
-- (UIButton *)deleteToolBarButton {
-    if (_deleteToolBarButton) {
-        return _deleteToolBarButton;
-    }
-
-    _deleteToolBarButton = [[UIButton alloc] init];
-
-    [_deleteToolBarButton setTitle:@"Delete" forState:UIControlStateNormal];
-    [_deleteToolBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_deleteToolBarButton setBackgroundColor:[UIColor clearColor]];
-    [[_deleteToolBarButton titleLabel] setFont:[UIFont fontWithName:@"OpenSans-Light" size:14]];
-    _deleteToolBarButton.frame = CGRectMake(self.toolBar.frame.size.width - 100, 0, 100, 50);
-
-    [_deleteToolBarButton addTarget:self action:@selector(deleteRow) forControlEvents:UIControlEventTouchUpInside];
-
-    [self.toolBar addSubview:_deleteToolBarButton];
-
-    [self toggleDeleteButtonEnabled];
-    return _deleteToolBarButton;
-
-}
-
 
 - (UIImage *)imageWithColor:(UIColor *)color {
 
@@ -453,11 +276,6 @@
     return image;
 }
 
-- (void)selectedFilterItems:(NSArray *)filterItems {
-    self.filterItems = filterItems;
-    _venueModelController.filters = filterItems;
-    [self.favouritesTableView reloadData];
-}
 
 // MARK: - Restaurant cell delegate
 
@@ -492,12 +310,20 @@
 
 - (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath *)index {
     DMVenue *venue =  [_venues objectAtIndex:[index row]];
+    NSMutableArray *newFavourites = [[NSMutableArray alloc]initWithArray:_venues];
+    if ([newFavourites containsObject:venue]) {
+        NSInteger index = [newFavourites indexOfObjectIdenticalTo:venue];
+         if (index < newFavourites.count) {
+             [newFavourites removeObjectAtIndex:index];
+         }
+    }
+    [self updateVenues:newFavourites];
     [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
         if (error) {
             [self displayError:@"Error" message:@"Unable to sync favourites. Please check your connection and try again."];
-//            []
-            [[self favouritesTableView] reloadRowsAtIndexPaths: [[NSArray alloc]initWithObjects:index, nil] withRowAnimation:UITableViewRowAnimationFade];
-
+            [[ self venueRequest] cachedFavoriteVenues:^(NSError *error, id results) {
+                [self gotFavouriteVenuesCompletionBlock:error id:results final:false];
+            }];
         }
     }];
 }
@@ -508,6 +334,14 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle: UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:okAction];
+    [self presentViewController:alert animated:true completion:nil];
+}
+
+-(void)displayWarning:(NSString *)title message:(NSString *)message action:(UIAlertAction *)action dismissActionTitle:(NSString *)dismissActionTitle {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle: UIAlertControllerStyleAlert];
+    [alert addAction:action];
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:dismissActionTitle style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:dismissAction];
     [self presentViewController:alert animated:true completion:nil];
 }
 
