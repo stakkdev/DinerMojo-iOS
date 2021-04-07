@@ -49,6 +49,7 @@ int lifestyleTableViewTag = 2;
 - (void)viewDidLayoutSubviews {
     self.restaurantsTableViewHeightConstraint.constant = self.restaurantCategoriesTableView.contentSize.height;
     self.lifestyleTableViewHeightConstrint.constant = self.lifestyleCategoriesTableView.contentSize.height;
+    self.generalOptionsTableHeightConstraint.constant = self.generalOptionsTableView.contentSize.height;
 }
 
 - (void)setup {
@@ -72,6 +73,7 @@ int lifestyleTableViewTag = 2;
     self.generalOptionsTableHeightConstraint.constant = self.generalOptionsTableView.contentSize.height;
     
     self.tableViewManager.selectionManager = self.selectionManager;
+    [[self generalOptionsTableView] setRowHeight:41];
     
     self.title = NSLocalizedString(@"sort.page.title", nil);
     
@@ -94,6 +96,7 @@ int lifestyleTableViewTag = 2;
     [[self lifestyleCategoriesTableView] registerNib: [UINib nibWithNibName:@"SimpleRadioTableViewCell" bundle:nil] forCellReuseIdentifier:@"SimpleRadioTableViewCell"];
     [[self restaurantCategoriesTableView] registerNib: [UINib nibWithNibName:@"SimpleRadioTableViewCell" bundle:nil] forCellReuseIdentifier:@"SimpleRadioTableViewCell"];
     
+
     [[self lifestyleCategoriesTableView] setRowHeight:41];
     [[self restaurantCategoriesTableView] setRowHeight:41];
 }
