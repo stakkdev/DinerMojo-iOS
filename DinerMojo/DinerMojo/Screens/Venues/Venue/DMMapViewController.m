@@ -257,13 +257,19 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [[[self mapModelController] mapAnnotations] count];
+    return self.mapModelController.mapAnnotations.count * 50;
+}
+
+- (NSInteger )collectionViewIndexForRow:(NSInteger )row {
+    return  row % self.mapModelController.mapAnnotations.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger row = [self collectionViewIndexForRow:indexPath.row];
     static NSString *cellIdentifier = @"VenueCollectionViewCell";
     VenueCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    DMVenue *item = [[[self mapModelController] filteredVenues] objectAtIndex:indexPath.row];
+    DMVenue *item = [[[self mapModelController] filteredVenues] objectAtIndex:row];
     
     DMVenueImage *venueImage = (DMVenueImage *) [item primaryImage];
     NSString *category = [[[item categories] anyObject] name];
