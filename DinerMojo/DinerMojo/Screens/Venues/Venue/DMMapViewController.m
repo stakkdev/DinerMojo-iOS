@@ -275,7 +275,11 @@
     NSString *category = [[[item categories] anyObject] name];
     NSString *formattedCategory = [[NSString stringWithFormat:@"%@", category] stringByReplacingOccurrencesOfString:@"L-" withString:@""];
     
-    cell.cellWidth.constant = UIScreen.mainScreen.bounds.size.width * 0.75;
+    CGFloat width = UIScreen.mainScreen.bounds.size.width * 0.75;
+    CGFloat height = (width / 100) * 44;
+    
+    cell.cellWidth.constant = width;
+    cell.cellHeight.constant = height;
     [cell.restaurantPrice setHidden:(_mapModelController.state == DMVenueList)];
     [cell.restaurantType setHidden:(_mapModelController.state == DMVenueList)];
     [[cell restaurantName] setText:item.name];
@@ -366,8 +370,8 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = UIScreen.mainScreen.bounds.size.width * 0.75;
-//    CGFloat height = (width / 100) * 44;
-    return CGSizeMake(width, 110);
+    CGFloat height = (width / 100) * 44;
+    return CGSizeMake(width, height);
 }
 
 // MARK: - Others

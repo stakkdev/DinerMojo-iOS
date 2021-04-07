@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSIndexPath* index;
 @property (nonatomic) int state;
 @property BOOL isFavourite;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *cellHeight;
 
 - (void)setEarnVisibility:(BOOL)visibility;
 - (void)setRedeemVisibility:(BOOL)visibility;
