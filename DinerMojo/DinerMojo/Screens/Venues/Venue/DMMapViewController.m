@@ -703,15 +703,15 @@
         }
     }
     NSArray *indexPaths = [[NSArray alloc]initWithObjects:index, nil];
-    [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
-    [collectionView  reloadItemsAtIndexPaths:indexPaths];
+//    [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
+//    [collectionView  reloadItemsAtIndexPaths:indexPaths];
     [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
         [self updateFavourites];
         if (error) {
             [self displayError:@"Error" message:@"Unable to sync favourites. Please check your connection and try again."];
-            [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
-            [collectionView  reloadItemsAtIndexPaths:indexPaths];
         }
+        [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
+        [collectionView  reloadItemsAtIndexPaths:indexPaths];
     }];
 }
 
