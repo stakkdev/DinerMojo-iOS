@@ -22,6 +22,7 @@
         CLLocation *kingstone = [[CLLocation alloc] initWithLatitude:51.41259  longitude:-0.2974];
         [shared setCurrentLocation:kingstone];
         [shared setSelectedLocation:kingstone];
+        [shared setInitialLocationUpdate:YES];
         
     });
     return shared;
@@ -45,7 +46,12 @@
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{    
+{
+    if (_initialLocationUpdate) {
+        [self setSelectedLocation:[locations lastObject]];
+        [self setInitialLocationUpdate:NO];
+        [self.delegate didInitiallyUpdateLocation];
+    }
     [self setCurrentLocation:[locations lastObject]];
     
 }

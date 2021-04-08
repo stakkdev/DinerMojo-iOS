@@ -53,15 +53,16 @@
     NSSortDescriptor *createdAtSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"created_on" ascending:YES];
     [sortDescriptors addObject:activeSortDescriptor];
     BOOL sortByDistance = NO;
-    BOOL sortByDistanceFromSelectedLocation = NO;
     
     // Filter: redemtion & offer venues
     BOOL filterRedeemPoints = NO;
     BOOL filterEarnsPoints = NO;
     BOOL filterHasNews = NO;
     BOOL filterHasOffers = NO;
-
     
+    BOOL filterByDistance = NO;
+    double filterByMiles = 0;
+
     // Loop through filters
     for (FilterItem *filter in _filters)
     {
@@ -72,8 +73,6 @@
                 [sortDescriptors addObject:createdAtSortDescriptor];
             } else if (filter.itemId == SortByItemsNearestItem) {
                 sortByDistance = YES;
-            } else if (filter.itemId == SortByItemsSelectedLocation) {
-                sortByDistanceFromSelectedLocation = YES;
             }
         } else if (filter.groupName == GroupsNameRestaurantsFilter) {
             NSNumber *modelID = [[NSNumber alloc]initWithInteger:filter.itemId];
@@ -88,9 +87,20 @@
             } else if (filter.itemId == ShowVenuesOffersItem) {
                 filterHasOffers = YES;
             }
-        } else if (filter.groupName == GroupsNameThings) {
-
-        } else if (filter.groupName == GroupsNameTellMe) {
+        } else if (filter.groupName == GroupsNameDistanceFilter) {
+            if (filter.itemId == DistanceFilterDefault && _defaultDistance != 0) {
+                filterByDistance = YES;
+                filterByMiles = _defaultDistance;
+            } else if (filter.itemId == DistanceFilterOneMile) {
+                filterByDistance = YES;
+                filterByMiles = 1;
+            } else if (filter.itemId == DistanceFilterFiveMiles) {
+                filterByDistance = YES;
+                filterByMiles = 5;
+            } else if (filter.itemId == DistanceFilterTenMiles) {
+                filterByDistance = YES;
+                filterByMiles = 10;
+            }
 
         }
     }
@@ -119,6 +129,7 @@
     
     _selectedCategoriesIds = categoriesIds;
     
+    // If any categories are selected, filter by category type
     if (categoriesIds.count > 0) {
         NSMutableArray *categoriesFilteredArray = [[NSMutableArray alloc] init];
         for (DMVenue *venue in sortedArray) {
@@ -136,23 +147,37 @@
         sortedArray = categoriesFilteredArray;
     }
     
+    // If any distance to filter by selected, filter by distance
+    if (filterByDistance) {
+        NSMutableArray *distanceFilteredArray = [[NSMutableArray alloc] init];
+        for (DMVenue *venue in sortedArray) {
+            double distanceInMeters = 0;
+            
+            distanceInMeters = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:venue];
+      
+            double distanceInKm = distanceInMeters / 1000;
+            double distanceInMiles = distanceInKm / 1.609;
+            
+            if (distanceInMiles < filterByMiles) {
+                [distanceFilteredArray addObject:venue];
+            }
+        }
+        sortedArray = distanceFilteredArray;
+    }
+    
     if (sortByDistance) {
         NSArray *locationSortedArray;
         locationSortedArray = [sortedArray sortedArrayUsingComparator:^NSComparisonResult(DMVenue* a, DMVenue* b) {
-            double distanceA = [[DMLocationServices sharedInstance] getUserDistanceFrom:a];
-            double distanceB = [[DMLocationServices sharedInstance] getUserDistanceFrom:b];
+            double distanceA = 0;
+            double distanceB = 0;
+            distanceA = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:a];
+            distanceB = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:b];
             return distanceA > distanceB;
-        }];
-        sortedArray = locationSortedArray;
-    } else if (sortByDistanceFromSelectedLocation) {
-        NSArray *locationSortedArray;
-        locationSortedArray = [sortedArray sortedArrayUsingComparator:^NSComparisonResult(DMVenue* a, DMVenue* b) {
-            double distanceA = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:a];
-            double distanceB = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:b];
-            return distanceA > distanceB;
+            
         }];
         sortedArray = locationSortedArray;
     }
+    
     _filteredVenues = sortedArray;
     _mapAnnotations = [self annotations:sortedArray];
 }
@@ -176,35 +201,8 @@
     return finalPredicate;
 }
 
-- (void)applyFilters:(NSArray *)filters sortBySelectedLocation:(BOOL)enabled {
-    NSMutableArray *newFilters = [[NSMutableArray alloc]init];
-    // filter current filters to:
-    // remove sorting except by selected location if enabled
-    // remove sorting by selected location if disabled
-    for (FilterItem *filter in filters)
-    {
-        if (filter.groupName == GroupsNameSortBy) {
-            if (
-                filter.itemId == SortByItemsAZ ||
-                filter.itemId == SortByItemsRecentItem ||
-                filter.itemId == SortByItemsNearestItem
-                ) {
-                if (!enabled) {
-                 [newFilters addObject:filter];
-                }
-            } else if (filter.itemId == SortByItemsSelectedLocation) {
-                break;
-            }
-        } else {
-            [newFilters addObject:filter];
-        }
-    }
-    FilterItem *sortBySelectedLocation = [[FilterItem alloc] initWithGroupName:GroupsNameSortBy itemId:SortByItemsSelectedLocation value:0];
-    // add sort by selected location if enabled
-    if (enabled == YES) {
-        [newFilters addObject:sortBySelectedLocation];
-    }
-    [self setFilteringBySelectedLocation:enabled];
+- (void)applyFilters:(NSArray *)newFilters {
+
     self.filters = newFilters;
     [self applyFilters];
 }

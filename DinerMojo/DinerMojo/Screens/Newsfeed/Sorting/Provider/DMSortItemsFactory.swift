@@ -23,7 +23,6 @@ import UIKit
     case NearestItem = 2000
     case RecentItem
     case AZ
-    case SelectedLocation
 }
 
 @objc enum ShowVenues: Int {
@@ -34,7 +33,10 @@ import UIKit
 }
 
 @objc enum DistanceFilter: Int {
-    case DistanceItem = 4000
+    case Default = 4000
+    case OneMile
+    case FiveMiles
+    case TenMiles
 }
 
 @objc enum ShowNewsGroup: Int {
@@ -66,7 +68,30 @@ import UIKit
     case NDMClubItem
 }
 
+
 class DMTableItemsFactory: NSObject {
+    
+    func limitByRadiusItem(selectedItems: [FilterItem]) -> DMOptionGroupItem {
+        let defaultItem = DMRadioSortOptionItem(NSLocalizedString("limit.default", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.Default.rawValue)
+        defaultItem.isSelected = self.checkSelection(item: defaultItem, selectedItems: selectedItems)
+        
+        let oneMileItem = DMRadioSortOptionItem(NSLocalizedString("limit.oneMile", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.OneMile.rawValue)
+        oneMileItem.isSelected = self.checkSelection(item: oneMileItem, selectedItems: selectedItems)
+        
+        let fiveMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.fiveMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.FiveMiles.rawValue)
+        fiveMilesItem.isSelected = self.checkSelection(item: fiveMilesItem, selectedItems: selectedItems)
+        
+        let tenMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.tenMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.TenMiles.rawValue)
+        tenMilesItem.isSelected = self.checkSelection(item: tenMilesItem, selectedItems: selectedItems)
+        
+        if selectedItems.count == 0 {
+            defaultItem.isSelected = true
+        }
+        let subItems = [defaultItem, oneMileItem, fiveMilesItem, tenMilesItem]
+        let limitByItem = DMOptionGroupItem(NSLocalizedString("limit.by", comment: ""), items: subItems)
+        limitByItem.allowOnlyOneInGroup = true
+        return limitByItem
+    }
     
     func sortByGroupItem(selectedItems: [FilterItem]) -> DMOptionGroupItem {
         let nearestItem = DMRadioSortOptionItem(NSLocalizedString("sort.nearest", comment: ""), groupName: GroupsName.SortBy.rawValue, itemId: SortByItems.NearestItem.rawValue)
@@ -178,15 +203,6 @@ class DMTableItemsFactory: NSObject {
         return sortByItem
     }
 
-    func distanceFilterGroupItem(selectedItems: [FilterItem]) -> DMOptionGroupItem {
-        let distanceFilterItem = DMSortByDistanceItem(GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.DistanceItem.rawValue)
-        if let item = self.getDistanceElement(item: distanceFilterItem, selectedItems: selectedItems) {
-            distanceFilterItem.distance = item.value
-        }
-        
-        let groupItem = DMOptionGroupItem(NSLocalizedString("sort.distance.title", comment: ""), items: [distanceFilterItem])
-        return groupItem
-    }
 
     func restaurantsFilterGroupItem(_ names: [NSDictionary], selectedItems: [FilterItem]) -> DMOptionGroupItem {
 

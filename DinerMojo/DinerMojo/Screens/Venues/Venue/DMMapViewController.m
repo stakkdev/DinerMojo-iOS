@@ -21,11 +21,14 @@
 #import <SDWebImage/SDWebImage.h>
 #import "DinerMojo-Bridging-Header.h"
 @import GooglePlaces;
+#import <GoogleMaps/GoogleMaps.h>
+
+
 
 
 @import MapKit;
 
-@interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MKMapViewDelegate, SearchBarDelegate, GMSAutocompleteTableDataSourceDelegate>
+@interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MKMapViewDelegate, SearchBarDelegate, GMSAutocompleteTableDataSourceDelegate, DMLocationServiceDelegate>
 
 @property (strong, nonatomic) DMVenueRequest* venueRequest;
 @property (strong, nonatomic) DMUserRequest* userRequest;
@@ -52,15 +55,13 @@
     _mapModelController.filterLifestyle = NO;
     _mapModelController.state = DMVenueMap;
     FilterItem *nearestFilter = [[FilterItem alloc] initWithGroupName:GroupsNameSortBy itemId:SortByItemsNearestItem value:SortByItemsNearestItem];
-    FilterItem *alphabeticalSort = [[FilterItem alloc] initWithGroupName:GroupsNameSortBy itemId:SortByItemsAZ value:SortByItemsAZ];
+    FilterItem *defaultRadius = [[FilterItem alloc] initWithGroupName:GroupsNameDistanceFilter itemId:DistanceFilterDefault value:DistanceFilterDefault];
     NSMutableArray *initialFilters = [[NSMutableArray alloc] init];
-    if (DMLocationServices.sharedInstance.currentLocation) {
-        [initialFilters addObject:nearestFilter];
-    } else {
-        [initialFilters addObject:alphabeticalSort];
-    }
+    [initialFilters addObject:nearestFilter];
+    [initialFilters addObject:defaultRadius];
+   
     _mapModelController.filters = initialFilters;
-    [_mapModelController applyFilters:initialFilters sortBySelectedLocation:NO];
+    [_mapModelController applyFilters:initialFilters];
  
     
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
@@ -301,10 +302,7 @@
     [cell setEarnVisibility:item.allows_earnsValue];
     [cell setRedeemVisibility:item.allows_redemptionsValue];
     
-    double distance = [[DMLocationServices sharedInstance] getUserDistanceFrom:item];
-    if (self.mapModelController.filteringBySelectedLocation) {
-        distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
-    }
+    double distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
     if(distance != 0) {
         MKDistanceFormatter *df = [MKDistanceFormatter new];
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
@@ -497,28 +495,9 @@
 - (void)selectedFilterItems:(NSArray *)filterItems {
     self.filterItems = filterItems;
     _mapModelController.filters = filterItems;
-    
-    BOOL newFiltersContainSort = NO;
-    
-    for (FilterItem *filter in filterItems)
-    {
-        if (filter.groupName == GroupsNameSortBy) {
-            if (
-                filter.itemId == SortByItemsAZ ||
-                filter.itemId == SortByItemsRecentItem ||
-                filter.itemId == SortByItemsNearestItem
-                ) {
-                newFiltersContainSort = YES;
-                break;
-            }
-        }
-    }
-    
-    if (newFiltersContainSort) {
-        [self.mapModelController applyFilters:filterItems sortBySelectedLocation:NO];
-    } else {
-        [self.mapModelController applyFilters:filterItems sortBySelectedLocation:self.mapModelController.filteringBySelectedLocation];
-    }
+ 
+    [self.mapModelController applyFilters:filterItems];
+
     [self setLastCarouselIndex:0];
     [self reloadSelf];
     _limitAnnotationsWarningDisplayed = NO;
@@ -595,10 +574,7 @@
     BOOL isFavourite = [_favouriteIds containsObject:stringId];
     [cell setToFavourite:isFavourite];
     
-    double distance = [[DMLocationServices sharedInstance] getUserDistanceFrom:item];
-    if (self.mapModelController.filteringBySelectedLocation) {
-        distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
-    }
+    double distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
     if(distance != 0) {
         MKDistanceFormatter *df = [MKDistanceFormatter new];
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
@@ -703,8 +679,6 @@
         }
     }
     NSArray *indexPaths = [[NSArray alloc]initWithObjects:index, nil];
-//    [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
-//    [collectionView  reloadItemsAtIndexPaths:indexPaths];
     [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
         [self updateFavourites];
         if (error) {
@@ -752,9 +726,10 @@
         CLLocation *currentLocation = [DMLocationServices sharedInstance].currentLocation;
         [self zoomMapTo:currentLocation];
         [DMLocationServices.sharedInstance setSelectedLocation:currentLocation];
-        [self.mapModelController applyFilters:self.mapModelController.filters sortBySelectedLocation:YES];
-        [self reloadSelf];
         [_searchBar setTextTo:@""];
+        [self.mapModelController setDefaultDistance:0];
+        [self.mapModelController applyFilters];
+        [self reloadSelf];
 
     }
 }
@@ -763,6 +738,9 @@
     if (DMLocationServices.sharedInstance.currentLocation) {
         CLLocation *currentLocation = [DMLocationServices sharedInstance].currentLocation;
         [DMLocationServices.sharedInstance setSelectedLocation:currentLocation];
+        [self.mapModelController setDefaultDistance:0];
+        [self.mapModelController applyFilters];
+        [self reloadSelf];
     }
 }
 
@@ -789,12 +767,22 @@
 
 - (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didAutocompleteWithPlace:(GMSPlace *)place {
   CLLocation *selectedLocation = [[CLLocation alloc]initWithLatitude:place.coordinate.latitude longitude:place.coordinate.longitude];
-  [self zoomMapTo:selectedLocation];
+    GMSCoordinateBounds *bounds = place.viewport;
+    
+    CLLocation *nortEast = [[CLLocation alloc]initWithLatitude:bounds.northEast.latitude longitude:bounds.northEast.longitude];
+    
+    CLLocation *southWest = [[CLLocation alloc]initWithLatitude:bounds.southWest.latitude longitude:bounds.southWest.longitude];
+    double distanceInM = [nortEast distanceFromLocation:southWest];
+    double distanceInMiles = distanceInM / 1000 / 1.609;
+    [self.mapModelController setDefaultDistance:distanceInMiles];
+    
+    [self zoomMapTo:selectedLocation];
   [DMLocationServices.sharedInstance setSelectedLocation:selectedLocation];
   [self toggleSuggestionsTableViewTo:NO];
   [[self searchBar] toggleActiveTo:NO];
   [[self searchBar] setTextTo:place.name];
-  [self.mapModelController applyFilters:self.mapModelController.filters sortBySelectedLocation:YES];
+    
+  [self.mapModelController applyFilters];
   [self setLastCarouselIndex: 0];
   [self reloadSelf];
 
@@ -808,6 +796,12 @@
 
 - (BOOL)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didSelectPrediction:(GMSAutocompletePrediction *)prediction {
   return YES;
+}
+
+#pragma mark - DMLocationServiceDelegate
+
+- (void)didInitiallyUpdateLocation {
+    [self reloadSelf];
 }
 
 @end
