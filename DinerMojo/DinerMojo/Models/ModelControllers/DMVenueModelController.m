@@ -193,7 +193,7 @@
                  [newFilters addObject:filter];
                 }
             } else if (filter.itemId == SortByItemsSelectedLocation) {
-                return;
+                break;
             }
         } else {
             [newFilters addObject:filter];

@@ -73,6 +73,7 @@
     suggestionsTableView.dataSource = suggestionsDataSource;
     
     _limitAnnotationsWarningDisplayed = NO;
+    [self setLastCarouselIndex:0];
     
 }
 
@@ -217,9 +218,8 @@
     if (filteredArray.count > 0) {
         DMVenue *venue = [filteredArray objectAtIndex:0];        
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([venue.state integerValue] == DMVenueStateVerified) {
-                [self performSegueWithIdentifier:@"restaurantInfoSegue" sender:venue];
-            }
+            NSInteger index = [self.mapModelController.filteredVenues indexOfObject:venue];
+            [self navigateToVenueDetail:venue selectedIndex:index];
         });
     }
 }
@@ -300,8 +300,11 @@
 
     [cell setEarnVisibility:item.allows_earnsValue];
     [cell setRedeemVisibility:item.allows_redemptionsValue];
-
-    double distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
+    
+    double distance = [[DMLocationServices sharedInstance] getUserDistanceFrom:item];
+    if (self.mapModelController.filteringBySelectedLocation) {
+        distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
+    }
     if(distance != 0) {
         MKDistanceFormatter *df = [MKDistanceFormatter new];
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
@@ -353,10 +356,7 @@
     // Select annotation or navigate to detail based on previously selected
     if (previouslySelected) {
         DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)indexPath.row];
-        if ([item.state integerValue] == DMVenueStateVerified)
-        {
-            [self performSegueWithIdentifier:@"restaurantInfoSegue" sender:item];
-        }
+        [self navigateToVenueDetail:item selectedIndex:indexPath.row];
     } else {
         double delayInSeconds = 0.5;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -447,7 +447,7 @@
             [favIds addObject: stringId];
         }
         self.favouriteIds = favIds;
-        [restaurantsTableView reloadData];
+        [self reloadSelf];
     }];
 }
 
@@ -459,8 +459,8 @@
     if (error == nil) {
         [[self mapModelController] setVenues:results];
         
-        [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) { [restaurantsTableView reloadData];
-            [self reloadMapAnnotations];
+        [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
+            [self reloadSelf];
         } completion: nil];
         
         [self.downloadLabel setHidden:YES];
@@ -475,6 +475,18 @@
     }
     if (final) {
         [self.activityIndicator stopAnimating];
+    }
+}
+
+-(void)reloadSelf {
+    [restaurantsTableView reloadData];
+    [self reloadMapAnnotations];
+    if (self.lastCarouselIndex >= 0 &&
+        self.mapModelController.mapAnnotations.count > self.lastCarouselIndex) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.lastCarouselIndex inSection:0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self->collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        });
     }
 }
 
@@ -504,11 +516,11 @@
     
     if (newFiltersContainSort) {
         [self.mapModelController applyFilters:filterItems sortBySelectedLocation:NO];
+    } else {
+        [self.mapModelController applyFilters:filterItems sortBySelectedLocation:self.mapModelController.filteringBySelectedLocation];
     }
-    [self.mapModelController applyFilters:filterItems sortBySelectedLocation:self.mapModelController.filteringBySelectedLocation];
-
-    [restaurantsTableView reloadData];
-    [self reloadMapAnnotations];
+    [self setLastCarouselIndex:0];
+    [self reloadSelf];
     _limitAnnotationsWarningDisplayed = NO;
 }
 
@@ -532,6 +544,14 @@
     
     [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+-(void)navigateToVenueDetail:(DMVenue*)selectedVenue selectedIndex:(NSInteger)selectedIndex {
+    if ([selectedVenue.state integerValue] == DMVenueStateVerified)
+    {
+        [self setLastCarouselIndex:selectedIndex];
+        [self performSegueWithIdentifier:@"restaurantInfoSegue" sender:selectedVenue];
+    }
 }
 
 // MARK: - Table View Delegate
@@ -575,7 +595,10 @@
     BOOL isFavourite = [_favouriteIds containsObject:stringId];
     [cell setToFavourite:isFavourite];
     
-    double distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
+    double distance = [[DMLocationServices sharedInstance] getUserDistanceFrom:item];
+    if (self.mapModelController.filteringBySelectedLocation) {
+        distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
+    }
     if(distance != 0) {
         MKDistanceFormatter *df = [MKDistanceFormatter new];
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
@@ -604,10 +627,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)indexPath.row];
-    if ([item.state integerValue] == DMVenueStateVerified)
-    {
-        [self performSegueWithIdentifier:@"restaurantInfoSegue" sender:item];
-    }
+    [self navigateToVenueDetail:item selectedIndex:indexPath.row];
     
 }
 
@@ -732,6 +752,9 @@
         CLLocation *currentLocation = [DMLocationServices sharedInstance].currentLocation;
         [self zoomMapTo:currentLocation];
         [DMLocationServices.sharedInstance setSelectedLocation:currentLocation];
+        [self.mapModelController applyFilters:self.mapModelController.filters sortBySelectedLocation:YES];
+        [self reloadSelf];
+        [_searchBar setTextTo:@""];
 
     }
 }
@@ -772,8 +795,9 @@
   [[self searchBar] toggleActiveTo:NO];
   [[self searchBar] setTextTo:place.name];
   [self.mapModelController applyFilters:self.mapModelController.filters sortBySelectedLocation:YES];
-  [restaurantsTableView reloadData];
-  [self reloadMapAnnotations];
+  [self setLastCarouselIndex: 0];
+  [self reloadSelf];
+
     _limitAnnotationsWarningDisplayed = NO;
 }
 

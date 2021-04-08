@@ -24,6 +24,7 @@
 @property BOOL showOverlay;
 @property BOOL collectionViewCellSelected;
 @property BOOL limitAnnotationsWarningDisplayed;
+@property NSInteger lastCarouselIndex;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
 
