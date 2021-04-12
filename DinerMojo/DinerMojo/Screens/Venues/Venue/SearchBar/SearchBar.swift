@@ -51,6 +51,11 @@ import Foundation
         self.delegate?.onFilterButtonPressed()
     }
     
+    @IBAction func searchBarEditingChanged(_ sender: Any) {
+        let newValue = textField.text
+        self.delegate?.inputValueChanged(to: newValue)
+    }
+    
     // MARK: Initialise
 
     public override func awakeFromNib() {
@@ -124,11 +129,6 @@ extension SearchBar: UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
-    }
-    
-    public func textFieldDidChangeSelection(_ textField: UITextField) {
-        let newValue = textField.text
-        self.delegate?.inputValueChanged(to: newValue)
     }
     
 }
