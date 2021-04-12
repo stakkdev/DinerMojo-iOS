@@ -76,6 +76,8 @@
     _limitAnnotationsWarningDisplayed = NO;
     [self setLastCarouselIndex:0];
     
+    DMLocationServices.sharedInstance.delegate = self;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -725,7 +727,7 @@
         [self.mapModelController setDefaultDistance:0];
         [self.mapModelController applyFilters];
         [self reloadSelf];
-
+        [self toggleSuggestionsTableViewTo:NO];
     }
 }
 
@@ -736,6 +738,7 @@
         [self.mapModelController setDefaultDistance:0];
         [self.mapModelController applyFilters];
         [self reloadSelf];
+        [self toggleSuggestionsTableViewTo:NO];
     }
 }
 

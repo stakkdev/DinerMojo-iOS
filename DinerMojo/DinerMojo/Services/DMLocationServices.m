@@ -47,13 +47,12 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+    [self setCurrentLocation:[locations lastObject]];
     if (_initialLocationUpdate) {
         [self setSelectedLocation:[locations lastObject]];
         [self setInitialLocationUpdate:NO];
         [self.delegate didInitiallyUpdateLocation];
     }
-    [self setCurrentLocation:[locations lastObject]];
-    
 }
 
 - (double)userLocationDistanceFromLocation:(CLLocation *)location

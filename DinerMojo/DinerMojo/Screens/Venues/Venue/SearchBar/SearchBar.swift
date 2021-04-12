@@ -74,6 +74,7 @@ import Foundation
                 self.textField.resignFirstResponder()
             }
         }
+        self.isEditing = active
     }
     
     @objc public func setText(to text: String) {
@@ -118,8 +119,8 @@ import Foundation
 
 extension SearchBar: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        self.isEditing = false
-        self.delegate?.toggleSuggestionsTableView(to: false)
+//        self.isEditing = false
+//        self.delegate?.toggleSuggestionsTableView(to: false)
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
