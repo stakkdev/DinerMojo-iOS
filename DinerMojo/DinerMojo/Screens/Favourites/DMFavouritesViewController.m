@@ -310,21 +310,16 @@
 
 - (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath *)index {
     DMVenue *venue =  [_venues objectAtIndex:[index row]];
-    NSMutableArray *newFavourites = [[NSMutableArray alloc]initWithArray:_venues];
-//    if ([newFavourites containsObject:venue]) {
-//        NSInteger index = [newFavourites indexOfObjectIdenticalTo:venue];
-//         if (index < newFavourites.count) {
-//             [newFavourites removeObjectAtIndex:index];
-//         }
-//    }
-    [self updateVenues:newFavourites];
     [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
         if (error) {
-            [self displayError:@"Error" message:@"Unable to sync favourites. Please check your connection and try again."];
+            [self displayError:@"Error" message:@"Unable to update favourites preference. Please check your connection and try again."];
+            [[self venueRequest] cachedFavoriteVenues:^(NSError *error, id results) {
+                [self gotFavouriteVenuesCompletionBlock:error id:results final:YES];
+            }];
         }
-        [[ self venueRequest] cachedFavoriteVenues:^(NSError *error, id results) {
-            [self gotFavouriteVenuesCompletionBlock:error id:results final:false];
-        }];
+    }];
+    [[self venueRequest] cachedFavoriteVenues:^(NSError *error, id results) {
+        [self gotFavouriteVenuesCompletionBlock:error id:results final:YES];
     }];
 }
 

@@ -668,25 +668,20 @@
 
 - (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath *)index {
     DMVenue *venue =  [[[self mapModelController] filteredVenues] objectAtIndex:[index row]];
-    if (favourite) {
-        NSString* stringId = [NSString stringWithFormat:@"%d", venue.modelIDValue];
-        [_favouriteIds addObject:stringId];
-    } else {
-       NSString *strValue = [NSString stringWithFormat:@"%@",[venue modelID]];
-       NSInteger index = [_favouriteIds indexOfObjectIdenticalTo:strValue];
-        if (index < _favouriteIds.count) {
-            [_favouriteIds removeObjectAtIndex:index];
-        }
-    }
+  
     NSArray *indexPaths = [[NSArray alloc]initWithObjects:index, nil];
     [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
-        [self updateFavourites];
+ 
         if (error) {
-            [self displayError:@"Error" message:@"Unable to sync favourites. Please check your connection and try again."];
+            [self displayError:@"Error" message:@"Unable to update favourites preference. Please check your connection and try again.."];
+            [self updateFavourites];
+            [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            [collectionView  reloadItemsAtIndexPaths:indexPaths];
         }
-        [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
-        [collectionView  reloadItemsAtIndexPaths:indexPaths];
     }];
+    [self updateFavourites];
+    [restaurantsTableView reloadRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationFade];
+    [collectionView  reloadItemsAtIndexPaths:indexPaths];
 }
 
 // MARK: - Util

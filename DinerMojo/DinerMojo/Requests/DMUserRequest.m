@@ -49,7 +49,7 @@
     NSArray *all_ids = [stringFavoriteIds componentsSeparatedByString:@","];
     NSMutableArray *new_Ids = [NSMutableArray new];
     for(NSString *eachId in all_ids) {
-        if (eachId != removeId) {
+        if (![eachId isEqual:removeId]) {
             [new_Ids addObject:eachId];
         }
     }
@@ -110,6 +110,8 @@
 {
     
     NSDictionary *venueDict = @{@"venue_id": venue.modelID};
+    NSString *strValue = [NSString stringWithFormat:@"%@",[venue modelID]];
+    [self addFavouriteVenueId:strValue];
     
     [self POST:@"user/me/add_venue_to_favourites" withParams:venueDict withCompletionBlock:^(NSError *error, id results) {
         
@@ -118,8 +120,7 @@
             DMVenue *addedVenue = [DMMappingHelper mapVenue:results withMapping:[[self mappingProvider] venueMappingWithoutNews] inContext:[self objectContext]];
             
             DMUser *currentUser = [self currentUser];
-            NSString *strValue = [NSString stringWithFormat:@"%@",[addedVenue modelID]];
-            [self addFavouriteVenueId:strValue];
+          
             completionBlock(nil, [[currentUser favourite_venues] allObjects]);
        
             [currentUser addFavourite_venuesObject:addedVenue];
@@ -127,6 +128,8 @@
             [self saveInContext:[self objectContext]];        }
         else
         {
+            NSString *strValue = [NSString stringWithFormat:@"%@", venue.modelID];
+            [self removeFavouriteVenueId:strValue];
             completionBlock(error, nil);
         }
     }];
@@ -156,6 +159,11 @@
 {
     NSDictionary *venueDict = [NSDictionary dictionaryWithObject:venues forKey:@"venue_ids"];
     
+    for (id removedId in venues) {
+        NSString *strValue = [NSString stringWithFormat:@"%@",removedId];
+        [self removeFavouriteVenueId:strValue];
+    }
+    
     [self POST:@"user/me/remove_venues_from_favourites" withParams:venueDict withCompletionBlock:^(NSError *error, id results) {
         if (error == nil)
         {
@@ -169,10 +177,7 @@
                
             }
             
-            for (id removedId in venues) {
-                NSString *strValue = [NSString stringWithFormat:@"%@",removedId];
-                [self removeFavouriteVenueId:strValue];
-            }
+       
             
             [self saveInContext:[self objectContext]];
             
@@ -180,6 +185,11 @@
         }
         else
         {
+            for (id removedId in venues) {
+                NSString *strValue = [NSString stringWithFormat:@"%@",removedId];
+                [self addFavouriteVenueId:strValue];
+            }
+            
             completionBlock(error, nil);
         }
     }];
