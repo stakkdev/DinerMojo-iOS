@@ -490,6 +490,7 @@
 }
 
 -(void)reloadSelf {
+    [self zoomMapTo: DMLocationServices.sharedInstance.selectedLocation];
     [restaurantsTableView reloadData];
     [self reloadMapAnnotations];
     if (self.lastCarouselIndex >= 0 &&
