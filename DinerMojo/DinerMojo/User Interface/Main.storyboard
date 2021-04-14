@@ -813,6 +813,42 @@ How about we take you for a quick tour before you get started?</string>
                                 <rect key="frame" x="0.0" y="163" width="375" height="386"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="na7-jl-swz">
+                                <rect key="frame" x="126" y="183" width="123" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROo-Cn-u55">
+                                        <rect key="frame" x="0.0" y="0.0" width="123" height="40"/>
+                                        <color key="backgroundColor" red="0.43137254899999999" green="0.78823529410000004" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FaM-EA-yzF"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5f-3d-5io">
+                                        <rect key="frame" x="20" y="5" width="83" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Search here"/>
+                                        <connections>
+                                            <action selector="searchHerePressed:" destination="y7k-hP-ThC" eventType="touchUpInside" id="mUX-Fg-kwb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ROo-Cn-u55" secondAttribute="trailing" id="0Qg-SS-tMN"/>
+                                    <constraint firstItem="ROo-Cn-u55" firstAttribute="trailing" secondItem="C5f-3d-5io" secondAttribute="trailing" constant="20" id="90e-eR-bYT"/>
+                                    <constraint firstItem="ROo-Cn-u55" firstAttribute="top" secondItem="na7-jl-swz" secondAttribute="top" id="Krb-FC-t6T"/>
+                                    <constraint firstItem="C5f-3d-5io" firstAttribute="centerY" secondItem="ROo-Cn-u55" secondAttribute="centerY" id="S2z-ku-Yiv"/>
+                                    <constraint firstItem="C5f-3d-5io" firstAttribute="centerX" secondItem="ROo-Cn-u55" secondAttribute="centerX" id="Z1x-RZ-lmw"/>
+                                    <constraint firstItem="ROo-Cn-u55" firstAttribute="leading" secondItem="C5f-3d-5io" secondAttribute="leading" constant="-20" id="laH-cv-xS9"/>
+                                    <constraint firstItem="ROo-Cn-u55" firstAttribute="leading" secondItem="na7-jl-swz" secondAttribute="leading" id="urF-ys-xvp"/>
+                                    <constraint firstAttribute="bottom" secondItem="ROo-Cn-u55" secondAttribute="bottom" id="xuP-af-Ckh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -836,10 +872,12 @@ How about we take you for a quick tour before you get started?</string>
                             <constraint firstItem="06f-Hb-EkC" firstAttribute="leading" secondItem="JBk-5X-xrS" secondAttribute="leading" id="hdC-0e-Pt2"/>
                             <constraint firstAttribute="trailing" secondItem="VpV-Om-eIW" secondAttribute="trailing" id="iDP-c3-LPp"/>
                             <constraint firstItem="06f-Hb-EkC" firstAttribute="bottom" secondItem="NZw-yT-YOP" secondAttribute="top" id="jG8-xo-TsD"/>
+                            <constraint firstItem="na7-jl-swz" firstAttribute="centerX" secondItem="JBk-5X-xrS" secondAttribute="centerX" id="ksa-rD-Cgr"/>
                             <constraint firstItem="lue-Ty-0IL" firstAttribute="top" secondItem="NZw-yT-YOP" secondAttribute="bottom" id="nkN-XJ-59H"/>
                             <constraint firstItem="ODz-8X-oh1" firstAttribute="leading" secondItem="lue-Ty-0IL" secondAttribute="leading" id="quc-Vu-ze4"/>
                             <constraint firstAttribute="centerY" secondItem="EsP-gE-4So" secondAttribute="centerY" id="s3w-eA-YtV"/>
                             <constraint firstItem="VpV-Om-eIW" firstAttribute="top" secondItem="NZw-yT-YOP" secondAttribute="bottom" id="vfk-vc-Szw"/>
+                            <constraint firstItem="na7-jl-swz" firstAttribute="top" secondItem="NZw-yT-YOP" secondAttribute="bottom" constant="20" id="xdY-mW-vEm"/>
                             <constraint firstItem="qXX-8s-38M" firstAttribute="top" secondItem="NZw-yT-YOP" secondAttribute="bottom" id="yAg-dp-26s"/>
                         </constraints>
                     </view>
@@ -860,6 +898,7 @@ How about we take you for a quick tour before you get started?</string>
                         <outlet property="mapView" destination="lue-Ty-0IL" id="bDA-ib-Jun"/>
                         <outlet property="restaurantsTableView" destination="VpV-Om-eIW" id="ECJ-Sx-xQx"/>
                         <outlet property="searchBar" destination="06f-Hb-EkC" id="UcT-cp-qQW"/>
+                        <outlet property="searchHereButtonView" destination="na7-jl-swz" id="eMa-yf-qHj"/>
                         <outlet property="suggestionsTableView" destination="qXX-8s-38M" id="rfI-6f-1Uy"/>
                         <outlet property="tabsFilterViewContainer" destination="NZw-yT-YOP" id="5P8-hy-IpO"/>
                         <segue destination="DfA-xe-x2l" kind="show" identifier="restaurantInfoSegue" id="GeW-XH-8dT"/>
@@ -7484,7 +7523,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="17" height="25"/>
         </designable>
         <designable name="1tJ-RQ-eYN">
-            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="83.5" height="20.5"/>
         </designable>
         <designable name="3dT-AR-eyx">
             <size key="intrinsicContentSize" width="37" height="38"/>
@@ -7493,19 +7532,19 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="95" height="33"/>
         </designable>
         <designable name="9ye-kv-GsS">
-            <size key="intrinsicContentSize" width="133" height="20"/>
+            <size key="intrinsicContentSize" width="123" height="20"/>
         </designable>
         <designable name="Adz-l0-0LF">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="B3u-fZ-6cl">
-            <size key="intrinsicContentSize" width="70" height="19"/>
+            <size key="intrinsicContentSize" width="84" height="19"/>
         </designable>
         <designable name="CDt-SY-ihe">
-            <size key="intrinsicContentSize" width="100" height="20.5"/>
+            <size key="intrinsicContentSize" width="114" height="20.5"/>
         </designable>
         <designable name="GDz-41-0RG">
-            <size key="intrinsicContentSize" width="68.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="78.5" height="20.5"/>
         </designable>
         <designable name="GE7-eS-tHr">
             <size key="intrinsicContentSize" width="36" height="33"/>
@@ -7520,7 +7559,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="159" height="31"/>
         </designable>
         <designable name="MUI-fJ-Umd">
-            <size key="intrinsicContentSize" width="100" height="20.5"/>
+            <size key="intrinsicContentSize" width="114" height="20.5"/>
         </designable>
         <designable name="Nra-Y7-dnG">
             <size key="intrinsicContentSize" width="30" height="30"/>
@@ -7538,7 +7577,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="65" height="31"/>
         </designable>
         <designable name="TCd-a9-jMs">
-            <size key="intrinsicContentSize" width="120" height="19"/>
+            <size key="intrinsicContentSize" width="134" height="19"/>
         </designable>
         <designable name="TGb-n1-m93">
             <size key="intrinsicContentSize" width="127" height="31"/>
@@ -7559,7 +7598,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="177" height="33"/>
         </designable>
         <designable name="a2Q-vx-Ifh">
-            <size key="intrinsicContentSize" width="100" height="20.5"/>
+            <size key="intrinsicContentSize" width="114" height="20.5"/>
         </designable>
         <designable name="bFh-cK-s35">
             <size key="intrinsicContentSize" width="50" height="31"/>
@@ -7568,7 +7607,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="93" height="31"/>
         </designable>
         <designable name="bUx-XX-x8d">
-            <size key="intrinsicContentSize" width="70" height="19"/>
+            <size key="intrinsicContentSize" width="84" height="19"/>
         </designable>
         <designable name="cLL-Rq-au8">
             <size key="intrinsicContentSize" width="30" height="31"/>
@@ -7586,7 +7625,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="73" height="34"/>
         </designable>
         <designable name="gHi-df-B5C">
-            <size key="intrinsicContentSize" width="39.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="49.5" height="20.5"/>
         </designable>
         <designable name="hCN-Wq-XwI">
             <size key="intrinsicContentSize" width="37" height="38"/>
@@ -7604,13 +7643,13 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="21" height="22"/>
         </designable>
         <designable name="pZV-ja-7FI">
-            <size key="intrinsicContentSize" width="71" height="20.5"/>
+            <size key="intrinsicContentSize" width="85" height="20.5"/>
         </designable>
         <designable name="rdr-KY-Rn7">
             <size key="intrinsicContentSize" width="57" height="31"/>
         </designable>
         <designable name="rhR-aM-1rm">
-            <size key="intrinsicContentSize" width="36" height="20.5"/>
+            <size key="intrinsicContentSize" width="50" height="20.5"/>
         </designable>
         <designable name="roD-35-b4H">
             <size key="intrinsicContentSize" width="81" height="31"/>

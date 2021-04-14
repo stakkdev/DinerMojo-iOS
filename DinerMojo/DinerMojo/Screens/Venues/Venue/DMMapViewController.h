@@ -27,6 +27,7 @@
 @property NSInteger lastCarouselIndex;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
+@property (strong, nonatomic) IBOutlet UIView *searchHereButtonView;
 
 @end
 

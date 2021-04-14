@@ -78,6 +78,7 @@
     [self setLastCarouselIndex:0];
     
     DMLocationServices.sharedInstance.delegate = self;
+    [self.searchHereButtonView setHidden:YES];
     
 }
 
@@ -248,6 +249,8 @@
         _limitAnnotationsWarningDisplayed = YES;
         [self displayError:@"Error" message:@"Too many results displayed on the map, please adjust the filter or zoom in."];
     }
+    
+    [self.searchHereButtonView setHidden:NO];
     
 }
 
@@ -500,6 +503,15 @@
 
 - (IBAction)sortButtonPressed:(id)sender {
   
+}
+- (IBAction)searchHerePressed:(id)sender {
+    CLLocation *displayedLocation = [[CLLocation alloc]initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
+    [self zoomMapTo:displayedLocation];
+    [DMLocationServices.sharedInstance setSelectedLocation: displayedLocation];
+    [self.mapModelController applyFilters];
+    [self setLastCarouselIndex: 0];
+    [self reloadSelf];
+    
 }
 
 - (void)selectedFilterItems:(NSArray *)filterItems {
