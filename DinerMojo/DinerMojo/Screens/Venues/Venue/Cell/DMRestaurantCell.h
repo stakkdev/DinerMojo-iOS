@@ -36,5 +36,6 @@
 - (void)setEarnVisibility:(BOOL)visibility;
 - (void)setRedeemVisibility:(BOOL)visibility;
 - (void)setToFavourite:(BOOL)favourite;
+- (void)setShowFavoriteButton:(BOOL)favourite;
 
 @end

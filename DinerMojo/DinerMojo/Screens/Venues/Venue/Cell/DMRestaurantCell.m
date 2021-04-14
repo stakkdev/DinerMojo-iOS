@@ -84,6 +84,11 @@
     }
 }
 
+- (void)setShowFavoriteButton:(BOOL)show {
+    [self.favouriteHeartImage setHidden:!show];
+    [self.favouriteButton setHidden:!show];
+}
+
 //- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 //{
 //    [super setHighlighted:highlighted animated:animated];

@@ -26,10 +26,12 @@
 @property (nonatomic) int state;
 @property BOOL isFavourite;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *cellHeight;
+@property (strong, nonatomic) IBOutlet UIButton *favouriteButton;
 
 - (void)setEarnVisibility:(BOOL)visibility;
 - (void)setRedeemVisibility:(BOOL)visibility;
 - (void)setToFavourite:(BOOL)favourite;
+- (void)setShowFavoriteButton:(BOOL)favourite;
 
 
 @end

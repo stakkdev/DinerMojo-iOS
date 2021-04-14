@@ -38,6 +38,7 @@
 @property (strong, nonatomic) TabsFilterView *tabsFilterView;
 @property (strong, nonatomic) NSArray *filterItems;
 @property (strong, nonatomic) NSMutableArray *favouriteIds;
+@property BOOL signedIn;
 
 @end
 
@@ -123,13 +124,19 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    [self checkIfSignedIn];
     [self checkIfShowBirthdayPopUp];
     [self checkIfAcceptedGDPR];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+}
+
+- (void)checkIfSignedIn {
+    DMUser* currentUser = [[self userRequest] currentUser];
+    BOOL hasUser = currentUser != nil? YES : NO;
+    [self setSignedIn:hasUser];
 }
 
 - (void)checkIfAcceptedGDPR {
@@ -322,6 +329,7 @@
     NSString* stringId = [NSString stringWithFormat:@"%d",item.modelIDValue];
     BOOL isFavourite = [_favouriteIds containsObject:stringId];
     [cell setToFavourite:isFavourite];
+    [cell setShowFavoriteButton:_signedIn];
     
     cell.restaurantImageView.image = nil;
     [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:urlString]
@@ -575,6 +583,7 @@
     NSString* stringId = [NSString stringWithFormat:@"%d",item.modelIDValue];
     BOOL isFavourite = [_favouriteIds containsObject:stringId];
     [cell setToFavourite:isFavourite];
+    [cell setShowFavoriteButton:_signedIn];
     
     double distance = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:item];
     if(distance != 0) {

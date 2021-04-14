@@ -62,6 +62,11 @@
     }
 }
 
+- (void)setShowFavoriteButton:(BOOL)show {
+    [self.heartImage setHidden:!show];
+    [self.favouriteButton setHidden:!show];
+}
+
 - (void)setEarnVisibility:(BOOL)visibility {
     if(visibility) {
         [self.redeemButton setImage:[UIImage imageNamed:@"earn_icon_enabled"] forState:UIControlStateNormal];
