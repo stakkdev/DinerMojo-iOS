@@ -829,6 +829,7 @@
 
 - (void)didInitiallyUpdateLocation {
     if (self.mapHasBeenMoved == NO) {
+        [self.mapModelController applyFilters];
         [self reloadSelf];
     }
 }
