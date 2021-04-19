@@ -79,7 +79,7 @@
     
     DMLocationServices.sharedInstance.delegate = self;
     [self.searchHereButtonView setHidden:YES];
-    
+    [self setMapHasBeenMoved:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -251,6 +251,7 @@
     }
     
     [self.searchHereButtonView setHidden:NO];
+    [self setMapHasBeenMoved:YES];
     
 }
 
@@ -822,8 +823,14 @@
 
 #pragma mark - DMLocationServiceDelegate
 
+// On location services initially gaining user location
+// center map to location unless the map has been
+// interacted with already
+
 - (void)didInitiallyUpdateLocation {
-    [self reloadSelf];
+    if (self.mapHasBeenMoved == NO) {
+        [self reloadSelf];
+    }
 }
 
 @end
