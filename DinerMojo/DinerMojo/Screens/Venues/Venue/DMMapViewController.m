@@ -346,10 +346,12 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSInteger actualIndexRow = indexPath.row % self.mapModelController.filteredVenues.count;
+    
     _collectionViewCellSelected = YES;
     
     // deselect previous a determine if previously selected
-    MKPointAnnotation *selectedAnnotation = [[[self mapModelController] mapAnnotations] objectAtIndex:indexPath.row];
+    MKPointAnnotation *selectedAnnotation = [[[self mapModelController] mapAnnotations] objectAtIndex:actualIndexRow];
     BOOL previouslySelected = NO;
     NSArray *selectedAnnotations = mapView.selectedAnnotations;
     for(id annotation in selectedAnnotations) {
@@ -366,8 +368,8 @@
     
     // Select annotation or navigate to detail based on previously selected
     if (previouslySelected) {
-        DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)indexPath.row];
-        [self navigateToVenueDetail:item selectedIndex:indexPath.row];
+        DMVenue *item = [[self mapModelController] filteredVenues][actualIndexRow];
+        [self navigateToVenueDetail:item selectedIndex:actualIndexRow];
     } else {
         double delayInSeconds = 0.5;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
