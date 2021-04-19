@@ -493,7 +493,6 @@
 }
 
 -(void)reloadSelf {
-    [self zoomMapTo: DMLocationServices.sharedInstance.selectedLocation];
     [restaurantsTableView reloadData];
     [self reloadMapAnnotations];
     if (self.lastCarouselIndex >= 0 &&
@@ -829,6 +828,7 @@
 
 - (void)didInitiallyUpdateLocation {
     if (self.mapHasBeenMoved == NO) {
+        [self zoomMapTo: DMLocationServices.sharedInstance.selectedLocation];
         [self.mapModelController applyFilters];
         [self reloadSelf];
     }
