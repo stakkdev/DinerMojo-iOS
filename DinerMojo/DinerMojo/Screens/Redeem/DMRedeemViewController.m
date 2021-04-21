@@ -489,9 +489,7 @@
         DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
         url = [NSURL URLWithString:[venueImage fullURL]];
     }
-    
-    [imgView sd_setImageWithURL:[NSURL URLWithString:url]
-                 placeholderImage:nil];
+    [imgView sd_setImageWithURL:url];
     
 }
 
