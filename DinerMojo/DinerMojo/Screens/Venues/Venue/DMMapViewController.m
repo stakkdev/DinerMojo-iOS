@@ -509,7 +509,6 @@
 }
 - (IBAction)searchHerePressed:(id)sender {
     CLLocation *displayedLocation = [[CLLocation alloc]initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
-    [self zoomMapTo:displayedLocation];
     [DMLocationServices.sharedInstance setSelectedLocation: displayedLocation];
     [self.mapModelController applyFilters];
     [self setLastCarouselIndex: 0];
@@ -649,6 +648,9 @@
     [mapView setHidden:(item == DMVenueList)];
     [collectionView setHidden:(item == DMVenueList)];
     [self reloadMapAnnotations];
+    if (item == DMVenueList && !self.searchHereButtonView.isHidden) {
+        [self.searchHereButtonView setHidden:YES];
+    }
 }
 
 // MARK: - Restaurant cell delegate
@@ -768,6 +770,9 @@
 
 - (void)toggleSuggestionsTableViewTo:(BOOL)visible {
     [suggestionsTableView setHidden:!visible];
+    if (visible && !self.searchHereButtonView.isHidden) {
+        [_searchHereButtonView setHidden:YES];
+    }
 }
 
 #pragma mark - GMSAutocompleteTableDataSourceDelegate

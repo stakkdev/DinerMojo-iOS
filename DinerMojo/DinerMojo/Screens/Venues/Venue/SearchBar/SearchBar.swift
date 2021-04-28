@@ -119,8 +119,10 @@ import Foundation
 
 extension SearchBar: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
-//        self.isEditing = false
-//        self.delegate?.toggleSuggestionsTableView(to: false)
+        if (isEditing) {
+            self.toggleActive(to: false)
+            self.delegate?.toggleSuggestionsTableView(to: false)
+        }
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
