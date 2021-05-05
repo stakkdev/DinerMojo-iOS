@@ -271,10 +271,16 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (self.mapModelController.mapAnnotations.count <= 1) {
+        return self.mapModelController.mapAnnotations.count;
+    }
     return self.mapModelController.mapAnnotations.count * 50;
 }
 
 - (NSInteger )collectionViewIndexForRow:(NSInteger )row {
+    if (self.mapModelController.mapAnnotations.count <= 1) {
+        return row;
+    }
     return  row % self.mapModelController.mapAnnotations.count;
 }
 
