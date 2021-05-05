@@ -247,7 +247,7 @@
     NSSet *annotationSet = [mapView annotationsInMapRect:mapView.visibleMapRect];
     if (annotationSet.count > 100 && !_limitAnnotationsWarningDisplayed) {
         _limitAnnotationsWarningDisplayed = YES;
-        [self displayError:@"Error" message:@"Too many results displayed on the map, please adjust the filter or zoom in."];
+        [self displayError:@"That's a lot of places!" message:@"There are too many venues to show here. Try zooming in or changing your filters to narrow down the results."];
     }
     
     [self.searchHereButtonView setHidden:NO];
