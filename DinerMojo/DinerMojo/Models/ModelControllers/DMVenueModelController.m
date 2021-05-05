@@ -250,9 +250,15 @@
     
     for (DMVenue *venue in venues) {
         for (DMVenueCategory *cat in [venue.categories allObjects]) {
+            if ([cat.name isEqualToString:@"L-Lifestyle"]) {
+                break;
+            }
             [allCategories addObject:cat];
+            
         }
     }
+    
+    
     NSArray *categories = [[NSSet setWithArray:allCategories] allObjects];
     NSSortDescriptor *alphabeticalSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc]initWithObjects:alphabeticalSortDescriptor, nil];
