@@ -198,6 +198,15 @@
         [collectionView setHidden:NO];
     }
 }
+-(void)zoomMapIn:(CLLocation *)newLocation {
+    MKCoordinateSpan span;
+    span.latitudeDelta = mapView.region.span.latitudeDelta * 0.5;
+    span.longitudeDelta = mapView.region.span.longitudeDelta * 0.5;
+    MKCoordinateRegion region = mapView.region;
+    region.span = span;
+    region.center = newLocation.coordinate;
+    [mapView setRegion:region animated:YES];
+}
 
 -(void)zoomMapTo:(CLLocation *)newLocation {
     double miles = 1.0;
@@ -213,6 +222,13 @@
 
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    if ([view.annotation isKindOfClass:[MKClusterAnnotation class]]) {
+        CLLocation *location = [[CLLocation alloc]initWithLatitude:view.annotation.coordinate.latitude longitude:view.annotation.coordinate.longitude];
+        [self zoomMapIn:location];
+        [mapView deselectAnnotation:view.annotation animated:YES];
+        return;
+    }
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", view.annotation.title];
     NSArray *filteredArray = [[[self mapModelController] filteredVenues] filteredArrayUsingPredicate:predicate];
     
