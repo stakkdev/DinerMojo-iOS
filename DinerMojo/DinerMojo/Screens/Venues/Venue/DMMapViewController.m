@@ -192,6 +192,11 @@
     [mapView removeAnnotations:[mapView annotations]];
     [mapView addAnnotations:annotations];
     [collectionView reloadData];
+    if (annotations.count <= 0) {
+        [collectionView setHidden:YES];
+    } else {
+        [collectionView setHidden:NO];
+    }
 }
 
 -(void)zoomMapTo:(CLLocation *)newLocation {
