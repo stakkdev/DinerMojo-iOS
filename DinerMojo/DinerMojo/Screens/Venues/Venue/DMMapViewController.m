@@ -200,8 +200,8 @@
 }
 -(void)zoomMapIn:(CLLocation *)newLocation {
     MKCoordinateSpan span;
-    span.latitudeDelta = mapView.region.span.latitudeDelta * 0.5;
-    span.longitudeDelta = mapView.region.span.longitudeDelta * 0.5;
+    span.latitudeDelta = mapView.region.span.latitudeDelta * 0.25;
+    span.longitudeDelta = mapView.region.span.longitudeDelta * 0.25;
     MKCoordinateRegion region = mapView.region;
     region.span = span;
     region.center = newLocation.coordinate;
