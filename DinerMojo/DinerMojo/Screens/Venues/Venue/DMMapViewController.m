@@ -194,7 +194,7 @@
     [collectionView reloadData];
     if (annotations.count <= 0) {
         [collectionView setHidden:YES];
-    } else {
+    } else if (_mapModelController.state == DMVenueMap) {
         [collectionView setHidden:NO];
     }
 }
