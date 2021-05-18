@@ -460,7 +460,7 @@
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"Sorry no Venues fit your requirements";
+    NSString *text = @"Sorry, no venues fit your criteria. Try looking in a different place or changing your filter settings.";
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
