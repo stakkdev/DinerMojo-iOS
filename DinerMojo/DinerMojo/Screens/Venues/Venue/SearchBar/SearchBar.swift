@@ -128,6 +128,9 @@ extension SearchBar: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         self.isEditing = true
         self.delegate?.toggleSuggestionsTableView(to: true)
+        if let text = self.textField.text, !text.isEmpty {
+            self.textField.text = ""
+        }
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

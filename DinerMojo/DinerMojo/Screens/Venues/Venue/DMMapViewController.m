@@ -394,7 +394,7 @@
     CLLocation *location = [[CLLocation alloc] initWithLatitude:selectedAnnotation.coordinate.latitude longitude:selectedAnnotation.coordinate.longitude];
     [self zoomMapTo:location];
     
-    // DIN-159 Always navigate to detail
+    // DIN-159 Always navigate to detail commit: eab6bfb
     DMVenue *item = [[self mapModelController] filteredVenues][actualIndexRow];
     [self navigateToVenueDetail:item selectedIndex:actualIndexRow];
     
