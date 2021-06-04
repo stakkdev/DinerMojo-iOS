@@ -394,17 +394,9 @@
     CLLocation *location = [[CLLocation alloc] initWithLatitude:selectedAnnotation.coordinate.latitude longitude:selectedAnnotation.coordinate.longitude];
     [self zoomMapTo:location];
     
-    // Select annotation or navigate to detail based on previously selected
-    if (previouslySelected) {
-        DMVenue *item = [[self mapModelController] filteredVenues][actualIndexRow];
-        [self navigateToVenueDetail:item selectedIndex:actualIndexRow];
-    } else {
-        double delayInSeconds = 0.5;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [mapView selectAnnotation:selectedAnnotation animated:YES];
-        });
-    }
+    // DIN-159 Always navigate to detail
+    DMVenue *item = [[self mapModelController] filteredVenues][actualIndexRow];
+    [self navigateToVenueDetail:item selectedIndex:actualIndexRow];
     
     _collectionViewCellSelected = NO;
 }
