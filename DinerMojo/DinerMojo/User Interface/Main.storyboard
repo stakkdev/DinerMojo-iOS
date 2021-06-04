@@ -196,7 +196,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Bsf-Kn-eT6">
-                                <rect key="frame" x="25" y="191" width="325" height="130.5"/>
+                                <rect key="frame" x="25" y="191" width="325" height="153"/>
                                 <string key="text">Thanks for using the referral code to sign up. When you dine at your first restaurant you’ll earn points for both yourself and them. Isn’t that great?
 
 How about we take you for a quick tour before you get started?</string>
@@ -1798,7 +1798,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let The Good Earth know what you think" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNa-n7-spI">
-                                        <rect key="frame" x="37.5" y="53" width="300" height="44.5"/>
+                                        <rect key="frame" x="37.5" y="53" width="300" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="Iar-XH-rPn"/>
                                         </constraints>
@@ -2710,7 +2710,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <rect key="frame" x="290" y="360" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops. We couldn't fetch your profile at this time. Pull to refresh." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNg-Vb-9TF">
-                                        <rect key="frame" x="180" y="353.5" width="240" height="33"/>
+                                        <rect key="frame" x="180" y="351" width="240" height="38.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="qFT-KR-Nb4"/>
                                         </constraints>
@@ -3323,10 +3323,10 @@ How about we take you for a quick tour before you get started?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fail_cross" translatesAutoresizingMaskIntoConstraints="NO" id="RlW-V5-qUn" userLabel="status">
-                                <rect key="frame" x="142.5" y="213.5" width="90" height="90"/>
+                                <rect key="frame" x="142.5" y="211.5" width="90" height="90"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-ky-mCS">
-                                <rect key="frame" x="66.5" y="323.5" width="240" height="23.5"/>
+                                <rect key="frame" x="66.5" y="321.5" width="240" height="27.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Frb-RE-EzD"/>
                                 </constraints>
@@ -3335,7 +3335,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong, please try again later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAF-QA-ihj">
-                                <rect key="frame" x="56.5" y="355" width="260" height="80"/>
+                                <rect key="frame" x="56.5" y="357" width="260" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="d4T-fu-sxE"/>
                                     <constraint firstAttribute="width" constant="260" id="hfI-jt-urm"/>
@@ -3345,7 +3345,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to dismiss" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVf-TK-03f">
-                                <rect key="frame" x="26.5" y="459" width="320" height="40"/>
+                                <rect key="frame" x="26.5" y="461" width="320" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="dQe-B1-Wwr"/>
                                     <constraint firstAttribute="width" constant="320" id="wSZ-JD-BgA"/>
@@ -3355,7 +3355,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFF-ZJ-qXT" customClass="DMButton">
-                                <rect key="frame" x="96.5" y="457" width="180" height="44"/>
+                                <rect key="frame" x="96.5" y="459" width="180" height="44"/>
                                 <color key="backgroundColor" red="0.96862572431564331" green="0.58253747224807739" blue="0.14095744490623474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wAW-IL-Lre"/>
@@ -3373,10 +3373,10 @@ How about we take you for a quick tour before you get started?</string>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mW5-3R-VXV">
-                                <rect key="frame" x="176.5" y="469" width="20" height="20"/>
+                                <rect key="frame" x="176.5" y="471" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-Mi-ElB">
-                                <rect key="frame" x="128" y="509" width="119" height="30"/>
+                                <rect key="frame" x="128" y="511" width="119" height="30"/>
                                 <state key="normal" title="Don't show again">
                                     <color key="titleColor" red="0.96862745098039216" green="0.58253747224807739" blue="0.14095744490623474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -4171,7 +4171,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejected:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN9-5D-dj6">
-                                                <rect key="frame" x="17" y="436" width="341" height="20"/>
+                                                <rect key="frame" x="17" y="436" width="341" height="23.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="XJC-yc-2Jg"/>
                                                 </constraints>
@@ -4236,7 +4236,7 @@ How about we take you for a quick tour before you get started?</string>
                                         </variation>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsL-oX-jAx" customClass="DMButton">
-                                        <rect key="frame" x="17" y="468" width="341" height="48"/>
+                                        <rect key="frame" x="17" y="471.5" width="341" height="48"/>
                                         <color key="backgroundColor" red="0.3411764706" green="0.73725490199999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="M7B-0Q-6z0"/>
@@ -4952,7 +4952,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg1-ub-anQ" customClass="DMButton">
-                                        <rect key="frame" x="546" y="25" width="36" height="33"/>
+                                        <rect key="frame" x="547" y="25" width="35" height="37"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                         <state key="normal" title="Skip">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4963,13 +4963,13 @@ How about we take you for a quick tour before you get started?</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfT-K0-qHl">
-                                        <rect key="frame" x="8" y="41.5" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="8" y="43.5" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You agree to DinerMojo's Terms and Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeP-Ub-dLK">
-                                        <rect key="frame" x="163.5" y="534" width="273" height="20"/>
+                                        <rect key="frame" x="168" y="534" width="264" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="68B-nI-x7Q"/>
                                         </constraints>
@@ -5206,13 +5206,13 @@ How about we take you for a quick tour before you get started?</string>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add a profile pic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJW-PE-eaR">
-                                                <rect key="frame" x="264" y="94" width="72" height="12"/>
+                                                <rect key="frame" x="264" y="94" width="72" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.50025969743728638" green="0.50024467706680298" blue="0.50025320053100586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CDt-SY-ihe" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="126" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="128" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="YEB-I7-gtE"/>
@@ -5232,7 +5232,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3u-fZ-6cl" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="172" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="174" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="lkQ-4Y-SXd"/>
@@ -5252,7 +5252,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="repeat password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCd-a9-jMs" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="218" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="220" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="cle-he-XHw"/>
@@ -5272,7 +5272,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="first name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pZV-ja-7FI" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="264" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="266" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="kF7-rO-cd1"/>
@@ -5325,13 +5325,13 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </button>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small_check" translatesAutoresizingMaskIntoConstraints="NO" id="5j9-tg-XDm">
-                                                <rect key="frame" x="396" y="182" width="22" height="22"/>
+                                                <rect key="frame" x="396" y="184" width="22" height="22"/>
                                             </imageView>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small_check" translatesAutoresizingMaskIntoConstraints="NO" id="rGH-Wz-DnZ">
-                                                <rect key="frame" x="396" y="228" width="22" height="22"/>
+                                                <rect key="frame" x="396" y="230" width="22" height="22"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1tJ-RQ-eYN" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="310" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="312" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="OFm-VK-mo0"/>
@@ -5567,7 +5567,7 @@ That's fine. Just click the button below to finish registering.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xae-Nl-ssj" customClass="DMButton">
-                                                <rect key="frame" x="237.5" y="162" width="125" height="26"/>
+                                                <rect key="frame" x="240" y="162" width="120" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <state key="normal" title="Forgot your password?">
                                                     <color key="titleColor" red="0.50025969743728638" green="0.50024467706680298" blue="0.50025320053100586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5578,7 +5578,7 @@ That's fine. Just click the button below to finish registering.</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFh-cK-s35" customClass="DMButton">
-                                                <rect key="frame" x="25" y="223" width="540" height="48"/>
+                                                <rect key="frame" x="25" y="226" width="540" height="48"/>
                                                 <color key="backgroundColor" red="0.41176470590000003" green="0.77647058820000003" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="yQD-9j-C9W"/>
@@ -5989,7 +5989,7 @@ That's fine. Just click the button below to finish registering.</string>
                                         </variation>
                                     </imageView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, there are no offers that you are eligible to redeem right now." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sL-8w-EyZ">
-                                        <rect key="frame" x="184" y="283.5" width="233" height="33"/>
+                                        <rect key="frame" x="184" y="281" width="233" height="38.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="233" id="ECh-gY-2Iw"/>
                                         </constraints>
@@ -6390,7 +6390,7 @@ That's fine. Just click the button below to finish registering.</string>
                                 <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6JX-ZP-FdM">
-                                <rect key="frame" x="16" y="397.5" width="343" height="26"/>
+                                <rect key="frame" x="16" y="407.5" width="343" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="fyX-3s-j6s"/>
                                 </constraints>
@@ -6399,7 +6399,7 @@ That's fine. Just click the button below to finish registering.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2473" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Myu-cy-aJW">
-                                <rect key="frame" x="16" y="334" width="343" height="58.5"/>
+                                <rect key="frame" x="16" y="334" width="343" height="68.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="50"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -7517,124 +7517,124 @@ That's fine. Just click the button below to finish registering.</string>
     </scenes>
     <designables>
         <designable name="0qR-Dd-4yg">
-            <size key="intrinsicContentSize" width="48" height="30"/>
+            <size key="intrinsicContentSize" width="48" height="33"/>
         </designable>
         <designable name="1Mf-wk-LAO">
             <size key="intrinsicContentSize" width="17" height="25"/>
         </designable>
         <designable name="1tJ-RQ-eYN">
-            <size key="intrinsicContentSize" width="83.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="87" height="23.5"/>
         </designable>
         <designable name="3dT-AR-eyx">
-            <size key="intrinsicContentSize" width="37" height="38"/>
+            <size key="intrinsicContentSize" width="38" height="42"/>
         </designable>
         <designable name="3jS-c3-17P">
-            <size key="intrinsicContentSize" width="94" height="30"/>
+            <size key="intrinsicContentSize" width="95" height="33"/>
         </designable>
         <designable name="9ye-kv-GsS">
-            <size key="intrinsicContentSize" width="123" height="20"/>
+            <size key="intrinsicContentSize" width="129" height="22"/>
         </designable>
         <designable name="Adz-l0-0LF">
-            <size key="intrinsicContentSize" width="30" height="31"/>
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="B3u-fZ-6cl">
-            <size key="intrinsicContentSize" width="84" height="19"/>
+            <size key="intrinsicContentSize" width="86.5" height="22"/>
         </designable>
         <designable name="CDt-SY-ihe">
-            <size key="intrinsicContentSize" width="114" height="20.5"/>
+            <size key="intrinsicContentSize" width="118" height="23.5"/>
         </designable>
         <designable name="GDz-41-0RG">
-            <size key="intrinsicContentSize" width="78.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="77" height="23.5"/>
         </designable>
         <designable name="GE7-eS-tHr">
-            <size key="intrinsicContentSize" width="36" height="33"/>
+            <size key="intrinsicContentSize" width="35" height="37"/>
         </designable>
         <designable name="GNV-Q4-dDe">
-            <size key="intrinsicContentSize" width="37" height="38"/>
+            <size key="intrinsicContentSize" width="38" height="42"/>
         </designable>
         <designable name="HLo-yW-kN0">
-            <size key="intrinsicContentSize" width="81" height="31"/>
+            <size key="intrinsicContentSize" width="84" height="34"/>
         </designable>
         <designable name="M3a-Xh-ozf">
-            <size key="intrinsicContentSize" width="159" height="31"/>
+            <size key="intrinsicContentSize" width="161" height="34"/>
         </designable>
         <designable name="MUI-fJ-Umd">
-            <size key="intrinsicContentSize" width="114" height="20.5"/>
+            <size key="intrinsicContentSize" width="118" height="23.5"/>
         </designable>
         <designable name="Nra-Y7-dnG">
-            <size key="intrinsicContentSize" width="30" height="30"/>
+            <size key="intrinsicContentSize" width="30" height="33"/>
         </designable>
         <designable name="OAl-eT-e7T">
-            <size key="intrinsicContentSize" width="100" height="31"/>
+            <size key="intrinsicContentSize" width="105" height="34"/>
         </designable>
         <designable name="PsP-Aa-JVi">
-            <size key="intrinsicContentSize" width="43" height="33"/>
+            <size key="intrinsicContentSize" width="46" height="37"/>
         </designable>
         <designable name="RR0-wv-p1Y">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
         <designable name="Sli-dS-FLd">
-            <size key="intrinsicContentSize" width="65" height="31"/>
+            <size key="intrinsicContentSize" width="68" height="34"/>
         </designable>
         <designable name="TCd-a9-jMs">
-            <size key="intrinsicContentSize" width="134" height="19"/>
+            <size key="intrinsicContentSize" width="139" height="22"/>
         </designable>
         <designable name="TGb-n1-m93">
-            <size key="intrinsicContentSize" width="127" height="31"/>
+            <size key="intrinsicContentSize" width="128" height="34"/>
         </designable>
         <designable name="WZL-AL-F00">
-            <size key="intrinsicContentSize" width="69" height="31"/>
+            <size key="intrinsicContentSize" width="72" height="34"/>
         </designable>
         <designable name="Wfk-90-U9A">
             <size key="intrinsicContentSize" width="21" height="22"/>
         </designable>
         <designable name="Z64-c0-u7L">
-            <size key="intrinsicContentSize" width="45" height="31"/>
+            <size key="intrinsicContentSize" width="46" height="34"/>
         </designable>
         <designable name="Zry-jI-wF3">
-            <size key="intrinsicContentSize" width="76" height="31"/>
+            <size key="intrinsicContentSize" width="78" height="34"/>
         </designable>
         <designable name="Zxc-eu-WhV">
-            <size key="intrinsicContentSize" width="177" height="33"/>
+            <size key="intrinsicContentSize" width="177" height="37"/>
         </designable>
         <designable name="a2Q-vx-Ifh">
-            <size key="intrinsicContentSize" width="114" height="20.5"/>
+            <size key="intrinsicContentSize" width="118" height="23.5"/>
         </designable>
         <designable name="bFh-cK-s35">
-            <size key="intrinsicContentSize" width="50" height="31"/>
+            <size key="intrinsicContentSize" width="50" height="34"/>
         </designable>
         <designable name="bK8-XP-0VE">
-            <size key="intrinsicContentSize" width="93" height="31"/>
+            <size key="intrinsicContentSize" width="98" height="34"/>
         </designable>
         <designable name="bUx-XX-x8d">
-            <size key="intrinsicContentSize" width="84" height="19"/>
+            <size key="intrinsicContentSize" width="86.5" height="22"/>
         </designable>
         <designable name="cLL-Rq-au8">
-            <size key="intrinsicContentSize" width="30" height="31"/>
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="dgS-YP-DGn">
-            <size key="intrinsicContentSize" width="30" height="30"/>
+            <size key="intrinsicContentSize" width="30" height="33"/>
         </designable>
         <designable name="dsL-oX-jAx">
-            <size key="intrinsicContentSize" width="76" height="31"/>
+            <size key="intrinsicContentSize" width="78" height="34"/>
         </designable>
         <designable name="eg1-ub-anQ">
-            <size key="intrinsicContentSize" width="36" height="33"/>
+            <size key="intrinsicContentSize" width="35" height="37"/>
         </designable>
         <designable name="fRL-oC-Dho">
-            <size key="intrinsicContentSize" width="73" height="31"/>
+            <size key="intrinsicContentSize" width="73" height="34"/>
         </designable>
         <designable name="gHi-df-B5C">
-            <size key="intrinsicContentSize" width="49.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="49" height="23.5"/>
         </designable>
         <designable name="hCN-Wq-XwI">
-            <size key="intrinsicContentSize" width="37" height="38"/>
+            <size key="intrinsicContentSize" width="38" height="42"/>
         </designable>
         <designable name="jsl-wH-BJZ">
             <size key="intrinsicContentSize" width="27" height="27"/>
         </designable>
         <designable name="kyS-QM-gh3">
-            <size key="intrinsicContentSize" width="137" height="31"/>
+            <size key="intrinsicContentSize" width="142" height="34"/>
         </designable>
         <designable name="mRk-PI-jmo">
             <size key="intrinsicContentSize" width="64" height="64"/>
@@ -7643,16 +7643,16 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="21" height="22"/>
         </designable>
         <designable name="pZV-ja-7FI">
-            <size key="intrinsicContentSize" width="85" height="20.5"/>
+            <size key="intrinsicContentSize" width="90.5" height="23.5"/>
         </designable>
         <designable name="rdr-KY-Rn7">
-            <size key="intrinsicContentSize" width="57" height="31"/>
+            <size key="intrinsicContentSize" width="61" height="34"/>
         </designable>
         <designable name="rhR-aM-1rm">
-            <size key="intrinsicContentSize" width="50" height="20.5"/>
+            <size key="intrinsicContentSize" width="50.5" height="23.5"/>
         </designable>
         <designable name="roD-35-b4H">
-            <size key="intrinsicContentSize" width="81" height="31"/>
+            <size key="intrinsicContentSize" width="83" height="34"/>
         </designable>
         <designable name="s8l-ck-nNg">
             <size key="intrinsicContentSize" width="17" height="25"/>
@@ -7661,16 +7661,16 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
         <designable name="xFF-ZJ-qXT">
-            <size key="intrinsicContentSize" width="99" height="31"/>
+            <size key="intrinsicContentSize" width="103" height="34"/>
         </designable>
         <designable name="xae-Nl-ssj">
-            <size key="intrinsicContentSize" width="125" height="26"/>
+            <size key="intrinsicContentSize" width="120" height="29"/>
         </designable>
         <designable name="xbn-s1-ABW">
-            <size key="intrinsicContentSize" width="83" height="31"/>
+            <size key="intrinsicContentSize" width="85" height="34"/>
         </designable>
         <designable name="yE7-Lo-XYf">
-            <size key="intrinsicContentSize" width="65" height="31"/>
+            <size key="intrinsicContentSize" width="68" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
