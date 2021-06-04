@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LHi-cW-Izu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LHi-cW-Izu">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -409,7 +409,7 @@ How about we take you for a quick tour before you get started?</string>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="29" id="VT0-60-x1V"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <color key="highlightedColor" red="0.43137254901960786" green="0.78823529411764703" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                                         </label>
@@ -428,7 +428,7 @@ How about we take you for a quick tour before you get started?</string>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="29" id="QAV-aa-TJJ"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <color key="highlightedColor" red="0.43137254899999999" green="0.78823529410000004" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </label>
@@ -639,7 +639,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VenueCell" id="5ZF-ps-tQY">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5ZF-ps-tQY" id="V9q-gJ-G5C">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2033,7 +2033,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsfeedCell" rowHeight="122" id="K3F-ss-7Bi">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="122"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="600" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3F-ss-7Bi" id="wFI-aO-mke">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
@@ -7124,7 +7124,7 @@ That's fine. Just click the button below to finish registering.</string>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="jLj-0h-LZP">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jLj-0h-LZP" id="Zx2-lQ-YDl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -7517,7 +7517,7 @@ That's fine. Just click the button below to finish registering.</string>
     </scenes>
     <designables>
         <designable name="0qR-Dd-4yg">
-            <size key="intrinsicContentSize" width="48" height="33"/>
+            <size key="intrinsicContentSize" width="48" height="30"/>
         </designable>
         <designable name="1Mf-wk-LAO">
             <size key="intrinsicContentSize" width="17" height="25"/>
@@ -7529,13 +7529,13 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="37" height="38"/>
         </designable>
         <designable name="3jS-c3-17P">
-            <size key="intrinsicContentSize" width="95" height="33"/>
+            <size key="intrinsicContentSize" width="94" height="30"/>
         </designable>
         <designable name="9ye-kv-GsS">
             <size key="intrinsicContentSize" width="123" height="20"/>
         </designable>
         <designable name="Adz-l0-0LF">
-            <size key="intrinsicContentSize" width="30" height="34"/>
+            <size key="intrinsicContentSize" width="30" height="31"/>
         </designable>
         <designable name="B3u-fZ-6cl">
             <size key="intrinsicContentSize" width="84" height="19"/>
@@ -7583,7 +7583,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="127" height="31"/>
         </designable>
         <designable name="WZL-AL-F00">
-            <size key="intrinsicContentSize" width="72" height="34"/>
+            <size key="intrinsicContentSize" width="69" height="31"/>
         </designable>
         <designable name="Wfk-90-U9A">
             <size key="intrinsicContentSize" width="21" height="22"/>
@@ -7622,7 +7622,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="36" height="33"/>
         </designable>
         <designable name="fRL-oC-Dho">
-            <size key="intrinsicContentSize" width="73" height="34"/>
+            <size key="intrinsicContentSize" width="73" height="31"/>
         </designable>
         <designable name="gHi-df-B5C">
             <size key="intrinsicContentSize" width="49.5" height="20.5"/>
