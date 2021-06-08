@@ -21,6 +21,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    if (@available(iOS 13.0, *)) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+    }
+    
     _userRequest = [DMUserRequest new];
 }
 
@@ -189,7 +193,7 @@
     [self setRootViewController:destinationViewController animated:NO];
 }
 
-- (void)goToVenues
+- (void)goToVenues:(BOOL *)initial
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -203,7 +207,12 @@
             }
         }
     }
-    [self setRootViewController:destinationViewController animated:YES];
+    if (initial) {
+        [self setRootViewController:destinationViewController animated:YES];
+    } else {
+        [self setRootViewController:destinationViewController animated:NO];
+    }
+
 }
 
 @end

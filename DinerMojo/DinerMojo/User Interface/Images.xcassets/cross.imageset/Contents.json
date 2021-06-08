@@ -1,8 +1,19 @@
 {
   "images" : [
     {
+      "scale" : "1x",
       "idiom" : "universal",
-      "filename" : "cross.pdf"
+      "filename" : "cross.png"
+    },
+    {
+      "filename" : "cross@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "cross@3x.png"
     }
   ],
   "info" : {

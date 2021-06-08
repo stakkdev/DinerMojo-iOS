@@ -45,6 +45,16 @@
     [[self layer] setBorderWidth:borderWidth];
 }
 
+- (void)setBottomBorderHighlightColor:(UIColor*)highlightColor
+{
+    CGFloat width = [self layer].frame.size.width;
+    CGFloat height = [self layer].frame.size.height;
+    CGRect frame = CGRectMake(0, height - 5, width, 5);
+    UIView *bottomBorder = [[UIView alloc] initWithFrame:frame];
+    bottomBorder.backgroundColor = highlightColor;
+    [self addSubview:bottomBorder];
+}
+
 - (void)setNormalBorderColor:(UIColor *)normalBorderColor
 {
     _normalBorderColor = normalBorderColor;

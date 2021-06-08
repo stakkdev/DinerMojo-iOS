@@ -18,12 +18,17 @@
     IBOutlet UITableView *restaurantsTableView;
     IBOutlet MKMapView *mapView;
     IBOutlet UICollectionView *collectionView;
+    IBOutlet UITableView *suggestionsTableView;
 }
 
 @property BOOL showOverlay;
 @property BOOL collectionViewCellSelected;
+@property BOOL limitAnnotationsWarningDisplayed;
+@property BOOL mapHasBeenMoved;
+@property NSInteger lastCarouselIndex;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
+@property (strong, nonatomic) IBOutlet UIView *searchHereButtonView;
 
 @end
 

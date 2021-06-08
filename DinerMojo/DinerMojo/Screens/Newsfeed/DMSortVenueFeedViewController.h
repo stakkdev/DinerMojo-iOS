@@ -41,6 +41,12 @@ typedef NS_ENUM(NSInteger, DMSortNewsfeedViewControllerSortItemType) {
 //@property (nonatomic, weak) id <CloseSortViewDelegate> closeDelegate;
 
 @property NSInteger selectedType;
+@property (nonatomic)BOOL allRestaurantsSelected;
+@property (nonatomic)BOOL allLifestyleSelected;
+@property (strong, nonatomic)NSArray *lifestyleCategories;
+@property (strong, nonatomic)NSArray *restaurantCategories;
+@property (strong, nonatomic)NSMutableArray *selectedLifestyleCategories;
+@property (strong, nonatomic)NSMutableArray *selectedRestaurantCategories;
 
 - (IBAction)dismissView:(id)sender;
 

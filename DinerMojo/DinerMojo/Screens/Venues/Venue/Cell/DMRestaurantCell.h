@@ -10,6 +10,8 @@
 @optional
 - (void)didSelectEarn:(NSIndexPath*)index;
 - (void)didSelectRedeem:(NSIndexPath*)index;
+- (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath*)index;
+
 @end
 
 
@@ -27,8 +29,13 @@
 @property (nonatomic, weak) id <DMRestaurantCellDelegate> delegate;
 @property (strong, nonatomic) NSIndexPath* index;
 @property (nonatomic) int state;
+@property (weak, nonatomic) IBOutlet UIImageView *favouriteHeartImage;
+@property (weak, nonatomic) IBOutlet UIButton *favouriteButton;
+@property BOOL isFavourite;
 
 - (void)setEarnVisibility:(BOOL)visibility;
 - (void)setRedeemVisibility:(BOOL)visibility;
+- (void)setToFavourite:(BOOL)favourite;
+- (void)setShowFavoriteButton:(BOOL)favourite;
 
 @end

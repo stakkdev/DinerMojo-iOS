@@ -39,6 +39,7 @@
 
 - (void)downloadFavouriteVenuesWithCompletionBlock:(RequestCompletion)completionBlock;
 - (void)deleteVenues:(NSArray *)venues withCompletionBlock:(RequestCompletion)completionBlock;
+- (void)toggleVenue:(DMVenue *)venue to:(BOOL)favourite withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)recommendedVenue:(DMVenue *)venue withComplectionBlock:(RequestCompletion)complectionBlock;
 - (void)addVenue:(DMVenue *)venue withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)downloadAllTransactionsWithCompletionBlock:(RequestCompletion)completionBlock;

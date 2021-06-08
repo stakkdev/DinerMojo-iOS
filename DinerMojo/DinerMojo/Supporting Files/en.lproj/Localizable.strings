@@ -11,6 +11,13 @@
 "sort.nearest" = "Nearest to Me";
 "sort.most.recent" = "Newest";
 "sort.az" = "A-Z";
+"limit.by" = "Radius:";
+"limit.default" = "Only here";
+"limit.oneMile" = "1 mile";
+"limit.fiveMiles" = "5 miles";
+"limit.tenMiles" = "10 miles";
+"sort.most.recent" = "Newest";
+"sort.az" = "A-Z";
 "show.venues" = "Show venues...";
 "sort.venues.redeem" = "Where I can redeem points";
 "sort.venues.earn.points" = "Where I can earn points";
@@ -85,3 +92,5 @@
 "gdpr.skip" = "Skip for now";
 
 "rating.desc" = "We hope you enjoyed your experience at %@, the owners rely on Tripadvisor reviews to spread the word about their restaurant. Please take a minute to write a review.";
+
+"remove.all.title" = "Remove all";

@@ -171,6 +171,12 @@
 		7AFF9EF41B2B441900F6C9B6 /* DMReferralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */; };
 		9433A7AE24B32D2000449F8B /* PKHUDSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */; };
 		9433A7B224B3360C00449F8B /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9433A7B124B3360C00449F8B /* CoreServices.framework */; };
+		9598EE222600F31D005C120A /* SearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9598EE212600F31D005C120A /* SearchBar.xib */; };
+		9598EE262600FE4C005C120A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EE252600FE4C005C120A /* SearchBar.swift */; };
+		9598EEE2260CAC05005C120A /* Secrets.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9598EEE1260CAC05005C120A /* Secrets.stencil */; };
+		9598EF02260CAD2B005C120A /* Secrets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EF01260CAD2B005C120A /* Secrets.generated.swift */; };
+		9598EF45260D060F005C120A /* SimpleRadioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */; };
+		9598EF46260D060F005C120A /* SimpleRadioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */; };
 		CB2B5EA81E04337600960091 /* DMViewControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */; };
 		CB580D371E03EE400018ED8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB580D391E03EE400018ED8A /* Localizable.strings */; };
 		CB580D3C1E0404E10018ED8A /* DMSortByDistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB580D3A1E0404E10018ED8A /* DMSortByDistanceCell.swift */; };
@@ -489,6 +495,12 @@
 		8248085EA93DBA96F2B8F093 /* Pods-DinerMojo.external fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.external fdt release.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.external fdt release.xcconfig"; sourceTree = "<group>"; };
 		9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKHUDSwift.swift; sourceTree = "<group>"; };
 		9433A7B124B3360C00449F8B /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		9598EE212600F31D005C120A /* SearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBar.xib; sourceTree = "<group>"; };
+		9598EE252600FE4C005C120A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		9598EEE1260CAC05005C120A /* Secrets.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.stencil; sourceTree = "<group>"; };
+		9598EF01260CAD2B005C120A /* Secrets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.generated.swift; sourceTree = "<group>"; };
+		9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRadioTableViewCell.swift; sourceTree = "<group>"; };
+		9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleRadioTableViewCell.xib; sourceTree = "<group>"; };
 		A8F5717CB00046084502849C /* Pods-DinerMojo.internal fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal fdt release.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal fdt release.xcconfig"; sourceTree = "<group>"; };
 		B84D42046C6F52CF9FFF0117 /* Pods_DinerMojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5564E4FB324B6515660C9B0 /* Pods-DinerMojo.app store ad-hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store ad-hoc.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store ad-hoc.xcconfig"; sourceTree = "<group>"; };
@@ -1031,6 +1043,7 @@
 		7AC3FE641AEE3E7600AD12E0 /* DinerMojo */ = {
 			isa = PBXGroup;
 			children = (
+				9598EEE0260CAC05005C120A /* Secrets */,
 				27E56B881EA128A200373599 /* DinerMojo.entitlements */,
 				7AC3FE691AEE3E7600AD12E0 /* AppDelegate.h */,
 				7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */,
@@ -1108,6 +1121,24 @@
 			path = "open-sans";
 			sourceTree = "<group>";
 		};
+		9598EE202600F2F9005C120A /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				9598EE212600F31D005C120A /* SearchBar.xib */,
+				9598EE252600FE4C005C120A /* SearchBar.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		9598EEE0260CAC05005C120A /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				9598EF01260CAD2B005C120A /* Secrets.generated.swift */,
+				9598EEE1260CAC05005C120A /* Secrets.stencil */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
 		CB8F7B2A1E02EE1600EC24C3 /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1171,6 +1202,8 @@
 				278E862C1EB8D2D700A6E8B7 /* DMVenuesNotificationCell.swift */,
 				278E862E1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift */,
 				278E86301EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib */,
+				9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */,
+				9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -1345,6 +1378,7 @@
 		D4EF480C1B453ED000E46539 /* Venue */ = {
 			isa = PBXGroup;
 			children = (
+				9598EE202600F2F9005C120A /* SearchBar */,
 				27F95823206B665A00A4537F /* LeaveRatingViewController */,
 				278F7EC61E9F87B7000D1E87 /* Buttons */,
 				7A8C4B781B1C9AD500F1A798 /* DMMapViewController.h */,
@@ -1486,6 +1520,8 @@
 				7AC3FE601AEE3E7600AD12E0 /* Resources */,
 				BF2CFBF01D65E5F100200974 /* Fabric */,
 				A0E393F2187C99144E0CC1ED /* [CP] Embed Pods Frameworks */,
+				31CCA1171E121815D8F5DBB0 /* [CP] Copy Pods Resources */,
+				9598EEDF260CAB15005C120A /* Generate Secrets */,
 			);
 			buildRules = (
 			);
@@ -1565,10 +1601,12 @@
 				27268708206A0D880031B3CE /* BirthdayViewController.xib in Resources */,
 				CB580D371E03EE400018ED8A /* Localizable.strings in Resources */,
 				7AEF14A81B1F09FC0053D32B /* OpenSans-Light.ttf in Resources */,
+				9598EEE2260CAC05005C120A /* Secrets.stencil in Resources */,
 				D4A813691B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib in Resources */,
 				27037C4820B5B06A00B47313 /* AcceptGdprViewController.xib in Resources */,
 				CB8F7B491E03044400EC24C3 /* DMRadioSortOptionCell.xib in Resources */,
 				276AED171F2A4CC300042D31 /* StartupNotificationsViewController.xib in Resources */,
+				9598EF46260D060F005C120A /* SimpleRadioTableViewCell.xib in Resources */,
 				27B8832A1EACE6320082DA88 /* DMRadioViewOption.xib in Resources */,
 				7A8C4B9B1B1C9D5800F1A798 /* Environments.plist in Resources */,
 				27B883281EACD9AC0082DA88 /* DMVenuesOptionCell.xib in Resources */,
@@ -1582,6 +1620,7 @@
 				278E86311EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib in Resources */,
 				278750351EC31AFC00BCFD4E /* StartupViewController.xib in Resources */,
 				7AEF14AA1B1F09FC0053D32B /* OpenSans-Regular.ttf in Resources */,
+				9598EE222600F31D005C120A /* SearchBar.xib in Resources */,
 				7AEF14A71B1F09FC0053D32B /* OpenSans-Italic.ttf in Resources */,
 				7AEF14A41B1F09FC0053D32B /* OpenSans-BoldItalic.ttf in Resources */,
 				7AEF14A51B1F09FC0053D32B /* OpenSans-ExtraBold.ttf in Resources */,
@@ -1594,6 +1633,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		31CCA1171E121815D8F5DBB0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3F19D66F22C1CDDF75B2E9FC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1616,6 +1675,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9598EEDF260CAB15005C120A /* Generate Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#check if env-vars.sh exists\nif [ -f ${SRCROOT}/env-vars.sh ]\nthen\nsource ${SRCROOT}/env-vars.sh\nfi\n#no `else` case needed if the CI works as expected\n${PODS_ROOT}/Sourcery/bin/sourcery --templates ./DinerMojo/Secrets --output ./DinerMojo/Secrets/ --sources ./DinerMojo/ --args google_places_api_key=$GOOGLE_PLACES_API_KEY\n";
+		};
 		A0E393F2187C99144E0CC1ED /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1637,6 +1714,7 @@
 				"${BUILT_PRODUCTS_DIR}/PMEDatePicker/PMEDatePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/RDHCollectionViewGridLayout/RDHCollectionViewGridLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVBlurView/SVBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
 				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
@@ -1658,6 +1736,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMEDatePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RDHCollectionViewGridLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
@@ -1772,6 +1851,7 @@
 				5E67527D223005B10016B402 /* PopUpModel.swift in Sources */,
 				2781591B1E9CDAF4009B3B3C /* DMLocationInfoItemCell.swift in Sources */,
 				D4E436C91B39751F006435F8 /* DMTabBarController.m in Sources */,
+				9598EF02260CAD2B005C120A /* Secrets.generated.swift in Sources */,
 				CB8F7B321E02F23C00EC24C3 /* Providers.swift in Sources */,
 				5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */,
 				7A5EC8161B4C033F00B27CBF /* DMEarnTransaction.m in Sources */,
@@ -1781,6 +1861,7 @@
 				7A8C4B8C1B1C9AD500F1A798 /* DMReferAFriendViewController.m in Sources */,
 				7A80F6271B3F6605009C8A6F /* UIImage+Extensions.m in Sources */,
 				278159171E9CDA41009B3B3C /* DMLocationInfoItem.swift in Sources */,
+				9598EF45260D060F005C120A /* SimpleRadioTableViewCell.swift in Sources */,
 				276E02161EA55D0F006A79EA /* DMSortNewsFeedViewController.m in Sources */,
 				7A5EC8261B4C033F00B27CBF /* _DMTransaction.m in Sources */,
 				CB8F7B371E02F23C00EC24C3 /* TUTableViewManager.swift in Sources */,
@@ -1860,6 +1941,7 @@
 				30CFF193F6E28FAB5AFFB44B /* DMDistanceItem.swift in Sources */,
 				30CFF222856F4343BDE03221 /* DMNotificationSettingsViewController.m in Sources */,
 				30CFF9BDACF938334F981DA3 /* DMNotificationsSettingsProvider.swift in Sources */,
+				9598EE262600FE4C005C120A /* SearchBar.swift in Sources */,
 				30CFF26A31D8D5EBACC7CFA2 /* DMNotificationItemsFactory.swift in Sources */,
 				278E86331EB92B5D00A6E8B7 /* DMNotificationsVenueProvider.swift in Sources */,
 				30CFFBEB3DB4E850D0488741 /* DMNotificationSelectionManager.swift in Sources */,
@@ -1956,7 +2038,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 103;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2115,7 +2197,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 103;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2272,7 +2354,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 103;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2427,7 +2509,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 103;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2591,7 +2673,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 103;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;

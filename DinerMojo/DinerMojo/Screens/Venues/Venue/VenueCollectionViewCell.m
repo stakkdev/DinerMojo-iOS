@@ -37,6 +37,11 @@
         [self.delegate didSelectRedeem:self.index];
     }
 }
+- (IBAction)favouriteButtonAction:(id)sender {
+    if(self.delegate != nil) {
+        [self.delegate didSelectFavourite:!self.isFavourite atIndex:self.index];
+    }
+}
 
 - (void)setRedeemVisibility:(BOOL)visibility {
     if(visibility) {
@@ -45,6 +50,21 @@
     else {
         [self.earnButton setImage:[UIImage imageNamed:@"redeem_icon_disabled"] forState:UIControlStateNormal];
     }
+}
+
+- (void)setToFavourite:(BOOL)favourite {
+    [self setIsFavourite:favourite];
+    if(favourite) {
+        [self.heartImage setImage:[UIImage imageNamed:@"heartRed"]];
+    }
+    else {
+        [self.heartImage setImage:[UIImage imageNamed:@"heartWhite"]];
+    }
+}
+
+- (void)setShowFavoriteButton:(BOOL)show {
+    [self.heartImage setHidden:!show];
+    [self.favouriteButton setHidden:!show];
 }
 
 - (void)setEarnVisibility:(BOOL)visibility {

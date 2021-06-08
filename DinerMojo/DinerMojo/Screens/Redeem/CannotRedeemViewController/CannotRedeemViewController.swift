@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 @objc class CannotRedeemViewController: UIViewController {
     
@@ -21,10 +22,14 @@ import UIKit
         
         setup()
         let request = DMRequest()
+        var urlString: URL?
         if let imageUrl = imageUrl, let url = URL(string: request.buildMediaURL(imageUrl)) {
-            imageView.setImageWith(url)
+            urlString = url
         } else if let url = URL(string: venue?.primaryImage().fullURL() ?? "") {
-            imageView.setImageWith(url)
+            urlString = url
+        }
+        if let url = urlString {
+            imageView.sd_setImage(with: url, placeholderImage: nil)
         }
         
         if let venue = venue {

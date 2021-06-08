@@ -15,6 +15,7 @@
 #import "DinerMojo-Swift.h"
 #import "DMVenueCategory.h"
 #import <GBVersionTracking/GBVersionTracking.h>
+@import GooglePlaces;
 
 @interface AppDelegate ()
 
@@ -42,6 +43,13 @@
     
     [self swiftApplication:application didFinishLaunchingWithOptions:launchOptions];
     [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"didShowGDPR"];
+    
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
+                                                       diskCapacity:200 * 1024 * 1024
+                                                           diskPath:nil];
+    [NSURLCache setSharedURLCache:URLCache];
+    
+    [GMSPlacesClient provideAPIKey:Secrets.googlePlacesApiKey];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];

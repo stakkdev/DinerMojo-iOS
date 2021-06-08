@@ -392,7 +392,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     __weak typeof(self) weakSelf = self;
     
     [[self userRequest] loginFaceboookWithSuccess:^(id result) {
-        [self goToVenues];
+        [self goToVenues:NO];
     } error:^(NSError *error, id additionalInfo) {
         // User does not exist, Attempt Registration, otherwise log out of Facebook
         if ([error code] == DMErrorCode404)
@@ -485,7 +485,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             }
             else
             {
-                [self goToVenues];
+                [self goToVenues:NO];
             }
             
             

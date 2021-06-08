@@ -29,6 +29,7 @@
 #import <Crashlytics/Answers.h>
 #import "RestaurantInfoButtonEnum.h"
 #import "DMPopUpRequest.h"
+#import <SDWebImage/SDWebImage.h>
 
 @interface DMRestaurantInfoViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIActivityItemSource, BookingViewControllerDelegate>
 
@@ -140,6 +141,8 @@
     } else {
         [Answers logContentViewWithName:@"View lifestyle info" contentType:[NSString stringWithFormat:@"View lifestyle info - %@", self.selectedVenue.name] contentId:[NSString stringWithFormat:@"%@", self.selectedVenue.name] customAttributes:@{}];
     }
+    
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 -(void)addGradient:(UIView *)view {
