@@ -12,7 +12,7 @@
 "sort.most.recent" = "Newest";
 "sort.az" = "A-Z";
 "limit.by" = "Radius:";
-"limit.default" = "default";
+"limit.default" = "Only here";
 "limit.oneMile" = "1 mile";
 "limit.fiveMiles" = "5 miles";
 "limit.tenMiles" = "10 miles";

@@ -57,6 +57,7 @@
     _mapModelController.state = DMVenueMap;
     FilterItem *nearestFilter = [[FilterItem alloc] initWithGroupName:GroupsNameSortBy itemId:SortByItemsNearestItem value:SortByItemsNearestItem];
     FilterItem *defaultRadius = [[FilterItem alloc] initWithGroupName:GroupsNameDistanceFilter itemId:DistanceFilterDefault value:DistanceFilterDefault];
+    [self.mapModelController setDefaultDistance:1];
     NSMutableArray *initialFilters = [[NSMutableArray alloc] init];
     [initialFilters addObject:nearestFilter];
     [initialFilters addObject:defaultRadius];
@@ -769,7 +770,7 @@
         [self zoomMapTo:currentLocation];
         [DMLocationServices.sharedInstance setSelectedLocation:currentLocation];
         [_searchBar setTextTo:@""];
-        [self.mapModelController setDefaultDistance:0];
+        [self.mapModelController setDefaultDistance:1];
         [self.mapModelController applyFilters];
         [self reloadSelf];
         [self toggleSuggestionsTableViewTo:NO];
@@ -780,7 +781,7 @@
     if (DMLocationServices.sharedInstance.currentLocation) {
         CLLocation *currentLocation = [DMLocationServices sharedInstance].currentLocation;
         [DMLocationServices.sharedInstance setSelectedLocation:currentLocation];
-        [self.mapModelController setDefaultDistance:0];
+        [self.mapModelController setDefaultDistance:1];
         [self.mapModelController applyFilters];
         [self reloadSelf];
         [self toggleSuggestionsTableViewTo:NO];
