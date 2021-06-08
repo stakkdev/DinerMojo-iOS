@@ -19,7 +19,7 @@
 
 +(UIColor *) restaurantsDeselected;
 {
-    return [UIColor colorWithRed:103.0f/255.0f green:192.0f/255.0f blue:169.0f/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:0.43137254901961f green:0.7843137254902f blue:0.69803921568627f alpha:1.00f];
 }
 
 +(UIColor *) restaurantsSelected;

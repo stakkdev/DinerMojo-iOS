@@ -19,6 +19,10 @@
     
     dispatch_once(&pred, ^{
         shared = [[[self class] alloc] init];
+        CLLocation *kingstone = [[CLLocation alloc] initWithLatitude:51.41259  longitude:-0.2974];
+        [shared setCurrentLocation:kingstone];
+        [shared setSelectedLocation:kingstone];
+        [shared setInitialLocationUpdate:YES];
         
     });
     return shared;
@@ -42,9 +46,13 @@
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{    
+{
     [self setCurrentLocation:[locations lastObject]];
-    
+    if (_initialLocationUpdate) {
+        [self setSelectedLocation:[locations lastObject]];
+        [self setInitialLocationUpdate:NO];
+        [self.delegate didInitiallyUpdateLocation];
+    }
 }
 
 - (double)userLocationDistanceFromLocation:(CLLocation *)location
@@ -52,7 +60,28 @@
     return [[self currentLocation] distanceFromLocation:location];
 }
 
+- (double)distanceFromSelectedLocationFor:(CLLocation *)location
+{
+    return [[self selectedLocation] distanceFromLocation:location];
+}
+
 - (double)getDistanceWithLatitude:(NSNumber *)latitude andLongitude:(NSNumber *)longitude {
+    CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    double distance = [self userLocationDistanceFromLocation:venueCoordinates];
+    return distance;
+}
+
+- (double)getSelectedLocationDistanceFrom:(DMVenue *)venue {
+    NSNumber *latitude = venue.latitude;
+    NSNumber *longitude = venue.longitude;
+    CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    double distance = [self distanceFromSelectedLocationFor:venueCoordinates];
+    return distance;
+}
+
+- (double)getUserDistanceFrom:(DMVenue *)venue {
+    NSNumber *latitude = venue.latitude;
+    NSNumber *longitude = venue.longitude;
     CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
     double distance = [self userLocationDistanceFromLocation:venueCoordinates];
     return distance;

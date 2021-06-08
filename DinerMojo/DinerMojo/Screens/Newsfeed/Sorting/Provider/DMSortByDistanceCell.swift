@@ -58,7 +58,7 @@ class DMSortByDistanceCell: UITableViewCell, UITableViewCellLoadableProtocol  {
     
     func checkForAvailability() {
         if let data = self.data,
-            data.itemId == DistanceFilter.DistanceItem.rawValue, data.groupName == GroupsName.DistanceFilter.rawValue {
+            data.itemId == DistanceFilter.Default.rawValue, data.groupName == GroupsName.DistanceFilter.rawValue {
             let status = DMLocationServices.sharedInstance().isLocationEnabled()
             self.availability(isEnabled: status)
         }

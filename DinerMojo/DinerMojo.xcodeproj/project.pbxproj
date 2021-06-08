@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A3839C325CD8953006407F9 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3839C225CD8953006407F9 /* CustomAnnotationView.m */; };
+		1A3839CD25CD99AB006407F9 /* VenueCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3839CC25CD99AB006407F9 /* VenueCollectionViewCell.m */; };
 		2702171C20638EF20041CD6F /* DMActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702171B20638EF20041CD6F /* DMActivityViewController.swift */; };
 		27037C4720B5B06A00B47313 /* AcceptGdprViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27037C4520B5B06A00B47313 /* AcceptGdprViewController.swift */; };
 		27037C4820B5B06A00B47313 /* AcceptGdprViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27037C4620B5B06A00B47313 /* AcceptGdprViewController.xib */; };
@@ -76,7 +78,6 @@
 		30CFFBEB3DB4E850D0488741 /* DMNotificationSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFF4ED470E8D94871EE7AD /* DMNotificationSelectionManager.swift */; };
 		30CFFEE6B01E7FBCD3BB9BD3 /* DMSortSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CFF6E8F7620FE5FC9F3D1C /* DMSortSelectionManager.swift */; };
 		3323F5F2F0E28D3ED1945F82 /* FilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3323F53AADBEADE1E44C5962 /* FilterItem.swift */; };
-		38D0806C05E10159D1F9258B /* Pods_DinerMojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFBD548645FCBFC997274CD /* Pods_DinerMojo.framework */; };
 		5A5EE0F61AF3AB9B00F3C796 /* DMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EE0F51AF3AB9B00F3C796 /* DMViewController.m */; };
 		5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF0841B284DEE00E0FC90 /* DMWebViewController.m */; };
 		5A5FF0881B286BEF00E0FC90 /* DMShadowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FF0871B286BEF00E0FC90 /* DMShadowImageView.m */; };
@@ -170,6 +171,12 @@
 		7AFF9EF41B2B441900F6C9B6 /* DMReferralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */; };
 		9433A7AE24B32D2000449F8B /* PKHUDSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */; };
 		9433A7B224B3360C00449F8B /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9433A7B124B3360C00449F8B /* CoreServices.framework */; };
+		9598EE222600F31D005C120A /* SearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9598EE212600F31D005C120A /* SearchBar.xib */; };
+		9598EE262600FE4C005C120A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EE252600FE4C005C120A /* SearchBar.swift */; };
+		9598EEE2260CAC05005C120A /* Secrets.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9598EEE1260CAC05005C120A /* Secrets.stencil */; };
+		9598EF02260CAD2B005C120A /* Secrets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EF01260CAD2B005C120A /* Secrets.generated.swift */; };
+		9598EF45260D060F005C120A /* SimpleRadioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */; };
+		9598EF46260D060F005C120A /* SimpleRadioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */; };
 		CB2B5EA81E04337600960091 /* DMViewControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */; };
 		CB580D371E03EE400018ED8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB580D391E03EE400018ED8A /* Localizable.strings */; };
 		CB580D3C1E0404E10018ED8A /* DMSortByDistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB580D3A1E0404E10018ED8A /* DMSortByDistanceCell.swift */; };
@@ -212,14 +219,17 @@
 		D4E436D01B3986B8006435F8 /* DMDineVenueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E436CE1B3986B8006435F8 /* DMDineVenueTableViewCell.m */; };
 		D4E436D11B3986B8006435F8 /* DMDineVenueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E436CF1B3986B8006435F8 /* DMDineVenueTableViewCell.xib */; };
 		D4E4370A1B3A98CD006435F8 /* DMEarnReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */; };
+		D72BF3D54871DC40C52B1140 /* Pods_DinerMojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D42046C6F52CF9FFF0117 /* Pods_DinerMojo.framework */; };
 		E7D8D1E61D76DD0800944021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D8D1E51D76DD0800944021 /* AppDelegate.swift */; };
 		E7D8D1ED1D76E4E300944021 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7D8D1EC1D76E4E300944021 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		12563F873AC00B2266CBF487 /* Pods-DinerMojoTests.internal fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.internal fdt release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.internal fdt release.xcconfig"; sourceTree = "<group>"; };
+		1A3839C125CD8941006407F9 /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
+		1A3839C225CD8953006407F9 /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
+		1A3839C625CD9757006407F9 /* VenueCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueCollectionViewCell.h; sourceTree = "<group>"; };
+		1A3839CC25CD99AB006407F9 /* VenueCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenueCollectionViewCell.m; sourceTree = "<group>"; };
 		2702171B20638EF20041CD6F /* DMActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMActivityViewController.swift; sourceTree = "<group>"; };
-		2702C1341E71DA95008AB1F9 /* DinerMojo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "DinerMojo copy-Info.plist"; path = "/Users/mike/Documents/projects/DinerMojo-iOS/DinerMojo/DinerMojo copy-Info.plist"; sourceTree = "<absolute>"; };
 		27037C4520B5B06A00B47313 /* AcceptGdprViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptGdprViewController.swift; sourceTree = "<group>"; };
 		27037C4620B5B06A00B47313 /* AcceptGdprViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcceptGdprViewController.xib; sourceTree = "<group>"; };
 		2706C9871E9E6AE100A6A376 /* DinerMojoConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DinerMojoConstants.h; sourceTree = "<group>"; };
@@ -281,6 +291,7 @@
 		27F75E281E72E284005DAC92 /* DinerMojo v1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DinerMojo v1.2.xcdatamodel"; sourceTree = "<group>"; };
 		27F95824206B667C00A4537F /* LeaveRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveRatingViewController.swift; sourceTree = "<group>"; };
 		27F95825206B667C00A4537F /* LeaveRatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeaveRatingViewController.xib; sourceTree = "<group>"; };
+		28F99FE57969E8252898FFE3 /* Pods-DinerMojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug.xcconfig"; sourceTree = "<group>"; };
 		2C6C54391FD9392D006C147D /* TurnOnNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnOnNotificationsViewController.swift; sourceTree = "<group>"; };
 		2C6C543A1FD9392D006C147D /* TurnOnNotificationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TurnOnNotificationsViewController.xib; sourceTree = "<group>"; };
 		2C6C543D1FD93FF3006C147D /* SGNotificationsSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGNotificationsSettings.swift; sourceTree = "<group>"; };
@@ -300,8 +311,6 @@
 		30CFFDEAE97CE2C48D0C3687 /* DMNotificationSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMNotificationSettingsViewController.h; sourceTree = "<group>"; };
 		30CFFF2CEB4847BD98C5FF8E /* DMNotificationSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMNotificationSettingsViewController.m; sourceTree = "<group>"; };
 		3323F53AADBEADE1E44C5962 /* FilterItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterItem.swift; sourceTree = "<group>"; };
-		3BFBD548645FCBFC997274CD /* Pods_DinerMojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EF083EA360442C9F8F465C7 /* Pods_DinerMojoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5EE0F41AF3AB9B00F3C796 /* DMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMViewController.h; sourceTree = "<group>"; };
 		5A5EE0F51AF3AB9B00F3C796 /* DMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMViewController.m; sourceTree = "<group>"; };
 		5A5FF0831B284DEE00E0FC90 /* DMWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMWebViewController.h; sourceTree = "<group>"; };
@@ -483,13 +492,18 @@
 		7AF517EE1B440E3100FA5221 /* DMMappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMappingHelper.m; sourceTree = "<group>"; };
 		7AFF9EF21B2B441900F6C9B6 /* DMReferralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMReferralViewController.h; sourceTree = "<group>"; };
 		7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReferralViewController.m; sourceTree = "<group>"; };
-		7CE4F701B9999E3D54D653B2 /* Pods-DinerMojo.debug - vagrant.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug - vagrant.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug - vagrant.xcconfig"; sourceTree = "<group>"; };
-		7D060AA8CBEA03332FA90A01 /* Pods-DinerMojo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.debug.xcconfig"; sourceTree = "<group>"; };
-		80FEA7AD68921C5B2F247AF2 /* Pods-DinerMojoTests.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.app store.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.app store.xcconfig"; sourceTree = "<group>"; };
-		89D3832FA1795989E0615606 /* Pods-DinerMojoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8248085EA93DBA96F2B8F093 /* Pods-DinerMojo.external fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.external fdt release.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.external fdt release.xcconfig"; sourceTree = "<group>"; };
 		9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKHUDSwift.swift; sourceTree = "<group>"; };
 		9433A7B124B3360C00449F8B /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
-		BF869002BB6C6C9977F45984 /* Pods-DinerMojo.app store ad-hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store ad-hoc.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store ad-hoc.xcconfig"; sourceTree = "<group>"; };
+		9598EE212600F31D005C120A /* SearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBar.xib; sourceTree = "<group>"; };
+		9598EE252600FE4C005C120A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		9598EEE1260CAC05005C120A /* Secrets.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Secrets.stencil; sourceTree = "<group>"; };
+		9598EF01260CAD2B005C120A /* Secrets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.generated.swift; sourceTree = "<group>"; };
+		9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRadioTableViewCell.swift; sourceTree = "<group>"; };
+		9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleRadioTableViewCell.xib; sourceTree = "<group>"; };
+		A8F5717CB00046084502849C /* Pods-DinerMojo.internal fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal fdt release.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal fdt release.xcconfig"; sourceTree = "<group>"; };
+		B84D42046C6F52CF9FFF0117 /* Pods_DinerMojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5564E4FB324B6515660C9B0 /* Pods-DinerMojo.app store ad-hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store ad-hoc.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store ad-hoc.xcconfig"; sourceTree = "<group>"; };
 		CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMViewControllersProvider.swift; sourceTree = "<group>"; };
 		CB580D381E03EE400018ED8A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB580D3A1E0404E10018ED8A /* DMSortByDistanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMSortByDistanceCell.swift; sourceTree = "<group>"; };
@@ -508,8 +522,6 @@
 		CB8F7B461E03044400EC24C3 /* DMRadioSortOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMRadioSortOptionCell.swift; sourceTree = "<group>"; };
 		CB8F7B471E03044400EC24C3 /* DMRadioSortOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRadioSortOptionCell.xib; sourceTree = "<group>"; };
 		CBD30C351E07E8EE005D6587 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		CF274B4B4525C3727A60DBAF /* Pods-DinerMojo.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store.xcconfig"; sourceTree = "<group>"; };
-		CF69869A657E05633BEDA79E /* Pods-DinerMojo.internal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal release.xcconfig"; sourceTree = "<group>"; };
 		D44F86C51B21B68E00EFEC3B /* DMFontService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFontService.h; sourceTree = "<group>"; };
 		D44F86C61B21B68E00EFEC3B /* DMFontService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFontService.m; sourceTree = "<group>"; };
 		D48CEB891B2EDAD7001A01EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -553,19 +565,11 @@
 		D4E437081B3A98CD006435F8 /* DMEarnReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMEarnReviewViewController.h; sourceTree = "<group>"; };
 		D4E437091B3A98CD006435F8 /* DMEarnReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMEarnReviewViewController.m; sourceTree = "<group>"; };
 		D4FF601C1B415B64000CE244 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		E3F88B76A0CDD8A79A78BAAB /* Pods-DinerMojo.external fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.external fdt release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.external fdt release.xcconfig"; sourceTree = "<group>"; };
-		E4458E8BFDE288E86EB3A2C4 /* Pods-DinerMojoTests.internal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.internal release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.internal release.xcconfig"; sourceTree = "<group>"; };
+		DAB18A8705C229D9B63BCA91 /* Pods-DinerMojo.app store.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.app store.xcconfig"; path = "Target Support Files/Pods-DinerMojo/Pods-DinerMojo.app store.xcconfig"; sourceTree = "<group>"; };
 		E772B8FB1D75F18E00EE8042 /* DinerMojo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DinerMojo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E7D8D1E51D76DD0800944021 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7D8D1EC1D76E4E300944021 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E7D8D1F11D76EA1B00944021 /* App-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App-Info.h"; sourceTree = "<group>"; };
-		EF7C7EC248C7D988D042049F /* Pods-DinerMojo.internal fdt release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.internal fdt release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.internal fdt release.xcconfig"; sourceTree = "<group>"; };
-		F09F8BAB0029F85BB61799D4 /* Pods-DinerMojoTests.client release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.client release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.client release.xcconfig"; sourceTree = "<group>"; };
-		F2178AEA8AB5B6D3396AC06B /* Pods-DinerMojo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.release.xcconfig"; sourceTree = "<group>"; };
-		F56DCE195D64A477F4812E62 /* Pods-DinerMojo.client release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.client release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.client release.xcconfig"; sourceTree = "<group>"; };
-		FA003BD8DAC75D4101D05964 /* Pods-DinerMojoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.release.xcconfig"; sourceTree = "<group>"; };
-		FE376898AF0A7017918D522A /* Pods-DinerMojoTests.debug - vagrant.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojoTests.debug - vagrant.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojoTests/Pods-DinerMojoTests.debug - vagrant.xcconfig"; sourceTree = "<group>"; };
-		FF8F1A18FDF03E2EF3BAD93D /* Pods-DinerMojo.dinermojotest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinerMojo.dinermojotest.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo.dinermojotest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -577,37 +581,13 @@
 				D4CCE4DD1B319B5B00D315AE /* QuartzCore.framework in Frameworks */,
 				D48CEB8A1B2EDAD7001A01EB /* MapKit.framework in Frameworks */,
 				9433A7B224B3360C00449F8B /* CoreServices.framework in Frameworks */,
-				38D0806C05E10159D1F9258B /* Pods_DinerMojo.framework in Frameworks */,
+				D72BF3D54871DC40C52B1140 /* Pods_DinerMojo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F000F7755F31E5A490AF2AD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7D060AA8CBEA03332FA90A01 /* Pods-DinerMojo.debug.xcconfig */,
-				7CE4F701B9999E3D54D653B2 /* Pods-DinerMojo.debug - vagrant.xcconfig */,
-				F2178AEA8AB5B6D3396AC06B /* Pods-DinerMojo.release.xcconfig */,
-				CF69869A657E05633BEDA79E /* Pods-DinerMojo.internal release.xcconfig */,
-				F56DCE195D64A477F4812E62 /* Pods-DinerMojo.client release.xcconfig */,
-				CF274B4B4525C3727A60DBAF /* Pods-DinerMojo.app store.xcconfig */,
-				89D3832FA1795989E0615606 /* Pods-DinerMojoTests.debug.xcconfig */,
-				FE376898AF0A7017918D522A /* Pods-DinerMojoTests.debug - vagrant.xcconfig */,
-				FA003BD8DAC75D4101D05964 /* Pods-DinerMojoTests.release.xcconfig */,
-				E4458E8BFDE288E86EB3A2C4 /* Pods-DinerMojoTests.internal release.xcconfig */,
-				F09F8BAB0029F85BB61799D4 /* Pods-DinerMojoTests.client release.xcconfig */,
-				80FEA7AD68921C5B2F247AF2 /* Pods-DinerMojoTests.app store.xcconfig */,
-				EF7C7EC248C7D988D042049F /* Pods-DinerMojo.internal fdt release.xcconfig */,
-				12563F873AC00B2266CBF487 /* Pods-DinerMojoTests.internal fdt release.xcconfig */,
-				FF8F1A18FDF03E2EF3BAD93D /* Pods-DinerMojo.dinermojotest.xcconfig */,
-				E3F88B76A0CDD8A79A78BAAB /* Pods-DinerMojo.external fdt release.xcconfig */,
-				BF869002BB6C6C9977F45984 /* Pods-DinerMojo.app store ad-hoc.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		27037C4420B5B05700B47313 /* AcceptGdprViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,8 +751,7 @@
 				D4CCE4DE1B319DB200D315AE /* AVFoundation.framework */,
 				D4CCE4DC1B319B5B00D315AE /* QuartzCore.framework */,
 				D48CEB891B2EDAD7001A01EB /* MapKit.framework */,
-				3BFBD548645FCBFC997274CD /* Pods_DinerMojo.framework */,
-				4EF083EA360442C9F8F465C7 /* Pods_DinerMojoTests.framework */,
+				B84D42046C6F52CF9FFF0117 /* Pods_DinerMojo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1049,8 +1028,7 @@
 				7AC3FE811AEE3E7600AD12E0 /* DinerMojoTests */,
 				7AC3FE631AEE3E7600AD12E0 /* Products */,
 				57F65DF4B9C1393ACD1F9B53 /* Frameworks */,
-				2702C1341E71DA95008AB1F9 /* DinerMojo copy-Info.plist */,
-				0F000F7755F31E5A490AF2AD /* Pods */,
+				F5AE2FA5640552CF5540F0A4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1065,6 +1043,7 @@
 		7AC3FE641AEE3E7600AD12E0 /* DinerMojo */ = {
 			isa = PBXGroup;
 			children = (
+				9598EEE0260CAC05005C120A /* Secrets */,
 				27E56B881EA128A200373599 /* DinerMojo.entitlements */,
 				7AC3FE691AEE3E7600AD12E0 /* AppDelegate.h */,
 				7AC3FE6A1AEE3E7600AD12E0 /* AppDelegate.m */,
@@ -1142,6 +1121,24 @@
 			path = "open-sans";
 			sourceTree = "<group>";
 		};
+		9598EE202600F2F9005C120A /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				9598EE212600F31D005C120A /* SearchBar.xib */,
+				9598EE252600FE4C005C120A /* SearchBar.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		9598EEE0260CAC05005C120A /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				9598EF01260CAD2B005C120A /* Secrets.generated.swift */,
+				9598EEE1260CAC05005C120A /* Secrets.stencil */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
 		CB8F7B2A1E02EE1600EC24C3 /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1205,6 +1202,8 @@
 				278E862C1EB8D2D700A6E8B7 /* DMVenuesNotificationCell.swift */,
 				278E862E1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift */,
 				278E86301EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib */,
+				9598EF43260D060F005C120A /* SimpleRadioTableViewCell.swift */,
+				9598EF44260D060F005C120A /* SimpleRadioTableViewCell.xib */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -1379,11 +1378,16 @@
 		D4EF480C1B453ED000E46539 /* Venue */ = {
 			isa = PBXGroup;
 			children = (
+				9598EE202600F2F9005C120A /* SearchBar */,
 				27F95823206B665A00A4537F /* LeaveRatingViewController */,
 				278F7EC61E9F87B7000D1E87 /* Buttons */,
 				7A8C4B781B1C9AD500F1A798 /* DMMapViewController.h */,
 				7A8C4B791B1C9AD500F1A798 /* DMMapViewController.m */,
 				D4EF480D1B453ED700E46539 /* Cell */,
+				1A3839C125CD8941006407F9 /* CustomAnnotationView.h */,
+				1A3839C225CD8953006407F9 /* CustomAnnotationView.m */,
+				1A3839C625CD9757006407F9 /* VenueCollectionViewCell.h */,
+				1A3839CC25CD99AB006407F9 /* VenueCollectionViewCell.m */,
 			);
 			path = Venue;
 			sourceTree = "<group>";
@@ -1489,6 +1493,19 @@
 			path = "User Interface";
 			sourceTree = "<group>";
 		};
+		F5AE2FA5640552CF5540F0A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				28F99FE57969E8252898FFE3 /* Pods-DinerMojo.debug.xcconfig */,
+				A8F5717CB00046084502849C /* Pods-DinerMojo.internal fdt release.xcconfig */,
+				8248085EA93DBA96F2B8F093 /* Pods-DinerMojo.external fdt release.xcconfig */,
+				DAB18A8705C229D9B63BCA91 /* Pods-DinerMojo.app store.xcconfig */,
+				C5564E4FB324B6515660C9B0 /* Pods-DinerMojo.app store ad-hoc.xcconfig */,
+			);
+			name = Pods;
+			path = Libraries/Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1496,14 +1513,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7AC3FE881AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojo" */;
 			buildPhases = (
-				E67161EECD0A1DDA4E53C40D /* [CP] Check Pods Manifest.lock */,
+				3F19D66F22C1CDDF75B2E9FC /* [CP] Check Pods Manifest.lock */,
 				E7D8D1EE1D76E51600944021 /* Info plist Version */,
 				7AC3FE5E1AEE3E7600AD12E0 /* Sources */,
 				7AC3FE5F1AEE3E7600AD12E0 /* Frameworks */,
 				7AC3FE601AEE3E7600AD12E0 /* Resources */,
 				BF2CFBF01D65E5F100200974 /* Fabric */,
-				E41601621273C22C09C907FD /* [CP] Embed Pods Frameworks */,
-				AFA0AFFFC152392AA1866610 /* 📦 Embed Pods Frameworks */,
+				A0E393F2187C99144E0CC1ED /* [CP] Embed Pods Frameworks */,
+				31CCA1171E121815D8F5DBB0 /* [CP] Copy Pods Resources */,
+				9598EEDF260CAB15005C120A /* Generate Secrets */,
 			);
 			buildRules = (
 			);
@@ -1520,14 +1538,14 @@
 		7AC3FE5A1AEE3E7600AD12E0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "hedgehog lab";
 				TargetAttributes = {
 					7AC3FE611AEE3E7600AD12E0 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 42B8BC6R86;
 						LastSwiftMigration = 1150;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1544,10 +1562,9 @@
 			};
 			buildConfigurationList = 7AC3FE5D1AEE3E7600AD12E0 /* Build configuration list for PBXProject "DinerMojo" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -1584,10 +1601,12 @@
 				27268708206A0D880031B3CE /* BirthdayViewController.xib in Resources */,
 				CB580D371E03EE400018ED8A /* Localizable.strings in Resources */,
 				7AEF14A81B1F09FC0053D32B /* OpenSans-Light.ttf in Resources */,
+				9598EEE2260CAC05005C120A /* Secrets.stencil in Resources */,
 				D4A813691B2B052E00FA2BB3 /* DMTransactionTableViewCell.xib in Resources */,
 				27037C4820B5B06A00B47313 /* AcceptGdprViewController.xib in Resources */,
 				CB8F7B491E03044400EC24C3 /* DMRadioSortOptionCell.xib in Resources */,
 				276AED171F2A4CC300042D31 /* StartupNotificationsViewController.xib in Resources */,
+				9598EF46260D060F005C120A /* SimpleRadioTableViewCell.xib in Resources */,
 				27B8832A1EACE6320082DA88 /* DMRadioViewOption.xib in Resources */,
 				7A8C4B9B1B1C9D5800F1A798 /* Environments.plist in Resources */,
 				27B883281EACD9AC0082DA88 /* DMVenuesOptionCell.xib in Resources */,
@@ -1601,6 +1620,7 @@
 				278E86311EB8D2F900A6E8B7 /* DMVenuesNotificationCell.xib in Resources */,
 				278750351EC31AFC00BCFD4E /* StartupViewController.xib in Resources */,
 				7AEF14AA1B1F09FC0053D32B /* OpenSans-Regular.ttf in Resources */,
+				9598EE222600F31D005C120A /* SearchBar.xib in Resources */,
 				7AEF14A71B1F09FC0053D32B /* OpenSans-Italic.ttf in Resources */,
 				7AEF14A41B1F09FC0053D32B /* OpenSans-BoldItalic.ttf in Resources */,
 				7AEF14A51B1F09FC0053D32B /* OpenSans-ExtraBold.ttf in Resources */,
@@ -1613,36 +1633,67 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AFA0AFFFC152392AA1866610 /* 📦 Embed Pods Frameworks */ = {
+		31CCA1171E121815D8F5DBB0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Libraries/Pods/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BF2CFBF01D65E5F100200974 /* Fabric */ = {
+		3F19D66F22C1CDDF75B2E9FC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DinerMojo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9598EEDF260CAB15005C120A /* Generate Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 			);
-			name = Fabric;
+			name = "Generate Secrets";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" e1c9d86bff08f7dbfce4a6bb171c2c4d5cc90e4f d3f21afe2c4b118982043346633ce30603fc71b135d7bbe047f2b44cc2189a7a\n";
+			shellScript = "#check if env-vars.sh exists\nif [ -f ${SRCROOT}/env-vars.sh ]\nthen\nsource ${SRCROOT}/env-vars.sh\nfi\n#no `else` case needed if the CI works as expected\n${PODS_ROOT}/Sourcery/bin/sourcery --templates ./DinerMojo/Secrets --output ./DinerMojo/Secrets/ --sources ./DinerMojo/ --args google_places_api_key=$GOOGLE_PLACES_API_KEY\n";
 		};
-		E41601621273C22C09C907FD /* [CP] Embed Pods Frameworks */ = {
+		A0E393F2187C99144E0CC1ED /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1663,6 +1714,7 @@
 				"${BUILT_PRODUCTS_DIR}/PMEDatePicker/PMEDatePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/RDHCollectionViewGridLayout/RDHCollectionViewGridLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVBlurView/SVBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
 				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
@@ -1684,6 +1736,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMEDatePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RDHCollectionViewGridLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
@@ -1694,23 +1747,19 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E67161EECD0A1DDA4E53C40D /* [CP] Check Pods Manifest.lock */ = {
+		BF2CFBF01D65E5F100200974 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = Fabric;
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DinerMojo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e1c9d86bff08f7dbfce4a6bb171c2c4d5cc90e4f d3f21afe2c4b118982043346633ce30603fc71b135d7bbe047f2b44cc2189a7a\n";
 		};
 		E7D8D1EE1D76E51600944021 /* Info plist Version */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1751,6 +1800,7 @@
 				276AED161F2A4CC300042D31 /* StartupNotificationsViewController.swift in Sources */,
 				2C6C543E1FD93FF3006C147D /* SGNotificationsSettings.swift in Sources */,
 				5AE837521B2991A50038A722 /* DMRestaurantInfoImageCarouselViewController.m in Sources */,
+				1A3839C325CD8953006407F9 /* CustomAnnotationView.m in Sources */,
 				CB8F7B3C1E02F87600EC24C3 /* DMSortOptionsProvider.swift in Sources */,
 				7A8C4B991B1C9BA600F1A798 /* DMVenueRequest.m in Sources */,
 				7A8C4B871B1C9AD500F1A798 /* DMEarnTransactionDetailViewController.m in Sources */,
@@ -1801,6 +1851,7 @@
 				5E67527D223005B10016B402 /* PopUpModel.swift in Sources */,
 				2781591B1E9CDAF4009B3B3C /* DMLocationInfoItemCell.swift in Sources */,
 				D4E436C91B39751F006435F8 /* DMTabBarController.m in Sources */,
+				9598EF02260CAD2B005C120A /* Secrets.generated.swift in Sources */,
 				CB8F7B321E02F23C00EC24C3 /* Providers.swift in Sources */,
 				5A5FF0851B284DEE00E0FC90 /* DMWebViewController.m in Sources */,
 				7A5EC8161B4C033F00B27CBF /* DMEarnTransaction.m in Sources */,
@@ -1810,6 +1861,7 @@
 				7A8C4B8C1B1C9AD500F1A798 /* DMReferAFriendViewController.m in Sources */,
 				7A80F6271B3F6605009C8A6F /* UIImage+Extensions.m in Sources */,
 				278159171E9CDA41009B3B3C /* DMLocationInfoItem.swift in Sources */,
+				9598EF45260D060F005C120A /* SimpleRadioTableViewCell.swift in Sources */,
 				276E02161EA55D0F006A79EA /* DMSortNewsFeedViewController.m in Sources */,
 				7A5EC8261B4C033F00B27CBF /* _DMTransaction.m in Sources */,
 				CB8F7B371E02F23C00EC24C3 /* TUTableViewManager.swift in Sources */,
@@ -1822,6 +1874,7 @@
 				7A5EC82B1B4C033F00B27CBF /* _DMVenueImage.m in Sources */,
 				7A5EC81C1B4C033F00B27CBF /* DMUser.m in Sources */,
 				278F7ECC1E9F87B7000D1E87 /* TabBarView.swift in Sources */,
+				1A3839CD25CD99AB006407F9 /* VenueCollectionViewCell.m in Sources */,
 				272F24CA1EFD09AA00B379ED /* SelectedNotificationsLifestyle.swift in Sources */,
 				273ADE851E97BE0300997F5D /* TableViewSelectForGroup.swift in Sources */,
 				7A5EC8201B4C033F00B27CBF /* DMVenueOpeningTimes.m in Sources */,
@@ -1888,6 +1941,7 @@
 				30CFF193F6E28FAB5AFFB44B /* DMDistanceItem.swift in Sources */,
 				30CFF222856F4343BDE03221 /* DMNotificationSettingsViewController.m in Sources */,
 				30CFF9BDACF938334F981DA3 /* DMNotificationsSettingsProvider.swift in Sources */,
+				9598EE262600FE4C005C120A /* SearchBar.swift in Sources */,
 				30CFF26A31D8D5EBACC7CFA2 /* DMNotificationItemsFactory.swift in Sources */,
 				278E86331EB92B5D00A6E8B7 /* DMNotificationsVenueProvider.swift in Sources */,
 				30CFFBEB3DB4E850D0488741 /* DMNotificationSelectionManager.swift in Sources */,
@@ -1943,6 +1997,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1962,7 +2017,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
@@ -1975,18 +2030,19 @@
 		};
 		274297231ECEDB6D0091C6E6 /* Internal FDT Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF7C7EC248C7D988D042049F /* Pods-DinerMojo.internal fdt release.xcconfig */;
+			baseConfigurationReference = A8F5717CB00046084502849C /* Pods-DinerMojo.internal fdt release.xcconfig */;
 			buildSettings = {
 				APP_NAME_SUFFIX = Staging;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconStaging;
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 103;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -2019,7 +2075,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2066,14 +2122,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo.staging;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c893c635-bab3-4535-acea-3560d6958a40";
-				PROVISIONING_PROFILE_SPECIFIER = "DinerMojo Staging AppStore";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm7 arm64";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = "Internal FDT Release";
@@ -2101,6 +2157,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2120,7 +2177,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
@@ -2132,15 +2189,15 @@
 		};
 		2CE385BD1FA1E30C009355EE /* App Store Ad-Hoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF869002BB6C6C9977F45984 /* Pods-DinerMojo.app store ad-hoc.xcconfig */;
+			baseConfigurationReference = C5564E4FB324B6515660C9B0 /* Pods-DinerMojo.app store ad-hoc.xcconfig */;
 			buildSettings = {
 				APP_NAME_SUFFIX = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 103;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2175,7 +2232,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2221,12 +2278,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b4399ffa-76fd-4150-98b7-24130e19b03c";
-				PROVISIONING_PROFILE_SPECIFIER = "Dinermojo stage App Store";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = "App Store Ad-Hoc";
@@ -2254,6 +2312,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2274,7 +2333,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
@@ -2287,15 +2346,15 @@
 		};
 		7A8C4BA01B1CA21B00F1A798 /* External FDT Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3F88B76A0CDD8A79A78BAAB /* Pods-DinerMojo.external fdt release.xcconfig */;
+			baseConfigurationReference = 8248085EA93DBA96F2B8F093 /* Pods-DinerMojo.external fdt release.xcconfig */;
 			buildSettings = {
 				APP_NAME_SUFFIX = Staging;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconStaging;
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 103;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2330,7 +2389,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2376,12 +2435,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b4399ffa-76fd-4150-98b7-24130e19b03c";
-				PROVISIONING_PROFILE_SPECIFIER = "DinerMojo Staging AppStore";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = "External FDT Release";
@@ -2409,6 +2469,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2428,7 +2489,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "f8b1ccdf-83fa-41ee-b2de-5361ce2c0ab3";
@@ -2440,18 +2501,19 @@
 		};
 		7A8C4BA31B1CA22400F1A798 /* App Store */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF274B4B4525C3727A60DBAF /* Pods-DinerMojo.app store.xcconfig */;
+			baseConfigurationReference = DAB18A8705C229D9B63BCA91 /* Pods-DinerMojo.app store.xcconfig */;
 			buildSettings = {
 				APP_NAME_SUFFIX = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 103;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
@@ -2483,7 +2545,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2529,13 +2591,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2dcf87bf-6fe3-4fbe-b087-c4c52418c034";
-				PROVISIONING_PROFILE_SPECIFIER = "Diner Mojo Appstore";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm7 arm64";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = "App Store";
@@ -2563,6 +2625,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2590,7 +2653,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2602,15 +2665,15 @@
 		};
 		7AC3FE891AEE3E7600AD12E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D060AA8CBEA03332FA90A01 /* Pods-DinerMojo.debug.xcconfig */;
+			baseConfigurationReference = 28F99FE57969E8252898FFE3 /* Pods-DinerMojo.debug.xcconfig */;
 			buildSettings = {
 				APP_NAME_SUFFIX = Staging;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconStaging;
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 103;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 115;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2646,7 +2709,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "DinerMojo/App-Info.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2693,13 +2756,14 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinermojo.dinermojo.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b4399ffa-76fd-4150-98b7-24130e19b03c";
-				PROVISIONING_PROFILE_SPECIFIER = "Dinner Mojo Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "DinerMojo/DinerMojo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;

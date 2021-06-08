@@ -8,6 +8,7 @@
 
 #import "DMRestaurantInfoImageCarouselViewController.h"
 #import "DMVenueImage.h"
+#import <SDWebImage/SDWebImage.h>
 
 
 
@@ -21,9 +22,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.scrollView.delegate = self;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 13.0, *)) {
+        self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+    }
 
-    
+    [self.navigationController setNavigationBarHidden:NO];
+
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = CGRectMake(0, self.scrollView.frame.size.height - 70, self.view.frame.size.width, 70);
     /*layer.colors = [NSArray arrayWithObjects:
@@ -70,7 +74,8 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin,0,self.scrollView.frame.size.width,self.scrollView.frame.size.height)];
         [imageView setContentMode:UIViewContentModeScaleAspectFill];
         [imageView setClipsToBounds:YES];
-        [imageView setImageWithURL:[NSURL URLWithString:url]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:url]
+                     placeholderImage:[UIImage imageNamed:@"white"]];
         [[self scrollView] addSubview:imageView];
         count ++;
     }

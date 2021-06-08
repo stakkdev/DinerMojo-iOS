@@ -87,7 +87,7 @@
                 }
             }
             
-            UITabBarItem *item =  [[[self.tabBarController tabBar] items] objectAtIndex:1];
+            UITabBarItem *item =  [[[self.tabBarController tabBar] items] objectAtIndex:2];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (unreadCount > 0) {
@@ -154,7 +154,7 @@
     [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:tintItemColor, NSForegroundColorAttributeName, nil]  forState:UIControlStateNormal];
     
     
-    [tabController.tabBar insertSubview:backgroundView atIndex:1];
+    [tabController.tabBar insertSubview:backgroundView atIndex:2];
     
     
     

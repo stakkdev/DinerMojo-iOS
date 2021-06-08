@@ -18,11 +18,12 @@
 
 @interface TabsFilterView : UIView
 
-@property (weak, nonatomic) IBOutlet DMButton *buttonAll;
-@property (weak, nonatomic) IBOutlet DMButton *buttonRestaurants;
-@property (weak, nonatomic) IBOutlet DMButton *buttonOthers;
+@property (weak, nonatomic) IBOutlet DMButton *buttonMap;
+@property (weak, nonatomic) IBOutlet DMButton *buttonList;
+
 @property (nonatomic, weak) id <TabsFilterViewDelegate> delegate;
 
 - (void)selectTabForType:(DMVenueListState)type;
+- (void)setup;
 
 @end

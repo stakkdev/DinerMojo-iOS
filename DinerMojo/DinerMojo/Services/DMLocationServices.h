@@ -8,10 +8,19 @@
 #import <Foundation/Foundation.h>
 @import CoreLocation;
 
+@protocol DMLocationServiceDelegate <NSObject>
+@optional
+- (void)didInitiallyUpdateLocation;
+
+@end
+
 @interface DMLocationServices : NSObject <CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) CLLocation *selectedLocation;
 @property (strong, nonatomic) DMVenue *venueLocation;
+@property (nonatomic) BOOL initialLocationUpdate;
+@property (nonatomic, weak) id <DMLocationServiceDelegate> delegate;
 
 
 
@@ -22,6 +31,8 @@
 - (double)userLocationDistanceFromLocation:(CLLocation *)location;
 - (double)getDistanceWithLatitude:(NSNumber *)latitude andLongitude:(NSNumber *)longitude;
 - (BOOL)isLocationEnabled;
+- (double)getSelectedLocationDistanceFrom:(DMVenue *)venue;
+- (double)getUserDistanceFrom:(DMVenue *)venue;
 
 
 @end

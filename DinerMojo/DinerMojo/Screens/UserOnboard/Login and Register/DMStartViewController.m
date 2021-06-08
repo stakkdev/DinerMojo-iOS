@@ -392,7 +392,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     __weak typeof(self) weakSelf = self;
     
     [[self userRequest] loginFaceboookWithSuccess:^(id result) {
-        [self goToVenues];
+        [self goToVenues:NO];
     } error:^(NSError *error, id additionalInfo) {
         // User does not exist, Attempt Registration, otherwise log out of Facebook
         if ([error code] == DMErrorCode404)
@@ -485,7 +485,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             }
             else
             {
-                [self goToVenues];
+                [self goToVenues:NO];
             }
             
             
@@ -956,12 +956,17 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (IBAction)termsPressed:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/terms"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/terms"] options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"Opened Url: %i", success);
+    }];
+
 }
 
 - (IBAction)privacyPressed:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/privacy"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/privacy"] options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"Opened Url: %i", success);
+    }];
 }
 
 #pragma mark - Blurred View Delegate

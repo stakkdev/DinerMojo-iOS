@@ -14,24 +14,31 @@
 - (void)setTabTypeForButton:(DMButton*)button OrType:(DMVenueListState)type {
   DMVenueListState state = DMVenueListAll;
   
-  if([button isEqual:self.buttonRestaurants] || type == DMVenueListDining) {
-      [self.buttonOthers toggleInnerShadow:NO];
-      [self.buttonRestaurants toggleInnerShadow:YES];
-    [self.buttonRestaurants setBackgroundColor:[UIColor lifestyleSelected]];
-    [self.buttonOthers setBackgroundColor:[UIColor restaurantsDeselected]];
-    state = DMVenueListDining;
+  if([button isEqual:self.buttonMap] || type == DMVenueMap) {
+    [self.buttonMap setBottomBorderHighlightColor:[UIColor lifestyleSelected]];
+    [self.buttonList setBottomBorderHighlightColor:[UIColor brandColor]];
+
+    state = DMVenueMap;
   }
-  else if([button isEqual:self.buttonOthers] || type == DMVenueListLifestyle) {
-      [self.buttonOthers toggleInnerShadow:YES];
-      [self.buttonRestaurants toggleInnerShadow:NO]; 
-    [self.buttonRestaurants setBackgroundColor:[UIColor restaurantsDeselected]];
-    [self.buttonOthers setBackgroundColor:[UIColor lifestyleSelected]];
-    state = DMVenueListLifestyle;
+  else if([button isEqual:self.buttonList] || type == DMVenueList) {
+    [self.buttonMap setBottomBorderHighlightColor:[UIColor brandColor]];
+    [self.buttonList setBottomBorderHighlightColor:[UIColor lifestyleSelected]];
+
+    state = DMVenueList;
   }
   
   if(self.delegate != nil) {
     [self.delegate didSelectTabItem:state];
   }
+}
+
+- (void)setup {
+    [self.buttonMap setBackgroundColor:[UIColor restaurantsDeselected]];
+    [self.buttonMap toggleInnerShadow:NO];
+    [self.buttonMap setBorderWidth:0.0];
+    [self.buttonList setBackgroundColor:[UIColor restaurantsDeselected]];
+    [self.buttonList toggleInnerShadow:NO];
+    [self.buttonList setBorderWidth:0.0];
 }
 
 - (IBAction)selectTabAction:(id)sender {

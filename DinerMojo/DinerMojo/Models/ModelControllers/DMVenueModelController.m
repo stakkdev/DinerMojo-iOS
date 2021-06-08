@@ -14,166 +14,275 @@
 
 @implementation DMVenueModelController
 @synthesize venues = _venues;
--(void)setVenues:(NSArray *)venues;
-{
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"state" ascending:NO];
-    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor1, sortDescriptor2, nil];
-    venues = [venues sortedArrayUsingDescriptors:sortDescriptors];
-    
+@synthesize filteredVenues = _filteredVenues;
+@synthesize mapAnnotations = _mapAnnotations;
+
+- (void)setVenues:(NSArray *)venues {
     _venues = venues;
+    [self applyFilters];
+    [self updateCategories];
 }
 
-- (NSArray *)venuesForFilter {
+- (NSArray *)annotations:(NSArray *)venues {
+    NSMutableArray *annotations = [[NSMutableArray alloc] init];
+    
+    for (DMVenue *venue in venues) {
+        NSNumber *latitude = venue.latitude;
+        NSNumber *longitude = venue.longitude;
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        annotation.coordinate = coordinate;
+        annotation.title = venue.name;
+        annotation.subtitle = @"";
+        [annotations addObject:annotation];
+    }
+    
+    return annotations;
+}
+
+// MARK: - Applying filters
+
+- (void)applyFilters {
+    NSMutableArray *categoriesIds = [[NSMutableArray alloc] init];
+    NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
     NSMutableArray *predicates = [[NSMutableArray alloc] init];
-    NSMutableArray *restaurantsTypePredicates = [[NSMutableArray alloc] init];
+    
+    // Sort
+    NSSortDescriptor *activeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"state" ascending:NO];
+    NSSortDescriptor *alphabeticalSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSSortDescriptor *createdAtSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"created_on" ascending:YES];
+    [sortDescriptors addObject:activeSortDescriptor];
+    BOOL sortByDistance = NO;
+    
+    // Filter: redemtion & offer venues
+    BOOL filterRedeemPoints = NO;
+    BOOL filterEarnsPoints = NO;
+    BOOL filterHasNews = NO;
+    BOOL filterHasOffers = NO;
+    
+    BOOL filterByDistance = NO;
+    double filterByMiles = 0;
+
+    // Loop through filters
+    for (FilterItem *filter in _filters)
+    {
+        if (filter.groupName == GroupsNameSortBy) {
+            if (filter.itemId == SortByItemsAZ) {
+                [sortDescriptors addObject:alphabeticalSortDescriptor];
+            } else if (filter.itemId == SortByItemsRecentItem) {
+                [sortDescriptors addObject:createdAtSortDescriptor];
+            } else if (filter.itemId == SortByItemsNearestItem) {
+                sortByDistance = YES;
+            }
+        } else if (filter.groupName == GroupsNameRestaurantsFilter) {
+            NSNumber *modelID = [[NSNumber alloc]initWithInteger:filter.itemId];
+            [categoriesIds addObject: modelID];
+        } else if (filter.groupName == GroupsNameShowVenues) {
+            if (filter.itemId == ShowVenuesRedeemItem) {
+                filterRedeemPoints = YES;
+            } else if (filter.itemId == ShowVenuesEarnPointsItem) {
+                filterEarnsPoints = YES;
+            } else if (filter.itemId == ShowVenuesNewsItem) {
+                filterHasNews = YES;
+            } else if (filter.itemId == ShowVenuesOffersItem) {
+                filterHasOffers = YES;
+            }
+        } else if (filter.groupName == GroupsNameDistanceFilter) {
+            if (filter.itemId == DistanceFilterDefault && _defaultDistance != 0) {
+                filterByDistance = YES;
+                filterByMiles = _defaultDistance;
+            } else if (filter.itemId == DistanceFilterOneMile) {
+                filterByDistance = YES;
+                filterByMiles = 1;
+            } else if (filter.itemId == DistanceFilterFiveMiles) {
+                filterByDistance = YES;
+                filterByMiles = 5;
+            } else if (filter.itemId == DistanceFilterTenMiles) {
+                filterByDistance = YES;
+                filterByMiles = 10;
+            }
+
+        }
+    }
+    
+    if (filterHasOffers || filterHasNews || filterEarnsPoints || filterRedeemPoints) {
+        NSMutableArray *predicatesStrings = [[NSMutableArray alloc] init];
+        if (filterHasNews) {
+            [predicatesStrings addObject:@"has_news == YES"];
+        }
+        if (filterHasOffers) {
+            [predicatesStrings addObject:@"has_offers == YES"];
+        }
+        if (filterEarnsPoints) {
+            [predicatesStrings addObject:@"allows_earns == YES"];
+        }
+        if (filterRedeemPoints) {
+            [predicatesStrings addObject:@"allows_redemptions == YES"];
+        }
+        NSString *offersPredicateString = [self combine:predicatesStrings];
+        [predicates addObject:[NSPredicate predicateWithFormat:offersPredicateString]];
+    }
+    
+    NSPredicate *compoundPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    
+    NSArray *sortedArray = [[_venues filteredArrayUsingPredicate:compoundPredicate] sortedArrayUsingDescriptors:sortDescriptors];
+    
+    _selectedCategoriesIds = categoriesIds;
+    
+    // If any categories are selected, filter by category type
+    if (categoriesIds.count > 0) {
+        NSMutableArray *categoriesFilteredArray = [[NSMutableArray alloc] init];
+        for (DMVenue *venue in sortedArray) {
+            BOOL venueSelected = NO;
+            for (DMVenueCategory *category in venue.categories) {
+               BOOL categorySelected = [categoriesIds containsObject:category.modelID];
+                if (categorySelected) {
+                    venueSelected = YES;
+                }
+            }
+            if (venueSelected) {
+                [categoriesFilteredArray addObject:venue];
+            }
+        }
+        sortedArray = categoriesFilteredArray;
+    }
+    
+    // If any distance to filter by selected, filter by distance
+    if (filterByDistance) {
+        NSMutableArray *distanceFilteredArray = [[NSMutableArray alloc] init];
+        for (DMVenue *venue in sortedArray) {
+            double distanceInMeters = 0;
+            
+            distanceInMeters = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:venue];
+      
+            double distanceInKm = distanceInMeters / 1000;
+            double distanceInMiles = distanceInKm / 1.609;
+            
+            if (distanceInMiles < filterByMiles) {
+                [distanceFilteredArray addObject:venue];
+            }
+        }
+        sortedArray = distanceFilteredArray;
+    }
+    
+    if (sortByDistance) {
+        NSArray *locationSortedArray;
+        locationSortedArray = [sortedArray sortedArrayUsingComparator:^NSComparisonResult(DMVenue* a, DMVenue* b) {
+            double distanceA = 0;
+            double distanceB = 0;
+            distanceA = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:a];
+            distanceB = [[DMLocationServices sharedInstance] getSelectedLocationDistanceFrom:b];
+            return distanceA > distanceB;
+            
+        }];
+        sortedArray = locationSortedArray;
+    }
+    
+    _filteredVenues = sortedArray;
+    _mapAnnotations = [self annotations:sortedArray];
+}
+
+- (NSString *)combine:(NSArray *)predicates {
+    NSMutableString *finalPredicate = [[NSMutableString alloc] init];
+    NSInteger *addedPredicatesCount = 0;
+    
+    for (NSString *predicate in predicates) {
+        if (addedPredicatesCount == 0) {
+            finalPredicate = predicate;
+        } else {
+            finalPredicate = [NSString stringWithFormat:@"%@ %@ %@", finalPredicate, @"OR", predicate];
+        }
+        addedPredicatesCount += 1;
+    }
+     
+    if (addedPredicatesCount > 1) {
+        finalPredicate = [NSString stringWithFormat:@"%@%@%@",  @"(", finalPredicate, @")"];
+    }
+    return finalPredicate;
+}
+
+- (void)applyFilters:(NSArray *)newFilters {
+
+    self.filters = newFilters;
+    [self applyFilters];
+}
+
+// MARK: - Categories
+
+- (NSArray *)venuesIncludingRestaurantType:(BOOL)includeRestaurantType includeLifestyleType:(BOOL)includeLifestyleType {
+    
+    NSMutableArray *predicates = [[NSMutableArray alloc] init];
     NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
     
-    [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"restaurant\" AND (allows_earns == YES OR allows_redemptions == YES)"]];
+    if (!includeLifestyleType) {
+        [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"restaurant\" AND (allows_earns == YES OR allows_redemptions == YES)"]];
+    } else if (!includeRestaurantType) {
+        [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"non_restaurant\""]];
+    }
     
     if([sortDescriptors count] == 0) {
         [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"created_on" ascending:NO]];
     }
     
-    if(restaurantsTypePredicates.count > 0) {
-        NSPredicate *compoundRestaurantsTypePredicate = [NSCompoundPredicate orPredicateWithSubpredicates:restaurantsTypePredicates];
-        [predicates addObject:compoundRestaurantsTypePredicate];
-    }
-    
+    return [self venuesForPredicates:predicates sortDescriptors:sortDescriptors];
+
+}
+
+- (NSArray *)venuesForPredicates:(NSMutableArray *)predicates sortDescriptors:(NSMutableArray *)sortDescriptors {
     NSPredicate *compoundPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     NSArray *sortedArray = [[_venues filteredArrayUsingPredicate:compoundPredicate] sortedArrayUsingDescriptors:sortDescriptors];
     
     return sortedArray;
+
 }
 
-- (NSArray *)venues {
-    NSMutableArray *predicates = [[NSMutableArray alloc] init];
-    NSMutableArray *restaurantsTypePredicates = [[NSMutableArray alloc] init];
-    NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
-    BOOL sortByDistance = NO;
-    
-    [predicates addObject:[NSPredicate predicateWithFormat:@"allows_earns == YES OR allows_redemptions == YES"]];
-    BOOL news = NO;
-    BOOL offers = NO;
-    BOOL redeem = NO;
-    BOOL earn = NO;
-    for (FilterItem *item in self.filters) {
-        if(item.itemId == ShowVenuesNewsItem) {
-            news = YES;
-        } else if(item.itemId == ShowVenuesOffersItem) {
-            offers = YES;
-        } else if(item.itemId == ShowVenuesRedeemItem) {
-            redeem = YES;
-        } else if(item.itemId == ShowVenuesEarnPointsItem) {
-            earn = YES;
-        }
-    }
-    
-    for (FilterItem *item in self.filters) {
+- (void)updateCategories {
+    NSArray *lifestyleVenues = [self venuesIncludingRestaurantType:NO includeLifestyleType:YES];
+    NSArray *restaurantVenues = [self venuesIncludingRestaurantType:YES includeLifestyleType:NO];
+    NSArray *lifestyleCategories = [self categoriesFor:lifestyleVenues];
+    NSArray *restaurantCategories = [self categoriesFor:restaurantVenues];
+    _lifestyleCategories = lifestyleCategories;
+    _restaurantCategories = restaurantCategories;
+}
 
-        if(item.itemId == SortByItemsAZ) {
-            [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
-        }
-        else if(item.itemId == SortByItemsRecentItem) {
-            [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"created_on" ascending:NO]];
-        }
-        else if(item.itemId == SortByItemsNearestItem) {
-            sortByDistance = YES;
-        } else if((item.itemId == ShowVenuesRedeemItem || item.itemId == ShowVenuesEarnPointsItem) && redeem && earn) {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"allows_redemptions == YES OR allows_earns == YES"]];
-        }
-        else if(item.itemId == ShowVenuesRedeemItem) {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"allows_redemptions == YES"]];
-        }
-        else if(item.itemId == ShowVenuesEarnPointsItem) {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"allows_earns == YES"]];
-        } else if((item.itemId == ShowVenuesOffersItem || item.itemId == ShowVenuesNewsItem) && news && offers) {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"has_news == YES OR has_offers == YES"]];
-        } else if(item.itemId == ShowVenuesNewsItem) {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"has_news == YES"]];
-        }
-        else if(item.itemId == ShowVenuesOffersItem) {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"has_offers == YES"]];
-        }
-        else if(item.itemId == DistanceFilterDistanceItem) {
-            if(item.value < 100) {
-                double radiusValue = item.value * 1.6; //convert to miles
-                
-                NSPredicate *distancePredicate = [NSPredicate predicateWithBlock:^BOOL(id item, NSDictionary *bindings) {
-                    DMVenue *venue = item;
-                    double distance = ([[DMLocationServices sharedInstance] getDistanceWithLatitude:venue.latitude andLongitude:venue.longitude]) / 1000;
-                    return distance <= radiusValue;
-                }];
-                
-                [predicates addObject:distancePredicate];
+- (NSArray *)categoriesFor:(NSArray *)venues {
+    NSMutableArray *allCategories = [[NSMutableArray alloc] init];
+    
+    for (DMVenue *venue in venues) {
+        for (DMVenueCategory *cat in [venue.categories allObjects]) {
+            if ([cat.name isEqualToString:@"L-Lifestyle"]) {
+                break;
             }
-        }
-        else if(item.groupName == GroupsNameRestaurantsFilter) {
-            if(!self.filterLifestyle) {
-                [restaurantsTypePredicates addObject:[NSPredicate predicateWithFormat:@"ANY categories.modelID == %d", item.itemId]];
-            }
-        }
-    }
-    
-    if([sortDescriptors count] == 0) {
-        sortByDistance = YES;
-    }
-
-    switch (self.state) {
-        case DMVenueListAll: {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"(venue_type = \"restaurant\" OR venue_type = \"non_restaurant\")"]];
-        }
-        break;
-        
-        case DMVenueListDining: {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"restaurant\""]];
-        }
-        break;
-        
-        case DMVenueListLifestyle: {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"venue_type = \"non_restaurant\""]];
-        }
-        break;
+            [allCategories addObject:cat];
             
-        case DMVenueListFavourite: {
-            DMUserRequest *userRequest = [DMUserRequest new];
-            DMUser *currentUser = [userRequest currentUser];
-            NSArray *favouriteVenues = [currentUser.favourite_venues allObjects];
-            [self setVenues:favouriteVenues];
         }
-        break;
-            
-        default: {
-            [predicates addObject:[NSPredicate predicateWithFormat:@"(venue_type = \"restaurant\" OR venue_type = \"non_restaurant\")"]];
-        }
-        break;
     }
     
-    if(restaurantsTypePredicates.count > 0) {
-        NSPredicate *compoundRestaurantsTypePredicate = [NSCompoundPredicate orPredicateWithSubpredicates:restaurantsTypePredicates];
-        [predicates addObject:compoundRestaurantsTypePredicate];
-    }
     
-    NSPredicate *compoundPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
-    NSArray *sortedArray = [[_venues filteredArrayUsingPredicate:compoundPredicate] sortedArrayUsingDescriptors:sortDescriptors];
-    
-    if(sortByDistance) {
-        sortedArray = [sortedArray sortedArrayUsingComparator:^NSComparisonResult(DMVenue *a, DMVenue *b) {
-            double distance1 = [[DMLocationServices sharedInstance] getDistanceWithLatitude:a.latitude andLongitude:a.longitude];
-            double distance2 = [[DMLocationServices sharedInstance] getDistanceWithLatitude:b.latitude andLongitude:b.longitude];
-            
-            return distance1 > distance2;
-        }];
-    } /*else {
-        NSSortDescriptor *desc = [[NSSortDescriptor alloc] initWithKey:@"name"
-                                                             ascending:YES selector:@selector(caseInsensitiveCompare:)];
-        sortedArray = [sortedArray sortedArrayUsingDescriptors:[NSArray
-                                                                arrayWithObject:desc]];
-    }*/
-    
+    NSArray *categories = [[NSSet setWithArray:allCategories] allObjects];
+    NSSortDescriptor *alphabeticalSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc]initWithObjects:alphabeticalSortDescriptor, nil];
+    NSArray *sortedArray = [categories sortedArrayUsingDescriptors:sortDescriptors];
     return sortedArray;
 }
 
+- (NSMutableArray *)getSelectedCategoriesForRestaurants {
+    return [self selectedCategoriesForRestaurants:YES];
+}
 
+- (NSMutableArray *)getSelectedCategoriesForLifestyle {
+    return [self selectedCategoriesForRestaurants:NO];
+}
+
+- (NSMutableArray *)selectedCategoriesForRestaurants:(BOOL)isRestaurants {
+    NSMutableArray *selectedCategories = [[NSMutableArray alloc] init];
+    NSArray *allCategories = isRestaurants ? _restaurantCategories : _lifestyleCategories;
+    for (DMVenueCategory *category in allCategories) {
+        if ([_selectedCategoriesIds containsObject:category.modelID]) {
+            [selectedCategories addObject:category];
+        }
+    }
+    return selectedCategories;
+}
 
 @end

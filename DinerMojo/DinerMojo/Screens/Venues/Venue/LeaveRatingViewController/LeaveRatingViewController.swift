@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class LeaveRatingViewController: DMViewController {
     
@@ -51,7 +52,7 @@ class LeaveRatingViewController: DMViewController {
         guard let name = venue?.name() else { return }
         descriptionLabel.text = String(format: NSLocalizedString("rating.desc", comment: ""), name)
         if let url = URL(string: venue?.primaryImage().fullURL() ?? "") {
-            venueImageView.setImageWith(url)
+            venueImageView.sd_setImage(with: url, placeholderImage: nil)
         }
         
         venueImageView.layer.cornerRadius = venueImageView.frame.size.height / 2

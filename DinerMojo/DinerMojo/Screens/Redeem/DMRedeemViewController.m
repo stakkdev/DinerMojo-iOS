@@ -17,6 +17,7 @@
 #import <Crashlytics/Answers.h>
 #import "FakeOfferObject.h"
 #import "RedeemPointsToNextLevelCell.h"
+#import <SDWebImage/SDWebImage.h>
 
 @interface DMRedeemViewController ()<DMRedeemTableViewCellDelegate>
 
@@ -186,9 +187,9 @@
    // [self.venueCuisineAreaLabel setText:[NSString stringWithFormat:@"%@ | %@", [[[self.selectedVenue categories] anyObject] name], self.selectedVenue.town]];
     [self.userPointsLabel setText:[NSString stringWithFormat:@"%@", self.currentUser.annual_points_balance]];
     DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
-    
-    NSURL *url = [NSURL URLWithString:[venueImage fullURL]];
-    [self.venueImageView setImageWithURL:url];
+
+    [self.venueImageView sd_setImageWithURL:[NSURL URLWithString:[venueImage fullURL]]
+                 placeholderImage:nil];
     
     _secondViewShadowView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:_secondViewShadowView.bounds cornerRadius:0].CGPath;
     [_secondViewShadowView.layer setShadowColor:[[UIColor blackColor] CGColor]];
@@ -197,21 +198,6 @@
     [_secondViewShadowView.layer setShadowOpacity:0.2f];
     
     [_bDayLabel setText:[NSString stringWithFormat:@"Happy birthday %@!", _currentUser.first_name]];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-}
-
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -503,16 +489,8 @@
         DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
         url = [NSURL URLWithString:[venueImage fullURL]];
     }
+    [imgView sd_setImageWithURL:url];
     
-    [imgView setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:NULL success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
-        [weakImgView setImage:image];
-    } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
-        DMVenueImage *venueImage = (DMVenueImage *) [self.selectedVenue primaryImage];
-        NSURL *newUrl = [NSURL URLWithString:[venueImage fullURL]];
-        if (newUrl != url) {
-            [weakImgView setImageWithURL:newUrl];
-        }
-    }];
 }
 
 
@@ -591,7 +569,9 @@
     UIAlertAction *privacy = [UIAlertAction actionWithTitle:@"Privacy Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        [[UIApplication sharedApplication] openURL:url];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"Opened Url: %i", success);
+        }];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Not Now" style:UIAlertActionStyleDestructive handler:nil];
