@@ -27,11 +27,11 @@
 	<key>Internal FDT Release</key>
 	<dict>
 		<key>shareUrl</key>
-		<string>http://dev.dinermojo.com/DinerMojo_is_rewarding</string>
+		<string>https://test-api.dinermojo.com/DinerMojo_is_rewarding</string>
 		<key>apiURL</key>
-		<string>http://dev-api.dinermojo.com/api/v2/</string>
+		<string>https://test-api.dinermojo.com/api/v2/</string>
 		<key>mediaURL</key>
-		<string>http://dev-api.dinermojo.com</string>
+		<string></string>
 		<key>HockeyAppID</key>
 		<string></string>
 	</dict>

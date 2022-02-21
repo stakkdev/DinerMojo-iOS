@@ -433,12 +433,25 @@
 #pragma mark - Other user related methods
 
 -(void)registerForNotifications {
-    UIApplication *application = [UIApplication sharedApplication];
+     UIApplication *application = [UIApplication sharedApplication];
+//
+//    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+//
+//        [application registerUserNotificationSettings:settings];
+//        [application registerForRemoteNotifications];
     
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        
-        [application registerUserNotificationSettings:settings];
-        [application registerForRemoteNotifications];
+    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+      UNAuthorizationOptions authOptions = UNAuthorizationOptionAlert |
+          UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
+      [[UNUserNotificationCenter currentNotificationCenter]
+          requestAuthorizationWithOptions:authOptions
+          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            // ...
+          }];
+    
+    
+    [application registerForRemoteNotifications];
+    
 }
 
 -(void)setDeviceToken:(NSString *)deviceToken
@@ -455,12 +468,10 @@
 
 -(void)registerUserDeviceForPushNotifications;
 {
-    if ([DMRequest currentUserToken] != nil) {
-        NSString* deviceTokenString = [[NSString stringWithFormat:@"%@",[self currentUserDeviceToken]]
-                                       stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-        
-        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:deviceTokenString,@"token",@"apns",@"type", nil];
-        
+if ([DMRequest currentUserToken] != nil)
+{
+        NSString* deviceTokenString = [NSString stringWithFormat:@"%@",[self currentUserDeviceToken]];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:deviceTokenString,@"token",@"fcm",@"type",[NSNumber numberWithInt:0], @"plateform_type", nil];
         [self registerUserWithDeviceToken:dictionary withCompletion:^(NSError *error, id results) {
             
         }];
@@ -469,10 +480,9 @@
 
 -(void)unregisterUserDeviceforPushNotifications
 {
-    NSString* deviceTokenString = [[NSString stringWithFormat:@"%@",[self currentUserDeviceToken]]
-                                   stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:deviceTokenString,@"token",@"apns",@"type", nil];
+    NSString* deviceTokenString = [NSString stringWithFormat:@"%@",[self currentUserDeviceToken]];
+                                  
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:deviceTokenString,@"token",@"fcm",@"type", nil];
     
     [self unRegisterUserWithDeviceToken:dictionary withCompletion:^(NSError *error, id results) {
         
@@ -482,13 +492,24 @@
 
 -(void)registerUserWithDeviceToken:(NSDictionary *)params withCompletion:(RequestCompletion)completionBlock;
 {
-    [self POST:@"user/me/registerdevice" withParams:params withCompletionBlock:^(NSError *error, id results) {
+    
+    NSDictionary *dictionaryHeader = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Token %@",[DMRequest currentUserToken]],@"Authorization", nil];
+    
+    [self POSTWithHeader:@"user/me/registerdevice" withParams:params headers:dictionaryHeader withCompletionBlock:^(NSError *error, id results) {
         if (error) {
             completionBlock(error, nil);
         } else {
             completionBlock(nil, nil);
         }
     }];
+    
+//    [self POST:@"user/me/registerdevice" withParams:params withCompletionBlock:^(NSError *error, id results) {
+//        if (error) {
+//            completionBlock(error, nil);
+//        } else {
+//            completionBlock(nil, nil);
+//        }
+//    }];
 }
 
 -(void)unRegisterUserWithDeviceToken:(NSDictionary *)params withCompletion:(RequestCompletion)completionBlock;
@@ -508,6 +529,7 @@
     DMUser *user = [DMMappingHelper mapUser:[results objectForKey:@"user"] mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]];
     [user setLocal_accountValue:YES];
     [self registerForNotifications];
+    [self registerUserDeviceForPushNotifications];
     [[self objectContext] MR_saveToPersistentStoreAndWait];
     return user;
 }

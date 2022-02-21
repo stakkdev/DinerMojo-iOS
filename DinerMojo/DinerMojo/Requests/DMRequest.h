@@ -45,6 +45,8 @@ typedef void(^RequestCompletion)(NSError *error, id results);
 -(void)PUT:(NSString *)url withParams:(NSDictionary *)params  withCompletionBlock:(RequestCompletion)completionBlock;
 -(void)PATCH:(NSString *)url withParams:(NSDictionary *)params  withCompletionBlock:(RequestCompletion)completionBlock;
 -(void)DELETE:(NSString *)url withParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
+-(void)POSTWithHeader:(NSString *)url withParams:(NSDictionary *)params headers:(NSDictionary *)header  withCompletionBlock:(RequestCompletion)completionBlock;
+
 
 - (NSManagedObjectContext *)localContext;
 - (void)saveInContext:(NSManagedObjectContext *)context;

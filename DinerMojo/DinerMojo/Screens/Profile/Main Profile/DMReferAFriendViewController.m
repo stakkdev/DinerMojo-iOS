@@ -21,7 +21,16 @@
     self.emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
 
     DMUser *currentUser = [[self userRequest] currentUser];
-    [self.profileImageView setImageWithURL:[NSURL URLWithString:[currentUser profilePictureFullURL]]];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[currentUser profilePictureFullURL]]];
+    
+    if(imageData != nil)
+    {
+       self.profileImageView.image = [UIImage imageWithData: imageData];
+    }
+
+    
+    //[self.profileImageView setImageWithURL:[NSURL URLWithString:[currentUser profilePictureFullURL]]];
+   
     [self.profileInitialsLabel setText:[currentUser initials]];
     
     if ([self.referredPoints isEqualToString:@"0"])
@@ -112,7 +121,6 @@
         [Answers logContentViewWithName:@"Sent invite to friend" contentType:@"Sent invite to friend" contentId:@"" customAttributes:@{}];
         [[self activityIndicator] startAnimating];
         [[self sendInviteButton] setHidden:YES];
-        
         [[self userRequest] referUserWithEmailAddress:self.emailTextField.text withCompletionBlock:^(NSError *error, id results) {
             if (error)
             {
@@ -129,7 +137,7 @@
                 {
                     errorMessage = @"There was a problem sending the invite. Please try again later.";
                 }
-                
+
                 [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Oops" description:errorMessage style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
             }
             else
@@ -137,6 +145,88 @@
                 [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Done" description:[NSString stringWithFormat:@"An email has been sent to %@ inviting them to join DinerMojo!", self.emailTextField.text]  style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
             }
         }];
+  
+    
+    
+    
+//
+//            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//            [request setURL:[NSURL URLWithString:@"https://test-api.dinermojo.com/api/v2/"]];
+//            [request setHTTPMethod:@"POST"];
+//            [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//            [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//
+//           NSDictionary *mapData = [[NSDictionary alloc] initWithObjectsAndKeys: @"Value", @"Key",   nil];
+//
+//           NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+//
+//           [request setHTTPBody:postData];
+//
+//                NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//                [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//                NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+//                NSData * responseData = [requestReply dataUsingEncoding:NSUTF8StringEncoding];
+//                NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+//                NSLog(@"requestReply: %@", jsonDict);
+//            }] resume];
+//
+        
+        
+       
+        
+        
+//    
+//            NSError *error;
+//
+//            NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//            NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+//            NSURL *url = [NSURL URLWithString:@"https://test-api.dinermojo.com/api/v2/user/me/refer"];
+//            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+//                                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
+//                                                               timeoutInterval:60.0];
+//
+//            [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//            [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//
+//            [request setHTTPMethod:@"POST"];
+//
+//
+//            NSDictionary *mapData = [[NSDictionary alloc] initWithObjectsAndKeys: self.emailTextField.text, @"email_address",   nil];
+//
+//            NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+//
+//            [request setHTTPBody:postData];
+//
+//
+//            NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//
+//
+//                NSLog(@"Resopnse == %@",response);
+//
+//                if (response != nil) {
+//                    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+//
+//                    NSLog(@"JSon dict === %@",jsonDict);
+//                }
+//
+//            }];
+//
+//            [postDataTask resume];
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
     }
     else
     {

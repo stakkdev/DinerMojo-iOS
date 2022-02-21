@@ -37,6 +37,18 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(downloadUser) forControlEvents:UIControlEventValueChanged];
     [self.scrollView addSubview:self.refreshControl];
+    
+    if (@available(iOS 13.0, *)) {
+        UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
+        [navBarAppearance configureWithOpaqueBackground];
+        navBarAppearance.backgroundColor = [UIColor colorWithRed:105.0f/255.0f green:201.0f/255.0f blue:179.0f/255.0f alpha:0.98f];
+        [navBarAppearance setTitleTextAttributes:
+                @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+        self.navigationController.navigationBar.standardAppearance = navBarAppearance;
+        self.navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance;
+    } else {
+       
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -93,18 +105,28 @@
       
         if (error == nil)
         {
-            [self setCurrentUser:[[self userRequest] currentUser]];
-            [self.profileImageView setImageWithURL:[NSURL URLWithString:[[self currentUser] profilePictureFullURL]]];
+             [self setCurrentUser:[[self userRequest] currentUser]];
+              
+          
+            // [self.profileImageView setImageWithURL:[NSURL URLWithString:[[self currentUser] profilePictureFullURL]]];
+        
+            NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[self currentUser] profilePictureFullURL]]];
+            if(imageData != nil)
+            {
+                self.profileImageView.image = [UIImage imageWithData: imageData];
+            }
+             
+              
+           
             [self.profileInitialsLabel setText:[[self currentUser] initials]];
-            
             [UIView animateWithDuration:0.15 animations:^{
                 [self changeColor:self.userRequest.currentUser.mojoLevel];
             }];
             [self downloadTransaction];
             [[self navigationItem] setTitle:[[self currentUser] fullName]];
-            
+
             [[self contentView] setHidden:NO];
-            
+
             if ([[[[self userRequest] currentUser] is_email_verified] boolValue] == NO)
             {
                 if ([[self userRequest] hasUpdateProfileEmailVerifificationDisplayed] == NO)

@@ -34,7 +34,18 @@
     self.postcodeTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
     
     DMUser *currentUser = [[self userRequest] currentUser];
-    [self.profileImageView setImageWithURL:[NSURL URLWithString:[currentUser profilePictureFullURL]]];
+    
+     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:[currentUser profilePictureFullURL]]];
+     if(imageData != nil)
+     {
+        self.profileImageView.image = [UIImage imageWithData: imageData];
+     }
+
+   // [self.profileImageView setImageWithURL:[NSURL URLWithString:[currentUser profilePictureFullURL]]];
+   
+    
+     
+    
     [self.profileInitialsLabel setText:[currentUser initials]];
     
     [self.firstNameTextField setText:[currentUser first_name]];

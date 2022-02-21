@@ -51,7 +51,8 @@
 }
 
 
-- (IBAction)getStarted:(id)sender {
+- (IBAction)getStarted:(id)sender
+{
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     

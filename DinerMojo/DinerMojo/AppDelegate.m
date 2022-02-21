@@ -15,6 +15,10 @@
 #import "DinerMojo-Swift.h"
 #import "DMVenueCategory.h"
 #import <GBVersionTracking/GBVersionTracking.h>
+
+
+@import UserNotifications;
+
 @import GooglePlaces;
 
 @interface AppDelegate ()
@@ -33,6 +37,10 @@
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:195.0];
     [[DMFacebookService sharedInstance] setPermissions:@[@"email"]];
     
+    
+    [FIRApp configure];
+    [FIRMessaging messaging].delegate = self;
+    
     if (launchOptions != nil)
     {
         self.notificationPayload = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -49,7 +57,32 @@
                                                            diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
     
-    [GMSPlacesClient provideAPIKey:Secrets.googlePlacesApiKey];
+    //[GMSPlacesClient provideAPIKey:Secrets.googlePlacesApiKey];
+    
+    
+   
+      [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+      UNAuthorizationOptions authOptions = UNAuthorizationOptionAlert |
+          UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
+      [[UNUserNotificationCenter currentNotificationCenter]
+          requestAuthorizationWithOptions:authOptions
+          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            
+          
+          
+          
+          }];
+  
+
+    [application registerForRemoteNotifications];
+
+    
+    
+    
+    
+    
+    
+    
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
@@ -207,13 +240,18 @@
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+
     DMUserRequest *userRequest = [DMUserRequest new];
     const unsigned *tokenBytes = [deviceToken bytes];
     NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
                           ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
                           ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                           ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
-    [userRequest setDeviceToken:hexToken];
+   // [userRequest setDeviceToken:hexToken];
+    [[FIRMessaging messaging] setAPNSToken:deviceToken];
+  //  Messaging.messaging().apnsToken = deviceToken
+
+
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -232,6 +270,29 @@
         [UINavigationBar appearance].backItem.title = @" ";
     }
 }
+
+- (void)messaging:(FIRMessaging *)messaging didReceiveRegistrationToken:(NSString *)fcmToken {
+    NSLog(@"FCM registration token: %@", fcmToken);
+    // Notify about received token.
+    NSDictionary *dataDict = [NSDictionary dictionaryWithObject:fcmToken forKey:@"token"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:
+     @"FCMToken" object:nil userInfo:dataDict];
+    // TODO: If necessary send token to application server.
+    // Note: This callback is fired at each app startup and whenever a new token is generated.
+
+    DMUserRequest *userRequest = [DMUserRequest new];
+   // const unsigned *tokenBytes = [deviceToken bytes];
+//    NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+       //                   ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+         //                 ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+        //                  ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+    [userRequest setDeviceToken:fcmToken];
+
+
+
+}
+//// [END refresh_token]
+
 
 
 -(void)loadDatabase;

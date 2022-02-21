@@ -14,8 +14,18 @@
 
 @implementation DMTabBarController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+     
+    if (@available(iOS 15.0, *))
+    {
+        UITabBarAppearance *tabBarAppearence = [[UITabBarAppearance alloc] init];
+        [tabBarAppearence configureWithOpaqueBackground];
+        tabBarAppearence.backgroundColor = [UIColor whiteColor];
+        self.tabBar.standardAppearance = tabBarAppearence;
+        self.tabBar.scrollEdgeAppearance = tabBarAppearence;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

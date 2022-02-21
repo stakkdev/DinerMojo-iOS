@@ -119,6 +119,17 @@
 
 #pragma mark - POST
 
+-(void)POSTWithHeader:(NSString *)url withParams:(NSDictionary *)params headers:(NSDictionary *)header  withCompletionBlock:(RequestCompletion)completionBlock;
+{
+    [[self jsonManager] POST:[self buildURL:url] parameters:params headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionBlock(nil,responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completionBlock([self errorWithStatusCode:task withBaseError:error],nil);
+    }];
+}
+
+
+
 -(void)POST:(NSString *)url withParams:(NSDictionary *)params  withCompletionBlock:(RequestCompletion)completionBlock;
 {
     [[self jsonManager] POST:[self buildURL:url] parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

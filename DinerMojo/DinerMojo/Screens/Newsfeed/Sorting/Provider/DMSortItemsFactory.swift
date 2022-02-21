@@ -73,19 +73,24 @@ class DMTableItemsFactory: NSObject {
     
     func limitByRadiusItem(selectedItems: [FilterItem]) -> DMOptionGroupItem {
         let defaultItem = DMRadioSortOptionItem(NSLocalizedString("limit.default", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.Default.rawValue)
+        
         defaultItem.isSelected = self.checkSelection(item: defaultItem, selectedItems: selectedItems)
         
         let oneMileItem = DMRadioSortOptionItem(NSLocalizedString("limit.oneMile", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.OneMile.rawValue)
         oneMileItem.isSelected = self.checkSelection(item: oneMileItem, selectedItems: selectedItems)
+      
         
         let fiveMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.fiveMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.FiveMiles.rawValue)
         fiveMilesItem.isSelected = self.checkSelection(item: fiveMilesItem, selectedItems: selectedItems)
-        
+     
         let tenMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.tenMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.TenMiles.rawValue)
         tenMilesItem.isSelected = self.checkSelection(item: tenMilesItem, selectedItems: selectedItems)
         
-        if selectedItems.count == 0 {
-            defaultItem.isSelected = true
+        print(tenMilesItem)
+        
+        if selectedItems.count == 0
+        {
+            fiveMilesItem.isSelected = true
         }
         let subItems = [defaultItem, oneMileItem, fiveMilesItem, tenMilesItem]
         let limitByItem = DMOptionGroupItem(NSLocalizedString("limit.by", comment: ""), items: subItems)
