@@ -48,6 +48,8 @@
 "notifications.things.selected.venues" = "Selected venues >";
 "notifications.things.fav.venues" = "My favourites";
 "notifications.dmclub.news" = "DinerMojo news";
+"notifications.location.favourite" = "Notifications from my favourites";
+"notifications.location" = "Location";
 
 "reedem.message.notAvailable" = "There are new rewards getting added all the time. Please check back later to see what %@ has for you.";
 "redeem.message.available" = "You can redeem the points you've earned at any DinerMojo venue here. Enjoy!";

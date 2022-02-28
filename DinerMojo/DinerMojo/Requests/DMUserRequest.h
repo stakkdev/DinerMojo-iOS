@@ -23,6 +23,7 @@
 - (void)signUpWithEmailData:(NSDictionary *)data WithCompletionBlock:(RequestCompletion)completionBlock;
 - (void)logout;
 - (void)downloadUserProfileWithCompletionBlock:(RequestCompletion)completionBlock;
+- (void)downloadUserProfileResponseWithCompletionBlock:(UserProfileRequestCompletion)completionBlock;
 - (void)uploadUserProfileWith:(NSDictionary *)data profileImage:(UIImage *)image completionBlock:(RequestCompletion)completionBlock;
 - (void)deleteUserWithCompletionBlock:(RequestCompletion)completionBlock;
 - (void)resetPasswordWithEmailAddress:(NSString *)emailAddress withCompletionBlock:(RequestCompletion)completionBlock;

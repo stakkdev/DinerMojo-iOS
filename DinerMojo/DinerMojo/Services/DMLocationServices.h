@@ -18,6 +18,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) CLLocation *selectedLocation;
+@property (strong, nonatomic) NSString *locationName;
 @property (strong, nonatomic) DMVenue *venueLocation;
 @property (nonatomic) BOOL initialLocationUpdate;
 @property (nonatomic, weak) id <DMLocationServiceDelegate> delegate;

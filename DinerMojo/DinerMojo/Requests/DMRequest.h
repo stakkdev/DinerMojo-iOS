@@ -18,6 +18,7 @@ static const NSInteger DMErrorCode404 = 404;
 static const NSInteger DMErrorCode409 = 409;
 
 typedef void(^RequestCompletion)(NSError *error, id results);
+typedef void(^UserProfileRequestCompletion)(NSError *error, id results, id response);
 
 @interface DMRequest : NSObject
 

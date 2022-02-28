@@ -7,12 +7,15 @@
 //
 
 #import "DMTabBarViewController.h"
-@protocol DMNotificationVenueDelegate;
 
-@interface DMNotificationSettingsViewController : DMTabBarViewController <DMNotificationVenueDelegate, UIAlertViewDelegate>
+@protocol DMNotificationVenueDelegate;
+@protocol LocationNotificationDelegate;
+
+@interface DMNotificationSettingsViewController : DMTabBarViewController <DMNotificationVenueDelegate, UIAlertViewDelegate, LocationNotificationDelegate>
 
 @property(strong, nonatomic) DMUserRequest *request;
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
+
 - (IBAction)saveNotification:(id)sender;
 
 @end

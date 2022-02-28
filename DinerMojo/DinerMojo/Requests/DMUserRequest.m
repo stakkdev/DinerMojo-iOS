@@ -355,6 +355,17 @@
     }];
 }
 
+- (void)downloadUserProfileResponseWithCompletionBlock:(UserProfileRequestCompletion)completionBlock;
+{
+    [self GET:@"user/me/user_check" withParams:nil withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            completionBlock(error, nil, nil);
+        } else {
+            completionBlock(nil, [DMMappingHelper mapUser:results mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]], results);
+        }
+    }];
+}
+
 - (void)downloadSubscriptionsWithCompletionBlock:(RequestCompletion)completionBlock;
 {
     NSDictionary *params = @{ @"token": [DMRequest currentUserToken] };

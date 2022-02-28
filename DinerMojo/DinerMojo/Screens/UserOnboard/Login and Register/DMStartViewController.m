@@ -417,6 +417,18 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (NSDictionary *)facebookDataParsedForServer
 {
+    NSNumber *latitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.latitude];
+    NSNumber *longitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.longitude];
+    NSString *locationName = [[DMLocationServices sharedInstance] locationName];
+    if (latitude == nil) {
+        latitude = 0;
+    }
+    if (longitude == nil) {
+        longitude = 0;
+    }
+    if (locationName == nil) {
+        locationName = @"";
+    }
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
     
     NSDictionary *data = [self currentFacebookData];
@@ -429,6 +441,10 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [dictionary setObject:[data objectForKey:@"last_name"] forKey:@"last_name"];
     [dictionary setObject:[data objectForKey:@"email"] forKey:@"email_address"];
     [dictionary setObject:@([[data objectForKey:@"gender"] integerValue]) forKey:@"gender"];
+    [dictionary setObject:latitude forKey:@"latitude"];
+    [dictionary setObject:longitude forKey:@"longitude"];
+    [dictionary setObject:locationName forKey:@"location_name"];
+
 //    [dictionary setObject:formattedDate forKey:@"date_of_birth"];
     
     [dictionary setObject:[[self referralCodeTextField] text] forKey:@"referral_code"];
@@ -521,8 +537,19 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [self.closeRegisterButton setEnabled:NO];
     [self.registerButton setEnabled:NO];
     
-    
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{ @"email_address" : [[self emailTextField] text], @"password" : [[self passwordTextField] text], @"first_name" : [[self firstNameTextField] text], @"last_name" : [[self lastNameTextField] text]}];
+    NSNumber *latitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.latitude];
+    NSNumber *longitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.longitude];
+    NSString *locationName = [[DMLocationServices sharedInstance] locationName];
+    if (latitude == nil) {
+        latitude = 0;
+    }
+    if (longitude == nil) {
+        longitude = 0;
+    }
+    if (locationName == nil) {
+        locationName = @"";
+    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{ @"email_address" : [[self emailTextField] text], @"password" : [[self passwordTextField] text], @"first_name" : [[self firstNameTextField] text], @"last_name" : [[self lastNameTextField] text], @"latitude" : latitude, @"longitude" : longitude, @"location_name" : locationName}];
     
     [params setObject:[[self referralCodeTextField] text] forKey:@"referral_code"];
     

@@ -7,7 +7,7 @@ import Foundation
 
 @objc class DMNotificationsSettingsProvider: NSObject, TUListProviderProtocol {
 
-    @objc var reuseIDs: [String] = ["DMRadioSortOptionCell", "DMVenuesOptionCell"];
+    @objc var reuseIDs: [String] = ["DMRadioSortOptionCell", "DMVenuesOptionCell", "UpdateLocationTableViewCell"];
     @objc var delegate: TUListProviderDelegate?
     @objc var itemsFactory: DMNotificationItemsFactory
     @objc var settings: SubscriptionsObject
@@ -15,11 +15,13 @@ import Foundation
     @objc var name: NSString?
 
     @objc var frequency: Int
+    @objc var locationNotification: LocationNotification?
 
-    @objc init(frequency: Int, settings: SubscriptionsObject) {
+    @objc init(frequency: Int, settings: SubscriptionsObject, locationNotification: LocationNotification) {
         self.itemsFactory = DMNotificationItemsFactory()
         self.frequency = frequency
         self.settings = settings
+        self.locationNotification = locationNotification
     }
 
     @objc func preload() -> [AnyObject]? {
@@ -27,14 +29,29 @@ import Foundation
     }
 
     private func createData() -> [AnyObject]? {
+        let locationSection = self.itemsFactory.locationItem(locationNotification: self.locationNotification)
         let tellMeSection = self.itemsFactory.notifyMeItem(frequency: self.frequency)
         let thingsSection = self.itemsFactory.thingsSectionItem(settings: self.settings, ids: ids, name: name)
 
-        return [tellMeSection, thingsSection];
+        return [locationSection, tellMeSection, thingsSection];
 
     }
 
     func requestData() {
 
+    }
+}
+
+@objc class LocationNotification: NSObject {
+    @objc var latitude: NSNumber?
+    @objc var longitude: NSNumber?
+    @objc var locationName: String?
+    @objc var isFavouriteVenuesNotification: Bool = true
+    
+    @objc init(locationName: String?, latitude: NSNumber?, longitude: NSNumber?, isFavouriteVenuesNotification: Bool = true) {
+        self.locationName = locationName
+        self.latitude = latitude
+        self.longitude = longitude
+        self.isFavouriteVenuesNotification = isFavouriteVenuesNotification
     }
 }

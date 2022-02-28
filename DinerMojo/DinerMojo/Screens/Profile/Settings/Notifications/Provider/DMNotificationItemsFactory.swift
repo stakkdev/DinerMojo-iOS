@@ -40,6 +40,25 @@ class DMNotificationItemsFactory: NSObject {
 
         return group
     }
+    
+    func locationItem(locationNotification: LocationNotification?) -> DMOptionGroupItem {
+        let searchLocation = UpdateLocationTableViewItem(GroupsName.SearchLocation.rawValue, itemId: NotificationFavouriteGroup.NSearchItem.rawValue, searchText: locationNotification?.locationName ?? "")
+        
+        let favLocation = DMRadioSortOptionItem(NSLocalizedString("notifications.location.favourite", comment: ""), groupName: GroupsName.FavLocation.rawValue, itemId: NotificationFavouriteGroup.NFavItem.rawValue)
+        
+        if locationNotification?.isFavouriteVenuesNotification ?? true {
+            favLocation.isSelected = true
+        }
+        let group = DMOptionGroupItem.create(
+                NSLocalizedString("notifications.location", comment: ""),
+                items: [searchLocation, favLocation],
+                backgroundColor: self.headerColor,
+                fontColor: UIColor(hexString: "#868686")!)
+
+        group.allowOnlyOneInGroup = true
+
+        return group
+    }
 
     func thingsSectionItem(settings: SubscriptionsObject, ids: [Int]?, name: NSString?) -> DMOptionGroupItem {
         let things = DMVenuesOptionItem(NSLocalizedString("notifications.things.all.venues", comment: ""), groupName: GroupsName.Things.rawValue, itemId: ThingsGroup.NVenuesItem.rawValue, subscribed: settings.subscriptions)

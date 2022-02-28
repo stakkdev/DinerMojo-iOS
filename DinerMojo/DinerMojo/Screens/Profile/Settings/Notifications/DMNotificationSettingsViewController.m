@@ -12,7 +12,6 @@
 #import "DMNotificationVenueListViewController.h"
 #import <PKHUD/PKHUD-Swift.h>
 #import <PureLayout/PureLayout.h>
-#import "DinerMojo-Swift.h"
 #import <Crashlytics/Answers.h>
 
 @interface DMNotificationSettingsViewController ()
@@ -28,11 +27,15 @@
 @property(nonatomic, strong) NSArray *notificationDinings;
 @property(nonatomic, strong) SubscriptionsObject *subObject;
 @property(nonatomic, strong) NSDictionary *setupDict;
+@property(nonatomic, strong) LocationNotification *locationData;
+
 @property BOOL changed_ids;
 @property BOOL didEndDownloads;
 @end
 
 @implementation DMNotificationSettingsViewController 
+
+@synthesize locationData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,11 +47,25 @@
     [[PKHUD sharedHUDObjc] showOnView:self.view];
     __weak typeof(self) weakSelf = self;
     
-    [[self userRequest] downloadUserProfileWithCompletionBlock:^(NSError *error, id results) {
+//    [[self userRequest] downloadUserProfileWithCompletionBlock:^(NSError *error, id results) {
+//        if (error) {
+//            [weakSelf showErrorMessage];
+//            [self didEndDownloading];
+//        } else {
+//            [weakSelf downloadSubscriptions];
+//        }
+//    }];
+    
+    [[self userRequest] downloadUserProfileResponseWithCompletionBlock:^(NSError *error, id results, id response) {
         if (error) {
             [weakSelf showErrorMessage];
             [self didEndDownloading];
         } else {
+            bool isFavNoti = TRUE;
+            if (response[@"is_favourite_venues_notification"] != nil) {
+                isFavNoti = response[@"is_favourite_venues_notification"];
+            }
+            self.locationData = [[LocationNotification alloc] initWithLocationName:response[@"location_name"] latitude:response[@"latitude"] longitude:response[@"longitude"] isFavouriteVenuesNotification:isFavNoti];
             [weakSelf downloadSubscriptions];
         }
     }];
@@ -135,14 +152,16 @@
 - (void)setup:(SubscriptionsObject*)object {
     self.request = [DMUserRequest new];
     DMUser *currentUser = [[self userRequest] currentUser];
-    self.provider = [[DMNotificationsSettingsProvider alloc] initWithFrequency:currentUser.notification_frequencyValue settings:object];
+    self.provider = [[DMNotificationsSettingsProvider alloc] initWithFrequency:currentUser.notification_frequencyValue settings:object locationNotification:self.locationData];//[[DMNotificationsSettingsProvider alloc] initWithFrequency:currentUser.notification_frequencyValue settings:object];
     self.provider.ids = self.ids;
     self.seletionManager = [[DMNotificationSelectionManager alloc] init];
     self.tableManager = [[TUGroupedTableManager alloc] initWithTableView:self.tableView reuseIDs:self.provider.reuseIDs];
+    self.tableManager.delegateLocation = self;
     self.tableManager.parent = self;
     self.tableManager.headersReuseIDs = @[@"TUHeaderOptionGroupView"];
     self.tableManager.selectionManager = self.seletionManager;
     self.tableManager.data = self.provider.preload;
+    self.tableManager.notificationData = self.locationData;
     
     NSArray *data = [self.tableManager getFilterData];
     NSMutableDictionary * dic = [[NSMutableDictionary alloc] initWithDictionary:[FilterItem convertPayloadToDicrionaryWithPayload:data]];
@@ -197,10 +216,10 @@
 
 - (void)saveFrequency {
     __weak typeof(self) weakSelf = self;
-    
-    NSDictionary *params = @{@"frequency": @(self.notificationFrequency)};
+    NSLog(@"locationData--%@, %@, %@, %d", locationData.latitude, locationData.longitude, locationData.locationName, locationData.isFavouriteVenuesNotification);
+    BOOL isFavVenue = locationData.isFavouriteVenuesNotification;
+    NSDictionary *params = @{@"frequency": @(self.notificationFrequency), @"latitude": locationData.latitude, @"longitude": locationData.longitude, @"location_name": locationData.locationName, @"is_favourite_venues_notification": @(isFavVenue)};
     [[self userRequest] uploadUserProfileWith:params profileImage:nil completionBlock:^(NSError *error, id results) {
-        
         if (error) {
             [weakSelf showErrorMessage];
         } else {
@@ -243,6 +262,14 @@
     [super viewWillDisappear:animated];
     
     self.navigationItem.title = @"";
+}
+
+-(void)locationUpdated {
+    NSLog(@"locationData--%@", self.tableManager.notificationData.latitude);
+    NSLog(@"locationData--%@", self.tableManager.notificationData.longitude);
+    NSLog(@"locationData--%@", self.tableManager.notificationData.locationName);
+    NSLog(@"locationData--%d", self.tableManager.notificationData.isFavouriteVenuesNotification);
+    self.locationData = self.tableManager.notificationData;
 }
 
 

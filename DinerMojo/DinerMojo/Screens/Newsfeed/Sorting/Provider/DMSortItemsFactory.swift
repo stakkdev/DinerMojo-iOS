@@ -17,6 +17,8 @@ import UIKit
     case Things = 1008
     case DiningNotifications = 1009
     case LifestyleNotifications = 1010
+    case SearchLocation = 1011
+    case FavLocation = 1012
 }
 
 @objc enum SortByItems: Int {
@@ -66,6 +68,11 @@ import UIKit
 @objc enum ThingsGroup: Int {
     case NVenuesItem = 9000
     case NDMClubItem
+}
+
+@objc enum NotificationFavouriteGroup: Int {
+    case NSearchItem = 10000
+    case NFavItem = 10001
 }
 
 

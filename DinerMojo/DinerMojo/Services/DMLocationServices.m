@@ -54,6 +54,20 @@
         [self setInitialLocationUpdate:NO];
         [self.delegate didInitiallyUpdateLocation];
     }
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:manager.location
+                   completionHandler:^(NSArray *placemarks, NSError *error) {
+        NSLog(@"reverseGeocodeLocation:completionHandler: Completion Handler called!");
+        
+        if (error){
+            NSLog(@"Geocode failed with error: %@", error);
+            return;
+        }
+        NSLog(@"placemarks=%@",[placemarks objectAtIndex:0]);
+        CLPlacemark *placemark = [placemarks objectAtIndex:0];
+        NSLog(@"placemark.name =%@",placemark.name);
+        [self setLocationName:placemark.name];
+    }];
 }
 
 - (double)userLocationDistanceFromLocation:(CLLocation *)location

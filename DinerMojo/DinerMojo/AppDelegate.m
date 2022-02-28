@@ -16,7 +16,6 @@
 #import "DMVenueCategory.h"
 #import <GBVersionTracking/GBVersionTracking.h>
 
-
 @import UserNotifications;
 
 @import GooglePlaces;
@@ -57,7 +56,7 @@
                                                            diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
     
-    //[GMSPlacesClient provideAPIKey:Secrets.googlePlacesApiKey];
+    [GMSPlacesClient provideAPIKey: @"AIzaSyDsbxrDudbltwXMI94slV9C_h7-s8kYNBI"];//Secrets.googlePlacesApiKey
     
     
    
