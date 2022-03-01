@@ -61,9 +61,14 @@
             [weakSelf showErrorMessage];
             [self didEndDownloading];
         } else {
-            bool isFavNoti = TRUE;
+            BOOL isFavNoti = YES;
             if (response[@"is_favourite_venues_notification"] != nil) {
-                isFavNoti = response[@"is_favourite_venues_notification"];
+                if ([response[@"is_favourite_venues_notification"] boolValue] == NO) {
+                    isFavNoti = NO;
+                } else {
+                    isFavNoti = YES;
+                }
+//                isFavNoti = response[@"is_favourite_venues_notification"];
             }
             self.locationData = [[LocationNotification alloc] initWithLocationName:response[@"location_name"] latitude:response[@"latitude"] longitude:response[@"longitude"] isFavouriteVenuesNotification:isFavNoti];
             [weakSelf downloadSubscriptions];

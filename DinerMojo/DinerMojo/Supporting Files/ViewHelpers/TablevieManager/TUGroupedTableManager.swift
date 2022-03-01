@@ -382,21 +382,27 @@ extension TUGroupedTableManager: GMSAutocompleteViewControllerDelegate {
     // Present the Autocomplete view controller when the button is pressed.
     @objc func autocompleteClicked() {
         let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.primaryTextColor = UIColor.white
+        autocompleteController.secondaryTextColor = UIColor.lightGray
+        autocompleteController.tableCellSeparatorColor = UIColor.lightGray
+        autocompleteController.tableCellBackgroundColor = UIColor.darkGray
         autocompleteController.delegate = self
-        
         // Specify the place data types to return.
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-                                                  UInt(GMSPlaceField.placeID.rawValue))
+                                                  UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))
         autocompleteController.placeFields = fields
         
         // Specify a filter.
         let filter = GMSAutocompleteFilter()
         filter.type = .address
         autocompleteController.autocompleteFilter = filter
-        
+
         // Display the autocomplete view controller.
         self.parent?.present(autocompleteController, animated: true, completion: nil)
+
+        
     }
+    
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         print("Place name: \(String(describing: place.name))")
