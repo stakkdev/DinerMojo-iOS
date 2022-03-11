@@ -62,7 +62,7 @@
             [self didEndDownloading];
         } else {
             BOOL isFavNoti = YES;
-            if (response[@"is_favourite_venues_notification"] != nil) {
+            if (![response[@"is_favourite_venues_notification"]  isKindOfClass:[NSNull class]]) {
                 if ([response[@"is_favourite_venues_notification"] boolValue] == NO) {
                     isFavNoti = NO;
                 } else {
@@ -70,7 +70,20 @@
                 }
 //                isFavNoti = response[@"is_favourite_venues_notification"];
             }
-            self.locationData = [[LocationNotification alloc] initWithLocationName:response[@"location_name"] latitude:response[@"latitude"] longitude:response[@"longitude"] isFavouriteVenuesNotification:isFavNoti];
+            NSNumber * lati = 0;
+            if (![response[@"latitude"] isKindOfClass:[NSNull class]]) {
+                lati = response[@"latitude"];
+            }
+            NSNumber * longi = 0;
+            if (![response[@"longitude"]  isKindOfClass:[NSNull class]]) {
+                longi = response[@"longitude"];
+            }
+            
+            NSString * locName = @"";
+            if (![response[@"location_name"]  isKindOfClass:[NSNull class]]) {
+                locName = response[@"location_name"];
+            }
+            self.locationData = [[LocationNotification alloc] initWithLocationName:locName latitude:lati longitude:longi isFavouriteVenuesNotification:isFavNoti];
             [weakSelf downloadSubscriptions];
         }
     }];
@@ -94,6 +107,7 @@
             }];
             
         }
+        [self didEndDownloading];
     }];
 }
 
