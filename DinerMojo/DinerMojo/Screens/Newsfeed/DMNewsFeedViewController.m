@@ -26,12 +26,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self decorateInterface];
-    _newsRequest = [DMNewsRequest new]; 
+    _newsRequest = [DMNewsRequest new];
     _newsModelController = [DMNewsItemModelController new];
     _serializer = [[StateSerializer alloc] init];
     
     self.currentSortType = DMSortNewsfeedViewControllerSortItemTypeMostRecent;
-
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     NSArray *filterItems = [self.serializer restoreFilterState];
     if (filterItems == nil || filterItems.count == 0) {
@@ -40,25 +39,21 @@
     }
     
     [self selectedFilterItems:filterItems];
-    
-    
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
         [navBarAppearance configureWithOpaqueBackground];
         navBarAppearance.backgroundColor = [UIColor colorWithRed:105.0f/255.0f green:201.0f/255.0f blue:179.0f/255.0f alpha:0.98f];
         [navBarAppearance setTitleTextAttributes:
-                @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+         @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         self.navigationController.navigationBar.standardAppearance = navBarAppearance;
         self.navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance;
     } else {
-       
+        
     }
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -87,11 +82,21 @@
     self.navigationController.navigationBar.topItem.title = NSLocalizedString(@"newsfeed.title", nil);
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+//    [self.view layoutSubviews];
+//    [self.view layoutIfNeeded];
+//    [self.navigationController.navigationBar setNeedsLayout];
+//    [self.navigationController.navigationBar updateConstraintsIfNeeded];
+//
+    NSLog(@"Here contolers comes for UIView to check");
+}
+
 - (void)downloadVenueNews {
     [self showZeroMessageStatus:NO];
     [self.emptyTableLabel setHidden:NO];
     [self.emptyTableLabel setText:@"Fetching news..."];
-
+    
     [[self newsRequest] downloadVenueNewsWithCompletionBlock:^(NSError *error, id results) {
         if (error == nil) {
             [[self newsModelController] setAllItems:results];
@@ -100,18 +105,18 @@
             [UIView transitionWithView:self.tableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
                 [self.tableView reloadData];
             }               completion:nil];
-                        
+            
             [self updateZeroMessageStatus];
             
         } else {
             [self.emptyTableLabel setHidden:NO];
             [self.emptyTableDescriptionView setHidden:NO];
         }
-
+        
         [self.activityIndicator stopAnimating];
-
+        
         [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
-
+        
     }                                           withNewsType:@(DMNewsFeedNews) withVenue:self.selectedVenue.modelID];
 }
 
@@ -120,8 +125,8 @@
     [self showZeroMessageStatus:NO];
     [self.emptyTableLabel setHidden:NO];
     [self.emptyTableLabel setText:@"Fetching news..."];
-
-
+    
+    
     [[self newsRequest] downloadNewsWithCompletionBlock:^(NSError *error, id results) {
         if (error == nil) {
             [[self newsModelController] setAllItems:results];
@@ -130,16 +135,16 @@
             [UIView transitionWithView:self.tableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
                 [self.tableView reloadData];
             }               completion:nil];
-
+            
             if (self.newsModelController.allItems.count == 0) {
                 [self.tableView setHidden:YES];
                 [self.emptyTableLabel setHidden:YES];
                 [self.emptyTableDescriptionView setHidden:NO]; //0 venues
                 self.connectionProblem = NO;
             }
-
+            
             [self updateZeroMessageStatus];
-
+            
             if (self.pushNewsID) {
                 self.selectedNewsItem = [DMUpdateItem MR_findFirstByAttribute:@"modelID" withValue:self.pushNewsID];
                 if (self.selectedNewsItem != NULL) {
@@ -162,20 +167,20 @@
                 AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
                 appDelegate.notificationPayload = nil;
             }
-
-
+            
+            
         }
-
+        
         [self.activityIndicator stopAnimating];
-
+        
         [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
-
-
+        
+        
     }                                      withNewsType:@(DMNewsFeedAll)];
 }
 
 - (void)decorateInterface {
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -198,12 +203,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-
-//    self.selectedNewsItem = [[self newsModelController] currentDataSource][indexPath.row];
-
-//    [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+    
+    //    self.selectedNewsItem = [[self newsModelController] currentDataSource][indexPath.row];
+    
+    //    [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
     cell.selected = NO;
-
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -222,7 +227,7 @@
         weakSelf.selectedNewsItem = newsItem;
         [weakSelf performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
     };
-
+    
     cell.tapOnVenueIcon = ^{
         DMVenue *item = (DMVenue *) [newsItem venue];
         
@@ -238,7 +243,7 @@
     [[cell isReadView] setHidden:newsItem.isRead];
     [[cell feedTitleLabel] setText:newsItem.title];
     [[cell feedStoryLabel] setText:newsItem.news_description];
-
+    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"d MMM ''yy"];
     [[cell feedDateLabel] setText:[dateFormat stringFromDate:newsItem.created_at]];
@@ -246,7 +251,7 @@
     if (!self.isVenue) {
         [[cell feedVenueNameLabel] setText:venue.name];
     }
-
+    
     [[cell cellImageView] setImage:nil];
     [[cell cellImageView] setBackgroundColor:[UIColor newsGrayColor]];
     [cell.feedTitleLabel setTextColor:[UIColor newsColor]];
@@ -266,7 +271,7 @@
             placeHolderImage = [UIImage imageNamed:@"offer_default"];
             [cell.offerIcon setHidden:NO];
         } else if ([newsItem.update_type isEqualToNumber:@(DMNewsFeedProdigal)]) {
-             placeHolderImage = [UIImage imageNamed:@"ic_launcher"];
+            placeHolderImage = [UIImage imageNamed:@"ic_launcher"];
             [cell.offerIcon setHidden:YES];
         }
         [[cell cellImageView] setImage:placeHolderImage];
@@ -275,7 +280,7 @@
             NSURL *url = [NSURL URLWithString:[[self newsRequest] buildMediaURL:newsItem.thumb]];
             [[cell cellImageView] setImageWithURL:url placeholderImage:placeHolderImage];
         }
-
+        
     }
     return cell;
 }
@@ -325,11 +330,11 @@
 
 - (IBAction)favouriteButtonPressed:(id)sender {
     [_newsModelController setShowFavourites:![_newsModelController showFavourites]];
-
+    
     [self updateFavouriteFilterIconState];
-
+    
     [[self tableView] reloadData];
-
+    
     [self updateZeroMessageStatus];
 }
 
@@ -344,14 +349,14 @@
 #pragma mark - DMSortNewsfeedViewControllerDelegte
 
 - (void)sortVenueFeedViewController:(DMSortVenueFeedViewController *)sortNewsfeedViewController didSelectSortItem:(DMSortNewsfeedViewControllerSortItemType)itemType {
-
+    
     [[self newsModelController] sortNewsFeedWithSortType:itemType];
     self.currentSortType = itemType;
-
+    
     [self dismissViewControllerAnimated:YES completion:nil];
-
+    
     [self.tableView reloadData];
-
+    
 }
 
 - (void)closeButtonPressedOnSortViewController:(DMSortVenueFeedViewController *)sortNewsfeedViewController {
@@ -391,7 +396,7 @@
     [[self emptyTableDescriptionView] setHidden:!show];
     [[self emptyTableLabel] setText:[self titleForZeroStateMessage]];
     [[self emptyTableDescriptionLabel] setText:[self descriptionForZeroStateMessage]];
-
+    
     [[self tableView] setHidden:show];
 }
 

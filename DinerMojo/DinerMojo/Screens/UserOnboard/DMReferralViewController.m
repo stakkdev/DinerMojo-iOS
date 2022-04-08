@@ -7,6 +7,7 @@
 //
 
 #import "DMReferralViewController.h"
+#import "DMWelcomeViewController.h"
 
 @interface DMReferralViewController ()
 
@@ -30,9 +31,7 @@
     if (self.referralUser)
     {
         [self.welcomeDescriptionLabel setText:[NSString stringWithFormat:@"Thanks for using the referral code to sign up. When you dine at your first restaurant you’ll earn points for both yourself and %@. Isn’t that great? You've also just earned 100 points for joining the club!\n\nHow about we take you for a quick tour before you get started?", self.referralUser.first_name]];
-    }
-    
-    else
+    } else
     {
         [self.welcomeDescriptionLabel setText:@"Thanks for signing up to DinerMojo. You just earned 20 points for joining the club!\n\nHow about we take you for a quick tour before you get started?"];
 
@@ -50,14 +49,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)takeATourButtonClicked:(id)sender
+{
+    [self performSegueWithIdentifier:@"welcomeSegue" sender:nil];
+
+}
 
 - (IBAction)getStarted:(id)sender
 {
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     DMViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+    destinationViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self setRootViewController:destinationViewController animated:YES];
+}
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"welcomeSegue"])
+    {
+        DMWelcomeViewController *vc = [segue destinationViewController];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        //vc.referralUser = self.referralUser;
+    }
+    
+    
 }
 @end

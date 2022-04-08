@@ -10,7 +10,7 @@
 #import "DMMappingHelper.h"
 #import "SubscriptionsObject.h"
 #import "DinerMojo-Swift.h"
-
+#import <UserNotifications/UserNotifications.h>
 @implementation DMUserRequest
 
 #pragma mark - Public methods

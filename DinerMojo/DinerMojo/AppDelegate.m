@@ -34,8 +34,7 @@
     [self decorateGlobalAppInterface];
     [GBVersionTracking track];
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:195.0];
-    [[DMFacebookService sharedInstance] setPermissions:@[@"email"]];
-    
+    [[DMFacebookService sharedInstance] setPermissions:@[@"public_profile", @"email"]];
     
     [FIRApp configure];
     [FIRMessaging messaging].delegate = self;
@@ -67,22 +66,9 @@
           requestAuthorizationWithOptions:authOptions
           completionHandler:^(BOOL granted, NSError * _Nullable error) {
             
-          
-          
-          
           }];
-  
-
     [application registerForRemoteNotifications];
-
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }
@@ -354,11 +340,18 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+
+  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+    openURL:url
+    sourceApplication:sourceApplication
+    annotation:annotation
+  ];
+  // Add any custom logic here.
+  return handled;
 }
     
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
@@ -367,4 +360,10 @@
                                                           options: options];
 }
 
+- (void)messaging:(nonnull FIRMessaging *)messaging didRefreshRegistrationToken:(nonnull NSString *)fcmToken {
+    NSLog(@"The Token is: %@", fcmToken);
+}
+
 @end
+
+

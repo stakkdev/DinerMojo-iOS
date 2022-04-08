@@ -60,6 +60,7 @@
         if (error) {
             [weakSelf showErrorMessage];
             [self didEndDownloading];
+            NSLog(@"Profile give error %@",error);
         } else {
             BOOL isFavNoti = YES;
             if (![response[@"is_favourite_venues_notification"]  isKindOfClass:[NSNull class]]) {
@@ -95,7 +96,7 @@
             for(NSDictionary* dict in results) {
                 [all_ids addObject:dict[@"id"]];
             }
-            
+            NSLog(@"Venyes resulst are %@",results);
             DMUserRequest *userRequest = [DMUserRequest new];
             [userRequest downloadSubscriptionsWithCompletionBlock:^(NSError *error, id results) {
                 SelectedNotificationsParser *parser = [[SelectedNotificationsParser alloc] initWithSubscriptionsObject:results ids:all_ids];

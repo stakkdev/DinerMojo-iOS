@@ -59,6 +59,12 @@
     [self navigationItem].title = @"Favourites";
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self.view layoutSubviews];
+    [self.view layoutIfNeeded];
+}
+
 #pragma mark - Setup
 
 - (void)setUpNavBarWithButtons {

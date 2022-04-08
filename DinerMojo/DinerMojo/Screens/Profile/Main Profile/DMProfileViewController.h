@@ -52,8 +52,9 @@
 
 @property(strong, nonatomic) UITabBar *toolBar;
 
-
 @property UIRefreshControl *refreshControl;
+
+
 
 
 - (IBAction)settingsButtonPressed:(id)sender;

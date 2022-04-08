@@ -93,7 +93,7 @@ class DMTableItemsFactory: NSObject {
         let tenMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.tenMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.TenMiles.rawValue)
         tenMilesItem.isSelected = self.checkSelection(item: tenMilesItem, selectedItems: selectedItems)
         
-        print(tenMilesItem)
+        //print(tenMilesItem)
         
         if selectedItems.count == 0
         {

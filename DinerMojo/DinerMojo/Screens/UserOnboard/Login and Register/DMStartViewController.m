@@ -588,9 +588,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     DMViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
-    
+    destinationViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self setRootViewController:destinationViewController animated:YES];
-    
     [[self userRequest] skipUser];
 }
 

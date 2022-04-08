@@ -18,10 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImage *oldImage = self.imageView.image;
-    UIImage *newimage;
-    newimage = [oldImage applyBlurWithRadius:5.0f tintColor:nil saturationDeltaFactor:1.0f maskImage:nil];
-    [self.imageView setImage:newimage];
     self.greenView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.pageControl setActiveImage:[UIImage imageNamed:@"ActivePageControlDarkGray"]];
     [self.pageControl setInactiveImage:[UIImage imageNamed:@"InactivePageControlDarkGray"]];
@@ -42,12 +38,17 @@
 {
     [super viewDidAppear:animated];
     
+    UIImage *oldImage = self.imageView.image;
+    UIImage *newimage;
+    newimage = [oldImage applyBlurWithRadius:5.0f tintColor:nil saturationDeltaFactor:1.0f maskImage:nil];
+    [self.imageView setImage:newimage];
+    
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 4, self.scrollView.frame.size.height);
     if (@available(iOS 13.0, *)) {
         self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
     }
     [self.scrollView setBackgroundColor:[UIColor clearColor]];
-    [self updateImagesInScrollView];
+    [self performSelector:@selector(updateImagesInScrollView) withObject:self afterDelay:0.5];
 }
 
 
@@ -63,7 +64,7 @@
         [tutorialTitle setTextAlignment:NSTextAlignmentCenter];
         [tutorialTitle setNumberOfLines:0];
         [tutorialTitle setLineBreakMode:NSLineBreakByWordWrapping];
-        [tutorialTitle setCenter:CGPointMake(xOrigin + self.view.center.x, 43)];
+        [tutorialTitle setCenter:CGPointMake(xOrigin + self.view.center.x, 63)];
         
         UILabel *tutorialDescription = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 20, 290, 140)];
         [tutorialDescription setFont:[UIFont tutorialDescriptionFont]];
@@ -166,18 +167,13 @@
         [self.getStartedButton setEnabled:YES];
         [self.skipButton setAlpha:0];
         [self.pageControl setAlpha:0];
-
     }
-    
-    else
-    {
+    else {
         [self.getStartedButton setAlpha:0];
         [self.getStartedButton setEnabled:NO];
         [self.skipButton setAlpha:1];
         [self.pageControl setAlpha:1];
-
     }
-    
 }
 
 - (void)progress
@@ -201,9 +197,8 @@
 - (void)setRootController
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     DMViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
-    
+    destinationViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self setRootViewController:destinationViewController animated:YES];
 }
 
