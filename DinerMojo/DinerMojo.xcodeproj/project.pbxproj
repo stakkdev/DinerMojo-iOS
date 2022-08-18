@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0BB9907F35F24E9161462BFC /* Pods_DinerMojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183A98F1075A5D0790EAB73E /* Pods_DinerMojo.framework */; };
+		181DD63D288A5F5A00ECBDB4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DD63C288A5F5A00ECBDB4 /* Reachability.swift */; };
+		181DD640288A64FA00ECBDB4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 181DD63F288A64FA00ECBDB4 /* Reachability.m */; };
 		1A3839C325CD8953006407F9 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3839C225CD8953006407F9 /* CustomAnnotationView.m */; };
 		1A3839CD25CD99AB006407F9 /* VenueCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3839CC25CD99AB006407F9 /* VenueCollectionViewCell.m */; };
 		1EFC76ED27C5335400A89286 /* UpdateLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC76EB27C5335200A89286 /* UpdateLocationTableViewCell.swift */; };
@@ -228,6 +230,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181DD63C288A5F5A00ECBDB4 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		181DD63E288A64FA00ECBDB4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		181DD63F288A64FA00ECBDB4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		183A98F1075A5D0790EAB73E /* Pods_DinerMojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A3839C125CD8941006407F9 /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		1A3839C225CD8953006407F9 /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
@@ -1050,6 +1055,9 @@
 			isa = PBXGroup;
 			children = (
 				81CB66DF27A29CB700E34CE9 /* GoogleService-Info.plist */,
+				181DD63E288A64FA00ECBDB4 /* Reachability.h */,
+				181DD63F288A64FA00ECBDB4 /* Reachability.m */,
+				181DD63C288A5F5A00ECBDB4 /* Reachability.swift */,
 				9598EEE0260CAC05005C120A /* Secrets */,
 				27E56B881EA128A200373599 /* DinerMojo.entitlements */,
 				7AC3FE691AEE3E7600AD12E0 /* AppDelegate.h */,
@@ -1798,6 +1806,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181DD640288A64FA00ECBDB4 /* Reachability.m in Sources */,
 				7AC3FE6B1AEE3E7600AD12E0 /* AppDelegate.m in Sources */,
 				279C840B1EF82EAA00629C2A /* UIView+InnerShadow.m in Sources */,
 				D49738C81B32D45D00D8B6A8 /* DMRedeemTableViewCell.m in Sources */,
@@ -1812,6 +1821,7 @@
 				2CA9619620FF176200BCE54F /* DMAttributedStringDecorator.swift in Sources */,
 				7A5EC82C1B4C033F00B27CBF /* _DMVenueOpeningTimes.m in Sources */,
 				7A5EC81E1B4C033F00B27CBF /* DMVenueCategory.m in Sources */,
+				181DD63D288A5F5A00ECBDB4 /* Reachability.swift in Sources */,
 				2724BD841F7D177600427F11 /* PickerTextField.swift in Sources */,
 				5E93522F221B051E00BF2B5A /* RestaurantInfoButtonEnum.m in Sources */,
 				276AED161F2A4CC300042D31 /* StartupNotificationsViewController.swift in Sources */,
@@ -2055,7 +2065,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 147;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2094,6 +2104,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				MARKETING_VERSION = 1.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2214,7 +2225,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 147;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2251,6 +2262,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				MARKETING_VERSION = 1.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2371,7 +2383,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 147;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2408,6 +2420,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				MARKETING_VERSION = 1.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2526,7 +2539,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 147;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2564,6 +2577,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				MARKETING_VERSION = 1.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2690,7 +2704,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 141;
+				CURRENT_PROJECT_VERSION = 147;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 42B8BC6R86;
 				ENABLE_BITCODE = NO;
@@ -2728,6 +2742,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
+				MARKETING_VERSION = 1.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

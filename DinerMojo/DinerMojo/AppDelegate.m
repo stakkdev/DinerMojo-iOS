@@ -15,19 +15,18 @@
 #import "DinerMojo-Swift.h"
 #import "DMVenueCategory.h"
 #import <GBVersionTracking/GBVersionTracking.h>
+#import <UserNotifications/UserNotifications.h>
+#import "Reachability.h"
 
 @import UserNotifications;
-
 @import GooglePlaces;
 
 @interface AppDelegate ()
+@property(nonatomic, retain) Reachability* reach;
 
 @end
 
-
 @implementation AppDelegate
-
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadDatabase];
@@ -51,26 +50,118 @@
     [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"didShowGDPR"];
     
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
-                                                       diskCapacity:200 * 1024 * 1024
-                                                           diskPath:nil];
+                                                         diskCapacity:200 * 1024 * 1024
+                                                             diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
     
     [GMSPlacesClient provideAPIKey: @"AIzaSyDsbxrDudbltwXMI94slV9C_h7-s8kYNBI"];//Secrets.googlePlacesApiKey
     
+    // User Registration process
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if( !error ) {
+            // required to get the app to do anything at all about push notifications
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // use weakSelf here
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            });
+            NSLog( @"Push registration success." );
+        } else {
+            NSLog( @"Push registration FAILED" );
+            NSLog( @"ERROR: %@ - %@", error.localizedFailureReason, error.localizedDescription );
+            NSLog( @"SUGGESTIONS: %@ - %@", error.localizedRecoveryOptions, error.localizedRecoverySuggestion );
+        }
+    }];
     
-   
-      [UNUserNotificationCenter currentNotificationCenter].delegate = self;
-      UNAuthorizationOptions authOptions = UNAuthorizationOptionAlert |
-          UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
-      [[UNUserNotificationCenter currentNotificationCenter]
-          requestAuthorizationWithOptions:authOptions
-          completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            
-          }];
-    [application registerForRemoteNotifications];
- 
+    [self initializeReachbility];
+    
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
+}
+
+- (void)initializeReachbility {
+    // Allocate a reachability object
+    self.reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    // Tell the reachability that we DON'T want to be reachable on 3G/EDGE/CDMA
+    self.reach.reachableOnWWAN = NO;
+    
+    // Here we set up a NSNotification observer. The Reachability that caused the notification
+    // is passed in the object parameter
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    [self.reach startNotifier];
+}
+
+- (void)reachabilityChanged:(NSNotification*)notification {
+    Reachability* reachability = notification.object;
+    
+    if(reachability.currentReachabilityStatus == NotReachable) {
+        NSLog(@"Internet off");
+        UIViewController *test = [self topViewController];
+        if ([test isKindOfClass:[DMOperationCompletePopUpViewController class]]) {
+            NSLog(@"Already present");
+            return;
+        }
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        DMOperationCompletePopUpViewController *testVC = [storyboard instantiateViewControllerWithIdentifier:@"operationComplete"];
+        
+        [testVC setColor:[UIColor colorWithRed:(245/255.f) green:(147/255.f) blue:(54/255.f) alpha:1]];
+        [testVC setStatus:DMOperationCompletePopUpViewControllerStatusError];
+        [testVC setPopUpDescriptionAttributed:[[NSMutableAttributedString alloc] initWithString:@"Something wrong with your connection. Plesae try again"]];
+        [testVC setPopUpTitle:@"Oops.."];
+        [testVC setActionButtonTitle:@"Go to settings"];
+        [testVC setEffectStyle:UIBlurEffectStyleExtraLight];
+        [testVC setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [testVC setShoulHideDontShowAgainButton:YES];
+        [testVC setDelegate: self];
+        [testVC setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        if([self.window.rootViewController isKindOfClass:UITabBarController.class]) {
+            [[(UITabBarController *)self.window.rootViewController selectedViewController] presentViewController:testVC animated:YES completion:NULL];
+        } else {
+            [self.window makeKeyAndVisible];
+            [self.window.rootViewController presentViewController:testVC animated:YES completion:NULL];
+        }
+    } else {
+        NSLog(@"Internet on");
+        UIViewController *test = [self topViewController];
+        if ([test isKindOfClass:[DMOperationCompletePopUpViewController class]]) {
+            [test dismissViewControllerAnimated:false completion:nil];
+        }
+    }
+}
+
+-(void)actionButtonPressedFromOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController {
+    NSLog(@"Here button is taaped");
+     if ([[operationCompletePopupViewController actionButtonTitle] isEqualToString:@"Go to settings"]) {
+         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]
+                                                    options:@{}
+                                          completionHandler:^(BOOL success) {
+                 }];
+            //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }
+}
+
+- (UIViewController*)topViewController {
+    return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+}
+
+-(UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
+    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController* tabBarController = (UITabBarController*)rootViewController;
+        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController* navigationController = (UINavigationController*)rootViewController;
+        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
+    } else if (rootViewController.presentedViewController) {
+        UIViewController* presentedViewController = rootViewController.presentedViewController;
+        return [self topViewControllerWithRootViewController:presentedViewController];
+    } else {
+        return rootViewController;
+    }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
@@ -97,16 +188,22 @@
     
     [self showBookingNotificationWithUserInfo:userInfo];
     [self showNewsNotificationIfNeeded];
+    [self application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:^(UIBackgroundFetchResult result) {
+    }];
 }
 
 -(void)registerForNotifications
 {
-    UIApplication *application = [UIApplication sharedApplication];
-    
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    
-    [application registerUserNotificationSettings:settings];
-    [application registerForRemoteNotifications];
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+        if(!error){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // use weakSelf here
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            });
+        }
+    }];
 }
 
 - (NSString *)getFormattedStringFromDate:(NSDate *)date {
@@ -169,12 +266,10 @@
                             [testVC setStatus:DMOperationCompletePopUpViewControllerStatusSuccess];
                             [[testVC actionButton] setHidden:YES];
                             [testVC setPopUpDescriptionAttributed:[[NSMutableAttributedString alloc] initWithString:fullDesc]];
-                             [testVC setPopUpTitle:@"Booking Update"];
+                            [testVC setPopUpTitle:@"Booking Update"];
                             [testVC setEffectStyle:UIBlurEffectStyleExtraLight];
                             [testVC setModalPresentationStyle:UIModalPresentationOverFullScreen];
                             [testVC setShoulHideDontShowAgainButton:YES];
-                            
-                            
                             [testVC setModalPresentationStyle:UIModalPresentationOverFullScreen];
                             [[(UITabBarController *)self.window.rootViewController selectedViewController] presentViewController:testVC animated:YES completion:NULL];
                         }
@@ -208,35 +303,33 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName, nil]];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
-                                                            NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                            NSFontAttributeName: [UIFont navigationFont]
-    
-                                                            }];
+        NSForegroundColorAttributeName: [UIColor whiteColor],
+        NSFontAttributeName: [UIFont navigationFont]
+    }];
     
     NSArray *array = [NSArray arrayWithObject:[UINavigationBar class]];
     [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:array]
      setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:[UIColor whiteColor],
-       NSFontAttributeName:[UIFont navigationBarButtonItemFont]
-       }
+         @{NSForegroundColorAttributeName:[UIColor whiteColor],
+           NSFontAttributeName:[UIFont navigationBarButtonItemFont]
+         }
      forState:UIControlStateNormal];
-
 }
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-
-    DMUserRequest *userRequest = [DMUserRequest new];
-    const unsigned *tokenBytes = [deviceToken bytes];
-    NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
-                          ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
-                          ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
-                          ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
-   // [userRequest setDeviceToken:hexToken];
-    [[FIRMessaging messaging] setAPNSToken:deviceToken];
-  //  Messaging.messaging().apnsToken = deviceToken
-
-
+    //NSString *fcmToken = [[FIRInstanceID instanceID] token];
+    
+    
+    //DMUserRequest *userRequest = [DMUserRequest new];
+    //const unsigned *tokenBytes = [deviceToken bytes];
+    //NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+    //                          ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+    //                          ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+    //                          ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+    // [userRequest setDeviceToken:hexToken];
+    [FIRMessaging messaging].APNSToken = deviceToken;
+    //  Messaging.messaging().apnsToken = deviceToken
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -247,7 +340,7 @@
 
 - (void)applyAppWideNavigationBackButton
 {
-    //UINavigationBar custom back button across app
+    // UINavigationBar custom back button across app
     if ([[UINavigationBar class] instancesRespondToSelector:@selector(setBackIndicatorImage:)])
     {
         [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"BackNavIcon"];
@@ -264,17 +357,14 @@
      @"FCMToken" object:nil userInfo:dataDict];
     // TODO: If necessary send token to application server.
     // Note: This callback is fired at each app startup and whenever a new token is generated.
-
+    
     DMUserRequest *userRequest = [DMUserRequest new];
-   // const unsigned *tokenBytes = [deviceToken bytes];
-//    NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
-       //                   ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
-         //                 ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
-        //                  ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+    // const unsigned *tokenBytes = [deviceToken bytes];
+    //    NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+    //                   ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+    //                 ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+    //                  ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
     [userRequest setDeviceToken:fcmToken];
-
-
-
 }
 //// [END refresh_token]
 
@@ -299,13 +389,11 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    
     [[DMUserRequest new] updateProfileEmailVerifificationDisplayed:NO];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
     [FBSDKAppEvents activateApp];
     
     [[DMLocationServices sharedInstance] startUpdatingCoordinates];
@@ -331,7 +419,7 @@
     {
         UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
         if(self.notificationPayload[@"news_id"] != NULL && self.notificationPayload[@"bookingID"] == NULL) {
-            tabController.selectedIndex = 1;
+            tabController.selectedIndex = 2;
         }
     }
 }
@@ -340,20 +428,16 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-
-  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
-    openURL:url
-    sourceApplication:sourceApplication
-    annotation:annotation
-  ];
-  // Add any custom logic here.
-  return handled;
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation {
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:sourceApplication
+                                                               annotation:annotation
+    ];
+    // Add any custom logic here.
+    return handled;
 }
-    
+
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     return [[FBSDKApplicationDelegate sharedInstance] application: app
                                                           openURL: url
@@ -362,6 +446,19 @@
 
 - (void)messaging:(nonnull FIRMessaging *)messaging didRefreshRegistrationToken:(nonnull NSString *)fcmToken {
     NSLog(@"The Token is: %@", fcmToken);
+    [[NSUserDefaults standardUserDefaults] setObject:fcmToken forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
+    NSLog(@"User Info : %@",notification.request.content.userInfo);
+    completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+}
+
+//Called to let your app know which action was selected by the user for a given notification.
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler{
+    NSLog(@"User Info : %@", response.notification.request.content.userInfo);
+    completionHandler();
 }
 
 @end

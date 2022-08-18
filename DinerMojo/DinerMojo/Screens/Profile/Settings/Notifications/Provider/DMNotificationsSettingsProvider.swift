@@ -7,7 +7,7 @@ import Foundation
 
 @objc class DMNotificationsSettingsProvider: NSObject, TUListProviderProtocol {
 
-    @objc var reuseIDs: [String] = ["DMRadioSortOptionCell", "DMVenuesOptionCell", "UpdateLocationTableViewCell"];
+    @objc var reuseIDs: [String] = ["DMRadioSortOptionCell","DMRadioSortOptionCell", "DMVenuesOptionCell", "UpdateLocationTableViewCell"];
     @objc var delegate: TUListProviderDelegate?
     @objc var itemsFactory: DMNotificationItemsFactory
     @objc var settings: SubscriptionsObject
@@ -30,11 +30,10 @@ import Foundation
 
     private func createData() -> [AnyObject]? {
         let locationSection = self.itemsFactory.locationItem(locationNotification: self.locationNotification)
+        let limitByRadiusItem = self.itemsFactory.limitByRadiusItem(selectedItems: [], locationNotification: self.locationNotification)
         let tellMeSection = self.itemsFactory.notifyMeItem(frequency: self.frequency)
         let thingsSection = self.itemsFactory.thingsSectionItem(settings: self.settings, ids: ids, name: name)
-
-        return [locationSection, tellMeSection, thingsSection];
-
+        return [locationSection,limitByRadiusItem, tellMeSection, thingsSection];
     }
 
     func requestData() {
@@ -46,12 +45,14 @@ import Foundation
     @objc var latitude: NSNumber?
     @objc var longitude: NSNumber?
     @objc var locationName: String?
+    @objc var locationRadius: NSNumber?
     @objc var isFavouriteVenuesNotification: Bool = true
     
-    @objc init(locationName: String?, latitude: NSNumber?, longitude: NSNumber?, isFavouriteVenuesNotification: Bool = true) {
+    @objc init(locationName: String?, latitude: NSNumber?, longitude: NSNumber?, isFavouriteVenuesNotification: Bool = true, locationRadius: NSNumber?) {
         self.locationName = locationName
         self.latitude = latitude
         self.longitude = longitude
         self.isFavouriteVenuesNotification = isFavouriteVenuesNotification
+        self.locationRadius = locationRadius
     }
 }

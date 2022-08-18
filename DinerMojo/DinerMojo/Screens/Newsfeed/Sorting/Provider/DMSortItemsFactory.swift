@@ -36,6 +36,7 @@ import UIKit
 
 @objc enum DistanceFilter: Int {
     case Default = 4000
+    case OnlyHere
     case OneMile
     case FiveMiles
     case TenMiles
@@ -79,17 +80,17 @@ import UIKit
 class DMTableItemsFactory: NSObject {
     
     func limitByRadiusItem(selectedItems: [FilterItem]) -> DMOptionGroupItem {
-        let defaultItem = DMRadioSortOptionItem(NSLocalizedString("limit.default", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.Default.rawValue)
+        let defaultItem = DMRadioSortOptionItem(NSLocalizedString("limit.default", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.OnlyHere.rawValue)
         
         defaultItem.isSelected = self.checkSelection(item: defaultItem, selectedItems: selectedItems)
         
         let oneMileItem = DMRadioSortOptionItem(NSLocalizedString("limit.oneMile", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.OneMile.rawValue)
         oneMileItem.isSelected = self.checkSelection(item: oneMileItem, selectedItems: selectedItems)
-      
+        
         
         let fiveMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.fiveMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.FiveMiles.rawValue)
         fiveMilesItem.isSelected = self.checkSelection(item: fiveMilesItem, selectedItems: selectedItems)
-     
+        
         let tenMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.tenMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.TenMiles.rawValue)
         tenMilesItem.isSelected = self.checkSelection(item: tenMilesItem, selectedItems: selectedItems)
         
@@ -186,7 +187,6 @@ class DMTableItemsFactory: NSObject {
         if selectedItems.firstIndex(where: {$0.itemId == item.itemId}) != nil {
             return true
         }
-        
         return false
     }
     
@@ -197,9 +197,9 @@ class DMTableItemsFactory: NSObject {
         
         return nil
     }
-
+    
     func showVenuesGroupItem(selectedItems: [FilterItem]) -> DMOptionGroupItem {
-
+        
         let redeemItem = DMRadioSortOptionItem(NSLocalizedString("sort.venues.redeem", comment: ""), groupName: GroupsName.ShowVenues.rawValue, itemId: ShowVenues.RedeemItem.rawValue)
         redeemItem.isSelected = self.checkSelection(item: redeemItem, selectedItems: selectedItems)
         let earnPointsItem = DMRadioSortOptionItem(NSLocalizedString("sort.venues.earn.points", comment: ""), groupName: GroupsName.ShowVenues.rawValue, itemId: ShowVenues.EarnPointsItem.rawValue)
@@ -209,27 +209,27 @@ class DMTableItemsFactory: NSObject {
         let offersItem = DMRadioSortOptionItem(NSLocalizedString("sort.venues.offers", comment: ""), groupName: GroupsName.ShowVenues.rawValue, itemId: ShowVenues.OffersItem.rawValue)
         offersItem.isSelected = self.checkSelection(item: offersItem, selectedItems: selectedItems)
         let subItems = [redeemItem, earnPointsItem, newsItem, offersItem]
-
+        
         let sortByItem = DMOptionGroupItem(NSLocalizedString("show.venues", comment: ""), items: subItems)
-
+        
         return sortByItem
     }
-
-
+    
+    
     func restaurantsFilterGroupItem(_ names: [NSDictionary], selectedItems: [FilterItem]) -> DMOptionGroupItem {
-
+        
         let item = self.groupItem(names, groupName: NSLocalizedString("sort.restaurants", comment: ""), selectedItems: selectedItems)
         return item
     }
-
+    
     func otherVenuesFilterGroupItem(_ names: [NSDictionary], selectedItems: [FilterItem]) -> DMOptionGroupItem {
-
+        
         let item = self.groupItem(names, groupName: NSLocalizedString("sort.other.venues", comment: ""), selectedItems: selectedItems)
         return item
     }
-
+    
     private func groupItem(_ names: [NSDictionary], groupName: String, selectedItems: [FilterItem]) -> DMOptionGroupItem {
-
+        
         var subItems = [DMRadioSortOptionItem]()
         var i = 0
         for item in names {
@@ -242,10 +242,10 @@ class DMTableItemsFactory: NSObject {
             subItems.append(subItem)
             i += 1
         }
-
+        
         let groupItem = DMOptionGroupItem(groupName, items: subItems)
-
+        
         return groupItem
     }
-
+    
 }

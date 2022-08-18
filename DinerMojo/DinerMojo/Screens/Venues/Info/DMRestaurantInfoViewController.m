@@ -211,7 +211,7 @@
 - (void)decorateInterface
 {
     CAGradientLayer *layer = [CAGradientLayer layer];
-    layer.frame = CGRectMake(0, 0, self.view.frame.size.width, 70);
+    layer.frame = CGRectMake(0, 0, self.view.frame.size.width, 120);
     layer.colors = [NSArray arrayWithObjects:
                     (id)[[[UIColor blackColor] colorWithAlphaComponent:0.9f] CGColor],
                     (id)[[[UIColor blackColor] colorWithAlphaComponent:0.6f] CGColor],

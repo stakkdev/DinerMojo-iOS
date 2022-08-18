@@ -17,6 +17,7 @@
 #import <SDWebImage/SDWebImage.h>
 
 
+
 @interface DMFavouritesViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate>
 
 @property(strong, nonatomic) DMVenueModelController *venueModelController;
@@ -28,6 +29,8 @@
 @property(strong, nonatomic) UIButton *deleteToolBarButton;
 
 @property(weak, nonatomic) IBOutlet UILabel *emptyTableLabel;
+@property(weak, nonatomic) IBOutlet UILabel *tapLinkLabel;
+@property(weak, nonatomic) IBOutlet UILabel *titleTableLabel;
 @property(weak, nonatomic) IBOutlet UIView *emptyTableDescriptionView;
 @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
@@ -43,7 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     _venueRequest = [DMVenueRequest new];
     _venueModelController = [DMVenueModelController new];
     _venueModelController.state = DMVenueListFavourite;
@@ -69,38 +72,52 @@
 
 - (void)setUpNavBarWithButtons {
     
-  
-    
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
         [navBarAppearance configureWithOpaqueBackground];
         navBarAppearance.backgroundColor = [UIColor colorWithRed:105.0f/255.0f green:201.0f/255.0f blue:179.0f/255.0f alpha:0.98f];
         [navBarAppearance setTitleTextAttributes:
-                @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+         @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         self.navigationController.navigationBar.standardAppearance = navBarAppearance;
         self.navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance;
     } else {
-       
+        
     }
-   
-
-  
     
     
     
-
+    
+    
+    
+    
     UIBarButtonItem *deleteAllButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"remove.all.title", nil) style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllPressed:)];
     self.navigationItem.rightBarButtonItem = deleteAllButton;
-//    [_editButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont navigationBarButtonItemFont]}
-//                               forState:UIControlStateNormal];
-
-
+    //    [_editButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont navigationBarButtonItemFont]}
+    //                               forState:UIControlStateNormal];
+    
+    
+    // Add Tap Gesture
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotTapped:)];
+    [self.tapLinkLabel setUserInteractionEnabled:YES];
+    [self.tapLinkLabel addGestureRecognizer:tap];
+    
+    
+    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:self.tapLinkLabel.text];
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:248.0f/255.0f
+                                                                              green:164.0f/255.0f
+                                                                               blue:30.0f/255.0f
+                                                                              alpha:1.0f] range:NSMakeRange(20,26)];
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:248.0f/255.0f
+                                                                              green:164.0f/255.0f
+                                                                               blue:30.0f/255.0f
+                                                                              alpha:1.0f] range:NSMakeRange(64,4)];
+    self.tapLinkLabel.attributedText = string;
 }
 
 #pragma mark - TableView delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     return _venues.count;
 }
 
@@ -109,16 +126,16 @@
     DMRestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RestaurantCell"];
     DMVenue *item = _venues[indexPath.row];
     DMVenueImage *venueImage = [item primaryImage];
-
+    
     NSString *category = [[[item categories] anyObject] name];
     [[cell restaurantName] setText:item.name];
     [[cell restaurantCategory] setText:[NSString stringWithFormat:@"%@ | %@", category, [item friendlyPlaceName]]];
     [[cell restaurantPrice] setText:[item priceBracketString]];
-
+    
     NSNumber *latitude = item.latitude;
     NSNumber *longitude = item.longitude;
     CLLocation *venueCoordinates = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
-
+    
     [[cell restaurantType] setText:[NSString stringWithFormat:@"%@", category]];
     double distance = [[DMLocationServices sharedInstance] userLocationDistanceFromLocation:venueCoordinates];
     if (distance == 0 ) {
@@ -134,16 +151,16 @@
         [[cell restaurantImageView] setImage:[self imageWithColor:[UIColor grayColor]]];
     } else {        
         [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:[venueImage fullURL]]
-                     placeholderImage:nil];
+                                      placeholderImage:nil];
     }
-
+    
     CGFloat alpha = (CGFloat) (([[self favouritesTableView] isEditing]) ? 0.0 : 1.0);
     cell.restaurantDistance.alpha = alpha;
     cell.restaurantPrice.alpha = alpha;
-
+    
     cell.index = indexPath;
     cell.delegate = self;
-
+    
     [cell setEarnVisibility:([item.allows_earns isEqualToNumber:[NSNumber numberWithBool:YES]]) ? YES : NO];
     [cell setRedeemVisibility:([item.allows_redemptions isEqualToNumber:[NSNumber numberWithBool:YES]]) ? YES : NO];
     [cell setToFavourite:YES];
@@ -195,7 +212,7 @@
         [self deleteAllFavouriteVenues];
     }];
     [self displayWarning:@"Warning" message:@"Are you sure you would like to continue?" action:action dismissActionTitle:@"Cancel"];
-
+    
 }
 
 #pragma mark - Data
@@ -208,8 +225,7 @@
     [[ self venueRequest] cachedFavoriteVenues:^(NSError *error, id results) {
         [self gotFavouriteVenuesCompletionBlock:error id:results final:false];
     }];
-
-
+    
     [[self userRequest] downloadFavouriteVenuesWithCompletionBlock:^(NSError *error, id results) {
         [self gotFavouriteVenuesCompletionBlock:error id:results final:true];
     }];
@@ -221,7 +237,7 @@
         [UIView transitionWithView:self.favouritesTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
             [self.favouritesTableView reloadData];
         }               completion:nil];
-
+        
         [[self favouritesTableView] setHidden:NO];
         [self toggleNoFavouritesLabel];
         if (!final) {
@@ -230,6 +246,7 @@
     } else {
         if (final && _venues.count == 0) {
             [self.emptyTableLabel setHidden:NO];
+            [[self emptyTableDescriptionView] setHidden:YES];
             [self.emptyTableLabel setText:@"Can't fetch favourites. Check your connection"];
         } else {
             // Do nothing, let network call finish
@@ -245,7 +262,7 @@
     NSArray *sortedVenues = [venues sortedArrayUsingDescriptors:@[sort]];
     NSMutableArray *newVenues = [[NSMutableArray alloc]initWithArray:sortedVenues];
     _venues = newVenues;
-//    [_favouritesTableView reloadData];
+    //    [_favouritesTableView reloadData];
 }
 
 - (void)deleteAllFavouriteVenues {
@@ -272,9 +289,8 @@
 
 - (void)toggleNoFavouritesLabel; {
     if ([_venues count] == 0) {
-
-        [[self emptyTableLabel] setHidden:NO];
-        [[self emptyTableLabel] setText:@"No favourites at the moment"];
+        [[self emptyTableLabel] setHidden:YES];
+        [[self titleTableLabel] setText:@"You don't have any favourites yet!"];
         [[self emptyTableDescriptionView] setHidden:NO];
         [[self favouritesTableView] setHidden:YES];
     } else {
@@ -282,24 +298,24 @@
         [[self emptyTableDescriptionView] setHidden:YES];
         [[self favouritesTableView] setHidden:NO];
     }
-
+    
 }
 
 
 #pragma mark - lazy loading
 
 - (UIImage *)imageWithColor:(UIColor *)color {
-
+    
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
-
+    
     CGContextSetFillColorWithColor(context, [color CGColor]);
     CGContextFillRect(context, rect);
-
+    
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-
+    
     return image;
 }
 
@@ -365,6 +381,14 @@
     UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:dismissActionTitle style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:dismissAction];
     [self presentViewController:alert animated:true completion:nil];
+}
+
+
+-(void)gotTapped:(UITapGestureRecognizer*)sender {
+    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+        NSLog(@"Opened Url: %i", success);
+    }];
 }
 
 

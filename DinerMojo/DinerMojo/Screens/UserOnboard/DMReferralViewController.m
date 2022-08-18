@@ -51,8 +51,11 @@
 
 - (IBAction)takeATourButtonClicked:(id)sender
 {
-    [self performSegueWithIdentifier:@"welcomeSegue" sender:nil];
-
+    //[self performSegueWithIdentifier:@"welcomeSegue" sender:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DMWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"welcomeViewController"];
+    [welcomeViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self.navigationController pushViewController:welcomeViewController animated:YES];
 }
 
 - (IBAction)getStarted:(id)sender
@@ -60,7 +63,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DMViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
     destinationViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self setRootViewController:destinationViewController animated:YES];
+    [self setRootViewController:destinationViewController animated:NO];
+     
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

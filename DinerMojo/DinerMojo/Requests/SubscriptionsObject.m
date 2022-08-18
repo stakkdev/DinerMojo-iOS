@@ -12,7 +12,7 @@
 
 + (SubscriptionsObject *)createObjectFromDictionary:(NSDictionary *)dic {
     SubscriptionsObject *sub = [[SubscriptionsObject alloc] init];
-    
+    //NSLog(@"Subscription object are: %@",dic);
     if([dic[@"my_favs_sub"] boolValue]) {
         sub.my_favs_sub = YES;
     }

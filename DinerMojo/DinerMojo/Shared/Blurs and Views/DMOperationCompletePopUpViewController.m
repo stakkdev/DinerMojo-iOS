@@ -65,9 +65,10 @@
     if (_status == DMOperationCompletePopUpViewControllerStatusSuccess)
     {
         [[self statusImageView] setImage:[UIImage imageNamed:@"success_tick"]];
+    } else if (_status == DMOperationCompletePopUpViewControllerNoInternetSuccess) {
+        [[self statusImageView] setImage:[UIImage imageNamed:@"success_tick"]];
     }
-    else
-    {
+    else {
         [[self statusImageView] setImage:[UIImage imageNamed:@"fail_cross"]];
     }
 }
@@ -187,7 +188,7 @@
 }
 
 - (IBAction)dontShowAgainButtonPressed:(id)sender {
-    NSLog(@"%@", [NSString stringWithFormat:@"tap tap %@", self.type]);
+    //NSLog(@"%@", [NSString stringWithFormat:@"tap tap %@", self.type]);
     int type;
     if ([self.type isEqualToString:@"Booking"]) {
         type = DMAfterTransactionPopUpBookingType;

@@ -41,7 +41,6 @@ import UIKit
                 names.append(i.name)
             }
         }
-        
         return names
     }
 

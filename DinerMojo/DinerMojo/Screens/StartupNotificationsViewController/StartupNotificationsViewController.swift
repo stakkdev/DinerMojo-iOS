@@ -29,7 +29,6 @@ class StartupNotificationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissPopup))
         tapGesture.numberOfTapsRequired = 1
         self.topView.addGestureRecognizer(tapGesture)

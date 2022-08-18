@@ -62,6 +62,9 @@
             [self didEndDownloading];
             NSLog(@"Profile give error %@",error);
         } else {
+            
+            NSLog(@"response downloadUserProfileResponseWithCompletionBlock is %@",response);
+
             BOOL isFavNoti = YES;
             if (![response[@"is_favourite_venues_notification"]  isKindOfClass:[NSNull class]]) {
                 if ([response[@"is_favourite_venues_notification"] boolValue] == NO) {
@@ -80,11 +83,16 @@
                 longi = response[@"longitude"];
             }
             
+            NSNumber * locationRadious = 0;
+            if (![response[@"location_radius"]  isKindOfClass:[NSNull class]]) {
+                locationRadious = response[@"location_radius"];
+            }
+            
             NSString * locName = @"";
             if (![response[@"location_name"]  isKindOfClass:[NSNull class]]) {
                 locName = response[@"location_name"];
             }
-            self.locationData = [[LocationNotification alloc] initWithLocationName:locName latitude:lati longitude:longi isFavouriteVenuesNotification:isFavNoti];
+            self.locationData = [[LocationNotification alloc] initWithLocationName:locName latitude:lati longitude:longi isFavouriteVenuesNotification:isFavNoti locationRadius:locationRadious];
             [weakSelf downloadSubscriptions];
         }
     }];
@@ -211,6 +219,7 @@
     if(dic[@"frequency"]) {
         self.notificationFrequency = [dic[@"frequency"] integerValue];
     }
+
     
     __weak typeof(self) weakSelf = self;
 
@@ -238,7 +247,9 @@
     __weak typeof(self) weakSelf = self;
     NSLog(@"locationData--%@, %@, %@, %d", locationData.latitude, locationData.longitude, locationData.locationName, locationData.isFavouriteVenuesNotification);
     BOOL isFavVenue = locationData.isFavouriteVenuesNotification;
-    NSDictionary *params = @{@"frequency": @(self.notificationFrequency), @"latitude": locationData.latitude, @"longitude": locationData.longitude, @"location_name": locationData.locationName, @"is_favourite_venues_notification": @(isFavVenue)};
+    
+    // Here we need to save Location Radious Test Rajesh
+    NSDictionary *params = @{@"frequency": @(self.notificationFrequency), @"latitude": locationData.latitude, @"longitude": locationData.longitude, @"location_name": locationData.locationName, @"location_radius": locationData.locationRadius, @"is_favourite_venues_notification": @(isFavVenue)};
     [[self userRequest] uploadUserProfileWith:params profileImage:nil completionBlock:^(NSError *error, id results) {
         if (error) {
             [weakSelf showErrorMessage];
@@ -289,6 +300,7 @@
     NSLog(@"locationData--%@", self.tableManager.notificationData.longitude);
     NSLog(@"locationData--%@", self.tableManager.notificationData.locationName);
     NSLog(@"locationData--%d", self.tableManager.notificationData.isFavouriteVenuesNotification);
+    NSLog(@"locationData radious--%d", self.tableManager.notificationData.locationRadius);
     self.locationData = self.tableManager.notificationData;
 }
 

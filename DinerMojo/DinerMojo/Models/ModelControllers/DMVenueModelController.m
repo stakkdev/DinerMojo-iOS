@@ -90,7 +90,7 @@
         } else if (filter.groupName == GroupsNameDistanceFilter) {
             if (filter.itemId == DistanceFilterDefault && _defaultDistance != 0) {
                 filterByDistance = YES;
-                filterByMiles = _defaultDistance;
+                filterByMiles = 5;
             } else if (filter.itemId == DistanceFilterOneMile) {
                 filterByDistance = YES;
                 filterByMiles = 1;
@@ -100,8 +100,10 @@
             } else if (filter.itemId == DistanceFilterTenMiles) {
                 filterByDistance = YES;
                 filterByMiles = 10;
+            }else if (filter.itemId == DistanceFilterOnlyHere) {
+                filterByDistance = YES;
+                filterByMiles = 0.1;
             }
-
         }
     }
     

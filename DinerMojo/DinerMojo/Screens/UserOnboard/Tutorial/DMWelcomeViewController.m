@@ -48,7 +48,7 @@
         self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
     }
     [self.scrollView setBackgroundColor:[UIColor clearColor]];
-    [self performSelector:@selector(updateImagesInScrollView) withObject:self afterDelay:0.5];
+    [self performSelector:@selector(updateImagesInScrollView) withObject:self afterDelay:1];
 }
 
 
@@ -101,7 +101,11 @@
                 textAttachment.image = [UIImage imageNamed:@"earn_icon_enabled"];
                 textAttachment.bounds = CGRectMake(0, 0, 20, 20);
                 
-                NSMutableAttributedString *earnPoints3 = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
+                //NSMutableAttributedString *earnPoints3 = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
+                
+                NSAttributedString *earnPoints3 = [NSAttributedString
+                attributedStringWithAttachment:textAttachment];
+                
                 NSMutableAttributedString *earnPoints4 = [[NSMutableAttributedString alloc] initWithString:@" (£1 = 1 point). Simply use the Earn button, take a picture of your receipt and we'll take care of the rest."];
                 NSMutableAttributedString *all = [[NSMutableAttributedString alloc] initWithString:earnPoints];
                 [all appendAttributedString:earnPoints3];
@@ -117,7 +121,9 @@
                 textAttachment.image = [UIImage imageNamed:@"redeem_icon_enabled"];
                 textAttachment.bounds = CGRectMake(0, 0, 20, 20);
                 
-                NSMutableAttributedString *reedemPoints = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
+                NSAttributedString *reedemPoints = [NSAttributedString
+                attributedStringWithAttachment:textAttachment];
+                //NSMutableAttributedString *reedemPoints = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
                 NSMutableAttributedString *reedem = [[NSMutableAttributedString alloc] initWithString:@"Use your points to get great rewards from any participating venues that have this symbol "];
                 [reedem appendAttributedString:reedemPoints];
                 [tutorialDescription setAttributedText:reedem];
@@ -140,13 +146,15 @@
         [[self scrollView] addSubview:greenView2];
         [[self scrollView] addSubview:tutorialDescription];
         
-        [NSLayoutConstraint activateConstraints: @[
+        [NSLayoutConstraint activateConstraints:@[
                  [imageView.widthAnchor constraintEqualToConstant:screenWidth * 0.8],
                  [imageView.centerXAnchor constraintEqualToAnchor:self.scrollView.centerXAnchor constant:i * screenWidth],
                  [imageView.bottomAnchor constraintEqualToAnchor:tutorialDescription.topAnchor constant:-16.0],
                  [imageView.topAnchor constraintEqualToAnchor:tutorialTitle.bottomAnchor constant:16.0],
              ]
         ];
+        
+        [self.view layoutIfNeeded];
     }
     
 }
@@ -199,7 +207,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DMViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
     destinationViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self setRootViewController:destinationViewController animated:YES];
+    [self setRootViewController:destinationViewController animated:NO];
 }
 
 - (IBAction)skipPressed:(id)sender

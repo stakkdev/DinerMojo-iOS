@@ -143,7 +143,7 @@
     {
         [operationCompletePopupViewController setActionButtonLoadingState:YES];
         [self requestEmailVerificationFromOperationCompletePopupViewController:operationCompletePopupViewController];
-    }
+    } 
     else
     {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -187,9 +187,7 @@
 - (void)goToLandingPage
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     UINavigationController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"landingNavigationController"];
-    
     [self setRootViewController:destinationViewController animated:NO];
 }
 

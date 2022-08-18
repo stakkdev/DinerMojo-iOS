@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,30 +13,34 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OgB-Bo-Lx7" id="0CK-uS-7IU">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="81.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQp-dm-xzi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                         <subviews>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPW-Cg-uZl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="41.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="7q2-2l-ABK"/>
                                 </constraints>
                             </view>
                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VsN-7D-plg">
-                                <rect key="frame" x="50" y="82.5" width="325" height="41"/>
+                                <rect key="frame" x="50" y="82" width="325" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="QRX-eg-JtA"/>
                                 </constraints>
                             </view>
                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yV1-Ez-TBc">
-                                <rect key="frame" x="50" y="41.5" width="325" height="41"/>
+                                <rect key="frame" x="50" y="41" width="325" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="y6a-BH-TTv"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="M83-OM-nKj">
+                                <rect key="frame" x="177" y="31" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -64,11 +66,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="actvityView" destination="M83-OM-nKj" id="ovs-ZI-jlI"/>
                 <outlet property="allSection" destination="VPW-Cg-uZl" id="Wl0-nt-dwX"/>
                 <outlet property="favouritesSection" destination="VsN-7D-plg" id="AH9-qD-d4r"/>
                 <outlet property="selectedSection" destination="yV1-Ez-TBc" id="FXb-DQ-QcK"/>
             </connections>
-            <point key="canvasLocation" x="-9" y="-53"/>
+            <point key="canvasLocation" x="-10.4" y="-53.073463268365821"/>
         </tableViewCell>
     </objects>
 </document>

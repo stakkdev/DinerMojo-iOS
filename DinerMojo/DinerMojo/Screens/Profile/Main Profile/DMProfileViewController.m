@@ -279,9 +279,7 @@
             pointsString = [NSString stringWithFormat:(pointsRemaining == 1) ? @"Earn %li more point to become a Platinum Member" : @"Earn %li more points to become a Platinum Member", (long)pointsRemaining];
             
             [self.pointsToEarnLabel setText:pointsString];
-            
             [self.memberStatusLabel setText:[NSString stringWithFormat:@"Gold Member - Joined %@", [dateFormatter stringFromDate:self.currentUser.created_at]]];
-
             self.pointValue = ((self.pointValue - 1000) * 0.1) / 100;
             
             break;

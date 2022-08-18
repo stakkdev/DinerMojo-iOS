@@ -37,8 +37,45 @@ class DMNotificationItemsFactory: NSObject {
                 fontColor: UIColor(hexString: "#868686")!)
 
         group.allowOnlyOneInGroup = true
-
         return group
+    }
+    
+    func limitByRadiusItem(selectedItems: [FilterItem], locationNotification: LocationNotification?) -> DMOptionGroupItem {
+        
+        var radiousValue:Double = 0.0
+        if let radious = locationNotification?.locationRadius {
+            radiousValue = Double(truncating: radious)
+        }
+        
+        let defaultItem = DMRadioSortOptionItem(NSLocalizedString("limit.default", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.OnlyHere.rawValue)
+        defaultItem.isSelected = (radiousValue == 0.1) ? true : false
+        
+        let oneMileItem = DMRadioSortOptionItem(NSLocalizedString("limit.oneMile", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.OneMile.rawValue)
+        oneMileItem.isSelected = (radiousValue == 1) ? true : false
+      
+        let fiveMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.fiveMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.FiveMiles.rawValue)
+        fiveMilesItem.isSelected = (radiousValue == 5) ? true : false
+     
+        let tenMilesItem = DMRadioSortOptionItem(NSLocalizedString("limit.tenMiles", comment: ""), groupName: GroupsName.DistanceFilter.rawValue, itemId: DistanceFilter.TenMiles.rawValue)
+        tenMilesItem.isSelected = (radiousValue == 10) ? true : false
+        
+        //print(tenMilesItem)
+        
+        if selectedItems.count == 0
+        {
+            //fiveMilesItem.isSelected = true
+        }
+        let subItems = [defaultItem, oneMileItem, fiveMilesItem, tenMilesItem]
+        let limitByItem = DMOptionGroupItem(NSLocalizedString("limit.by", comment: ""), items: subItems)
+        limitByItem.allowOnlyOneInGroup = true
+        return limitByItem
+    }
+    
+    func checkSelection(item: DMRadioSortOptionItem, selectedItems: [FilterItem]) -> Bool {
+        if selectedItems.firstIndex(where: {$0.itemId == item.itemId}) != nil {
+            return true
+        }
+        return false
     }
     
     func locationItem(locationNotification: LocationNotification?) -> DMOptionGroupItem {
@@ -65,6 +102,7 @@ class DMNotificationItemsFactory: NSObject {
         things.ids = ids
         things.selectedName = name
         things.allVenues = settings.all_venues_sub
+        things.newFavourite = settings.dinermojo_sub
         
         if(settings.subscriptions != nil && settings.subscriptions.count > 0) {
             things.selectedVenues = true
@@ -72,7 +110,7 @@ class DMNotificationItemsFactory: NSObject {
         }
         
         if ids != nil {
-            things.allVenues = false
+            //things.allVenues = false
             things.myFav = false
         } else {
              things.myFav = settings.my_favs_sub
@@ -86,13 +124,13 @@ class DMNotificationItemsFactory: NSObject {
                 items: [things, dmNews],
                 backgroundColor: self.headerColor,
                 fontColor: UIColor(hexString: "#868686")!)
-
         return group
     }
 
-    
     func diningSectionItem(settings: SubscriptionsObject, color: UIColor, selectedDinings: [SelectedNotificationsDining]) -> DMOptionGroupItem {
+        
         var notificationItems = [DMVenuesNotificationItem]()
+        
         for dining in selectedDinings {
             let item = DMVenuesNotificationItem(venue: dining.venue, groupName: GroupsName.DiningNotifications.rawValue, color: color, selectedNotifications: dining)
             notificationItems.append(item)
@@ -104,12 +142,13 @@ class DMNotificationItemsFactory: NSObject {
             backgroundColor: UIColor.white,
             fontColor: color)
         
-        
         return group
     }
     
     func lifestyleSectionItem(settings: SubscriptionsObject, color: UIColor, selectedLifestyles: [SelectedNotificationsLifestyle]) -> DMOptionGroupItem {
+       
         var notificationItems = [DMVenuesNotificationItem]()
+        
         for lifestyle in selectedLifestyles {
             let item = DMVenuesNotificationItem.init(venue: lifestyle.venue, groupName: GroupsName.LifestyleNotifications.rawValue, color: color, selectedNotifications: lifestyle)
             notificationItems.append(item)
@@ -120,7 +159,6 @@ class DMNotificationItemsFactory: NSObject {
             items: notificationItems,
             backgroundColor: UIColor.white,
             fontColor: color)
-        
         
         return group
     }

@@ -257,6 +257,9 @@
 {
     NSDictionary *params = @{ @"email_address" : email, @"password" : password};
     
+    //NSDictionary *dictionaryHeader = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Token %@",[DMRequest currentUserToken]],@"Authorization", nil];
+
+    
     [self POST:@"user/login_with_email" withParams:params withCompletionBlock:^(NSError *error, id results) {
         if (error)
         {
@@ -350,6 +353,7 @@
         if (error) {
             completionBlock(error, nil);
         } else {
+            //NSLog(@"user/me/user_check downloadUserProfileWithCompletionBlock ", results);
             completionBlock(nil, [DMMappingHelper mapUser:results mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]]);
         }
     }];
@@ -361,6 +365,7 @@
         if (error) {
             completionBlock(error, nil, nil);
         } else {
+            //NSLog(@"user/me/user_check downloadUserProfileResponseWithCompletionBlock:::: ", results);
             completionBlock(nil, [DMMappingHelper mapUser:results mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]], results);
         }
     }];

@@ -308,10 +308,12 @@
 
 - (IBAction)sortButtonPressed:(id)sender {
     UINavigationController *vc = (UINavigationController*)DMViewControllersProvider.instance.sortNewsVC;
+    vc.navigationBar.backgroundColor = [UIColor navColor];
     
     if (vc.viewControllers.count > 0) {
         DMSortVenueFeedViewController *filterVC = vc.viewControllers[0];
         filterVC.delegate = self;
+        filterVC.modalPresentationStyle = UIModalPresentationFullScreen;
         filterVC.filterItems = self.filterItems;
     }
     

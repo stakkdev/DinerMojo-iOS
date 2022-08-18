@@ -503,8 +503,6 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             {
                 [self goToVenues:NO];
             }
-            
-            
             [indicator stopAnimating];
             [indicator removeFromSuperview];
         }];
