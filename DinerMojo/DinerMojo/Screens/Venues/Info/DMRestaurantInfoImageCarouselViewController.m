@@ -30,12 +30,12 @@
 
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = CGRectMake(0, self.scrollView.frame.size.height - 70, self.view.frame.size.width, 70);
-    /*layer.colors = [NSArray arrayWithObjects:
-                    (id)[[UIColor clearColor] CGColor],
-                    (id)[[[UIColor blackColor] colorWithAlphaComponent:0.4f] CGColor],
-                    (id)[[[UIColor blackColor] colorWithAlphaComponent:0.6f] CGColor],
-                    (id)[[[UIColor blackColor] colorWithAlphaComponent:0.9f] CGColor],
-                    nil];*/
+//    layer.colors = [NSArray arrayWithObjects:
+//                    (id)[[UIColor clearColor] CGColor],
+//                    (id)[[[UIColor blackColor] colorWithAlphaComponent:0.4f] CGColor],
+//                    (id)[[[UIColor blackColor] colorWithAlphaComponent:0.6f] CGColor],
+//                    (id)[[[UIColor blackColor] colorWithAlphaComponent:0.9f] CGColor],
+//                    nil];
     [self.view.layer insertSublayer:layer below:self.view.layer];
     self.view.layer.masksToBounds = NO;
     [self.view bringSubviewToFront:self.pageControl];

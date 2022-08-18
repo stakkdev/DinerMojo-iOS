@@ -61,7 +61,7 @@ import GooglePlaces
         self.tableView?.delegate = self
         self.tableView?.separatorColor = UIColor.clear
         self.tableView?.backgroundColor = UIColor(hexString: "#FFFFFF")
-        self.tableView!.estimatedRowHeight = 100
+        self.tableView!.estimatedRowHeight = 75
         self.tableView?.estimatedSectionHeaderHeight = 40
         self.tableView?.estimatedSectionFooterHeight = 10
         self.tableView?.rowHeight = UITableView.automaticDimension
@@ -102,15 +102,12 @@ import GooglePlaces
     
     @objc func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let dataGroup: TUGroupedTableViewData = self.data![section]
-        
         guard let headerID = dataGroup.headerReuseID() else {
             return nil
         }
-        
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerID) else {
             return nil
         }
-        
         headerView.tag = section
         dataGroup.decorateHeaderView(headerView)
         return headerView
@@ -138,6 +135,7 @@ import GooglePlaces
         
         
         if var c = cell as? TableViewSelectForGroup {
+            
             c.clickCallback = { [unowned self] in
                 if let _ = dataItem as? DMVenuesOptionItem {
                     self.parent?.performSegue(withIdentifier: "showNotificationsVenues", sender: nil)
@@ -151,16 +149,33 @@ import GooglePlaces
                     return
                 }
                 
-                
                 guard let item = dataItem as? DMRadioSortOptionItem else {
                     return
                 }
                 
                 if dataGroup.allowOnlyOneInGroup == true {
-                    let selectionStatus = item.isSelected
                     
+                    let selectionStatus = item.isSelected
                     if item.groupName == 1012 && item.itemId == 10001 {
                         notificationData?.isFavouriteVenuesNotification = item.isSelected
+                        delegateLocation?.locationUpdated()
+                    }
+                    
+                    if item.groupName == 1002 {
+                        print(item.itemId)
+                        let options = item.itemId
+                        switch options {
+                        case 4001:
+                            notificationData?.locationRadius = 0.1
+                        case 4002:
+                            notificationData?.locationRadius = 1
+                        case 4003,4000:
+                            notificationData?.locationRadius = 5
+                        case 4004:
+                            notificationData?.locationRadius = 10
+                        default:
+                            print(options)
+                        }
                         delegateLocation?.locationUpdated()
                     }
                     
@@ -171,9 +186,7 @@ import GooglePlaces
                             }
                         }
                     }
-                    
                     item.isSelected = selectionStatus
-                    
                     self.tableView?.reloadData()
                 }
                 
@@ -185,7 +198,6 @@ import GooglePlaces
                             data.isSelected = selectionStatus
                         }
                     }
-                    
                     self.tableView?.reloadData()
                 }
                 
@@ -200,9 +212,7 @@ import GooglePlaces
                             }
                         }
                     }
-                    
                     item.isSelected = selectionStatus
-                    
                     self.tableView?.reloadData()
                 }
                 else {
@@ -232,7 +242,6 @@ import GooglePlaces
                             }
                         }
                     }
-                    
                     self.tableView?.reloadData()
                 }
             }
@@ -243,11 +252,8 @@ import GooglePlaces
         if indexPath.section == self.data!.count - 1 && indexPath.row == groups.count - 1 {
             self.delegate?.loadMoreData?()
         }
-        
         let tableCell = cell as! UITableViewCell
-        
         tableCell.layoutIfNeeded()
-        
         return tableCell
     }
     
@@ -296,7 +302,7 @@ import GooglePlaces
     }
     
     @objc func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 38
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -366,11 +372,8 @@ import GooglePlaces
                     item.payload = data.getPayload()
                     items.append(item)
                 }
-                
-                
                 j += 1
             }
-            
             i += 1
         }
         
@@ -407,7 +410,7 @@ extension TUGroupedTableManager: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         print("Place name: \(String(describing: place.name))")
         print("Place coordinate: \(String(describing: place.coordinate))")
-        notificationData = LocationNotification(locationName: place.name, latitude: NSNumber(value: place.coordinate.latitude), longitude: NSNumber(value: place.coordinate.longitude), isFavouriteVenuesNotification: notificationData?.isFavouriteVenuesNotification ?? true)
+        notificationData = LocationNotification(locationName: place.name, latitude: NSNumber(value: place.coordinate.latitude), longitude: NSNumber(value: place.coordinate.longitude), isFavouriteVenuesNotification: notificationData?.isFavouriteVenuesNotification ?? true, locationRadius: notificationData?.locationRadius)
         delegateLocation?.locationUpdated()
         tableView?.reloadData()
         self.parent?.dismiss(animated: true, completion: nil)

@@ -32,6 +32,7 @@ import UIKit
     @objc class func convertPayloadToDicrionary(payload: [FilterItem]) -> NSDictionary {
         let dictionary: NSMutableDictionary = [:]
         for item in payload {
+            print("payload item is:", item.groupName)
             if item.itemId == NotificationFrequencyGroup.NImmediatelyItem.rawValue {
                 dictionary.setObject(0, forKey: "frequency" as NSCopying)
             }
@@ -47,6 +48,8 @@ import UIKit
             else if item.itemId == ThingsGroup.NVenuesItem.rawValue {
                 if item.payload?.allVenues == true {
                     dictionary.setObject(true, forKey: "all_venues_sub" as NSCopying)
+                } else {
+                    dictionary.setObject(false, forKey: "all_venues_sub" as NSCopying)
                 }
                 if item.payload?.myFav == true {
                     dictionary.setObject(true, forKey: "my_favs_sub" as NSCopying)
@@ -55,6 +58,7 @@ import UIKit
             else if item.itemId == ThingsGroup.NDMClubItem.rawValue {
                 dictionary.setObject(true, forKey: "dinermojo_sub" as NSCopying)
             }
+            dictionary.setObject(false, forKey: "my_favs_sub" as NSCopying)
         }
         
         return NSDictionary(dictionary: dictionary)

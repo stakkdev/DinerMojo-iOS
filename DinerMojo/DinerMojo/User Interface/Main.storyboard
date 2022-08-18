@@ -141,7 +141,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="FEM-SK-8fX" kind="show" identifier="welcomeSegue" id="LOx-J2-VUw"/>
+                                    <action selector="takeATourButtonClicked:" destination="6pE-2b-4eH" eventType="touchUpInside" id="xO3-qv-1iC"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cml-PX-Gcb" userLabel="Profile Picture" customClass="DMView">
@@ -194,7 +194,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Bsf-Kn-eT6">
-                                <rect key="frame" x="25" y="191" width="325" height="130.5"/>
+                                <rect key="frame" x="25" y="191" width="325" height="153"/>
                                 <string key="text">Thanks for using the referral code to sign up. When you dine at your first restaurant you’ll earn points for both yourself and them. Isn’t that great?
 
 How about we take you for a quick tour before you get started?</string>
@@ -244,6 +244,7 @@ How about we take you for a quick tour before you get started?</string>
                         <outlet property="profileInitialsLabel" destination="ITj-h0-uLH" id="oEg-YY-ALG"/>
                         <outlet property="welcomeDescriptionLabel" destination="Bsf-Kn-eT6" id="hVM-3M-HGs"/>
                         <outlet property="welcomeLabel" destination="gpN-sY-ViU" id="mUr-nD-Rkw"/>
+                        <segue destination="FEM-SK-8fX" kind="show" identifier="welcomeSegue" id="a0F-lG-YcN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbG-7Q-3iw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -253,33 +254,33 @@ How about we take you for a quick tour before you get started?</string>
         <!--Welcome View Controller-->
         <scene sceneID="Ve6-kL-fCi">
             <objects>
-                <viewController storyboardIdentifier="welcomeViewController" id="FEM-SK-8fX" customClass="DMWelcomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeViewController" modalPresentationStyle="fullScreen" id="FEM-SK-8fX" customClass="DMWelcomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="51t-Md-yml"/>
                         <viewControllerLayoutGuide type="bottom" id="5dm-18-KMO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bTN-3N-PZZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="gFj-jL-RQB">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VuZ-EG-fiE">
-                                <rect key="frame" x="0.0" y="463" width="375" height="184"/>
+                                <rect key="frame" x="0.0" y="483" width="375" height="184"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="184" id="KRD-aO-xW2"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72V-VY-g6C">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <outlet property="delegate" destination="FEM-SK-8fX" id="cRY-1Y-mf2"/>
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="ozT-GM-TKJ" customClass="DMPageControl">
-                                <rect key="frame" x="161" y="604" width="53" height="26"/>
+                                <rect key="frame" x="161" y="624" width="53" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="53" id="z2X-CK-T0N"/>
                                 </constraints>
@@ -287,7 +288,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLo-yW-kN0" customClass="DMButton">
-                                <rect key="frame" x="16" y="587" width="343" height="48"/>
+                                <rect key="frame" x="16" y="607" width="343" height="48"/>
                                 <color key="backgroundColor" red="0.37254901959999998" green="0.72941176470000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="hvb-uO-fLi"/>
@@ -344,7 +345,6 @@ How about we take you for a quick tour before you get started?</string>
                             <constraint firstItem="GE7-eS-tHr" firstAttribute="top" secondItem="51t-Md-yml" secondAttribute="bottom" constant="5" id="THb-f7-w4L"/>
                             <constraint firstAttribute="trailing" secondItem="VuZ-EG-fiE" secondAttribute="trailing" id="b5H-uu-2eE"/>
                             <constraint firstItem="HLo-yW-kN0" firstAttribute="leading" secondItem="bTN-3N-PZZ" secondAttribute="leading" constant="16" id="e3L-5t-5dQ"/>
-                            <constraint firstItem="gFj-jL-RQB" firstAttribute="top" secondItem="51t-Md-yml" secondAttribute="bottom" constant="-20" id="gKf-IL-erS"/>
                             <constraint firstItem="5dm-18-KMO" firstAttribute="top" secondItem="VuZ-EG-fiE" secondAttribute="bottom" id="he3-ma-1H9"/>
                             <constraint firstItem="5dm-18-KMO" firstAttribute="top" secondItem="gFj-jL-RQB" secondAttribute="bottom" id="qNf-Nu-oFR"/>
                             <constraint firstAttribute="trailing" secondItem="GE7-eS-tHr" secondAttribute="trailing" constant="18" id="rzH-u2-VR3"/>
@@ -368,7 +368,7 @@ How about we take you for a quick tour before you get started?</string>
         <!--Sort By-->
         <scene sceneID="X8E-YE-bA4">
             <objects>
-                <viewController storyboardIdentifier="sortVenueFeedView" id="A8b-SE-Qhs" customClass="DMSortVenueFeedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sortVenueFeedView" wantsFullScreenLayout="YES" modalPresentationStyle="overFullScreen" id="A8b-SE-Qhs" customClass="DMSortVenueFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fpf-ft-B2A"/>
                         <viewControllerLayoutGuide type="bottom" id="06i-PX-EbG"/>
@@ -378,13 +378,13 @@ How about we take you for a quick tour before you get started?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEM-XF-mGb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BXA-xL-Ulg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wf-lH-Dud">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOy-PY-YoT" userLabel="contentView">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="905"/>
@@ -555,6 +555,7 @@ How about we take you for a quick tour before you get started?</string>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.37254901959999998" green="0.72941176470000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vEM-XF-mGb" firstAttribute="top" secondItem="URS-UQ-0Gm" secondAttribute="top" constant="64" id="23b-Vt-ZAa"/>
                             <constraint firstItem="vEM-XF-mGb" firstAttribute="leading" secondItem="URS-UQ-0Gm" secondAttribute="leading" id="JrA-9B-ySg"/>
@@ -563,17 +564,21 @@ How about we take you for a quick tour before you get started?</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sort By" id="08Q-rq-Hvh">
-                        <barButtonItem key="leftBarButtonItem" image="BackNavIcon" id="6I1-wc-IUZ">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="BackNavIcon" id="6I1-wc-IUZ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="dismissView:" destination="A8b-SE-Qhs" id="qsc-8A-hqQ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="wwa-44-L1f">
+                        <barButtonItem key="rightBarButtonItem" title="Done" image="ic_done_white_48pt" id="wwa-44-L1f">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="doneAction:" destination="A8b-SE-Qhs" id="BaZ-5v-51V"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="generalOptionsTableHeightConstraint" destination="7Vd-h5-tpY" id="wCp-Zq-9tX"/>
                         <outlet property="generalOptionsTableView" destination="WAe-xq-B8a" id="Zjd-fs-FwU"/>
@@ -591,7 +596,7 @@ How about we take you for a quick tour before you get started?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDx-qe-DPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2488.8000000000002" y="2269.1154422788609"/>
+            <point key="canvasLocation" x="-2934" y="2212"/>
         </scene>
         <!--Venues-->
         <scene sceneID="4Y2-3F-dpY">
@@ -829,7 +834,9 @@ How about we take you for a quick tour before you get started?</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5f-3d-5io">
                                         <rect key="frame" x="20" y="5" width="83" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Search here"/>
+                                        <state key="normal" title="Search here">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="searchHerePressed:" destination="y7k-hP-ThC" eventType="touchUpInside" id="mUX-Fg-kwb"/>
                                         </connections>
@@ -883,6 +890,7 @@ How about we take you for a quick tour before you get started?</string>
                     <navigationItem key="navigationItem" title="Venues" id="Px2-IW-bWQ">
                         <barButtonItem key="backBarButtonItem" title=" " id="zRJ-3j-O9l"/>
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="wnZ-HW-N8E">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="sortButtonPressed:" destination="y7k-hP-ThC" id="fDN-EN-HdS"/>
                             </connections>
@@ -915,11 +923,11 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="nKZ-mJ-NrE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TQQ-C8-Fno">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1331"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRY-c0-1YW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="1282"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1351"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkH-sY-vm9" userLabel="View in ScollView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
@@ -1034,7 +1042,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="DinerMojo members also loved these venues..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSD-bT-Ql1">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DinerMojo members also loved these venues..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSD-bT-Ql1">
                                                 <rect key="frame" x="20" y="780" width="325" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="325" id="VJk-wS-uqN"/>
@@ -1450,6 +1458,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="W9k-T5-bbL" firstAttribute="trailing" secondItem="XkH-sY-vm9" secondAttribute="trailingMargin" id="0sC-pL-eaO"/>
+                                            <constraint firstItem="NSD-bT-Ql1" firstAttribute="leading" secondItem="XkH-sY-vm9" secondAttribute="leading" constant="20" id="4eh-Ui-Rdr"/>
                                             <constraint firstItem="NSD-bT-Ql1" firstAttribute="centerX" secondItem="bjF-7F-doM" secondAttribute="centerX" constant="1" id="5tI-I5-bpo"/>
                                             <constraint firstItem="B5N-Pk-q5d" firstAttribute="top" secondItem="mqx-px-9No" secondAttribute="bottom" constant="10" id="5xt-bW-XZ9"/>
                                             <constraint firstItem="YZK-qm-TRo" firstAttribute="top" secondItem="Djd-0F-NL6" secondAttribute="bottom" id="6kr-iz-bmY"/>
@@ -1565,7 +1574,7 @@ How about we take you for a quick tour before you get started?</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-942" y="2736"/>
+            <point key="canvasLocation" x="-1387" y="2720"/>
         </scene>
         <!--DinerMojo-->
         <scene sceneID="Pan-Cj-Tg6">
@@ -1796,7 +1805,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let The Good Earth know what you think" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNa-n7-spI">
-                                        <rect key="frame" x="37.5" y="53" width="300" height="44.5"/>
+                                        <rect key="frame" x="37.5" y="53" width="300" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="Iar-XH-rPn"/>
                                         </constraints>
@@ -1970,21 +1979,21 @@ How about we take you for a quick tour before you get started?</string>
         <!--News Feed View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="News Feed View Controller" id="8rJ-Kc-sve" customClass="DMNewsFeedViewController" sceneMemberID="viewController">
+                <viewController title="News Feed View Controller" modalPresentationStyle="fullScreen" id="8rJ-Kc-sve" customClass="DMNewsFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="531"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="1Ke-Cy-zSU">
-                                <rect key="frame" x="281.5" y="207.5" width="37" height="37"/>
+                                <rect key="frame" x="169" y="241" width="37" height="37"/>
                                 <color key="color" red="0.3411764706" green="0.73725490199999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can't fetch news. Check your connection." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjp-qo-5jM">
-                                <rect key="frame" x="147.5" y="240.5" width="305" height="50"/>
+                                <rect key="frame" x="35" y="274" width="305" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Iyl-Bm-DTh"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Wlj-dU-rLe"/>
@@ -1995,10 +2004,10 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4s-2Z-LN5">
-                                <rect key="frame" x="0.0" y="290.5" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="324" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing to report right now but we can notify you when there is" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0c-iA-79b">
-                                        <rect key="frame" x="171" y="0.0" width="258" height="60"/>
+                                        <rect key="frame" x="58.5" y="0.0" width="258" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="3mt-jW-WFZ"/>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="9QJ-LF-5Mu"/>
@@ -2009,7 +2018,7 @@ How about we take you for a quick tour before you get started?</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yA-RT-rlc">
-                                        <rect key="frame" x="266.5" y="64" width="67" height="30"/>
+                                        <rect key="frame" x="154" y="64" width="67" height="30"/>
                                         <state key="normal" title="Notify Me"/>
                                         <connections>
                                             <action selector="notifyMe:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="EFa-kR-Szj"/>
@@ -2026,15 +2035,15 @@ How about we take you for a quick tour before you get started?</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="124" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-uu-KfR">
-                                <rect key="frame" x="0.0" y="56" width="600" height="426"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="493"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsfeedCell" rowHeight="122" id="K3F-ss-7Bi">
-                                        <rect key="frame" x="0.0" y="44.5" width="600" height="122"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K3F-ss-7Bi" id="wFI-aO-mke">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2064,14 +2073,13 @@ How about we take you for a quick tour before you get started?</string>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Newsfeed" id="wjW-qJ-fmw">
                         <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="LA1-kq-KaL">
+                            <color key="tintColor" red="0.37254901959999998" green="0.72941176470000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="sortButtonPressed:" destination="8rJ-Kc-sve" id="PEB-wE-hLw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="activityIndicator" destination="1Ke-Cy-zSU" id="yKM-7N-pbK"/>
                         <outlet property="emptyTableDescriptionLabel" destination="Q0c-iA-79b" id="TWM-lA-uPY"/>
@@ -2086,7 +2094,7 @@ How about we take you for a quick tour before you get started?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2261" y="1237"/>
+            <point key="canvasLocation" x="-2537" y="1224"/>
         </scene>
         <!--Restaurant Name-->
         <scene sceneID="hbb-Pu-YD0">
@@ -2320,7 +2328,7 @@ How about we take you for a quick tour before you get started?</string>
                                     <outlet property="delegate" destination="lpO-tf-9Om" id="qPg-4A-du7"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEA-mg-cfT">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEA-mg-cfT">
                                 <rect key="frame" x="165" y="287" width="45.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="7j4-YS-zxY"/>
@@ -2339,55 +2347,87 @@ How about we take you for a quick tour before you get started?</string>
                                 </variation>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRC-7s-DzI">
-                                <rect key="frame" x="0.0" y="323" width="375" height="104"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="542"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the         symbol when you're looking at a restaurant's details screen to add it to your list of faves here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUH-1Q-HQo">
-                                        <rect key="frame" x="55" y="0.0" width="265" height="104"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any favourites yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWJ-Og-iGm">
+                                        <rect key="frame" x="20" y="25" width="335" height="54.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="42D-F1-VIE"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="dWk-LA-YFJ"/>
+                                            <constraint firstAttribute="width" constant="36" id="2Xa-1c-tjB"/>
+                                            <constraint firstAttribute="height" constant="20" id="OvV-RD-UOy"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="csX-sV-Kqi"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                        <color key="textColor" red="0.97198623419999997" green="0.64414399860000005" blue="0.1190887466" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="2Xa-1c-tjB"/>
+                                                <exclude reference="OvV-RD-UOy"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_empty_image_state" translatesAutoresizingMaskIntoConstraints="NO" id="I4F-E0-BoI">
+                                        <rect key="frame" x="12" y="99.5" width="351" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="4tn-3X-tzw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUH-1Q-HQo">
+                                        <rect key="frame" x="12" y="311.5" width="351" height="109"/>
+                                        <string key="text">Be the first to know about special offers, events and news at your favourite club venues.
+
+Click the heart wherever you see it to add and remove favorites.</string>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
-                                        <color key="textColor" red="0.36615604162216187" green="0.74646860361099243" blue="0.6332557201385498" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favourite_active" translatesAutoresizingMaskIntoConstraints="NO" id="I4F-E0-BoI">
-                                        <rect key="frame" x="125" y="0.0" width="42" height="38"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can change your Notifications preferences whenever you like here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no0-1a-peD">
+                                        <rect key="frame" x="12" y="420.5" width="351" height="44"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favourite_active" translatesAutoresizingMaskIntoConstraints="NO" id="CRg-Bu-nqT">
+                                        <rect key="frame" x="335" y="109.5" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="42" id="6aA-TG-cKx"/>
-                                            <constraint firstAttribute="height" constant="38" id="cei-nO-nqW"/>
+                                            <constraint firstAttribute="height" constant="25" id="3CI-S5-oSq"/>
+                                            <constraint firstAttribute="width" constant="25" id="ZM2-A8-tmc"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="I4F-E0-BoI" firstAttribute="leading" secondItem="KRC-7s-DzI" secondAttribute="leading" constant="238" id="CPO-dE-t67"/>
-                                    <constraint firstItem="I4F-E0-BoI" firstAttribute="top" secondItem="KRC-7s-DzI" secondAttribute="top" id="GQB-eF-AqK"/>
-                                    <constraint firstItem="qUH-1Q-HQo" firstAttribute="centerX" secondItem="KRC-7s-DzI" secondAttribute="centerX" id="HKS-2n-7he"/>
-                                    <constraint firstItem="qUH-1Q-HQo" firstAttribute="height" secondItem="KRC-7s-DzI" secondAttribute="height" id="XiS-6j-C41"/>
-                                    <constraint firstItem="qUH-1Q-HQo" firstAttribute="centerY" secondItem="KRC-7s-DzI" secondAttribute="centerY" id="ldz-4M-Y0b"/>
-                                    <constraint firstItem="qUH-1Q-HQo" firstAttribute="leading" secondItem="I4F-E0-BoI" secondAttribute="trailing" constant="-112" id="oM6-pK-oIK"/>
-                                    <constraint firstAttribute="height" constant="104" id="wb8-rD-fhr"/>
+                                    <constraint firstItem="qUH-1Q-HQo" firstAttribute="leading" secondItem="KRC-7s-DzI" secondAttribute="leading" constant="12" id="0YG-fW-1hs"/>
+                                    <constraint firstItem="CRg-Bu-nqT" firstAttribute="top" secondItem="I4F-E0-BoI" secondAttribute="top" constant="10" id="5lr-2X-n56"/>
+                                    <constraint firstItem="no0-1a-peD" firstAttribute="leading" secondItem="KRC-7s-DzI" secondAttribute="leading" constant="12" id="Ave-3G-DgE"/>
+                                    <constraint firstItem="VWJ-Og-iGm" firstAttribute="leading" secondItem="KRC-7s-DzI" secondAttribute="leading" constant="20" id="JOG-X7-xbG"/>
+                                    <constraint firstItem="no0-1a-peD" firstAttribute="top" secondItem="qUH-1Q-HQo" secondAttribute="bottom" id="Sqg-IT-DDW"/>
+                                    <constraint firstItem="qUH-1Q-HQo" firstAttribute="top" secondItem="I4F-E0-BoI" secondAttribute="bottom" constant="12" id="Wwe-sq-cVM"/>
+                                    <constraint firstItem="VWJ-Og-iGm" firstAttribute="top" secondItem="KRC-7s-DzI" secondAttribute="top" constant="25" id="YKN-nP-RSh"/>
+                                    <constraint firstAttribute="trailing" secondItem="no0-1a-peD" secondAttribute="trailing" constant="12" id="afv-zZ-QKJ"/>
+                                    <constraint firstItem="I4F-E0-BoI" firstAttribute="top" secondItem="VWJ-Og-iGm" secondAttribute="bottom" constant="20" id="b8z-PF-8Oz"/>
+                                    <constraint firstAttribute="trailing" secondItem="qUH-1Q-HQo" secondAttribute="trailing" constant="12" id="fP6-tz-Mqy"/>
+                                    <constraint firstAttribute="trailing" secondItem="CRg-Bu-nqT" secondAttribute="trailing" constant="15" id="gRA-pS-Tbf"/>
+                                    <constraint firstItem="I4F-E0-BoI" firstAttribute="leading" secondItem="KRC-7s-DzI" secondAttribute="leading" constant="12" id="nOt-Bq-nAF"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="no0-1a-peD" secondAttribute="bottom" constant="20" id="nSS-Na-19c"/>
+                                    <constraint firstAttribute="trailing" secondItem="VWJ-Og-iGm" secondAttribute="trailing" constant="20" id="qTu-Ua-w8O"/>
+                                    <constraint firstAttribute="trailing" secondItem="I4F-E0-BoI" secondAttribute="trailing" constant="12" id="tPh-uS-VU2"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="CPO-dE-t67"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tEA-mg-cfT" firstAttribute="top" secondItem="CVT-Oi-519" secondAttribute="bottom" constant="12" id="40F-nf-mHY"/>
                             <constraint firstItem="ffO-G0-s3J" firstAttribute="top" secondItem="DJ5-no-jDc" secondAttribute="top" constant="64" id="ADY-wg-eho"/>
+                            <constraint firstItem="eO9-pK-bpP" firstAttribute="top" secondItem="KRC-7s-DzI" secondAttribute="bottom" id="DqE-pI-LVa"/>
                             <constraint firstAttribute="centerX" secondItem="tEA-mg-cfT" secondAttribute="centerX" id="EPy-bM-fog"/>
-                            <constraint firstItem="KRC-7s-DzI" firstAttribute="top" secondItem="tEA-mg-cfT" secondAttribute="bottom" constant="11" id="Enu-rx-wxb"/>
-                            <constraint firstItem="KRC-7s-DzI" firstAttribute="centerX" secondItem="tEA-mg-cfT" secondAttribute="centerX" id="Erh-sw-4Qa"/>
+                            <constraint firstAttribute="trailing" secondItem="KRC-7s-DzI" secondAttribute="trailing" id="FcD-5e-X4Z"/>
                             <constraint firstAttribute="centerX" secondItem="CVT-Oi-519" secondAttribute="centerX" id="Ngt-pJ-45C"/>
                             <constraint firstItem="ffO-G0-s3J" firstAttribute="top" secondItem="nxn-qR-6mk" secondAttribute="bottom" id="Ngv-Vo-NdJ"/>
+                            <constraint firstItem="KRC-7s-DzI" firstAttribute="leading" secondItem="DJ5-no-jDc" secondAttribute="leading" id="PiB-a3-uXh"/>
+                            <constraint firstItem="KRC-7s-DzI" firstAttribute="top" secondItem="nxn-qR-6mk" secondAttribute="bottom" id="RbT-1r-Bve"/>
                             <constraint firstAttribute="trailing" secondItem="ffO-G0-s3J" secondAttribute="trailing" id="TtW-A0-55l"/>
                             <constraint firstItem="eO9-pK-bpP" firstAttribute="top" secondItem="ffO-G0-s3J" secondAttribute="bottom" id="anR-VT-5sA"/>
-                            <constraint firstItem="KRC-7s-DzI" firstAttribute="width" secondItem="DJ5-no-jDc" secondAttribute="width" id="bYi-kW-sqP"/>
                             <constraint firstAttribute="centerY" secondItem="tEA-mg-cfT" secondAttribute="centerY" constant="-0.5" id="fQN-Wl-cAg"/>
                             <constraint firstItem="ffO-G0-s3J" firstAttribute="leading" secondItem="DJ5-no-jDc" secondAttribute="leading" id="lVH-6g-HyS"/>
                         </constraints>
@@ -2403,14 +2443,16 @@ How about we take you for a quick tour before you get started?</string>
                     <connections>
                         <outlet property="activityIndicator" destination="CVT-Oi-519" id="qeL-QW-C5i"/>
                         <outlet property="emptyTableDescriptionView" destination="KRC-7s-DzI" id="QbS-uZ-EvY"/>
-                        <outlet property="emptyTableLabel" destination="tEA-mg-cfT" id="aeZ-7q-3HT"/>
+                        <outlet property="emptyTableLabel" destination="tEA-mg-cfT" id="9Eg-fQ-JvF"/>
                         <outlet property="favouritesTableView" destination="ffO-G0-s3J" id="aPQ-48-FVC"/>
+                        <outlet property="tapLinkLabel" destination="no0-1a-peD" id="3MU-fv-YtG"/>
+                        <outlet property="titleTableLabel" destination="VWJ-Og-iGm" id="VrO-Z0-YRw"/>
                         <segue destination="DfA-xe-x2l" kind="show" identifier="favouritesSegue" id="7f7-jH-ADw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rv-6T-iu4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="1100"/>
+            <point key="canvasLocation" x="780" y="1099.7001499250375"/>
         </scene>
         <!--Newsfeed-->
         <scene sceneID="cc1-Mb-w0I">
@@ -2692,23 +2734,20 @@ How about we take you for a quick tour before you get started?</string>
         <!--Profile View Controller-->
         <scene sceneID="xmI-W4-yPO">
             <objects>
-                <viewController id="zyM-fv-7vY" customClass="DMProfileViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="zyM-fv-7vY" customClass="DMProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BCp-Bo-IT0"/>
                         <viewControllerLayoutGuide type="bottom" id="eAZ-1Z-kHq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9cd-Iu-AnJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="671"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nd-vO-KmI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="740"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                                 <subviews>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TFP-QN-Rbd">
-                                        <rect key="frame" x="290" y="360" width="20" height="20"/>
-                                    </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops. We couldn't fetch your profile at this time. Pull to refresh." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNg-Vb-9TF">
-                                        <rect key="frame" x="180" y="353.5" width="240" height="33"/>
+                                        <rect key="frame" x="67.5" y="280" width="240" height="38.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="qFT-KR-Nb4"/>
                                         </constraints>
@@ -2717,13 +2756,13 @@ How about we take you for a quick tour before you get started?</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrL-Mi-eYd">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="740"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="740"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyu-2v-AjE" userLabel="Friends View">
-                                                <rect key="frame" x="0.0" y="483" width="600" height="250"/>
+                                                <rect key="frame" x="0.0" y="483" width="375" height="250"/>
                                                 <subviews>
                                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uua-Ix-4pG">
-                                                        <rect key="frame" x="17" y="18" width="566" height="24"/>
+                                                        <rect key="frame" x="17" y="18" width="341" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="8NT-Pv-DoU"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="QGv-5p-pt2"/>
@@ -2734,7 +2773,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get extra DinerMojo points just by inviting friends into the club" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="un8-ti-1ab">
-                                                        <rect key="frame" x="17" y="54" width="463" height="52"/>
+                                                        <rect key="frame" x="17" y="54" width="238" height="52"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="KCR-Dd-6d5"/>
                                                         </constraints>
@@ -2743,7 +2782,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLL-Rq-au8" customClass="DMButton">
-                                                        <rect key="frame" x="488" y="54" width="95" height="52"/>
+                                                        <rect key="frame" x="263" y="54" width="95" height="52"/>
                                                         <color key="backgroundColor" red="0.35686274509999999" green="0.74901960779999999" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="OP6-F6-pCe"/>
@@ -2774,7 +2813,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFi-IF-dag">
-                                                        <rect key="frame" x="492" y="106" width="90" height="21"/>
+                                                        <rect key="frame" x="267" y="106" width="90" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="Nu6-ts-PwD"/>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="QED-W8-Rqx"/>
@@ -2792,7 +2831,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vh9-bl-DqG">
-                                                        <rect key="frame" x="498" y="66" width="76" height="21"/>
+                                                        <rect key="frame" x="273" y="66" width="76" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="76" id="Btd-tE-znc"/>
                                                             <constraint firstAttribute="height" constant="21" id="dPF-4G-siv"/>
@@ -2802,7 +2841,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwP-p4-X31">
-                                                        <rect key="frame" x="565" y="8" width="21" height="21"/>
+                                                        <rect key="frame" x="340" y="8" width="21" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="21" id="0gk-kI-ytS"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="D9V-53-qaC"/>
@@ -2837,10 +2876,10 @@ How about we take you for a quick tour before you get started?</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxf-Nb-37m" userLabel="ProfileView">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="230"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXO-sZ-AMy" userLabel="Profile Picture" customClass="DMView">
-                                                        <rect key="frame" x="246" y="22" width="110" height="110"/>
+                                                        <rect key="frame" x="133.5" y="22" width="110" height="110"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="O0C-pA-gSB">
                                                                 <rect key="frame" x="29.5" y="25" width="51" height="60"/>
@@ -2887,7 +2926,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         </connections>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plg-sF-wcY">
-                                                        <rect key="frame" x="8" y="138" width="584" height="21"/>
+                                                        <rect key="frame" x="8" y="138" width="359" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="gKI-Za-51Q"/>
                                                         </constraints>
@@ -2896,7 +2935,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RR0-wv-p1Y" customClass="DMButton">
-                                                        <rect key="frame" x="242.5" y="168" width="115" height="34"/>
+                                                        <rect key="frame" x="130" y="168" width="115" height="34"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="115" id="UbE-Tg-sMO"/>
@@ -2931,7 +2970,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJa-5F-xlo">
-                                                <rect key="frame" x="17" y="240" width="538" height="21"/>
+                                                <rect key="frame" x="17" y="240" width="313" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="nye-k9-wIy"/>
                                                 </constraints>
@@ -2940,7 +2979,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COS-ge-mi3">
-                                                <rect key="frame" x="565" y="240" width="21" height="21"/>
+                                                <rect key="frame" x="340" y="240" width="21" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="5JH-Lc-kQZ"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="17" id="JR3-sO-P4L"/>
@@ -2954,7 +2993,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Savings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nh3-lD-pg0">
-                                                <rect key="frame" x="17" y="355" width="566" height="24"/>
+                                                <rect key="frame" x="17" y="355" width="341" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="6dX-6U-Zoz"/>
                                                     <constraint firstAttribute="height" constant="24" id="ciA-TE-ZNo"/>
@@ -2964,7 +3003,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQI-0X-jI8">
-                                                <rect key="frame" x="565" y="352" width="21" height="21"/>
+                                                <rect key="frame" x="340" y="352" width="21" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="17" id="1V8-Dz-coO"/>
                                                     <constraint firstAttribute="height" constant="21" id="FYf-Sw-vgr"/>
@@ -2978,7 +3017,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irI-oY-M8u">
-                                                <rect key="frame" x="18" y="263" width="565" height="14"/>
+                                                <rect key="frame" x="18" y="263" width="340" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="3KR-0q-LJc"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="f6h-96-Ouj"/>
@@ -2988,7 +3027,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="eb3-7J-VCh">
-                                                <rect key="frame" x="37" y="312" width="501" height="3"/>
+                                                <rect key="frame" x="37" y="312" width="276" height="3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="506" id="aBj-Ij-FPt"/>
                                                 </constraints>
@@ -3001,7 +3040,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </variation>
                                             </progressView>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nra-Y7-dnG" customClass="DMButton">
-                                                <rect key="frame" x="538" y="290" width="45" height="45"/>
+                                                <rect key="frame" x="313" y="290" width="45" height="45"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="lIh-F9-mfB"/>
@@ -3048,7 +3087,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </variation>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3a-wS-ZOQ" userLabel="Line">
-                                                <rect key="frame" x="17" y="343" width="566" height="1"/>
+                                                <rect key="frame" x="17" y="343" width="341" height="1"/>
                                                 <color key="backgroundColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="5" id="JKW-Qi-Sft"/>
@@ -3061,7 +3100,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </variation>
                                             </view>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKw-Lm-EBp">
-                                                <rect key="frame" x="206" y="391" width="188" height="48"/>
+                                                <rect key="frame" x="131" y="391" width="113" height="48"/>
                                                 <color key="backgroundColor" red="0.4392156862745098" green="0.78431372549019607" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="veI-iM-oSg"/>
@@ -3073,7 +3112,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </state>
                                             </button>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95t-ur-52e">
-                                                <rect key="frame" x="394" y="391" width="188" height="48"/>
+                                                <rect key="frame" x="244" y="391" width="113" height="48"/>
                                                 <color key="backgroundColor" red="0.35686274509803922" green="0.74901960784313726" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="vDt-Zp-0mW"/>
@@ -3085,7 +3124,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL4-11-Uvk">
-                                                <rect key="frame" x="91" y="445" width="42" height="21"/>
+                                                <rect key="frame" x="53.5" y="445" width="42" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="42" id="4EH-Jf-aHA"/>
                                                     <constraint firstAttribute="height" constant="21" id="JVI-l5-Z6y"/>
@@ -3095,7 +3134,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 months" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Js4-3D-nUC">
-                                                <rect key="frame" x="252" y="445" width="96" height="21"/>
+                                                <rect key="frame" x="139.5" y="445" width="96" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="42" id="f88-md-dME"/>
                                                     <constraint firstAttribute="height" constant="21" id="fQe-70-B26"/>
@@ -3112,7 +3151,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since joining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rq-ME-pow">
-                                                <rect key="frame" x="440" y="445" width="96" height="21"/>
+                                                <rect key="frame" x="252.5" y="445" width="96" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="21" id="K1z-bP-nKB"/>
                                                     <constraint firstAttribute="height" constant="21" id="bzM-fM-YrD"/>
@@ -3141,7 +3180,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSk-4C-dyc">
-                                                <rect key="frame" x="18" y="391" width="188" height="48"/>
+                                                <rect key="frame" x="18" y="391" width="113" height="48"/>
                                                 <color key="backgroundColor" red="0.52941176470588236" green="0.81568627450980391" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="QZh-gl-9SX"/>
@@ -3153,7 +3192,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earned over last 12 months" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6v-75-F2k">
-                                                <rect key="frame" x="183" y="318" width="236" height="21"/>
+                                                <rect key="frame" x="70.5" y="318" width="236" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="dLl-FN-ZQj"/>
                                                     <constraint firstAttribute="width" constant="236" id="q4Q-7D-aUh"/>
@@ -3227,6 +3266,10 @@ How about we take you for a quick tour before you get started?</string>
                                             </mask>
                                         </variation>
                                     </view>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TFP-QN-Rbd">
+                                        <rect key="frame" x="169" y="280.5" width="37" height="37"/>
+                                        <color key="color" red="0.3411764706" green="0.73725490199999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -3248,16 +3291,16 @@ How about we take you for a quick tour before you get started?</string>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9nd-vO-KmI" firstAttribute="top" secondItem="9cd-Iu-AnJ" secondAttribute="top" id="VCH-vI-USF"/>
+                            <constraint firstItem="eAZ-1Z-kHq" firstAttribute="top" secondItem="9nd-vO-KmI" secondAttribute="bottom" id="Y0a-nC-PyT"/>
                             <constraint firstAttribute="trailing" secondItem="9nd-vO-KmI" secondAttribute="trailing" id="dvF-lu-gWz"/>
                             <constraint firstItem="9nd-vO-KmI" firstAttribute="leading" secondItem="9cd-Iu-AnJ" secondAttribute="leading" id="lHM-8R-a89"/>
-                            <constraint firstAttribute="bottom" secondItem="9nd-vO-KmI" secondAttribute="bottom" constant="-69" id="saq-N6-epf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d8h-vM-wnt">
                         <barButtonItem key="backBarButtonItem" title=" " id="ZHK-0z-87B"/>
                         <barButtonItem key="rightBarButtonItem" id="V9x-wQ-GBm">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="axA-hB-G3Q">
-                                <rect key="frame" x="547" y="11" width="33" height="34"/>
+                                <rect key="frame" x="326" y="11" width="33" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="settings"/>
@@ -3267,8 +3310,7 @@ How about we take you for a quick tour before you get started?</string>
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="740"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="contentView" destination="xrL-Mi-eYd" id="zAV-2h-ntk"/>
                         <outlet property="friendsView" destination="qyu-2v-AjE" id="e7T-Eu-q9C"/>
@@ -3306,7 +3348,7 @@ How about we take you for a quick tour before you get started?</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2275" y="1574"/>
+            <point key="canvasLocation" x="2274.4000000000001" y="1573.7631184407796"/>
         </scene>
         <!--API Results-->
         <scene sceneID="koo-uF-6aw">
@@ -3321,10 +3363,10 @@ How about we take you for a quick tour before you get started?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fail_cross" translatesAutoresizingMaskIntoConstraints="NO" id="RlW-V5-qUn" userLabel="status">
-                                <rect key="frame" x="142.5" y="213.5" width="90" height="90"/>
+                                <rect key="frame" x="142.5" y="211.5" width="90" height="90"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-ky-mCS">
-                                <rect key="frame" x="66.5" y="323.5" width="240" height="23.5"/>
+                                <rect key="frame" x="66.5" y="321.5" width="240" height="27.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Frb-RE-EzD"/>
                                 </constraints>
@@ -3333,7 +3375,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong, please try again later" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAF-QA-ihj">
-                                <rect key="frame" x="56.5" y="355" width="260" height="80"/>
+                                <rect key="frame" x="56.5" y="357" width="260" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="d4T-fu-sxE"/>
                                     <constraint firstAttribute="width" constant="260" id="hfI-jt-urm"/>
@@ -3343,7 +3385,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to dismiss" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVf-TK-03f">
-                                <rect key="frame" x="26.5" y="459" width="320" height="40"/>
+                                <rect key="frame" x="26.5" y="461" width="320" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="dQe-B1-Wwr"/>
                                     <constraint firstAttribute="width" constant="320" id="wSZ-JD-BgA"/>
@@ -3353,7 +3395,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFF-ZJ-qXT" customClass="DMButton">
-                                <rect key="frame" x="96.5" y="457" width="180" height="44"/>
+                                <rect key="frame" x="96.5" y="459" width="180" height="44"/>
                                 <color key="backgroundColor" red="0.96862572431564331" green="0.58253747224807739" blue="0.14095744490623474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wAW-IL-Lre"/>
@@ -3371,10 +3413,10 @@ How about we take you for a quick tour before you get started?</string>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="mW5-3R-VXV">
-                                <rect key="frame" x="176.5" y="469" width="20" height="20"/>
+                                <rect key="frame" x="176.5" y="471" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-Mi-ElB">
-                                <rect key="frame" x="128" y="509" width="119" height="30"/>
+                                <rect key="frame" x="128" y="511" width="119" height="30"/>
                                 <state key="normal" title="Don't show again">
                                     <color key="titleColor" red="0.96862745098039216" green="0.58253747224807739" blue="0.14095744490623474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -3915,14 +3957,14 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="1tL-vl-k8x"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ver-u3-EUu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoG-3h-1zd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dES-nP-OhQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fI0-vC-Uq5">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -4169,7 +4211,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejected:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN9-5D-dj6">
-                                                <rect key="frame" x="17" y="436" width="341" height="20"/>
+                                                <rect key="frame" x="17" y="436" width="341" height="23.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="XJC-yc-2Jg"/>
                                                 </constraints>
@@ -4234,7 +4276,7 @@ How about we take you for a quick tour before you get started?</string>
                                         </variation>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsL-oX-jAx" customClass="DMButton">
-                                        <rect key="frame" x="17" y="468" width="341" height="48"/>
+                                        <rect key="frame" x="17" y="471.5" width="341" height="48"/>
                                         <color key="backgroundColor" red="0.3411764706" green="0.73725490199999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="M7B-0Q-6z0"/>
@@ -4420,21 +4462,21 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="Uo6-PV-eBc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PLE-l2-sgv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="531"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McZ-gx-zcC">
-                                <rect key="frame" x="282.5" y="291" width="35.5" height="19.5"/>
+                                <rect key="frame" x="282.5" y="256.5" width="35.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" red="0.36615604162216187" green="0.74646860361099243" blue="0.6332557201385498" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zgS-EI-tML">
-                                <rect key="frame" x="281.5" y="280.5" width="37" height="37"/>
+                                <rect key="frame" x="281.5" y="246" width="37" height="37"/>
                                 <color key="color" red="0.3411764706" green="0.73725490199999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0BR-E2-S8D">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="56" width="600" height="475"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -4940,17 +4982,17 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="rda-kL-Ymc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1Zv-6K-4uT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ler-3i-f9V" userLabel="Image Container">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="u6c-oV-txc">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg1-ub-anQ" customClass="DMButton">
-                                        <rect key="frame" x="546" y="25" width="36" height="33"/>
+                                        <rect key="frame" x="547" y="25" width="35" height="37"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                         <state key="normal" title="Skip">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4961,13 +5003,13 @@ How about we take you for a quick tour before you get started?</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfT-K0-qHl">
-                                        <rect key="frame" x="8" y="41.5" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="8" y="43.5" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You agree to DinerMojo's Terms and Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeP-Ub-dLK">
-                                        <rect key="frame" x="163.5" y="534" width="273" height="20"/>
+                                        <rect key="frame" x="168" y="514" width="264" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="68B-nI-x7Q"/>
                                         </constraints>
@@ -4976,13 +5018,13 @@ How about we take you for a quick tour before you get started?</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBG-ez-6By">
-                                        <rect key="frame" x="298" y="553" width="4" height="20"/>
+                                        <rect key="frame" x="298" y="533" width="4" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcv-ic-6D6">
-                                        <rect key="frame" x="199" y="547" width="93" height="33"/>
+                                        <rect key="frame" x="199" y="527" width="93" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="LM3-bs-5xP"/>
                                             <constraint firstAttribute="width" constant="93" id="fXp-BC-gMp"/>
@@ -4996,7 +5038,7 @@ How about we take you for a quick tour before you get started?</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QX3-sM-GEV">
-                                        <rect key="frame" x="308" y="547" width="93" height="33"/>
+                                        <rect key="frame" x="308" y="527" width="93" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="93" id="hxO-Zw-gb6"/>
                                             <constraint firstAttribute="height" constant="33" id="nbV-fd-xiE"/>
@@ -5034,8 +5076,8 @@ How about we take you for a quick tour before you get started?</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DinerMojoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="OlD-Dr-wZ3">
                                 <rect key="frame" x="60" y="100" width="480" height="86"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3a-Xh-ozf" customClass="DMButton">
-                                <rect key="frame" x="30" y="366" width="540" height="48"/>
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3a-Xh-ozf" customClass="DMButton">
+                                <rect key="frame" x="30" y="346" width="540" height="48"/>
                                 <color key="backgroundColor" red="0.21176470588235294" green="0.30980392156862746" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="SEh-3H-byf"/>
@@ -5069,11 +5111,11 @@ How about we take you for a quick tour before you get started?</string>
                                     <action selector="facebookLoginPressed:" destination="Q6u-F1-yT4" eventType="touchUpInside" id="Mpx-qe-H4j"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="YUp-dD-pXT">
-                                <rect key="frame" x="40" y="374" width="32" height="32"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="YUp-dD-pXT">
+                                <rect key="frame" x="40" y="354" width="32" height="32"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z64-c0-u7L" customClass="DMButton">
-                                <rect key="frame" x="30" y="424" width="540" height="48"/>
+                                <rect key="frame" x="30" y="404" width="540" height="48"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="6me-18-pLl"/>
@@ -5108,7 +5150,7 @@ How about we take you for a quick tour before you get started?</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyS-QM-gh3" customClass="DMButton">
-                                <rect key="frame" x="30" y="482" width="540" height="48"/>
+                                <rect key="frame" x="30" y="462" width="540" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="1Go-NW-uqC"/>
                                     <constraint firstAttribute="height" constant="30" id="2Xb-QY-bbo"/>
@@ -5158,7 +5200,7 @@ How about we take you for a quick tour before you get started?</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llC-aV-A5D" userLabel="Register Popup View">
-                                <rect key="frame" x="0.0" y="580" width="600" height="490"/>
+                                <rect key="frame" x="0.0" y="560" width="600" height="490"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v00-Pg-NKW" userLabel="Register Subview">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="490"/>
@@ -5204,13 +5246,13 @@ How about we take you for a quick tour before you get started?</string>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add a profile pic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJW-PE-eaR">
-                                                <rect key="frame" x="264" y="94" width="72" height="12"/>
+                                                <rect key="frame" x="264" y="94" width="72" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="10"/>
                                                 <color key="textColor" red="0.50025969743728638" green="0.50024467706680298" blue="0.50025320053100586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CDt-SY-ihe" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="126" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="128" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="YEB-I7-gtE"/>
@@ -5230,7 +5272,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3u-fZ-6cl" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="172" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="174" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="lkQ-4Y-SXd"/>
@@ -5250,7 +5292,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="repeat password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCd-a9-jMs" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="218" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="220" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="cle-he-XHw"/>
@@ -5270,7 +5312,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="first name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pZV-ja-7FI" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="264" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="266" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="kF7-rO-cd1"/>
@@ -5323,13 +5365,13 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </button>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small_check" translatesAutoresizingMaskIntoConstraints="NO" id="5j9-tg-XDm">
-                                                <rect key="frame" x="396" y="182" width="22" height="22"/>
+                                                <rect key="frame" x="396" y="184" width="22" height="22"/>
                                             </imageView>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="small_check" translatesAutoresizingMaskIntoConstraints="NO" id="rGH-Wz-DnZ">
-                                                <rect key="frame" x="396" y="228" width="22" height="22"/>
+                                                <rect key="frame" x="396" y="230" width="22" height="22"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1tJ-RQ-eYN" customClass="DMTextField">
-                                                <rect key="frame" x="172" y="310" width="256" height="40"/>
+                                                <rect key="frame" x="172" y="312" width="256" height="40"/>
                                                 <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="256" id="OFm-VK-mo0"/>
@@ -5514,7 +5556,7 @@ That's fine. Just click the button below to finish registering.</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWY-Oy-liB" userLabel="Login Popup View">
-                                <rect key="frame" x="0.0" y="580" width="600" height="290"/>
+                                <rect key="frame" x="0.0" y="560" width="600" height="290"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIp-eN-JO4" userLabel="Login Subview">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="290"/>
@@ -5565,7 +5607,7 @@ That's fine. Just click the button below to finish registering.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xae-Nl-ssj" customClass="DMButton">
-                                                <rect key="frame" x="237.5" y="162" width="125" height="26"/>
+                                                <rect key="frame" x="240" y="162" width="120" height="29"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="12"/>
                                                 <state key="normal" title="Forgot your password?">
                                                     <color key="titleColor" red="0.50025969743728638" green="0.50024467706680298" blue="0.50025320053100586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5576,7 +5618,7 @@ That's fine. Just click the button below to finish registering.</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFh-cK-s35" customClass="DMButton">
-                                                <rect key="frame" x="25" y="223" width="540" height="48"/>
+                                                <rect key="frame" x="25" y="226" width="540" height="48"/>
                                                 <color key="backgroundColor" red="0.41176470590000003" green="0.77647058820000003" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="yQD-9j-C9W"/>
@@ -5757,7 +5799,7 @@ That's fine. Just click the button below to finish registering.</string>
                     <navigationItem key="navigationItem" id="MUq-EY-di4"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
+                    <size key="freeformSize" width="600" height="580"/>
                     <connections>
                         <outlet property="buildLabel" destination="PfT-K0-qHl" id="sUV-xd-p9F"/>
                         <outlet property="closeLoginButton" destination="1Mf-wk-LAO" id="TbC-bZ-SKt"/>
@@ -5795,7 +5837,7 @@ That's fine. Just click the button below to finish registering.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uog-wa-3F7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52.5" y="5115.8450704225352"/>
+            <point key="canvasLocation" x="-52.799999999999997" y="5133.7331334332839"/>
         </scene>
         <!--Landing View Controller-->
         <scene sceneID="nhQ-Cq-A9j">
@@ -5987,7 +6029,7 @@ That's fine. Just click the button below to finish registering.</string>
                                         </variation>
                                     </imageView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, there are no offers that you are eligible to redeem right now." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sL-8w-EyZ">
-                                        <rect key="frame" x="184" y="283.5" width="233" height="33"/>
+                                        <rect key="frame" x="184" y="281" width="233" height="38.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="233" id="ECh-gY-2Iw"/>
                                         </constraints>
@@ -6388,7 +6430,7 @@ That's fine. Just click the button below to finish registering.</string>
                                 <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6JX-ZP-FdM">
-                                <rect key="frame" x="16" y="397.5" width="343" height="26"/>
+                                <rect key="frame" x="16" y="407.5" width="343" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="fyX-3s-j6s"/>
                                 </constraints>
@@ -6397,7 +6439,7 @@ That's fine. Just click the button below to finish registering.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2473" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Myu-cy-aJW">
-                                <rect key="frame" x="16" y="334" width="343" height="58.5"/>
+                                <rect key="frame" x="16" y="334" width="343" height="68.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="50"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -7515,124 +7557,124 @@ That's fine. Just click the button below to finish registering.</string>
     </scenes>
     <designables>
         <designable name="0qR-Dd-4yg">
-            <size key="intrinsicContentSize" width="48" height="30"/>
+            <size key="intrinsicContentSize" width="48" height="33"/>
         </designable>
         <designable name="1Mf-wk-LAO">
             <size key="intrinsicContentSize" width="17" height="25"/>
         </designable>
         <designable name="1tJ-RQ-eYN">
-            <size key="intrinsicContentSize" width="83.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="73" height="23.5"/>
         </designable>
         <designable name="3dT-AR-eyx">
-            <size key="intrinsicContentSize" width="37" height="38"/>
+            <size key="intrinsicContentSize" width="38" height="42"/>
         </designable>
         <designable name="3jS-c3-17P">
-            <size key="intrinsicContentSize" width="94" height="30"/>
+            <size key="intrinsicContentSize" width="95" height="33"/>
         </designable>
         <designable name="9ye-kv-GsS">
-            <size key="intrinsicContentSize" width="123" height="20"/>
+            <size key="intrinsicContentSize" width="129" height="22"/>
         </designable>
         <designable name="Adz-l0-0LF">
-            <size key="intrinsicContentSize" width="30" height="31"/>
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="B3u-fZ-6cl">
-            <size key="intrinsicContentSize" width="84" height="19"/>
+            <size key="intrinsicContentSize" width="72.5" height="22"/>
         </designable>
         <designable name="CDt-SY-ihe">
-            <size key="intrinsicContentSize" width="114" height="20.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="GDz-41-0RG">
-            <size key="intrinsicContentSize" width="78.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="67" height="23.5"/>
         </designable>
         <designable name="GE7-eS-tHr">
-            <size key="intrinsicContentSize" width="36" height="33"/>
+            <size key="intrinsicContentSize" width="35" height="37"/>
         </designable>
         <designable name="GNV-Q4-dDe">
-            <size key="intrinsicContentSize" width="37" height="38"/>
+            <size key="intrinsicContentSize" width="38" height="42"/>
         </designable>
         <designable name="HLo-yW-kN0">
-            <size key="intrinsicContentSize" width="81" height="31"/>
+            <size key="intrinsicContentSize" width="84" height="34"/>
         </designable>
         <designable name="M3a-Xh-ozf">
-            <size key="intrinsicContentSize" width="159" height="31"/>
+            <size key="intrinsicContentSize" width="161" height="34"/>
         </designable>
         <designable name="MUI-fJ-Umd">
-            <size key="intrinsicContentSize" width="114" height="20.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="Nra-Y7-dnG">
-            <size key="intrinsicContentSize" width="30" height="30"/>
+            <size key="intrinsicContentSize" width="30" height="33"/>
         </designable>
         <designable name="OAl-eT-e7T">
-            <size key="intrinsicContentSize" width="100" height="31"/>
+            <size key="intrinsicContentSize" width="105" height="34"/>
         </designable>
         <designable name="PsP-Aa-JVi">
-            <size key="intrinsicContentSize" width="43" height="33"/>
+            <size key="intrinsicContentSize" width="46" height="37"/>
         </designable>
         <designable name="RR0-wv-p1Y">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
         <designable name="Sli-dS-FLd">
-            <size key="intrinsicContentSize" width="65" height="31"/>
+            <size key="intrinsicContentSize" width="68" height="34"/>
         </designable>
         <designable name="TCd-a9-jMs">
-            <size key="intrinsicContentSize" width="134" height="19"/>
+            <size key="intrinsicContentSize" width="125" height="22"/>
         </designable>
         <designable name="TGb-n1-m93">
-            <size key="intrinsicContentSize" width="127" height="31"/>
+            <size key="intrinsicContentSize" width="128" height="34"/>
         </designable>
         <designable name="WZL-AL-F00">
-            <size key="intrinsicContentSize" width="69" height="31"/>
+            <size key="intrinsicContentSize" width="72" height="34"/>
         </designable>
         <designable name="Wfk-90-U9A">
             <size key="intrinsicContentSize" width="21" height="22"/>
         </designable>
         <designable name="Z64-c0-u7L">
-            <size key="intrinsicContentSize" width="45" height="31"/>
+            <size key="intrinsicContentSize" width="46" height="34"/>
         </designable>
         <designable name="Zry-jI-wF3">
-            <size key="intrinsicContentSize" width="76" height="31"/>
+            <size key="intrinsicContentSize" width="78" height="34"/>
         </designable>
         <designable name="Zxc-eu-WhV">
-            <size key="intrinsicContentSize" width="177" height="33"/>
+            <size key="intrinsicContentSize" width="177" height="37"/>
         </designable>
         <designable name="a2Q-vx-Ifh">
-            <size key="intrinsicContentSize" width="114" height="20.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="bFh-cK-s35">
-            <size key="intrinsicContentSize" width="50" height="31"/>
+            <size key="intrinsicContentSize" width="50" height="34"/>
         </designable>
         <designable name="bK8-XP-0VE">
-            <size key="intrinsicContentSize" width="93" height="31"/>
+            <size key="intrinsicContentSize" width="98" height="34"/>
         </designable>
         <designable name="bUx-XX-x8d">
-            <size key="intrinsicContentSize" width="84" height="19"/>
+            <size key="intrinsicContentSize" width="72.5" height="22"/>
         </designable>
         <designable name="cLL-Rq-au8">
-            <size key="intrinsicContentSize" width="30" height="31"/>
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="dgS-YP-DGn">
-            <size key="intrinsicContentSize" width="30" height="30"/>
+            <size key="intrinsicContentSize" width="30" height="33"/>
         </designable>
         <designable name="dsL-oX-jAx">
-            <size key="intrinsicContentSize" width="76" height="31"/>
+            <size key="intrinsicContentSize" width="78" height="34"/>
         </designable>
         <designable name="eg1-ub-anQ">
-            <size key="intrinsicContentSize" width="36" height="33"/>
+            <size key="intrinsicContentSize" width="35" height="37"/>
         </designable>
         <designable name="fRL-oC-Dho">
-            <size key="intrinsicContentSize" width="73" height="31"/>
+            <size key="intrinsicContentSize" width="73" height="34"/>
         </designable>
         <designable name="gHi-df-B5C">
-            <size key="intrinsicContentSize" width="49.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="39" height="23.5"/>
         </designable>
         <designable name="hCN-Wq-XwI">
-            <size key="intrinsicContentSize" width="37" height="38"/>
+            <size key="intrinsicContentSize" width="38" height="42"/>
         </designable>
         <designable name="jsl-wH-BJZ">
             <size key="intrinsicContentSize" width="27" height="27"/>
         </designable>
         <designable name="kyS-QM-gh3">
-            <size key="intrinsicContentSize" width="137" height="31"/>
+            <size key="intrinsicContentSize" width="142" height="34"/>
         </designable>
         <designable name="mRk-PI-jmo">
             <size key="intrinsicContentSize" width="64" height="64"/>
@@ -7641,16 +7683,16 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="21" height="22"/>
         </designable>
         <designable name="pZV-ja-7FI">
-            <size key="intrinsicContentSize" width="85" height="20.5"/>
+            <size key="intrinsicContentSize" width="76.5" height="23.5"/>
         </designable>
         <designable name="rdr-KY-Rn7">
-            <size key="intrinsicContentSize" width="57" height="31"/>
+            <size key="intrinsicContentSize" width="61" height="34"/>
         </designable>
         <designable name="rhR-aM-1rm">
-            <size key="intrinsicContentSize" width="50" height="20.5"/>
+            <size key="intrinsicContentSize" width="36.5" height="23.5"/>
         </designable>
         <designable name="roD-35-b4H">
-            <size key="intrinsicContentSize" width="81" height="31"/>
+            <size key="intrinsicContentSize" width="83" height="34"/>
         </designable>
         <designable name="s8l-ck-nNg">
             <size key="intrinsicContentSize" width="17" height="25"/>
@@ -7659,29 +7701,30 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
         <designable name="xFF-ZJ-qXT">
-            <size key="intrinsicContentSize" width="99" height="31"/>
+            <size key="intrinsicContentSize" width="103" height="34"/>
         </designable>
         <designable name="xae-Nl-ssj">
-            <size key="intrinsicContentSize" width="125" height="26"/>
+            <size key="intrinsicContentSize" width="120" height="29"/>
         </designable>
         <designable name="xbn-s1-ABW">
-            <size key="intrinsicContentSize" width="83" height="31"/>
+            <size key="intrinsicContentSize" width="85" height="34"/>
         </designable>
         <designable name="yE7-Lo-XYf">
-            <size key="intrinsicContentSize" width="65" height="31"/>
+            <size key="intrinsicContentSize" width="68" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="WYO-TQ-jGX"/>
-        <segue reference="Ea4-BB-L2e"/>
+        <segue reference="qmf-ce-keD"/>
+        <segue reference="ia8-4N-9rp"/>
         <segue reference="h0d-87-Ktu"/>
         <segue reference="7rn-ew-alx"/>
-        <segue reference="KqA-M3-qRP"/>
-        <segue reference="rgP-m8-3sb"/>
+        <segue reference="cZC-Sm-xQp"/>
+        <segue reference="dcH-Ar-zyd"/>
         <segue reference="mXT-sL-hV9"/>
-        <segue reference="GeW-XH-8dT"/>
-        <segue reference="LOx-J2-VUw"/>
+        <segue reference="NJR-HD-aBd"/>
+        <segue reference="KBo-aD-UJD"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" systemColor="tintColor"/>
     <resources>
         <image name="BackNavIcon" width="21" height="17"/>
         <image name="DinerMojoLogo" width="400" height="85.5"/>
@@ -7704,9 +7747,11 @@ That's fine. Just click the button below to finish registering.</string>
         <image name="fb" width="20" height="20"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="home_restaurant" width="448.5" height="640"/>
+        <image name="ic_done_white_48pt" width="48" height="48"/>
         <image name="icon_cake" width="22" height="20"/>
         <image name="icon_navigation" width="50" height="50"/>
         <image name="info" width="21" height="21"/>
+        <image name="news_empty_image_state" width="300" height="200"/>
         <image name="news_offers" width="25" height="24"/>
         <image name="orc" width="1024" height="754"/>
         <image name="profile_add" width="64" height="64"/>
@@ -7723,6 +7768,9 @@ That's fine. Just click the button below to finish registering.</string>
         <image name="tiny_dropdown" width="8" height="5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -24,6 +24,7 @@
 typedef NS_ENUM(NSInteger, DMOperationCompletePopUpViewControllerStatus) {
     DMOperationCompletePopUpViewControllerStatusSuccess = 0,
     DMOperationCompletePopUpViewControllerStatusError = 1,
+    DMOperationCompletePopUpViewControllerNoInternetSuccess = 2,
 };
 
 @interface DMOperationCompletePopUpViewController : UIViewController
@@ -32,7 +33,6 @@ typedef NS_ENUM(NSInteger, DMOperationCompletePopUpViewControllerStatus) {
 @property (nonatomic, strong) NSString *popUpTitle;
 @property (nonatomic, strong) NSString *popUpDescription;
 @property (nonatomic, strong) NSAttributedString *popUpDescriptionAttributed;
-@property UIBlurEffectStyle effectStyle;
 @property (nonatomic, strong) UIColor *titleColor;
 @property (nonatomic, weak) IBOutlet UIImageView *statusImageView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -42,10 +42,12 @@ typedef NS_ENUM(NSInteger, DMOperationCompletePopUpViewControllerStatus) {
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, weak) IBOutlet UILabel *tapToDismissLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dontShowAgainButton;
-@property BOOL shoulHideDontShowAgainButton;
 @property (nonatomic, weak) id <DMOperationCompletePopUpViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *type;
 @property (nonatomic, strong) NSNumber *venueId;
+
+@property UIBlurEffectStyle effectStyle;
+@property BOOL shoulHideDontShowAgainButton;
 
 - (IBAction)actionButtonPressed:(DMButton *)sender;
 - (IBAction)dontShowAgainButtonPressed:(id)sender;

@@ -211,7 +211,7 @@
 - (void)decorateInterface
 {
     CAGradientLayer *layer = [CAGradientLayer layer];
-    layer.frame = CGRectMake(0, 0, self.view.frame.size.width, 70);
+    layer.frame = CGRectMake(0, 0, self.view.frame.size.width, 120);
     layer.colors = [NSArray arrayWithObjects:
                     (id)[[[UIColor blackColor] colorWithAlphaComponent:0.9f] CGColor],
                     (id)[[[UIColor blackColor] colorWithAlphaComponent:0.6f] CGColor],
@@ -799,9 +799,7 @@
     UIAlertAction *login = [UIAlertAction actionWithTitle:@"Login / Sign up" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
         UINavigationController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"landingNavigationController"];
-        
         [self setRootViewController:destinationViewController animated:YES];
     }];
     

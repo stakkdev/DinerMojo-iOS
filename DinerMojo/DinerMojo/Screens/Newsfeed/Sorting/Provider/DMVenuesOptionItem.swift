@@ -32,6 +32,8 @@ class DMVenuesOptionItem: NSObject, TUTableViewData {
     var selectedName: NSString?
     let itemId: Int
     let groupName: Int
+    var newFavourite = false
+
 
     init(_ name: String, groupName: Int, itemId: Int, subscribed: [Any]?) {
         self.name = name

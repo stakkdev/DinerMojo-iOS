@@ -13,6 +13,8 @@ class DMVenuesOptionCell: UITableViewCell, UITableViewCellLoadableProtocol, Tabl
     @IBOutlet weak var allSection: UIView!
     @IBOutlet weak var selectedSection: UIView!
     @IBOutlet weak var favouritesSection: UIView!
+    @IBOutlet weak var actvityView: UIActivityIndicatorView!
+
     
     var allSectionHandler: DMRadioViewOption?
     var selectedSectionHandler: DMRadioViewOption?
@@ -54,6 +56,8 @@ class DMVenuesOptionCell: UITableViewCell, UITableViewCellLoadableProtocol, Tabl
             return
         }
         
+        //print("Ids are:", data.ids ?? [0])
+        
         if let ids = data.ids {
             data.selectedVenues = true
             var str: String
@@ -75,12 +79,18 @@ class DMVenuesOptionCell: UITableViewCell, UITableViewCellLoadableProtocol, Tabl
             }
             self.data = data
             self.refreshView()
-            
             return
         }
+      
         var allData = [Any]()
         let request = DMVenueRequest()
+        self.actvityView.startAnimating()
+        self.actvityView.isHidden = false
+        self.contentView.isUserInteractionEnabled = false
         request.downloadVenues(completionBlock: { (error, results) in
+            self.actvityView.stopAnimating()
+            self.actvityView.isHidden = true
+            self.contentView.isUserInteractionEnabled = true
             if error == nil {
                 if let venues = results as? [DMVenue] {
                     for venue in data.subscribed ?? [] {
@@ -130,23 +140,25 @@ class DMVenuesOptionCell: UITableViewCell, UITableViewCellLoadableProtocol, Tabl
     @objc func handleTap(sender: UITapGestureRecognizer?) {
         if let data = self.data {
             if sender?.view?.tag == 1 {
-                data.allVenues = true
-                data.selectedVenues = false
-                data.myFav = false
+                print("valyes is", data.allVenues)
+                data.allVenues = !data.allVenues
+                //data.selectedVenues = false
+                //data.myFav = false
             }
             else if sender?.view?.tag == 2 {
-                data.allVenues = false
-                data.selectedVenues = true
-                data.myFav = false
+                //data.allVenues = false
+                data.selectedVenues = !data.selectedVenues
+                //data.myFav = false
                 
                 if let click = self.clickCallback {
                     click()
                 }
             }
             else if sender?.view?.tag == 3 {
-                data.allVenues = false
-                data.selectedVenues = false
-                data.myFav = true
+                //data.allVenues = false
+               // data.selectedVenues = false
+                //data.myFav = true
+                data.myFav = !data.myFav
             }
             
             self.refreshView()

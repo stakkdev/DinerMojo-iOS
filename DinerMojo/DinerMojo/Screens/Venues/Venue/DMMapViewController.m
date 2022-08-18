@@ -68,7 +68,7 @@
     
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
-    [self updateFavouritesWithInitialDownload];
+    //[self updateFavouritesWithInitialDownload];
     
     suggestionsDataSource = [[GMSAutocompleteTableDataSource alloc] init];
     suggestionsDataSource.delegate = self;
@@ -104,8 +104,6 @@
         }
     }
     
-    
-
     [self.activityIndicator startAnimating];
     [self downloadVenues];
     [self updateFavourites];
@@ -296,7 +294,7 @@
     if (self.mapModelController.mapAnnotations.count <= 1) {
         return self.mapModelController.mapAnnotations.count;
     }
-    return self.mapModelController.mapAnnotations.count * 50;
+    return self.mapModelController.mapAnnotations.count; //* 50;
 }
 
 - (NSInteger )collectionViewIndexForRow:(NSInteger )row {
@@ -494,7 +492,9 @@
         [[self mapModelController] setVenues:results];
         
         [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
-            [self reloadSelf];
+            if (results.count > 0) {
+                [self reloadSelf];
+            }
         } completion: nil];
         
         [self.downloadLabel setHidden:YES];
@@ -518,9 +518,12 @@
     if (self.lastCarouselIndex >= 0 &&
         self.mapModelController.mapAnnotations.count > self.lastCarouselIndex) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.lastCarouselIndex inSection:0];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self->collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        });
+        //NSLog(@"Index path is:", indexPath);
+        if (indexPath != nil) {
+            //dispatch_async(dispatch_get_main_queue(), ^{
+                [self->collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            //});
+        }
     }
 }
 
@@ -557,16 +560,14 @@
 - (void)presentSortViewController {
     [NSUserDefaults.standardUserDefaults setInteger:1 forKey:@"didSort"];
     UINavigationController *vc = (UINavigationController*)DMViewControllersProvider.instance.sortVC;
-    
+    vc.navigationBar.backgroundColor = [UIColor navColor];
     if (vc.viewControllers.count > 0) {
         DMSortVenueFeedViewController *filterVC = vc.viewControllers[0];
         filterVC.delegate = self;
         filterVC.filterItems = self.filterItems;
         filterVC.mapModelController = self.mapModelController;
     }
-    
-    [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self presentViewController:vc animated:FALSE completion:nil];
 }
 
 -(void)navigateToVenueDetail:(DMVenue*)selectedVenue selectedIndex:(NSInteger)selectedIndex {
@@ -605,12 +606,10 @@
     {
         [[cell restaurantCategory] setText:@"Coming Soon to DinerMojo"];
         [[cell restaurantImageView] setAlpha:0.6];
-
     }
     
     cell.index = indexPath;
     cell.delegate = self;
-
     [cell setEarnVisibility:item.allows_earnsValue];
     [cell setRedeemVisibility:item.allows_redemptionsValue];
     
@@ -636,7 +635,6 @@
     cell.restaurantImageView.image = nil;
     [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:urlString]
                  placeholderImage:nil];
-    
     return cell;
 }
 
@@ -649,7 +647,6 @@
 {
     DMVenue *item = [[self mapModelController] filteredVenues][(unsigned long)indexPath.row];
     [self navigateToVenueDetail:item selectedIndex:indexPath.row];
-    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -668,8 +665,10 @@
     [mapView setHidden:(item == DMVenueList)];
     [collectionView setHidden:(item == DMVenueList)];
     [self reloadMapAnnotations];
-    if (item == DMVenueList && !self.searchHereButtonView.isHidden) {
+    if (item == DMVenueList) {
         [self.searchHereButtonView setHidden:YES];
+    } else {
+        [self.searchHereButtonView setHidden:NO];
     }
 }
 

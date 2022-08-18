@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
+#import "Reachability.h"
+#import "DMOperationCompletePopUpViewController.h"
 
 @import Firebase;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,FIRMessagingDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,FIRMessagingDelegate,UNUserNotificationCenterDelegate, DMOperationCompletePopUpViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSDictionary *notificationPayload;

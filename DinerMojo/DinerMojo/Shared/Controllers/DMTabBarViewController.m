@@ -29,10 +29,13 @@
     [super viewDidLoad];
     
     [[[self tabBarController] tabBar] setTintColor:[UIColor brandColor]];
+    [[self tabBarController] setDelegate:self];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
     [self updateNewsfeedBadge];
     [self checkIfShowNotificationsPopUp];
-    [[self tabBarController] setDelegate:self];
-    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate checkBookingNotification];
 }
@@ -76,7 +79,6 @@
 
 - (void)updateNewsfeedBadge {
     DMNewsRequest *newsRequest = [DMNewsRequest new];
-    
     [newsRequest downloadNewsWithCompletionBlock:^(NSError *error, id results) {
         if (error == nil) {
             int unreadCount = 0;
@@ -86,9 +88,7 @@
                     unreadCount += 1;
                 }
             }
-            
             UITabBarItem *item =  [[[self.tabBarController tabBar] items] objectAtIndex:2];
-            
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (unreadCount > 0) {
                     item.badgeValue = [NSString stringWithFormat:@"%d", unreadCount];
@@ -163,7 +163,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [[self tabBarController] setDelegate:self];
 }
 
@@ -253,11 +252,9 @@
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     UIAlertAction *login = [UIAlertAction actionWithTitle:@"Login / Sign up" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
+        //[self.tabBarController setHidesBottomBarWhenPushed:YES];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
         UINavigationController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"landingNavigationController"];
-        
         [self setRootViewController:destinationViewController animated:YES];
     }];
     

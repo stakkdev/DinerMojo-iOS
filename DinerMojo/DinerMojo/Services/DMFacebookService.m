@@ -60,7 +60,18 @@
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     
     __weak typeof(self) weakSelf = self;
+    
 
+//    FBSDKLoginConfiguration *configuration =
+//      [[FBSDKLoginConfiguration alloc] initWithPermissions:@[@"email", @"user_friends", @"user_birthday", @"user_age_range", @"user_hometown", @"user_location", @"user_gender", @"user_link"]
+//                                                  tracking:FBSDKLoginTrackingLimited
+//                                                     nonce:@"123"];
+
+//    [login logInFromViewController:self
+//                            configuration:configuration
+//                               completion:^(FBSDKLoginManagerLoginResult * result, NSError *error) {
+//      if (!error && !result.isCancelled) {
+//      }
     [login logInWithPermissions:[self permissions] fromViewController:viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if (error)
         {

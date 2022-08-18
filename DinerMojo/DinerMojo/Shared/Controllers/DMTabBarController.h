@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DinerMojo-Swift.h"
+
 
 @interface DMTabBarController : UITabBarController
 
 @property NSInteger previousSelectedIndex;
+
 @end
