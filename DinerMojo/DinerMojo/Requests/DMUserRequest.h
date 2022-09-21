@@ -30,7 +30,8 @@
 - (void)referUserWithEmailAddress:(NSString *)emailAddress withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)downloadReferralCodeForEmailAddress:(NSString *)emailAddress withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)validateCode:(NSString *)code withCompletionBlock:(RequestCompletion)completionBlock;
-
+- (void)facebookEmailVerification:(NSString *)userId otp:(NSString *)otp password:(NSString *)password completionBlock:(RequestCompletion)completionBlock;
+- (void)facebookEmailUpdate:(NSString *)email completionBlock:(RequestCompletion)completionBlock;
 
 -(void)setDeviceToken:(NSString *)deviceToken;
 -(NSString *)currentUserDeviceToken;

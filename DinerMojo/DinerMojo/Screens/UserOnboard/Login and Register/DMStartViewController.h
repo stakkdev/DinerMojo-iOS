@@ -9,6 +9,7 @@
 #import "DMViewController.h"
 #import "DMBlurredView.h"
 #import "DMTextField.h"
+#import "DinerMojo-Swift.h"
 
 typedef NS_ENUM(NSInteger, DMStartViewControllerState) {
     DMStartViewControllerStateNormal = 0,

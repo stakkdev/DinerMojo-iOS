@@ -446,6 +446,32 @@
     [self POST:@"user/login" withParams:params withCompletionBlock:completionBlock];
 }
 
+- (void)facebookEmailUpdate:(NSString *)email completionBlock:(RequestCompletion)completionBlock
+{
+    NSDictionary *params = @{ @"email_address": email};
+    [self POST:@"user/facebook_email" withParams:params
+    withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, results);
+        }
+    }];
+}
+
+- (void)facebookEmailVerification:(NSString *)userId otp:(NSString *)otp password:(NSString *)password completionBlock:(RequestCompletion)completionBlock
+{
+    NSDictionary *params = @{ @"user_id": userId, @"otp": otp, @"password": password};
+    [self POST:@"user/facebook_email_verification" withParams:params
+    withCompletionBlock:^(NSError *error, id results) {
+        if (error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, results);
+        }
+    }];
+}
+
 #pragma mark - Other user related methods
 
 -(void)registerForNotifications {

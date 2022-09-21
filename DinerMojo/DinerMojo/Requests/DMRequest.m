@@ -142,7 +142,6 @@
     NSLog(@"Parameters are:%@", params);
     NSLog(@"API full URL IS:%@", [self buildURL:url]);
 
-    
     [[self jsonManager] POST:[self buildURL:url] parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil,responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

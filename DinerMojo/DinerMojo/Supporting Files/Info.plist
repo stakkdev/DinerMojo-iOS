@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>$(PRODUCT_NAME)$(APP_NAME_SUFFIX)</string>
+	<string>DinerMojo</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>

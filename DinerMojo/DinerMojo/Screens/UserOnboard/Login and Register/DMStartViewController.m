@@ -23,6 +23,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     DMStartViewControllerReferralCodeUIStateCodeNotAvailable = 2,
     DMStartViewControllerReferralCodeUIStateCodeConflicted = 3
 };
+@class EmailVerifyViewController;
+@class SetupPasswordViewController;
 
 @interface DMStartViewController ()
 {
@@ -680,7 +682,34 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (IBAction)facebookLoginPressed:(id)sender
 {
-    [self loginToFacebook];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FBSignup" bundle:nil];
+    EmailVerifyViewController *emailVerify = (EmailVerifyViewController *)[storyboard instantiateViewControllerWithIdentifier:@"EmailVerifyViewController"];
+    emailVerify.viewDismiss = ^(void){
+        [self dismissBlurredViewWithInterval:0.25f];
+    };
+    emailVerify.setPassword = ^(NSInteger userId, NSString *emailId) {
+        [self dismissBlurredViewWithInterval:0.25f];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FBSignup" bundle:nil];
+        SetupPasswordViewController *setupPassword = (SetupPasswordViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SetupPasswordViewController"];
+        setupPassword.userId = userId;
+        setupPassword.emailId = emailId;
+        setupPassword.viewDismiss = ^(void){
+            [self dismissBlurredViewWithInterval:0.25f];
+        };
+        setupPassword.successSetupPassword = ^(void){
+            [self dismissBlurredViewWithInterval:0.25f];
+            [self goToVenues:NO];
+        };
+        [setupPassword setModalPresentationStyle:UIModalPresentationOverFullScreen];
+        [self presentViewController:setupPassword animated:true completion: nil];
+        [self showBlurredViewWithInterval:0.35f];
+    };
+    
+    [emailVerify setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self presentViewController:emailVerify animated:true completion: nil];
+    [self showBlurredViewWithInterval:0.35f];
+    //[self loginToFacebook];
+    
 }
 
 - (void)processSelectedImage:(UIImage *)image
@@ -1143,6 +1172,25 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             [self toggleLoginSubviews];
         }
     }];
+}
+
+#pragma mark FacebookEmailVerifyDelegate
+
+- (void)viewDismissed {
+    [self dismissBlurredViewWithInterval:0.25f];
+}
+
+-(void)setPasswordWithUserId:(NSInteger)userId {
+    [self dismissBlurredViewWithInterval:0.25f];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FBSignup" bundle:nil];
+    SetupPasswordViewController *setupPassword = (SetupPasswordViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SetupPasswordViewController"];
+    setupPassword.viewDismiss = ^(void){
+        NSLog(@"Completion is called to intimate action is performed.");
+    };
+
+    [setupPassword setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self presentViewController:setupPassword animated:true completion: nil];
+    [self showBlurredViewWithInterval:0.35f];
 }
 
 @end
