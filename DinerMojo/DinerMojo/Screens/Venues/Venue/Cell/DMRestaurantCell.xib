@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -113,6 +114,8 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1c-rV-OUN">
                         <rect key="frame" x="161.5" y="141" width="26.5" height="20"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="yWk-cf-Ux5"/>
                         </constraints>
@@ -152,7 +155,7 @@
                     <constraint firstItem="PXQ-1H-BQM" firstAttribute="centerX" secondItem="dcg-ri-7be" secondAttribute="centerX" id="tg5-CZ-H5z"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="tintColor" red="0.36615604162216187" green="0.74646860361099243" blue="0.6332557201385498" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" red="0.066666666666666666" green="0.41176470590000003" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="earnButton" destination="AAz-tv-flg" id="uEz-p6-5l4"/>
@@ -174,5 +177,8 @@
         <image name="earn_icon_disabled" width="29.5" height="31"/>
         <image name="heartWhite" width="18.5" height="16.5"/>
         <image name="redeem_icon_disabled" width="27" height="31.5"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

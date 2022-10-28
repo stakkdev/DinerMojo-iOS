@@ -41,7 +41,7 @@ int lifestyleTableViewTag = 2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self setup];
     [self.view layoutIfNeeded];
 }
@@ -65,7 +65,7 @@ int lifestyleTableViewTag = 2;
     
     [self checkAllInTypeSelectedForRestaurants:YES];
     [self checkAllInTypeSelectedForRestaurants:NO];
-
+    
     self.tableViewManager = [[TUGroupedTableManager alloc] initWithTableView:self.generalOptionsTableView reuseIDs:self.sortOptionProvider.reuseIDs];
     self.tableViewManager.headersReuseIDs = @[@"TUHeaderOptionGroupView"];
     self.tableViewManager.data = self.sortOptionProvider.preload;
@@ -78,7 +78,7 @@ int lifestyleTableViewTag = 2;
     self.title = NSLocalizedString(@"sort.page.title", nil);
     
     [self refreshLocationInfoSection];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refreshLocationInfoSection)
                                                  name:UIApplicationWillEnterForegroundNotification
@@ -96,7 +96,7 @@ int lifestyleTableViewTag = 2;
     [[self lifestyleCategoriesTableView] registerNib: [UINib nibWithNibName:@"SimpleRadioTableViewCell" bundle:nil] forCellReuseIdentifier:@"SimpleRadioTableViewCell"];
     [[self restaurantCategoriesTableView] registerNib: [UINib nibWithNibName:@"SimpleRadioTableViewCell" bundle:nil] forCellReuseIdentifier:@"SimpleRadioTableViewCell"];
     
-
+    
     [[self lifestyleCategoriesTableView] setRowHeight:41];
     [[self restaurantCategoriesTableView] setRowHeight:41];
 }
@@ -119,9 +119,9 @@ int lifestyleTableViewTag = 2;
         [self setupMessageView];
     }
     [self.view updateConstraints];
-    
     [self.generalOptionsTableView reloadData];
 }
+
 
 //- (void)informDelegateOfSelection:(DMSortNewsfeedViewControllerSortItemType)sortItemType {
 //    if ([self delegate] != nil) {
@@ -148,13 +148,13 @@ int lifestyleTableViewTag = 2;
         FilterItem *item = [[FilterItem alloc] initWithGroupName:GroupsNameRestaurantsFilter itemId:category.modelID.integerValue value:0];
         [completeData addObject:item];
     }
-
+    
     if ([self delegate] != nil) {
         if ([[self delegate] respondsToSelector:@selector(selectedFilterItems:)]) {
             [[self delegate] selectedFilterItems:completeData];
         }
     }
-
+    
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
@@ -234,7 +234,7 @@ int lifestyleTableViewTag = 2;
 }
 
 - (void)updateAllSelectedButtonTo:(BOOL)allSelected isRestaurants:(BOOL)isRestaurants {
-
+    
     UIImage *selectedImage = [UIImage imageNamed:@"SelectedCheckMark22"];
     UIImage *unselectedImage = [UIImage imageNamed:@"UnselectedCheckMark22"];
     
@@ -242,10 +242,19 @@ int lifestyleTableViewTag = 2;
         [self.restaurantsCategoryButton setImage:allSelected ? selectedImage : unselectedImage forState:UIControlStateNormal];
         [_restaurantsLabel setHighlighted:allSelected];
         _allRestaurantsSelected = allSelected;
+        if (allSelected) {
+            self.restaurantsCategoryButton.imageView.image = [self.restaurantsCategoryButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.restaurantsCategoryButton setTintColor:[UIColor brandColor]];
+        }
+        
     } else {
         [self.lifestyleCategoryButton setImage:allSelected ? selectedImage : unselectedImage forState:UIControlStateNormal];
         [_lifestyleLabel setHighlighted:allSelected];
         _allLifestyleSelected = allSelected;
+        if (allSelected) {
+            self.lifestyleCategoryButton.imageView.image = [self.lifestyleCategoryButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.lifestyleCategoryButton setTintColor:[UIColor brandColor]];
+        }
     }
 }
 

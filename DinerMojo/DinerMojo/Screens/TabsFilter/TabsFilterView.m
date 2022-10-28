@@ -39,6 +39,7 @@
     [self.buttonList setBackgroundColor:[UIColor restaurantsDeselected]];
     [self.buttonList toggleInnerShadow:NO];
     [self.buttonList setBorderWidth:0.0];
+    self.backgroundColor = [UIColor brandColor];
 }
 
 - (IBAction)selectTabAction:(id)sender {

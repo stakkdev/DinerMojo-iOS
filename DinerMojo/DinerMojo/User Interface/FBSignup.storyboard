@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ut-pE-1C5">
-                                <rect key="frame" x="0.0" y="451" width="414" height="445"/>
+                                <rect key="frame" x="0.0" y="421" width="414" height="475"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJY-Ci-rvc">
                                         <rect key="frame" x="374" y="0.0" width="40" height="40"/>
@@ -41,8 +41,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4D-Jv-Ij9" customClass="DMButton">
-                                        <rect key="frame" x="30" y="358" width="354" height="48"/>
-                                        <color key="backgroundColor" red="0.35686274509999999" green="0.74901960779999999" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="30" y="388" width="354" height="48"/>
+                                        <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="soA-sK-zXK"/>
                                         </constraints>
@@ -73,7 +73,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64P-0e-DqT">
-                                        <rect key="frame" x="30" y="317" width="354" height="31"/>
+                                        <rect key="frame" x="30" y="347" width="354" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="kOn-kw-Ylw"/>
                                         </constraints>
@@ -87,15 +88,8 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3Z-h8-WI2">
-                                        <rect key="frame" x="30" y="259" width="354" height="45"/>
+                                        <rect key="frame" x="30" y="289" width="354" height="45"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bW0-tk-O6Y">
-                                                <rect key="frame" x="0.0" y="44" width="354" height="1"/>
-                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="ztG-6W-0TX"/>
-                                                </constraints>
-                                            </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o1K-XD-Xrm">
                                                 <rect key="frame" x="0.0" y="7" width="354" height="34"/>
                                                 <constraints>
@@ -104,6 +98,13 @@
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bW0-tk-O6Y">
+                                                <rect key="frame" x="0.0" y="44" width="354" height="1"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="ztG-6W-0TX"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -117,10 +118,12 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOu-GS-QBP">
-                                        <rect key="frame" x="30" y="39" width="354" height="212"/>
-                                        <string key="text">In an effort to greater protect your privacy and reduce the amount of exposure to third-party app tracking for DinerMojo members, we have done away with the ability to register or sign-in with Facebook.
+                                        <rect key="frame" x="30" y="25" width="354" height="256"/>
+                                        <string key="text">We've moved away from Facebook sign-ins.
 
-If this was your usual way of doing it before, please enter the email address associated with your Facebook account in the field below (Facebook supplied that as part of the sign-up) then click the "Set-up password" button. You'll be able to select a password for your account and then sign in with that and your email address.</string>
+We want to protect DinerMojo members’ privacy and reduce the amount of exposure to third-party app tracking. As part of this, Facebook Log In is no longer available.
+
+If you used Facebook Log In previously, please enter the email address associated with that Facebook account then click the "Set-up password" button. Once you've set up a password, you'll be able to sign in with that and your email address.</string>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -137,7 +140,7 @@ If this was your usual way of doing it before, please enter the email address as
                                 <constraints>
                                     <constraint firstItem="64P-0e-DqT" firstAttribute="top" secondItem="y3Z-h8-WI2" secondAttribute="bottom" constant="13" id="0N0-G8-K45"/>
                                     <constraint firstItem="i4D-Jv-Ij9" firstAttribute="top" secondItem="64P-0e-DqT" secondAttribute="bottom" constant="10" id="CvD-Ub-2Q0"/>
-                                    <constraint firstAttribute="height" constant="445" id="F9a-B0-SNE"/>
+                                    <constraint firstAttribute="height" constant="475" id="F9a-B0-SNE"/>
                                     <constraint firstItem="HOu-GS-QBP" firstAttribute="leading" secondItem="4ut-pE-1C5" secondAttribute="leading" constant="30" id="HE9-PU-Mod"/>
                                     <constraint firstAttribute="trailing" secondItem="nJY-Ci-rvc" secondAttribute="trailing" id="KFD-4k-xjl"/>
                                     <constraint firstItem="i4D-Jv-Ij9" firstAttribute="leading" secondItem="4ut-pE-1C5" secondAttribute="leading" constant="30" id="N1g-Nz-xVi"/>
@@ -146,7 +149,7 @@ If this was your usual way of doing it before, please enter the email address as
                                     <constraint firstAttribute="trailing" secondItem="HOu-GS-QBP" secondAttribute="trailing" constant="30" id="Rq7-iw-Lbc"/>
                                     <constraint firstItem="nJY-Ci-rvc" firstAttribute="top" secondItem="4ut-pE-1C5" secondAttribute="top" id="Tnk-2M-Q2I"/>
                                     <constraint firstAttribute="trailing" secondItem="cea-rz-4aO" secondAttribute="trailing" id="Ubx-Yw-qf5"/>
-                                    <constraint firstItem="HOu-GS-QBP" firstAttribute="top" secondItem="4ut-pE-1C5" secondAttribute="top" constant="39" id="YP2-0U-AXo"/>
+                                    <constraint firstItem="HOu-GS-QBP" firstAttribute="top" secondItem="4ut-pE-1C5" secondAttribute="top" constant="25" id="YP2-0U-AXo"/>
                                     <constraint firstAttribute="bottom" secondItem="i4D-Jv-Ij9" secondAttribute="bottom" constant="39" id="flm-L6-4fb"/>
                                     <constraint firstItem="y3Z-h8-WI2" firstAttribute="leading" secondItem="4ut-pE-1C5" secondAttribute="leading" constant="30" id="l0f-65-dBl"/>
                                     <constraint firstItem="cea-rz-4aO" firstAttribute="top" secondItem="4ut-pE-1C5" secondAttribute="top" id="lyh-aN-8pO"/>
@@ -168,6 +171,7 @@ If this was your usual way of doing it before, please enter the email address as
                         <outlet property="activityIndicator" destination="cea-rz-4aO" id="w6h-7l-vZG"/>
                         <outlet property="btnClose" destination="nJY-Ci-rvc" id="uk9-Db-axe"/>
                         <outlet property="btnEmailChanging" destination="64P-0e-DqT" id="HvJ-bR-oIS"/>
+                        <outlet property="lblHeaderText" destination="HOu-GS-QBP" id="DoL-VF-cBN"/>
                         <outlet property="textFieldEmail" destination="o1K-XD-Xrm" id="l9f-w8-zA2"/>
                     </connections>
                 </viewController>
@@ -200,7 +204,7 @@ If this was your usual way of doing it before, please enter the email address as
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxa-JW-hUA" customClass="DMButton">
                                         <rect key="frame" x="30" y="244" width="354" height="48"/>
-                                        <color key="backgroundColor" red="0.35686274509999999" green="0.74901960779999999" blue="0.63529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Xph-8x-h1U"/>
                                         </constraints>

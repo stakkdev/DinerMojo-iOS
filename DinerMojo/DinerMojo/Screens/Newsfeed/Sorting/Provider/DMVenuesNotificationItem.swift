@@ -27,7 +27,7 @@ import Foundation
         self.type = venue.friendlyPlaceName()
         self.image = venue.primaryImage() != nil ? venue.primaryImage().fullURL() : ""
         self.type = (venue.categories().first as? DMVenueCategory)?.name() ?? ""
-        self.address = venue.house_number_street_name()
+        self.address = venue.house_number_street_name() != nil ?  venue.house_number_street_name() : ""
         self.groupName = groupName
         self.itemId = venue.modelID().intValue
         self.venue = venue

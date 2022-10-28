@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,14 +21,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5FW-Kd-Xmw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2k-qZ-6AG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2k-qZ-6AG">
                                 <rect key="frame" x="39" y="6" width="80" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="pqz-zH-x5o"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
-                                <color key="highlightedColor" red="0.43137254899999999" green="0.78823529410000004" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.066666666666666666" green="0.41176470588235292" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQY-dz-Jzu">
                                 <rect key="frame" x="0.0" y="8.5" width="24" height="24"/>
@@ -36,8 +36,11 @@
                                     <constraint firstAttribute="height" constant="24" id="3x0-k6-fI5"/>
                                     <constraint firstAttribute="width" constant="24" id="HVm-3V-s7f"/>
                                 </constraints>
+                                <color key="tintColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="UnselectedCheckMark22"/>
-                                <state key="selected" image="SelectedCheckMark22"/>
+                                <state key="selected" image="SelectedCheckMark22">
+                                    <color key="titleColor" red="0.27450980390000002" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

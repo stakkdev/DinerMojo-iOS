@@ -1,23 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "DinerMojoLogo.png",
       "idiom" : "universal",
-      "filename" : "DinerMojo-2.png",
       "scale" : "1x"
     },
     {
+      "filename" : "DinerMojoLogo@2x.png",
       "idiom" : "universal",
-      "filename" : "DinerMojo-1.png",
       "scale" : "2x"
     },
     {
+      "filename" : "DinerMojoLogo@3x.png",
       "idiom" : "universal",
-      "filename" : "DinerMojo.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

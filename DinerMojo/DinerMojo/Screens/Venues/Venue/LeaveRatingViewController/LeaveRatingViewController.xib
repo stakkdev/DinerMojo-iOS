@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +29,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Haa-OP-XLW">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Haa-OP-XLW">
                     <rect key="frame" x="75" y="66" width="170" height="170"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="170" id="fEH-Ee-04L"/>
@@ -43,22 +41,22 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave a rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrN-DT-aIv">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Leave a rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrN-DT-aIv">
                     <rect key="frame" x="20" y="255.5" width="280" height="32"/>
                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="23"/>
                     <color key="textColor" red="0.99215686274509807" green="0.60784313725490191" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-fZ-hyz">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-fZ-hyz">
                     <rect key="frame" x="30" y="317" width="260" height="123"/>
                     <string key="text">We hope you enjoyed your experience at Good Earth, the owners rely on Tripadvisor reviews to spread the word about their restaurant. Please take a minute to write a review.</string>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                     <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHc-91-XYi">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHc-91-XYi">
                     <rect key="frame" x="50" y="475" width="220" height="33"/>
-                    <color key="backgroundColor" red="0.12549019610000001" green="0.78039215689999997" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="220" id="Cqv-pU-PWd"/>
                     </constraints>
@@ -75,7 +73,7 @@
                         <action selector="openTripAdvisor:" destination="-1" eventType="touchUpInside" id="EB6-8b-lIG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ow-eS-D1a">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ow-eS-D1a">
                     <rect key="frame" x="50" y="523" width="220" height="33"/>
                     <color key="backgroundColor" red="0.99215686270000003" green="0.60784313729999995" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -95,6 +93,7 @@
                     </connections>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.79915164877300615" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Haa-OP-XLW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" id="59q-FN-5iI"/>
@@ -112,7 +111,6 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KvG-fZ-hyz" secondAttribute="trailing" constant="30" id="qx0-Qg-13Y"/>
                 <constraint firstItem="2Ow-eS-D1a" firstAttribute="top" secondItem="ZHc-91-XYi" secondAttribute="bottom" constant="15" id="u96-Ky-upk"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="34.5" y="52.5"/>
         </view>
     </objects>

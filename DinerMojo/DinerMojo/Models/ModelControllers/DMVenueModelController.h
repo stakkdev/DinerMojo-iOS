@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, DMVenueListState) {
 @property (strong, nonatomic) NSArray *mapAnnotations;
 @property (nonatomic) DMVenueListState state;
 @property (nonatomic, strong) NSArray *filters;
-@property (nonatomic, strong) NSArray *selectedCategoriesIds;
+@property (nonatomic, strong) NSMutableArray *selectedCategoriesIds;
 @property (nonatomic, strong) NSArray *lifestyleCategories;
 @property (nonatomic, strong) NSArray *restaurantCategories;
 @property BOOL filterLifestyle;

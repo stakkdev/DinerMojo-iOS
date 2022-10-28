@@ -297,6 +297,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         case DMStartViewControllerReferralCodeUIStateCodeAvailable:
             [[self referralCodeCheck] setHidden:NO];
             [[self referralCodeCheck] setImage:[UIImage imageNamed:@"small_check"]];
+            [self referralCodeCheck].image = [[self referralCodeCheck].image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [[self referralCodeCheck] setTintColor:[UIColor brandColor]];
             [[self referralActivityIndicator] stopAnimating];
             [[self referralCodeTextField] setEnabled:YES];
             [[self referralCodePromptLabel] setText:@"We have your referral code ready in the text box below."];
@@ -581,6 +583,19 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     }];
 }
 
+- (void)closeLoginWithView {
+    
+    [_loginViewBottom setConstant:_initialLoginViewYCoordinate];
+    
+    [self animateView:[self view] constraintChangesWithInterval:0.25f damping:1.0f];
+    
+    [self dismissBlurredViewWithInterval:0.25f];
+    
+    [[IQKeyboardManager sharedManager] resignFirstResponder];
+    
+    //_startViewControllerState = DMStartViewControllerStateNormal;
+}
+
 #pragma mark - Button Presses
 
 - (IBAction)skipPressed:(id)sender
@@ -643,6 +658,10 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     [[self userRequest] resetPasswordWithEmailAddress:self.forgotPasswordEmailTextField.text withCompletionBlock:^(NSError *error, id results) {
+        
+        NSLog(@"Response of api is: %@", results);
+        NSLog(@"Error of api is: %ld", (long)error.code);
+        
         if (error)
         {
             NSString *errorMessage;
@@ -650,16 +669,15 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             if (error.code == DMErrorCode409)
             {
                 errorMessage = @"You have already requested a password reset, please check your email";
-                
-            }
-            
-            else
-            {
+            } else if (error.code == DMFBFErrorCode403) {
+                [self facebookLoginNaviagtion:self.forgotPasswordEmailTextField.text];
+                [self toggleLoginSubviews];
+            } else {
                 errorMessage = @"An account with this email does not exist.";
             }
-            
-            [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Oops!" description:errorMessage style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
-            
+             if (error.code != DMFBFErrorCode403) {
+                [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Oops!" description:errorMessage style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
+            }
         }
         else
         {
@@ -682,8 +700,17 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (IBAction)facebookLoginPressed:(id)sender
 {
+    [self facebookLoginNaviagtion: @""];
+}
+
+-(void)facebookLoginNaviagtion:(NSString *)fbUserEmail {
+    // Close Login View
+    [self closeLoginWithView];
+    _startViewControllerState = DMStartViewControllerStateNormal;
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FBSignup" bundle:nil];
     EmailVerifyViewController *emailVerify = (EmailVerifyViewController *)[storyboard instantiateViewControllerWithIdentifier:@"EmailVerifyViewController"];
+    emailVerify.emailText = fbUserEmail;
     emailVerify.viewDismiss = ^(void){
         [self dismissBlurredViewWithInterval:0.25f];
     };
@@ -709,7 +736,6 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [self presentViewController:emailVerify animated:true completion: nil];
     [self showBlurredViewWithInterval:0.35f];
     //[self loginToFacebook];
-    
 }
 
 - (void)processSelectedImage:(UIImage *)image
@@ -743,7 +769,6 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if ([navigationController.viewControllers count] == 3 && ([[[[navigationController.viewControllers objectAtIndex:2] class] description] isEqualToString:@"PUUIImageViewController"] || [[[[navigationController.viewControllers objectAtIndex:2] class] description] isEqualToString:@"PLUIImageViewController"]))
-        
         [self addCircleOverlayToImagePicker:viewController];
 }
 

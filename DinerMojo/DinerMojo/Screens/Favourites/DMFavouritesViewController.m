@@ -75,7 +75,7 @@
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
         [navBarAppearance configureWithOpaqueBackground];
-        navBarAppearance.backgroundColor = [UIColor colorWithRed:105.0f/255.0f green:201.0f/255.0f blue:179.0f/255.0f alpha:0.98f];
+        navBarAppearance.backgroundColor = [UIColor brandColor];
         [navBarAppearance setTitleTextAttributes:
          @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         self.navigationController.navigationBar.standardAppearance = navBarAppearance;
@@ -83,12 +83,6 @@
     } else {
         
     }
-    
-    
-    
-    
-    
-    
     
     UIBarButtonItem *deleteAllButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"remove.all.title", nil) style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllPressed:)];
     self.navigationItem.rightBarButtonItem = deleteAllButton;
@@ -103,13 +97,13 @@
     
     
     NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:self.tapLinkLabel.text];
-    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:248.0f/255.0f
-                                                                              green:164.0f/255.0f
-                                                                               blue:30.0f/255.0f
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:238.0f/255.0f
+                                                                              green:154.0f/255.0f
+                                                                               blue:37.0f/255.0f
                                                                               alpha:1.0f] range:NSMakeRange(20,26)];
-    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:248.0f/255.0f
-                                                                              green:164.0f/255.0f
-                                                                               blue:30.0f/255.0f
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:238.0f/255.0f
+                                                                              green:154.0f/255.0f
+                                                                               blue:37.0f/255.0f
                                                                               alpha:1.0f] range:NSMakeRange(64,4)];
     self.tapLinkLabel.attributedText = string;
 }

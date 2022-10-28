@@ -6,7 +6,7 @@ target 'DinerMojo' do
   use_frameworks!
 
   # Pods for DinerMojo
-pod 'Siren'
+    pod 'Siren'
     pod 'MagicalRecord', '~> 2.3'
     pod 'RDHCollectionViewGridLayout', '~> 1.2'
     pod 'AFNetworking', '~> 4.0'
@@ -16,9 +16,9 @@ pod 'Siren'
     pod 'KMPlaceholderTextView', '~> 1.4.0'
     pod 'FastEasyMapping', '~> 0.5'
     pod 'IQKeyboardManager'
-    pod 'FBSDKCoreKit'#, '~> 5.5.0'
-    pod 'FBSDKLoginKit'#, '~> 5.5.0'
-    pod 'FBSDKShareKit'#, '~> 5.5.0'
+    pod 'FBSDKCoreKit', '~> 5.5.0'
+    pod 'FBSDKLoginKit', '~> 5.5.0'
+    pod 'FBSDKShareKit', '~> 5.5.0'
     pod 'PMEDatePicker', '0.0.2'
     pod 'Shimmer', '1.0.2'
     pod 'Fabric', '1.6.11'

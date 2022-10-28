@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to dismiss" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZN-N1-gET">
-                    <rect key="frame" x="132" y="621" width="110" height="21"/>
+                    <rect key="frame" x="133" y="621" width="109" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="i0t-m1-Rtj"/>
                     </constraints>
@@ -42,8 +40,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoa-jb-KAX">
-                    <rect key="frame" x="47" y="275" width="280" height="45"/>
-                    <color key="backgroundColor" red="0.48627450980392156" green="0.85490196078431369" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="47.5" y="275" width="280" height="45"/>
+                    <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.63325572009999997" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="280" id="Pq0-Xs-Uds"/>
                         <constraint firstAttribute="height" constant="45" id="ly0-3X-GLz"/>
@@ -71,6 +69,7 @@
                 <constraint firstItem="zcG-sc-bem" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="pz8-WM-NFi"/>
                 <constraint firstItem="T0o-3G-2c6" firstAttribute="top" secondItem="zcG-sc-bem" secondAttribute="bottom" constant="60" id="rAN-wj-5rB"/>
             </constraints>
+            <point key="canvasLocation" x="-121" y="0.0"/>
         </view>
     </objects>
 </document>

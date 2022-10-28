@@ -22,6 +22,7 @@
 }
 
 @property BOOL showOverlay;
+@property BOOL firstLoad;
 @property BOOL collectionViewCellSelected;
 @property BOOL limitAnnotationsWarningDisplayed;
 @property BOOL mapHasBeenMoved;

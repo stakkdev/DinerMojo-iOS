@@ -41,7 +41,7 @@
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
         [navBarAppearance configureWithOpaqueBackground];
-        navBarAppearance.backgroundColor = [UIColor colorWithRed:105.0f/255.0f green:201.0f/255.0f blue:179.0f/255.0f alpha:0.98f];
+        navBarAppearance.backgroundColor = [UIColor brandColor];
         [navBarAppearance setTitleTextAttributes:
                 @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         self.navigationController.navigationBar.standardAppearance = navBarAppearance;
@@ -355,7 +355,6 @@
     self.navigationController.navigationBar.barTintColor = subColor;
     
     NSInteger pointsValue = [[[self currentUser] annual_points_balance] integerValue];
-    
     NSString *pointsValueString = [NSString stringWithFormat:@"%li", (long)pointsValue];
     
     NSMutableAttributedString *points = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:(pointsValue == 1) ? @"%@ point" : @"%@ points", pointsValueString]];

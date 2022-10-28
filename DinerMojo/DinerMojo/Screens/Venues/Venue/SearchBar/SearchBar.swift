@@ -93,8 +93,7 @@ import Foundation
      private func setup() {
         setupLayout()
         self.textField.delegate = self
-        self.view.backgroundColor = UIColor(red: 0.43137254901961, green:  0.7843137254902, blue: 0.69803921568627, alpha: 1.0)
-        
+         self.view.backgroundColor =  UIColor(red: 17.0/255.0, green:  105.0/255.0, blue: 140.0/255.0, alpha: 1.0)
      }
     
      private func setupLayout() {

@@ -74,7 +74,7 @@
         }
     }];
     
-    [self initializeReachbility];
+    //[self initializeReachbility];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
@@ -96,6 +96,7 @@
     [self.reach startNotifier];
 }
 
+/*
 - (void)reachabilityChanged:(NSNotification*)notification {
     Reachability* reachability = notification.object;
     
@@ -132,7 +133,7 @@
             [test dismissViewControllerAnimated:false completion:nil];
         }
     }
-}
+}*/
 
 -(void)actionButtonPressedFromOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController {
     NSLog(@"Here button is taaped");

@@ -29,7 +29,7 @@ import Foundation
     }
     
     private func createData() -> [AnyObject]? {
-        let diningColor = UIColor(red: 95/255, green: 186/255, blue: 160/255, alpha: 1.0)
+        let diningColor = UIColor(red: 17/255, green: 105/255, blue: 140/255, alpha: 0.80)//UIColor(red: 95/255, green: 186/255, blue: 160/255, alpha: 1.0)
         let dining = self.itemsFactory.diningSectionItem(settings: self.settings, color: diningColor, selectedDinings: self.selectedDinings)
         let lifestyleColor = UIColor(red: 204/255, green: 98/255, blue: 30/255, alpha: 1.0)
         let lifestyle = self.itemsFactory.lifestyleSectionItem(settings: self.settings, color: lifestyleColor, selectedLifestyles: self.selectedLifestyles)

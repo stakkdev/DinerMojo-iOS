@@ -135,7 +135,7 @@
     [self addClearShadowToView:self.gradientView];
     [self addShadowToView:self.infoShadowView];
     [self setupButtons];
-    
+    //[self setUpNavigationButton];
     if([self.selectedVenue.venue_type isEqualToString:RESTAURANT_TYPE]) {
         [Answers logContentViewWithName:@"View restaurant info" contentType:[NSString stringWithFormat:@"View restaurant info - %@", self.selectedVenue.name] contentId:[NSString stringWithFormat:@"%@", self.selectedVenue.name] customAttributes:@{}];
     } else {
@@ -390,6 +390,18 @@
             return [[UITapGestureRecognizer alloc] init];
     }
 }
+
+-(void)setUpNavigationButton {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage* image = [[UIImage imageNamed:@"icon_navigation"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        //[image setTintColor: UIColor.brandColor];
+        [self.navButton setImage:image forState:UIControlStateNormal];
+        [self.navButton setTintColor:UIColor.brandColor];
+    });
+    
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];UIImage *image = [[UIImage imageNamed:@"icon_navigation"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];[button setImage:image forState:UIControlStateNormal]; button.tintColor = [UIColor redColor];
+//    self.navButton = button;
+}
     
 -(void)setupButton:(int)index {
     RestaurantInfoButtonEnum type = [RestaurantInfoButtonType typeFor:index withVenue:self.selectedVenue];
@@ -402,7 +414,6 @@
     UIColor* color = isActive ? UIColor.brandColor : UIColor.grayColor;
     UITapGestureRecognizer* recognizer = [self recognizerFor:type];
     BOOL isAlwaysActive = [RestaurantInfoButtonType isButtonAlwaysActiveFor:type];
-    
     [button setTitle:title forState:UIControlStateNormal];
     [imageView setImage:image];
     [button setTitleColor:color forState:UIControlStateNormal];

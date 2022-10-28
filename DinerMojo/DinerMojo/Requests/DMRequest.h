@@ -16,6 +16,8 @@ static const NSInteger DMErrorCode400 = 400;
 static const NSInteger DMErrorCode401 = 401;
 static const NSInteger DMErrorCode404 = 404;
 static const NSInteger DMErrorCode409 = 409;
+static const NSInteger DMFBFErrorCode403 = 403;
+
 
 typedef void(^RequestCompletion)(NSError *error, id results);
 typedef void(^RequestResponse)(NSError *error, NSDictionary *results);

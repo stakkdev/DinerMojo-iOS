@@ -13,13 +13,13 @@
 
 +(UIColor *) brandColor;
 {
-    return [UIColor colorWithRed:0.43137254901961f green:0.7843137254902f blue:0.69803921568627f alpha:1.00f];
+    return [UIColor colorWithRed:17.0f/255.0f green:105.0f/255.0f blue:140.0f/255.0f alpha:1.00f];//[UIColor colorWithRed:0.43137254901961f green:0.7843137254902f blue:0.69803921568627f alpha:1.00f];
 }
 
 
 +(UIColor *) restaurantsDeselected;
 {
-    return [UIColor colorWithRed:0.43137254901961f green:0.7843137254902f blue:0.69803921568627f alpha:1.00f];
+    return [UIColor colorWithRed:17.0f/255.0f green:105.0f/255.0f blue:140.0f/255.0f alpha:1.00f];//[UIColor colorWithRed:0.43137254901961f green:0.7843137254902f blue:0.69803921568627f alpha:1.00f];
 }
 
 +(UIColor *) restaurantsSelected;
@@ -34,12 +34,12 @@
 
 +(UIColor *) lifestyleSelected;
 {
-    return [UIColor colorWithRed:231.0f/255.0f green:147.0f/255.0f blue:36.0f/255.0f alpha:1.0f];
+    return [UIColor colorWithRed:238.0f/255.0f green:154.0f/255.0f blue:37.0f/255.0f alpha:1.0f];
 }
 
 +(UIColor *) navColor
 {
-    return [UIColor colorWithRed:0.325f green:0.745f blue:0.643f alpha:1.00f];
+    return [UIColor colorWithRed:17.0f/255.0f green:105.0f/255.0f blue:140.0f/255.0f alpha:1.00f]; //[UIColor colorWithRed:0.325f green:0.745f blue:0.643f alpha:1.00f];
 }
             
 +(UIColor *) facebookColor;
@@ -54,7 +54,7 @@
 +(UIColor *) newsColor;
 
 {
-    return [UIColor colorWithRed:0.459f green:0.796f blue:0.714f alpha:1.00f];
+    return [UIColor colorWithRed:17.0f/255.0f green:105.0f/255.0f blue:140.0f/255.0f alpha:1.00f];//[UIColor colorWithRed:0.459f green:0.796f blue:0.714f alpha:1.00f];
 }
 
 +(UIColor *) offersColor;
@@ -74,7 +74,7 @@
 
 +(UIColor *) offersGreenColor;
 {
-    return [UIColor colorWithRed:94.0f/255.0f green:190.0f/255.0f blue:162.f/255.0f alpha:1.00f];
+    return [UIColor colorWithRed:17.0f/255.0f green:105.0f/255.0f blue:140.f/255.0f alpha:1.00f];//[UIColor colorWithRed:94.0f/255.0f green:190.0f/255.0f blue:162.f/255.0f alpha:1.00f];
 }
 
 +(UIColor *) goldMainColor;

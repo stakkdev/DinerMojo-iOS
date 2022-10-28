@@ -52,6 +52,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet DMButton *pointsValueButton;
 @property (weak, nonatomic) IBOutlet UILabel *featureLabel;
+@property (weak, nonatomic) IBOutlet UIButton *navButton;
+
 
 
 #pragma mark - venueInfo Special offer Details

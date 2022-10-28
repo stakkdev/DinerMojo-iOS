@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,27 +13,27 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-cN-2Oo">
                         <rect key="frame" x="29" y="0.0" width="2" height="30"/>
-                        <color key="backgroundColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="8AM-Uu-2b1"/>
                             <constraint firstAttribute="height" constant="30" id="dk9-Mt-vkT"/>
                             <constraint firstAttribute="width" constant="2" id="gyT-0W-4ug"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J54-SC-h8X" customClass="DMButton">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J54-SC-h8X" customClass="DMButton">
                         <rect key="frame" x="25" y="26" width="10" height="10"/>
-                        <color key="backgroundColor" red="0.36862745098039218" green="0.74509803921568629" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.63137254899999995" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="10" id="DVG-dl-qH2"/>
                             <constraint firstAttribute="width" constant="10" id="pZF-pc-fLM"/>
                         </constraints>
                         <state key="normal">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -46,6 +49,12 @@
                     <constraint firstItem="bGr-cN-2Oo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="29" id="lh1-Ei-eYq"/>
                 </constraints>
             </tableViewCellContentView>
+            <point key="canvasLocation" x="11" y="-46"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="J54-SC-h8X">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+    </designables>
 </document>

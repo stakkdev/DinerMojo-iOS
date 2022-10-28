@@ -1,13 +1,26 @@
 {
   "images" : [
     {
+      "filename" : "info.png",
       "idiom" : "universal",
-      "filename" : "info copy.pdf"
+      "scale" : "1x"
+    },
+    {
+      "filename" : "info@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "info@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
     "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
     "template-rendering-intent" : "original"
   }
 }

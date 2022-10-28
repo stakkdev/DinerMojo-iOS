@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,21 +26,22 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="bday" translatesAutoresizingMaskIntoConstraints="NO" id="Haa-OP-XLW">
-                    <rect key="frame" x="97.5" y="52.5" width="125" height="125"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bday" translatesAutoresizingMaskIntoConstraints="NO" id="Haa-OP-XLW">
+                    <rect key="frame" x="97.5" y="50" width="125" height="125"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Nn1-v9-Llb"/>
                         <constraint firstAttribute="width" secondItem="Haa-OP-XLW" secondAttribute="height" multiplier="1:1" id="ugs-Dg-aAd"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hey... Happy Birthday???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrN-DT-aIv">
-                    <rect key="frame" x="20" y="197" width="280" height="31.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey... Happy Birthday???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrN-DT-aIv">
+                    <rect key="frame" x="20" y="195" width="280" height="31.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="23"/>
                     <color key="textColor" red="0.99215686274509807" green="0.60784313725490191" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-fZ-hyz">
-                    <rect key="frame" x="30" y="258.5" width="260" height="163.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvG-fZ-hyz">
+                    <rect key="frame" x="30" y="256.5" width="260" height="163.5"/>
                     <string key="text">We think birthdays are a big deal and would love to help you celebrate yours. 
 
 DinerMojo venues have some great rewards made specially available for birthdays. So, tell us when yours is and let the celebrating begin!</string>
@@ -51,9 +49,9 @@ DinerMojo venues have some great rewards made specially available for birthdays.
                     <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHc-91-XYi">
-                    <rect key="frame" x="50" y="442" width="220" height="33"/>
-                    <color key="backgroundColor" red="0.12549019610000001" green="0.78039215689999997" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHc-91-XYi">
+                    <rect key="frame" x="50" y="440" width="220" height="33"/>
+                    <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.63325572009999997" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="220" id="Cqv-pU-PWd"/>
                         <constraint firstAttribute="height" constant="33" id="UB0-7D-6C4"/>
@@ -71,9 +69,9 @@ DinerMojo venues have some great rewards made specially available for birthdays.
                         <action selector="setBirthdayDate:" destination="-1" eventType="touchUpInside" id="JXD-Y5-qa2"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ow-eS-D1a">
-                    <rect key="frame" x="50" y="485" width="220" height="33"/>
-                    <color key="backgroundColor" red="0.99215686270000003" green="0.60784313729999995" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ow-eS-D1a">
+                    <rect key="frame" x="50" y="483" width="220" height="33"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.60392156862745094" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="VwY-DX-JLg"/>
                         <constraint firstAttribute="width" constant="220" id="rRj-iK-hyA"/>
@@ -91,8 +89,9 @@ DinerMojo venues have some great rewards made specially available for birthdays.
                         <action selector="skipForNow:" destination="-1" eventType="touchUpInside" id="HyZ-ZB-Dt7"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lc-Vb-LAo">
-                    <rect key="frame" x="75.5" y="543" width="169" height="13"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lc-Vb-LAo">
+                    <rect key="frame" x="75.5" y="541" width="169" height="13"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="13" id="k7G-vo-nPz"/>
                     </constraints>
@@ -105,6 +104,7 @@ DinerMojo venues have some great rewards made specially available for birthdays.
                     </connections>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.79915164877300615" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Haa-OP-XLW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" id="59q-FN-5iI"/>
@@ -124,11 +124,10 @@ DinerMojo venues have some great rewards made specially available for birthdays.
                 <constraint firstItem="2Ow-eS-D1a" firstAttribute="top" secondItem="ZHc-91-XYi" secondAttribute="bottom" constant="10" id="u96-Ky-upk"/>
                 <constraint firstItem="8lc-Vb-LAo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="x6V-av-8ve"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="35" y="53"/>
         </view>
     </objects>
     <resources>
-        <image name="bday" width="125" height="125"/>
+        <image name="bday" width="125.5" height="125.5"/>
     </resources>
 </document>

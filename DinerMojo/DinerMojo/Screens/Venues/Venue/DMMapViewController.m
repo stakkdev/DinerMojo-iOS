@@ -49,8 +49,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     [NSUserDefaults.standardUserDefaults setInteger:0 forKey:@"didSort"];
-    
+    [NSUserDefaults.standardUserDefaults setInteger:0 forKey:@"didSort"];
+    self.firstLoad = YES;
     _venueRequest = [DMVenueRequest new];
     _mapModelController = [DMVenueModelController new];
     _mapModelController.filterLifestyle = NO;
@@ -61,10 +61,10 @@
     NSMutableArray *initialFilters = [[NSMutableArray alloc] init];
     [initialFilters addObject:nearestFilter];
     [initialFilters addObject:defaultRadius];
-   
+    
     _mapModelController.filters = initialFilters;
     [_mapModelController applyFilters:initialFilters];
- 
+    
     
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
@@ -79,7 +79,7 @@
     [self setLastCarouselIndex:0];
     
     DMLocationServices.sharedInstance.delegate = self;
-    [self.searchHereButtonView setHidden:YES];
+    [self.searchHereButtonView setHidden:NO];
     [self setMapHasBeenMoved:NO];
 }
 
@@ -87,7 +87,6 @@
 {
     [super viewWillAppear:animated];
     [Answers logContentViewWithName:@"View venues" contentType:@"" contentId:@"" customAttributes:@{}];
-    
     [self.navigationController setNavigationBarHidden:YES];
     
     // Status bar
@@ -98,7 +97,6 @@
         [self.view addSubview:statusBar];
     } else {
         UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-
         if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
             statusBar.backgroundColor = [UIColor restaurantsDeselected];
         }
@@ -163,6 +161,8 @@
     
     TabsFilterView *tabView = [[NSBundle mainBundle] loadNibNamed:@"TabsFilterView" owner:self options:nil][0];
     tabView.delegate = self;
+    [tabView setBackgroundColor:UIColor.brandColor];
+    [self.tabsFilterViewContainer setBackgroundColor:UIColor.brandColor];
     [tabView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.tabsFilterViewContainer addSubview:tabView];
     [tabView autoPinEdgesToSuperviewEdges];
@@ -186,7 +186,6 @@
 }
 
 -(void)reloadMapAnnotations {
-    
     NSArray *annotations = [[self mapModelController] mapAnnotations];
     [mapView removeAnnotations:[mapView annotations]];
     [mapView addAnnotations:annotations];
@@ -247,7 +246,7 @@
     NSArray *filteredArray = [[[self mapModelController] filteredVenues] filteredArrayUsingPredicate:predicate];
     
     if (filteredArray.count > 0) {
-        DMVenue *venue = [filteredArray objectAtIndex:0];        
+        DMVenue *venue = [filteredArray objectAtIndex:0];
         dispatch_async(dispatch_get_main_queue(), ^{
             NSInteger index = [self.mapModelController.filteredVenues indexOfObject:venue];
             [self navigateToVenueDetail:venue selectedIndex:index];
@@ -263,16 +262,15 @@
 }
 
 - (void)mapViewDidChangeVisibleRegion:(MKMapView *)mapView {
-
+    
     NSSet *annotationSet = [mapView annotationsInMapRect:mapView.visibleMapRect];
     if (annotationSet.count > 100 && !_limitAnnotationsWarningDisplayed) {
         _limitAnnotationsWarningDisplayed = YES;
         [self displayError:@"That's a lot of places!" message:@"There are too many venues to show here. Try zooming in or changing your filters to narrow down the results."];
     }
     
-    [self.searchHereButtonView setHidden:NO];
+    //[self.searchHereButtonView setHidden:NO];
     [self setMapHasBeenMoved:YES];
-    
 }
 
 
@@ -322,22 +320,23 @@
     cell.cellHeight.constant = height;
     [cell.restaurantPrice setHidden:(_mapModelController.state == DMVenueList)];
     [cell.restaurantType setHidden:(_mapModelController.state == DMVenueList)];
+    
     [[cell restaurantName] setText:item.name];
     [[cell restaurantType] setText:[NSString stringWithFormat:@"%@", formattedCategory]];
-    [[cell restaurantCategory] setText:[NSString stringWithFormat:@"%@", [[item friendlyPlaceName] uppercaseString]]];
+    [[cell restaurantCategory] setText: [NSString stringWithFormat:@"%@", [[item friendlyPlaceName] uppercaseString]]];
     [[cell restaurantPrice] setText:[item priceBracketString]];
     [[cell restaurantImageView] setAlpha:1.0];
-
+    
+    
     if ([item.state integerValue] == DMVenueStateVerfiedDemo)
     {
         [[cell restaurantCategory] setText:@"Coming Soon to DinerMojo"];
         [[cell restaurantImageView] setAlpha:0.6];
-
     }
     
     cell.index = indexPath;
     cell.delegate = self;
-
+    
     [cell setEarnVisibility:item.allows_earnsValue];
     [cell setRedeemVisibility:item.allows_redemptionsValue];
     
@@ -363,7 +362,7 @@
     
     cell.restaurantImageView.image = nil;
     [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:urlString]
-                 placeholderImage:nil];
+                                  placeholderImage:nil];
     
     cell.backgroundColor = [UIColor whiteColor];
     cell.clipsToBounds = YES;
@@ -443,12 +442,14 @@
 }
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
-    NSInteger obj = [NSUserDefaults.standardUserDefaults integerForKey:@"didSort"];
-    if(obj == 1) {
-        return YES;
-    }
-    return NO;
+//    NSInteger obj = [NSUserDefaults.standardUserDefaults integerForKey:@"didSort"];
+//    if(obj == 1) {
+//        return YES;
+//    }
+    return YES;
 }
+
+
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
     NSString *text = @"Sorry, no venues fit your criteria. Try looking in a different place or changing your filter settings.";
@@ -490,7 +491,7 @@
 - (void)gotVenuesCompletionBlock:(NSError *)error id:(NSArray *) results final:(BOOL) final {
     if (error == nil) {
         [[self mapModelController] setVenues:results];
-        
+        [self setDefaultRestoLifeStyle];
         [UIView transitionWithView:restaurantsTableView duration:0.35f options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void) {
             if (results.count > 0) {
                 [self reloadSelf];
@@ -512,23 +513,37 @@
     }
 }
 
+-(void)setDefaultRestoLifeStyle {
+    NSMutableArray *categoriesIds = [[NSMutableArray alloc] init];
+    for (DMVenueCategory *category in [[self mapModelController] lifestyleCategories]) {
+        [categoriesIds addObject: category.modelID];
+    }
+    for (DMVenueCategory *restoCategory in [[self mapModelController] restaurantCategories]) {
+        [categoriesIds addObject: restoCategory.modelID];
+    }
+    [[[self mapModelController] selectedCategoriesIds] addObjectsFromArray:categoriesIds];
+    self.firstLoad = NO;
+}
+
 -(void)reloadSelf {
     [restaurantsTableView reloadData];
+    
     [self reloadMapAnnotations];
     if (self.lastCarouselIndex >= 0 &&
         self.mapModelController.mapAnnotations.count > self.lastCarouselIndex) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.lastCarouselIndex inSection:0];
         //NSLog(@"Index path is:", indexPath);
+        [self.downloadLabel setHidden:YES];
         if (indexPath != nil) {
             //dispatch_async(dispatch_get_main_queue(), ^{
-                [self->collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            [self->collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
             //});
         }
     }
 }
 
 - (IBAction)sortButtonPressed:(id)sender {
-  
+    
 }
 - (IBAction)searchHerePressed:(id)sender {
     CLLocation *displayedLocation = [[CLLocation alloc]initWithLatitude:mapView.region.center.latitude longitude:mapView.region.center.longitude];
@@ -536,15 +551,12 @@
     [self.mapModelController applyFilters];
     [self setLastCarouselIndex: 0];
     [self reloadSelf];
-    
 }
 
 - (void)selectedFilterItems:(NSArray *)filterItems {
     self.filterItems = filterItems;
     _mapModelController.filters = filterItems;
- 
     [self.mapModelController applyFilters:filterItems];
-
     [self setLastCarouselIndex:0];
     [self reloadSelf];
     _limitAnnotationsWarningDisplayed = NO;
@@ -593,7 +605,7 @@
     NSString *category = [[[item categories] anyObject] name];
     
     [cell.restaurantPrice setHidden:(_mapModelController.state == DMVenueList)];
-    [cell.restaurantType setHidden:(_mapModelController.state == DMVenueList)];
+    //[cell.restaurantType setHidden:(_mapModelController.state == DMVenueList)];
     
     NSString *formattedCategory = [[NSString stringWithFormat:@"%@", category] stringByReplacingOccurrencesOfString:@"L-" withString:@""];
     [[cell restaurantName] setText:item.name];
@@ -601,7 +613,7 @@
     [[cell restaurantCategory] setText: [NSString stringWithFormat:@"%@", [[item friendlyPlaceName] uppercaseString]]];
     [[cell restaurantPrice] setText:[item priceBracketString]];
     [[cell restaurantImageView] setAlpha:1.0];
-
+    
     if ([item.state integerValue] == DMVenueStateVerfiedDemo)
     {
         [[cell restaurantCategory] setText:@"Coming Soon to DinerMojo"];
@@ -634,7 +646,7 @@
     }
     cell.restaurantImageView.image = nil;
     [[cell restaurantImageView] sd_setImageWithURL:[NSURL URLWithString:urlString]
-                 placeholderImage:nil];
+                                  placeholderImage:nil];
     return cell;
 }
 
@@ -653,24 +665,33 @@
 {
     if ([[segue identifier] isEqualToString:@"restaurantInfoSegue"])
     {
-       [(DMRestaurantInfoViewController *)[segue destinationViewController] setSelectedVenue:sender];
+        [(DMRestaurantInfoViewController *)[segue destinationViewController] setSelectedVenue:sender];
     }
 }
 
 - (void)didSelectTabItem:(DMVenueListState)item {
     _mapModelController.state = item;
     _mapModelController.filterLifestyle = (item == DMVenueList);
-    [restaurantsTableView reloadData];
-    [restaurantsTableView setHidden:(item == DMVenueMap)];
+    [self->restaurantsTableView setHidden:(item == DMVenueMap)];
     [mapView setHidden:(item == DMVenueList)];
     [collectionView setHidden:(item == DMVenueList)];
-    [self reloadMapAnnotations];
     if (item == DMVenueList) {
         [self.searchHereButtonView setHidden:YES];
+        if ([[[self mapModelController] filteredVenues] count] == 0) {
+            [restaurantsTableView reloadEmptyDataSet];
+        }
     } else {
+        [self reloadMapAnnotations];
         [self.searchHereButtonView setHidden:NO];
     }
+    [self->restaurantsTableView reloadData];
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    NSLog(@"This method is called");
+}
+
 
 // MARK: - Restaurant cell delegate
 
@@ -715,10 +736,10 @@
 
 - (void)didSelectFavourite:(BOOL)favourite atIndex:(NSIndexPath *)index {
     DMVenue *venue =  [[[self mapModelController] filteredVenues] objectAtIndex:[index row]];
-  
+    
     NSArray *indexPaths = [[NSArray alloc]initWithObjects:index, nil];
     [[self userRequest] toggleVenue:venue to:favourite withCompletionBlock:^(NSError *error, id results) {
- 
+        
         if (error) {
             [self displayError:@"Error" message:@"Unable to update favourites preference. Please check your connection and try again.."];
             [self updateFavourites];
@@ -744,7 +765,6 @@
 #pragma mark - Search Bar Delegate
 
 - (void)inputValueChangedTo:(NSString * _Nullable)value { 
-    NSLog(@"inputValueChangedTo", value);
     [suggestionsDataSource sourceTextHasChanged:value];
 }
 
@@ -755,13 +775,13 @@
 - (void)onLocationButtonPressed {
     
     BOOL grantedPermission = NO;
-        if (
-            CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
-            CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse
-            ) {
+    if (
+        CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedAlways ||
+        CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse
+        ) {
             grantedPermission = YES;
         }
-//    }
+    //    }
     if (!grantedPermission) {
         [self displayError:@"Location Permission" message:@"Please enable location permissions in settings."];
     } else if (DMLocationServices.sharedInstance.currentLocation) {
@@ -797,22 +817,22 @@
 #pragma mark - GMSAutocompleteTableDataSourceDelegate
 
 - (void)didUpdateAutocompletePredictionsForTableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource {
-  // Turn the network activity indicator off.
-  UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
-
-  // Reload table data.
-  [suggestionsTableView reloadData];
+    // Turn the network activity indicator off.
+    UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
+    
+    // Reload table data.
+    [suggestionsTableView reloadData];
 }
 
 - (void)didRequestAutocompletePredictionsForTableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource {
-  // Turn the network activity indicator on.
-  UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
-  // Reload table data.
-  [suggestionsTableView reloadData];
+    // Turn the network activity indicator on.
+    UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
+    // Reload table data.
+    [suggestionsTableView reloadData];
 }
 
 - (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didAutocompleteWithPlace:(GMSPlace *)place {
-  CLLocation *selectedLocation = [[CLLocation alloc]initWithLatitude:place.coordinate.latitude longitude:place.coordinate.longitude];
+    CLLocation *selectedLocation = [[CLLocation alloc]initWithLatitude:place.coordinate.latitude longitude:place.coordinate.longitude];
     GMSCoordinateBounds *bounds = place.viewport;
     
     CLLocation *nortEast = [[CLLocation alloc]initWithLatitude:bounds.northEast.latitude longitude:bounds.northEast.longitude];
@@ -823,25 +843,24 @@
     [self.mapModelController setDefaultDistance:distanceInMiles];
     
     [self zoomMapTo:selectedLocation];
-  [DMLocationServices.sharedInstance setSelectedLocation:selectedLocation];
-  [self toggleSuggestionsTableViewTo:NO];
-  [[self searchBar] toggleActiveTo:NO];
-  [[self searchBar] setTextTo:place.name];
+    [DMLocationServices.sharedInstance setSelectedLocation:selectedLocation];
+    [self toggleSuggestionsTableViewTo:NO];
+    [[self searchBar] toggleActiveTo:NO];
+    [[self searchBar] setTextTo:place.name];
     
-  [self.mapModelController applyFilters];
-  [self setLastCarouselIndex: 0];
-  [self reloadSelf];
-
+    [self.mapModelController applyFilters];
+    [self setLastCarouselIndex: 0];
+    [self reloadSelf];
     _limitAnnotationsWarningDisplayed = NO;
 }
 
 - (void)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didFailAutocompleteWithError:(NSError *)error {
-  NSLog(@"Error %@", error.description);
+    NSLog(@"Error %@", error.description);
     [self displayError:@"Error " message:error.description];
 }
 
 - (BOOL)tableDataSource:(GMSAutocompleteTableDataSource *)tableDataSource didSelectPrediction:(GMSAutocompletePrediction *)prediction {
-  return YES;
+    return YES;
 }
 
 #pragma mark - DMLocationServiceDelegate
