@@ -54,109 +54,116 @@
 
 -(void)updateImagesInScrollView
 {
-    for (int i = 0; i < 4; i++)
-    {
-        CGFloat xOrigin = i * self.scrollView.frame.size.width;
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        UILabel *tutorialTitle = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 43, 200, 50)];
-        [tutorialTitle setFont:[UIFont tutorialTitleFont]];
-        [tutorialTitle setTextColor:[UIColor whiteColor]];
-        [tutorialTitle setTextAlignment:NSTextAlignmentCenter];
-        [tutorialTitle setNumberOfLines:0];
-        [tutorialTitle setLineBreakMode:NSLineBreakByWordWrapping];
-        [tutorialTitle setCenter:CGPointMake(xOrigin + self.view.center.x, 63)];
-        
-        UILabel *tutorialDescription = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 20, 290, 140)];
-        [tutorialDescription setFont:[UIFont tutorialDescriptionFont]];
-        [tutorialDescription setNumberOfLines:0];
-        [tutorialDescription setTextColor:[UIColor darkGrayColor]];
-        [tutorialDescription setTextAlignment:NSTextAlignmentCenter];
-        [tutorialDescription setCenter:CGPointMake(xOrigin + self.view.center.x, self.greenView.frame.origin.y + 67)];
-        
-        
-        UIImageView *imageView;
-        
-        CGFloat screenWidth = UIScreen.mainScreen.bounds.size.width;
-
-        imageView = [[UIImageView alloc] init];
-        [imageView setContentMode:UIViewContentModeScaleAspectFit];
-        [imageView setClipsToBounds:YES];
-        [imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
-        
-        UIView *greenView2 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, self.greenView.frame.origin.y, self.greenView.frame.size.width, self.greenView.frame.size.height)];
-        greenView2.backgroundColor = [UIColor groupTableViewBackgroundColor];
-  
-        switch (i) {
-            case 0: {
-                [tutorialTitle setText:@"Choose Dining or Lifestyle"];
-                [tutorialDescription setText:@"Use the “Venues” tab to discover great places to dine or get rewards near you."];
-                [imageView setImage:[UIImage imageNamed:@"TutorialPhone1"]];
-                break;
+        for (int i = 0; i < 4; i++)
+        {
+            CGFloat xOrigin = i * self.scrollView.frame.size.width;
+            
+            UILabel *tutorialTitle = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 43, 200, 50)];
+            [tutorialTitle setFont:[UIFont tutorialTitleFont]];
+            [tutorialTitle setTextColor:[UIColor whiteColor]];
+            [tutorialTitle setTextAlignment:NSTextAlignmentCenter];
+            [tutorialTitle setNumberOfLines:0];
+            [tutorialTitle setLineBreakMode:NSLineBreakByWordWrapping];
+            [tutorialTitle setCenter:CGPointMake(xOrigin + self.view.center.x, 63)];
+            
+            UILabel *tutorialDescription = [[UILabel alloc] initWithFrame:CGRectMake(xOrigin, 20, 290, 140)];
+            [tutorialDescription setFont:[UIFont tutorialDescriptionFont]];
+            [tutorialDescription setNumberOfLines:0];
+            [tutorialDescription setTextColor:[UIColor darkGrayColor]];
+            [tutorialDescription setTextAlignment:NSTextAlignmentCenter];
+            [tutorialDescription setCenter:CGPointMake(xOrigin + self.view.center.x, self.greenView.frame.origin.y + 67)];
+            
+            
+            UIImageView *imageView;
+            
+            CGFloat screenWidth = UIScreen.mainScreen.bounds.size.width;
+            
+            imageView = [[UIImageView alloc] init];
+            [imageView setContentMode:UIViewContentModeScaleAspectFit];
+            [imageView setClipsToBounds:YES];
+            [imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+            
+            UIView *greenView2 = [[UIView alloc] initWithFrame:CGRectMake(xOrigin, self.greenView.frame.origin.y, self.greenView.frame.size.width, self.greenView.frame.size.height)];
+            greenView2.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            
+            switch (i) {
+                case 0: {
+                    [tutorialTitle setText:@"Choose Dining or Lifestyle"];
+                    [tutorialDescription setText:@"Use the “Venues” tab to discover great places to dine or get rewards near you."];
+                    [imageView setImage:[UIImage imageNamed:@"TutorialPhone1"]];
+                    break;
+                }
+                case 1: {
+                    [tutorialTitle setText:@"Earn Points"];
+                    
+                    NSString *earnPoints = [[NSString alloc] initWithFormat:@"Earn points everywhere that has this symbol "];
+                    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+                    textAttachment.image = [UIImage imageNamed:@"earn_icon_enabled"];
+                    textAttachment.bounds = CGRectMake(0, 0, 20, 20);
+                    
+                    //NSMutableAttributedString *earnPoints3 = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
+                    
+                    NSAttributedString *earnPoints3 = [NSAttributedString
+                                                       attributedStringWithAttachment:textAttachment];
+                    
+                    NSMutableAttributedString *earnPoints4 = [[NSMutableAttributedString alloc] initWithString:@" (£1 = 1 point). Simply use the Earn button, take a picture of your receipt and we'll take care of the rest."];
+                    NSMutableAttributedString *all = [[NSMutableAttributedString alloc] initWithString:earnPoints];
+                    [all appendAttributedString:earnPoints3];
+                    [all appendAttributedString:earnPoints4];
+                    [tutorialDescription setAttributedText:all];
+                    [imageView setImage:[UIImage imageNamed:@"TutorialPhone2"]];
+                    
+                    break;
+                }
+                case 2: {
+                    [tutorialTitle setText:@"Redeem Points"];
+                    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+                    textAttachment.image = [UIImage imageNamed:@"redeem_icon_enabled"];
+                    textAttachment.bounds = CGRectMake(0, 0, 20, 20);
+                    
+                    NSAttributedString *reedemPoints = [NSAttributedString
+                                                        attributedStringWithAttachment:textAttachment];
+                    NSMutableAttributedString *reedem = [[NSMutableAttributedString alloc] initWithString:@"Use your points to get great rewards from any participating venues that have this symbol "];
+                    [reedem appendAttributedString:reedemPoints];
+                    [tutorialDescription setAttributedText:reedem];
+                    [imageView setImage:[UIImage imageNamed:@"TutorialPhone3"]];
+                    
+                    break;
+                }
+                case 3: {
+                    [tutorialTitle setText:@"Invite Friends & Family"];
+                    [tutorialDescription setText:@"Invite friends to join and you'll earn 100 points when they join plus 10% of any points they earn for a whole year."];
+                    [imageView setImage:[UIImage imageNamed:@"TutorialPhone5"]];
+                    break;
+                }
+                default:
+                    break;
             }
-            case 1: {
-                [tutorialTitle setText:@"Earn Points"];
-                
-                NSString *earnPoints = [[NSString alloc] initWithFormat:@"Earn points everywhere that has this symbol "];
-                NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-                textAttachment.image = [UIImage imageNamed:@"earn_icon_enabled"];
-                textAttachment.bounds = CGRectMake(0, 0, 20, 20);
-                
-                //NSMutableAttributedString *earnPoints3 = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
-                
-                NSAttributedString *earnPoints3 = [NSAttributedString
-                attributedStringWithAttachment:textAttachment];
-                
-                NSMutableAttributedString *earnPoints4 = [[NSMutableAttributedString alloc] initWithString:@" (£1 = 1 point). Simply use the Earn button, take a picture of your receipt and we'll take care of the rest."];
-                NSMutableAttributedString *all = [[NSMutableAttributedString alloc] initWithString:earnPoints];
-                [all appendAttributedString:earnPoints3];
-                [all appendAttributedString:earnPoints4];
-                [tutorialDescription setAttributedText:all];
-                [imageView setImage:[UIImage imageNamed:@"TutorialPhone2"]];
-                
-                break;
-            }
-            case 2: {
-                [tutorialTitle setText:@"Redeem Points"];
-                NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-                textAttachment.image = [UIImage imageNamed:@"redeem_icon_enabled"];
-                textAttachment.bounds = CGRectMake(0, 0, 20, 20);
-                
-                NSAttributedString *reedemPoints = [NSAttributedString
-                attributedStringWithAttachment:textAttachment];
-                //NSMutableAttributedString *reedemPoints = [NSMutableAttributedString attributedStringWithAttachment:textAttachment];
-                NSMutableAttributedString *reedem = [[NSMutableAttributedString alloc] initWithString:@"Use your points to get great rewards from any participating venues that have this symbol "];
-                [reedem appendAttributedString:reedemPoints];
-                [tutorialDescription setAttributedText:reedem];
-                [imageView setImage:[UIImage imageNamed:@"TutorialPhone3"]];
-
-                break;
-            }
-            case 3: {
-                [tutorialTitle setText:@"Invite Friends & Family"];
-                [tutorialDescription setText:@"Invite friends to join and you'll earn 100 points when they join plus 10% of any points they earn for a whole year."];
-                [imageView setImage:[UIImage imageNamed:@"TutorialPhone5"]];
-                break;
-            }
-            default:
-                break;
+            
+            [[self scrollView] addSubview:imageView];
+            [[self scrollView] addSubview:tutorialTitle];
+            [[self scrollView] addSubview:greenView2];
+            [[self scrollView] addSubview:tutorialDescription];
+            
+            [NSLayoutConstraint activateConstraints:@[
+                [imageView.widthAnchor constraintEqualToConstant:screenWidth * 0.8],
+                [imageView.centerXAnchor constraintEqualToAnchor:self.scrollView.centerXAnchor constant:i * screenWidth],
+                [imageView.bottomAnchor constraintEqualToAnchor:tutorialDescription.topAnchor constant:-16.0],
+                [imageView.topAnchor constraintEqualToAnchor:tutorialTitle.bottomAnchor constant:16.0],
+            ]
+            ];
+            
+            [self.view layoutIfNeeded];
         }
-        
-        [[self scrollView] addSubview:imageView];
-        [[self scrollView] addSubview:tutorialTitle];
-        [[self scrollView] addSubview:greenView2];
-        [[self scrollView] addSubview:tutorialDescription];
-        
-        [NSLayoutConstraint activateConstraints:@[
-                 [imageView.widthAnchor constraintEqualToConstant:screenWidth * 0.8],
-                 [imageView.centerXAnchor constraintEqualToAnchor:self.scrollView.centerXAnchor constant:i * screenWidth],
-                 [imageView.bottomAnchor constraintEqualToAnchor:tutorialDescription.topAnchor constant:-16.0],
-                 [imageView.topAnchor constraintEqualToAnchor:tutorialTitle.bottomAnchor constant:16.0],
-             ]
-        ];
-        
-        [self.view layoutIfNeeded];
-    }
-    
+    });
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self.view layoutIfNeeded];
+    [self.scrollView layoutSubviews];
 }
 
 

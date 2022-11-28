@@ -36,6 +36,7 @@
 @property DMNewsItem *selectedOffer;
 @property (weak, nonatomic) IBOutlet UIImageView *arrowDropdown;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *openingTimesConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionHeightConstraint;
 @property (nonatomic, retain) IBOutletCollection(UIButton) NSArray *buttons;
 @property (nonatomic, retain) IBOutletCollection(UIImageView) NSArray *imgViews;
 @property (weak, nonatomic) IBOutlet UIImageView *bookImgView;
@@ -239,8 +240,7 @@
         [[self userRequest] recommendedVenue:self.selectedVenue withComplectionBlock:^(NSError *error, id results) {
             if (error) {
             }
-            else
-            {
+            else {
                 NSMutableArray *venues = [[NSMutableArray alloc] init];
                 for(NSDictionary *dictionary in results) {
                     NSNumber *idNumber = [dictionary objectForKey:@"id"];
@@ -252,12 +252,18 @@
                 }
                 
                 self.recommendedVenuesArray = venues;
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    if (self.recommendedVenuesArray.count == 0) {
+                        [[self featureLabel] setText:@"Watch this space as exciting new venues join the club for you to discover or revisit."];
+                        [self.featureLabel setHidden:NO];
+                        self.collectionHeightConstraint.constant = 0;
+                        [self.collectionView setHidden:YES];
+                    } else {
+                        self.collectionHeightConstraint.constant = 155;
+                        [self.collectionView setHidden:NO];
+                    }
+                });
                 [self.collectionView reloadData];
-                
-                if (self.recommendedVenuesArray.count == 0) {
-                    [[self featureLabel] setText:@"Watch this space as exciting new venues join the club for you to discover or revisit."];
-                    [self.featureLabel setHidden:NO];
-                }
             }
         }];
     }
@@ -877,15 +883,10 @@
              }];
             
         }
-
-    }
-    
-    else
+    } else
     {
         [self presentAlertForLoginInstructions:@"To use this feature you need an account"];
     }
-    
-    
 }
 
 - (void)callRestaurant {
@@ -995,7 +996,6 @@
     [cell.imageView setImage:nil];
     [cell.imageView setImageWithURL:[NSURL URLWithString:[venue.primaryImage fullThumbURL]]];
     [cell.venueNameLabel setText:venue.name];
-    
     return cell;
 }
 

@@ -28,7 +28,7 @@
 
 @import MapKit;
 
-@interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MKMapViewDelegate, SearchBarDelegate, GMSAutocompleteTableDataSourceDelegate, DMLocationServiceDelegate>
+@interface DMMapViewController () <TabsFilterViewDelegate, DMRestaurantCellDelegate, DMSortVenueFeedViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, MKMapViewDelegate, SearchBarDelegate, GMSAutocompleteTableDataSourceDelegate, DMLocationServiceDelegate, GMSAutocompleteViewControllerDelegate>
 
 @property (strong, nonatomic) DMVenueRequest* venueRequest;
 @property (strong, nonatomic) DMUserRequest* userRequest;
@@ -39,11 +39,15 @@
 @property (strong, nonatomic) NSArray *filterItems;
 @property (strong, nonatomic) NSMutableArray *favouriteIds;
 @property BOOL signedIn;
+@property BOOL searchEnable;
+
 
 @end
 
 @implementation DMMapViewController {
     GMSAutocompleteTableDataSource *suggestionsDataSource;
+    GMSAutocompleteFilter *_filter;
+
 }
 
 - (void)viewDidLoad
@@ -65,13 +69,11 @@
     _mapModelController.filters = initialFilters;
     [_mapModelController applyFilters:initialFilters];
     
-    
     [restaurantsTableView registerNib:[UINib nibWithNibName:@"DMRestaurantCell" bundle:nil] forCellReuseIdentifier:@"RestaurantCell"];
     [self setupView];
-    //[self updateFavouritesWithInitialDownload];
     
     suggestionsDataSource = [[GMSAutocompleteTableDataSource alloc] init];
-    suggestionsDataSource.delegate = self;
+    [suggestionsDataSource setDelegate: self];
     suggestionsTableView.delegate = suggestionsDataSource;
     suggestionsTableView.dataSource = suggestionsDataSource;
     
@@ -81,10 +83,10 @@
     DMLocationServices.sharedInstance.delegate = self;
     [self.searchHereButtonView setHidden:NO];
     [self setMapHasBeenMoved:NO];
+    self.definesPresentationContext = YES;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [Answers logContentViewWithName:@"View venues" contentType:@"" contentId:@"" customAttributes:@{}];
     [self.navigationController setNavigationBarHidden:YES];
@@ -101,7 +103,6 @@
             statusBar.backgroundColor = [UIColor restaurantsDeselected];
         }
     }
-    
     [self.activityIndicator startAnimating];
     [self downloadVenues];
     [self updateFavourites];
@@ -172,10 +173,7 @@
     self.searchBar.delegate = self;
 }
 
-
-
 /// MapView
-
 -(void)setupMap {
     [mapView setShowsUserLocation:YES];
     [mapView registerClass:[CustomAnnotationView class] forAnnotationViewWithReuseIdentifier:MKMapViewDefaultAnnotationViewReuseIdentifier];
@@ -191,9 +189,14 @@
     [mapView addAnnotations:annotations];
     [collectionView reloadData];
     if (annotations.count <= 0) {
+        [self.searchHereButtonView setHidden:YES];
         [collectionView setHidden:YES];
+    } else if ((_mapModelController.state == DMVenueMap) && (annotations.count > 0)) {
+        [collectionView setHidden:NO];
+        [self.searchHereButtonView setHidden:NO];
     } else if (_mapModelController.state == DMVenueMap) {
         [collectionView setHidden:NO];
+        [self.searchHereButtonView setHidden:YES];
     }
 }
 -(void)zoomMapIn:(CLLocation *)newLocation {
@@ -292,7 +295,7 @@
     if (self.mapModelController.mapAnnotations.count <= 1) {
         return self.mapModelController.mapAnnotations.count;
     }
-    return self.mapModelController.mapAnnotations.count; //* 50;
+    return self.mapModelController.mapAnnotations.count;
 }
 
 - (NSInteger )collectionViewIndexForRow:(NSInteger )row {
@@ -344,8 +347,8 @@
     if(distance != 0) {
         MKDistanceFormatter *df = [MKDistanceFormatter new];
         [df setUnitStyle:MKDistanceFormatterUnitStyleFull];
-        
         NSString *friendlyDistance = [df stringFromDistance:distance];
+        NSLog(@"Distance is: %@", friendlyDistance);
         [[cell restaurantDistance] setText:[NSString stringWithFormat:@"(%@)",friendlyDistance]];
     } else {
         [[cell restaurantDistance] setText:@""];
@@ -527,7 +530,6 @@
 
 -(void)reloadSelf {
     [restaurantsTableView reloadData];
-    
     [self reloadMapAnnotations];
     if (self.lastCarouselIndex >= 0 &&
         self.mapModelController.mapAnnotations.count > self.lastCarouselIndex) {
@@ -562,8 +564,7 @@
     _limitAnnotationsWarningDisplayed = NO;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
@@ -682,14 +683,21 @@
         }
     } else {
         [self reloadMapAnnotations];
-        [self.searchHereButtonView setHidden:NO];
     }
     [self->restaurantsTableView reloadData];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    NSLog(@"This method is called");
+    //[self addSourceViewDelegate];
+}
+
+- (void)addSourceViewDelegate {
+    if(suggestionsDataSource != nil ){
+        NSLog(@"This method is called");
+        self.searchBar.delegate = self;
+        [suggestionsDataSource setDelegate: self];
+    }
 }
 
 
@@ -808,10 +816,19 @@
 }
 
 - (void)toggleSuggestionsTableViewTo:(BOOL)visible {
-    [suggestionsTableView setHidden:!visible];
-    if (visible && !self.searchHereButtonView.isHidden) {
-        [_searchHereButtonView setHidden:YES];
+    [self.searchBar toggleActiveTo:NO];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    UIViewController *test = [appDelegate topViewController];
+    if ([test isKindOfClass:[GMSAutocompleteResultsViewController class]]) {
+        NSLog(@"Search controller presented");
+    } else {
+        [self autocompleteClicked];
     }
+//    [self addSourceViewDelegate];
+//    [suggestionsTableView setHidden:!visible];
+//    if (visible && !self.searchHereButtonView.isHidden) {
+//        [_searchHereButtonView setHidden:YES];
+//    }
 }
 
 #pragma mark - GMSAutocompleteTableDataSourceDelegate
@@ -863,6 +880,94 @@
     return YES;
 }
 
+- (void)autocompleteClicked {
+    GMSAutocompleteViewController *autocompleteController = [[GMSAutocompleteViewController alloc] init];
+    autocompleteController.primaryTextColor = [UIColor blackColor];
+    autocompleteController.secondaryTextColor = [UIColor lightGrayColor];
+    autocompleteController.tableCellSeparatorColor = [UIColor lightGrayColor];
+    autocompleteController.tableCellBackgroundColor = [UIColor whiteColor];
+    [autocompleteController setTintColor:[UIColor blackColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           NSForegroundColorAttributeName: [UIColor blackColor]}
+                                                forState:UIControlStateNormal];    // Color of typed text in the search bar.
+    autocompleteController.delegate = self;
+    // Specify the place data types to return.
+    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID | GMSPlaceFieldCoordinate);
+    autocompleteController.placeFields = fields;
+    
+    // Specify a filter.
+    _filter = [[GMSAutocompleteFilter alloc] init];
+    _filter.type = kGMSPlaceTypeRestaurant;
+    autocompleteController.autocompleteFilter = _filter;
+    
+    self.searchEnable = YES;
+    // Display the autocomplete view controller.
+    [self presentViewController:autocompleteController animated:YES completion:nil];
+}
+
+#pragma mark - DM SEARCH LocationServiceDelegate
+
+// Handle the user's selection.
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didAutocompleteWithPlace:(GMSPlace *)place {
+    
+      // Do something with the selected place.
+      NSLog(@"Place name %@", place.name);
+      NSLog(@"Place address %@", place.formattedAddress);
+      NSLog(@"Place attributions %@", place.attributions.string);
+    
+    CLLocation *selectedLocation = [[CLLocation alloc]initWithLatitude:place.coordinate.latitude longitude:place.coordinate.longitude];
+    GMSCoordinateBounds *bounds = place.viewport;
+    
+    CLLocation *nortEast = [[CLLocation alloc]initWithLatitude:bounds.northEast.latitude longitude:bounds.northEast.longitude];
+    
+    CLLocation *southWest = [[CLLocation alloc]initWithLatitude:bounds.southWest.latitude longitude:bounds.southWest.longitude];
+    double distanceInM = [nortEast distanceFromLocation:southWest];
+    double distanceInMiles = distanceInM / 1000 / 1.609;
+    [self.mapModelController setDefaultDistance:distanceInMiles];
+    
+    [self zoomMapTo:selectedLocation];
+    [DMLocationServices.sharedInstance setSelectedLocation:selectedLocation];
+    [self toggleSuggestionsTableViewTo:NO];
+    [[self searchBar] toggleActiveTo:NO];
+    [[self searchBar] setTextTo:place.name];
+    
+    [self.mapModelController applyFilters];
+    [self setLastCarouselIndex: 0];
+    [self reloadSelf];
+    _limitAnnotationsWarningDisplayed = NO;
+    self.searchEnable = NO;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewController:(GMSAutocompleteViewController *)viewController
+didFailAutocompleteWithError:(NSError *)error {
+  self.searchEnable = NO;
+ [self dismissViewControllerAnimated:YES completion:nil];
+ // TODO: handle the error.
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+ NSLog(@"Error: %@", [error description]);
+}
+
+ // User canceled the operation.
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
+    self.searchEnable = NO;
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+ // Turn the network activity indicator on and off again.
+- (void)didRequestAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
+ [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+}
+
+- (void)didUpdateAutocompletePredictions:(GMSAutocompleteViewController *)viewController {
+ [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+
 #pragma mark - DMLocationServiceDelegate
 
 // On location services initially gaining user location
@@ -876,5 +981,4 @@
         [self reloadSelf];
     }
 }
-
 @end

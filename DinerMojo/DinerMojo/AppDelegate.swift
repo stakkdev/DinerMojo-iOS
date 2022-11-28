@@ -18,5 +18,4 @@ extension AppDelegate {
         let rules = Rules(promptFrequency: .daily, forAlertType: .option)
         siren.rulesManager = .init(globalRules: rules, showAlertAfterCurrentVersionHasBeenReleasedForDays: 0)
     }
-    
 }

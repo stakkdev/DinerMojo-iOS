@@ -93,11 +93,11 @@
 	<key>App Store</key>
 	<dict>
 		<key>shareUrl</key>
-		<string>https://test-api.dinermojo.com/DinerMojo_is_rewarding</string>
+		<string>https://api.dinermojo.com/DinerMojo_is_rewarding</string>
 		<key>HockeyAppID</key>
 		<string></string>
 		<key>apiURL</key>
-		<string>https://test-api.dinermojo.com/api/v2</string>
+		<string>https://api.dinermojo.com/api/v2/</string>
 		<key>mediaURL</key>
 		<string></string>
 	</dict>

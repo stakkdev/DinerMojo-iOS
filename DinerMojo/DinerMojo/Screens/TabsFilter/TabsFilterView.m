@@ -23,7 +23,6 @@
   else if([button isEqual:self.buttonList] || type == DMVenueList) {
     [self.buttonMap setBottomBorderHighlightColor:[UIColor brandColor]];
     [self.buttonList setBottomBorderHighlightColor:[UIColor lifestyleSelected]];
-
     state = DMVenueList;
   }
   

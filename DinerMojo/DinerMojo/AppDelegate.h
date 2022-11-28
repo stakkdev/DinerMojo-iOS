@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSDictionary *notificationPayload;
 - (void)checkBookingNotification;
 - (void)showBookingNotificationWithUserInfo:(NSDictionary *)userInfo;
+- (UIViewController*)topViewController;
 
 @end
 

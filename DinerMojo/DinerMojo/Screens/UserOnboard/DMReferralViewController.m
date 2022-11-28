@@ -55,7 +55,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DMWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"welcomeViewController"];
     [welcomeViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-    [self.navigationController pushViewController:welcomeViewController animated:YES];
+    //[self.navigationController pushViewController:welcomeViewController animated:YES];
+    [self presentViewController:welcomeViewController animated:FALSE completion:nil];
 }
 
 - (IBAction)getStarted:(id)sender

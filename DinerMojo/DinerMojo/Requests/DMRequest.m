@@ -75,7 +75,7 @@
     {
         return nil;
     }
-    
+    NSLog(@"**** Base URL IS ******: %@", [[[self apiBaseURL] URLByAppendingPathComponent:path] absoluteString]);
     return [[[self apiBaseURL] URLByAppendingPathComponent:path] absoluteString];
 }
 

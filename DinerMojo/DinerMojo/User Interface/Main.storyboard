@@ -260,27 +260,27 @@ How about we take you for a quick tour before you get started?</string>
                         <viewControllerLayoutGuide type="bottom" id="5dm-18-KMO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bTN-3N-PZZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="gFj-jL-RQB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VuZ-EG-fiE">
-                                <rect key="frame" x="0.0" y="483" width="375" height="184"/>
+                                <rect key="frame" x="0.0" y="463" width="375" height="184"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="184" id="KRD-aO-xW2"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72V-VY-g6C">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <connections>
                                     <outlet property="delegate" destination="FEM-SK-8fX" id="cRY-1Y-mf2"/>
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="ozT-GM-TKJ" customClass="DMPageControl">
-                                <rect key="frame" x="161" y="624" width="53" height="26"/>
+                                <rect key="frame" x="161" y="604" width="53" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="53" id="z2X-CK-T0N"/>
                                 </constraints>
@@ -288,7 +288,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLo-yW-kN0" customClass="DMButton">
-                                <rect key="frame" x="16" y="607" width="343" height="48"/>
+                                <rect key="frame" x="16" y="587" width="343" height="48"/>
                                 <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="hvb-uO-fLi"/>
@@ -345,10 +345,10 @@ How about we take you for a quick tour before you get started?</string>
                             <constraint firstItem="GE7-eS-tHr" firstAttribute="top" secondItem="51t-Md-yml" secondAttribute="bottom" constant="5" id="THb-f7-w4L"/>
                             <constraint firstAttribute="trailing" secondItem="VuZ-EG-fiE" secondAttribute="trailing" id="b5H-uu-2eE"/>
                             <constraint firstItem="HLo-yW-kN0" firstAttribute="leading" secondItem="bTN-3N-PZZ" secondAttribute="leading" constant="16" id="e3L-5t-5dQ"/>
-                            <constraint firstItem="5dm-18-KMO" firstAttribute="top" secondItem="VuZ-EG-fiE" secondAttribute="bottom" id="he3-ma-1H9"/>
-                            <constraint firstItem="5dm-18-KMO" firstAttribute="top" secondItem="gFj-jL-RQB" secondAttribute="bottom" id="qNf-Nu-oFR"/>
+                            <constraint firstAttribute="bottom" secondItem="VuZ-EG-fiE" secondAttribute="bottom" id="he3-ma-1H9"/>
+                            <constraint firstAttribute="bottom" secondItem="gFj-jL-RQB" secondAttribute="bottom" id="qNf-Nu-oFR"/>
                             <constraint firstAttribute="trailing" secondItem="GE7-eS-tHr" secondAttribute="trailing" constant="18" id="rzH-u2-VR3"/>
-                            <constraint firstItem="5dm-18-KMO" firstAttribute="top" secondItem="HLo-yW-kN0" secondAttribute="bottom" constant="12" id="t1H-a5-CE4"/>
+                            <constraint firstAttribute="bottom" secondItem="HLo-yW-kN0" secondAttribute="bottom" constant="12" id="t1H-a5-CE4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yEQ-2r-soV"/>
@@ -698,7 +698,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxY-fs-qdw">
-                                                    <rect key="frame" x="9" y="68.5" width="34.5" height="24"/>
+                                                    <rect key="frame" x="9" y="66.5" width="36.5" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="OHs-w4-AXT"/>
                                                     </constraints>
@@ -707,7 +707,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAA-gu-yQI">
-                                                    <rect key="frame" x="9" y="93.5" width="13.5" height="10.5"/>
+                                                    <rect key="frame" x="9" y="91.5" width="13.5" height="12.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="9"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -724,7 +724,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     </connections>
                                                 </button>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7m-dh-q4l">
-                                                    <rect key="frame" x="61.5" y="88.5" width="21" height="20"/>
+                                                    <rect key="frame" x="61.5" y="88" width="21" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="mMH-19-2jP"/>
                                                     </constraints>
@@ -733,7 +733,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHN-nu-QKe">
-                                                    <rect key="frame" x="38.5" y="88.5" width="18" height="20"/>
+                                                    <rect key="frame" x="38.5" y="88" width="18" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="lJO-R1-qFh"/>
                                                     </constraints>
@@ -742,7 +742,7 @@ How about we take you for a quick tour before you get started?</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oan-P6-kP5">
-                                                    <rect key="frame" x="27.5" y="88.5" width="6" height="20"/>
+                                                    <rect key="frame" x="27.5" y="88" width="6" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="x02-s4-k9a"/>
                                                     </constraints>
@@ -826,6 +826,10 @@ How about we take you for a quick tour before you get started?</string>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qXX-8s-38M">
                                 <rect key="frame" x="0.0" y="163" width="375" height="386"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="y7k-hP-ThC" id="ELq-Ih-dWg"/>
+                                    <outlet property="delegate" destination="y7k-hP-ThC" id="hGT-QE-Orc"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="na7-jl-swz">
                                 <rect key="frame" x="126" y="183" width="123" height="40"/>
@@ -964,7 +968,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="244" text="Restaurant Description label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="282" translatesAutoresizingMaskIntoConstraints="NO" id="B5N-Pk-q5d">
-                                                <rect key="frame" x="20" y="714" width="560" height="26"/>
+                                                <rect key="frame" x="20" y="730.5" width="560" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="26S-lh-0hT"/>
                                                     <constraint firstAttribute="height" constant="172" id="ckc-DA-a38"/>
@@ -981,11 +985,11 @@ How about we take you for a quick tour before you get started?</string>
                                                 </variation>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bjF-7F-doM">
-                                                <rect key="frame" x="0.0" y="752" width="600" height="155"/>
+                                                <rect key="frame" x="0.0" y="768.5" width="600" height="0.0"/>
                                                 <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="155" id="E4L-U6-Bel"/>
+                                                    <constraint firstAttribute="height" id="E4L-U6-Bel"/>
                                                 </constraints>
                                                 <collectionViewLayout key="collectionViewLayout" id="SCz-om-rb0" customClass="RDHCollectionViewGridLayout"/>
                                                 <cells>
@@ -996,7 +1000,7 @@ How about we take you for a quick tour before you get started?</string>
                                                             <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cmj-1n-Fr1" customClass="DMImageView">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cmj-1n-Fr1" customClass="DMImageView">
                                                                     <rect key="frame" x="267" y="45.5" width="64" height="64"/>
                                                                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
@@ -1015,7 +1019,7 @@ How about we take you for a quick tour before you get started?</string>
                                                                         </mask>
                                                                     </variation>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvQ-Ir-iFg">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvQ-Ir-iFg">
                                                                     <rect key="frame" x="251" y="124.5" width="96" height="15.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="96" id="1hM-an-vwd"/>
@@ -1048,7 +1052,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </collectionView>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You need to be logged in to use this feature." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB5-KY-SOQ">
-                                                <rect key="frame" x="175" y="802" width="250" height="50"/>
+                                                <rect key="frame" x="175" y="818.5" width="250" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="UgS-SC-4hB"/>
                                                     <constraint firstAttribute="width" constant="250" id="sVC-AT-iCZ"/>
@@ -1058,7 +1062,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DinerMojo members also loved these venues..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSD-bT-Ql1">
-                                                <rect key="frame" x="20" y="766.5" width="325" height="16.5"/>
+                                                <rect key="frame" x="20" y="780" width="325" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="325" id="VJk-wS-uqN"/>
                                                 </constraints>
@@ -1076,10 +1080,10 @@ How about we take you for a quick tour before you get started?</string>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqx-px-9No">
-                                                <rect key="frame" x="0.0" y="360" width="600" height="344"/>
+                                                <rect key="frame" x="0.0" y="360" width="600" height="360.5"/>
                                                 <subviews>
                                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lha-T5-y79">
-                                                        <rect key="frame" x="360" y="0.0" width="240" height="344"/>
+                                                        <rect key="frame" x="360" y="0.0" width="240" height="360.5"/>
                                                         <color key="tintColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <gestureRecognizers/>
                                                         <connections>
@@ -1099,16 +1103,16 @@ How about we take you for a quick tour before you get started?</string>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_navigation" translatesAutoresizingMaskIntoConstraints="NO" id="MiU-8o-YWZ">
-                                                        <rect key="frame" x="455" y="15" width="50" height="50"/>
+                                                        <rect key="frame" x="454.5" y="14.5" width="51" height="51"/>
                                                         <color key="tintColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8Q-3k-Wzu">
-                                                        <rect key="frame" x="455" y="15" width="50" height="50"/>
+                                                        <rect key="frame" x="454.5" y="14.5" width="51" height="51"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.3 miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luj-wO-dMh">
-                                                        <rect key="frame" x="452" y="73" width="56" height="17"/>
+                                                        <rect key="frame" x="451" y="73.5" width="58.5" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="qPw-5i-gFv"/>
                                                         </constraints>
@@ -1117,7 +1121,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEd-0D-Udz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="344"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="360.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrN-Cz-9cn">
                                                                 <rect key="frame" x="15" y="8" width="330" height="21"/>
@@ -1129,7 +1133,7 @@ How about we take you for a quick tour before you get started?</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="££££" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVV-HM-U9j">
-                                                                <rect key="frame" x="15" y="29" width="40.5" height="26"/>
+                                                                <rect key="frame" x="15" y="29" width="41.5" height="26"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="26" id="DGQ-fL-COD"/>
                                                                 </constraints>
@@ -1145,7 +1149,7 @@ How about we take you for a quick tour before you get started?</string>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHq-rV-sah">
-                                                                <rect key="frame" x="65" y="83" width="280" height="29"/>
+                                                                <rect key="frame" x="65" y="81.5" width="280" height="32"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1155,14 +1159,14 @@ How about we take you for a quick tour before you get started?</string>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KDJ-GR-C5d">
-                                                                <rect key="frame" x="15" y="124" width="35" height="35"/>
+                                                                <rect key="frame" x="15" y="127" width="35" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="FuT-eg-bA8"/>
                                                                     <constraint firstAttribute="width" secondItem="KDJ-GR-C5d" secondAttribute="height" multiplier="1:1" id="akw-mp-XLo"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsy-WD-uwj" customClass="ResizableButton" customModule="DinerMojo" customModuleProvider="target">
-                                                                <rect key="frame" x="65" y="127" width="280" height="29"/>
+                                                                <rect key="frame" x="65" y="128.5" width="280" height="32"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1172,14 +1176,14 @@ How about we take you for a quick tour before you get started?</string>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fp-vL-ivG">
-                                                                <rect key="frame" x="15" y="168" width="35" height="35"/>
+                                                                <rect key="frame" x="15" y="174" width="35" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="LQH-e6-PjG"/>
                                                                     <constraint firstAttribute="width" secondItem="9fp-vL-ivG" secondAttribute="height" multiplier="1:1" id="pKW-AS-xjK"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Gct-1U-af6">
-                                                                <rect key="frame" x="65" y="171" width="280" height="29"/>
+                                                                <rect key="frame" x="65" y="175.5" width="280" height="32"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1189,14 +1193,14 @@ How about we take you for a quick tour before you get started?</string>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PuG-7J-ORG">
-                                                                <rect key="frame" x="15" y="212" width="35" height="35"/>
+                                                                <rect key="frame" x="15" y="221" width="35" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="xan-2F-k3U"/>
                                                                     <constraint firstAttribute="width" secondItem="PuG-7J-ORG" secondAttribute="height" multiplier="1:1" id="yjD-TQ-YVP"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lTl-c3-URA">
-                                                                <rect key="frame" x="65" y="215" width="280" height="29"/>
+                                                                <rect key="frame" x="65" y="222.5" width="280" height="32"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1206,13 +1210,13 @@ How about we take you for a quick tour before you get started?</string>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mHH-2r-JKo">
-                                                                <rect key="frame" x="15" y="256" width="35" height="35"/>
+                                                                <rect key="frame" x="15" y="268" width="35" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="jFc-67-CUb"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="YNP-4i-F1c">
-                                                                <rect key="frame" x="65" y="259" width="280" height="29"/>
+                                                                <rect key="frame" x="65" y="269.5" width="280" height="32"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1222,13 +1226,13 @@ How about we take you for a quick tour before you get started?</string>
                                                                 </connections>
                                                             </button>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2li-BW-J9A">
-                                                                <rect key="frame" x="15" y="300" width="35" height="35"/>
+                                                                <rect key="frame" x="15" y="315" width="35" height="35"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="ycK-8N-wNl"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Vdb-KT-mWk">
-                                                                <rect key="frame" x="65" y="303" width="280" height="29"/>
+                                                                <rect key="frame" x="65" y="316.5" width="280" height="32"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                                 <state key="normal" title="Button">
                                                                     <color key="titleColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1238,11 +1242,11 @@ How about we take you for a quick tour before you get started?</string>
                                                                 </connections>
                                                             </button>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-7I-Guq">
-                                                                <rect key="frame" x="65" y="208" width="280" height="0.0"/>
+                                                                <rect key="frame" x="65" y="215.5" width="280" height="0.0"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="Pi9-64-y4S">
-                                                                <rect key="frame" x="324" y="174" width="24" height="24"/>
+                                                                <rect key="frame" x="324" y="178.5" width="24" height="24"/>
                                                                 <color key="tintColor" red="0.37254901959999998" green="0.72941176470000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -1372,7 +1376,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgo-8s-zeb">
-                                                        <rect key="frame" x="445.5" y="56.5" width="59" height="17.5"/>
+                                                        <rect key="frame" x="444" y="53.5" width="62" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1403,7 +1407,7 @@ How about we take you for a quick tour before you get started?</string>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ea-0f-0Ns">
-                                                        <rect key="frame" x="107.5" y="56.5" width="35" height="17.5"/>
+                                                        <rect key="frame" x="106.5" y="53.5" width="37" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1472,7 +1476,7 @@ How about we take you for a quick tour before you get started?</string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNk-1d-CcV">
-                                                <rect key="frame" x="284.5" y="311.5" width="31" height="17.5"/>
+                                                <rect key="frame" x="283.5" y="308.5" width="33.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1548,6 +1552,7 @@ How about we take you for a quick tour before you get started?</string>
                     <connections>
                         <outlet property="arrowDropdown" destination="Pi9-64-y4S" id="8cm-47-Kri"/>
                         <outlet property="bookImgView" destination="YGZ-Bh-eTZ" id="NEl-J3-H5J"/>
+                        <outlet property="collectionHeightConstraint" destination="E4L-U6-Bel" id="efA-jJ-dpU"/>
                         <outlet property="collectionView" destination="bjF-7F-doM" id="AqD-zX-Mpa"/>
                         <outlet property="contentView" destination="XkH-sY-vm9" id="ISp-Nf-Dsi"/>
                         <outlet property="directionsButton" destination="cRu-Q5-4HK" id="hhs-vN-Dfu"/>
@@ -2017,7 +2022,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <color key="color" red="0.066666666666666666" green="0.41176470588235292" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can't fetch news. Check your connection." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjp-qo-5jM">
-                                <rect key="frame" x="37.5" y="308.5" width="300" height="50"/>
+                                <rect key="frame" x="35" y="308.5" width="305" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Iyl-Bm-DTh"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Wlj-dU-rLe"/>
@@ -2031,18 +2036,19 @@ How about we take you for a quick tour before you get started?</string>
                                 <rect key="frame" x="0.0" y="358.5" width="375" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing to report right now but we can notify you when there is" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0c-iA-79b">
-                                        <rect key="frame" x="64.5" y="0.0" width="246.5" height="60"/>
+                                        <rect key="frame" x="58.5" y="0.0" width="258" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="3mt-jW-WFZ"/>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="9QJ-LF-5Mu"/>
                                             <constraint firstAttribute="height" constant="60" id="DpY-r2-M4h"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                        <color key="textColor" red="0.36615604162216187" green="0.74646860361099243" blue="0.6332557201385498" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yA-RT-rlc">
                                         <rect key="frame" x="154" y="64" width="67" height="30"/>
+                                        <color key="tintColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Notify Me"/>
                                         <connections>
                                             <action selector="notifyMe:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="EFa-kR-Szj"/>
@@ -2341,7 +2347,7 @@ How about we take you for a quick tour before you get started?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CVT-Oi-519">
-                                <rect key="frame" x="169" y="240" width="37" height="37"/>
+                                <rect key="frame" x="169" y="238" width="37" height="37"/>
                                 <color key="color" red="0.066666666666666666" green="0.41176470588235292" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ffO-G0-s3J">
@@ -2353,7 +2359,7 @@ How about we take you for a quick tour before you get started?</string>
                                 </connections>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEA-mg-cfT">
-                                <rect key="frame" x="165.5" y="289" width="44.5" height="21"/>
+                                <rect key="frame" x="165" y="287" width="45.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="7j4-YS-zxY"/>
                                     <constraint firstAttribute="height" constant="20" id="Rig-YW-5pg"/>
@@ -2374,7 +2380,7 @@ How about we take you for a quick tour before you get started?</string>
                                 <rect key="frame" x="0.0" y="56" width="375" height="542"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any favourites yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWJ-Og-iGm">
-                                        <rect key="frame" x="20" y="25" width="335" height="23.5"/>
+                                        <rect key="frame" x="20" y="25" width="335" height="54.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="2Xa-1c-tjB"/>
                                             <constraint firstAttribute="height" constant="20" id="OvV-RD-UOy"/>
@@ -2391,13 +2397,13 @@ How about we take you for a quick tour before you get started?</string>
                                         </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news_empty_image_state" translatesAutoresizingMaskIntoConstraints="NO" id="I4F-E0-BoI">
-                                        <rect key="frame" x="12" y="68.5" width="351" height="200"/>
+                                        <rect key="frame" x="12" y="99.5" width="351" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="4tn-3X-tzw"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUH-1Q-HQo">
-                                        <rect key="frame" x="12" y="280.5" width="351" height="93.5"/>
+                                        <rect key="frame" x="12" y="311.5" width="351" height="109"/>
                                         <string key="text">Be the first to know about special offers, events and news at your favourite club venues.
 
 Click the heart wherever you see it to add and remove favorites.</string>
@@ -2406,13 +2412,13 @@ Click the heart wherever you see it to add and remove favorites.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can change your Notifications preferences whenever you like here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no0-1a-peD">
-                                        <rect key="frame" x="12" y="374" width="351" height="37.5"/>
+                                        <rect key="frame" x="12" y="420.5" width="351" height="44"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favourite_active" translatesAutoresizingMaskIntoConstraints="NO" id="CRg-Bu-nqT">
-                                        <rect key="frame" x="335" y="78.5" width="25" height="25"/>
+                                        <rect key="frame" x="335" y="109.5" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="3CI-S5-oSq"/>
                                             <constraint firstAttribute="width" constant="25" id="ZM2-A8-tmc"/>
@@ -2873,12 +2879,10 @@ Click the heart wherever you see it to add and remove favorites.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwP-p4-X31">
-                                                        <rect key="frame" x="340" y="8" width="21" height="21"/>
+                                                        <rect key="frame" x="340" y="4" width="21" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="21" id="0gk-kI-ytS"/>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="D9V-53-qaC"/>
-                                                            <constraint firstAttribute="height" constant="21" id="Vva-aB-A1N"/>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="17" id="cbi-ku-6l8"/>
+                                                            <constraint firstAttribute="height" constant="29" id="Vva-aB-A1N"/>
                                                         </constraints>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="info"/>
@@ -3011,12 +3015,10 @@ Click the heart wherever you see it to add and remove favorites.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COS-ge-mi3">
-                                                <rect key="frame" x="340" y="240" width="21" height="21"/>
+                                                <rect key="frame" x="340" y="240" width="21" height="29"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="5JH-Lc-kQZ"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="17" id="JR3-sO-P4L"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="LfP-sC-ojW"/>
+                                                    <constraint firstAttribute="height" constant="29" id="5JH-Lc-kQZ"/>
                                                     <constraint firstAttribute="width" constant="21" id="XLn-Hc-y35"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3038,12 +3040,10 @@ Click the heart wherever you see it to add and remove favorites.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQI-0X-jI8">
-                                                <rect key="frame" x="340" y="352" width="21" height="21"/>
+                                                <rect key="frame" x="340" y="348" width="21" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="17" id="1V8-Dz-coO"/>
-                                                    <constraint firstAttribute="height" constant="21" id="FYf-Sw-vgr"/>
+                                                    <constraint firstAttribute="height" constant="29" id="FYf-Sw-vgr"/>
                                                     <constraint firstAttribute="width" constant="21" id="GDJ-Un-q5U"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="zeV-ZU-bYY"/>
                                                 </constraints>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="info"/>
@@ -4502,7 +4502,7 @@ Click the heart wherever you see it to add and remove favorites.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McZ-gx-zcC">
-                                <rect key="frame" x="283" y="258" width="34" height="16"/>
+                                <rect key="frame" x="282.5" y="256.5" width="35" height="19"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" red="0.066666666666666666" green="0.41176470588235292" blue="0.5490196078431373" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -7640,7 +7640,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="17" height="25"/>
         </designable>
         <designable name="1tJ-RQ-eYN">
-            <size key="intrinsicContentSize" width="87" height="23.5"/>
+            <size key="intrinsicContentSize" width="73" height="23.5"/>
         </designable>
         <designable name="3dT-AR-eyx">
             <size key="intrinsicContentSize" width="38" height="42"/>
@@ -7655,13 +7655,13 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="B3u-fZ-6cl">
-            <size key="intrinsicContentSize" width="86.5" height="22"/>
+            <size key="intrinsicContentSize" width="72.5" height="22"/>
         </designable>
         <designable name="CDt-SY-ihe">
-            <size key="intrinsicContentSize" width="118" height="23.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="GDz-41-0RG">
-            <size key="intrinsicContentSize" width="77" height="23.5"/>
+            <size key="intrinsicContentSize" width="67" height="23.5"/>
         </designable>
         <designable name="GE7-eS-tHr">
             <size key="intrinsicContentSize" width="35" height="37"/>
@@ -7676,7 +7676,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="230" height="34"/>
         </designable>
         <designable name="MUI-fJ-Umd">
-            <size key="intrinsicContentSize" width="118" height="23.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="Nra-Y7-dnG">
             <size key="intrinsicContentSize" width="30" height="33"/>
@@ -7694,7 +7694,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="68" height="34"/>
         </designable>
         <designable name="TCd-a9-jMs">
-            <size key="intrinsicContentSize" width="139" height="22"/>
+            <size key="intrinsicContentSize" width="125" height="22"/>
         </designable>
         <designable name="TGb-n1-m93">
             <size key="intrinsicContentSize" width="128" height="34"/>
@@ -7715,7 +7715,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="177" height="37"/>
         </designable>
         <designable name="a2Q-vx-Ifh">
-            <size key="intrinsicContentSize" width="118" height="23.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="bFh-cK-s35">
             <size key="intrinsicContentSize" width="50" height="34"/>
@@ -7724,7 +7724,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="98" height="34"/>
         </designable>
         <designable name="bUx-XX-x8d">
-            <size key="intrinsicContentSize" width="86.5" height="22"/>
+            <size key="intrinsicContentSize" width="72.5" height="22"/>
         </designable>
         <designable name="cLL-Rq-au8">
             <size key="intrinsicContentSize" width="30" height="34"/>
@@ -7742,7 +7742,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="73" height="34"/>
         </designable>
         <designable name="gHi-df-B5C">
-            <size key="intrinsicContentSize" width="49" height="23.5"/>
+            <size key="intrinsicContentSize" width="39" height="23.5"/>
         </designable>
         <designable name="hCN-Wq-XwI">
             <size key="intrinsicContentSize" width="38" height="42"/>
@@ -7763,13 +7763,13 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="230" height="34"/>
         </designable>
         <designable name="pZV-ja-7FI">
-            <size key="intrinsicContentSize" width="90.5" height="23.5"/>
+            <size key="intrinsicContentSize" width="76.5" height="23.5"/>
         </designable>
         <designable name="rdr-KY-Rn7">
             <size key="intrinsicContentSize" width="61" height="34"/>
         </designable>
         <designable name="rhR-aM-1rm">
-            <size key="intrinsicContentSize" width="50.5" height="23.5"/>
+            <size key="intrinsicContentSize" width="36.5" height="23.5"/>
         </designable>
         <designable name="roD-35-b4H">
             <size key="intrinsicContentSize" width="83" height="34"/>
@@ -7799,10 +7799,10 @@ That's fine. Just click the button below to finish registering.</string>
         <segue reference="h0d-87-Ktu"/>
         <segue reference="7rn-ew-alx"/>
         <segue reference="cZC-Sm-xQp"/>
-        <segue reference="rgP-m8-3sb"/>
+        <segue reference="dcH-Ar-zyd"/>
         <segue reference="s4L-uq-5ch"/>
         <segue reference="NJR-HD-aBd"/>
-        <segue reference="KBo-aD-UJD"/>
+        <segue reference="a0F-lG-YcN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="tintColor"/>
     <resources>
@@ -7818,7 +7818,7 @@ That's fine. Just click the button below to finish registering.</string>
         <image name="continue_tick" width="60" height="60"/>
         <image name="cross" width="17" height="25"/>
         <image name="earn_icon_disabled" width="29.5" height="31"/>
-        <image name="earn_icon_enabled" width="29.5" height="31"/>
+        <image name="earn_icon_enabled" width="29.5" height="32"/>
         <image name="ellipse" width="82" height="82"/>
         <image name="facebook" width="32" height="32"/>
         <image name="fail_cross" width="90" height="90"/>
@@ -7829,8 +7829,8 @@ That's fine. Just click the button below to finish registering.</string>
         <image name="home_restaurant" width="448.5" height="640"/>
         <image name="ic_done_white_48pt" width="48" height="48"/>
         <image name="icon_cake" width="22" height="20"/>
-        <image name="icon_navigation" width="50" height="50"/>
-        <image name="info" width="20" height="20"/>
+        <image name="icon_navigation" width="51" height="51"/>
+        <image name="info" width="20" height="28"/>
         <image name="news_empty_image_state" width="300" height="200"/>
         <image name="news_offers" width="25" height="24"/>
         <image name="orc" width="1024" height="754"/>
