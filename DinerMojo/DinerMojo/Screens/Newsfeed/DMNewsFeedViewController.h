@@ -31,6 +31,8 @@
 @property BOOL connectionProblem;
 
 @property BOOL isVenue;
+@property BOOL isFromNewsPush;
+
 @property DMVenue *selectedVenue;
 
 - (IBAction)sortButtonPressed:(id)sender;

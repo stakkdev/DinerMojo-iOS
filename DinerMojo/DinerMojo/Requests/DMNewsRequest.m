@@ -16,15 +16,13 @@
     __weak typeof(self) weakSelf = self;
     //pass into params in a dictionary
     NSDictionary *queryDictionary = @{ @"update_type": newsType};
-    //NSLog(@"queryDictionary News is:%@", queryDictionary);
+    NSLog(@"queryDictionary News is:%@", queryDictionary);
 
     [self GET:@"news" withParams:queryDictionary withCompletionBlock:^(NSError *error, id results) {
         if (error) {
             completionBlock(error, nil);
         } else {
-            
-            
-            //NSLog(@"downloadNewsWithCompletionBlock News is:%@", results);
+            NSLog(@"downloadNewsWithCompletionBlock News is:%@", results);
             completionBlock(nil, [weakSelf parseAllNewsFromDictionaryArray:results inContext:[self objectContext]]);
         }
     }];
@@ -35,13 +33,13 @@
     __weak typeof(self) weakSelf = self;
     //pass into params in a dictionary
     NSDictionary *queryDictionary = @{ @"update_type": newsType, @"venue_id": venueID};
-    //NSLog(@"queryDictionary News is:%@", queryDictionary);
+    NSLog(@"queryDictionary News is:%@", queryDictionary);
     
     [self GET:@"news" withParams:queryDictionary withCompletionBlock:^(NSError *error, id results) {
         if (error) {
             completionBlock(error, nil);
         } else {
-            //NSLog(@"downloadVenueNewsWithCompletionBlock News is:%@", results);
+            NSLog(@"downloadVenueNewsWithCompletionBlock News is:%@", results);
             completionBlock(nil, [weakSelf parseAllNewsFromDictionaryArray:results inContext:[self objectContext]]);
         }
     }];

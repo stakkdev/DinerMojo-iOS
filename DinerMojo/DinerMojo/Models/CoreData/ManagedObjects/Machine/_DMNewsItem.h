@@ -6,6 +6,8 @@
 
 extern const struct DMNewsItemAttributes {
 	__unsafe_unretained NSString *update_type;
+    __unsafe_unretained NSString *additional_payload;
+
 } DMNewsItemAttributes;
 
 @interface DMNewsItemID : DMUpdateItemID {}
@@ -18,8 +20,10 @@ extern const struct DMNewsItemAttributes {
 @property (nonatomic, readonly, strong) DMNewsItemID* objectID;
 
 @property (nonatomic, strong) NSNumber* update_type;
-
 @property BOOL isRead;
+
+@property (nonatomic, strong) NSDictionary* additional_payload;
+
 
 @property (atomic) int16_t update_typeValue;
 - (int16_t)update_typeValue;

@@ -22,8 +22,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *newsImageView;
 @property (weak, nonatomic) IBOutlet DMButton *restaurantButton;
 @property (weak, nonatomic) IBOutlet DMButton *redeemButton;
+@property (weak, nonatomic) IBOutlet DMButton *referFriendButton;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *redeemButtonHeightConstraint;
 @property BOOL isOffer;
+@property BOOL isFromNewsPush;
 @property DMNewsItem *selectedItem;
 
 - (IBAction)share:(id)sender;

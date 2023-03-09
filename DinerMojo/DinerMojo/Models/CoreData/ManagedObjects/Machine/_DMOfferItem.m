@@ -15,6 +15,7 @@ const struct DMOfferItemAttributes DMOfferItemAttributes = {
 	.start_date = @"start_date",
 	.terms_conditions = @"terms_conditions",
 	.update_type = @"update_type",
+    .additional_payload = @"additional_payload",
 };
 
 const struct DMOfferItemRelationships DMOfferItemRelationships = {
@@ -25,7 +26,7 @@ const struct DMOfferItemRelationships DMOfferItemRelationships = {
 @end
 
 @implementation _DMOfferItem
-@synthesize allowed_mojo_levels, days_available, is_prodigal_reward, isRead, monetary_value;
+@synthesize allowed_mojo_levels, days_available, is_prodigal_reward, isRead, monetary_value,additional_payload;
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);

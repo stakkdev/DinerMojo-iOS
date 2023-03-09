@@ -15,6 +15,9 @@
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
         </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Email Verify View Controller-->
@@ -352,10 +355,156 @@ If you used Facebook Log In previously, please enter the email address associate
             </objects>
             <point key="canvasLocation" x="500" y="56.872037914691937"/>
         </scene>
+        <!--Earn Notification TapVC-->
+        <scene sceneID="2H1-fz-FLo">
+            <objects>
+                <viewController storyboardIdentifier="EarnNotificationTapVC" id="I30-tb-aye" customClass="EarnNotificationTapVC" customModule="DinerMojo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L8p-NY-oGp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8c-47-0iF">
+                                <rect key="frame" x="0.0" y="636" width="414" height="260"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2J-Pa-csq">
+                                        <rect key="frame" x="374" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="6ZH-tz-mU0"/>
+                                            <constraint firstAttribute="width" constant="40" id="WeA-mX-bTt"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="cross" title=" " subtitle="  "/>
+                                        <connections>
+                                            <action selector="closeButtonAction:" destination="I30-tb-aye" eventType="touchUpInside" id="60N-aT-qkS"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="BPh-9H-B4Q">
+                                        <rect key="frame" x="369" y="0.0" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="1pF-ho-nCC"/>
+                                            <constraint firstAttribute="width" constant="45" id="Efy-gn-FnD"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-K3-mHu">
+                                        <rect key="frame" x="107" y="110" width="200" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTi-Af-l3h" customClass="DMButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="like">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.1843137255" green="0.1843137255" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightBorderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="likeButtonAction:" destination="I30-tb-aye" eventType="touchUpInside" id="ojm-1J-R1c"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnp-is-QDN" customClass="DMButton">
+                                                <rect key="frame" x="110" y="0.0" width="90" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="dislike">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.1843137255" green="0.1843137255" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightBorderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="dislikeButtonAction:" destination="I30-tb-aye" eventType="touchUpInside" id="S2j-S3-t2J"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="HGh-zL-R4j"/>
+                                            <constraint firstAttribute="height" constant="50" id="dhl-wV-sry"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you like this notification?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udP-SP-bQZ">
+                                        <rect key="frame" x="30" y="65" width="354" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
+                                        <color key="textColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Lqw-K3-mHu" firstAttribute="centerY" secondItem="f8c-47-0iF" secondAttribute="centerY" constant="5" id="6QT-sS-Ijd"/>
+                                    <constraint firstItem="BPh-9H-B4Q" firstAttribute="top" secondItem="f8c-47-0iF" secondAttribute="top" id="9gK-CC-SY4"/>
+                                    <constraint firstAttribute="trailing" secondItem="BPh-9H-B4Q" secondAttribute="trailing" id="Iv9-J0-p5M"/>
+                                    <constraint firstAttribute="height" constant="260" id="NvH-Kr-eD5"/>
+                                    <constraint firstItem="udP-SP-bQZ" firstAttribute="top" secondItem="f8c-47-0iF" secondAttribute="top" constant="65" id="OKA-Rt-r4C"/>
+                                    <constraint firstAttribute="trailing" secondItem="q2J-Pa-csq" secondAttribute="trailing" id="Oc6-as-Tcc"/>
+                                    <constraint firstAttribute="trailing" secondItem="udP-SP-bQZ" secondAttribute="trailing" constant="30" id="S7y-yQ-rVs"/>
+                                    <constraint firstItem="BPh-9H-B4Q" firstAttribute="top" secondItem="f8c-47-0iF" secondAttribute="top" id="V3A-Cd-F1c"/>
+                                    <constraint firstItem="q2J-Pa-csq" firstAttribute="top" secondItem="f8c-47-0iF" secondAttribute="top" id="Xe7-fR-gVn"/>
+                                    <constraint firstItem="Lqw-K3-mHu" firstAttribute="centerX" secondItem="f8c-47-0iF" secondAttribute="centerX" id="aMW-ou-brJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="BPh-9H-B4Q" secondAttribute="trailing" id="d0D-B1-bA2"/>
+                                    <constraint firstItem="udP-SP-bQZ" firstAttribute="leading" secondItem="f8c-47-0iF" secondAttribute="leading" constant="30" id="g65-Ig-viC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fpv-NN-cGm"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.48493927204056292" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f8c-47-0iF" firstAttribute="trailing" secondItem="Fpv-NN-cGm" secondAttribute="trailing" id="0AG-hf-52T"/>
+                            <constraint firstItem="f8c-47-0iF" firstAttribute="leading" secondItem="Fpv-NN-cGm" secondAttribute="leading" id="52C-zG-W8K"/>
+                            <constraint firstAttribute="bottom" secondItem="f8c-47-0iF" secondAttribute="bottom" id="TDH-hj-XTz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="BPh-9H-B4Q" id="AaH-PE-rUj"/>
+                        <outlet property="btnClose" destination="q2J-Pa-csq" id="Px7-hA-QNx"/>
+                        <outlet property="lblHeaderText" destination="udP-SP-bQZ" id="Ra8-WZ-S7m"/>
+                        <outlet property="vwPopUp" destination="f8c-47-0iF" id="ZjW-be-mZe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N3g-f9-czF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-242" y="728"/>
+        </scene>
     </scenes>
     <designables>
+        <designable name="bnp-is-QDN">
+            <size key="intrinsicContentSize" width="43" height="43"/>
+        </designable>
         <designable name="i4D-Jv-Ij9">
             <size key="intrinsicContentSize" width="125" height="34"/>
+        </designable>
+        <designable name="qTi-Af-l3h">
+            <size key="intrinsicContentSize" width="43" height="43"/>
         </designable>
         <designable name="rxa-JW-hUA">
             <size key="intrinsicContentSize" width="125" height="34"/>
@@ -363,6 +512,8 @@ If you used Facebook Log In previously, please enter the email address associate
     </designables>
     <resources>
         <image name="cross" width="17" height="25"/>
+        <image name="dislike" width="43" height="43"/>
+        <image name="like" width="43" height="43"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

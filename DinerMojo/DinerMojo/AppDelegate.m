@@ -136,7 +136,7 @@
 }*/
 
 -(void)actionButtonPressedFromOperationCompletePopupViewController:(DMOperationCompletePopUpViewController *)operationCompletePopupViewController {
-    NSLog(@"Here button is taaped");
+    //NSLog(@"Here button is taaped");
      if ([[operationCompletePopupViewController actionButtonTitle] isEqualToString:@"Go to settings"]) {
          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]
                                                     options:@{}
@@ -165,6 +165,8 @@
     }
 }
 
+
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [NSUserDefaults.standardUserDefaults setObject:userInfo forKey:@"notification"];
@@ -173,7 +175,7 @@
     if ( application.applicationState == UIApplicationStateInactive || application.applicationState == UIApplicationStateBackground  )
     {
         self.notificationPayload = userInfo;
-        NSLog(@"%@", self.notificationPayload);
+        //NSLog(@"%@", self.notificationPayload);
         if(count == 3) {
             [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"showNotificationsOverlay"];
         }
@@ -181,7 +183,7 @@
     else
     {
         NSDictionary *alert = [userInfo objectForKey:@"aps"];
-        NSLog(@"%@", [alert objectForKey:@"alert"]);
+        //NSLog(@"%@", [alert objectForKey:@"alert"]);
         if(count == 3) {
             [self showNotificationOverlay];
         }
@@ -189,8 +191,8 @@
     
     [self showBookingNotificationWithUserInfo:userInfo];
     [self showNewsNotificationIfNeeded];
-    [self application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:^(UIBackgroundFetchResult result) {
-    }];
+//    [self application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:^(UIBackgroundFetchResult result) {
+//    }];
 }
 
 -(void)registerForNotifications
@@ -420,6 +422,11 @@
     {
         UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
         if(self.notificationPayload[@"news_id"] != NULL && self.notificationPayload[@"bookingID"] == NULL) {
+            NSLog(@"Notification tab selected:");
+            if (tabController.selectedIndex == 2) {
+                NSLog(@"Notification tab 2 tab existed selected:");
+                tabController.selectedIndex = 1;
+            }
             tabController.selectedIndex = 2;
         }
     }
@@ -452,16 +459,17 @@
 }
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
-    NSLog(@"User Info : %@",notification.request.content.userInfo);
+    NSLog(@"User Info willPresentNotification : %@",notification.request.content.userInfo);
     completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
 }
 
 //Called to let your app know which action was selected by the user for a given notification.
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler{
-    NSLog(@"User Info : %@", response.notification.request.content.userInfo);
+    NSLog(@"User Info didReceiveNotificationResponse : %@", response.notification.request.content.userInfo);
+    self.notificationPayload = response.notification.request.content.userInfo;
+    [self showNewsNotificationIfNeeded];
     completionHandler();
 }
-
 @end
 
 

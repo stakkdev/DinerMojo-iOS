@@ -13,6 +13,8 @@
 - (void)setUpdate_type:(NSNumber*)update_type;
 
 
+- (NSNumber*)additional_payload;
+- (void)setAdditional_payload:(NSNumber*)additional_payload;
 
 
 

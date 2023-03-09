@@ -156,10 +156,8 @@
             [self.view.window setUserInteractionEnabled:YES];
 
         }
-        
         else
-        {
-        
+        {        
             [self.view.window setUserInteractionEnabled:YES];
 
             [self logOut];

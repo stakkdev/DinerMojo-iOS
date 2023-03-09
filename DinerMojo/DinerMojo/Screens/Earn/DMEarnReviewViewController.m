@@ -120,7 +120,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         }
     }
     
-    NSLog(@"image after aspect fit: width=%f height=%f",newwidth,newheight);
+    //NSLog(@"image after aspect fit: width=%f height=%f",newwidth,newheight);
     
     
     //adapt UIImageView size to image size

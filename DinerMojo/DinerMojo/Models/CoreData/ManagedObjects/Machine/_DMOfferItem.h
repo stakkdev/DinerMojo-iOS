@@ -16,6 +16,8 @@ extern const struct DMOfferItemAttributes {
 	__unsafe_unretained NSString *terms_conditions;
 	__unsafe_unretained NSString *update_type;
     __unsafe_unretained NSString *is_prodigal_reward;
+    __unsafe_unretained NSString *additional_payload;
+
 } DMOfferItemAttributes;
 
 extern const struct DMOfferItemRelationships {
@@ -34,6 +36,8 @@ extern const struct DMOfferItemRelationships {
 @property (nonatomic, readonly, strong) DMOfferItemID* objectID;
 
 @property (nonatomic, strong) NSNumber* discount;
+@property (nonatomic, strong) NSDictionary* additional_payload;
+
 
 @property BOOL isRead;
 

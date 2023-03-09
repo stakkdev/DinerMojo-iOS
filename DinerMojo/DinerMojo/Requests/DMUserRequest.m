@@ -353,7 +353,18 @@
         if (error) {
             completionBlock(error, nil);
         } else {
-            //NSLog(@"user/me/user_check downloadUserProfileWithCompletionBlock ", results);
+            NSLog(@"user/me/user_check downloadUserProfileWithCompletionBlock::: %@", results);
+            NSMutableDictionary * userDict = (NSMutableDictionary *) results;
+            NSLog(@"user dict is: %@", userDict);
+            if (userDict != nil) {
+                if ((![[userDict objectForKey:@"latitude"] isEqual:[NSNull null]]) && ([[userDict objectForKey:@"latitude"] integerValue]) != 0 && ([userDict objectForKey:@"latitude"]) && ([userDict objectForKey:@"longitude"]) != nil && ([userDict objectForKey:@"longitude"]) != NULL) {
+                    NSLog(@"User location exist");
+                    [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"LocationExist"];
+                } else {
+                    NSLog(@"*** User location not exist ****");
+                    [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"LocationExist"];
+                }
+            }
             completionBlock(nil, [DMMappingHelper mapUser:results mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]]);
         }
     }];
@@ -365,7 +376,7 @@
         if (error) {
             completionBlock(error, nil, nil);
         } else {
-            //NSLog(@"user/me/user_check downloadUserProfileResponseWithCompletionBlock:::: ", results);
+            NSLog(@"user/me/user_check downloadUserProfileResponseWithCompletionBlock:::: %@ ", results);
             completionBlock(nil, [DMMappingHelper mapUser:results mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]], results);
         }
     }];
@@ -399,7 +410,6 @@
 - (void)uploadUserProfileWith:(NSDictionary *)data profileImage:(UIImage *)image completionBlock:(RequestCompletion)completionBlock;
 {
     NSString *uuidString = [[NSUUID UUID] UUIDString];
-    
     [self POST:@"user/me/user_check" withParams:data  withBody:(image != nil) ? ^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.75) name:@"profile_picture" fileName:[NSString stringWithFormat:@"%@.jpg",uuidString] mimeType:@"image/jpg"];
     } : nil withCompletionBlock:completionBlock];
@@ -458,6 +468,19 @@
         }
     }];
 }
+
+- (void)likeDislikeEarnNotification:(NSNumber *)notificationID to:(NSNumber *)isLike completionBlock:(RequestCompletion)completionBlock {
+    NSDictionary *params = @{ @"liked": isLike};
+    NSString *url = [NSString stringWithFormat:@"news_feedback/%@", notificationID];
+    [self POST:url withParams:params withCompletionBlock:^(NSError *error, id results) {
+        if(error) {
+            completionBlock(error, nil);
+        } else {
+            completionBlock(nil, results);
+        }
+    }];
+}
+
 
 - (void)facebookEmailVerification:(NSString *)userId otp:(NSString *)otp password:(NSString *)password completionBlock:(RequestCompletion)completionBlock
 {
@@ -568,7 +591,22 @@ if ([DMRequest currentUserToken] != nil)
 - (DMUser *)userFromLoginResults:(id)results
 {
     [DMRequest updateCurrentUserToken:[results objectForKey:@"token"]];
-    DMUser *user = [DMMappingHelper mapUser:[results objectForKey:@"user"] mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]];
+    NSDictionary * userDict = [results objectForKey:@"user"];
+    /*
+    NSInteger lattitude = [[userDict objectForKey:@"latitude"] integerValue];
+    NSLog(@"Latitude is:", lattitude);
+    if (lattitude == 0) {
+        NSLog(@"Latitude is zero");
+    }*/
+    NSLog(@"User dict is: %@", userDict);
+    if ((![[userDict objectForKey:@"latitude"] isEqual:[NSNull null]]) && ([[userDict objectForKey:@"latitude"] integerValue]) != 0 && ([userDict objectForKey:@"latitude"]) && ([userDict objectForKey:@"longitude"]) != nil && ([userDict objectForKey:@"longitude"]) != NULL) {
+        NSLog(@"User location exist");
+        [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"LocationExist"];
+    } else {
+        NSLog(@"*** User location not exist ****");
+        [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"LocationExist"];
+    }
+    DMUser *user = [DMMappingHelper mapUser:userDict mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]];
     [user setLocal_accountValue:YES];
     [self registerForNotifications];
     [self registerUserDeviceForPushNotifications];

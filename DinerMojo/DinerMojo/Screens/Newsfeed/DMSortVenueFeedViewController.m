@@ -113,8 +113,7 @@ int lifestyleTableViewTag = 2;
     if([[DMLocationServices sharedInstance] isLocationEnabled]) {
         [self.infoItemView removeFromSuperview];
         self.locationInfoSectionHeight.constant = 0;
-    }
-    else {
+    } else {
         self.locationInfoSectionHeight.constant = locationInfoSectionOpenHeight;
         [self setupMessageView];
     }

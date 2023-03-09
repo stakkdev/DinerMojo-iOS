@@ -157,7 +157,7 @@
         
         [weakSelf updateBaseMapping:mapping];
         
-        [mapping addAttributesFromArray:@[@"update_type", @"is_system_news_item", @"venue_type"]];
+        [mapping addAttributesFromArray:@[@"update_type", @"is_system_news_item", @"venue_type",@"additional_payload"]];
         
     }];
 }
@@ -171,7 +171,7 @@
         
         [weakSelf updateBaseProdigalMapping:mapping];
         
-        [mapping addAttributesFromArray:@[@"update_type", @"is_system_news_item", @"venue_type"]];
+        [mapping addAttributesFromArray:@[@"update_type", @"is_system_news_item", @"venue_type",@"additional_payload"]];
         
     }];
 }

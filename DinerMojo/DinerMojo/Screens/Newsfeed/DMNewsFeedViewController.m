@@ -43,6 +43,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.isFromNewsPush = FALSE;
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
         [navBarAppearance configureWithOpaqueBackground];
@@ -54,13 +55,13 @@
     } else {
         
     }
+    NSLog(@" DMNewsFeedViewController View Did appear called");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    NSLog(@" DMNewsFeedViewController View Did appear called");
     [Answers logContentViewWithName:@"View newsfeed" contentType:@"" contentId:@"" customAttributes:@{}];
-    
     [self.activityIndicator startAnimating];
     
     NSString *newsId = [(AppDelegate *) [[UIApplication sharedApplication] delegate] notificationPayload][@"news_id"];
@@ -68,6 +69,7 @@
     
     if (bookingId == NULL && newsId != NULL) {
         self.pushNewsID = newsId;
+        self.isFromNewsPush = TRUE;
     }
     
     if (self.isVenue) {
@@ -148,9 +150,9 @@
             if (self.pushNewsID) {
                 self.selectedNewsItem = [DMUpdateItem MR_findFirstByAttribute:@"modelID" withValue:self.pushNewsID];
                 if (self.selectedNewsItem != NULL) {
+                    self.isFromNewsPush = TRUE;
                     [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
                 }
-                
                 self.pushNewsID = nil;
                 AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
                 appDelegate.notificationPayload = nil;
@@ -167,15 +169,9 @@
                 AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
                 appDelegate.notificationPayload = nil;
             }
-            
-            
-        }
-        
+        }        
         [self.activityIndicator stopAnimating];
-        
         [self.tableView setSeparatorColor:[UIColor lightGrayColor]];
-        
-        
     }                                      withNewsType:@(DMNewsFeedAll)];
 }
 
@@ -191,6 +187,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"newsDetailSegue"]) {
         DMNewsItemViewController *vc = segue.destinationViewController;
+        vc.isFromNewsPush = self.isFromNewsPush;
+        //
         [vc setSelectedItem:(DMNewsItem *) self.selectedNewsItem];
     }
     else if([segue.identifier isEqualToString:@"restaurantNewsInfoSegue"]) {
@@ -206,9 +204,8 @@
     
     //    self.selectedNewsItem = [[self newsModelController] currentDataSource][indexPath.row];
     
-    //    [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+    //[self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
     cell.selected = NO;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -230,7 +227,6 @@
     
     cell.tapOnVenueIcon = ^{
         DMVenue *item = (DMVenue *) [newsItem venue];
-        
         if (item != nil && [item.state integerValue] == DMVenueStateVerified)
         {
             [weakSelf performSegueWithIdentifier:@"restaurantNewsInfoSegue" sender:item];

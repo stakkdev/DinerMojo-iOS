@@ -5,12 +5,14 @@
 
 const struct DMNewsItemAttributes DMNewsItemAttributes = {
 	.update_type = @"update_type",
+    .additional_payload = @"additional_payload",
 };
 
 @implementation DMNewsItemID
 @end
 
 @implementation _DMNewsItem
+@synthesize additional_payload;
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
@@ -38,7 +40,6 @@ const struct DMNewsItemAttributes DMNewsItemAttributes = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
-
 	return keyPaths;
 }
 
@@ -61,6 +62,7 @@ const struct DMNewsItemAttributes DMNewsItemAttributes = {
 - (void)setPrimitiveUpdate_typeValue:(int16_t)value_ {
 	[self setPrimitiveUpdate_type:[NSNumber numberWithShort:value_]];
 }
+
 
 @end
 

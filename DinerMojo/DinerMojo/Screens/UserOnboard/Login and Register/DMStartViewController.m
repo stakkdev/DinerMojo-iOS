@@ -424,11 +424,16 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     NSNumber *latitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.longitude];
     NSString *locationName = [[DMLocationServices sharedInstance] locationName];
+    
+    if(![[DMLocationServices sharedInstance] isLocationEnabled]) {
+        latitude = [NSNumber numberWithInt:0];
+        longitude = [NSNumber numberWithInt:0];
+    }
     if (latitude == nil) {
-        latitude = 0;
+        latitude = [NSNumber numberWithInt:0];
     }
     if (longitude == nil) {
-        longitude = 0;
+        longitude = [NSNumber numberWithInt:0];
     }
     if (locationName == nil) {
         locationName = @"";
@@ -445,8 +450,11 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [dictionary setObject:[data objectForKey:@"last_name"] forKey:@"last_name"];
     [dictionary setObject:[data objectForKey:@"email"] forKey:@"email_address"];
     [dictionary setObject:@([[data objectForKey:@"gender"] integerValue]) forKey:@"gender"];
-    [dictionary setObject:latitude forKey:@"latitude"];
-    [dictionary setObject:longitude forKey:@"longitude"];
+    
+    if(![[DMLocationServices sharedInstance] isLocationEnabled]) {
+        [dictionary setObject:latitude forKey:@"latitude"];
+        [dictionary setObject:longitude forKey:@"longitude"];
+    }
     [dictionary setObject:locationName forKey:@"location_name"];
 
 //    [dictionary setObject:formattedDate forKey:@"date_of_birth"];
@@ -503,24 +511,16 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
                 [self.closeLoginButton setImage:[UIImage imageNamed:@"cross"] forState:UIControlStateNormal];
                 [self.loginButton setEnabled:YES];
             }
-            else
-            {
+            else {
                 [self goToVenues:NO];
             }
             [indicator stopAnimating];
             [indicator removeFromSuperview];
         }];
-        
-    }
-    
-    else
-    {
+    } else {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Please enter both fields" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-        
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-        
         [alertController addAction:ok];
-        
         [alertController setModalPresentationStyle:UIModalPresentationOverFullScreen];
         [self presentViewController:alertController animated:YES completion:nil];
     }
@@ -538,21 +538,30 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [self.closeRegisterButton setImage:nil forState:UIControlStateNormal];
     [self.closeRegisterButton setEnabled:NO];
     [self.registerButton setEnabled:NO];
-    
+            
     NSNumber *latitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.longitude];
+    if(![[DMLocationServices sharedInstance] isLocationEnabled]) {
+        latitude = [NSNumber numberWithInt:0];
+        longitude = [NSNumber numberWithInt:0];
+    }
     NSString *locationName = [[DMLocationServices sharedInstance] locationName];
+    
     if (latitude == nil) {
-        latitude = 0;
+        latitude = [NSNumber numberWithInt:0];
     }
     if (longitude == nil) {
-        longitude = 0;
+        longitude = [NSNumber numberWithInt:0];
     }
     if (locationName == nil) {
         locationName = @"";
     }
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{ @"email_address" : [[self emailTextField] text], @"password" : [[self passwordTextField] text], @"first_name" : [[self firstNameTextField] text], @"last_name" : [[self lastNameTextField] text], @"latitude" : latitude, @"longitude" : longitude, @"location_name" : locationName}];
-    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if(![[DMLocationServices sharedInstance] isLocationEnabled]) {
+        params = [NSMutableDictionary dictionaryWithDictionary:@{ @"email_address" : [[self emailTextField] text], @"password" : [[self passwordTextField] text], @"first_name" : [[self firstNameTextField] text], @"last_name" : [[self lastNameTextField] text], @"location_name" : locationName}];
+    } else {
+        params = [NSMutableDictionary dictionaryWithDictionary:@{ @"email_address" : [[self emailTextField] text], @"password" : [[self passwordTextField] text], @"first_name" : [[self firstNameTextField] text], @"last_name" : [[self lastNameTextField] text], @"latitude" : latitude, @"longitude" : longitude, @"location_name" : locationName}];
+    }
     [params setObject:[[self referralCodeTextField] text] forKey:@"referral_code"];
     
     if ([[self profilePicture] image] != nil)

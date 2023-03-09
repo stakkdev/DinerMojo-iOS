@@ -19,10 +19,14 @@
 @interface DMNewsItemViewController ()
 @property (weak, nonatomic) IBOutlet DMButton *viewRestaurantButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewRestaurantHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewReferFriendHeight;
+
 
 @end
 
 @implementation DMNewsItemViewController
+
+#pragma mark - View Life Cycel Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +36,14 @@
         self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
     }
 }
+- (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font {
+    CGSize size = CGSizeZero;
+    if (text) {
+        CGRect frame = [text boundingRectWithSize:CGSizeMake(widthValue, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{ NSFontAttributeName:font } context:nil];
+        size = CGSizeMake(frame.size.width, frame.size.height + 1);
+    }
+    return size;
+}
 
 -(void)viewDidLayoutSubviews
 {
@@ -39,10 +51,23 @@
     for (UIView *view in self.scrollView.subviews) {
         contentRect = CGRectUnion(contentRect, view.frame);
     }
-    self.scrollView.contentSize = contentRect.size;
-    /*CGSizeMake(self.view.frame.size.width, self.newsTermsLabel.frame.origin.y + self.newsTermsLabel.frame.size.height + 10);*/
-//    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.newsTermsLabel.frame.origin.y + self.newsTermsLabel.frame.size.height + self.newsLabel.frame.size.height + 10);
+    
+    //NSLog(@"contentRect is %f", contentRect.size.height);
 
+    
+//    if ([(DMOfferItem *)[self selectedItem] terms_conditions])
+//
+//    CGSize rewardTextSize = [self findHeightForText:self.newsTermsLabel.text havingWidth:[[UIScreen mainScreen] bounds].size.width andFont:self.newsTermsLabel.font];
+//
+//    NSLog(@"tersm text height is %f", rewardTextSize.height);
+//
+//    CGSize sizeContnet = CGSizeMake(contentRect.size.width, contentRect.size.height + rewardTextSize.height + 200.0);
+//
+//    NSLog(@"Updared text height is %f", sizeContnet.height);
+
+    self.scrollView.contentSize = contentRect.size;
+    //CGSizeMake(self.view.frame.size.width, self.newsTermsLabel.frame.origin.y + self.newsTermsLabel.frame.size.height + 10);*/
+    //self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.newsTermsLabel.frame.origin.y + self.newsTermsLabel.frame.size.height + self.newsDateLabel.frame.size.height + 10);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -82,6 +107,19 @@
                                         NSFontAttributeName: [UIFont fontWithName:@"OpenSans" size:14.0]
                                         }
                                 range: NSMakeRange(0, text.length)];
+        
+    }
+    
+    if(self.selectedItem.additional_payload != nil) {
+        NSString *textHighlight = @"\n\nWant to get even more points?\n\nJust go to the profile tab and refer a friend.  You will get 100 points when they register and so will they. Even better, you will get 10% of their earned points for a year.\n\nHelp us help our independents!\n\nThanks.";
+
+        NSMutableAttributedString *attributedString2 =
+        [[NSMutableAttributedString alloc] initWithString:textHighlight attributes:@{NSFontAttributeName : [UIFont fontWithName:@"OpenSans" size:14.0] }];
+        [attributedString2 addAttributes:@{
+            NSForegroundColorAttributeName: [UIColor navColor]
+                                        }
+                                range: NSMakeRange(0, textHighlight.length)];
+        [attributedText appendAttributedString:attributedString2];
     }
     self.newsTextView.attributedText = attributedText;
     self.newsTextView.userInteractionEnabled = YES;
@@ -105,20 +143,16 @@
             } else {
                 buttonTitle = (pointsRequired == 1) ? [NSString stringWithFormat:@"Redeem with %li point", (long)pointsRequired] : [NSString stringWithFormat:@"Redeem with %li points", (long)pointsRequired];
             }
-            
             [self.redeemButton setBackgroundColor:[UIColor offersColor]];
             [self.redeemButton setTitle:buttonTitle forState:UIControlStateNormal];
         }
-        else
-        {
+        else {
             [self.redeemButtonHeightConstraint setConstant:0.0];
         }
     }
-    else
-    {
+    else {
         [self.redeemButtonHeightConstraint setConstant:0.0];
     }
-    
 }
 
 - (void)decorateInterface
@@ -183,12 +217,10 @@
         } failure:nil];
     }
     
+    // Append New Text
     [self.newsTitleLabel setText:self.selectedItem.title];
     [self.newsTextView setText:self.selectedItem.news_description];
-    
-    
     [self.navigationItem setTitle:[self.selectedItem.venue name]];
-    
     
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = CGRectMake(0, 0, self.view.frame.size.width, 70);
@@ -206,9 +238,33 @@
         [self.restaurantButton setHidden:YES];
         self.viewRestaurantHeight.constant = 0;
     }
+    //NSLog(@"self. additional payload is:", self.selectedItem.additional_payload);
+    if(self.selectedItem.additional_payload == nil) {
+        [self.referFriendButton setHidden:YES];
+        self.viewReferFriendHeight.constant = 0;
+    }
     
     self.navigationController.navigationBar.backItem.title = @" ";
     self.navigationController.navigationBar.topItem.title = @" ";
+    
+    // Refer Friend Buttton
+    [self.referFriendButton setBackgroundColor:[UIColor colorWithRed:238.0f/255.0f
+                                                               green:154.0f/255.0f
+                                                                blue:37.0f/255.0f
+                                                               alpha:1.0f]];
+    
+    UIImage *backArrow = [UIImage imageNamed:@"back_arrow_grey"];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backArrow style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+    self.navigationItem.leftBarButtonItem = backButton;
+}
+
+- (void)goBack {
+    if (self.isFromNewsPush) {
+        self.isFromNewsPush = FALSE;
+        [self openLikeUnlikeNotificationOpen];
+    } else {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - UIScrollView
@@ -249,8 +305,6 @@
         } else {
             [self.newsImageView setImage:[UIImage imageNamed:@"news_empty_image_state"]];
         }
-       
-        
     }
 }
 
@@ -328,6 +382,30 @@
 
 }
 
+- (IBAction)referFrienButtonTaped:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+
+    DMReferAFriendViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"DMReferAFriendViewController"];
+    DMUser *user = [self.userRequest currentUser];
+    int16_t points = user.referred_pointsValue;
+    vc.referredPoints = [NSString stringWithFormat:@"%hd", points];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)openLikeUnlikeNotificationOpen {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FBSignup" bundle:nil];
+    EarnNotificationTapVC *emailVerify = (EarnNotificationTapVC *)[storyboard instantiateViewControllerWithIdentifier:@"EarnNotificationTapVC"];
+    emailVerify.emailText = @"";
+    emailVerify.newsID = self.selectedItem.modelID;
+    emailVerify.viewDismiss = ^(void){
+        //[self dismissBlurredViewWithInterval:0.25f];
+        NSLog(@"Earn notification tap");
+    };
+    [emailVerify setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    [self presentViewController:emailVerify animated:true completion: nil];
+}
+
+
 - (IBAction)redeemOffer:(id)sender
 {
     if ([[[[self userRequest] currentUser] is_email_verified] boolValue] == YES)
@@ -352,7 +430,12 @@
 }
 
 - (void)readyToDismissCompletedDineNavigationController:(DMDineNavigationController *)dineNavigationController {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (self.isFromNewsPush) {
+        self.isFromNewsPush = FALSE;
+        [self openLikeUnlikeNotificationOpen];
+    } else {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)readyToDismissCompletedDineNavigationController:(DMDineNavigationController *)dineNavigationController with:(UIViewController *)vc {
@@ -360,7 +443,12 @@
 }
 
 - (void)readyToDismissCancelledDineNavigationController:(DMDineNavigationController *)dineNavigationController {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (self.isFromNewsPush) {
+        self.isFromNewsPush = FALSE;
+        [self openLikeUnlikeNotificationOpen];
+    } else {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -39,15 +39,11 @@
 @property (strong, nonatomic) NSArray *filterItems;
 @property (strong, nonatomic) NSMutableArray *favouriteIds;
 @property BOOL signedIn;
-@property BOOL searchEnable;
-
-
 @end
 
 @implementation DMMapViewController {
     GMSAutocompleteTableDataSource *suggestionsDataSource;
     GMSAutocompleteFilter *_filter;
-
 }
 
 - (void)viewDidLoad
@@ -117,7 +113,8 @@
             vc.view.backgroundColor = [[UIColor alloc] initWithRed:1 green:1 blue:1 alpha:0.95];
             vc.view.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
             [vc setModalPresentationStyle:UIModalPresentationOverFullScreen];
-            [self.navigationController presentViewController:vc animated:YES completion:nil];        }
+            [self.navigationController presentViewController:vc animated:YES completion:nil];
+        }
     }
 }
 
@@ -130,6 +127,29 @@
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [[UINavigationBar appearance]setTintColor:UIColor.whiteColor];
+    NSArray *array = [NSArray arrayWithObject:[UINavigationBar class]];
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:array]
+     setTitleTextAttributes:
+         @{NSForegroundColorAttributeName:[UIColor whiteColor],
+           NSFontAttributeName:[UIFont navigationBarButtonItemFont]
+         }
+     forState:UIControlStateNormal];
+}
+
+- (void)checkUserLocationUpdated {
+    if([[self userRequest] isUserLoggedIn]) {
+        if (![NSUserDefaults.standardUserDefaults boolForKey:@"LocationExist"]) {
+            // Show popUp If location disable
+            if(![[DMLocationServices sharedInstance] isLocationEnabled]) {
+                [self setUpNoLocationPopUp];
+            } else {
+                [self updateUserLocationInProfile:NO];
+            }
+        } else {
+            NSLog(@"This comes here for new check");
+        }
+    }
 }
 
 - (void)checkIfSignedIn {
@@ -140,15 +160,18 @@
 
 - (void)checkIfAcceptedGDPR {
     DMUser* currentUser = [[self userRequest] currentUser];
-    
     __weak DMMapViewController *weakSelf = self;
     [[self userRequest] downloadUserProfileWithCompletionBlock:^(NSError *error, id results) {
+        // Check user update location
         if(!currentUser.is_gdpr_acceptedValue && ![NSUserDefaults.standardUserDefaults boolForKey:@"didShowGDPR"]  && [[weakSelf userRequest] isUserLoggedIn]) {
             [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"didShowGDPR"];
             AcceptGdprViewController *acceptViewController = [[AcceptGdprViewController alloc] initWithNibName:@"AcceptGdprViewController" bundle:nil];
             [acceptViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
             [weakSelf presentViewController:acceptViewController animated:YES completion:NULL];
         }
+        
+        // Check user location updated
+        [self checkUserLocationUpdated];
     }];
 }
 
@@ -171,6 +194,72 @@
     self.tabsFilterView = tabView;
     [self.tabsFilterView selectTabForType:DMVenueMap];
     self.searchBar.delegate = self;
+}
+
+-(void)setUpNoLocationPopUp {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Location service"
+                               message:@"The DinerMojo app is designed to show and receive notifications from venues that are local to you.\n To do this please allow location tracking while using the app."
+                               preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Turn on Location Services" style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {
+        NSLog(@"Update default location coordinates");
+        if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+            [[DMLocationServices sharedInstance] startUpdatingCoordinates];
+        } else {
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+                NSLog(@"Opened Url: %i", success);
+            }];
+        }
+    }];
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"No Thanks" style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction * action) {
+        NSLog(@"Update default location coordinates");
+        [self updateUserLocationInProfile:YES];
+    }];
+
+    [alert addAction:defaultAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+-(void)updateUserLocationInProfile:(BOOL) isCancelLocation {
+    NSMutableDictionary *params = [@{ @"latitude": @"51.41259", @"longitude": @"-0.2974"} mutableCopy];
+    if (!isCancelLocation) {
+        CLLocation *newLocation = [DMLocationServices sharedInstance].currentLocation;
+        int degrees = newLocation.coordinate.latitude;
+        NSString *latitude = [NSString stringWithFormat:@"%f",newLocation.coordinate.latitude];
+        NSString *longitude = [NSString stringWithFormat:@"%f", newLocation.coordinate.longitude];
+        params = [@{ @"latitude": latitude, @"longitude": longitude} mutableCopy];
+    }
+    // Updated coordinates
+    [[self userRequest] uploadUserProfileWith:params profileImage:nil completionBlock:^(NSError *error, id results) {
+        if (error)
+        {
+            NSString *errorDescription;
+            if ([error code] == DMErrorCode409) {
+                errorDescription = @"The email you have entered is already in use. Try something different.";
+            }
+            else {
+                errorDescription = @"Something went wrong, please try again later";
+            }
+            //[self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Oops" description:errorDescription  style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
+        }
+        else
+        {
+            //[self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusSuccess title:@"Done" description:@"Your account has been updated"  style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
+            [[self userRequest] downloadUserProfileWithCompletionBlock:^(NSError *error, id results){
+                if (error) {
+                    
+                } else {
+                    [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"LocationExist"];
+                    [NSUserDefaults.standardUserDefaults synchronize];
+                }
+            }];
+        }
+    }];
 }
 
 /// MapView
@@ -265,13 +354,11 @@
 }
 
 - (void)mapViewDidChangeVisibleRegion:(MKMapView *)mapView {
-    
     NSSet *annotationSet = [mapView annotationsInMapRect:mapView.visibleMapRect];
     if (annotationSet.count > 100 && !_limitAnnotationsWarningDisplayed) {
         _limitAnnotationsWarningDisplayed = YES;
         [self displayError:@"That's a lot of places!" message:@"There are too many venues to show here. Try zooming in or changing your filters to narrow down the results."];
     }
-    
     //[self.searchHereButtonView setHidden:NO];
     [self setMapHasBeenMoved:YES];
 }
@@ -888,21 +975,26 @@
     autocompleteController.tableCellBackgroundColor = [UIColor whiteColor];
     [autocompleteController setTintColor:[UIColor blackColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
-
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
-                                                           NSForegroundColorAttributeName: [UIColor blackColor]}
-                                                forState:UIControlStateNormal];    // Color of typed text in the search bar.
+    
+    NSArray *array = [NSArray arrayWithObject:[UINavigationBar class]];
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:array]
+     setTitleTextAttributes:
+         @{NSForegroundColorAttributeName:[UIColor blackColor],
+           NSFontAttributeName:[UIFont navigationBarButtonItemFont]
+         }
+     forState:UIControlStateNormal];
+    
+    // Color of typed text in the search bar.
     autocompleteController.delegate = self;
     // Specify the place data types to return.
-    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID | GMSPlaceFieldCoordinate);
+    GMSPlaceField fields = GMSPlaceFieldAll; //(GMSPlaceFieldName | GMSPlaceFieldPlaceID | GMSPlaceFieldCoordinate);
     autocompleteController.placeFields = fields;
     
     // Specify a filter.
-    _filter = [[GMSAutocompleteFilter alloc] init];
-    _filter.type = kGMSPlaceTypeRestaurant;
-    autocompleteController.autocompleteFilter = _filter;
+//    _filter = [[GMSAutocompleteFilter alloc] init];
+//    _filter.type = kGMSPlaceTypeRestaurant;
+//    autocompleteController.autocompleteFilter = _filter;
     
-    self.searchEnable = YES;
     // Display the autocomplete view controller.
     [self presentViewController:autocompleteController animated:YES completion:nil];
 }
@@ -912,7 +1004,6 @@
 // Handle the user's selection.
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didAutocompleteWithPlace:(GMSPlace *)place {
-    
       // Do something with the selected place.
       NSLog(@"Place name %@", place.name);
       NSLog(@"Place address %@", place.formattedAddress);
@@ -922,7 +1013,6 @@ didAutocompleteWithPlace:(GMSPlace *)place {
     GMSCoordinateBounds *bounds = place.viewport;
     
     CLLocation *nortEast = [[CLLocation alloc]initWithLatitude:bounds.northEast.latitude longitude:bounds.northEast.longitude];
-    
     CLLocation *southWest = [[CLLocation alloc]initWithLatitude:bounds.southWest.latitude longitude:bounds.southWest.longitude];
     double distanceInM = [nortEast distanceFromLocation:southWest];
     double distanceInMiles = distanceInM / 1000 / 1.609;
@@ -938,22 +1028,21 @@ didAutocompleteWithPlace:(GMSPlace *)place {
     [self setLastCarouselIndex: 0];
     [self reloadSelf];
     _limitAnnotationsWarningDisplayed = NO;
-    self.searchEnable = NO;
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didFailAutocompleteWithError:(NSError *)error {
-  self.searchEnable = NO;
- [self dismissViewControllerAnimated:YES completion:nil];
- // TODO: handle the error.
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
- NSLog(@"Error: %@", [error description]);
+    // TODO: handle the error.
+    NSLog(@"Error: %@", [error description]);
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
  // User canceled the operation.
 - (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
-    self.searchEnable = NO;
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

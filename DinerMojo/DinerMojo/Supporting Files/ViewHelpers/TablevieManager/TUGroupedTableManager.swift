@@ -385,10 +385,16 @@ extension TUGroupedTableManager: GMSAutocompleteViewControllerDelegate {
     // Present the Autocomplete view controller when the button is pressed.
     @objc func autocompleteClicked() {
         let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.primaryTextColor = UIColor.white
+        autocompleteController.primaryTextColor = UIColor.black
         autocompleteController.secondaryTextColor = UIColor.lightGray
         autocompleteController.tableCellSeparatorColor = UIColor.lightGray
-        autocompleteController.tableCellBackgroundColor = UIColor.darkGray
+        autocompleteController.tableCellBackgroundColor = UIColor.white
+        
+        let attributes:[NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.black
+        ]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes(attributes, for: .normal)
+        
         autocompleteController.delegate = self
         // Specify the place data types to return.
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
@@ -402,8 +408,6 @@ extension TUGroupedTableManager: GMSAutocompleteViewControllerDelegate {
 
         // Display the autocomplete view controller.
         self.parent?.present(autocompleteController, animated: true, completion: nil)
-
-        
     }
     
     // Handle the user's selection.
@@ -413,6 +417,11 @@ extension TUGroupedTableManager: GMSAutocompleteViewControllerDelegate {
         notificationData = LocationNotification(locationName: place.name, latitude: NSNumber(value: place.coordinate.latitude), longitude: NSNumber(value: place.coordinate.longitude), isFavouriteVenuesNotification: notificationData?.isFavouriteVenuesNotification ?? true, locationRadius: notificationData?.locationRadius)
         delegateLocation?.locationUpdated()
         tableView?.reloadData()
+        
+        let attributes:[NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.white
+        ]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).setTitleTextAttributes(attributes, for: .normal)
         self.parent?.dismiss(animated: true, completion: nil)
     }
     

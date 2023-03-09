@@ -53,6 +53,7 @@
 
 + (DMUser *)mapUser:(NSDictionary *)details mapping:(FEMManagedObjectMapping *)mapping inContext:(NSManagedObjectContext *)context
 {
+        
     return [DMManagedObjectDeserializer deserializeObjectExternalRepresentation:details
                                                                    usingMapping:mapping
                                                                         context:context];

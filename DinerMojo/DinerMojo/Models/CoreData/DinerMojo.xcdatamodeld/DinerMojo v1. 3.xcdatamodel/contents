@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17E202" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="DMBase" representedClassName="DMBase" syncable="YES">
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="modelID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -17,6 +17,7 @@
         <attribute name="transaction_type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="DMNewsItem" representedClassName="DMNewsItem" parentEntity="DMUpdateItem" syncable="YES">
+        <attribute name="additional_payload" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="is_system_news_item" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isRead" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="update_type" optional="YES" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="NO" syncable="YES"/>
@@ -143,18 +144,4 @@
         <attribute name="wednesday" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DMVenue" inverseName="opening_times" inverseEntity="DMVenue" syncable="YES"/>
     </entity>
-    <elements>
-        <element name="DMBase" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="DMEarnTransaction" positionX="-18" positionY="162" width="128" height="180"/>
-        <element name="DMNewsItem" positionX="-45" positionY="108" width="128" height="105"/>
-        <element name="DMOfferItem" positionX="-36" positionY="144" width="128" height="270"/>
-        <element name="DMRedeemTransaction" positionX="-9" positionY="171" width="128" height="105"/>
-        <element name="DMTransaction" positionX="-27" positionY="153" width="128" height="105"/>
-        <element name="DMUpdateItem" positionX="-45" positionY="135" width="128" height="135"/>
-        <element name="DMUser" positionX="-45" positionY="117" width="128" height="315"/>
-        <element name="DMVenue" positionX="-54" positionY="18" width="128" height="600"/>
-        <element name="DMVenueCategory" positionX="-45" positionY="117" width="128" height="75"/>
-        <element name="DMVenueImage" positionX="-54" positionY="90" width="128" height="135"/>
-        <element name="DMVenueOpeningTimes" positionX="-45" positionY="135" width="128" height="165"/>
-    </elements>
 </model>

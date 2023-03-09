@@ -32,7 +32,7 @@
 - (void)validateCode:(NSString *)code withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)facebookEmailVerification:(NSString *)userId otp:(NSString *)otp password:(NSString *)password completionBlock:(RequestCompletion)completionBlock;
 - (void)facebookEmailUpdate:(NSString *)email completionBlock:(RequestCompletion)completionBlock;
-
+- (void)likeDislikeEarnNotification:(NSNumber *)notificationID to:(NSNumber *)isLike completionBlock:(RequestCompletion)completionBlock;
 -(void)setDeviceToken:(NSString *)deviceToken;
 -(NSString *)currentUserDeviceToken;
 -(void)registerUserDeviceForPushNotifications;

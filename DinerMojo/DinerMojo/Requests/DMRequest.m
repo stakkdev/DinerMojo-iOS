@@ -110,8 +110,8 @@
 
 -(void)GET:(NSString *)url withParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    //NSLog(@"API URL IS:%@", url);
-    //NSLog(@"Parameters are:%@", params);
+    NSLog(@"API URL IS:%@", url);
+    NSLog(@"Parameters are:%@", params);
     [[self jsonManager] GET:[self buildURL:url] parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil, responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -123,8 +123,8 @@
 
 -(void)POSTWithHeader:(NSString *)url withParams:(NSDictionary *)params headers:(NSDictionary *)header  withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    //NSLog(@"API URL IS:%@", url);
-    //NSLog(@"Parameters are:%@", params);
+    NSLog(@"API URL IS:%@", url);
+    NSLog(@"Parameters are:%@", params);
 
 
     [[self jsonManager] POST:[self buildURL:url] parameters:params headers:header progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -152,8 +152,8 @@
 
 -(void)POST:(NSString *)url withParams:(NSDictionary *)params withBody:(void (^)(id <AFMultipartFormData> formData))body withCompletionBlock:(RequestCompletion)completionBlock;
 {
-    //NSLog(@"API URL IS:%@", url);
-    //NSLog(@"Parameters are:%@", params);
+    NSLog(@"API URL IS:%@", url);
+    NSLog(@"Parameters are:%@", params);
     
     [[self jsonManager] POST:[self buildURL:url] parameters:params headers:nil constructingBodyWithBlock:body progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionBlock(nil,responseObject);

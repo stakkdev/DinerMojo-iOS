@@ -49,6 +49,9 @@ extern const struct DMUpdateItemRelationships {
 
 @property (nonatomic, strong) DMVenue *venue;
 
+@property (nonatomic, strong) DMVenue *add;
+
+
 //- (BOOL)validateVenue:(id*)value_ error:(NSError**)error_;
 
 @end

@@ -119,6 +119,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>We use your camera to capture receipts and verify redemptions. The camera is required to use these features.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We use your location to calculate miles away from you and to sort news items. We do not store this information.</string>
 	<key>NSLocationUsageDescription</key>
 	<string>We use your location to calculate miles away from you and to sort news items. We do not store this information.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

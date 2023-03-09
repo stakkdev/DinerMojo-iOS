@@ -384,6 +384,4 @@
         NSLog(@"Opened Url: %i", success);
     }];
 }
-
-
 @end

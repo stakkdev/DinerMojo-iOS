@@ -266,8 +266,6 @@
         
         NSDateFormatter *dateFormatterSaving = [[NSDateFormatter alloc] init];
         [dateFormatterSaving setDateFormat:@"yyyy-MM-dd"];
-
-        
         NSString *date_of_birth = [dateFormatterSaving stringFromDate:self.selectedDate];
         params[@"date_of_birth"] = date_of_birth;
     }
@@ -277,17 +275,14 @@
         if (error)
         {
             NSString *errorDescription;
-            if ([error code] == DMErrorCode409)
-            {
+            if ([error code] == DMErrorCode409) {
                 errorDescription = @"The email you have entered is already in use. Try something different.";
             }
-            else
-            {
+            else {
                 errorDescription = @"Something went wrong, please try again later";
             }
             [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Oops" description:errorDescription  style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
             [[self saveButton] setEnabled:YES];
-
         }
         
         else
@@ -297,11 +292,7 @@
                 
             }];
             [[self saveButton] setEnabled:NO];
-
-            
         }
-
-        
     }];
 
 }
