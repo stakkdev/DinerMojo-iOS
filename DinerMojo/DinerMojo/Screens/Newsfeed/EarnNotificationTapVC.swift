@@ -46,7 +46,7 @@ class EarnNotificationTapVC: UIViewController {
     // MARK: - All Button Action Methods
     @IBAction func closeButtonAction(_ sender: Any) {
         self.dismiss(animated: false) {
-            self.viewDismiss?()
+            //self.viewDismiss?()
         }
     }
     
@@ -69,13 +69,15 @@ class EarnNotificationTapVC: UIViewController {
                 if let resp = response as? [String: Any] {
                     debugPrint("resp--\(resp)")
                     //if let userID = resp["id"] as? Int {
-                        //debugPrint("userID--\(userID)")
-                        self.dismiss(animated: false)
+                    //debugPrint("userID--\(userID)")
+                    self.dismiss(animated: false) {
+                        self.viewDismiss?()
+                    }
                     //{
-//                        }
-//                    } else {
-//                        self.showOkAlert(title: "Error", message: "Something went wrong, please try again later" )
-//                    }
+                    //                        }
+                    //                    } else {
+                    //                        self.showOkAlert(title: "Error", message: "Something went wrong, please try again later" )
+                    //                    }
                 }
             } else {
                 self.showOkAlert(title: "Error", message: "Something went wrong, please try again later" )

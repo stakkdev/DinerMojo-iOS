@@ -398,8 +398,8 @@
     emailVerify.emailText = @"";
     emailVerify.newsID = self.selectedItem.modelID;
     emailVerify.viewDismiss = ^(void){
-        //[self dismissBlurredViewWithInterval:0.25f];
         NSLog(@"Earn notification tap");
+        [self.navigationController popToRootViewControllerAnimated:NO];
     };
     [emailVerify setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:emailVerify animated:true completion: nil];

@@ -66,9 +66,9 @@
                 // use weakSelf here
                 [[UIApplication sharedApplication] registerForRemoteNotifications];
             });
-            NSLog( @"Push registration success." );
+            //NSLog( @"Push registration success." );
         } else {
-            NSLog( @"Push registration FAILED" );
+            //NSLog( @"Push registration FAILED" );
             NSLog( @"ERROR: %@ - %@", error.localizedFailureReason, error.localizedDescription );
             NSLog( @"SUGGESTIONS: %@ - %@", error.localizedRecoveryOptions, error.localizedRecoverySuggestion );
         }
@@ -422,9 +422,7 @@
     {
         UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
         if(self.notificationPayload[@"news_id"] != NULL && self.notificationPayload[@"bookingID"] == NULL) {
-            NSLog(@"Notification tab selected:");
             if (tabController.selectedIndex == 2) {
-                NSLog(@"Notification tab 2 tab existed selected:");
                 tabController.selectedIndex = 1;
             }
             tabController.selectedIndex = 2;
