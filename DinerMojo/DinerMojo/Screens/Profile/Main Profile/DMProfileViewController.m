@@ -32,6 +32,12 @@
     if (@available(iOS 13.0, *)) {
         self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
     }
+    
+//    if (@available(iOS 13.0, *)) {
+//        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    } else {
+//        //automaticallyAdjustsScrollViewInsets = false
+//    }
     [self.scrollView setDelegate:self];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -59,10 +65,15 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = NO;
-    if (@available(iOS 13.0, *)) {
+    self.navigationController.navigationBar.translucent = YES;
+   if (@available(iOS 13.0, *)) {
         self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
     }
+//    if (@available(iOS 13.0, *)) {
+//        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    } else {
+//        //automaticallyAdjustsScrollViewInsets = false
+//    }
     [[self inviteLabel] setHidden:YES];
     [[self inviteButton] setHidden:YES];
     [self downloadUser];
@@ -77,14 +88,10 @@
     [super viewDidAppear:animated];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
+-(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 }
-
-
 
 -(void)viewDidLayoutSubviews
 {
@@ -106,18 +113,12 @@
         if (error == nil)
         {
              [self setCurrentUser:[[self userRequest] currentUser]];
-              
-          
             // [self.profileImageView setImageWithURL:[NSURL URLWithString:[[self currentUser] profilePictureFullURL]]];
-        
             NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[self currentUser] profilePictureFullURL]]];
             if(imageData != nil)
             {
                 self.profileImageView.image = [UIImage imageWithData: imageData];
             }
-             
-              
-           
             [self.profileInitialsLabel setText:[[self currentUser] initials]];
             [UIView animateWithDuration:0.15 animations:^{
                 [self changeColor:self.userRequest.currentUser.mojoLevel];

@@ -62,6 +62,6 @@
 - (BOOL)hasUserSkipped;
 
 - (void)downloadSubscriptionsWithCompletionBlock:(RequestCompletion)completionBlock;
-- (void)uploadSubscriptions:(NSArray *)ids;
+- (void)uploadSubscriptions:(NSArray *)ids withDinerSub:(BOOL)dinerSub;
 @end
 

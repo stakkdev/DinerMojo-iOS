@@ -12,9 +12,7 @@
 @interface DMProfileViewController : DMTabBarViewController <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @property (weak, nonatomic) IBOutlet UIView *statusBarView;
-
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *profileIndicatorView;
 @property (weak, nonatomic) IBOutlet UILabel *noProfileLabel;
 

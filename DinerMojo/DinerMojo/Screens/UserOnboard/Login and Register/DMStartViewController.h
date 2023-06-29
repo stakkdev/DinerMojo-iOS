@@ -11,6 +11,7 @@
 #import "DMTextField.h"
 #import "DinerMojo-Swift.h"
 
+
 typedef NS_ENUM(NSInteger, DMStartViewControllerState) {
     DMStartViewControllerStateNormal = 0,
     DMStartViewControllerStateRegistration = 1,

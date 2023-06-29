@@ -11,5 +11,8 @@
 
 @interface DMLandingViewController : DMViewController
 
+@property (weak, nonatomic) IBOutlet UIView *launchAnimationView;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *textImageView;
 
 @end

@@ -12,7 +12,7 @@
 #import "DMTransactionsModelController.h"
 #import "DMRedeemTransaction.h"
 #import "DMEarnTransaction.h"
-#import <Crashlytics/Answers.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface DMTransactionTimelineViewController ()
 

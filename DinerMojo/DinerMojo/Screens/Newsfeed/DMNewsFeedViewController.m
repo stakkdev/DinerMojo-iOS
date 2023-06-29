@@ -44,6 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.isFromNewsPush = FALSE;
+    
     if (@available(iOS 13.0, *)) {
         UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
         [navBarAppearance configureWithOpaqueBackground];
@@ -150,8 +151,11 @@
             if (self.pushNewsID) {
                 self.selectedNewsItem = [DMUpdateItem MR_findFirstByAttribute:@"modelID" withValue:self.pushNewsID];
                 if (self.selectedNewsItem != NULL) {
-                    self.isFromNewsPush = TRUE;
-                    [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.isFromNewsPush = TRUE;
+                        [self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
+                        NSLog(@"inside dispatch async block main thread from main thread");
+                    });
                 }
                 self.pushNewsID = nil;
                 AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -202,8 +206,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    //    self.selectedNewsItem = [[self newsModelController] currentDataSource][indexPath.row];
-    
+    //self.selectedNewsItem = [[self newsModelController] currentDataSource][indexPath.row];
     //[self performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
     cell.selected = NO;
 }
@@ -221,6 +224,7 @@
     __weak typeof(self) weakSelf = self;
     cell.tapOnNewsCell = ^{
         newsItem.isRead = YES;
+        self.isFromNewsPush = NO;
         weakSelf.selectedNewsItem = newsItem;
         [weakSelf performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
     };
@@ -233,6 +237,7 @@
         }
         else {
             weakSelf.selectedNewsItem = newsItem;
+            self.isFromNewsPush = NO;
             [weakSelf performSegueWithIdentifier:@"newsDetailSegue" sender:nil];
         }
     };

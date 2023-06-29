@@ -38,20 +38,20 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    if (animated == YES)
-    {
-        [UIView transitionFromView:appDelegate.window.rootViewController.view
-                            toView:viewController.view
-                          duration:0.35f
-                           options:UIViewAnimationOptionTransitionCrossDissolve
-                        completion:^(BOOL finished){
-                            [[appDelegate window] setRootViewController:viewController];
-                        }];
-    }
-    else
-    {
+//    if (animated == YES)
+//    {
+//        [UIView transitionFromView:appDelegate.window.rootViewController.view
+//                            toView:viewController.view
+//                          duration:0.35f
+//                           options:UIViewAnimationOptionTransitionCrossDissolve
+//                        completion:^(BOOL finished){
+//                            [[appDelegate window] setRootViewController:viewController];
+//                        }];
+//    }
+//    else
+//    {
         [[appDelegate window] setRootViewController:viewController];
-    }
+    //}
 }
 
 - (void)presentOperationCompleteViewControllerWithStatus:(DMOperationCompletePopUpViewControllerStatus)status title:(NSString *)title description:(NSString *)description style:(UIBlurEffectStyle)style actionButtonTitle:(NSString *)actionButtonTitle

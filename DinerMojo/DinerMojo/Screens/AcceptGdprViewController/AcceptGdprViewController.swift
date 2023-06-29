@@ -34,9 +34,7 @@ class AcceptGdprViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         guard let url = URL(string: "http://dinermojo.com/privacy") else { return }
-        
         let attrString = NSMutableAttributedString(string: NSLocalizedString("gdpr.desc1", comment: ""))
         let linkAttrString1 = NSMutableAttributedString(string: NSLocalizedString("gdpr.desc2", comment: ""))
         linkAttrString1.addAttribute(NSAttributedString.Key.link, value: url, range: NSRange(location: 0, length: linkAttrString1.length))
@@ -62,17 +60,20 @@ class AcceptGdprViewController: UIViewController {
         descTextView.delegate = self
         titleLabel.text = NSLocalizedString("gdpr.title", comment: "")
         skipButton.setTitle(NSLocalizedString("gdpr.skip", comment: ""), for: .normal)
-        acceptButton.setTitle(NSLocalizedString("gdpr.gotIt", comment: ""), for: .normal)
+        acceptButton.setTitle(NSLocalizedString("gdpr.gotIt", comment: ""), for: .normal)        
+
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+    }
 }
 
 extension AcceptGdprViewController: UITextViewDelegate {
-    
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         return true
     }
-    
 }
 
 // Helper function inserted by Swift 4.2 migrator.

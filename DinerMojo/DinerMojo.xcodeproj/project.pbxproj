@@ -11,6 +11,10 @@
 		181C804229A870BE00FBBCD4 /* EarnNotificationTapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C804129A870BE00FBBCD4 /* EarnNotificationTapVC.swift */; };
 		181DD63D288A5F5A00ECBDB4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181DD63C288A5F5A00ECBDB4 /* Reachability.swift */; };
 		181DD640288A64FA00ECBDB4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 181DD63F288A64FA00ECBDB4 /* Reachability.m */; };
+		182E73722A036ED6000501E7 /* 1242x2688_New.json in Resources */ = {isa = PBXBuildFile; fileRef = 182E73712A036ED6000501E7 /* 1242x2688_New.json */; };
+		18881C072A03C1EC00F9977F /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 18881C062A03C1EC00F9977F /* UIImage+animatedGIF.m */; };
+		1892ED6F2A03F5BF003E1A4D /* Text_IAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1892ED6E2A03F5BF003E1A4D /* Text_IAnimation.gif */; };
+		189AA3DC2A2DB2BE009EEE6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189AA3DB2A2DB2BE009EEE6E /* GoogleService-Info.plist */; };
 		1A3839C325CD8953006407F9 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3839C225CD8953006407F9 /* CustomAnnotationView.m */; };
 		1A3839CD25CD99AB006407F9 /* VenueCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3839CC25CD99AB006407F9 /* VenueCollectionViewCell.m */; };
 		1E5C8ADD28BF390A0018D88D /* FBSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E5C8ADC28BF390A0018D88D /* FBSignup.storyboard */; };
@@ -180,7 +184,6 @@
 		7AEF14AC1B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AEF14A21B1F09FC0053D32B /* OpenSans-SemiboldItalic.ttf */; };
 		7AF517EF1B440E3100FA5221 /* DMMappingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF517EE1B440E3100FA5221 /* DMMappingHelper.m */; };
 		7AFF9EF41B2B441900F6C9B6 /* DMReferralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */; };
-		81CB66E027A29CB700E34CE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81CB66DF27A29CB700E34CE9 /* GoogleService-Info.plist */; };
 		9433A7AE24B32D2000449F8B /* PKHUDSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */; };
 		9433A7B224B3360C00449F8B /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9433A7B124B3360C00449F8B /* CoreServices.framework */; };
 		9598EE222600F31D005C120A /* SearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9598EE212600F31D005C120A /* SearchBar.xib */; };
@@ -239,7 +242,12 @@
 		181DD63C288A5F5A00ECBDB4 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		181DD63E288A64FA00ECBDB4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		181DD63F288A64FA00ECBDB4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		182E73712A036ED6000501E7 /* 1242x2688_New.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1242x2688_New.json; sourceTree = "<group>"; };
 		183A98F1075A5D0790EAB73E /* Pods_DinerMojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinerMojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18881C052A03C1EC00F9977F /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		18881C062A03C1EC00F9977F /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		1892ED6E2A03F5BF003E1A4D /* Text_IAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Text_IAnimation.gif; sourceTree = "<group>"; };
+		189AA3DB2A2DB2BE009EEE6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "DinerMojo/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1A3839C125CD8941006407F9 /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		1A3839C225CD8953006407F9 /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		1A3839C625CD9757006407F9 /* VenueCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueCollectionViewCell.h; sourceTree = "<group>"; };
@@ -515,7 +523,6 @@
 		7AF517EE1B440E3100FA5221 /* DMMappingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMappingHelper.m; sourceTree = "<group>"; };
 		7AFF9EF21B2B441900F6C9B6 /* DMReferralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMReferralViewController.h; sourceTree = "<group>"; };
 		7AFF9EF31B2B441900F6C9B6 /* DMReferralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMReferralViewController.m; sourceTree = "<group>"; };
-		81CB66DF27A29CB700E34CE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9433A7AD24B32D2000449F8B /* PKHUDSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKHUDSwift.swift; sourceTree = "<group>"; };
 		9433A7B124B3360C00449F8B /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		9598EE212600F31D005C120A /* SearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBar.xib; sourceTree = "<group>"; };
@@ -609,6 +616,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1881FF7729F161FA002F627D /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				1892ED6E2A03F5BF003E1A4D /* Text_IAnimation.gif */,
+				182E73712A036ED6000501E7 /* 1242x2688_New.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		18881C042A03C1EC00F9977F /* UIImageAnimatedGif */ = {
+			isa = PBXGroup;
+			children = (
+				18881C052A03C1EC00F9977F /* UIImage+animatedGIF.h */,
+				18881C062A03C1EC00F9977F /* UIImage+animatedGIF.m */,
+			);
+			path = UIImageAnimatedGif;
+			sourceTree = "<group>";
+		};
 		27037C4420B5B05700B47313 /* AcceptGdprViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,7 +1091,6 @@
 		7AC3FE641AEE3E7600AD12E0 /* DinerMojo */ = {
 			isa = PBXGroup;
 			children = (
-				81CB66DF27A29CB700E34CE9 /* GoogleService-Info.plist */,
 				181DD63E288A64FA00ECBDB4 /* Reachability.h */,
 				181DD63F288A64FA00ECBDB4 /* Reachability.m */,
 				181DD63C288A5F5A00ECBDB4 /* Reachability.swift */,
@@ -1094,6 +1118,8 @@
 		7AC3FE651AEE3E7600AD12E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				189AA3DB2A2DB2BE009EEE6E /* GoogleService-Info.plist */,
+				1881FF7729F161FA002F627D /* Lottie */,
 				CB8F7B2A1E02EE1600EC24C3 /* ViewHelpers */,
 				7AEF14971B1F09FC0053D32B /* Fonts */,
 				7A8C4B9A1B1C9D5800F1A798 /* Environments.plist */,
@@ -1180,6 +1206,7 @@
 		CB8F7B2A1E02EE1600EC24C3 /* ViewHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				18881C042A03C1EC00F9977F /* UIImageAnimatedGif */,
 				2C6C543D1FD93FF3006C147D /* SGNotificationsSettings.swift */,
 				CB8F7B2B1E02F23C00EC24C3 /* TablevieManager */,
 				CB2B5EA71E04337600960091 /* DMViewControllersProvider.swift */,
@@ -1545,14 +1572,14 @@
 			buildConfigurationList = 7AC3FE881AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojo" */;
 			buildPhases = (
 				E149918C4171790AE93B201B /* [CP] Check Pods Manifest.lock */,
+				971D75B3BD321251D4C05D17 /* [CP] Copy Pods Resources */,
+				16FAF9BD1B175432ACA65669 /* [CP] Embed Pods Frameworks */,
 				E7D8D1EE1D76E51600944021 /* Info plist Version */,
 				7AC3FE5E1AEE3E7600AD12E0 /* Sources */,
+				9598EEDF260CAB15005C120A /* Generate Secrets */,
 				7AC3FE5F1AEE3E7600AD12E0 /* Frameworks */,
 				7AC3FE601AEE3E7600AD12E0 /* Resources */,
-				BF2CFBF01D65E5F100200974 /* Fabric */,
-				9598EEDF260CAB15005C120A /* Generate Secrets */,
-				16FAF9BD1B175432ACA65669 /* [CP] Embed Pods Frameworks */,
-				971D75B3BD321251D4C05D17 /* [CP] Copy Pods Resources */,
+				BF2CFBF01D65E5F100200974 /* FirebaseCrashlytics */,
 			);
 			buildRules = (
 			);
@@ -1616,7 +1643,6 @@
 			files = (
 				276AED121F2A01A700042D31 /* BookingViewController.xib in Resources */,
 				7AC3FE791AEE3E7600AD12E0 /* LaunchScreen.xib in Resources */,
-				81CB66E027A29CB700E34CE9 /* GoogleService-Info.plist in Resources */,
 				2C9ADB4D2036D501004CC839 /* RedeemPointsToNextLevelCell.xib in Resources */,
 				27A992A6206CC23000C480EC /* CannotRedeemViewController.xib in Resources */,
 				D4952F581B2087590077FC5F /* DMNewsFeedTableViewCell.xib in Resources */,
@@ -1627,6 +1653,7 @@
 				CB580D3D1E0404E10018ED8A /* DMSortByDistanceCell.xib in Resources */,
 				27F95827206B667C00A4537F /* LeaveRatingViewController.xib in Resources */,
 				D49738C91B32D45E00D8B6A8 /* DMRedeemTableViewCell.xib in Resources */,
+				1892ED6F2A03F5BF003E1A4D /* Text_IAnimation.gif in Resources */,
 				2C6C543C1FD9392D006C147D /* TurnOnNotificationsViewController.xib in Resources */,
 				278159191E9CDAC8009B3B3C /* DMLocationInfoItemCell.xib in Resources */,
 				7AEF14AB1B1F09FC0053D32B /* OpenSans-Semibold.ttf in Resources */,
@@ -1658,9 +1685,11 @@
 				7AEF14A71B1F09FC0053D32B /* OpenSans-Italic.ttf in Resources */,
 				7AEF14A41B1F09FC0053D32B /* OpenSans-BoldItalic.ttf in Resources */,
 				7AEF14A51B1F09FC0053D32B /* OpenSans-ExtraBold.ttf in Resources */,
+				182E73722A036ED6000501E7 /* 1242x2688_New.json in Resources */,
 				5A7BFBBC1B1DC11700255A25 /* DMRestaurantCell.xib in Resources */,
 				7AC3FE761AEE3E7600AD12E0 /* Images.xcassets in Resources */,
 				5AA165721AFA3AA900447304 /* Main.storyboard in Resources */,
+				189AA3DC2A2DB2BE009EEE6E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1681,8 +1710,8 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FastEasyMapping/FastEasyMapping.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
 				"${BUILT_PRODUCTS_DIR}/GBVersionTracking/GBVersionTracking.framework",
@@ -1694,6 +1723,7 @@
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/PMEDatePicker/PMEDatePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/RDHCollectionViewGridLayout/RDHCollectionViewGridLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -1712,8 +1742,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FastEasyMapping.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GBVersionTracking.framework",
@@ -1725,6 +1755,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMEDatePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RDHCollectionViewGridLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -1777,19 +1808,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BF2CFBF01D65E5F100200974 /* Fabric */ = {
+		BF2CFBF01D65E5F100200974 /* FirebaseCrashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
-			name = Fabric;
+			name = FirebaseCrashlytics;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" e1c9d86bff08f7dbfce4a6bb171c2c4d5cc90e4f d3f21afe2c4b118982043346633ce30603fc71b135d7bbe047f2b44cc2189a7a\n";
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		E149918C4171790AE93B201B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1882,6 +1915,7 @@
 				5A5EE0F61AF3AB9B00F3C796 /* DMViewController.m in Sources */,
 				181C804229A870BE00FBBCD4 /* EarnNotificationTapVC.swift in Sources */,
 				1E5C8AE128BF41DA0018D88D /* SetupPasswordViewController.swift in Sources */,
+				18881C072A03C1EC00F9977F /* UIImage+animatedGIF.m in Sources */,
 				5A7BFBBB1B1DC11700255A25 /* DMRestaurantCell.m in Sources */,
 				278E862F1EB8D2F000A6E8B7 /* DMVenuesNotificationItem.swift in Sources */,
 				7A46D03C1B29C58F00FA2AA9 /* DMFacebookService.m in Sources */,
@@ -2096,7 +2130,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2136,7 +2170,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2256,7 +2290,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2294,7 +2328,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2414,7 +2448,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2452,7 +2486,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2570,7 +2604,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2609,7 +2643,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2735,7 +2769,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2774,7 +2808,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

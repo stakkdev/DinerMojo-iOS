@@ -135,12 +135,11 @@ import GooglePlaces
         
         
         if var c = cell as? TableViewSelectForGroup {
-            
             c.clickCallback = { [unowned self] in
-                if let _ = dataItem as? DMVenuesOptionItem {
-                    self.parent?.performSegue(withIdentifier: "showNotificationsVenues", sender: nil)
-                    return
-                }
+//                if let _ = dataItem as? DMVenuesOptionItem {
+//                    self.parent?.performSegue(withIdentifier: "showNotificationsVenues", sender: nil)
+//                    return
+//                }
                 
                 if let _ = dataItem as? UpdateLocationTableViewItem {
                     print("Search location tapped")
@@ -360,6 +359,11 @@ import GooglePlaces
                         let item = FilterItem(groupName: data.groupName, itemId: data.itemId, value: 0)
                         items.append(item)
                     }
+                    /*
+                     else if data.itemId == ThingsGroup.NDMClubItem.rawValue {
+                     let item = FilterItem(groupName: data.groupName, itemId: data.itemId, value: ((data.isSelected == true) ? 1: 0))
+                     items.append(item)
+                     }*/
                 }
                 
                 if let data = group as? DMSortByDistanceItem {
@@ -367,11 +371,11 @@ import GooglePlaces
                     items.append(item)
                 }
                 
-                if let data = group as? DMVenuesOptionItem {
-                    let item = FilterItem(groupName: data.groupName, itemId: data.itemId, value: 0)
-                    item.payload = data.getPayload()
-                    items.append(item)
-                }
+//                if let data = group as? DMVenuesOptionItem {
+//                    let item = FilterItem(groupName: data.groupName, itemId: data.itemId, value: 0)
+//                    item.payload = data.getPayload()
+//                    items.append(item)
+//                }
                 j += 1
             }
             i += 1

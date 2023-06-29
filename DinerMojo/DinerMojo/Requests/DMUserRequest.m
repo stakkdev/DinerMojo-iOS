@@ -395,10 +395,11 @@
     }];
 }
 
-- (void)uploadSubscriptions:(NSArray *)ids {
+ //(void)uploadSubscriptions:(NSArray *)ids {
+- (void)uploadSubscriptions:(NSArray *)ids withDinerSub:(BOOL)dinerSub {
     NSDictionary *params = @{ @"token" : [DMRequest currentUserToken],
                               @"venues" : ids,
-                              @"dinermojo_sub" : @YES };
+                              @"dinermojo_sub" : ((dinerSub == YES) ? @YES : @NO)};
     
     [self POST:@"subscriptions" withParams:params withCompletionBlock:^(NSError *error, id results) {
         if(error == NULL) {

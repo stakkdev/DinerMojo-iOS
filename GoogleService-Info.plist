@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>380175102318-9truofp2dfd6rtoshhqpc3pmmbtues1q.apps.googleusercontent.com</string>
+	<string>380175102318-8ncr55avanhrfkpftrn8a7nei2gqatoa.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.380175102318-9truofp2dfd6rtoshhqpc3pmmbtues1q</string>
+	<string>com.googleusercontent.apps.380175102318-8ncr55avanhrfkpftrn8a7nei2gqatoa</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>380175102318-1b74ec743tft8aetv89lnh5ets8hpptr.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,23 +15,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.dinermojo.dinermojo</string>
+	<string>com.dinermojo.dinermojo.staging</string>
 	<key>PROJECT_ID</key>
 	<string>dinermojo-156810</string>
 	<key>STORAGE_BUCKET</key>
 	<string>dinermojo-156810.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:380175102318:ios:2a0118deb21112b75dd17f</string>
+	<string>1:380175102318:ios:969e20eb0e3c8b985dd17f</string>
 	<key>DATABASE_URL</key>
 	<string>https://dinermojo-156810.firebaseio.com</string>
 </dict>

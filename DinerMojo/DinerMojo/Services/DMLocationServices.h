@@ -22,6 +22,8 @@
 @property (strong, nonatomic) DMVenue *venueLocation;
 @property (nonatomic) BOOL initialLocationUpdate;
 @property (nonatomic, weak) id <DMLocationServiceDelegate> delegate;
+@property (nonatomic) BOOL isDinerMojoNewsUpdated;
+@property (nonatomic) BOOL isDinerMojoNewsSelected;
 
 
 

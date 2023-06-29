@@ -10,25 +10,30 @@
 #import "DMFacebookService.h"
 #import "DMLocationServices.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
+#import <FirebaseCrashlytics/FirebaseCrashlytics.h>
+//#import <Crashlytics/Crashlytics.h>
 #import "DinerMojo-Swift.h"
 #import "DMVenueCategory.h"
 #import <GBVersionTracking/GBVersionTracking.h>
 #import <UserNotifications/UserNotifications.h>
 #import "Reachability.h"
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
+
 
 @import UserNotifications;
 @import GooglePlaces;
+@import Firebase;
+
 
 @interface AppDelegate ()
 @property(nonatomic, retain) Reachability* reach;
-
 @end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"*****Launch Called******");
+    self.isFromLaunch = YES;
     [self loadDatabase];
     [self decorateGlobalAppInterface];
     [GBVersionTracking track];
@@ -55,7 +60,16 @@
     [NSURLCache setSharedURLCache:URLCache];
     
     [GMSPlacesClient provideAPIKey: @"AIzaSyDsbxrDudbltwXMI94slV9C_h7-s8kYNBI"];//Secrets.googlePlacesApiKey
+        
+    //[self initializeReachbility];
     
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
+}
+
+
+
+-(void)registerPushNotificationMethod {
     // User Registration process
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate = self;
@@ -73,11 +87,6 @@
             NSLog( @"SUGGESTIONS: %@ - %@", error.localizedRecoveryOptions, error.localizedRecoverySuggestion );
         }
     }];
-    
-    //[self initializeReachbility];
-    
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
 }
 
 - (void)initializeReachbility {
@@ -397,9 +406,14 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSLog(@"*****applicationDidBecomeActive Called******");
     [FBSDKAppEvents activateApp];
     
-    [[DMLocationServices sharedInstance] startUpdatingCoordinates];
+    if (self.isFromLaunch == NO) {
+        NSLog(@"*****applicationDidBecomeActive NO Conditon Called******");
+        
+        [[DMLocationServices sharedInstance] startUpdatingCoordinates];
+    }
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     [self showNewsNotificationIfNeeded];

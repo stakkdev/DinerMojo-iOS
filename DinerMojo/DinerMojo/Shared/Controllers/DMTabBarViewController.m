@@ -140,7 +140,6 @@
     {
         [backgroundView setBackgroundColor:[UIColor clearColor]];
         tintItemColor = [UIColor darkGrayColor];
-        
     }
     
     backgroundView.tag =  3;

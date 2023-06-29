@@ -74,14 +74,20 @@ class DMRadioSortOptionCell: UITableViewCell, UITableViewCellLoadableProtocol, T
                 return
             }
         }
+        // Diner Mojo News updated
+        if let data = self.data,
+           data.itemId == ThingsGroup.NDMClubItem.rawValue {
+            DMLocationServices.sharedInstance().isDinerMojoNewsUpdated = true
+            if let selected = self.data?.isSelected {
+                DMLocationServices.sharedInstance().isDinerMojoNewsSelected = !selected
+            }
+        }
         
         if let selected = self.data?.isSelected {
-            let newValue = !selected
-            
+            var newValue = !selected
             self.radioButton.isSelected = newValue
             self.nameLabel.isHighlighted = newValue
             self.data?.isSelected = newValue
-            
             if let click = self.clickCallback {
                 click()
             }

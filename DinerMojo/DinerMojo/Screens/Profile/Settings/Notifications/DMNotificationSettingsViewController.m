@@ -63,7 +63,7 @@
             NSLog(@"Profile give error %@",error);
         } else {
             
-            NSLog(@"response downloadUserProfileResponseWithCompletionBlock is %@",response);
+           // NSLog(@"response downloadUserProfileResponseWithCompletionBlock is %@",response);
 
             BOOL isFavNoti = YES;
             if (![response[@"is_favourite_venues_notification"]  isKindOfClass:[NSNull class]]) {
@@ -104,7 +104,7 @@
             for(NSDictionary* dict in results) {
                 [all_ids addObject:dict[@"id"]];
             }
-            NSLog(@"Venyes resulst are %@",results);
+           // NSLog(@"Venyes resulst are %@",results);
             DMUserRequest *userRequest = [DMUserRequest new];
             [userRequest downloadSubscriptionsWithCompletionBlock:^(NSError *error, id results) {
                 SelectedNotificationsParser *parser = [[SelectedNotificationsParser alloc] initWithSubscriptionsObject:results ids:all_ids];
@@ -203,15 +203,16 @@
 
 - (IBAction)saveNotification:(id)sender {
     [[PKHUD sharedHUDObjc] showOnView:self.view];
-    
     [Answers logContentViewWithName:@"Save notification settings" contentType:@"" contentId:@"" customAttributes:@{}];
-    
     self.changed_ids = NO;
-    if (self.ids != NULL) {
+    if ([[DMLocationServices sharedInstance] isDinerMojoNewsUpdated] == YES) {
+    //if (self.ids != NULL) {
+        [[DMLocationServices sharedInstance] setIsDinerMojoNewsUpdated:NO];
+        NSArray *array = [NSArray arrayWithObjects:[NSNumber numberWithInt:0],nil];
+        self.ids = array;
         DMUserRequest *userRequest = [DMUserRequest new];
-        [userRequest uploadSubscriptions:self.ids];
+        [userRequest uploadSubscriptions:self.ids withDinerSub: [[DMLocationServices sharedInstance] isDinerMojoNewsSelected]];
     }
-    
     NSArray *data = [self.tableManager getFilterData];
     NSMutableDictionary * dic = [[NSMutableDictionary alloc] initWithDictionary:[FilterItem convertPayloadToDicrionaryWithPayload:data]];
     dic[@"token"] = [DMRequest currentUserToken];
@@ -220,9 +221,7 @@
         self.notificationFrequency = [dic[@"frequency"] integerValue];
     }
 
-    
     __weak typeof(self) weakSelf = self;
-
     [[self userRequest] postSubscriptionsData:dic withCompletionBlock:^(id results, NSError *error) {
         if (error) {
             [weakSelf showErrorMessage];
@@ -296,13 +295,11 @@
 }
 
 -(void)locationUpdated {
-    NSLog(@"locationData--%@", self.tableManager.notificationData.latitude);
-    NSLog(@"locationData--%@", self.tableManager.notificationData.longitude);
-    NSLog(@"locationData--%@", self.tableManager.notificationData.locationName);
-    NSLog(@"locationData--%d", self.tableManager.notificationData.isFavouriteVenuesNotification);
-    NSLog(@"locationData radious--%d", self.tableManager.notificationData.locationRadius);
+//    NSLog(@"locationData--%@", self.tableManager.notificationData.latitude);
+//    NSLog(@"locationData--%@", self.tableManager.notificationData.longitude);
+//    NSLog(@"locationData--%@", self.tableManager.notificationData.locationName);
+//    NSLog(@"locationData--%d", self.tableManager.notificationData.isFavouriteVenuesNotification);
+//    NSLog(@"locationData radious--%d", self.tableManager.notificationData.locationRadius);
     self.locationData = self.tableManager.notificationData;
 }
-
-
 @end

@@ -15,6 +15,7 @@
 #import <Crashlytics/Answers.h>
 #import <CoreServices/CoreServices.h>
 
+
 static const NSInteger kReferrelCodeMaxLength = 8;
 
 typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
@@ -53,7 +54,6 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
     
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
@@ -80,17 +80,26 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     if (![bundleIdentifier  isEqual: @"com.dinermojo.dinermojo"]) {
         [self.buildLabel setText:[NSString stringWithFormat:@"Build %@ (%@)", version, build]];
     }
+    // Do any additional setup after loading the view, typically from a nib.
 }
+/*
+ UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+ button.frame = CGRectMake(20, 50, 100, 30);
+ [button setTitle:@"Test Crash" forState:UIControlStateNormal];
+ [button addTarget:self action:@selector(crashButtonTapped:)
+  forControlEvents:UIControlEventTouchUpInside];
+ [self.view addSubview:button];
+- (IBAction)crashButtonTapped:(id)sender
+{
+    @[][1];
+}*/
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if (_blurredView == nil)
-    {
+    if (_blurredView == nil){
         [self buildBlurredView];
     }
-    
     [self.loginEmailTextField setText: [[NSUserDefaults standardUserDefaults]stringForKey:@"lastEmail"]];
     [self updatePasswordCheckUI];
 }
@@ -126,21 +135,17 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 }
 
 
-- (void)clearTempFacebookSession
-{
-    if ([[DMFacebookService sharedInstance] isFacebookSessionOpen] == YES)
-    {
+- (void)clearTempFacebookSession {
+    if ([[DMFacebookService sharedInstance] isFacebookSessionOpen] == YES) {
         [[self emailTextField] setText:@""];
         [[self firstNameTextField] setText:@""];
         [[self lastNameTextField] setText:@""];
         [[self passwordTextField] setEnabled:YES];
         [[self repeatPasswordTextField] setEnabled:YES];
         [[self profilePicture] setImage:nil];
-        
         [self setCurrentFacebookData:nil];
         [[DMFacebookService sharedInstance] logOut];
     }
-    
 }
 
 - (void)buildBlurredView
@@ -391,7 +396,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 }
 
 - (void)loginToFacebook
-    {
+{
     [Answers logLoginWithMethod:@"Facebook" success:@YES customAttributes:@{}];
     __weak typeof(self) weakSelf = self;
     
@@ -442,7 +447,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     
     NSDictionary *data = [self currentFacebookData];
     
-//    NSString *formattedDate = [DMFacebookService dinerMojoFormattedDate:[data objectForKey:@"birthday"]];
+    //    NSString *formattedDate = [DMFacebookService dinerMojoFormattedDate:[data objectForKey:@"birthday"]];
     
     [dictionary setObject:[data objectForKey:@"id"] forKey:@"facebook_id"];
     [dictionary setObject:[[FBSDKAccessToken currentAccessToken] tokenString] forKey:@"facebook_token"];
@@ -456,8 +461,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         [dictionary setObject:longitude forKey:@"longitude"];
     }
     [dictionary setObject:locationName forKey:@"location_name"];
-
-//    [dictionary setObject:formattedDate forKey:@"date_of_birth"];
+    
+    //    [dictionary setObject:formattedDate forKey:@"date_of_birth"];
     
     [dictionary setObject:[[self referralCodeTextField] text] forKey:@"referral_code"];
     
@@ -538,7 +543,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [self.closeRegisterButton setImage:nil forState:UIControlStateNormal];
     [self.closeRegisterButton setEnabled:NO];
     [self.registerButton setEnabled:NO];
-            
+    
     NSNumber *latitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.latitude];
     NSNumber *longitude = [NSNumber numberWithFloat:[[DMLocationServices sharedInstance] currentLocation].coordinate.longitude];
     if(![[DMLocationServices sharedInstance] isLocationEnabled]) {
@@ -620,11 +625,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 - (IBAction)logInPressed:(id)sender
 {
     [_loginViewBottom setConstant:-10.0];
-    
     [self animateView:[self view] constraintChangesWithInterval:0.35f damping:0.75f];
-    
     [self showBlurredViewWithInterval:0.35f];
-    
     _startViewControllerState = DMStartViewControllerStateLogin;
 }
 
@@ -684,7 +686,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
             } else {
                 errorMessage = @"An account with this email does not exist.";
             }
-             if (error.code != DMFBFErrorCode403) {
+            if (error.code != DMFBFErrorCode403) {
                 [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Oops!" description:errorMessage style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];
             }
         }
@@ -1046,7 +1048,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dinermojo.com/terms"] options:@{} completionHandler:^(BOOL success) {
         NSLog(@"Opened Url: %i", success);
     }];
-
+    
 }
 
 - (IBAction)privacyPressed:(id)sender
@@ -1221,7 +1223,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     setupPassword.viewDismiss = ^(void){
         NSLog(@"Completion is called to intimate action is performed.");
     };
-
+    
     [setupPassword setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:setupPassword animated:true completion: nil];
     [self showBlurredViewWithInterval:0.35f];

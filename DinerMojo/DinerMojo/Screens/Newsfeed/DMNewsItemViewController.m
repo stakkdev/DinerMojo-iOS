@@ -33,7 +33,7 @@
     [self decorateInterface];
     [self setupNewsLabel];
     if (@available(iOS 13.0, *)) {
-        self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+        //self.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
     }
 }
 - (CGSize)findHeightForText:(NSString *)text havingWidth:(CGFloat)widthValue andFont:(UIFont *)font {
@@ -276,9 +276,7 @@
     {
         DMNewsRequest *request = [DMNewsRequest new];
         NSURL *url = [NSURL URLWithString:[request buildMediaURL:self.selectedItem.image]];
-        [self.newsImageView setImageWithURL:url];
-        
-        
+        [self.newsImageView setImageWithURL:url];        
         UIImage *image = self.newsImageView.image;
         UIImage *newImage;
         if (self.scrollView.contentOffset.y < 69)

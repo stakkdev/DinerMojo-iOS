@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
+import Firebase
+import FirebaseCrashlytics
 import Siren
+
 
 extension AppDelegate {
     

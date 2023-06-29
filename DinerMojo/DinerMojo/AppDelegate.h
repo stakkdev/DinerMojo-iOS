@@ -16,10 +16,12 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate,FIRMessagingDelegate,UNUserNotificationCenterDelegate, DMOperationCompletePopUpViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property(nonatomic, assign) BOOL isFromLaunch;
 @property (strong, nonatomic) NSDictionary *notificationPayload;
 - (void)checkBookingNotification;
 - (void)showBookingNotificationWithUserInfo:(NSDictionary *)userInfo;
 - (UIViewController*)topViewController;
+- (void)registerPushNotificationMethod;
 
 @end
 

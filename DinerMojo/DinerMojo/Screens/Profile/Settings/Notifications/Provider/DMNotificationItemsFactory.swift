@@ -91,39 +91,38 @@ class DMNotificationItemsFactory: NSObject {
                 items: [searchLocation, favLocation],
                 backgroundColor: self.headerColor,
                 fontColor: UIColor(hexString: "#868686")!)
-
         group.allowOnlyOneInGroup = true
-
         return group
     }
 
     func thingsSectionItem(settings: SubscriptionsObject, ids: [Int]?, name: NSString?) -> DMOptionGroupItem {
-        let things = DMVenuesOptionItem(NSLocalizedString("notifications.things.all.venues", comment: ""), groupName: GroupsName.Things.rawValue, itemId: ThingsGroup.NVenuesItem.rawValue, subscribed: settings.subscriptions)
-        things.ids = ids
-        things.selectedName = name
-        things.allVenues = settings.all_venues_sub
-        things.newFavourite = settings.dinermojo_sub
-        
-        if(settings.subscriptions != nil && settings.subscriptions.count > 0) {
-            things.selectedVenues = true
-            things.selectedVenuesCaption = ""
-        }
-        
-        if ids != nil {
-            //things.allVenues = false
-            things.myFav = false
-        } else {
-             things.myFav = settings.my_favs_sub
-        }
+//                let things = DMVenuesOptionItem(NSLocalizedString("notifications.things.all.venues", comment: ""), groupName: GroupsName.Things.rawValue, itemId: ThingsGroup.NVenuesItem.rawValue, subscribed: settings.subscriptions)
+//                things.ids = ids
+//                things.selectedName = name
+//                things.allVenues = settings.all_venues_sub
+//                things.newFavourite = settings.dinermojo_sub
+//
+//                if(settings.subscriptions != nil && settings.subscriptions.count > 0) {
+//                    things.selectedVenues = true
+//                    things.selectedVenuesCaption = ""
+//                }
+//
+//                if ids != nil {
+//                    //things.allVenues = false
+//                    things.myFav = false
+//                } else {
+//                     things.myFav = settings.my_favs_sub
+//                }
+        //    items: [things, dmNews],
         
         let dmNews = DMRadioSortOptionItem(NSLocalizedString("notifications.dmclub.news", comment: ""), groupName: GroupsName.Things.rawValue, itemId: ThingsGroup.NDMClubItem.rawValue)
         dmNews.isSelected = settings.dinermojo_sub
         
         let group = DMOptionGroupItem.create(
-                NSLocalizedString("notifications.things.section.title", comment: ""),
-                items: [things, dmNews],
-                backgroundColor: self.headerColor,
-                fontColor: UIColor(hexString: "#868686")!)
+            NSLocalizedString("notifications.things.section.title", comment: ""),
+            items: [dmNews],
+            backgroundColor: self.headerColor,
+            fontColor: UIColor(hexString: "#868686")!)
         return group
     }
 

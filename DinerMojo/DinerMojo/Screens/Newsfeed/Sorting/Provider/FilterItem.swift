@@ -56,7 +56,7 @@ import UIKit
                 }
             }
             else if item.itemId == ThingsGroup.NDMClubItem.rawValue {
-                dictionary.setObject(true, forKey: "dinermojo_sub" as NSCopying)
+                dictionary.setObject(((item.value == 1) ? true : false), forKey: "dinermojo_sub" as NSCopying)
             }
             dictionary.setObject(false, forKey: "my_favs_sub" as NSCopying)
         }
