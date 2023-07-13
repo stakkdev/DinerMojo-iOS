@@ -26,7 +26,7 @@
 #import "DinerMojoConstants.h"
 #import <PureLayout/PureLayout.h>
 #import "DinerMojo-Swift.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 #import "RestaurantInfoButtonEnum.h"
 #import "DMPopUpRequest.h"
 #import <SDWebImage/SDWebImage.h>
@@ -138,11 +138,20 @@
     [self setupButtons];
     //[self setUpNavigationButton];
     if([self.selectedVenue.venue_type isEqualToString:RESTAURANT_TYPE]) {
-        [Answers logContentViewWithName:@"View restaurant info" contentType:[NSString stringWithFormat:@"View restaurant info - %@", self.selectedVenue.name] contentId:[NSString stringWithFormat:@"%@", self.selectedVenue.name] customAttributes:@{}];
+        [FIRAnalytics logEventWithName:@"View restaurant info"
+                            parameters:@{
+                                         kFIRParameterItemID:[NSString stringWithFormat:@"View restaurant info - %@", self.selectedVenue.name],
+                                         kFIRParameterItemName:[NSString stringWithFormat:@"View restaurant info - %@", self.selectedVenue.name]
+                                         }];
+        [[FIRCrashlytics crashlytics] logWithFormat:@"%@", [NSString stringWithFormat:@"View restaurant info - %@", self.selectedVenue.name]];
     } else {
-        [Answers logContentViewWithName:@"View lifestyle info" contentType:[NSString stringWithFormat:@"View lifestyle info - %@", self.selectedVenue.name] contentId:[NSString stringWithFormat:@"%@", self.selectedVenue.name] customAttributes:@{}];
+        [FIRAnalytics logEventWithName:@"View restaurant info"
+                            parameters:@{
+                                         kFIRParameterItemID:[NSString stringWithFormat:@"View lifestyle info - %@", self.selectedVenue.name],
+                                         kFIRParameterItemName:[NSString stringWithFormat:@"View lifestyle info - %@", self.selectedVenue.name]
+                                         }];
+        [[FIRCrashlytics crashlytics] logWithFormat:@"%@", [NSString stringWithFormat:@"View lifestyle info - %@", self.selectedVenue.name]];
     }
-    
     [self.navigationController setNavigationBarHidden:NO];
 }
 
@@ -677,7 +686,14 @@
     if([self.selectedVenue.venue_type isEqualToString:NON_RESTAURANT_TYPE]) {
         type = @"lifestyle";
     }
-    [Answers logShareWithMethod:[NSString stringWithFormat:@"Share %@ venue", type] contentName:[NSString stringWithFormat:@"Share %@ - %@", type, self.selectedVenue.name] contentType:@"" contentId:@"" customAttributes:@{}];
+    //[Answers logShareWithMethod:[NSString stringWithFormat:@"Share %@ venue", type] contentName:[NSString stringWithFormat:@"Share %@ - %@", type, self.selectedVenue.name] contentType:@"" contentId:@"" customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"Share"
+                        parameters:@{
+                                     kFIRParameterItemID:[NSString stringWithFormat:@"Share - %@", type],
+                                     kFIRParameterItemName:[NSString stringWithFormat:@"Share - %@", self.selectedVenue.name]
+    }];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"%@", [NSString stringWithFormat:@"Share %@ - %@", type, self.selectedVenue.name]];
+
     NSString *text = [[NSString alloc] initWithFormat:@"I love this place - %@, %@! With DinerMojo, I get rewarded there when using my points earned by spending at DinerMojo’s great restaurants. Download the free app and give it a try. \nhttp://bit.ly/DownloadFromGooglePlay\nhttp://bit.ly/DownloadFromTheAppStore", self.selectedVenue.name, self.selectedVenue.town];
     
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.selectedVenue.primaryImage.fullURL]]];

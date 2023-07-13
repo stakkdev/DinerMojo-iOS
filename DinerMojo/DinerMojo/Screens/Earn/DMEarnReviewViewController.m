@@ -12,7 +12,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "DMDineNavigationController.h"
 #import "DMFeedbackViewController.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 #import "DinerMojo-Swift.h"
 
 @interface DMEarnReviewViewController ()
@@ -369,7 +369,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     //activity indicator and disable
     
     if(self.redeemTransaction.venue != NULL) {
-        [Answers logContentViewWithName:@"Earn transaction" contentType:[NSString stringWithFormat:@"Earn transaction - %@", self.redeemTransaction.venue.name] contentId:@"" customAttributes:@{}];
+        //[Answers logContentViewWithName:@"Earn transaction" contentType:[NSString stringWithFormat:@"Earn transaction - %@", self.redeemTransaction.venue.name] contentId:@"" customAttributes:@{}];
+        [FIRAnalytics logEventWithName:@"Earn transaction"
+                            parameters:@{
+                                         kFIRParameterItemID:[NSString stringWithFormat:@"id-%@", self.title],
+                                         kFIRParameterItemName:self.title
+                                         }];
+        [[FIRCrashlytics crashlytics] logWithFormat:@"Earn transaction - %@",self.redeemTransaction.venue.name];
     }
     
     [[self activityIndicatorView] startAnimating];

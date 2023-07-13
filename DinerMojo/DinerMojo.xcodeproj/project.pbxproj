@@ -1572,14 +1572,14 @@
 			buildConfigurationList = 7AC3FE881AEE3E7600AD12E0 /* Build configuration list for PBXNativeTarget "DinerMojo" */;
 			buildPhases = (
 				E149918C4171790AE93B201B /* [CP] Check Pods Manifest.lock */,
-				971D75B3BD321251D4C05D17 /* [CP] Copy Pods Resources */,
-				16FAF9BD1B175432ACA65669 /* [CP] Embed Pods Frameworks */,
 				E7D8D1EE1D76E51600944021 /* Info plist Version */,
 				7AC3FE5E1AEE3E7600AD12E0 /* Sources */,
 				9598EEDF260CAB15005C120A /* Generate Secrets */,
 				7AC3FE5F1AEE3E7600AD12E0 /* Frameworks */,
 				7AC3FE601AEE3E7600AD12E0 /* Resources */,
-				BF2CFBF01D65E5F100200974 /* FirebaseCrashlytics */,
+				BF2CFBF01D65E5F100200974 /* Crashlytics */,
+				971D75B3BD321251D4C05D17 /* [CP] Copy Pods Resources */,
+				16FAF9BD1B175432ACA65669 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1808,7 +1808,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DinerMojo/Pods-DinerMojo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BF2CFBF01D65E5F100200974 /* FirebaseCrashlytics */ = {
+		BF2CFBF01D65E5F100200974 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1817,7 +1817,7 @@
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
-			name = FirebaseCrashlytics;
+			name = Crashlytics;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2130,7 +2130,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2170,11 +2170,10 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"GoogleAnalytics\"",
 					"-l\"c++\"",
 					"-l\"sqlite3\"",
 					"-l\"z\"",
@@ -2183,13 +2182,9 @@
 					"-framework",
 					"\"CoreData\"",
 					"-framework",
-					"\"Crashlytics\"",
-					"-framework",
 					"\"FBSDKCoreKit\"",
 					"-framework",
 					"\"FBSDKLoginKit\"",
-					"-framework",
-					"\"Fabric\"",
 					"-framework",
 					"\"FastEasyMapping\"",
 					"-framework",
@@ -2290,7 +2285,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2328,11 +2323,10 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"GoogleAnalytics\"",
 					"-l\"c++\"",
 					"-l\"sqlite3\"",
 					"-l\"z\"",
@@ -2341,13 +2335,9 @@
 					"-framework",
 					"\"CoreData\"",
 					"-framework",
-					"\"Crashlytics\"",
-					"-framework",
 					"\"FBSDKCoreKit\"",
 					"-framework",
 					"\"FBSDKLoginKit\"",
-					"-framework",
-					"\"Fabric\"",
 					"-framework",
 					"\"FastEasyMapping\"",
 					"-framework",
@@ -2448,7 +2438,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2486,11 +2476,10 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"GoogleAnalytics\"",
 					"-l\"c++\"",
 					"-l\"sqlite3\"",
 					"-l\"z\"",
@@ -2499,13 +2488,9 @@
 					"-framework",
 					"\"CoreData\"",
 					"-framework",
-					"\"Crashlytics\"",
-					"-framework",
 					"\"FBSDKCoreKit\"",
 					"-framework",
 					"\"FBSDKLoginKit\"",
-					"-framework",
-					"\"Fabric\"",
 					"-framework",
 					"\"FastEasyMapping\"",
 					"-framework",
@@ -2604,7 +2589,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2643,11 +2628,10 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"GoogleAnalytics\"",
 					"-l\"c++\"",
 					"-l\"sqlite3\"",
 					"-l\"z\"",
@@ -2656,13 +2640,9 @@
 					"-framework",
 					"\"CoreData\"",
 					"-framework",
-					"\"Crashlytics\"",
-					"-framework",
 					"\"FBSDKCoreKit\"",
 					"-framework",
 					"\"FBSDKLoginKit\"",
-					"-framework",
-					"\"Fabric\"",
 					"-framework",
 					"\"FastEasyMapping\"",
 					"-framework",
@@ -2769,7 +2749,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinerMojo/DinerMojo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 42B8BC6R86;
@@ -2808,11 +2788,10 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(PLATFORM_DIR)/Developer/Library/Frameworks\"";
-				MARKETING_VERSION = 2.6;
+				MARKETING_VERSION = 2.7;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"GoogleAnalytics\"",
 					"-l\"c++\"",
 					"-l\"sqlite3\"",
 					"-l\"z\"",
@@ -2821,13 +2800,9 @@
 					"-framework",
 					"\"CoreData\"",
 					"-framework",
-					"\"Crashlytics\"",
-					"-framework",
 					"\"FBSDKCoreKit\"",
 					"-framework",
 					"\"FBSDKLoginKit\"",
-					"-framework",
-					"\"Fabric\"",
 					"-framework",
 					"\"FastEasyMapping\"",
 					"-framework",

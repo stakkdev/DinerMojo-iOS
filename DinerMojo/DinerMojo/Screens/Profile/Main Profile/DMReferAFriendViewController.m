@@ -7,7 +7,7 @@
 //
 
 #import "DMReferAFriendViewController.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 
 @interface DMReferAFriendViewController ()
 
@@ -118,7 +118,9 @@
     
     if ([DMUser validateEmailWithString:self.emailTextField.text])
     {
-        [Answers logContentViewWithName:@"Sent invite to friend" contentType:@"Sent invite to friend" contentId:@"" customAttributes:@{}];
+        //[Answers logContentViewWithName:@"Sent invite to friend" contentType:@"Sent invite to friend" contentId:@"" customAttributes:@{}];
+        [FIRAnalytics logEventWithName:@"Sent invite to friend" parameters:@{}];
+        [[FIRCrashlytics crashlytics] logWithFormat:@"Sent invite to friend"];
         [[self activityIndicator] startAnimating];
         [[self sendInviteButton] setHidden:YES];
         [[self userRequest] referUserWithEmailAddress:self.emailTextField.text withCompletionBlock:^(NSError *error, id results) {

@@ -14,7 +14,7 @@
 #import "DMRedeemCouponViewController.h"
 #import "DMOperationCompletePopUpViewController.h"
 #import "DMDineNavigationController.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 #import "FakeOfferObject.h"
 #import "RedeemPointsToNextLevelCell.h"
 #import <SDWebImage/SDWebImage.h>
@@ -595,7 +595,13 @@
         if(!self.standardRedeem) {
            type = @"offer";
         }
-         [Answers logContentViewWithName:[NSString stringWithFormat:@"Redeem %@", type] contentType:[NSString stringWithFormat:@"Redeem %@ - %@ - %@", type, self.selectedOfferItem.venue.name ,self.selectedOfferItem.title] contentId:@"" customAttributes:@{}];
+         //[Answers logContentViewWithName:[NSString stringWithFormat:@"Redeem %@", type] contentType:[NSString stringWithFormat:@"Redeem %@ - %@ - %@", type, self.selectedOfferItem.venue.name ,self.selectedOfferItem.title] contentId:@"" customAttributes:@{}];
+        [FIRAnalytics logEventWithName:@"Redeem"
+                            parameters:@{
+                                         kFIRParameterItemID:[NSString stringWithFormat:@"Redeem %@ - %@ - %@", type, self.selectedOfferItem.venue.name ,self.selectedOfferItem.title],
+                                         kFIRParameterItemName:[NSString stringWithFormat:@"Redeem %@ - %@ - %@", type, self.selectedOfferItem.venue.name ,self.selectedOfferItem.title]
+                                         }];
+        [[FIRCrashlytics crashlytics] logWithFormat:@"%@", [NSString stringWithFormat:@"Redeem %@ - %@ - %@", type, self.selectedOfferItem.venue.name ,self.selectedOfferItem.title]];
         DMRedeemCouponViewController *vc = segue.destinationViewController;
         vc.selectedOfferItem = self.selectedOfferItem;
         vc.selectedVenue = self.selectedVenue;

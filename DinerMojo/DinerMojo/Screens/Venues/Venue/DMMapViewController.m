@@ -17,7 +17,7 @@
 #import <PureLayout/PureLayout.h>
 #import "DinerMojo-Swift.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 #import <SDWebImage/SDWebImage.h>
 #import "DinerMojo-Bridging-Header.h"
 @import GooglePlaces;
@@ -84,7 +84,10 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [Answers logContentViewWithName:@"View venues" contentType:@"" contentId:@"" customAttributes:@{}];
+    //[Answers logContentViewWithName:@"View venues" contentType:@"" contentId:@"" customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"View venues -" parameters:@{}];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"View venues -"];
+
     [self.navigationController setNavigationBarHidden:YES];
     
     // Status bar

@@ -12,7 +12,7 @@
 #import "DMOfferItem.h"
 #import "DMDineViewController.h"
 #import "DMRedeemViewController.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 #import <PureLayout/PureLayout.h>
 #import "DinerMojo-Swift.h"
 
@@ -332,8 +332,12 @@
     } else {
         name = self.selectedItem.title;
     }
-    
-    [Answers logShareWithMethod:[NSString stringWithFormat:@"Share newsfeed"] contentName:[NSString stringWithFormat:@"Share newsfeed - %@", name] contentType:@"" contentId:@"" customAttributes:@{}];
+    //[Answers logShareWithMethod:[NSString stringWithFormat:@"Share newsfeed"] contentName:[NSString stringWithFormat:@"Share newsfeed - %@", name] contentType:@"" contentId:@"" customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"Share newsfeed"
+                        parameters:@{
+                                     kFIRParameterItemName:[NSString stringWithFormat:@"Share newsfeed %@ ",name]
+                                     }];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"Share newsfeed - %@",name];
     UIImage *image = self.newsImageView.image;
     NSString *text = @"With the DinerMojo app, you can enjoy fantastic members-only rewards and experiences at some of the very best independent restaurants and lifestyle venues.\nhttp://bit.ly/DownloadFromTheAppStore\nhttp://bit.ly/DownloadFromGooglePlay";
     

@@ -10,7 +10,7 @@
 #import "DMRestaurantInfoViewController.h"
 #import "DMTransactionReceiptImageViewController.h"
 #import "DMOfferItem.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 #import "DinerMojo-Swift.h"
 
 @interface DMEarnTransactionDetailViewController ()

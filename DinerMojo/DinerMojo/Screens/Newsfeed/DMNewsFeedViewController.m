@@ -12,7 +12,7 @@
 #import <PureLayout/PureLayout.h>
 #import "DinerMojo-Swift.h"
 #import "DMRestaurantInfoViewController.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 
 @interface DMNewsFeedViewController ()
 
@@ -62,7 +62,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     NSLog(@" DMNewsFeedViewController View Did appear called");
-    [Answers logContentViewWithName:@"View newsfeed" contentType:@"" contentId:@"" customAttributes:@{}];
+    //[Answers logContentViewWithName:@"View newsfeed" contentType:@"" contentId:@"" customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"View newsfeed" parameters:@{}];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"View newsfeed"];
     [self.activityIndicator startAnimating];
     
     NSString *newsId = [(AppDelegate *) [[UIApplication sharedApplication] delegate] notificationPayload][@"news_id"];

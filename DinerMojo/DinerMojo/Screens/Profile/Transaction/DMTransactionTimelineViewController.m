@@ -12,7 +12,7 @@
 #import "DMTransactionsModelController.h"
 #import "DMRedeemTransaction.h"
 #import "DMEarnTransaction.h"
-#import <Crashlytics/Crashlytics.h>
+//#import <Crashlytics/Crashlytics.h>
 
 @interface DMTransactionTimelineViewController ()
 
@@ -41,7 +41,9 @@
     [self.tableView setHidden:YES];
     [[self emptyTableLabel] setHidden:YES];
     
-    [Answers logContentViewWithName:@"View timeline" contentType:@"View timeline" contentId:@"" customAttributes:@{}];
+    //[Answers logContentViewWithName:@"View timeline" contentType:@"View timeline" contentId:@"" customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"View timeline" parameters:@{}];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"View timeline %@" arguments:nil];
     
 }
 

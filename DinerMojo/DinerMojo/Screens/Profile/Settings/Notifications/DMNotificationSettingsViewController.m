@@ -12,7 +12,7 @@
 #import "DMNotificationVenueListViewController.h"
 #import <PKHUD/PKHUD-Swift.h>
 #import <PureLayout/PureLayout.h>
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 
 @interface DMNotificationSettingsViewController ()
 
@@ -203,7 +203,10 @@
 
 - (IBAction)saveNotification:(id)sender {
     [[PKHUD sharedHUDObjc] showOnView:self.view];
-    [Answers logContentViewWithName:@"Save notification settings" contentType:@"" contentId:@"" customAttributes:@{}];
+    //[Answers logContentViewWithName:@"Save notification settings" contentType:@"" contentId:@"" customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"Save notification settings" parameters:@{}];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"Save notification settings" arguments:nil];
+
     self.changed_ids = NO;
     if ([[DMLocationServices sharedInstance] isDinerMojoNewsUpdated] == YES) {
     //if (self.ids != NULL) {

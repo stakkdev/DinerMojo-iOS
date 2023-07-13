@@ -12,7 +12,7 @@
 #import "DMMappingHelper.h"
 #import <GBVersionTracking/GBVersionTracking.h>
 #import "DinerMojo-Swift.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 #import <CoreServices/CoreServices.h>
 
 
@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
     
     _initialRegisterViewYCoordinate = _registerViewBottom.constant;
@@ -80,23 +80,25 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     if (![bundleIdentifier  isEqual: @"com.dinermojo.dinermojo"]) {
         [self.buildLabel setText:[NSString stringWithFormat:@"Build %@ (%@)", version, build]];
     }
+    
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame = CGRectMake(20, 50, 100, 30);
+    [button setTitle:@"Test Crash" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(crashButtonTapped:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
     // Do any additional setup after loading the view, typically from a nib.
 }
-/*
- UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
- button.frame = CGRectMake(20, 50, 100, 30);
- [button setTitle:@"Test Crash" forState:UIControlStateNormal];
- [button addTarget:self action:@selector(crashButtonTapped:)
-  forControlEvents:UIControlEventTouchUpInside];
- [self.view addSubview:button];
-- (IBAction)crashButtonTapped:(id)sender
-{
+
+ 
+- (IBAction)crashButtonTapped:(id)sender {
     @[][1];
-}*/
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [FIRAnalytics setUserPropertyString:@"TestEventsLog" forName:@"TestLog"];
     if (_blurredView == nil){
         [self buildBlurredView];
     }
@@ -397,7 +399,13 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (void)loginToFacebook
 {
-    [Answers logLoginWithMethod:@"Facebook" success:@YES customAttributes:@{}];
+    //[Answers logLoginWithMethod:@"Facebook" success:@YES customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"Facebook"
+                        parameters:@{
+        kFIRParameterItemName:[NSString stringWithFormat:@"Facebook - %d",YES]
+    }];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"Facebook - %d", YES];
+
     __weak typeof(self) weakSelf = self;
     
     [[self userRequest] loginFaceboookWithSuccess:^(id result) {
@@ -476,7 +484,14 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (void)signUpWithFacebook
 {
-    [Answers logSignUpWithMethod:@"Facebook" success:@YES customAttributes:@{}];
+    //[Answers logSignUpWithMethod:@"Facebook" success:@YES customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"Facebook Signup"
+                        parameters:@{
+        kFIRParameterItemName:[NSString stringWithFormat:@"Facebook Signup - %d",YES]
+    }];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"Facebook Signup - %d", YES];
+    
+
     [[self userRequest] signUpWithFacebook:[self facebookDataParsedForServer] WithCompletionBlock:^(NSError *error, id results) {
         if (error)
         {
@@ -494,7 +509,13 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (void)loginWithEmail
 {
-    [Answers logLoginWithMethod:@"Email" success:@YES customAttributes:@{}];
+    //[Answers logLoginWithMethod:@"Email" success:@YES customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"Login with Email"
+                        parameters:@{
+        kFIRParameterItemName:[NSString stringWithFormat:@"Login with Email - %d",YES]
+    }];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"Login with Email - %d", YES];
+
     if (self.loginEmailTextField.text.length != 0 && self.loginPasswordTextField.text.length != 0)
     {
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -533,7 +554,13 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
 
 - (void)signupWithEmail
 {
-    [Answers logSignUpWithMethod:@"Email" success:@YES customAttributes:@{}];
+    //[Answers logSignUpWithMethod:@"Email" success:@YES customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"Signup with Email"
+                        parameters:@{
+        kFIRParameterItemName:[NSString stringWithFormat:@"Signup with Email - %d",YES]
+    }];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"Signup with Email - %d", YES];
+
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     CGFloat halfButtonHeight = self.closeRegisterButton.bounds.size.height / 2;
     CGFloat buttonWidth = self.closeRegisterButton.bounds.size.width;

@@ -11,7 +11,7 @@
 #import "DMRedeemTransaction.h"
 #import "DMEarnTransaction.h"
 #import "DMReferAFriendViewController.h"
-#import <Crashlytics/Answers.h>
+//#import <Crashlytics/Answers.h>
 
 @interface DMProfileViewController ()
 
@@ -61,8 +61,10 @@
 {
     [super viewWillAppear:animated];
     
-    [Answers logContentViewWithName:@"View profile" contentType:@"View profile" contentId:@"" customAttributes:@{}];
-    
+    //[Answers logContentViewWithName:@"View profile" contentType:@"View profile" contentId:@"" customAttributes:@{}];
+    [FIRAnalytics logEventWithName:@"View profile" parameters:@{}];
+    [[FIRCrashlytics crashlytics] logWithFormat:@"View profile"];
+
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
