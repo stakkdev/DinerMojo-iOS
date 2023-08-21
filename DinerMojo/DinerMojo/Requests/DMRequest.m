@@ -101,6 +101,9 @@
 {
     if ([operation.response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)operation.response;
+        if(httpResponse.statusCode == 401){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UnauthorizedRequest" object:nil];
+        }
         return [NSError errorWithDomain:error.domain code:httpResponse.statusCode userInfo:error.userInfo];
     }
     return error;

@@ -62,10 +62,13 @@
     [GMSPlacesClient provideAPIKey: @"AIzaSyDsbxrDudbltwXMI94slV9C_h7-s8kYNBI"];//Secrets.googlePlacesApiKey
         
     //[self initializeReachbility];
+  
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }
+
+
 
 
 

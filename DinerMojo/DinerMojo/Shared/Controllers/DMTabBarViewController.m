@@ -30,6 +30,33 @@
     
     [[[self tabBarController] tabBar] setTintColor:[UIColor brandColor]];
     [[self tabBarController] setDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                            selector:@selector(showLoginView)
+                                                name:@"UnauthorizedRequest"
+                                              object:nil];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    // Remove the observer when the view is about to disappear
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"UnauthorizedRequest"
+                                                  object:nil];
+}
+
+
+- (void)showLoginView {
+    // Implementation of the method
+    BOOL isLoggedIn = [[self userRequest] isUserLoggedIn];
+    if(isLoggedIn){
+        [[self userRequest] logout];
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        UINavigationController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"landingNavigationController"];
+        
+        [self setRootViewController:destinationViewController animated:YES];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
