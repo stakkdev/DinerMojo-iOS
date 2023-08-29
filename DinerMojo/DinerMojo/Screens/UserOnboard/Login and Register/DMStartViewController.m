@@ -81,19 +81,19 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         [self.buildLabel setText:[NSString stringWithFormat:@"Build %@ (%@)", version, build]];
     }
     
-    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(20, 50, 100, 30);
-    [button setTitle:@"Test Crash" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(crashButtonTapped:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+//    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    button.frame = CGRectMake(20, 50, 100, 30);
+//    [button setTitle:@"Test Crash" forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(crashButtonTapped:)
+//     forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:button];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
  
-- (IBAction)crashButtonTapped:(id)sender {
-    @[][1];
-}
+//- (IBAction)crashButtonTapped:(id)sender {
+//    @[][1];
+//}
 
 - (void)viewDidAppear:(BOOL)animated
 {
