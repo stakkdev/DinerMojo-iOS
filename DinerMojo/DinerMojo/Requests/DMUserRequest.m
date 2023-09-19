@@ -699,6 +699,16 @@ if ([DMRequest currentUserToken] != nil)
         if (error) {
             completionBlock(error, nil);
         } else {
+            NSLog(@"results--%@", results);
+            NSString *user_feedback_answer = results[@"user_feedback_answer"];
+            NSNumber *earn_transaction_id = results[@"earn_transaction_id"];//[results[@"earn_transaction_id"] intValue];
+            NSLog(@"user_feedback_answer--%@", user_feedback_answer);
+            NSLog(@"earn_transaction_id--%@", earn_transaction_id);
+            if ( ![user_feedback_answer isEqual:[NSNull null]] ) {
+                [[NSUserDefaults standardUserDefaults] setObject:user_feedback_answer forKey:@"user_feedback_answer"];
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:earn_transaction_id forKey:@"earn_transaction_id"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             DMUser *user = [DMMappingHelper mapUser:results mapping:[[self mappingProvider] completeUserMapping] inContext:[self objectContext]];
             completionBlock(nil, user);
         }
@@ -721,10 +731,14 @@ if ([DMRequest currentUserToken] != nil)
     }];
 }
 
-- (void)postFeedbackWithText:(NSString *)comments rating:(NSNumber *)rating venueID:(NSNumber *)venueID withCompletionBlock:(RequestCompletion)completionBlock
+//- (void)postFeedbackWithText:(NSString *)comments rating:(NSNumber *)rating venueID:(NSNumber *)venueID userFeedbackAnswer:(NSString *)userFeedbackAnswer earnTransactionId:(NSNumber *)earnTransactionId withCompletionBlock:(RequestCompletion)completionBlock
+//{
+//    NSDictionary *params = @{ @"comments" : comments, @"rating" : rating, @"venue_id" : venueID, @"user_feedback_answer" : userFeedbackAnswer, @"earn_transaction_id" : earnTransactionId};
+//
+
+- (void)postFeedbackWithText:(NSString *)comments rating:(NSNumber *)rating venueID:(NSNumber *)venueID userFeedbackAnswer:(NSString *)userFeedbackAnswer earnTransactionId:(NSNumber *)earnTransactionId withCompletionBlock:(RequestCompletion)completionBlock
 {
-    NSDictionary *params = @{ @"comments" : comments, @"rating" : rating, @"venue_id" : venueID};
-    
+    NSDictionary *params = @{ @"comments" : comments, @"rating" : rating, @"venue_id" : venueID, @"user_feedback_answer" : userFeedbackAnswer, @"earn_transaction_id" : earnTransactionId};
     
     [self POST:@"user/me/post_feedback" withParams:params
 withCompletionBlock:^(NSError *error, id results) {

@@ -48,7 +48,8 @@
 - (void)postEarnTransactionWithBillImage:(UIImage *)billImage venueID:(NSNumber *)venueID transactionID:(NSNumber *)transactionID withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)postRedeemTransactionWithOfferID:(NSNumber *)offerID venueID:(NSNumber *)venueID withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)downloadAllAvailableOffersWithVenueID:(NSNumber *)venueID withCompletionBlock:(RequestCompletion)completionBlock;
-- (void)postFeedbackWithText:(NSString *)comments rating:(NSNumber *)rating venueID:(NSNumber *)venueID withCompletionBlock:(RequestCompletion)completionBlock;
+//- (void)postFeedbackWithText:(NSString *)comments rating:(NSNumber *)rating venueID:(NSNumber *)venueID withCompletionBlock:(RequestCompletion)completionBlock;
+- (void)postFeedbackWithText:(NSString *)comments rating:(NSNumber *)rating venueID:(NSNumber *)venueID userFeedbackAnswer:(NSString *)userFeedbackAnswer earnTransactionId:(NSNumber *)earnTransactionId withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)postNotificationWithFrequency:(NSNumber *)frequency withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)postUpdateUserWithDictionaryParams:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;
 - (void)postSubscriptionsData:(NSDictionary *)params withCompletionBlock:(RequestCompletion)completionBlock;

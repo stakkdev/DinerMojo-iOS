@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerState) {
 @property (weak, nonatomic) IBOutlet DMTextField *referralCodeTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *referralCodeCheck;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *referralActivityIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *registerActivityIndicator;
 
 @property (weak, nonatomic) IBOutlet UILabel *resetPasswordLabel;
 @property (weak, nonatomic) IBOutlet DMButton *confirmPasswordButton;

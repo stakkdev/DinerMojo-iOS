@@ -31,6 +31,17 @@
 //    [self.feedbackDescriptionLabel setFont:[UIFont italicSystemFontOfSize:22.0]];
 //    [self.feedbackDescriptionLabel setNumberOfLines:2];
     self.selectedRating = [NSNumber numberWithInt:0];
+    
+    [self.question1ImageView setTintColor:[UIColor brandColor]];
+    [self.question2ImageView setTintColor:[UIColor brandColor]];
+    [self.question3ImageView setTintColor:[UIColor brandColor]];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *user_feedback_answer = [prefs stringForKey:@"user_feedback_answer"];    
+    if (user_feedback_answer != nil) {
+        self.question1ViewHeight.constant = 0;
+        self.containerViewHeight.constant = self.containerViewHeight.constant - 35;
+    }
 }
 
 - (IBAction)ratingOnePressed:(id)sender {
@@ -51,6 +62,34 @@
 
 - (IBAction)ratingFivePressed:(id)sender {
     [self setRatingImages:[NSNumber numberWithInt:5]];
+}
+//SelectedCheckMark22 //UnselectedCheckMark22
+- (IBAction)question1Action:(id)sender {
+    if (self.selectedQuestion1 == true) {
+        self.selectedQuestion1 = false;
+        [self.question1ImageView setImage:[UIImage imageNamed:@"UnselectedCheckMark22"]];
+    } else {
+        self.selectedQuestion1 = true;
+        [self.question1ImageView setImage:[UIImage imageNamed:@"SelectedCheckMark22"]];
+    }
+}
+- (IBAction)question2Action:(id)sender {
+    if (self.selectedQuestion2 == true) {
+        self.selectedQuestion2 = false;
+        [self.question2ImageView setImage:[UIImage imageNamed:@"UnselectedCheckMark22"]];
+    } else {
+        self.selectedQuestion2 = true;
+        [self.question2ImageView setImage:[UIImage imageNamed:@"SelectedCheckMark22"]];
+    }
+}
+- (IBAction)question3Action:(id)sender {
+    if (self.selectedQuestion3 == true) {
+        self.selectedQuestion3 = false;
+        [self.question3ImageView setImage:[UIImage imageNamed:@"UnselectedCheckMark22"]];
+    } else {
+        self.selectedQuestion3 = true;
+        [self.question3ImageView setImage:[UIImage imageNamed:@"SelectedCheckMark22"]];
+    }
 }
 
 - (void)setRatingImages:(NSNumber *)number {
@@ -80,8 +119,32 @@
     {
         if(_didSend) {
             _didSend = NO;
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            NSNumber *earn_transaction_id = [prefs objectForKey:@"earn_transaction_id"];
             DMUserRequest *userRequest = [DMUserRequest new];
-            [userRequest postFeedbackWithText:self.feedbackTextView.text rating:self.selectedRating venueID:self.selectedVenueID withCompletionBlock:^(NSError *error, id results) {
+            NSMutableString *selectedQuestionString = [NSMutableString stringWithFormat:@""];
+            if (self.selectedQuestion1 == true) {
+                [selectedQuestionString appendString: @"I wanted to try it because it's in the club"];
+            }
+            if (self.selectedQuestion2 == true) {
+                if ([selectedQuestionString  isEqual: @""]) {
+                    [selectedQuestionString appendString: @"I wanted to earn points!"];
+                } else {
+                    [selectedQuestionString appendString: @", I wanted to earn points!"];
+                }
+            }
+            if (self.selectedQuestion3 == true) {
+                if ([selectedQuestionString  isEqual: @""]) {
+                    [selectedQuestionString appendString: @"It had news or rewards that i liked"];
+                } else {
+                    [selectedQuestionString appendString: @", It had news or rewards that i liked"];
+                }
+            }
+            [userRequest postFeedbackWithText:self.feedbackTextView.text rating:self.selectedRating venueID:self.selectedVenueID userFeedbackAnswer:selectedQuestionString earnTransactionId:earn_transaction_id withCompletionBlock:^(NSError *error, id results) {
+//            [userRequest postFeedbackWithText:self.feedbackTextView.text rating:self.selectedRating venueID:self.selectedVenueID withCompletionBlock:^(NSError *error, id results) {
+                [prefs removeObjectForKey:@"user_feedback_answer"];
+                [prefs removeObjectForKey:@"earn_transaction_id"];
+                [prefs synchronize];
                 if (error)
                 {
                     [self presentOperationCompleteViewControllerWithStatus:DMOperationCompletePopUpViewControllerStatusError title:@"Oops" description:@"Something went wrong, please try again later"  style:UIBlurEffectStyleExtraLight actionButtonTitle:nil];

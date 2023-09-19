@@ -80,7 +80,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     if (![bundleIdentifier  isEqual: @"com.dinermojo.dinermojo"]) {
         [self.buildLabel setText:[NSString stringWithFormat:@"Build %@ (%@)", version, build]];
     }
-    
+    self.registerActivityIndicator.hidden = true;
 //    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    button.frame = CGRectMake(20, 50, 100, 30);
 //    [button setTitle:@"Test Crash" forState:UIControlStateNormal];
@@ -567,6 +567,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     indicator.center = CGPointMake(buttonWidth - halfButtonHeight , halfButtonHeight);
     [self.closeRegisterButton addSubview:indicator];
     [indicator startAnimating];
+    self.registerActivityIndicator.hidden = false;
+    [self.registerActivityIndicator startAnimating];
     [self.closeRegisterButton setImage:nil forState:UIControlStateNormal];
     [self.closeRegisterButton setEnabled:NO];
     [self.registerButton setEnabled:NO];
@@ -621,6 +623,7 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
         
         [indicator stopAnimating];
         [indicator removeFromSuperview];
+        [self.registerActivityIndicator stopAnimating];
     }];
 }
 
@@ -998,7 +1001,8 @@ typedef NS_ENUM(NSInteger, DMStartViewControllerReferralCodeUIState) {
     
     if ([formValidationString isEqualToString:@""])
     {
-        [self toggleRegisterSubviews];
+//        [self toggleRegisterSubviews];
+        [self signupWithEmail];
     }
     else
     {

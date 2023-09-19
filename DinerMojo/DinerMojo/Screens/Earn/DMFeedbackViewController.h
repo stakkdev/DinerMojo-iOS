@@ -24,11 +24,22 @@
 @property BOOL didSend;
 @property NSNumber *selectedVenueID;
 @property NSNumber *selectedRating;
+@property BOOL selectedQuestion1;
+@property BOOL selectedQuestion2;
+@property BOOL selectedQuestion3;
 - (IBAction)ratingOnePressed:(id)sender;
 - (IBAction)ratingTwoPressed:(id)sender;
 - (IBAction)ratingThreePressed:(id)sender;
 - (IBAction)ratingFourPressed:(id)sender;
 - (IBAction)ratingFivePressed:(id)sender;
 - (IBAction)submitFeedback:(id)sender;
+- (IBAction)question1Action:(id)sender;
+- (IBAction)question2Action:(id)sender;
+- (IBAction)question3Action:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *question1ViewHeight;
+@property (weak, nonatomic) IBOutlet UIImageView *question1ImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *question2ImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *question3ImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewHeight;
 
 @end
