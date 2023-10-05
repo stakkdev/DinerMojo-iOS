@@ -43,7 +43,7 @@
     
     //[Answers logContentViewWithName:@"View timeline" contentType:@"View timeline" contentId:@"" customAttributes:@{}];
     [FIRAnalytics logEventWithName:@"View timeline" parameters:@{}];
-    [[FIRCrashlytics crashlytics] logWithFormat:@"View timeline %@" arguments:nil];
+//    [[FIRCrashlytics crashlytics] logWithFormat:@"View timeline %@" arguments:nil];
     
 }
 
