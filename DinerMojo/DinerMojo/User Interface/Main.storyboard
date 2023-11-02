@@ -5931,7 +5931,7 @@ That's fine. Just click the button below to finish registering.</string>
                                                     <action selector="signInPressed:" destination="Q6u-F1-yT4" eventType="touchUpInside" id="9XT-37-xMl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7x-1X-VfC" customClass="DMButton">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7x-1X-VfC" customClass="DMButton">
                                                 <rect key="frame" x="25" y="254" width="540" height="48"/>
                                                 <color key="backgroundColor" red="0.21176470589999999" green="0.30980392159999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -7939,7 +7939,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="17" height="25"/>
         </designable>
         <designable name="1tJ-RQ-eYN">
-            <size key="intrinsicContentSize" width="87" height="23.5"/>
+            <size key="intrinsicContentSize" width="73" height="23.5"/>
         </designable>
         <designable name="3dT-AR-eyx">
             <size key="intrinsicContentSize" width="38" height="42"/>
@@ -7954,13 +7954,13 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="B3u-fZ-6cl">
-            <size key="intrinsicContentSize" width="86.5" height="22"/>
+            <size key="intrinsicContentSize" width="72.5" height="22"/>
         </designable>
         <designable name="CDt-SY-ihe">
-            <size key="intrinsicContentSize" width="118" height="23.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="GDz-41-0RG">
-            <size key="intrinsicContentSize" width="77" height="23.5"/>
+            <size key="intrinsicContentSize" width="67" height="23.5"/>
         </designable>
         <designable name="GE7-eS-tHr">
             <size key="intrinsicContentSize" width="35" height="37"/>
@@ -7975,7 +7975,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="230" height="34"/>
         </designable>
         <designable name="MUI-fJ-Umd">
-            <size key="intrinsicContentSize" width="118" height="23.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="Nra-Y7-dnG">
             <size key="intrinsicContentSize" width="30" height="33"/>
@@ -7993,7 +7993,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="68" height="34"/>
         </designable>
         <designable name="TCd-a9-jMs">
-            <size key="intrinsicContentSize" width="139" height="22"/>
+            <size key="intrinsicContentSize" width="125" height="22"/>
         </designable>
         <designable name="TGb-n1-m93">
             <size key="intrinsicContentSize" width="128" height="34"/>
@@ -8014,7 +8014,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="177" height="37"/>
         </designable>
         <designable name="a2Q-vx-Ifh">
-            <size key="intrinsicContentSize" width="118" height="23.5"/>
+            <size key="intrinsicContentSize" width="104" height="23.5"/>
         </designable>
         <designable name="bFh-cK-s35">
             <size key="intrinsicContentSize" width="50" height="34"/>
@@ -8023,7 +8023,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="98" height="34"/>
         </designable>
         <designable name="bUx-XX-x8d">
-            <size key="intrinsicContentSize" width="86.5" height="22"/>
+            <size key="intrinsicContentSize" width="72.5" height="22"/>
         </designable>
         <designable name="cLL-Rq-au8">
             <size key="intrinsicContentSize" width="30" height="34"/>
@@ -8041,7 +8041,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="73" height="34"/>
         </designable>
         <designable name="gHi-df-B5C">
-            <size key="intrinsicContentSize" width="49" height="23.5"/>
+            <size key="intrinsicContentSize" width="39" height="23.5"/>
         </designable>
         <designable name="hCN-Wq-XwI">
             <size key="intrinsicContentSize" width="38" height="42"/>
@@ -8062,7 +8062,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="230" height="34"/>
         </designable>
         <designable name="pZV-ja-7FI">
-            <size key="intrinsicContentSize" width="90.5" height="23.5"/>
+            <size key="intrinsicContentSize" width="76.5" height="23.5"/>
         </designable>
         <designable name="r1z-pl-46o">
             <size key="intrinsicContentSize" width="105" height="34"/>
@@ -8071,7 +8071,7 @@ That's fine. Just click the button below to finish registering.</string>
             <size key="intrinsicContentSize" width="61" height="34"/>
         </designable>
         <designable name="rhR-aM-1rm">
-            <size key="intrinsicContentSize" width="50.5" height="23.5"/>
+            <size key="intrinsicContentSize" width="36.5" height="23.5"/>
         </designable>
         <designable name="roD-35-b4H">
             <size key="intrinsicContentSize" width="83" height="34"/>

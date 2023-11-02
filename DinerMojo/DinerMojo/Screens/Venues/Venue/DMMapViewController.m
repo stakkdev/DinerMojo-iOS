@@ -167,10 +167,10 @@
     [[self userRequest] downloadUserProfileWithCompletionBlock:^(NSError *error, id results) {
         // Check user update location
         if(!currentUser.is_gdpr_acceptedValue && ![NSUserDefaults.standardUserDefaults boolForKey:@"didShowGDPR"]  && [[weakSelf userRequest] isUserLoggedIn]) {
-            [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"didShowGDPR"];
-            AcceptGdprViewController *acceptViewController = [[AcceptGdprViewController alloc] initWithNibName:@"AcceptGdprViewController" bundle:nil];
-            [acceptViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
-            [weakSelf presentViewController:acceptViewController animated:YES completion:NULL];
+//            [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"didShowGDPR"];
+//            AcceptGdprViewController *acceptViewController = [[AcceptGdprViewController alloc] initWithNibName:@"AcceptGdprViewController" bundle:nil];
+//            [acceptViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+//            [weakSelf presentViewController:acceptViewController animated:YES completion:NULL];
         }
         
         // Check user location updated
