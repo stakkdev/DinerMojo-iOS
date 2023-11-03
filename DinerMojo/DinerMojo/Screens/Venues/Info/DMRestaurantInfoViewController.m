@@ -362,7 +362,7 @@
         self.redeemIcon.image = [UIImage imageNamed:@"redeem_icon_disabled"];
     }
     
-    self.bookImgView.image = [UIImage imageNamed:self.selectedVenue.booking_availableValue ? @"book" : @"callendar_grey"];
+    self.bookImgView.image = [UIImage imageNamed:@"share-dm"];//[UIImage imageNamed:self.selectedVenue.booking_availableValue ? @"book" : @"callendar_grey"];
 }
 
 -(void)setupButtons {
@@ -562,7 +562,7 @@
 
 -(void)viewDidLayoutSubviews
 {
-    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.collectionView.frame.origin.y + self.collectionView.frame.size.height + self.openingTimesView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.collectionView.frame.origin.y + self.collectionView.frame.size.height + self.openingTimesView.frame.size.height + 80);
     self.scrollView.frame = CGRectMake(0, -1, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     if(@available(iOS 11, *)) {
         self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
