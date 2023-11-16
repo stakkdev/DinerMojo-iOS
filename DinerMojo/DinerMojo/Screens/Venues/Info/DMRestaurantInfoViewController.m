@@ -117,6 +117,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if(!self.selectedVenue.booking_availableValue) {
+        [self.bookingButton setAlpha: 0.4];
+    }
+    
     NSLog(@"%@", self.selectedVenue.primitiveModelID);
     [self configureControls];
     [self decorateInterface];
@@ -576,8 +580,8 @@
 {
     [super viewWillAppear:animated];
     
-    [self setHidesBottomBarWhenPushed:NO];
-    [[[self tabBarController] tabBar] setHidden:NO];
+    [self setHidesBottomBarWhenPushed:YES];
+    [[[self tabBarController] tabBar] setHidden:YES];
     [self refreshVenue];
     
     //Set navigation bar transparent

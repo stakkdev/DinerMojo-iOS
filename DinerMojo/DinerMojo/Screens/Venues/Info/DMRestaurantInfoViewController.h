@@ -53,6 +53,7 @@
 @property (weak, nonatomic) IBOutlet DMButton *pointsValueButton;
 @property (weak, nonatomic) IBOutlet UILabel *featureLabel;
 @property (weak, nonatomic) IBOutlet UIButton *navButton;
+@property (weak, nonatomic) IBOutlet UIButton *bookingButton;
 
 
 

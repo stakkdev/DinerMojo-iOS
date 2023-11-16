@@ -136,7 +136,9 @@ class PickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSource
                 self.datePicker.locale = Locale(identifier: "en_US")
                 self.datePicker.datePickerMode = self.mode == .date ? .date : .time
                 self.datePicker.addTarget(self, action: #selector(didChangeDate), for: .valueChanged)
-                
+                if #available(iOS 13.4, *) {
+                    self.datePicker.preferredDatePickerStyle = .wheels
+                }
                 if self.mode == .time {
                     self.datePicker.minuteInterval = 15
                 }
