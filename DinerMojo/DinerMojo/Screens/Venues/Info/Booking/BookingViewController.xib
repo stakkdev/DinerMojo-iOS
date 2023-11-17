@@ -353,13 +353,14 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Jtu-pm-7Bv"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.066666666669999999" green="0.41176470590000003" blue="0.54901960780000003" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4Pz-dl-a1W" firstAttribute="leading" secondItem="Jtu-pm-7Bv" secondAttribute="leading" id="K0Y-C8-kYG"/>
                 <constraint firstItem="Jtu-pm-7Bv" firstAttribute="trailing" secondItem="4Pz-dl-a1W" secondAttribute="trailing" id="bwm-5U-pbR"/>
                 <constraint firstItem="4Pz-dl-a1W" firstAttribute="top" secondItem="Jtu-pm-7Bv" secondAttribute="top" id="sN4-F9-XqU"/>
-                <constraint firstItem="Jtu-pm-7Bv" firstAttribute="bottom" secondItem="4Pz-dl-a1W" secondAttribute="bottom" id="yEr-Fn-Sq4"/>
+                <constraint firstAttribute="bottom" secondItem="4Pz-dl-a1W" secondAttribute="bottom" id="yEr-Fn-Sq4"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="71" y="126.5"/>
         </view>
