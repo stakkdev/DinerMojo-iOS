@@ -698,7 +698,7 @@
     }];
     [[FIRCrashlytics crashlytics] logWithFormat:@"%@", [NSString stringWithFormat:@"Share %@ - %@", type, self.selectedVenue.name]];
 
-    NSString *text = [[NSString alloc] initWithFormat:@"I love this place - %@, %@! With DinerMojo, I get rewarded there when using my points earned by spending at DinerMojo’s great restaurants. Download the free app and give it a try. \nhttp://bit.ly/DownloadFromGooglePlay\nhttp://bit.ly/DownloadFromTheAppStore", self.selectedVenue.name, self.selectedVenue.town];
+    NSString *text = [[NSString alloc] initWithFormat:@"I love this place - %@, %@.\n\nWith DinerMojo, I can earn points when I spend at any one of their great independent restaurants, bars, boutiques and so many more.  A growing number give rewards to make the experience even better.\n\nDownload the free app and give it a try:\nhttp://bit.ly/DownloadFromGooglePlay\nhttp://bit.ly/DownloadFromTheAppStore", self.selectedVenue.name, self.selectedVenue.town];
     
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.selectedVenue.primaryImage.fullURL]]];
     if(image == NULL) {
@@ -706,6 +706,19 @@
     }
     
     DMActivityViewController *activityViewController = [[DMActivityViewController alloc] initWithActivityItems:@[text, image] applicationActivities:nil];
+    // Check if the device can send mail
+    if ([MFMailComposeViewController canSendMail]) {
+        // Create a mail compose view controller
+        MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+        [mailComposeViewController setSubject:@"I love this place"]; // Set your desired subject
+        [mailComposeViewController setMessageBody:text isHTML:NO];
+        [mailComposeViewController addAttachmentData:UIImageJPEGRepresentation(image, 1.0) mimeType:@"image/jpeg" fileName:@"image.jpg"];
+        
+        // Set the mail compose view controller as the activity view controller
+        activityViewController.excludedActivityTypes = @[UIActivityTypeMail]; // Exclude the default mail activity
+        [activityViewController setValue:mailComposeViewController forKey:@"activityViewController"];
+    }
+    
     [activityViewController setModalPresentationStyle:UIModalPresentationOverFullScreen];
     [self presentViewController:activityViewController animated:YES completion:nil];
     
